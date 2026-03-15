@@ -42,6 +42,7 @@ All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/
 - `hanoi-3` shows that the same is true for one abstraction-heavy benchmark, at least at the current smoke bounds and current metrics.
 - `macro-hanoi` shows that a macro-operator variant also solves in both modes under SBCL, and currently does so with a compact cost-`1`, length-`3` plan.
 - `hanoi-4` is now a useful larger benchmark even without a passing result, because both `tweak` and `abtweak` currently fail in the same bounded way at the exploratory settings rather than crashing.
+- more detail on that `hanoi-4` result now lives in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1), including the current evidence that the restored BFS path is search-bound-limited rather than obviously semantically broken
 - `simple-robot-2` is the first benchmark where the comparison is behaviorally interesting instead of merely equal:
   - `tweak` does not solve at the current smoke bounds.
   - `abtweak` does solve with the manual-style heuristic path.

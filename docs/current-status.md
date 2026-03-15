@@ -8,6 +8,7 @@ For deeper technical detail, see:
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
+- [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 
 ## Repository State
 
@@ -44,6 +45,7 @@ Verified smoke results:
 - `simple-robot-2` is the first benchmark using the manual-style user-defined heuristic path and primary effects setup.
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
 - `macro-hanoi` now solves in both `tweak` and `abtweak`, while `hanoi-4` still ends in bounded failure in both modes at the current exploratory settings.
+- The current `hanoi-4` diagnosis is “bound-limited under the restored BFS path, with partial abstraction goals still solving”; details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1).
 - Left-wedge behavior now has a meaningful comparison target:
   - `blocks` / `sussman` shows no observed difference at current bounds.
   - `simple-robot-2` solves in `abtweak` with default left-wedge behavior, but the same run with `:left-wedge-mode nil` reaches `EXPAND-LIMIT-EXCEEDED`.
