@@ -29,7 +29,8 @@ The project is now beyond loader repair and into planner validation:
 - the stack-based DFS path now executes again under SBCL, and planner failure signaling is healthier:
   - open exhaustion now records `OPEN-EXHAUSTED`
   - `generate-bound` and `open-bound` now terminate with the expected limit symbols
-- current DFS runs still tend toward `CPU-TIME-LIMIT-EXCEEDED` rather than useful benchmark comparisons
+- small tuned DFS cases now solve again, but larger depth caps still tend toward long first-found plans and `CPU-TIME-LIMIT-EXCEEDED`
+- `nils-blocks` now solves in both `tweak` and `abtweak` under SBCL, and the monotonic property now shows a measurable pruning effect while preserving the same returned plan
 - `simple-robot-2` now returns a concrete plan in `abtweak` mode under SBCL using the manual-style user heuristic and primary effects configuration
 - `simple-robot-2` also now gives the first clear left-wedge-sensitive result: the same `abtweak` configuration reaches `EXPAND-LIMIT-EXCEEDED` when `:left-wedge-mode nil`
 - remaining work is now about broadening benchmark coverage and validating historical behavior, not just getting the abstraction path to execute once

@@ -13,6 +13,7 @@ It is meant to complement:
 This comparison uses the current scripted smoke cases for:
 
 - `blocks` / `sussman`
+- `Nilsson blocks`
 - `hanoi-3`
 - `hanoi-4`
 - `macro-hanoi`
@@ -26,6 +27,9 @@ All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/
 | --- | --- | --- | --- | --- | --- | --- |
 | `blocks` / `sussman` | `tweak` | Solves | `3` | `5` | `0` | Canonical TWEAK-style baseline |
 | `blocks` / `sussman` | `abtweak` | Solves | `3` | `5` | `0` | No observed difference from `tweak` at current bounds |
+| `Nilsson blocks` | `tweak` | Solves | `6` | `8` | `0` | Standard blocksworld variant from the manual |
+| `Nilsson blocks` | `abtweak` | Solves | `6` | `8` | `0` | Same plan as `tweak`, with monotonic property enabled |
+| `Nilsson blocks` | `abtweak` with `:mp-mode nil` | Solves | `6` | `8` | `0` | Same plan, but more search than the mp-enabled run |
 | `hanoi-3` | `tweak` | Solves | `7` | `9` | `0` | Canonical abstraction-heavy benchmark |
 | `hanoi-3` | `abtweak` | Solves | `7` | `9` | `0` | No observed difference from `tweak` at current bounds |
 | `hanoi-4` | `tweak` | `EXPAND-LIMIT-EXCEEDED` | `-` | `-` | `-` | Larger Tower of Hanoi benchmark still exceeds current exploratory bounds |
@@ -39,6 +43,9 @@ All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/
 ## Current Takeaways
 
 - `blocks` / `sussman` is now a clean apples-to-apples proof that the restored `tweak` and `abtweak` paths can both produce the same small successful solution under SBCL.
+- `Nilsson blocks` broadens that result to a second historically recognizable blocks variant:
+  - `tweak` and `abtweak` return the same cost-`6`, length-`8`, `kval 0` plan
+  - enabling the monotonic property reduces search from `70` expanded / `201` generated to `61` expanded / `168` generated, with `*mp-pruned*` increasing from `0` to `1`
 - `hanoi-3` shows that the same is true for one abstraction-heavy benchmark, at least at the current smoke bounds and current metrics.
 - `macro-hanoi` shows that a macro-operator variant also solves in both modes under SBCL, and currently does so with a compact cost-`1`, length-`3` plan.
 - `hanoi-4` is now a useful larger benchmark even without a passing result, because both `tweak` and `abtweak` currently fail in the same bounded way at the exploratory settings rather than crashing.
@@ -67,6 +74,9 @@ Individual cases:
 ```sh
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-tweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh nils-blocks-tweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh nils-blocks-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh nils-blocks-abtweak-no-mp
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-tweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi4-tweak

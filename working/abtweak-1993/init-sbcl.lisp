@@ -2,6 +2,9 @@
 ; This keeps the historical init file intact while loading globals a bit
 ; earlier to reduce avoidable source-load issues on modern CLs.
 
+; Establish common historical specials before source loading.
+(load "sbcl-specials.lisp")
+
 ; Load TWEAK core first so plan/operator structs exist.
 (load "Tw-routines/init")
 

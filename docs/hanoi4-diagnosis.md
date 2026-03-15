@@ -59,7 +59,8 @@ Current DFS behavior:
   - open exhaustion records `OPEN-EXHAUSTED`
   - `generate-bound` records `GENERATE-LIMIT-EXCEEDED`
   - `open-bound` records `OPEN-LIMIT-EXCEEDED`
-- with a larger `solution-limit`, DFS still tends to hit `CPU-TIME-LIMIT-EXCEEDED` even on small cases such as `blocks` / `sussman`
+- on small tuned cases such as `blocks` / `sussman`, DFS now returns real plans again when `solution-limit` is kept low
+- with a larger `solution-limit`, DFS still tends to follow longer first-found plans and eventually hit `CPU-TIME-LIMIT-EXCEEDED`
 
 So DFS is now available as an execution path, but it still needs separate tuning or investigation before it is a trustworthy diagnostic lever for `hanoi-4`.
 

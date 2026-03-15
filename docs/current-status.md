@@ -26,6 +26,8 @@ Verified smoke results:
 | --- | --- | --- | --- |
 | `blocks-sussman-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `blocks-sussman-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `nils-blocks-tweak` | `tweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
+| `nils-blocks-abtweak` | `abtweak` | Solves | Cost `6`, plan length `8`, `kval 0`, with `*mp-pruned* = 1` |
 | `registers-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `hanoi3-tweak` | `tweak` | Solves | Cost `7`, plan length `9`, `kval 0` |
 | `hanoi3-abtweak` | `abtweak` | Solves | Cost `7`, plan length `9`, `kval 0` |
@@ -49,7 +51,15 @@ Verified smoke results:
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`
   - `generate-bound` and `open-bound` now terminate search with `GENERATE-LIMIT-EXCEEDED` and `OPEN-LIMIT-EXCEEDED` respectively
-- The DFS control-strategy path now executes under SBCL again after restoring the stack-open loader path, and its failures are now reported honestly, but current DFS runs still tend to hit `CPU-TIME-LIMIT-EXCEEDED` before producing useful comparison results.
+- The DFS control-strategy path is now usable for small tuned cases:
+  - `blocks-sussman-tweak-dfs` and `blocks-sussman-abtweak-dfs` both solve with `:solution-limit 6`
+  - larger `solution-limit` values still lead DFS toward longer first-found plans and eventual CPU exhaustion, so DFS is currently a tuning-sensitive diagnostic rather than a general replacement for the restored BFS path
+- The SBCL loader is cleaner now:
+  - the working tree loads an early [sbcl-specials.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/sbcl-specials.lisp#L1) compatibility file
+  - plain source loads no longer emit the earlier wave of undefined-special-variable warnings
+- Nilsson blocks and monotonic-property validation are now active:
+  - `nils-blocks-tweak` and `nils-blocks-abtweak` both solve with cost `6`, plan length `8`, `kval 0`
+  - in `nils-blocks-abtweak`, `:mp-mode t` reduces search from `70` expanded / `201` generated to `61` expanded / `168` generated while preserving the same returned plan, and `*mp-pruned*` increases from `0` to `1`
 - Left-wedge behavior now has a meaningful comparison target:
   - `blocks` / `sussman` shows no observed difference at current bounds.
   - `simple-robot-2` solves in `abtweak` with default left-wedge behavior, but the same run with `:left-wedge-mode nil` reaches `EXPAND-LIMIT-EXCEEDED`.
@@ -71,8 +81,11 @@ Representative checks:
 ```sh
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-tweak-dfs
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-abtweak-dfs
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-generate-bound
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-open-bound
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh nils-blocks-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh nils-blocks-abtweak-no-mp
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh macro-hanoi-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak

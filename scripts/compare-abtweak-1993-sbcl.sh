@@ -89,6 +89,9 @@ EOF
 
 print_row "blocks / sussman" "tweak" "blocks-sussman-tweak" "canonical least-commitment baseline"
 print_row "blocks / sussman" "abtweak" "blocks-sussman-abtweak" "same result as tweak at current bounds"
+print_row "Nilsson blocks" "tweak" "nils-blocks-tweak" "standard blocksworld variant from the manual"
+print_row "Nilsson blocks" "abtweak" "nils-blocks-abtweak" "same plan as tweak; monotonic property on"
+print_row "Nilsson blocks" "abtweak, no mp" "nils-blocks-abtweak-no-mp" "same plan, more search than mp-enabled run"
 print_row "hanoi-3" "tweak" "hanoi3-tweak" "abstraction-heavy benchmark"
 print_row "hanoi-3" "abtweak" "hanoi3-abtweak" "same result as tweak at current bounds"
 print_row "hanoi-4" "tweak" "hanoi4-tweak" "larger abstraction benchmark at exploratory bounds"

@@ -177,13 +177,38 @@ case "$CASE_NAME" in
       (let ((result (plan initial goal
                           :planner-mode (quote tweak)
                           :control-strategy (quote dfs)
-                          :solution-limit 500
+                          :solution-limit 6
                           :output-file (quote no-output)
                           :expand-bound 2000
                           :generate-bound 8000
                           :open-bound 8000
                           :cpu-sec-limit 10)))
         (format t "CASE: blocks-sussman-tweak-dfs~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  blocks-sussman-abtweak-dfs)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/blocks.lisp")
+      (sussman)
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :control-strategy (quote dfs)
+                          :solution-limit 6
+                          :output-file (quote no-output)
+                          :expand-bound 2000
+                          :generate-bound 8000
+                          :open-bound 8000
+                          :cpu-sec-limit 10)))
+        (format t "CASE: blocks-sussman-abtweak-dfs~%")
         (format t "PLAN-RESULT: ~S~%" result)
         (format t "SOLUTION-VALUE: ~S~%" *solution*)
         (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
@@ -231,6 +256,76 @@ case "$CASE_NAME" in
         (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
         (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
         (format t "NUM-GENERATED: ~S~%" *num-generated*)) )'
+    ;;
+  nils-blocks-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/nils-blocks.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 2000
+                          :generate-bound 8000
+                          :open-bound 8000
+                          :cpu-sec-limit 10)))
+        (format t "CASE: nils-blocks-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  nils-blocks-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/nils-blocks.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 2000
+                          :generate-bound 8000
+                          :open-bound 8000
+                          :cpu-sec-limit 10)))
+        (format t "CASE: nils-blocks-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  nils-blocks-abtweak-no-mp)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/nils-blocks.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :mp-mode nil
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 20000
+                          :open-bound 20000
+                          :cpu-sec-limit 10)))
+        (format t "CASE: nils-blocks-abtweak-no-mp~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
   macro-hanoi-tweak)
     EVAL='(progn
@@ -344,7 +439,7 @@ case "$CASE_NAME" in
     ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, macro-hanoi-tweak, macro-hanoi-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
+    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
     exit 2
     ;;
 esac

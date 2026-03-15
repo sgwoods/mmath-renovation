@@ -10,11 +10,10 @@ It complements:
 
 ## Current Priorities
 
-1. Improve the newly restored DFS control-strategy path so it gives meaningful comparisons instead of mostly `solution-limit` or CPU-time termination.
-2. Exercise Nilsson blocks and monotonic-property-related checks so the benchmark set reflects more of the historical claims.
-3. Start mapping benchmark outcomes back to the thesis and technical reports rather than only checking whether cases run.
-4. Reduce SBCL warning noise by declaring the main historical implicit-special globals explicitly.
-5. Decide whether `simple-robot-1` adds useful coverage beyond `simple-robot-2`.
+1. Start mapping benchmark outcomes back to the thesis and technical reports rather than only checking whether cases run.
+2. Decide whether `simple-robot-1` adds useful coverage beyond `simple-robot-2`.
+3. Continue reducing non-special SBCL warning noise, especially load-order style warnings and dubious type declarations.
+4. Revisit `hanoi-4` with the better-understood DFS tuning and current Nilsson/MP baseline in hand.
 
 ## Suggested GitHub Issues
 
@@ -31,10 +30,10 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Investigate why DFS now runs with honest failure signaling but still tends to hit `CPU-TIME-LIMIT-EXCEEDED` before producing useful comparisons.
-2. Exercise Nilsson blocks plus monotonic-property validation.
-3. Extract historical-results expectations from the thesis and reports into the validation matrix.
-4. Tackle global-special declarations and warning reduction.
+1. Extract historical-results expectations from the thesis and reports into the validation matrix.
+2. Decide whether `simple-robot-1` adds useful extra historical coverage.
+3. Tackle the remaining non-special SBCL warning reduction work.
+4. Revisit `hanoi-4` after the current benchmark-comparison story is tighter.
 
 ## Exit Criteria For The Next Milestone
 
