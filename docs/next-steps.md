@@ -10,7 +10,7 @@ It complements:
 
 ## Current Priorities
 
-1. Start mapping benchmark outcomes back to the thesis and technical reports rather than only checking whether cases run.
+1. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
 2. Decide whether `simple-robot-1` adds useful coverage beyond `simple-robot-2`.
 3. Continue reducing non-special SBCL warning noise, especially load-order style warnings and dubious type declarations.
 4. Revisit `hanoi-4` with the better-understood DFS tuning and current Nilsson/MP baseline in hand.
@@ -24,16 +24,16 @@ The issue tracker should stay focused on a few parallel tracks:
 2. Runtime compatibility cleanup
    Track remaining implicit-special cleanup, DFS/control-strategy behavior, and any SBCL-specific semantic mismatches separately from benchmark work.
 3. Historical comparison
-   Track extraction of reported benchmark claims from the papers, thesis, and manual into the validation matrix.
+   Track claim-by-claim comparison between the source-backed validation matrix and current SBCL results.
 4. Reproducibility
    Track smoke-runner improvements, status updates, and any command-line automation needed to keep regressions easy to rerun.
 
 ## Suggested Order
 
-1. Extract historical-results expectations from the thesis and reports into the validation matrix.
-2. Decide whether `simple-robot-1` adds useful extra historical coverage.
-3. Tackle the remaining non-special SBCL warning reduction work.
-4. Revisit `hanoi-4` after the current benchmark-comparison story is tighter.
+1. Decide whether `simple-robot-1` adds useful extra historical coverage.
+2. Tackle the remaining non-special SBCL warning reduction work.
+3. Revisit `hanoi-4` after the current benchmark-comparison story is tighter.
+4. Start marking each benchmark row in the validation matrix as matched, partially matched, or still open.
 
 ## Exit Criteria For The Next Milestone
 
