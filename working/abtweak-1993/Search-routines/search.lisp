@@ -93,6 +93,7 @@
 
 	      ;; not drp-mode.
 	      (let () 
+		(setq *solution* 'open-exhausted)
 		(format *output-stream* "***open exhausted***~&")  
 		(return nil))     ;failure, reuturn nil.
              ))
@@ -135,11 +136,7 @@
             (newstate&cost 
 	     (if (< (- (length (plan-a state)) 2) *solution-limit*)
 		 (successors&costs state)   ;compute expansion states
-	         (let ()
-		   (setq *open* nil)
-		   (setq *num-expanded* -1)
-		   nil)                     ; set to nil
-		 )
+		 nil)
              )   
 
             (setq newstate (first newstate&cost))       ;select one expansion
@@ -168,10 +165,27 @@
 
             (setq *num-generated* (1+ *num-generated*)) ;count generated node
 
+	    (if (> *num-generated* *generate-bound*)
+		(let ()
+		  (setq *solution* 'generate-limit-exceeded)
+		  (return-from A-search nil)))
+
 	    (setq *open* 
 		  (if (equal *control-strategy* 'bfs)
 		      (insert-node newnode *open*)
 		    (stack-insert-node newnode *open*)))
+
+	    (if (and (equal *control-strategy* 'bfs)
+		     (> (length-of-open) *open-bound*))
+		(let ()
+		  (setq *solution* 'open-limit-exceeded)
+		  (return-from A-search nil)))
+
+	    (if (and (not (equal *control-strategy* 'bfs))
+		     (> (stack-length-of-open) *open-bound*))
+		(let ()
+		  (setq *solution* 'open-limit-exceeded)
+		  (return-from A-search nil)))
 
 	    (setq *first-time-in-loop* nil)
 

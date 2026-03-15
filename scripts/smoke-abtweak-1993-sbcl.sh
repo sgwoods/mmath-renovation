@@ -169,6 +169,69 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  blocks-sussman-tweak-dfs)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/blocks.lisp")
+      (sussman)
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :control-strategy (quote dfs)
+                          :solution-limit 500
+                          :output-file (quote no-output)
+                          :expand-bound 2000
+                          :generate-bound 8000
+                          :open-bound 8000
+                          :cpu-sec-limit 10)))
+        (format t "CASE: blocks-sussman-tweak-dfs~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  blocks-sussman-generate-bound)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/blocks.lisp")
+      (sussman)
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 500
+                          :generate-bound 5
+                          :open-bound 2000
+                          :cpu-sec-limit 10)))
+        (format t "CASE: blocks-sussman-generate-bound~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)) )'
+    ;;
+  blocks-sussman-open-bound)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/blocks.lisp")
+      (sussman)
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 500
+                          :generate-bound 2000
+                          :open-bound 3
+                          :cpu-sec-limit 10)))
+        (format t "CASE: blocks-sussman-open-bound~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)) )'
+    ;;
   macro-hanoi-tweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -281,7 +344,7 @@ case "$CASE_NAME" in
     ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, macro-hanoi-tweak, macro-hanoi-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
+    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, macro-hanoi-tweak, macro-hanoi-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
     exit 2
     ;;
 esac

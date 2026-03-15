@@ -26,7 +26,10 @@ The project is now beyond loader repair and into planner validation:
 - `macro-hanoi` now returns concrete plans in both `tweak` and `abtweak` modes under SBCL
 - `hanoi-4` currently reaches `EXPAND-LIMIT-EXCEEDED` in both `tweak` and `abtweak` at the exploratory larger-Hanoi smoke bounds
 - the current evidence suggests that `hanoi-4` is bounded by search growth in the restored BFS path more than by an obvious semantic break, but the DFS control path is not yet restored enough to use as a diagnostic comparison
-- the stack-based DFS path now executes again under SBCL, but current DFS runs still tend toward solution-limit exhaustion or CPU-time exhaustion rather than useful benchmark comparisons
+- the stack-based DFS path now executes again under SBCL, and planner failure signaling is healthier:
+  - open exhaustion now records `OPEN-EXHAUSTED`
+  - `generate-bound` and `open-bound` now terminate with the expected limit symbols
+- current DFS runs still tend toward `CPU-TIME-LIMIT-EXCEEDED` rather than useful benchmark comparisons
 - `simple-robot-2` now returns a concrete plan in `abtweak` mode under SBCL using the manual-style user heuristic and primary effects configuration
 - `simple-robot-2` also now gives the first clear left-wedge-sensitive result: the same `abtweak` configuration reaches `EXPAND-LIMIT-EXCEEDED` when `:left-wedge-mode nil`
 - remaining work is now about broadening benchmark coverage and validating historical behavior, not just getting the abstraction path to execute once

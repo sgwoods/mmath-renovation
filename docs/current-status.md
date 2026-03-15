@@ -46,7 +46,10 @@ Verified smoke results:
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
 - `macro-hanoi` now solves in both `tweak` and `abtweak`, while `hanoi-4` still ends in bounded failure in both modes at the current exploratory settings.
 - The current `hanoi-4` diagnosis is “bound-limited under the restored BFS path, with partial abstraction goals still solving”; details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1).
-- The DFS control-strategy path now executes under SBCL again after restoring the stack-open loader path, but current DFS runs still tend to hit `solution-limit` or `CPU-TIME-LIMIT-EXCEEDED` rather than producing useful comparison results.
+- Planner bound handling is now healthier under SBCL:
+  - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`
+  - `generate-bound` and `open-bound` now terminate search with `GENERATE-LIMIT-EXCEEDED` and `OPEN-LIMIT-EXCEEDED` respectively
+- The DFS control-strategy path now executes under SBCL again after restoring the stack-open loader path, and its failures are now reported honestly, but current DFS runs still tend to hit `CPU-TIME-LIMIT-EXCEEDED` before producing useful comparison results.
 - Left-wedge behavior now has a meaningful comparison target:
   - `blocks` / `sussman` shows no observed difference at current bounds.
   - `simple-robot-2` solves in `abtweak` with default left-wedge behavior, but the same run with `:left-wedge-mode nil` reaches `EXPAND-LIMIT-EXCEEDED`.
@@ -67,6 +70,9 @@ Representative checks:
 
 ```sh
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-tweak-dfs
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-generate-bound
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-open-bound
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh macro-hanoi-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak

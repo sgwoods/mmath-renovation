@@ -31,7 +31,7 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Investigate why DFS now runs but tends to exhaust `solution-limit` or CPU time before producing useful comparisons.
+1. Investigate why DFS now runs with honest failure signaling but still tends to hit `CPU-TIME-LIMIT-EXCEEDED` before producing useful comparisons.
 2. Exercise Nilsson blocks plus monotonic-property validation.
 3. Extract historical-results expectations from the thesis and reports into the validation matrix.
 4. Tackle global-special declarations and warning reduction.
@@ -42,5 +42,6 @@ The next milestone should be considered complete when:
 
 - the robot left-wedge comparison is scripted and documented
 - one larger abstraction benchmark runs successfully or fails in a well-understood way
+- planner-level termination checks for open, generate, and DFS failure modes remain reproducible via the smoke runner
 - the issue tracker reflects the major technical and validation workstreams
 - the status document can be updated from smoke-test output without rediscovering prior context
