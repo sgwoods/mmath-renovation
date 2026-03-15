@@ -52,13 +52,16 @@
 
 (defun this-one-violated (est condition user plan)
   "t iff this particular relation is violated."
-  (let ((ops-in-between (all-nece-between est user plan))
-	(violation-flag nil))
-    (dolist (operator ops-in-between violation-flag)
-	    (if (or
-		 (asserts-negative operator condition plan)
-		 (asserts-positive operator condition plan))
-		(return (setq violation-flag t))))))
+  ;; The historical version materialized ALL-NECE-BETWEEN before scanning it.
+  ;; For large Hanoi runs this creates substantial garbage inside MP pruning.
+  (dolist (operator (get-opids-from-plan plan) nil)
+    (when (and (not (equal operator est))
+               (not (equal operator user))
+               (nece-before-p est operator plan)
+               (nece-before-p operator user plan)
+               (or (asserts-negative operator condition plan)
+                   (asserts-positive operator condition plan)))
+      (return t))))
 
 
 (defun asserts-negative (operator condition plan)

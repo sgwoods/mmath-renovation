@@ -18,9 +18,9 @@ It complements:
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
-1. can the improved `ismb` plus MP path be pushed from clean `150000`-expansion termination to a full solve?
-2. can the remaining larger-bound MP hotspot around `all-nece-before` / `all-nece-between` be reduced further?
-3. does `critical-list-2` behave similarly after the same cleanup pass, or is `ismb` clearly the better restoration target?
+1. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
+2. can the remaining larger-bound MP hotspot in the non-`ismb` paths be reduced further?
+3. should `critical-list-2` now be treated mainly as a comparison hierarchy while `ismb` becomes the primary `hanoi-4` restoration target?
 
 The recommended order remains:
 

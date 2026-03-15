@@ -21,7 +21,7 @@ Under the currently restored search paths:
 - after replacing the precedence reachability test with a copy-free graph walk in the working tree, raising the same high bounds in `abtweak` with default MP no longer exhausts the SBCL heap
 - both the default MP run and the `:mp-mode nil` run now fall back to `EXPAND-LIMIT-EXCEEDED`
 - a DFS `abtweak` run with `:solution-limit 8` now ends in `OPEN-EXHAUSTED` rather than crashing
-- after reducing allocator churn in ordering cleanup and precedence-neighbor collection, `ismb` with MP and left-wedge enabled now reaches a clean `EXPAND-LIMIT-EXCEEDED` at `150000` expansions instead of exhausting the default SBCL heap sooner
+- after reducing allocator churn in ordering cleanup, precedence-neighbor collection, and MP violation checking, `ismb` with MP and left-wedge enabled now reaches clean bounded termination at both `150000` and `200000` expansions instead of exhausting the default SBCL heap sooner
 - `ismb` with `:drp-mode t` still does not solve, but it now reports `OPEN-EXHAUSTED` honestly instead of leaving the untouched initial plan in `*solution*`
 
 Observed BFS runs:
@@ -37,6 +37,7 @@ Observed BFS runs:
 | `abtweak`, default mp before precedence fix | `100000` | heap growth beyond the 1 GiB SBCL default | not safely reported | about `42.3` before failure | heap exhausted during precedence-heavy AbTweak search |
 | `abtweak`, default mp after precedence fix | `100000` | `100001` | `178882` | about `26.2` | `EXPAND-LIMIT-EXCEEDED` |
 | `abtweak`, `ismb`, mp, left-wedge | `150000` | `150001` | `184610` | not captured in the ad hoc runner | `EXPAND-LIMIT-EXCEEDED` |
+| `abtweak`, `ismb`, mp, left-wedge | `200000` | `200001` | `243578` | not captured in the ad hoc runner | `EXPAND-LIMIT-EXCEEDED` |
 
 Observed DFS run:
 
@@ -58,9 +59,9 @@ Observed DFS run:
 - The fatal high-bound SBCL failure is now fixed in the working tree.
 - At higher bounds, the benchmark is still expensive, but it now terminates normally with `EXPAND-LIMIT-EXCEEDED` rather than exhausting the heap.
 - The no-MP and default-MP high-bound runs are now both stable enough to compare as ordinary planner results.
-- The strongest current hierarchy is now stable at a larger bound than before:
-  - `ismb` plus MP and left-wedge now survives to `150000` expansions without exhausting the default SBCL heap
-  - the remaining larger-bound failure now looks more like a later MP-related hotspot than one dominant allocator bug
+- The strongest current hierarchy is now stable at substantially larger bounds than before:
+  - `ismb` plus MP and left-wedge now survives to `150000` and `200000` expansions without exhausting the default SBCL heap
+  - by contrast, `critical-list-2` can still exhaust the default heap by `150000`, so `ismb` is now clearly the better current restoration target
 - The working-vs-historical algorithm review now strengthens the diagnosis:
   - the active `hanoi-4` domain and default hierarchy match the archival snapshots
   - the main working-tree precedence rewrite preserves the historical precedence relation on randomized equivalence checks
@@ -91,7 +92,7 @@ That makes the current best explanation:
   - left-wedge is a smaller effect than MP in the current hierarchy matrix, but it is directionally helpful on the stronger hierarchies
 - the latest cleanup pass sharpens the remaining hotspot:
   - the old ordering-cleanup allocator path no longer stops `ismb` at the earlier point
-  - the next visible heap-growth ceiling on larger `ismb` runs is in the MP violation path around `all-nece-before` / `all-nece-between`
+  - `critical-list-2` still shows heap growth in the MP violation path, while `ismb` now gets through that same general region much more cleanly
 
 ## Important Limitation
 
@@ -119,4 +120,4 @@ The best current classification for `hanoi-4` is:
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: what further tuning or MP-path optimization is needed to push the promising `ismb` and `critical-list-2` hierarchies from improved bounded behavior to a full solution
+- most immediate open question: what further tuning is needed to push the now clearly stronger `ismb` hierarchy from improved bounded behavior to a full solution
