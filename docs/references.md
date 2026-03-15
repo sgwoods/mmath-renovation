@@ -2,6 +2,8 @@
 
 This page collects the core historical documents for the AbTweak work that this repository aims to recover and document.
 
+Checked-in copies of these sources now live in [publications/README.md](/Users/stevenwoods/mmath-renovation/publications/README.md).
+
 ## Primary Sources
 
 ### 1. AAAI 1990 conference paper
@@ -9,6 +11,7 @@ This page collects the core historical documents for the AbTweak work that this 
 - Title: "ABTWEAK: Abstracting a Nonlinear, Least Commitment Planner"
 - Authors: Josh D. Tenenberg and Qiang Yang
 - Venue: AAAI-90
+- Local copy: [publications/1990-aaai-abtweak.pdf](/Users/stevenwoods/mmath-renovation/publications/1990-aaai-abtweak.pdf)
 - URL: <https://cdn.aaai.org/AAAI/1990/AAAI90-031.pdf>
 
 Why it matters:
@@ -20,6 +23,7 @@ This is the original paper-level introduction to ABTWEAK. It is the right place 
 - Authors: Qiang Yang, Josh D. Tenenberg, and Steve Woods
 - Institution: University of Waterloo, Cheriton School of Computer Science
 - Date: December 1991
+- Local copy: [publications/1991-uwaterloo-tr-65-abstraction-in-nonlinear-planning.pdf](/Users/stevenwoods/mmath-renovation/publications/1991-uwaterloo-tr-65-abstraction-in-nonlinear-planning.pdf)
 - URL: <https://cs.uwaterloo.ca/research/tr/1991/65/final.pdf>
 
 Why it matters:
@@ -29,6 +33,7 @@ This report appears to be the longer treatment of the ABTWEAK work. It expands t
 
 - Title: "abtweak"
 - Source: CMU AI Repository, Planning Systems archive
+- Local copy: [publications/cmu-ai-repository-abtweak.html](/Users/stevenwoods/mmath-renovation/publications/cmu-ai-repository-abtweak.html)
 - URL: <https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/areas/planning/systems/abtweak/0.html>
 
 Why it matters:
@@ -40,6 +45,7 @@ This is the historical package landing page for the implementation archive. It i
 - Author: Steven G. Woods
 - Institution: University of Waterloo, Cheriton School of Computer Science
 - Date: March 1991
+- Local copy: [publications/1991-uwaterloo-tr-17-thesis-report.pdf](/Users/stevenwoods/mmath-renovation/publications/1991-uwaterloo-tr-17-thesis-report.pdf)
 - URL: <https://cs.uwaterloo.ca/research/tr/1991/17/report.pdf>
 
 Why it matters:

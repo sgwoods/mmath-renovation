@@ -24,6 +24,56 @@ Left-wedge setup:
 - `critical-list-2` uses the domain default `*k-list-2*`
 - `ismb` has no dedicated left-wedge list in the domain file, so the comparison uses the four-level Hanoi list `(0 1 3 7)` as an explicit reconstruction assumption
 
+## Published Label Correspondence
+
+The checked-in thesis and report copies in [publications/README.md](/Users/stevenwoods/mmath-renovation/publications/README.md) make it easier to line up the local hierarchy names with the published Hanoi discussion.
+
+### Simple Permutation Hierarchies
+
+The thesis tables discuss Hanoi hierarchies using permutations of the predicate groups:
+
+- `I` = `ispeg`
+- `B` = `onb`
+- `M` = `onm`
+- `S` = `ons`
+
+That maps cleanly onto the three-disk local domain in [working/abtweak-1993/Domains/hanoi-3.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-3.lisp#L1):
+
+- `*critical-list-1*` is `IBMS`
+- `*ismb*` is `ISMB`
+- `*imbs*` is `IMBS`
+
+So the local `hanoi-3` names and the published hierarchy labels are directly compatible.
+
+### How `hanoi-4` Extends That Scheme
+
+The four-disk domain in [working/abtweak-1993/Domains/hanoi-4.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-4.lisp#L1) adds `H = onh`.
+
+That means:
+
+- `*critical-list-1*` is structurally an `IHBMS` extension of the thesis's `IBMS` ordering
+- `*ismb*` remains an `ISMB`-style hierarchy over the original `S/M/B` groups, but it omits `onh`
+
+That omission turns out to be historically important. In [historical/Abtweak/Abtweak-1993/Ab-routines/ab-general.lisp](/Users/stevenwoods/mmath-renovation/historical/Abtweak/Abtweak-1993/Ab-routines/ab-general.lisp#L58) and the matching working copy [working/abtweak-1993/Ab-routines/ab-general.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Ab-routines/ab-general.lisp#L58), `find-crit` returns `0` when a predicate is not found in the criticality list. So the `hanoi-4` `*ismb*` hierarchy is not invalid; it effectively treats the omitted `onh` predicate as lowest criticality.
+
+This behavior is historical, not an SBCL-port change.
+
+### `critical-list-2` Is A Different Family
+
+`*critical-list-2*` should not be overidentified with the simple permutation labels like `IBMS` or `ISMB`.
+
+Its structure:
+
+- singles out positive `onb`
+- gives separate levels to negative `onm` and positive `onm`
+- gives separate levels to negative `ons` and positive `ons`
+
+That matches the thesis's separate positive/negative criticality-label experiments much better than the plain permutation tables. So the strongest current interpretation is:
+
+- `critical-list-1` corresponds to the straightforward default `IBMS`-style hierarchy family
+- `ismb` corresponds to the published `ISMB` family, extended to `hanoi-4` via the historical `find-crit -> 0` fallback
+- `critical-list-2` belongs to the thesis's positive/negative-label Hanoi experiments rather than the simple named permutation family
+
 ## Standard 20k-Bound Comparison
 
 Bounds:
@@ -121,12 +171,16 @@ The best current explanation for `hanoi-4` is now:
 1. the default `critical-list-1` hierarchy is a poor match for the historically strong Hanoi behavior
 2. the restored AbTweak implementation does show historically plausible MP-sensitive improvement once better hierarchies are used
 3. the project is no longer blocked on “does hierarchy choice matter?” because the answer is clearly yes
-4. the next challenge is turning the promising `critical-list-2` and `ismb` behavior into either
+4. the local hierarchy names can now be interpreted more cleanly against the publications:
+   - `critical-list-1` is the poor default `IBMS`-style path
+   - `ismb` is the strongest currently tested `ISMB`-style path
+   - `critical-list-2` is best treated as a positive/negative criticality experiment
+5. the next challenge is turning the promising `critical-list-2` and `ismb` behavior into either
    - a full `hanoi-4` solution under higher or better-tuned bounds, or
-   - a direct mapping from these tested hierarchies to the “good” and “bad” hierarchies discussed in the reports and thesis
+   - a stronger claim-by-claim match against the thesis and report tables
 
 ## Recommended Follow-Up
 
-1. Compare these three hierarchy definitions directly against the hierarchy descriptions and permutations in the thesis and technical report.
+1. Push the strongest hierarchy settings further, especially `ismb` with MP enabled and `critical-list-2` with MP enabled.
 2. Add the hierarchy matrix to the historical validation story for Hanoi rather than treating `hanoi-4` as a single undifferentiated benchmark.
-3. Revisit higher-bound runs with the promising hierarchies first, especially `ismb` with MP enabled and `critical-list-2` with MP enabled.
+3. Label the resulting hierarchy behavior against the specific thesis/report claims about “good” and “bad” Hanoi hierarchies.

@@ -7,6 +7,7 @@ For deeper technical detail, see:
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Historical sample cases](/Users/stevenwoods/mmath-renovation/docs/historical-sample-cases.md)
+- [Publications index](/Users/stevenwoods/mmath-renovation/publications/README.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
@@ -78,6 +79,10 @@ Verified smoke results:
     - `critical-list-2` with MP and left-wedge enabled generates `32461` nodes at the standard 20k bound, beating `tweak`
     - `ismb` with MP and left-wedge enabled generates `24228` nodes at the same bound, which is the best `hanoi-4` result seen so far
     - `ismb` and `critical-list-2` both show strong MP sensitivity, while the default `critical-list-1` does not
+    - the checked-in publications now let us interpret those local hierarchies more precisely:
+      - `critical-list-1` is the default `IBMS`-style family extended to four disks
+      - `ismb` is the `ISMB` family, with omitted `onh` falling to criticality `0` by historical `find-crit` behavior
+      - `critical-list-2` is best read as a positive/negative criticality-label experiment rather than a simple permutation like `IBMS`
   - the working-vs-historical review now shows that the `hanoi-4` domain and default abstraction hierarchy are unchanged from the archival code, and that the main precedence rewrite in the working tree preserves the historical reachability relation on randomized checks
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
@@ -105,7 +110,7 @@ Verified smoke results:
 
 - The archival source trees are preserved as historical artifacts, including old compiled Lisp outputs.
 - Most remaining risk is semantic validation, not basic SBCL compatibility.
-- The largest open gaps are now matching the promising `hanoi-4` hierarchy results to the published hierarchy descriptions and pushing the best hierarchy configurations toward a full solve, source-backed validation labeling across the benchmark matrix, and trimming the remaining non-fatal SBCL style/redefinition noise.
+- The largest open gaps are now pushing the best `hanoi-4` hierarchy configurations toward a full solve, labeling the current benchmark set against the published claims, and trimming the remaining non-fatal SBCL style/redefinition noise.
 
 ## Reproducible Commands
 

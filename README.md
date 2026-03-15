@@ -41,6 +41,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 ## Documentation Map
 
 - [Reference documents](./docs/references.md): annotated list of the core papers, thesis, and archived code page
+- [Publications index](./publications/README.md): checked-in local copies of the core papers, reports, and archival package page
 - [Snapshot inventory](./docs/snapshot-inventory.md): comparison of the recovered AbTweak trees and recommended porting baseline
 - [Abtweak-1993 baseline](./docs/abtweak-1993-baseline.md): current working baseline, SBCL load status, and next porting steps
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results

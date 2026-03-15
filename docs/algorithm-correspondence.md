@@ -12,8 +12,9 @@ The short answer is that the working `abtweak-1993` tree still corresponds close
 1. The active `hanoi-4` domain and abstraction hierarchy still match the historical sources.
 2. Most working-tree edits are Common Lisp compatibility fixes rather than planner redesign.
 3. The one major algorithmic rewrite in the working tree is the precedence reachability test, but it preserves the same boolean relation and was introduced to stop the SBCL heap blow-up.
-4. The biggest semantic difference in the working tree is in search-limit handling, not in AbTweak abstraction itself.
-5. The current `hanoi-4` mismatch is therefore more likely to be about hierarchy choice, control settings, or remaining performance/fidelity gaps than a fundamentally different planner.
+4. The historical `find-crit` fallback already allows omitted predicates to default to criticality `0`, so the current `hanoi-4` hierarchy interpretation is broader than a strict one-to-one label match.
+5. The biggest semantic difference in the working tree is in search-limit handling, not in AbTweak abstraction itself.
+6. The current `hanoi-4` mismatch is therefore more likely to be about hierarchy choice, control settings, or remaining performance/fidelity gaps than a fundamentally different planner.
 
 ## Hanoi Hierarchy Correspondence
 
@@ -35,6 +36,16 @@ That includes:
 The 1993 users manual describes the same style of Hanoi criticality assignment and left-wedge setup at [historical/Abtweak/Abtweak-1993/Doc/users-manual.tex](/Users/stevenwoods/mmath-renovation/historical/Abtweak/Abtweak-1993/Doc/users-manual.tex#L352).
 
 So the current `hanoi-4` behavior is not explained by an accidental rewrite of the domain or its default abstraction hierarchy.
+
+### Missing Criticality Entries Are Historical
+
+One subtle but important point is also unchanged from the historical code.
+
+In the archival 1993 tree, [historical/Abtweak/Abtweak-1993/Ab-routines/ab-general.lisp](/Users/stevenwoods/mmath-renovation/historical/Abtweak/Abtweak-1993/Ab-routines/ab-general.lisp#L58) defines `find-crit` so that if no explicit criticality entry is found, it returns `0`.
+
+The working copy preserves that exact fallback in [working/abtweak-1993/Ab-routines/ab-general.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Ab-routines/ab-general.lisp#L58).
+
+That matters because the `hanoi-4` alternate hierarchy `*ismb*` omits `onh`. The planner therefore treats `onh` as lowest criticality by historical design, not because the SBCL port papered over a malformed hierarchy.
 
 ## Historical Evolution Before The Port
 
@@ -151,5 +162,5 @@ The strongest current interpretation is:
 ## Recommended Follow-Up
 
 1. Reconstruct the exact Hanoi hierarchy variants and permutations discussed in the reports and thesis, rather than testing only the default `*critical-list-1*`.
-2. Add scripted `hanoi-4` runs for `*critical-list-1*`, `*critical-list-2*`, and `*ismb*`, with MP and left-wedge toggles.
+2. Keep scripted `hanoi-4` runs for `*critical-list-1*`, `*critical-list-2*`, and `*ismb*`, with MP and left-wedge toggles, and push the stronger settings further.
 3. Keep treating the working precedence rewrite as a runtime repair, not as evidence of a changed planner algorithm, unless a counterexample appears.

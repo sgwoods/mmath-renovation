@@ -10,10 +10,10 @@ It complements:
 
 ## Current Priorities
 
-1. Map the tested `hanoi-4` hierarchies to the hierarchy descriptions and permutations in the report and thesis, especially now that `critical-list-2` and `ismb` show the historically expected MP-sensitive improvement.
-2. Push the promising `hanoi-4` hierarchy settings further, starting with `ismb` plus MP and `critical-list-2` plus MP, to see whether one can reach a full solution under higher or better-tuned bounds.
-3. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
-4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+1. Push the promising `hanoi-4` hierarchy settings further, starting with `ismb` plus MP and `critical-list-2` plus MP, to see whether one can reach a full solution under higher or better-tuned bounds.
+2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
+3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+4. Widen the smoke suite into more historically shipped 1993 sample domains where that adds real validation coverage.
 
 ## Suggested GitHub Issues
 
@@ -30,7 +30,7 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Record which tested `hanoi-4` hierarchies look like the historically “good” and “bad” ones.
+1. Push `hanoi-4` further with the now-better-understood `ismb` and `critical-list-2` settings.
 2. Mark each benchmark row in the validation matrix as matched, partially matched, or still open.
 3. Trim the remaining SBCL style/redefinition noise in the working tree.
 4. Widen the smoke suite into more 1993 shipped sample domains.
