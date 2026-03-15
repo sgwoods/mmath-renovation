@@ -87,6 +87,8 @@ Verified smoke results:
     - `critical-list-2` with MP and left-wedge enabled generates `32461` nodes at the standard 20k bound, beating `tweak`
     - `ismb` with MP and left-wedge enabled generates `24228` nodes at the same bound, which is the best `hanoi-4` result seen so far
     - `ismb` and `critical-list-2` both show strong MP sensitivity, while the default `critical-list-1` does not
+    - after the latest cleanup pass, `ismb` with MP and left-wedge also reaches a clean `EXPAND-LIMIT-EXCEEDED` at `150000` expansions with `184610` generated and `183236` MP prunes
+    - `ismb` with `:drp-mode t` still does not solve, but it now reports `OPEN-EXHAUSTED` honestly instead of leaving the untouched initial plan in `*solution*`
     - the checked-in publications now let us interpret those local hierarchies more precisely:
       - `critical-list-1` is the default `IBMS`-style family extended to four disks
       - `ismb` is the `ISMB` family, with omitted `onh` falling to criticality `0` by historical `find-crit` behavior

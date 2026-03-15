@@ -621,17 +621,19 @@
        (let* (
               (ck    (car   candidates))     ; get a possible redundancy
               (ckop1 (first ck))             ; ckop1 < ckop2
-              (ckop2 (second ck)) )
+              (ckop2 (second ck))
+              (reduced-b (my-delete ck b)) )
          
          (declare
                  (type list ck)
                  (type atom ckop1)
-                 (type atom ckop2) )
+                 (type atom ckop2)
+                 (type list reduced-b) )
 
                    ; is this constraint ck:: ckop1 < ckop2 redundant?
-             (if (transitive-test-before-p ckop1 ckop2 (my-delete ck b))
+             (if (transitive-test-before-p ckop1 ckop2 reduced-b)
                    ; ie the constraint holds without explicit ckop1 < ckop2
-                 (remv-redun-orders (my-delete ck b) (cdr candidates)) 
+                 (remv-redun-orders reduced-b (cdr candidates)) 
                    ; get rid of it, check the rest
                  (remv-redun-orders b (cdr candidates))  
                    ; keep it, check the rest

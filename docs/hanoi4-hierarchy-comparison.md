@@ -115,6 +115,13 @@ Promising cases were rerun at:
 | `ismb` | `t` | `t` | `EXPAND-LIMIT-EXCEEDED` | `100001` | `121238` | `119916` | stable |
 | `ismb` | `nil` | `t` | SBCL heap exhausted | `-` | `-` | `0` | failed near the 1 GiB default heap limit |
 
+Additional follow-up after the latest cleanup pass:
+
+| Hierarchy | MP | Left-Wedge | Outcome | Expanded | Generated | MP Pruned | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `ismb` | `t` | `t` | `EXPAND-LIMIT-EXCEEDED` | `150001` | `184610` | `183236` | now stable at 150k under the default SBCL heap |
+| `ismb` | `t`, `drp-mode t` | `t` | `OPEN-EXHAUSTED` | `7558` | `7558` | `8289` | DRP still does not solve, but failure reporting is now honest |
+
 ## What Changed In The Diagnosis
 
 These results are the first clear sign that the restored planner can reproduce the qualitative hierarchy story from the historical work.
@@ -143,6 +150,7 @@ That matches the earlier concern that the default hierarchy was not producing th
 - it reduces generated nodes from `34234` in `tweak` to `24228`
 - it prunes aggressively via MP
 - at 100k, it remains the strongest stable configuration tested so far
+- after the latest cleanup pass, it also remains stable at 150k under the default SBCL heap
 
 ### MP Matters Again
 
@@ -184,3 +192,4 @@ The best current explanation for `hanoi-4` is now:
 1. Push the strongest hierarchy settings further, especially `ismb` with MP enabled and `critical-list-2` with MP enabled.
 2. Add the hierarchy matrix to the historical validation story for Hanoi rather than treating `hanoi-4` as a single undifferentiated benchmark.
 3. Label the resulting hierarchy behavior against the specific thesis/report claims about “good” and “bad” Hanoi hierarchies.
+4. Investigate the remaining larger-bound MP hotspot in the `all-nece-before` / `all-nece-between` path.

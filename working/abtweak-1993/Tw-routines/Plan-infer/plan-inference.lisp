@@ -235,11 +235,12 @@
  (declare  
      (type atom op)
      (type plan plan) )
- (remove nil (mapcar 
-	      #'(lambda (operator) 
-		  (if (poss-before-p operator op plan)
-		      operator nil))
-	      (remove op (get-opids-from-plan plan)))))
+ (let ((result nil))
+   (declare (type list result))
+   (dolist (operator (get-opids-from-plan plan) (nreverse result))
+     (when (and (not (equal operator op))
+                (poss-before-p operator op plan))
+       (push operator result)))))
 
 (defun all-nece-before (op plan)
  "/tweak/plan-infer/plan-inference.lsp
@@ -247,11 +248,12 @@
  (declare  
      (type atom op)
      (type plan plan) )  
- (remove nil (mapcar 
-	      #'(lambda (operator) 
-		  (if (nece-before-p operator op plan)
-		      operator nil))
-	      (remove op (get-opids-from-plan plan)))))
+ (let ((result nil))
+   (declare (type list result))
+   (dolist (operator (get-opids-from-plan plan) (nreverse result))
+     (when (and (not (equal operator op))
+                (nece-before-p operator op plan))
+       (push operator result)))))
 
 
 (defun all-poss-between (op1 op2 plan)

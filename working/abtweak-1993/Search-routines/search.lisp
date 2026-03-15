@@ -77,7 +77,10 @@
 		      (let ()
 			(setq *open*
 			      (reset-abs-branching-counts level))
-			(if (null *open*) (return nil))
+			(if (null *open*)
+			    (let ()
+			      (setq *solution* 'open-exhausted)
+			      (return nil)))
 			(format  *output-stream*
 				 "~%Abs Limit Exceeded at ~D;" level)
 			(format *output-stream*

@@ -74,8 +74,15 @@
 	       (first (plan-a initial-plan))) ; initial operator
 	      (operator-effects
 	       (first (plan-a initial-plan)))))
-    (output-solution-information    
-     (A-search initial-plan) :output output-file)
+    (let ((search-result (A-search initial-plan)))
+      ;; Some historical failure paths return NIL without updating *solution*.
+      ;; Preserve the successful initial-plan case, but avoid reporting the
+      ;; untouched seed plan as if it were a real search result on failure.
+      (when (and (null search-result)
+                 (eq *solution* initial-plan))
+        (setq *solution* 'open-exhausted))
+      (output-solution-information    
+       search-result :output output-file))
     ))
 
 
@@ -123,6 +130,5 @@
     (ab-successors&costs plan))
    (t
     (tw-successors&costs plan))))
-
 
 

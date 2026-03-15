@@ -16,6 +16,12 @@ It complements:
 3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 4. Widen the smoke suite into more historically shipped 1993 sample domains where that adds real validation coverage.
 
+Within the current `hanoi-4` priority, the immediate sub-questions are now:
+
+1. can the improved `ismb` plus MP path be pushed from clean `150000`-expansion termination to a full solve?
+2. can the remaining larger-bound MP hotspot around `all-nece-before` / `all-nece-between` be reduced further?
+3. does `critical-list-2` behave similarly after the same cleanup pass, or is `ismb` clearly the better restoration target?
+
 The recommended order remains:
 
 1. `#14`

@@ -16,12 +16,9 @@
           (type t e)
           (type list list)
    )
-  (if (eq (car list) nil)
-      nil
-      (if (equal e (car list))   ; e found in list      
-          (my-delete e (cdr list)) 
-          (append (list (car list))
-                  (my-delete e (cdr list))))))
+  ;; The historical recursive version rebuilt the whole list via APPEND on
+  ;; each step, which becomes a major allocator in large Hanoi runs.
+  (remove e list :test #'equal))
 
 (defun memb (e list)
   "/tweak/general.lsp
@@ -139,5 +136,4 @@
   "/tweak/general.lsp
    returns the list of parameters of p"
   (if (equal (car p) 'not) (cddr p) (cdr p)))
-
 
