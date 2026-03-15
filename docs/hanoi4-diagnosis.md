@@ -49,9 +49,16 @@ That makes the current best explanation:
 
 ## Important Limitation
 
-The DFS control-strategy path is not currently restored under SBCL.
+The DFS control-strategy path is now restored enough to run under SBCL, but it is not yet a useful comparison mode.
 
-Trying `:control-strategy 'dfs` currently fails early because `STACK-INITIALIZE-OPEN` is undefined in the restored path. That means we cannot yet use DFS as a diagnostic lever for `hanoi-4`, and DFS restoration should be tracked separately.
+The immediate loader break was that [Search-routines/init.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Search-routines/init.lisp#L1) did not load [Search-routines/stack-list-access.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Search-routines/stack-list-access.lisp#L1). After fixing that, DFS no longer crashes on `STACK-INITIALIZE-OPEN`.
+
+Current DFS behavior:
+
+- with the historical default `solution-limit`, DFS tends to exhaust open after diving deeply and leaves `*solution*` at the initial plan
+- with a larger `solution-limit`, DFS runs longer but tends to hit `CPU-TIME-LIMIT-EXCEEDED` even on small cases such as `blocks` / `sussman`
+
+So DFS is now available as an execution path, but it still needs separate tuning or investigation before it is a trustworthy diagnostic lever for `hanoi-4`.
 
 ## Current Conclusion
 
@@ -60,5 +67,5 @@ The best current classification for `hanoi-4` is:
 - likely a search-growth and control-setting problem first
 - not yet evidence of a major semantic break in the Hanoi domain encoding
 - still worth revisiting after either:
-  - restoring the DFS path, or
+  - improving the newly restored DFS path so it produces meaningful comparisons, or
   - adding more historically grounded benchmark expectations from the thesis and reports

@@ -10,7 +10,7 @@ It complements:
 
 ## Current Priorities
 
-1. Restore the DFS control-strategy path so `hanoi-4` and related domains can be compared beyond the current BFS-only restored path.
+1. Improve the newly restored DFS control-strategy path so it gives meaningful comparisons instead of mostly `solution-limit` or CPU-time termination.
 2. Exercise Nilsson blocks and monotonic-property-related checks so the benchmark set reflects more of the historical claims.
 3. Start mapping benchmark outcomes back to the thesis and technical reports rather than only checking whether cases run.
 4. Reduce SBCL warning noise by declaring the main historical implicit-special globals explicitly.
@@ -23,7 +23,7 @@ The issue tracker should stay focused on a few parallel tracks:
 1. Benchmark validation
    Create or maintain issues for larger Hanoi cases, Nilsson blocks, robot comparisons, and monotonic-property checks.
 2. Runtime compatibility cleanup
-   Track remaining implicit-special cleanup, DFS/control-strategy restoration, and any SBCL-specific semantic mismatches separately from benchmark work.
+   Track remaining implicit-special cleanup, DFS/control-strategy behavior, and any SBCL-specific semantic mismatches separately from benchmark work.
 3. Historical comparison
    Track extraction of reported benchmark claims from the papers, thesis, and manual into the validation matrix.
 4. Reproducibility
@@ -31,7 +31,7 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Restore the DFS/stack-open path so `hanoi-4` can be compared under another control strategy.
+1. Investigate why DFS now runs but tends to exhaust `solution-limit` or CPU time before producing useful comparisons.
 2. Exercise Nilsson blocks plus monotonic-property validation.
 3. Extract historical-results expectations from the thesis and reports into the validation matrix.
 4. Tackle global-special declarations and warning reduction.
