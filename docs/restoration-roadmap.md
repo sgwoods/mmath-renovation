@@ -34,6 +34,19 @@ The project is now beyond loader repair and into planner validation:
 - `simple-robot-2` now returns a concrete plan in `abtweak` mode under SBCL using the manual-style user heuristic and primary effects configuration
 - `simple-robot-2` also now gives the first clear left-wedge-sensitive result: the same `abtweak` configuration reaches `EXPAND-LIMIT-EXCEEDED` when `:left-wedge-mode nil`
 - remaining work is now about broadening benchmark coverage and validating historical behavior, not just getting the abstraction path to execute once
+- the core historical publications are now checked into [publications/](/Users/stevenwoods/mmath-renovation/publications/README.md), which makes the validation work less dependent on external links
+- the `hanoi-4` hierarchy story is now clearer:
+  - `critical-list-1` behaves like a poor default `IBMS`-style hierarchy
+  - `ismb` is currently the strongest `ISMB`-style path tested
+  - `critical-list-2` looks like the thesis's positive/negative criticality-label family rather than a simple permutation hierarchy
+
+## Phase State
+
+- Phase 1: functionally complete for the current milestone
+- Phase 2: functionally complete for the current milestone
+- Phase 3: mostly complete, with room to widen shipped sample coverage
+- Phase 4: in progress and now the highest-priority track
+- Phase 5: partially complete, with remaining cleanup still worthwhile
 
 ## Recommended Phases
 

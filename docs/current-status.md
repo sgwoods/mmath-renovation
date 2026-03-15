@@ -8,6 +8,7 @@ For deeper technical detail, see:
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Historical sample cases](/Users/stevenwoods/mmath-renovation/docs/historical-sample-cases.md)
 - [Publications index](/Users/stevenwoods/mmath-renovation/publications/README.md)
+- [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
@@ -19,6 +20,13 @@ For deeper technical detail, see:
 - Primary preserved reference: [historical/Abtweak/Abtweak-1993](/Users/stevenwoods/mmath-renovation/historical/Abtweak/Abtweak-1993)
 - Active porting tree: [working/abtweak-1993](/Users/stevenwoods/mmath-renovation/working/abtweak-1993)
 - Historical snapshots remain frozen reference material and are not edited during porting.
+
+## Plan State
+
+- Runtime restoration: first milestone substantially achieved
+- Historical validation: in progress, with a much stronger source base now that the publications are checked into the repo
+- Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage
+- Recommended next track: push `hanoi-4`, then label the validation matrix, then trim remaining SBCL warning noise
 
 ## Current Restoration Milestone
 

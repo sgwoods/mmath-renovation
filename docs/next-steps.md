@@ -6,6 +6,7 @@ It complements:
 
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
+- [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 
 ## Current Priorities
@@ -14,6 +15,15 @@ It complements:
 2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
 3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 4. Widen the smoke suite into more historically shipped 1993 sample domains where that adds real validation coverage.
+
+The recommended order remains:
+
+1. `#14`
+2. `#11`
+3. `#12`
+4. `#13`
+
+The rationale and alternatives are recorded in [docs/refreshed-plan.md](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md#L1).
 
 ## Suggested GitHub Issues
 
