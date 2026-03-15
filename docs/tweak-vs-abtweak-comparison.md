@@ -53,9 +53,10 @@ All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/
 - `hanoi-3` shows that the same is true for one abstraction-heavy benchmark, at least at the current smoke bounds and current metrics.
 - `macro-hanoi` shows that a macro-operator variant also solves in both modes under SBCL, and currently does so with a compact cost-`1`, length-`3` plan.
 - `hanoi-4` is now a useful larger benchmark even without a passing result, because the revisit shows a sharper split:
-  - at the standard exploratory bounds, both `tweak` and `abtweak` still fail in the same bounded way
-  - at higher bounds, the MP-enabled `abtweak` path currently exhausts the SBCL heap, which makes the MP / ordering path the clearest live problem rather than “plain search is too large”
-- more detail on that `hanoi-4` result now lives in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
+  - at the standard exploratory bounds, `tweak` still beats the default `critical-list-1` AbTweak setup
+  - but the hierarchy matrix now shows that `critical-list-2` and especially `ismb` produce materially better `hanoi-4` search than the default hierarchy
+  - MP becomes strongly useful on those stronger hierarchies, which is much closer to the historical expectation
+- more detail on that `hanoi-4` result now lives in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1) and [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
 - the robot benchmarks are now the clearest place where the historical AbTweak controls matter in practice:
   - in both `simple-robot-1` and `simple-robot-2`, `tweak` does not solve at the tested bounds
   - in both, `abtweak` does solve with the manual-style heuristic path

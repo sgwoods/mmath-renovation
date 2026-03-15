@@ -7,6 +7,7 @@ It complements:
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
+- [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 
 ## Current Result
@@ -57,6 +58,10 @@ Observed DFS run:
   - the active `hanoi-4` domain and default hierarchy match the archival snapshots
   - the main working-tree precedence rewrite preserves the historical precedence relation on randomized equivalence checks
   - the search gap therefore looks more like a control or fidelity problem than a replaced planner algorithm
+- The new hierarchy comparison sharpens that further:
+  - `critical-list-1` still behaves like a poor hierarchy
+  - `critical-list-2` and especially `ismb` now show the kind of MP-sensitive improvement the historical work would lead us to expect
+  - the best 20k-bound configuration so far is `ismb` with MP enabled
 
 ## Evidence Against A Gross Semantic Break
 
@@ -73,10 +78,10 @@ That makes the current best explanation:
 
 - the full `hanoi-4` problem is still expensive even in the restored planner, and
 - the earlier precedence-driven heap blow-up has been repaired enough that the remaining problem is once again ordinary search growth rather than fatal runtime instability.
-- the specific abstraction controls that should help here are not currently reducing the search:
-  - MP is pruning nothing at the standard bound
-  - left-wedge is not improving the search
-  - AbTweak overall is currently expanding the same number or slightly more states than plain Tweak
+- the specific abstraction controls do matter, but only on some hierarchies:
+  - under `critical-list-1`, MP is pruning nothing at the standard bound
+  - under `critical-list-2` and `ismb`, MP becomes strongly active and search improves materially
+  - left-wedge is a smaller effect than MP in the current hierarchy matrix, but it is directionally helpful on the stronger hierarchies
 
 ## Important Limitation
 
@@ -103,5 +108,5 @@ The best current classification for `hanoi-4` is:
 - no longer reproducing the earlier MP / ordering heap blow-up under the same high-bound SBCL run
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
-- best revisited next as a performance and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: why the restored abstraction controls and default Hanoi hierarchy are not producing the historically expected search reduction on this benchmark
+- best revisited next as a hierarchy-quality and historical-validation problem rather than a fatal-runtime bug
+- most immediate open question: which of the tested hierarchies correspond to the published “good” and “bad” Hanoi hierarchies, and what further tuning is needed to push the promising ones to a full solution

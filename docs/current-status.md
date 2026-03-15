@@ -10,6 +10,7 @@ For deeper technical detail, see:
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
+- [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 
 ## Repository State
@@ -73,8 +74,13 @@ Verified smoke results:
   - the same higher-bound `abtweak` run with default MP now returns a normal `EXPAND-LIMIT-EXCEEDED` result instead of crashing SBCL
   - the same higher-bound `abtweak` run with `:mp-mode nil` still returns `EXPAND-LIMIT-EXCEEDED`, so the benchmark remains expensive but no longer fails fatally
   - at the standard bound, `tweak` actually generates fewer nodes than the current AbTweak variants, `:mp-mode t` prunes `0` nodes, and disabling left-wedge is slightly worse than the default AbTweak run
+  - the new hierarchy comparison changes that story substantially:
+    - `critical-list-2` with MP and left-wedge enabled generates `32461` nodes at the standard 20k bound, beating `tweak`
+    - `ismb` with MP and left-wedge enabled generates `24228` nodes at the same bound, which is the best `hanoi-4` result seen so far
+    - `ismb` and `critical-list-2` both show strong MP sensitivity, while the default `critical-list-1` does not
   - the working-vs-historical review now shows that the `hanoi-4` domain and default abstraction hierarchy are unchanged from the archival code, and that the main precedence rewrite in the working tree preserves the historical reachability relation on randomized checks
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
+  - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the algorithm comparison note is [docs/algorithm-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md#L1)
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`
@@ -99,13 +105,14 @@ Verified smoke results:
 
 - The archival source trees are preserved as historical artifacts, including old compiled Lisp outputs.
 - Most remaining risk is semantic validation, not basic SBCL compatibility.
-- The largest open gaps are now reproducing the historically strong `hanoi-4` behavior with the right hierarchy and controls, source-backed validation labeling across the benchmark matrix, and trimming the remaining non-fatal SBCL style/redefinition noise.
+- The largest open gaps are now matching the promising `hanoi-4` hierarchy results to the published hierarchy descriptions and pushing the best hierarchy configurations toward a full solve, source-backed validation labeling across the benchmark matrix, and trimming the remaining non-fatal SBCL style/redefinition noise.
 
 ## Reproducible Commands
 
 - Loader: [scripts/load-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/load-abtweak-1993-sbcl.sh)
 - Smoke runner: [scripts/smoke-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh)
 - Comparison runner: [scripts/compare-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh)
+- Hanoi hierarchy runner: [scripts/compare-hanoi4-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-hierarchies-sbcl.sh)
 
 Representative checks:
 
@@ -127,4 +134,5 @@ Representative checks:
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot1-abtweak-no-lw
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak
 sh /Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh
+sh /Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-hierarchies-sbcl.sh
 ```
