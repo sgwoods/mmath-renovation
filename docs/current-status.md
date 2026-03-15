@@ -6,6 +6,7 @@ For deeper technical detail, see:
 
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
+- [Historical sample cases](/Users/stevenwoods/mmath-renovation/docs/historical-sample-cases.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
@@ -35,6 +36,11 @@ Verified smoke results:
 | `hanoi4-abtweak` | `abtweak` | Bounded failure | `EXPAND-LIMIT-EXCEEDED` at the same exploratory larger-Hanoi bounds |
 | `macro-hanoi-tweak` | `tweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
 | `macro-hanoi-abtweak` | `abtweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
+| `computer-tweak` | `tweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
+| `computer-abtweak` | `abtweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
+| `biology-goal1-abtweak` | `abtweak` | Solves | Cost `8`, plan length `10`, `kval 0` |
+| `fly-dc-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `database-goal0-tweak` | `tweak` | Solves | Cost `2`, plan length `4`, `kval 0` |
 | `robot1-abtweak` | `abtweak` | Solves | User-defined heuristic path, primary effects, cost `16`, plan length `18`, `kval 0` |
 | `robot1-abtweak-no-lw` | `abtweak` | Bounded failure | Same robot setup, `:left-wedge-mode nil`, `EXPAND-LIMIT-EXCEEDED` |
 | `robot1-tweak` | `tweak` | Bounded failure | Still `EXPAND-LIMIT-EXCEEDED` even with a larger exploratory bound set |
@@ -52,13 +58,19 @@ Verified smoke results:
   - `robot1-abtweak` solves with cost `16`, plan length `18`, and `kval 0`
   - `robot1-tweak` still fails at a larger exploratory bound set
   - `robot1-abtweak-no-lw` also fails, which makes it a second robot-domain left-wedge comparison rather than a duplicate of `simple-robot-2`
+- Several additional historically shipped sample domains are now verified under SBCL:
+  - `computer` solves in both `tweak` and `abtweak`
+  - `biology` goal 1 solves in `abtweak`
+  - `fly` to Washington DC solves in `abtweak`
+  - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
 - `macro-hanoi` now solves in both `tweak` and `abtweak`.
 - The current `hanoi-4` diagnosis is now more specific than “just bound-limited”:
   - `tweak` and `abtweak` both still hit `EXPAND-LIMIT-EXCEEDED` at the standard exploratory bounds
   - `abtweak` with `:left-wedge-mode nil` also hits `EXPAND-LIMIT-EXCEEDED`
-  - a higher-bound `abtweak` run with `:mp-mode t` exhausts the SBCL heap inside the monotonic-property / ordering path
-  - the same higher-bound `abtweak` run with `:mp-mode nil` falls back to `EXPAND-LIMIT-EXCEEDED`, which makes the MP path the clearest current pressure point
+  - the earlier higher-bound `abtweak` heap exhaustion is now fixed
+  - the same higher-bound `abtweak` run with default MP now returns a normal `EXPAND-LIMIT-EXCEEDED` result instead of crashing SBCL
+  - the same higher-bound `abtweak` run with `:mp-mode nil` still returns `EXPAND-LIMIT-EXCEEDED`, so the benchmark remains expensive but no longer fails fatally
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`
@@ -103,6 +115,10 @@ Representative checks:
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh nils-blocks-abtweak-no-mp
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh macro-hanoi-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh computer-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh biology-goal1-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh fly-dc-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh database-goal0-tweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot1-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot1-abtweak-no-lw
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak

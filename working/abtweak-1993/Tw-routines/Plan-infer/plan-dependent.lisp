@@ -108,9 +108,11 @@
 ;;; From leonard@nssdcs.gsfc.nasa.gov Sat Jul 25 07:27:27 1992
 ;;; NOTE three versions present in this directory - see notes in each
 
-;;; Semi-understandable version: replaces mapcars with do-loops,
-;;;  adds extra checks at start for 'I and 'G, and pushes check for
-;;;  exact (op1 op2) link into the body of the function.
+;;; Reachability in the precedence graph.
+;;; The historical tree includes several alternative implementations of
+;;; this routine because it dominated planning time on Hanoi. Use an
+;;; iterative sweep-and-mark walk here so we answer the same boolean query
+;;; without rebuilding or copying the order graph for every recursive step.
 
 (defun transitive-test-before-p (op1 op2 pairs)
   "/tweak/plan-infer/plan-dependent.lisp 
@@ -121,27 +123,29 @@
   (type list pairs) )
 
   (cond 
-   ((null pairs) nil)
    ((eq op2 'i) nil)
    ((eq op1 'g) nil)
-   (t (let ((imm-before-op2 nil)
-	    (pairs-without-op2 nil))
-	(declare
-	 (type list imm-before-op2)
-	 (type list pairs-without-op2) )
-	
-	(dolist (pair pairs)
-		(cond ((eq op2 (second pair))
-		       (cond ((eq op1 (first pair))
-			      (return-from transitive-test-before-p t))
-			     ((setq imm-before-op2 
-				    (cons (first pair) imm-before-op2)))))
-		      ((setq pairs-without-op2
-			     (cons pair pairs-without-op2)))))		
-	
-	(dolist (op imm-before-op2 nil)
-		(if (transitive-test-before-p op1 op pairs-without-op2)
-		    (return t)))))))
+   ((null pairs) nil)
+   (t
+    (let ((agenda (list op2))
+          (visited nil))
+      (declare
+       (type list agenda)
+       (type list visited))
+      (do ()
+          ((null agenda) nil)
+        (let ((current (pop agenda)))
+          (unless (member current visited :test 'eq)
+            (push current visited)
+            (dolist (pair pairs)
+              (let ((before (first pair))
+                    (after (second pair)))
+                (when (eq after current)
+                  (if (eq before op1)
+                      (return-from transitive-test-before-p t))
+                  (unless (or (eq before 'i)
+                              (member before visited :test 'eq))
+                    (push before agenda))))))))))))
 		
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -10,10 +10,10 @@ It complements:
 
 ## Current Priorities
 
-1. Investigate the `hanoi-4` monotonic-property / ordering blow-up under SBCL, now that higher-bound `abtweak` runs point at that path instead of just hitting the old exploratory bound.
-2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
-3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
-4. Deepen the robot comparison story by using both `simple-robot-1` and `simple-robot-2` as left-wedge and heuristic validation cases.
+1. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
+2. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+3. Expand historical sample-case coverage from the shipped manual domains, especially transportation, stylistics, and scheduling.
+4. Revisit `hanoi-4` as a performance and historical-fidelity problem now that the fatal SBCL heap blow-up is fixed.
 
 ## Suggested GitHub Issues
 
@@ -30,17 +30,17 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Isolate the `hanoi-4` MP-memory blow-up before widening further into larger abstraction cases.
-2. Mark each benchmark row in the validation matrix as matched, partially matched, or still open.
-3. Trim the remaining SBCL style/redefinition noise in the working tree.
-4. Only then widen into more 1993 domains or larger robot/Hanoi variants.
+1. Mark each benchmark row in the validation matrix as matched, partially matched, or still open.
+2. Trim the remaining SBCL style/redefinition noise in the working tree.
+3. Widen the smoke suite into more 1993 shipped sample domains.
+4. Only then spend more time on larger robot or Hanoi variants.
 
 ## Exit Criteria For The Next Milestone
 
 The next milestone should be considered complete when:
 
 - the robot left-wedge comparison is scripted and documented
-- one larger abstraction benchmark runs successfully or fails in a well-understood way, including the MP path if that is the blocker
+- one larger abstraction benchmark runs successfully or fails in a well-understood way without fatal SBCL runtime instability
 - planner-level termination checks for open, generate, and DFS failure modes remain reproducible via the smoke runner
 - the issue tracker reflects the major technical and validation workstreams
 - the status document can be updated from smoke-test output without rediscovering prior context
