@@ -22,6 +22,8 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 2. can the remaining larger-bound MP hotspot in the non-`ismb` paths be reduced further?
 3. should `critical-list-2` now be treated mainly as a comparison hierarchy while `ismb` becomes the primary `hanoi-4` restoration target?
 
+The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
+
 The recommended order remains:
 
 1. `#14`

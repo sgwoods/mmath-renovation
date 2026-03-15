@@ -47,6 +47,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results
 - [Refreshed plan](./docs/refreshed-plan.md): current plan state, recommended issue order, and the main sensible alternatives from here
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
+- [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Historical validation matrix](./docs/historical-validation-matrix.md): mapping from historically reported benchmark themes to runnable local domains
 - [Tweak vs AbTweak comparison](./docs/tweak-vs-abtweak-comparison.md): first structured side-by-side comparison across the current passing SBCL benchmarks
 - [Hanoi-4 diagnosis](./docs/hanoi4-diagnosis.md): current evidence on whether the larger Hanoi benchmark is blocked by bounds, control settings, or a deeper porting issue

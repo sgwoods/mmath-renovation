@@ -5,7 +5,17 @@
 (defun output-solution-information (success &key (output t))
   "output function upon termination."
   
-  (setq *output-stream* output)
+  (setq *output-stream*
+        (cond
+         ((or (eq output 'no-output)
+              (eq output t)
+              (null output)
+              (streamp output))
+          output)
+         ;; When PLAN was called with :output-file \"path\", init-global-vars
+         ;; has already opened the stream and stored it in *output-stream*.
+         ;; Keep using that stream instead of resetting to the path string.
+         (t *output-stream*)))
   (setq *success* success)
   (if (not (eq output 'no-output))
       (let ()
@@ -71,4 +81,3 @@
 		    (* 1.0 internal-time-units-per-second)))
 	 (format *output-stream* 
 		 "Size of Open List: ~D ~&~&" (length-of-open)))
-

@@ -10,6 +10,7 @@ For deeper technical detail, see:
 - [Publications index](/Users/stevenwoods/mmath-renovation/publications/README.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
+- [Hanoi-4 trace workflow](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
@@ -95,6 +96,9 @@ Verified smoke results:
       - `ismb` is the `ISMB` family, with omitted `onh` falling to criticality `0` by historical `find-crit` behavior
       - `critical-list-2` is best read as a positive/negative criticality-label experiment rather than a simple permutation like `IBMS`
   - the working-vs-historical review now shows that the `hanoi-4` domain and default abstraction hierarchy are unchanged from the archival code, and that the main precedence rewrite in the working tree preserves the historical reachability relation on randomized checks
+  - a dedicated trace runner now exists for larger `hanoi-4` diagnosis:
+    - it writes planner output, summary stats, open-frontier snapshots, and DRP-stack snapshots into timestamped directories under [analysis/hanoi4-traces](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
+    - the first `ismb` trace at a 5k bound already suggests a lot of frontier churn among near-complete `kval 0` plans with unresolved `(ispeg $var)` preconditions and repeated peg-shuffling moves, which is useful evidence for inspecting search quality rather than just termination reason
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the algorithm comparison note is [docs/algorithm-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md#L1)
