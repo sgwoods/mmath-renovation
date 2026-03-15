@@ -67,6 +67,46 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  hanoi4-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/hanoi-4.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 20000
+                          :generate-bound 80000
+                          :open-bound 80000
+                          :cpu-sec-limit 30)))
+        (format t "CASE: hanoi4-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  hanoi4-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/hanoi-4.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 20000
+                          :generate-bound 80000
+                          :open-bound 80000
+                          :cpu-sec-limit 30)))
+        (format t "CASE: hanoi4-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   registers-tweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -121,6 +161,46 @@ case "$CASE_NAME" in
                           :open-bound 2000
                           :cpu-sec-limit 10)))
         (format t "CASE: blocks-sussman-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  macro-hanoi-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/macro-hanoi.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 20000
+                          :generate-bound 80000
+                          :open-bound 80000
+                          :cpu-sec-limit 30)))
+        (format t "CASE: macro-hanoi-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  macro-hanoi-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/macro-hanoi.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 20000
+                          :generate-bound 80000
+                          :open-bound 80000
+                          :cpu-sec-limit 30)))
+        (format t "CASE: macro-hanoi-abtweak~%")
         (format t "PLAN-RESULT: ~S~%" result)
         (format t "SOLUTION-VALUE: ~S~%" *solution*)
         (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
@@ -201,7 +281,7 @@ case "$CASE_NAME" in
     ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
+    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, macro-hanoi-tweak, macro-hanoi-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
     exit 2
     ;;
 esac

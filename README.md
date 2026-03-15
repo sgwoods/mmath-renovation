@@ -25,7 +25,7 @@ This repository is now past the initial documentation bootstrap. The current foc
 
 Current milestone:
 
-- the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, solves `hanoi-3` in both `tweak` and `abtweak`, and shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`
+- the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, solves `hanoi-3` and `macro-hanoi` in both `tweak` and `abtweak`, shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`, and runs `hanoi-4` to a bounded search outcome in both modes
 
 ## What AbTweak Is
 

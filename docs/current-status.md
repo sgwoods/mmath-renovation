@@ -28,6 +28,10 @@ Verified smoke results:
 | `registers-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `hanoi3-tweak` | `tweak` | Solves | Cost `7`, plan length `9`, `kval 0` |
 | `hanoi3-abtweak` | `abtweak` | Solves | Cost `7`, plan length `9`, `kval 0` |
+| `hanoi4-tweak` | `tweak` | Bounded failure | `EXPAND-LIMIT-EXCEEDED` at the current exploratory larger-Hanoi bounds |
+| `hanoi4-abtweak` | `abtweak` | Bounded failure | `EXPAND-LIMIT-EXCEEDED` at the same exploratory larger-Hanoi bounds |
+| `macro-hanoi-tweak` | `tweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
+| `macro-hanoi-abtweak` | `abtweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
 | `robot2-abtweak` | `abtweak` | Solves | User-defined heuristic path, primary effects, cost `12`, plan length `14`, `kval 0` |
 | `robot2-abtweak-no-lw` | `abtweak` | Bounded failure | Same robot setup, `:left-wedge-mode nil`, `EXPAND-LIMIT-EXCEEDED` |
 | `robot2-tweak` | `tweak` | Bounded failure | `EXPAND-LIMIT-EXCEEDED` at current smoke bounds |
@@ -39,6 +43,7 @@ Verified smoke results:
 - `plan` still appears to return `NIL` on success, with the actual solution recorded in `*solution*`; this looks like historical behavior rather than a current regression.
 - `simple-robot-2` is the first benchmark using the manual-style user-defined heuristic path and primary effects setup.
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
+- `macro-hanoi` now solves in both `tweak` and `abtweak`, while `hanoi-4` still ends in bounded failure in both modes at the current exploratory settings.
 - Left-wedge behavior now has a meaningful comparison target:
   - `blocks` / `sussman` shows no observed difference at current bounds.
   - `simple-robot-2` solves in `abtweak` with default left-wedge behavior, but the same run with `:left-wedge-mode nil` reaches `EXPAND-LIMIT-EXCEEDED`.
@@ -60,6 +65,7 @@ Representative checks:
 ```sh
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh macro-hanoi-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak
 sh /Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh
 ```
