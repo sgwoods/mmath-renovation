@@ -27,6 +27,7 @@ Observed BFS runs:
 | `tweak` | `20000` | `20001` | `34234` | about `1.9` | `EXPAND-LIMIT-EXCEEDED` |
 | `abtweak` | `20000` | `20001` | `35175` | about `5.4` | `EXPAND-LIMIT-EXCEEDED` |
 | `abtweak`, no left-wedge | `20000` | `20001` | `35212` | about `5.8` | `EXPAND-LIMIT-EXCEEDED` |
+| `abtweak`, no mp | `20000` | `20001` | `35175` | about `5.4` | `EXPAND-LIMIT-EXCEEDED` |
 | `tweak` | `100000` | `100001` | `175268` | about `15.1` | `EXPAND-LIMIT-EXCEEDED` |
 | `abtweak`, no mp | `100000` | `100001` | `178882` | about `20.4` | `EXPAND-LIMIT-EXCEEDED` |
 | `abtweak`, default mp before precedence fix | `100000` | heap growth beyond the 1 GiB SBCL default | not safely reported | about `42.3` before failure | heap exhausted during precedence-heavy AbTweak search |
@@ -42,6 +43,12 @@ Observed DFS run:
 
 - At the standard exploratory bounds, the current `hanoi-4` failure is still primarily a bounded-search result, not a loader crash.
 - At those same bounds, `abtweak` is not yet showing a search reduction advantage over `tweak` on the full `hanoi-4` goal.
+- In fact, `tweak` currently generates fewer nodes than any of the tested AbTweak variants at the `20000`-expansion budget.
+- `:mp-mode t` is not currently helping on this case:
+  - the `abtweak` and `abtweak` with `:mp-mode nil` runs generate the same `35175` nodes at the standard bound
+  - `*mp-pruned*` remains `0`
+- `:left-wedge-mode nil` is also not the explanation for the failure:
+  - disabling left-wedge makes the run slightly worse (`35212` generated vs `35175`)
 - The fatal high-bound SBCL failure is now fixed in the working tree.
 - At higher bounds, the benchmark is still expensive, but it now terminates normally with `EXPAND-LIMIT-EXCEEDED` rather than exhausting the heap.
 - The no-MP and default-MP high-bound runs are now both stable enough to compare as ordinary planner results.
@@ -61,6 +68,10 @@ That makes the current best explanation:
 
 - the full `hanoi-4` problem is still expensive even in the restored planner, and
 - the earlier precedence-driven heap blow-up has been repaired enough that the remaining problem is once again ordinary search growth rather than fatal runtime instability.
+- the specific abstraction controls that should help here are not currently reducing the search:
+  - MP is pruning nothing at the standard bound
+  - left-wedge is not improving the search
+  - AbTweak overall is currently expanding the same number or slightly more states than plain Tweak
 
 ## Important Limitation
 
@@ -87,3 +98,4 @@ The best current classification for `hanoi-4` is:
 - no longer reproducing the earlier MP / ordering heap blow-up under the same high-bound SBCL run
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - best revisited next as a performance and historical-validation problem rather than a fatal-runtime bug
+- most immediate open question: why the restored abstraction controls are not producing the historically expected search reduction on this benchmark

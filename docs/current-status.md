@@ -71,6 +71,7 @@ Verified smoke results:
   - the earlier higher-bound `abtweak` heap exhaustion is now fixed
   - the same higher-bound `abtweak` run with default MP now returns a normal `EXPAND-LIMIT-EXCEEDED` result instead of crashing SBCL
   - the same higher-bound `abtweak` run with `:mp-mode nil` still returns `EXPAND-LIMIT-EXCEEDED`, so the benchmark remains expensive but no longer fails fatally
+  - at the standard bound, `tweak` actually generates fewer nodes than the current AbTweak variants, `:mp-mode t` prunes `0` nodes, and disabling left-wedge is slightly worse than the default AbTweak run
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`

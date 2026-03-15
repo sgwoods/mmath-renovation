@@ -13,7 +13,7 @@ It complements:
 1. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
 2. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 3. Expand historical sample-case coverage from the shipped manual domains, especially transportation, stylistics, and scheduling.
-4. Revisit `hanoi-4` as a performance and historical-fidelity problem now that the fatal SBCL heap blow-up is fixed.
+4. Revisit `hanoi-4` as a performance and historical-fidelity problem now that the fatal SBCL heap blow-up is fixed and we know that the current MP and left-wedge settings are not reducing search.
 
 ## Suggested GitHub Issues
 
