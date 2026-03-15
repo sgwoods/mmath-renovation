@@ -35,7 +35,7 @@
   (let (
         (preconds (get-preconditions-of-opid opid plan)))
     (declare
-        (type (list list) preconds) )
+        (type list preconds) )
     (apply 'append
 	    (mapcar #'(lambda (precond)
 			(create-conflict-list-for-precond 
@@ -77,7 +77,7 @@
   (let (
         (n-q-pairs (find-n-q-pairs precond establisher opid plan)))
     (declare
-          (type (list list) n-q-pairs) )
+          (type list n-q-pairs) )
     (mapcar #'(lambda (n-q-pair)
 		(list establisher opid (first n-q-pair)
 		      precond (second n-q-pair)))
@@ -113,7 +113,7 @@
   (let (
         (effects (get-effects-of-opid candidate plan)))
     (declare
-       (type (list list) effects) )
+       (type list effects) )
     (remove nil
 	    (mapcar #'(lambda (q)
 			(if (poss-codesignates

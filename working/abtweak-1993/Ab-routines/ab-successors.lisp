@@ -64,8 +64,8 @@
              (type list u-and-p)
              (type atom u)
              (type list p)   
-             (type (list list) intermediates)
-             (type (list plan) successors) )
+             (type list intermediates)
+             (type list successors) )
 
 	  (setq *abs-backtracking-flag* nil)
 	  (setq precond-index (precond-to-index p u plan))
@@ -203,4 +203,3 @@
 					   (get-preconditions-of-opid opid plan)
                              (get_kval plan) )))
             (get-opids-from-plan plan))))
-

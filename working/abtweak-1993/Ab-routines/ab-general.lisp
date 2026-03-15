@@ -10,7 +10,7 @@
 
   (declare 
       (type atom opid)             ; opid involved
-      (type (list list) plist)     ; list of conditions
+      (type list plist)     ; list of conditions
       (type integer k) )           ; criticality level
 
   (if (and (not *abstract-goal-mode*) (equal opid 'g))  
@@ -27,7 +27,7 @@
     return a reduced precondition list for a certain level of criticality"
 
      (declare 
-        (type (list list) plist)     ; list of conditions
+        (type list plist)     ; list of conditions
         (type integer k) )           ; criticality level
 
       (if (null (car plist))  
@@ -104,7 +104,7 @@
     "abtweak/ab-successors.lsp"
     (declare 
          (type list pname)
-         (type (list list) clist)
+         (type list clist)
      )
 
     (if (null (car clist))
@@ -122,7 +122,7 @@
              )
           (declare 
               (type list pre)
-              (type (list list) rest))
+              (type list rest))
            (if (memb pname (cdr pre)) ; ie precond is in this level list
                (car pre)                ; return this level
                (find-crit1 pname rest)  ; keep looking
@@ -216,7 +216,7 @@
    "abtweak/ab-successors.lsp
     update op-count for this past level completed"
     (declare 
-        (type (list list) op-count)
+        (type list op-count)
         (type integer max-k)
         (type integer length-a)
         (type integer lev-k))
@@ -231,11 +231,10 @@
 (defun total-ops (op-count)
    "abtweak/ab-successors.lsp
     how many ops indicated in plan by op-count"
-  (declare  (type (list list) op-count))
+  (declare  (type list op-count))
   (eval (cons '+
           (mapcar #'(lambda (level-cntr) 
                   (second level-cntr))
               op-count))))
-
 
 

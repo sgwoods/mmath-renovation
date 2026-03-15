@@ -21,7 +21,7 @@
    It generates all successors of plan."
 
  (declare 
-    (type array plan))
+    (type plan plan))
 
  (let (successors
        (one-mr-conflicts (find-one-mr-conflict plan)))
@@ -55,7 +55,7 @@
 	(type atom user-id)
 	(type list precond)   
 	(type list intermediates)
-	(type (list plan) successors) )
+	(type list successors) )
 
        (setq producer-id-list (mapcar 'first intermediates))
        (setq successors 
@@ -105,7 +105,7 @@
    
 
   (declare 
-     (type array plan))
+     (type plan plan))
 
   (let (
         (user-and-precond
@@ -129,7 +129,7 @@
    note: the current implementation will find the first u and p. "
 
   (declare 
-     (type array plan))
+     (type plan plan))
 
   (let ( (result nil)
 	 (level (plan-kval plan))
@@ -206,5 +206,4 @@
                                  (list opid pre ))
                           (get-preconditions-of-opid opid plan)))
             (get-opids-from-plan plan))))
-
 

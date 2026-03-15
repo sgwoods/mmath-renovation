@@ -47,5 +47,5 @@
 		    ))
        )
     (declare 
-        (type (list list) preconds))
+        (type list preconds))
     (preconds_hold-p plan opid preconds)))

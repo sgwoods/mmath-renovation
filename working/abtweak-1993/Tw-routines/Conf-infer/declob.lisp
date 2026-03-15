@@ -10,7 +10,7 @@
    returns a list of all plans created from 
    result of declobbering each intermediate all ways possible"
    (declare 
-       (type (list list) intermediates)
+       (type list intermediates)
        (type atom u)
        (type number precond-index) )
 
@@ -44,7 +44,7 @@
                   (create-alternative-constraints
                   	  estid u precond plan)))
     (declare
-        (type (list list) alternative-constraints) )
+        (type list alternative-constraints) )
 
     (mapcar #'(lambda (conjunctive-constraint)
 		(apply-constraints-to-plan
@@ -69,7 +69,7 @@
          (clauses nil))
 
     (declare
-        (type (list list) conflicts)
+        (type list conflicts)
         (type list clauses) )
 
     (if (> (length conflicts) *confl-count*)
@@ -179,7 +179,7 @@
  "/tweak/conf-infer/declob.lsp
    returns a new plan with constraints applied to."		
  (declare
-    (type (list list) constraints)
+    (type list constraints)
     (type plan plan) )
  (let (
        (new-plan (make-copy-of-plan plan)))

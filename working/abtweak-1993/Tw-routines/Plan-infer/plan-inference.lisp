@@ -47,7 +47,7 @@
     returns a list of operators so that for each ai, aj, ai is not before aj."
   (declare
       (type plan plan)
-      (type (list operator) list-of-ops) )
+      (type list list-of-ops) )
   (do ((a-list list-of-ops (cdr a-list))
        (result nil))
       ((null a-list) result)
@@ -69,7 +69,7 @@
   (let (
         (effects (get-effects-of-opid opid plan)))
     (declare
-        (type (list list) effects) )
+        (type list effects) )
     (dolist (effect effects nil)
 	    (if (nece-codesignates-p effect precond)
 		(return t)))))
@@ -84,7 +84,7 @@
   (let (
         (effects (get-effects-of-opid opid plan)))
     (declare
-        (type (list list) effects) )
+        (type list effects) )
     (dolist (effect effects nil)
 	    (if (poss-codesignates effect precond plan)
 		(return t)))))
@@ -101,7 +101,7 @@
   (let (
         (effects (get-effects-of-opid opid plan)))
     (declare
-        (type (list list) effects) )
+        (type list effects) )
     (dolist (effect effects nil)
 	    (if (np-codesignates-p effect precond plan)
 		(return t)))))

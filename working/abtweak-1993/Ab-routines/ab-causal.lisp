@@ -56,8 +56,8 @@
         (level-k-oplist    (get-level-k-oplist (plan-a plan) level-k-pre-types))
        )
     (declare 
-       (type (list list) level-k-pre-types)
-       (type (list list) level-k-oplist)
+       (type list level-k-pre-types)
+       (type list level-k-oplist)
      )
     (get-est-tuples plan level-k-oplist) ))
 
@@ -65,7 +65,7 @@
   "abtweak/ab-causal
    find all establishers tuples"
    (declare (type plan plan)
-            (type (list list) level-k-oplist)
+            (type list level-k-oplist)
     )
    (if (null (car level-k-oplist))
        nil
@@ -106,8 +106,8 @@
    "abtweak/ab-causal
     create list of all ops in plan with level-k-pre-types"
    (declare 
-       (type (list op_instance) a)
-       (type (list list) level-k-pre-types)
+       (type list a)
+       (type list level-k-pre-types)
     )
      ; returns (... (opid precondition) ... )
    (if (null (car level-k-pre-types))
@@ -119,7 +119,7 @@
    "abtweak/ab-causal
     create list of all ops in plan with this level-k-pre-type"
    (declare 
-       (type (list op_instance) a)
+       (type list a)
        (type list  one-k-pre-type)
     )
     (if (null (car a))
@@ -141,7 +141,7 @@
   "abtweak/ab-causal
    "
   (declare
-      (type (list list) pre-list)
+      (type list pre-list)
       (type list one-k-pre-type)
    )
   (if (or (null pre-list)
@@ -185,7 +185,7 @@
     "
    (declare
        (type atom opid)
-       (type (list list) pre-list)
+       (type list pre-list)
     )
    (if (null (car pre-list))
        nil
@@ -198,7 +198,7 @@
    "abtweak/ab-causal
     find all preconditions of level k in precondition list"
    (declare (type integer k)
-            (type (list list) pre-list)
+       (type list pre-list)
     )
    (if (null (car pre-list) )
        nil

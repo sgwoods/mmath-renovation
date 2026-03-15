@@ -30,7 +30,7 @@
 	 (pos-est-pairs (find_pos_est_pairs plan all-poss-before u p)))
     (declare 
         (type list all-poss-before)
-        (type (list list) pos-est-pairs))
+        (type list pos-est-pairs))
     (make-pos-intermediates pos-est-pairs u p plan)) )
     
 
@@ -51,7 +51,7 @@
    create list of (est p newplan),
    pos-est-pairs is a list of (est effect(est))."
   (declare
-        (type (list list) pos-est-pairs)
+        (type list pos-est-pairs)
         (type atom u)
         (type list p)
         (type plan plan))

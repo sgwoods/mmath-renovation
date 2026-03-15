@@ -368,7 +368,7 @@
   "/tweak/plan-infer/plan-dependent.lsp 
    returns a list of new copies of op-list: list of templates."
   (declare
-      (type (list operator) op-list) )
+      (type list op-list) )
   (mapcar 'make-copy-of-operator op-list))
 
 (defun make-copy-of-operator (operator)
@@ -433,7 +433,7 @@
   (let (
         (nc-list (plan-nc plan)))
     (declare
-        (type (list list) nc-list) )
+        (type list nc-list) )
     (setq nc-list
 	  (remove nil
 		  (mapcar #'(lambda (pair)
@@ -453,7 +453,7 @@
   "/tweak/plan-infer/plan-dependent.lsp 
    add conflicts list to plan."
    (declare 
-       (type (list list) conflicts)
+       (type list conflicts)
        (type plan plan) )
    (let ()
       (setf (plan-conflicts plan)
@@ -521,7 +521,7 @@
    remove any non codesignation duplicates that have crept in to nc via
    addition of codesignations"
      (declare
-         (type (list list) nc))
+         (type list nc))
 
      (if (eq nc nil)
          nil
@@ -591,7 +591,7 @@
         (old-orderings (plan-b plan)) )
 
     (declare
-        (type (list list) old-orderings))
+        (type list old-orderings))
 
     (cond ((nece-before-p opid2 opid1 plan)
             (mark-invalid-plan plan))
@@ -609,8 +609,8 @@
    remove any candidate orderings that hold without their sep assertion
    ie check each old ordering and see if it has become redundant"
    (declare 
-      (type (list list) b)
-      (type (list list) candidates)
+      (type list b)
+      (type list candidates)
     )
    (if (or (eq nil candidates) (eq nil b))
        b
@@ -654,7 +654,7 @@
 
       (declare
           (type atom id) 
-          (type (list list) neworder)
+          (type list neworder)
           (type list op-params))
 
       (setf (plan-a plan)
@@ -687,7 +687,7 @@
 	       (mapcar #'(lambda (x) (list (car list-of-vars) x))
 		       (cdr list-of-vars))))
          (declare
-               (type (list list) current-pairs) )
+               (type list current-pairs) )
 	 (dolist (pair current-pairs)
 		 (add-nc-to-plan (first pair)
 				 (second pair) plan)))

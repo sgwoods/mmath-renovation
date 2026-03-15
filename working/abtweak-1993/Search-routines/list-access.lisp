@@ -47,7 +47,7 @@
        bfs - least   cost first only. "
    (declare
        (type list node)
-       (type (list list) list-of-nodes) )
+       (type list open-list) )
    (let ((first-sub-list
 	  (car open-list)))
 
@@ -102,5 +102,3 @@
 (defun last-of-open ()
    "tweak/search/list-access"
  (first (second (car (last *open*)))))
-
-

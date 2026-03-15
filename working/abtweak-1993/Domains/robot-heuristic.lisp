@@ -4,6 +4,8 @@
 
 
 (defvar *check-loop* t)
+(declaim (ftype function goto-twice-p push-twice-p push-door-twice-p
+                go-door-twice-p))
 
 (defun user-heuristic ()
  "Returns a heuristic function.
@@ -13,20 +15,19 @@
   It is in /Abtweak/Domains/simple-robot(1 or 2).lsp"
 
  #'(lambda (plan)
-    (let ((kval (plan-kval plan)))
-      (+
-       (num-of-unsat-goals plan)
-       (if (and *check-loop* 
-		(or (goto-twice-p plan)
-		    (push-twice-p plan)
-		    (push-door-twice-p plan)
-		    (go-door-twice-p plan)))
-	   (let () 
-	     ;(break "Name1=~S ~% Name2= ~S~%" 
-		;    (operator-name (first (plan-a plan)))
-		 ;   (operator-name (second (plan-a plan))))
-	     1000000)
-	 0)))))
+    (+
+     (num-of-unsat-goals plan)
+     (if (and *check-loop* 
+	      (or (goto-twice-p plan)
+		  (push-twice-p plan)
+		  (push-door-twice-p plan)
+		  (go-door-twice-p plan)))
+	 (let () 
+	   ;(break "Name1=~S ~% Name2= ~S~%" 
+	      ;    (operator-name (first (plan-a plan)))
+	       ;   (operator-name (second (plan-a plan))))
+	   1000000)
+       0))))
 
 (defun goto-twice-p (plan)
   "t iff goto-room-loc twice in a row, in the same room."

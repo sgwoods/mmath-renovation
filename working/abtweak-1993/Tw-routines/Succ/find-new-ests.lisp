@@ -16,7 +16,7 @@
          (pos-ests-and-mappings (select-ops *operators* p)))
   
      (declare
-         (type (list list) pos-ests-and-mappings) )
+         (type list pos-ests-and-mappings) )
 
 ; pos-ests-and-mappings are pairs, 
 ; the first element is operator instance with var replaced,
@@ -72,5 +72,4 @@
     ))
 
 	 
-
 

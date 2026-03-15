@@ -4,6 +4,7 @@
 
 ; Establish common historical specials before source loading.
 (load "sbcl-specials.lisp")
+(load "sbcl-forward-decls.lisp")
 
 ; Load TWEAK core first so plan/operator structs exist.
 (load "Tw-routines/init")

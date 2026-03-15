@@ -6,7 +6,7 @@
   "/tweak/succ/select-ops.lsp
    select applicable operator templates, instantiate with new vars, opids"
   (declare 
-      (type (list operator) templates)
+      (type list templates)
       (type list precond) )
   (apply 'append 
 	 (mapcar #'(lambda (op-template) 
@@ -24,7 +24,7 @@
 	     (get-operator-primary-effects op-template)
 	   (get-operator-effects op-template))))
     (declare
-        (type (list list) effects) )
+        (type list effects) )
     (do ((rem-effects effects (cdr rem-effects))
 	 (index 0 (1+ index))
 	 (results nil))

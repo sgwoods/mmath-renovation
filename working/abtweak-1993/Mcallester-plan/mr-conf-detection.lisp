@@ -17,7 +17,7 @@
         (n-q-pairs (find-step-effect-pairs
 		    precond establisher opid plan)))
     (declare
-          (type (list list) n-q-pairs) )
+          (type list n-q-pairs) )
     (mapcar #'(lambda (n-q-pair)
 		(list establisher opid (first n-q-pair)
 		      precond (second n-q-pair)))
@@ -53,7 +53,7 @@
   (let (
         (effects (get-effects-of-opid candidate plan)))
     (declare
-       (type (list list) effects) )
+       (type list effects) )
     (remove nil
 	    (mapcar #'(lambda (q)
 			(if (poss-codesignates
@@ -61,7 +61,6 @@
 			    (list candidate q) nil))
 		    (append (mapcar 'negate-condition effects)
 			    effects)))))
-
 
 
 

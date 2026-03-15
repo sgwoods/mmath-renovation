@@ -437,9 +437,85 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  robot1-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/robot-heuristic.lisp")
+      (load "Domains/simple-robot-1.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :heuristic-mode (quote user-defined)
+                          :use-primary-effect-p t
+                          :output-file (quote no-output)
+                          :expand-bound 12000
+                          :generate-bound 50000
+                          :open-bound 50000
+                          :cpu-sec-limit 60)))
+        (format t "CASE: robot1-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  robot1-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/robot-heuristic.lisp")
+      (load "Domains/simple-robot-1.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :heuristic-mode (quote user-defined)
+                          :use-primary-effect-p t
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 20000
+                          :open-bound 20000
+                          :cpu-sec-limit 30)))
+        (format t "CASE: robot1-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  robot1-abtweak-no-lw)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/robot-heuristic.lisp")
+      (load "Domains/simple-robot-1.lisp")
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :heuristic-mode (quote user-defined)
+                          :use-primary-effect-p t
+                          :left-wedge-mode nil
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 20000
+                          :open-bound 20000
+                          :cpu-sec-limit 30)))
+        (format t "CASE: robot1-abtweak-no-lw~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
+    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw" >&2
     exit 2
     ;;
 esac

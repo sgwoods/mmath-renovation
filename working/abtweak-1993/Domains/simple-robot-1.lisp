@@ -13,6 +13,17 @@
 ;;;
 ;;; The user defined heuristic checks loops for the robot domain.
 
+(defvar o3)
+(defvar o4)
+(defvar o6)
+(defvar o7)
+(defvar o9)
+(defvar o10)
+(defvar initial-fixed)
+(defvar initial4)
+(defvar initial5)
+(defvar initial6)
+
 (setq *domain* 'robot)
  
 ; operators
@@ -377,5 +388,4 @@
     (box-at box3 loc14)
     (box-inroom box3 room6))
   initial-fixed))
-
 

@@ -17,6 +17,7 @@ This comparison uses the current scripted smoke cases for:
 - `hanoi-3`
 - `hanoi-4`
 - `macro-hanoi`
+- `simple-robot-1`
 - `simple-robot-2`
 
 All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh#L1). The robot case also uses the manual-style user-defined heuristic path and primary effects setup, and one AbTweak run disables left-wedge for direct comparison.
@@ -36,6 +37,9 @@ All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/
 | `hanoi-4` | `abtweak` | `EXPAND-LIMIT-EXCEEDED` | `-` | `-` | `-` | Same bounded failure as `tweak` at the current exploratory settings |
 | `macro-hanoi` | `tweak` | Solves | `1` | `3` | `0` | Macro operator variant solves immediately at current settings |
 | `macro-hanoi` | `abtweak` | Solves | `1` | `3` | `0` | No observed difference from `tweak` at current bounds |
+| `simple-robot-1` | `tweak` | `EXPAND-LIMIT-EXCEEDED` | `-` | `-` | `-` | Larger exploratory bounds still do not currently reach a solution |
+| `simple-robot-1` | `abtweak` | Solves | `16` | `18` | `0` | AbTweak plus the manual-style heuristic path reaches a real plan |
+| `simple-robot-1` | `abtweak` with `:left-wedge-mode nil` | `EXPAND-LIMIT-EXCEEDED` | `-` | `-` | `-` | Left-wedge again materially changes the observed outcome |
 | `simple-robot-2` | `tweak` | `EXPAND-LIMIT-EXCEEDED` | `-` | `-` | `-` | Same bounds do not currently reach a solution |
 | `simple-robot-2` | `abtweak` | Solves | `12` | `14` | `0` | AbTweak plus the manual-style heuristic path reaches a real plan |
 | `simple-robot-2` | `abtweak` with `:left-wedge-mode nil` | `EXPAND-LIMIT-EXCEEDED` | `-` | `-` | `-` | Left-wedge materially changes the observed outcome |
@@ -48,12 +52,14 @@ All runs use the shared smoke settings in [scripts/smoke-abtweak-1993-sbcl.sh](/
   - enabling the monotonic property reduces search from `70` expanded / `201` generated to `61` expanded / `168` generated, with `*mp-pruned*` increasing from `0` to `1`
 - `hanoi-3` shows that the same is true for one abstraction-heavy benchmark, at least at the current smoke bounds and current metrics.
 - `macro-hanoi` shows that a macro-operator variant also solves in both modes under SBCL, and currently does so with a compact cost-`1`, length-`3` plan.
-- `hanoi-4` is now a useful larger benchmark even without a passing result, because both `tweak` and `abtweak` currently fail in the same bounded way at the exploratory settings rather than crashing.
-- more detail on that `hanoi-4` result now lives in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1), including the current evidence that the restored BFS path is search-bound-limited rather than obviously semantically broken
-- `simple-robot-2` is the first benchmark where the comparison is behaviorally interesting instead of merely equal:
-  - `tweak` does not solve at the current smoke bounds.
-  - `abtweak` does solve with the manual-style heuristic path.
-  - disabling left-wedge in the same AbTweak setup returns the run to bounded failure.
+- `hanoi-4` is now a useful larger benchmark even without a passing result, because the revisit shows a sharper split:
+  - at the standard exploratory bounds, both `tweak` and `abtweak` still fail in the same bounded way
+  - at higher bounds, the MP-enabled `abtweak` path currently exhausts the SBCL heap, which makes the MP / ordering path the clearest live problem rather than “plain search is too large”
+- more detail on that `hanoi-4` result now lives in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
+- the robot benchmarks are now the clearest place where the historical AbTweak controls matter in practice:
+  - in both `simple-robot-1` and `simple-robot-2`, `tweak` does not solve at the tested bounds
+  - in both, `abtweak` does solve with the manual-style heuristic path
+  - in both, disabling left-wedge returns the run to bounded failure
 
 ## Limits Of This Comparison
 
@@ -83,6 +89,9 @@ Individual cases:
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi4-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh macro-hanoi-tweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh macro-hanoi-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot1-tweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot1-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot1-abtweak-no-lw
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-tweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak-no-lw

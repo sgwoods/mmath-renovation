@@ -45,7 +45,7 @@
       (type atom user)
       (type list precond)   
       (type list intermediates)
-      (type (list plan) successors) )
+      (type list successors) )
 
    (setq precond-index (precond-to-index precond user plan))
    
