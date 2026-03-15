@@ -7,6 +7,7 @@ For deeper technical detail, see:
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
+- [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 
 ## Repository State
 
@@ -37,6 +38,7 @@ Verified smoke results:
 - The port is beyond loader repair and into planner-validation work.
 - `plan` still appears to return `NIL` on success, with the actual solution recorded in `*solution*`; this looks like historical behavior rather than a current regression.
 - `simple-robot-2` is the first benchmark using the manual-style user-defined heuristic path and primary effects setup.
+- The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
 - Left-wedge behavior now has a meaningful comparison target:
   - `blocks` / `sussman` shows no observed difference at current bounds.
   - `simple-robot-2` solves in `abtweak` with default left-wedge behavior, but the same run with `:left-wedge-mode nil` reaches `EXPAND-LIMIT-EXCEEDED`.
@@ -51,6 +53,7 @@ Verified smoke results:
 
 - Loader: [scripts/load-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/load-abtweak-1993-sbcl.sh)
 - Smoke runner: [scripts/smoke-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh)
+- Comparison runner: [scripts/compare-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh)
 
 Representative checks:
 
@@ -58,4 +61,5 @@ Representative checks:
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh blocks-sussman-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh hanoi3-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh robot2-abtweak
+sh /Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh
 ```

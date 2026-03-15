@@ -11,6 +11,8 @@ It is intended to answer two questions:
 
 The benchmark themes below are drawn from the four reference documents already collected in [`docs/references.md`](/Users/stevenwoods/mmath-renovation/docs/references.md#L1), especially the AAAI 1990 paper, the 1991 technical report on abstraction in nonlinear planning, the 1991 thesis, and the 1993 users manual shipped with the recovered code.
 
+The current structured side-by-side SBCL comparison is recorded in [`docs/tweak-vs-abtweak-comparison.md`](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
+
 ## Matrix
 
 | Historical theme | Local domain or entry point | Planner mode to verify | Why it matters | Current status |
@@ -30,7 +32,7 @@ The benchmark themes below are drawn from the four reference documents already c
 The next most valuable checks are:
 
 1. keep `blocks` / `sussman` as the first passing `tweak` regression
-2. compare `hanoi-3` and `simple-robot-2` in `tweak` versus `abtweak` with a tighter record of search outcomes and bounds
+2. extend the structured comparison beyond `blocks`, `hanoi-3`, and `simple-robot-2`
 3. try one larger abstraction benchmark such as `hanoi-4` or macro-Hanoi
 4. decide whether `simple-robot-1` adds useful coverage beyond `simple-robot-2`
 5. only then widen into additional 1993 domains such as biology, computer, and scheduling

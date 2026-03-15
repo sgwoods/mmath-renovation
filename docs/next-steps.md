@@ -10,11 +10,11 @@ It complements:
 
 ## Current Priorities
 
-1. Make `simple-robot-2` left-wedge comparisons fully repeatable in the smoke runner and status docs.
-2. Compare `tweak` versus `abtweak` more structurally on the already passing benchmarks, especially `hanoi-3` and `simple-robot-2`.
-3. Try one larger abstraction benchmark such as `hanoi-4` or `macro-hanoi`.
-4. Reduce SBCL warning noise by declaring the main historical implicit-special globals explicitly.
-5. Start mapping benchmark outcomes back to the thesis and technical reports rather than only checking whether cases run.
+1. Extend the new [tweak-vs-abtweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1) beyond the current `blocks`, `hanoi-3`, and `simple-robot-2` set.
+2. Try one larger abstraction benchmark such as `hanoi-4` or `macro-hanoi`.
+3. Reduce SBCL warning noise by declaring the main historical implicit-special globals explicitly.
+4. Start mapping benchmark outcomes back to the thesis and technical reports rather than only checking whether cases run.
+5. Decide whether `simple-robot-1` adds useful coverage beyond `simple-robot-2`.
 
 ## Suggested GitHub Issues
 
@@ -31,10 +31,10 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Finish documenting the left-wedge-sensitive robot result.
-2. Add `hanoi-4` as the next benchmark target.
-3. Open a historical-results issue that captures what we still need to extract from the thesis and reports.
-4. Open an SBCL cleanup issue for global-special declarations and warning reduction.
+1. Add `hanoi-4` as the next benchmark target.
+2. Use the comparison script to keep the `blocks`, `hanoi-3`, and `simple-robot-2` baselines stable.
+3. Extract historical-results expectations from the thesis and reports into the validation matrix.
+4. Tackle global-special declarations and warning reduction.
 
 ## Exit Criteria For The Next Milestone
 

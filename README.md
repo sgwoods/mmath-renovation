@@ -46,6 +46,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
 - [Historical validation matrix](./docs/historical-validation-matrix.md): mapping from historically reported benchmark themes to runnable local domains
+- [Tweak vs AbTweak comparison](./docs/tweak-vs-abtweak-comparison.md): first structured side-by-side comparison across the current passing SBCL benchmarks
 - [Next steps](./docs/next-steps.md): living short-list of recommended technical and historical follow-up work
 
 As the project grows, this repository should add:
