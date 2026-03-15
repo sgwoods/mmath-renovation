@@ -1,0 +1,50 @@
+#!/bin/sh
+
+rm -rf *.sbin
+lispb
+
+cd Ab-routines
+rm -rf *.sbin
+lispb
+
+cd ../Domains
+rm -rf *.sbin
+lispb
+
+cd ../Mcallester-plan
+rm -rf *.sbin
+lispb
+
+cd ../My-routines
+rm -rf *.sbin
+lispb
+
+cd ../Plan-routines
+rm -rf *.sbin
+lispb
+
+cd ../Search-routines
+rm -rf *.sbin
+lispb
+
+cd ../Tw-routines
+rm -rf *.sbin
+lispb
+
+cd Conf-infer
+rm -rf *.sbin
+lispb
+
+cd ../Plan-infer
+rm -rf *.sbin
+lispb
+
+cd ../Succ
+rm -rf *.sbin
+lispb
+
+cd ../..
+
+
+
+

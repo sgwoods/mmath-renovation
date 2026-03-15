@@ -1,0 +1,50 @@
+
+planner driver output
+domain      : HANOI-3-ISPEG
+operators   : (#s(OPERATOR :OPID MOVEB :NAME (MOVEB $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y) (NOT ONM $Y) (ONB $X)) :EFFECTS ((NOT ONB $X) (ONB $Y))) #s(OPERATOR :OPID MOVEM :NAME (MOVEM $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X)) :EFFECTS ((NOT ONM $X) (ONM $Y))) #s(OPERATOR :OPID MOVES :NAME (MOVES $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (ONS $X)) :EFFECTS ((NOT ONS $X) (ONS $Y))))
+initial     : ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))
+goal        : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+critical lst: ((3 (NOT ONM $) (ONM $)) (2 (NOT ONB $) (ONB $)) (1 (NOT ONS $) (ONS $)) (0 (ISPEG $)))
+critcal load: MBSI
+top down lev: (3 2 1)
+crit dep lst: (1 3 7 7)
+ 
+ cpu time (non-gc) 2922233 msec user, 9317 msec system
+cpu time (gc)     260000 msec user, 1567 msec system
+cpu time (total)  3182233 msec user, 10884 msec system
+real time  3220292 msec
+
+ solution found 
+ 
+ (domain info)
+ domain          : HANOI-3-ISPEG
+ 
+ (planning info)
+ planner mode    : ABTWEAK
+ search  type    : 4
+ heuristic       : D
+ debug           : NIL
+ determine mode  : FIRST
+ backwards mode  : NIL
+ nodes expanded  : 2209
+ nodes generated : 5621
+ solution depth  : 29
+ max conflicts   : 3
+ max node succ   : 24
+ branch factors  : ((0 0.2) (1 3.64) (2 2.15) (3 1.5))
+ 
+ a: criticality levels     : 3
+ a: critical depth mode    : T
+ a: k learning mode        : NIL
+ a: top down flag             : NIL
+ a: top down pruned           : 0
+ a: abs goal mode             : NIL
+ a: monotonic sol property    : NIL
+ a: msp weak mode             : NEC
+ a: weak msp   pruned         : 0
+ a: strong msp pruned         : 0
+ a: abstract nodes gen        : 346
+ 
+ 
+ goal plan: #s(PLAN :ID plan9165 :COST 0 :KVAL 0 :CR ((op98 (ONM PEG1) (I)) (G (ONM PEG3) (op98)) (op104 (ONB PEG1) (I)) (G (ONB PEG3) (op104)) (op144 (NOT ONS PEG2) (op156)) (op144 (NOT ONS PEG1) (op201)) (op108 (NOT ONS PEG1) (op201)) (op108 (NOT ONS PEG2) (I)) (op104 (NOT ONS PEG1) (op201)) (op104 (NOT ONS PEG3) (op198)) (op98 (NOT ONS PEG1) (op201)) (op98 (NOT ONS PEG3) (op5106)) (op9148 (ONS PEG2) (op5106)) (op5106 (ONS PEG3) (op156)) (op201 (ONS PEG1) (I)) (op198 (ONS PEG3) (op201)) (op156 (ONS PEG2) (op198)) (G (ONS PEG3) (op9148))) :TREE (G ((op98 ((op144 ((op156 ((op198 (op201)))))) op5106)) (op104 (op108)) op9148)) :A (#s(OPERATOR :OPID op9148 :NAME (MOVES PEG2 PEG3) :PRECONDITIONS ((ISPEG PEG2) (ISPEG PEG3) (ONS PEG2)) :EFFECTS ((NOT ONS PEG2) (ONS PEG3))) #s(OPERATOR :OPID op5106 :NAME (MOVES PEG3 PEG2) :PRECONDITIONS ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) :EFFECTS ((NOT ONS PEG3) (ONS PEG2))) #s(OPERATOR :OPID op201 :NAME (MOVES PEG1 PEG3) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) :EFFECTS ((NOT ONS PEG1) (ONS PEG3))) #s(OPERATOR :OPID op198 :NAME (MOVES PEG3 PEG2) :PRECONDITIONS ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) :EFFECTS ((NOT ONS PEG3) (ONS PEG2))) #s(OPERATOR :OPID op156 :NAME (MOVES PEG2 PEG3) :PRECONDITIONS ((ISPEG PEG2) (ISPEG PEG3) (ONS PEG2)) :EFFECTS ((NOT ONS PEG2) (ONS PEG3))) #s(OPERATOR :OPID op144 :NAME (MOVEM PEG2 PEG1) :PRECONDITIONS ((ISPEG PEG2) (ISPEG PEG1) (NOT ONS PEG2) (NOT ONS PEG1) (ONM PEG2)) :EFFECTS ((NOT ONM PEG2) (ONM PEG1))) #s(OPERATOR :OPID op108 :NAME (MOVEM PEG1 PEG2) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG2) (NOT ONS PEG1) (NOT ONS PEG2) (ONM PEG1)) :EFFECTS ((NOT ONM PEG1) (ONM PEG2))) #s(OPERATOR :OPID op104 :NAME (MOVEB PEG1 PEG3) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1)) :EFFECTS ((NOT ONB PEG1) (ONB PEG3))) #s(OPERATOR :OPID op98 :NAME (MOVEM PEG1 PEG3) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONS PEG3) (ONM PEG1)) :EFFECTS ((NOT ONM PEG1) (ONM PEG3))) #s(OPERATOR :OPID I :NAME (I) :PRECONDITIONS NIL :EFFECTS ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))) #s(OPERATOR :OPID G :NAME (G) :PRECONDITIONS ((ONB PEG3) (ONM PEG3) (ONS PEG3)) :EFFECTS NIL)) :B ((op98 op9148) (op9148 G) (op144 op5106) (op5106 op98) (op104 op156) (op198 op104) (op108 op198) (op201 op108) (I op201) (op156 op144)) :NC NIL :VAR NIL :CONFLICTS NIL :OP-COUNT ((0 0) (1 5) (2 3) (3 1)) :INVALID NIL)
+ 

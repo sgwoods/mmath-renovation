@@ -1,0 +1,25 @@
+planner driver output
+domain      : HANOI-3-ISPEG
+operators   : (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X)
+                      (NOT ONS $Y) (NOT ONM $Y) (ONB $X))
+                     EFFECTS ((NOT ONB $X) (ONB $Y)))
+               #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y)
+                      (ONM $X))
+                     EFFECTS ((NOT ONM $X) (ONM $Y)))
+               #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+                     ((NOT ONS $X) (ONS $Y))))
+initial     : ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+               (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+               (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+               (NOT ONS PEG3))
+goal        : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+critical lst: ((5 (ONB $)) (4 (NOT ONM $)) (3 (ONM $)) (2 (ISPEG $))
+               (1 (NOT ONS $)) (0 (ONS $)))
+critcal load: BMMISS
+top down lev: (3 2 1)
+crit dep lst: (0 0 0 0 0 0)
+ 
+ 

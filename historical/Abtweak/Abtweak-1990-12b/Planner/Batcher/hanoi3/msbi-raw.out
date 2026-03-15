@@ -1,0 +1,167 @@
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/msbi
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/msbi
+T
+
+>expanded  = 20
+generated = 41
+expanded  = 40
+generated = 86
+expanded  = 60
+generated = 131
+expanded  = 80
+generated = 179
+expanded  = 100
+generated = 235
+expanded  = 120
+generated = 291
+expanded  = 140
+generated = 341
+expanded  = 160
+generated = 377
+expanded  = 180
+generated = 427
+expanded  = 200
+generated = 489
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 200
+Nodes Generated: 489
+Solution Depth : 0
+Max Node Succ  : 20
+Max Conflicts  : 3
+Branch Factors : ((0 0.0) (1 2.6) (2 2.37) (3 1.75))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : POS
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 10
+expanded  = 220
+generated = 537
+expanded  = 240
+generated = 609
+expanded  = 260
+generated = 656
+expanded  = 280
+generated = 715
+expanded  = 300
+generated = 769
+expanded  = 320
+generated = 812
+expanded  = 340
+generated = 863
+expanded  = 360
+generated = 920
+expanded  = 380
+generated = 979
+expanded  = 400
+generated = 1032
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 400
+Nodes Generated: 1032
+Solution Depth : 0
+Max Node Succ  : 20
+Max Conflicts  : 3
+Branch Factors : ((0 0.0) (1 2.65) (2 2.8) (3 1.75))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : POS
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 17
+expanded  = 420
+generated = 1077
+expanded  = 440
+generated = 1127
+expanded  = 460
+generated = 1190
+expanded  = 480
+generated = 1235
+expanded  = 500
+generated = 1291
+expanded  = 520
+generated = 1358
+expanded  = 540
+generated = 1427
+expanded  = 560
+generated = 1473
+expanded  = 580
+generated = 1527
+expanded  = 600
+generated = 1587
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 600
+Nodes Generated: 1587
+Solution Depth : 0
+Max Node Succ  : 21
+Max Conflicts  : 3
+Branch Factors : ((0 0.0) (1 2.7) (2 2.8) (3 1.75))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : POS
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 17
+expanded  = 620
+generated = 1681
+expanded  = 640
+generated = 1718
+expanded  = 660
+generated = 1795
+expanded  = 680
+generated = 1836
+expanded  = 700
+generated = 1889
+expanded  = 720
+generated = 1961
+expanded  = 740
+generated = 1997
+expanded  = 760
+generated = 2074
+expanded  = 780
+generated = 2116
+
+Correctable error: The storage for structure is exhausted.
+                   Currently, 104 pages are allocated.
+                   Use ALLOCATE to expand the space.
+Signalled by DRIVER.
+If continued: Continues execution.
+
+Broken at DRIVER.  Type :H for Help.
+>>Bye.

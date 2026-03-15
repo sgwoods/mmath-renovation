@@ -1,0 +1,199 @@
+<cl> (planner initial '((at obj3 loc18)))
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+
+tweak planner run statistics
+planner-mode   : TWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 1187
+nodes generated: 1676
+solution depth : 7
+max node succ  : 26
+max conflicts  : 1
+branch factors : ((0 1.42))
+
+<cl> (planner initial '( (at obj3 loc18) ) :motive-discard t )
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+
+tweak planner run statistics
+planner-mode   : TWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : T
+nodes expanded : 1085
+nodes generated: 1540
+solution depth : 7
+max node succ  : 26
+max conflicts  : 1
+branch factors : ((0 1.41))
+
+
+T 
+<cl> 
+
+<cl> (planner initial '( (at obj3 loc18) ) :planner-mode 'abtweak :crit-depth-mode t)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 158
+nodes generated: 229
+solution depth : 12
+max node succ  : 26
+max conflicts  : 1
+branch factors : ((0 5.33) (1 0.0) (2 1.39) (3 0.0) (4 0.0) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: T
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 5
+
+
+<cl> (planner initial '( (at obj3 loc18) ) :planner-mode 'abtweak :crit-depth-mode t :msp-mode 'weak )
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 158
+nodes generated: 224
+solution depth : 12
+max node succ  : 26
+max conflicts  : 1
+branch factors : ((0 3.67) (1 0.0) (2 1.39) (3 0.0) (4 0.0) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: T
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 5
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 5
+
+T 
+<cl> 
+
+<cl> (planner initial '( (at obj3 loc18) ) :planner-mode 'abtweak :crit-depth-mode t :msp-mode 'weak :motive-discard t)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : T
+nodes expanded : 57
+nodes generated: 103
+solution depth : 12
+max node succ  : 26
+max conflicts  : 1
+branch factors : ((0 3.0) (1 0.0) (2 1.82) (3 0.0) (4 0.0) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: T
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 3
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 5
+
+T 
+
+

@@ -1,0 +1,194 @@
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+Loading /u/sgwoods/Plan/Planner/Search/search-load.o
+Loading /u/sgwoods/Plan/Planner/Search/search.o
+Finished loading /u/sgwoods/Plan/Planner/Search/search.o
+Loading /u/sgwoods/Plan/Planner/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Planner/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Planner/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Planner/Search/list-access.o
+Loading /u/sgwoods/Plan/Planner/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Planner/Search/node-access.o
+Loading /u/sgwoods/Plan/Planner/Search/interface.o
+Finished loading /u/sgwoods/Plan/Planner/Search/interface.o
+Loading /u/sgwoods/Plan/Planner/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Planner/Search/state-expansion.o
+Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Planner/Search/search-load.o
+Loading /u/sgwoods/Plan/Planner/planner.o
+Finished loading /u/sgwoods/Plan/Planner/planner.o
+Loading /u/sgwoods/Plan/Planner/branch.o
+Finished loading /u/sgwoods/Plan/Planner/branch.o
+Loading /u/sgwoods/Plan/Planner/driver.o
+Finished loading /u/sgwoods/Plan/Planner/driver.o
+Loading /u/sgwoods/Plan/Tweak2/init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/init.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/init.o
+Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp
+Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+DOMAIN DEFINITION FOR: NILSSONS-BLOCKS-WORLD
+Operators    : 
+(#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY)))
+ #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+       ((HOLDING $X)) EFFECTS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)))
+ #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+       ((HOLDING $X) (CLEAR $Y)) EFFECTS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)
+        (NOT CLEAR $Y)))
+ #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y) PRECONDITIONS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X)
+        (NOT ON $X $Y))))
+Initial State: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                (HANDEMPTY))
+Goal State   : ((ON A B) (ON B C))
+Loading useful.lsp
+Finished loading useful.lsp
+Finished loading init.lsp
+
+>Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+DOMAIN DEFINITION FOR: NILSSONS-BLOCKS-WORLD
+Operators    : 
+(#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY)))
+ #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+       ((HOLDING $X)) EFFECTS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)))
+ #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+       ((HOLDING $X) (CLEAR $Y)) EFFECTS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)
+        (NOT CLEAR $Y)))
+ #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y) PRECONDITIONS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X)
+        (NOT ON $X $Y))))
+Initial State: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                (HANDEMPTY))
+Goal State   : ((ON A B) (ON B C))
+NIL
+
+>Loading /u/sgwoods/Plan/Planner/Domains/nils/crit4
+Finished loading /u/sgwoods/Plan/Planner/Domains/nils/crit4
+T
+
+>Expanded  = 100
+Generated = 295
+Expanded  = 200
+Generated = 686
+Expanded  = 300
+Generated = 1238
+Expanded  = 400
+Generated = 1713
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (UNSTACK C A))
+
+((UNSTACK C A) (PUTDOWN C))
+
+((PUTDOWN C) (PICKUP B))
+
+((PICKUP B) (STACK B C))
+
+((STACK B C) (PICKUP A))
+
+((PICKUP A) (STACK A B))
+
+((STACK A B) (G))
+*** Node Search DEPTH: 14
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 418
+Nodes Generated: 1908
+Solution Depth : 14
+Max Node Succ  : 69
+Max Conflicts  : 3
+Branch Factors : ((0 4.67) (1 0.45) (2 5.62))
+
+A: Criticality Levels    : 2
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : T
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : POS
+A: Weak MSP   pruned     : 26
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 46
+T
+
+>Bye.

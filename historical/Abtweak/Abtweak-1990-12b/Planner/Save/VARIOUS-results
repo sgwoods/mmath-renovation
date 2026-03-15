@@ -1,0 +1,1515 @@
+2>[51]% pla
+2>[52]% cl
+Extended Common Lisp 2.0.10 (4/7/72 1:38)
+Copyright (C) 1985-1987, Franz Inc., Berkeley, CA, USA
+<cl> (load "init-o.lsp")
+; Loading /u/sgwoods/Plan/Planner/init-o.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search-load.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graphsearch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/list-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/node-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/interface.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/state-expansion.fasl.
+; Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/planner.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/branch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/driver.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/general.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/structs.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/mtc.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/successors.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/tree.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/debug.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Maint/compile.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mtc.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-succ.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-causal.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-msp.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mono.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/Maint/compile.fasl.
+; Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp.
+; Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp.
+domain definition for: nilssons-blocks-world
+operators    : 
+(#s(operator :opid pickup :name (pickup $x) :preconditions ((ontable $x) (clear $x) (handempty)) :effects ((holding $x) (not ontable $x) (not clear $x) (not handempty))) #s(operator :opid putdown :name (putdown $x) :preconditions ((holding $x)) :effects ((ontable $x) (clear $x) (handempty) (not holding $x))) #s(operator :opid stack :name (stack $x $y) :preconditions ((holding $x) (clear $y)) :effects ((on $x $y) (clear $x) (handempty) (not holding $x) (not clear $y))) #s(operator :opid unstack :name (unstack $x $y) :preconditions ((on $x $y) (clear $x) (handempty)) :effects ((clear $y) (not clear $x) (not handempty) (holding $x) (not on $x $y))))
+initial state: ((on c a) (ontable a) (ontable b) (clear c) (clear b) (handempty))
+goal state   : ((on a b) (on b c))
+; Fast loading /u/sgwoods/Plan/Planner/useful.fasl.
+
+t 
+<cl> initial
+
+((on c a) (ontable a) (ontable b) (clear c) (clear b) (handempty)) 
+<cl> goal
+
+((on a b) (on b c)) 
+<cl> (show (make-initial-plan initial goal))
+
+
+((i) (g)) 
+
+(nil nil) 
+<cl> *domain*
+
+nilssons-blocks-world 
+<cl> (load-hanoi2)
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-2.lsp.
+domain definition for: hanoi-2-ispeg
+operators    : 
+(#s(operator :opid moveb :name (moveb $x $y) :preconditions ((not ons $x) (onb $x) (not ons $y) (ispeg $x) (ispeg $y)) :effects ((not onb $x) (onb $y))) #s(operator :opid moves :name (moves $x $y) :preconditions ((ons $x) (ispeg $x) (ispeg $y)) :effects ((not ons $x) (ons $y))))
+initial state: ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (ons peg1) (not onb peg2) (not onb peg3) (not ons peg2) (not ons peg3))
+goal state   : ((onb peg3) (ons peg3))
+
+nil 
+<cl> (planner initial goal)
+; gc: 1418520/2934288 (94832) dynamic bytes used/total (static)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (moves peg1 peg2)) 
+
+((moves peg1 peg2) (moveb peg1 peg3)) 
+
+((moveb peg1 peg3) (moves peg2 peg3)) 
+
+((moves peg2 peg3) (g)) 
+*** node search depth: 8
+
+tweak planner run statistics
+planner-mode   : tweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 12
+nodes generated: 22
+solution depth : 8
+max node succ  : 5
+max conflicts  : 1
+branch factors : ((0 1.83))
+
+
+t 
+<cl> (load-blocks)
+; Loading /u/sgwoods/Plan/Planner/Domains/blocks.lsp.
+domain definition for: blocks-world
+operators    : 
+(#s(operator :opid puton :name (puton $x $y $z) :preconditions ((not-table $x) (not-table $y) (on $x $z) (clear $x) (clear $y)) :effects ((on $x $y) (not on $x $z) (not clear $y) (clear $z))) #s(operator :opid newtower :name (newtower $x $z) :preconditions ((not-table $x) (not-table $z) (on $x $z) (clear $x)) :effects ((on $x table) (not on $x $z) (clear $z))))
+initial state: ((on c a) (on a table) (on b table) (clear c) (clear b) (not-table a) (not-table b) (not-table c))
+goal state   : ((on a b) (on b c))
+
+nil 
+<cl> *critical-list*
+
+((2 (not on c $) (on c $)) (1 (not on b $) (on b $)) (0 (not on $ $) (on $ $) (clear $) (not clear $) (not-table $))) 
+<cl> (setq *critical-list* '( (2 (not on $ $) (on $ $)) (1 (not clear $) (clear $))
+(0 (not-table $))))
+
+((2 (not on $ $) (on $ $)) (1 (not clear $) (clear $)) (0 (not-table $))) 
+<cl> inital
+Error: Attempt to take the value of the unbound symbol inital
+[1] <cl> initial
+Error: Attempt to take the value of the unbound symbol |initial
+|
+[2] <cl> initial
+
+((on c a) (on a table) (on b table) (clear c) (clear b) (not-table a) (not-table b) (not-table c)) 
+[2] <cl> (setq initial '((on c b) (on b a) (clear c) (not-table a) (not-table b) (not-table c)))
+
+((on c b) (on b a) (clear c) (not-table a) (not-table b) (not-table c)) 
+[2] <cl> goal
+
+((on a b) (on b c)) 
+[2] <cl> (setq goal '((on c b) (on b a)))
+
+((on c b) (on b a)) 
+[2] <cl> (planner initial goal)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (g)) 
+*** node search depth: 1
+
+tweak planner run statistics
+planner-mode   : tweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 0
+nodes generated: 0
+solution depth : 1
+max node succ  : 0
+max conflicts  : 0
+branch factors : ((0 1.83))
+
+
+t 
+[2] <cl> i
+Error: Attempt to take the value of the unbound symbol i
+[3] <cl> initial
+
+((on c b) (on b a) (clear c) (not-table a) (not-table b) (not-table c)) 
+[3] <cl> goal
+
+((on c b) (on b a)) 
+[3] <cl> (setq initial '((on a c) (on c b) (on b table) (clear a) (not-table a) (not-table b) (not-table c)))
+
+
+((on a c) (on c b) (on b table) (clear a) (not-table a) (not-table b) (not-table c)) 
+[3] <cl> 
+[3] <cl> initial
+
+((on a c) (on c b) (on b table) (clear a) (not-table a) (not-table b) (not-table c)) 
+[3] <cl> (planner initial goal)
+; gc: 1453536/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1490736/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1513152/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 36
+expanded  = 40
+generated = 70
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (newtower a c)) 
+
+((newtower a c) (newtower c b)) 
+
+((newtower c b) (puton b a table)) 
+
+((puton b a table) (puton c b table)) 
+
+((puton c b table) (g)) 
+*** node search depth: 10
+
+tweak planner run statistics
+planner-mode   : tweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 49
+nodes generated: 90
+solution depth : 10
+max node succ  : 5
+max conflicts  : 1
+branch factors : ((0 1.84))
+
+
+t 
+[3] <cl> (planner initial goal :planner-mode 'abtweak :msp-mode 'weak)
+; gc: 1472112/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1507056/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1534488/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1562600/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1587952/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1616736/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1640400/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1654984/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1676472/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1696880/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1717528/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1730064/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1752136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1769008/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1781992/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1797672/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1819416/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1838536/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1859160/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1862200/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1886112/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1905432/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1916032/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1933096/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1959848/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1966808/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1979256/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1994264/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2002640/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2017984/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2034112/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2050432/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 37
+expanded  = 40
+generated = 77
+expanded  = 60
+generated = 115
+expanded  = 80
+generated = 157
+expanded  = 100
+generated = 197
+expanded  = 120
+generated = 237
+expanded  = 140
+generated = 271
+expanded  = 160
+generated = 324
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[4c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 173
+nodes generated: 355
+solution depth : 0
+max node succ  : 5
+max conflicts  : 1
+branch factors : ((0 0.0) (1 2.11) (2 2.94))
+
+a: criticality levels    : 2
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : nec
+a: weak msp   pruned     : 33
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 31
+
+nil 
+[4c] <cl> initial
+
+((on a c) (on c b) (on b table) (clear a) (not-table a) (not-table b) (not-table c)) 
+[4c] <cl> goal
+
+((on c b) (on b a)) 
+[4c] <cl> (length-of-open)
+
+183 
+[4c] <cl> *critical-list*
+
+((2 (not on $ $) (on $ $)) (1 (not clear $) (clear $)) (0 (not-table $))) 
+[4c] <cl> (first-of-open)
+
+(5 #s(plan :id plan1422 :cost 0 :kval 1 :cr ((op329 (on b table) (i)) (g (on c b) (i)) (g (on b a) (op329))) :tree (g ((op329 #))) :a (#s(operator :opid op986 :name (newtower a c) :preconditions (# # # #) :effects (# # #)) #s(operator :opid op471 :name (puton a c table) :preconditions (# # # # #) :effects (# # # #)) #s(operator :opid op445 :name (puton a b c) :preconditions (# # # # #) :effects (# # # #)) #s(operator :opid op343 :name (newtower a b) :preconditions (# # # #) :effects (# # #)) #s(operator :opid op329 :name (puton b a table) :preconditions (# # # # #) :effects (# # # #)) #s(operator :opid i :name (i) :preconditions nil :effects (# # # # # # #)) #s(operator :opid g :name (g) :preconditions (# #) :effects nil)) :b ((op986 op471) (i op986) (op471 op445) (op445 op343) (op343 op329) (op329 g)) :nc nil :var nil ...) 0 10) 
+[4c] <cl> (show (second (first-of-open)))
+
+
+((i) (newtower a c)) 
+
+((newtower a c) (puton a c table)) 
+
+((puton a c table) (puton a b c)) 
+
+((puton a b c) (newtower a b)) 
+
+((newtower a b) (puton b a table)) 
+
+((puton b a table) (g)) 
+
+((((puton b a table) (on b table) (i)) ((g) (on c b) (i)) ((g) (on b a) (puton b a table))) nil) 
+[4c] <cl> *critical-list*
+
+((2 (not on $ $) (on $ $)) (1 (not clear $) (clear $)) (0 (not-table $))) 
+[4c] <cl> (setq *critical-list* '((1 (not on $ $) (on $ $) (not-table $)) (0 (not clear $) (clear $))))
+
+((1 (not on $ $) (on $ $) (not-table $)) (0 (not clear $) (clear $))) 
+[4c] <cl> (planner initial goal :planner-mode 'abtweak :msp-mode 'weak)
+; gc: 1580456/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1605568/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1624056/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1641104/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1656928/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1671224/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1685464/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 32
+expanded  = 40
+generated = 66
+expanded  = 60
+generated = 97
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[5c] <cl> (length-of-open)
+
+40 
+[5c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 64
+nodes generated: 103
+solution depth : 0
+max node succ  : 3
+max conflicts  : 0
+branch factors : ((0 1.73) (1 1.72))
+
+a: criticality levels    : 1
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : nec
+a: weak msp   pruned     : 2
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 8
+
+nil 
+[5c] <cl> :continue
+; gc: 1707024/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1718368/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1737808/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1747424/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1751504/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1765776/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1775080/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1790648/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1797296/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1808768/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1820064/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1830608/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1844048/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1847960/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1858416/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1867928/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1883336/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 80
+generated = 132
+expanded  = 100
+generated = 163
+expanded  = 120
+generated = 197
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[5c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 139
+nodes generated: 231
+solution depth : 0
+max node succ  : 3
+max conflicts  : 0
+branch factors : ((0 1.75) (1 1.82))
+
+a: criticality levels    : 1
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : nec
+a: weak msp   pruned     : 4
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 20
+
+nil 
+[5c] <cl> (length-of-open)
+
+93 
+[5c] <cl> (planner initial goal :planner-mode 'abtweak)
+; gc: 1638496/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1667432/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1695528/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1721464/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1737184/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 32
+expanded  = 40
+generated = 68
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (newtower a c)) 
+
+((newtower a c) (newtower c b)) 
+
+((newtower c b) (puton b a table)) 
+
+((puton b a table) (puton c b table)) 
+
+((puton c b table) (g)) 
+*** node search depth: 11
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 54
+nodes generated: 95
+solution depth : 11
+max node succ  : 5
+max conflicts  : 1
+branch factors : ((0 1.83) (1 1.86))
+
+a: criticality levels    : 1
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: nil
+a: msp weak mode         : nec
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 5
+
+t 
+[5c] <cl> *critical-list*
+
+((1 (not on $ $) (on $ $) (not-table $)) (0 (not clear $) (clear $))) 
+[5c] <cl> (setq *critical-list* '((1 (not clear $) (clear $) (not-table $)) (0 (on $ $) (not on $ $))))
+
+((1 (not clear $) (clear $) (not-table $)) (0 (on $ $) (not on $ $))) 
+[5c] <cl> (planner initial goal :planner-mode 'abtweak :abs-goal t)
+; gc: 1666664/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1694488/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 31
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[6c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 23
+nodes generated: 37
+solution depth : 0
+max node succ  : 3
+max conflicts  : 0
+branch factors : ((0 1.75) (1 1.71))
+
+a: criticality levels    : 1
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : t
+a: monotonic sol property: nil
+a: msp weak mode         : nec
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 2
+
+nil 
+[6c] <cl> :continue
+; gc: 1717544/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1739936/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1759112/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 40
+generated = 74
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (newtower a c)) 
+
+((newtower a c) (newtower c b)) 
+
+((newtower c b) (puton b a table)) 
+
+((puton b a table) (puton c b table)) 
+
+((puton c b table) (g)) 
+*** node search depth: 11
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 40
+nodes generated: 77
+solution depth : 11
+max node succ  : 6
+max conflicts  : 1
+branch factors : ((0 2.56) (1 1.82))
+
+a: criticality levels    : 1
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : t
+a: monotonic sol property: nil
+a: msp weak mode         : nec
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+
+t 
+[5c] <cl> (planner initial goal :planner-mode 'abtweak :abs-goal t :msp-mode 'weak)
+; gc: 1705856/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1726648/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1751640/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1762496/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1778104/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 31
+expanded  = 40
+generated = 74
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (newtower a c)) 
+
+((newtower a c) (newtower c b)) 
+
+((newtower c b) (puton b a table)) 
+
+((puton b a table) (puton c b table)) 
+
+((puton c b table) (g)) 
+*** node search depth: 11
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 40
+nodes generated: 77
+solution depth : 11
+max node succ  : 6
+max conflicts  : 1
+branch factors : ((0 2.56) (1 1.82))
+
+a: criticality levels    : 1
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : t
+a: monotonic sol property: weak
+a: msp weak mode         : nec
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+
+t 
+[5c] <cl> (load-hanoi3)
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp.
+domain definition for: hanoi-3-ispeg
+operators    : 
+(#s(operator :opid moveb :name (moveb $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not onm $x) (not ons $y) (not onm $y) (onb $x)) :effects ((not onb $x) (onb $y))) #s(operator :opid movem :name (movem $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not ons $y) (onm $x)) :effects ((not onm $x) (onm $y))) #s(operator :opid moves :name (moves $x $y) :preconditions ((ispeg $x) (ispeg $y) (ons $x)) :effects ((not ons $x) (ons $y))))
+initial state: ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (onm peg1) (ons peg1) (not onb peg2) (not onb peg3) (not onm peg2) (not onm peg3) (not ons peg2) (not ons peg3))
+goal state   : ((onb peg3) (onm peg3) (ons peg3))
+a: criticalities      : ((5 (not onm $)) (4 (not ons $)) (3 (onb $)) (2 (onm $)) (1 (ons $)) (0 (ispeg $)))
+a: criticality id     : ibms-new-default
+a: eliminate td levels: (3 2 1)
+a: critcal depth modes: (0 1 2 4)
+
+
+nil 
+[5c] <cl> *k-list*
+
+(0 1 2 4) 
+[5c] <cl> (setq *k-list* '(0 1 3 7))
+
+(0 1 3 7) 
+[5c] <cl> (show-dom)
+domain definition for: hanoi-3-ispeg
+operators    : 
+(#s(operator :opid moveb :name (moveb $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not onm $x) (not ons $y) (not onm $y) (onb $x)) :effects ((not onb $x) (onb $y))) #s(operator :opid movem :name (movem $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not ons $y) (onm $x)) :effects ((not onm $x) (onm $y))) #s(operator :opid moves :name (moves $x $y) :preconditions ((ispeg $x) (ispeg $y) (ons $x)) :effects ((not ons $x) (ons $y))))
+initial state: ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (onm peg1) (ons peg1) (not onb peg2) (not onb peg3) (not onm peg2) (not onm peg3) (not ons peg2) (not ons peg3))
+goal state   : ((onb peg3) (onm peg3) (ons peg3))
+a: criticalities      : ((5 (not onm $)) (4 (not ons $)) (3 (onb $)) (2 (onm $)) (1 (ons $)) (0 (ispeg $)))
+a: criticality id     : ibms-new-default
+a: eliminate td levels: (3 2 1)
+a: critcal depth modes: (0 1 3 7)
+
+
+nil 
+[5c] <cl> (planner initial goal :planner-mode 'abtweak :abs-goal t :msp-mode 'weak :msp-weak-mode 'pos)
+
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[6c] <cl> (load "/u/sgwoods/Domains/hanoi-3/ibms")
+Error: "/u/sgwoods/Domains/hanoi-3/ibms" does not exist, cannot load
+[7] <cl> (load "/u/sgwoods/Plan/Planner/Domains/hanoi-3/ibms")
+; gc: 1710208/2934288 (94832) dynamic bytes used/total (static)
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/ibms.
+
+t 
+[7] <cl> (show-dom)
+domain definition for: hanoi-3-ispeg
+operators    : 
+(#s(operator :opid moveb :name (moveb $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not onm $x) (not ons $y) (not onm $y) (onb $x)) :effects ((not onb $x) (onb $y))) #s(operator :opid movem :name (movem $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not ons $y) (onm $x)) :effects ((not onm $x) (onm $y))) #s(operator :opid moves :name (moves $x $y) :preconditions ((ispeg $x) (ispeg $y) (ons $x)) :effects ((not ons $x) (ons $y))))
+initial state: ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (onm peg1) (ons peg1) (not onb peg2) (not onb peg3) (not onm peg2) (not onm peg3) (not ons peg2) (not ons peg3))
+goal state   : ((onb peg3) (onm peg3) (ons peg3))
+a: criticalities      : ((3 (ispeg $)) (2 (not onB $) (onB $)) (1 (not onM $) (onM $)) (0 (not onS $) (onS $)))
+a: criticality id     : ibms
+a: eliminate td levels: (3 2 1)
+a: critcal depth modes: (0 1 3 7)
+
+
+nil 
+[7] <cl> (planner initial goal :planner-mode 'abtweak :abs-goal t :msp-mode 'weak :msp-weak-mode 'pos)
+
+no criticality for precond, fatal error
+precond = (not ons $2741)
+Break: in abtweak/ab-succ
+[8c] <cl> *critical-list*
+
+((3 (ispeg $)) (2 (not onB $) (onB $)) (1 (not onM $) (onM $)) (0 (not onS $) (onS $))) 
+[8c] <cl> (load "/u/sgwoods/Plan/Planner/Domains/hanoi-3/ibms")
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/ibms.
+
+t 
+[8c] <cl> 
+; gc: 1724816/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1732680/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1739888/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1749216/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1756240/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1764296/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1770984/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1781432/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1788576/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1791288/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1798680/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1807496/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1810264/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1817168/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1823112/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1824448/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1828952/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1833000/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1840544/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1844848/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 24
+expanded  = 40
+generated = 51
+expanded  = 60
+generated = 87
+expanded  = 80
+generated = 114
+expanded  = 100
+generated = 145
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[9c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 100
+nodes generated: 146
+solution depth : 0
+max node succ  : 3
+max conflicts  : 1
+branch factors : ((0 1.33) (1 1.69) (2 1.39) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : t
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 20
+
+nil 
+[9c] <cl>                           (not ons $
+			  (not onm $x) 
+			  (not ons $y)
+			  (not onm $y)
+			  (onb $x))()
+Error: Attempt to take the value of the unbound symbol ons
+[10] <cl> 
+nil 
+[10] <cl> (planner initial goal :planner-mode 'abtweak :abs-goal t :msp-mode 'weak :msp-weak-mode 'pos :crit-depth-mode t)
+; gc: 1757600/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1767368/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1768448/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1775632/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1776816/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1783272/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1785152/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1794256/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1801520/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1799952/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1804840/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1807968/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1810960/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1817192/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1819912/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1824520/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1828144/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1837640/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1840920/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1840552/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1845352/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1854312/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1861736/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1860192/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1864704/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1867568/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1870840/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1876960/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1879784/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1887240/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1894592/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1899056/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1903912/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1902448/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1906048/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1915536/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1915936/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1921688/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1927080/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1925336/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1930720/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1941032/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1942104/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1943112/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1941792/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1950032/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1953328/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1958368/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 29
+expanded  = 40
+generated = 64
+expanded  = 60
+generated = 102
+expanded  = 80
+generated = 133
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[11c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 93
+nodes generated: 157
+solution depth : 0
+max node succ  : 4
+max conflicts  : 2
+branch factors : ((0 1.56) (1 1.9) (2 1.33) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: t
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : t
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 7
+
+nil 
+[11c] <cl> (length-of-open)
+
+65 
+[11c] <cl> (setq i (make-initial-plan initial goal))
+
+#s(plan :id initial-plan :cost 0 :kval 3 :cr nil :tree (g) :a (#s(operator :opid i :name (i) :preconditions nil :effects ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (onm peg1) (ons peg1) (not onb peg2) (not onb peg3) (not onm peg2) (not onm peg3) ...)) #s(operator :opid g :name (g) :preconditions ((onb peg3) (onm peg3) (ons peg3)) :effects nil)) :b ((i g)) :nc nil :var nil ...) 
+[11c] <cl> (ab-determine-u-and-p i)
+
+(g (onb peg3)) 
+[11c] <cl> (ab-unsat-up-pairs i)
+
+((g (onb peg3)) (g (onm peg3)) (g (ons peg3))) 
+[11c] <cl> (defun goal-p (plan) (ab-mtc plan))
+
+goal-p 
+[11c] <cl> (planner initial goal :planner-mode 'abtweak :abs-goal t :msp-mode 'weak :msp-weak-mode 'pos :crit-depth-mode t)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (moves peg2 peg3)) 
+
+((i) (movem peg2 peg3)) 
+
+((i) (moveb peg2 peg3)) 
+
+((moveb peg2 peg3) (g)) 
+
+((movem peg2 peg3) (g)) 
+
+((moves peg2 peg3) (g)) 
+*** node search depth: 7
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 6
+nodes generated: 9
+solution depth : 7
+max node succ  : 2
+max conflicts  : 0
+branch factors : ((0 0.0) (1 0.0) (2 0.0) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: t
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : t
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 0
+
+t 
+[11c] <cl> (load-hanoi2)
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-2.lsp.
+domain definition for: hanoi-2-ispeg
+operators    : 
+(#s(operator :opid moveb :name (moveb $x $y) :preconditions ((not ons $x) (onb $x) (not ons $y) (ispeg $x) (ispeg $y)) :effects ((not onb $x) (onb $y))) #s(operator :opid moves :name (moves $x $y) :preconditions ((ons $x) (ispeg $x) (ispeg $y)) :effects ((not ons $x) (ons $y))))
+initial state: ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (ons peg1) (not onb peg2) (not onb peg3) (not ons peg2) (not ons peg3))
+goal state   : ((onb peg3) (ons peg3))
+a: criticalities      : ((2 (ispeg $)) (1 (not onb $) (onb $)) (0 (not ons $) (ons $)))
+a: criticality id     : ibs-default
+a: eliminate td levels: (2 1)
+a: critcal depth modes: (0 1 2)
+
+
+nil 
+[11c] <cl> (load "/u/sgwoods/Plan/Planner/Domains/hanoi-2/isb")
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-2/isb.
+
+t 
+[11c] <cl> *critical-list*
+
+((2 (ispeg $)) (1 (not onS $) (onS $)) (0 (not onB $) (onB $))) 
+[11c] <cl> (planner initial goal :planner-mode 'abtweak :msp-mode 'weak :msp-weak-mode 'pos)
+
+no criticality for precond, fatal error
+precond = (onb peg3)
+Break: in abtweak/ab-succ
+[12c] <cl> (load "/u/sgwoods/Plan/Planner/Domains/hanoi-2/isb")
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-2/isb.
+
+t 
+[12c] <cl> (planner initial goal :planner-mode 'abtweak :msp-mode 'weak :msp-weak-mode 'pos)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (g)) 
+*** node search depth: 1
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 0
+nodes generated: 0
+solution depth : 1
+max node succ  : 0
+max conflicts  : 0
+branch factors : ((0 0.0) (1 0.0) (2 0.0))
+
+a: criticality levels    : 2
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 0
+
+t 
+[12c] <cl> 
+
+[12c] <cl> initial
+
+((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (ons peg1) (not onb peg2) (not onb peg3) (not ons peg2) (not ons peg3)) 
+[12c] <cl> goal
+
+((onb peg3) (ons peg3)) 
+[12c] <cl> (load "/u/sgwoods/Plan/Planner/planner.lsp")
+; Loading /u/sgwoods/Plan/Planner/planner.lsp.
+
+t 
+[12c] <cl> (time (planner initial goal :planner-mode 'abtweak :msp-mode 'weak :msp-weak-mode 'pos))
+; gc: 1817760/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1831176/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 27
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (moves peg1 peg2)) 
+
+((moves peg1 peg2) (moveb peg1 peg3)) 
+
+((moveb peg1 peg3) (moves peg2 peg3)) 
+
+((moves peg2 peg3) (g)) 
+*** node search depth: 10
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 20
+nodes generated: 29
+solution depth : 10
+max node succ  : 5
+max conflicts  : 1
+branch factors : ((0 1.54) (1 1.5) (2 0.0))
+
+a: criticality levels    : 2
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 9
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+cpu time (non-gc) 14984 msec user, 1667 msec system
+cpu time (gc)     4350 msec user, 1567 msec system
+cpu time (total)  19334 msec user, 3234 msec system
+real time  105640 msec
+
+t 
+[12c] <cl> *critical-list*
+
+((2 (ispeg $)) (1 (not ons $) (ons $)) (0 (not onb $) (onb $))) 
+[12c] <cl> (setq *critical-list* '( (3 (ispeg $)) (2 (onb $)) (1 (not ons $)) (0 (ons $)))) 
+
+((3 (ispeg $)) (2 (onb $)) (1 (not ons $)) (0 (ons $))) 
+[12c] <cl> 
+[12c] <cl> (time (planner initial goal :planner-mode 'abtweak :msp-mode 'weak :msp-weak-mode 'pos))
+; gc: 1833280/2934288 (94832) dynamic bytes used/total (static)
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (moves peg1 peg2)) 
+
+((moves peg1 peg2) (moveb peg1 peg3)) 
+
+((moveb peg1 peg3) (moves peg2 peg3)) 
+
+((moves peg2 peg3) (g)) 
+*** node search depth: 11
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 11
+nodes generated: 15
+solution depth : 11
+max node succ  : 3
+max conflicts  : 1
+branch factors : ((0 1.67) (1 1.33) (2 1.5) (3 0.0))
+
+a: criticality levels    : 3
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 4
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+cpu time (non-gc) 7949 msec user, 617 msec system
+cpu time (gc)     2067 msec user, 200 msec system
+cpu time (total)  10016 msec user, 817 msec system
+real time  20292 msec
+
+t 
+[12c] <cl> (load-hanoi3)
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp.
+domain definition for: hanoi-3-ispeg
+operators    : 
+(#s(operator :opid moveb :name (moveb $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not onm $x) (not ons $y) (not onm $y) (onb $x)) :effects ((not onb $x) (onb $y))) #s(operator :opid movem :name (movem $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not ons $y) (onm $x)) :effects ((not onm $x) (onm $y))) #s(operator :opid moves :name (moves $x $y) :preconditions ((ispeg $x) (ispeg $y) (ons $x)) :effects ((not ons $x) (ons $y))))
+initial state: ((ispeg peg1) (ispeg peg2) (ispeg peg3) (onb peg1) (onm peg1) (ons peg1) (not onb peg2) (not onb peg3) (not onm peg2) (not onm peg3) (not ons peg2) (not ons peg3))
+goal state   : ((onb peg3) (onm peg3) (ons peg3))
+a: criticalities      : ((5 (not onm $)) (4 (not ons $)) (3 (onb $)) (2 (onm $)) (1 (ons $)) (0 (ispeg $)))
+a: criticality id     : ibms-new-default
+a: eliminate td levels: (3 2 1)
+a: critcal depth modes: (0 1 3 7)
+
+
+nil 
+[12c] <cl> *critical-list*
+
+((5 (not onm $)) (4 (not ons $)) (3 (onb $)) (2 (onm $)) (1 (ons $)) (0 (ispeg $))) 
+[12c] <cl> (setq *critical-list* '( (5 (ispeg $ )) (4 (onb $)) (3 (not onm $)) (2 (onm $)) (1 (not ons $)) (0 (ons $))))
+
+((5 (ispeg $)) (4 (onb $)) (3 (not onm $)) (2 (onm $)) (1 (not ons $)) (0 (ons $))) 
+[12c] <cl> (time (planner initial goal :planner-mode 'abtweak :msp-mode 'weak :msp-weak-mode 'pos ))
+; gc: 1837568/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1845008/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1854184/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1859536/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1865344/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1867400/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1871736/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1879072/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1882632/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1887616/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1890520/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1893968/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1899136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1906640/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1908216/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1915520/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1913688/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1916848/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1918296/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1922136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1925736/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1929176/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1936600/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1939624/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1944312/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1941632/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1949296/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1953072/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1962800/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1963696/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1967848/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 20
+generated = 24
+expanded  = 40
+generated = 49
+expanded  = 60
+generated = 76
+expanded  = 80
+generated = 103
+expanded  = 100
+generated = 134
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[13c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 116
+nodes generated: 159
+solution depth : 0
+max node succ  : 3
+max conflicts  : 2
+branch factors : ((0 0.0) (1 1.42) (2 1.41) (3 1.48) (4 1.44) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 36
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 17
+
+nil 
+[13c] <cl> :continue
+; gc: 1968496/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1976968/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1976488/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1980176/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1983816/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1985008/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1988896/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1989368/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1990168/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1995112/2934288 (94832) dynamic bytes used/total (static)
+; gc: 1996256/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2002352/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2001136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2008136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2011136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2009536/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2012968/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2018808/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2022232/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2025320/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2031872/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2029904/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2036552/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2042232/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2041136/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2080096/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2046360/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2046544/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2052928/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2053976/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2058304/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2062768/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2070864/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2071936/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2076856/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2076568/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2081168/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2088560/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2085792/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2086448/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2091912/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2087192/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 120
+generated = 163
+expanded  = 140
+generated = 189
+expanded  = 160
+generated = 219
+expanded  = 180
+generated = 248
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[13c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 192
+nodes generated: 265
+solution depth : 0
+max node succ  : 3
+max conflicts  : 2
+branch factors : ((0 0.0) (1 1.4) (2 1.39) (3 1.55) (4 1.45) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 59
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 27
+
+nil 
+[13c] <cl> :continue
+; gc: 2089552/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2093808/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2094544/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2095576/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 200
+generated = 275
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 200
+nodes generated: 275
+solution depth : 0
+max node succ  : 3
+max conflicts  : 2
+branch factors : ((0 0.0) (1 1.39) (2 1.38) (3 1.54) (4 1.45) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : ; gc: 2102528/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2103720/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2104784/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2114368/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2111712/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2116688/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2115264/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2119392/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2122736/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2123248/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2123984/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2127336/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2131240/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2135072/2934288 (94832) dynamic bytes used/total (static)
+0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 64
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 28
+Continuable Error: Received signal number 2 (Keyboard interrupt)
+
+If continued with :continue, continue computation
+[13c] <cl> (cur)
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 219
+nodes generated: 306
+solution depth : 0
+max node succ  : 3
+max conflicts  : 2
+branch factors : ((0 0.0) (1 1.49) (2 1.38) (3 1.54) (4 1.45) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 66
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 28
+
+nil 
+[13c] <cl> :continue
+; gc: 2134480/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2188240/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2139440/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2144960/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2143672/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2147584/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2147152/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2152456/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2155544/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2159456/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2159376/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2163552/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2162392/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2167048/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2166800/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2169528/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2172632/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2171048/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2301552/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2178456/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2177976/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2178800/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2182808/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2186768/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2186336/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2191424/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2190096/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2193768/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2193416/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2193512/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2201088/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2202328/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2198792/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2202504/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2202120/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2208000/2934288 (94832) dynamic bytes used/total (static)
+; gc: 2205808/2934288 (94832) dynamic bytes used/total (static)
+expanded  = 220
+generated = 307
+expanded  = 240
+generated = 339
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((i) (moves peg1 peg3)) 
+
+((moves peg1 peg3) (movem peg1 peg2)) 
+
+((movem peg1 peg2) (moves peg3 peg2)) 
+
+((moves peg3 peg2) (moveb peg1 peg3)) 
+
+((moveb peg1 peg3) (moves peg2 peg1)) 
+
+((moves peg2 peg1) (movem peg2 peg3)) 
+
+((movem peg2 peg3) (moves peg1 peg3)) 
+
+((moves peg1 peg3) (g)) 
+*** node search depth: 28
+
+abtweak planner  run statistics
+planner-mode   : abtweak
+search type    : 4
+debug          : nil
+determine via  : first
+backwards-mode : nil
+heuristic      : d
+nodes expanded : 251
+nodes generated: 362
+solution depth : 28
+max node succ  : 4
+max conflicts  : 2
+branch factors : ((0 1.6) (1 1.58) (2 1.38) (3 1.54) (4 1.45) (5 0.0))
+
+a: criticality levels    : 5
+a: criticality depth mode: nil
+a: k learning mode       : nil
+a: top-down flag         : nil
+a: top-down pruned       : 0
+a: abs goal mode         : nil
+a: monotonic sol property: weak
+a: msp weak mode         : pos
+a: weak msp   pruned     : 69
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 29
+cpu time (non-gc) 978167 msec user, 63701 msec system
+cpu time (gc)     313933 msec user, 29083 msec system
+cpu time (total)  1292100 msec user, 92784 msec system
+real time  3267014 msec
+
+t 
+[12c] <cl> a
+
+#s(operator :opid moveb :name (moveb $x $y) :preconditions ((ispeg $x) (ispeg $y) (not ons $x) (not onm $x) (not ons $y) (not onm $y) (onb $x)) :effects ((not onb $x) (onb $y))) 
+[12c] <cl> (get-name a)
+
+Continuable Error: attempt to call `get-name' which is an undefined function.
+If continued with :continue, prompt for a new function.
+[13c] <cl> (get_name a)
+
+Continuable Error: attempt to call `get_name' which is an undefined function.
+If continued with :continue, prompt for a new function.
+[14c] <cl> (operator-name a)
+
+(moveb $x $y) 
+[14c] <cl> (car (operator-name a))
+
+moveb 
+[14c] <cl> (strip-negation '(not a))
+
+Continuable Error: attempt to call `strip-negation' which is an undefined function.
+If continued with :continue, prompt for a new function.
+[15c] <cl> (strip-negate '(not a))
+
+(a) 
+[15c] <cl> (strip-negate '(a))
+
+(a) 
+[15c] <cl> 

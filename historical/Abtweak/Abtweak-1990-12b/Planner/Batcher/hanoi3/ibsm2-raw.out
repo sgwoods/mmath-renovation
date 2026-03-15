@@ -1,0 +1,119 @@
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+Operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y)
+        (NOT ONM $Y) (ONB $X))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X))
+       EFFECTS ((NOT ONM $X) (ONM $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/ibsm
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/ibsm
+T
+
+>Expanded  = 100
+Generated = 150
+Expanded  = 200
+Generated = 313
+Expanded  = 300
+Generated = 486
+Expanded  = 400
+Generated = 655
+Expanded  = 500
+Generated = 804
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 500
+Nodes Generated: 804
+Solution Depth : 0
+Max Node Succ  : 6
+Max Conflicts  : 2
+Branch Factors : ((0 1.29) (1 1.82) (2 1.45) (3 0.0))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 72
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 34
+Expanded  = 600
+Generated = 962
+Expanded  = 700
+Generated = 1116
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+
+((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+
+((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+
+((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+
+((MOVEM PEG2 PEG3) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (G))
+*** Node Search DEPTH: 24
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 765
+Nodes Generated: 1205
+Solution Depth : 24
+Max Node Succ  : 6
+Max Conflicts  : 2
+Branch Factors : ((0 1.34) (1 1.81) (2 1.45) (3 0.0))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 172
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 45
+T
+
+>Bye.

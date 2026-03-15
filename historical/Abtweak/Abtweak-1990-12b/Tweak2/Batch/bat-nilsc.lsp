@@ -1,0 +1,13 @@
+(mode 'abtweak)
+(sp-mode nil)
+(msp 'weak)
+(prune t)
+(td-mode nil)
+
+(compile-file "Examples/nils-ab-test")
+(load "Examples/nils-ab-test")
+
+(cur)
+
+(run)
+

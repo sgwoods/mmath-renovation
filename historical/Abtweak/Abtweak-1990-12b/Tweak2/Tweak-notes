@@ -1,0 +1,123 @@
+
+1. (AbTweak) Monotonic Property and (Tweak) Single Producer Property
+
+In abtweak, the monotonic property basically stated that all
+causal relations existing in a plan at level K are protected as
+we descend the abstraction hierarchy to level K-1.
+
+The descent corresponds to successive planning utilizing the 
+levels of criticality assigned in the domain.  A correct plan is found
+for all level K preconds, thus forming a correct plan at level K, and
+then we preserve all of the (intended and side effect) establishments
+at level K, add new level K-1 preconds, and apply tweak to this new level
+
+Once the K level is 0, and a correct plan is found, there are no more
+preconds to add, and we are finished.
+
+
+In tweak, the spp basically states, that as we add an operator to achieve
+a particular precondition, remember why we added this operator precond
+combination, and never allow it to be clobbered.  ie if we add
+A which asserts p- before u which requires p-, never allow anything
+to be added to the plan that NEC denies this - via declobbering.
+
+Tweak corrects plans by first selecting an unsatisfied  User precond 
+combination and then establishing it in any way possible (New op or Exist)
+and then declobbering this establishement.  The selection of operator
+can be seen as PARALLELing the transition between k levels in abtweak - 
+
+If we imagine that every precond in every operator in a plan has a
+unique criticality value, then this corresponds to the order in which
+tweak selects these preconds to be satisfied.
+
+The Tweak-SPP involves rejecting any possible plan completion that 
+violates a previously achieved EsT (at a previous k level), in exactly the
+same way that AbTweak-MSP involves rejecting any possible plan completion
+that violates a previoulsy achieved EST (at a previous k level) 
+EXCEPT 
+  that in AbTweak these levels are DECLARATIVELY specified in the domain
+specification, and in Tweak, these levels are determined PROCEDURALY
+by determine-u-and-p (to solve next).
+
+Since we have observed a substantial savings utilizing SPP under tweak
+in the "random"/procedural selection of criticalities, it would seem
+obvious that a similar saving should be experienced by AbTweak over the
+smae instances as spp-tweak.  It would follow that some order other than
+random for selection of K values would (likely) supply a LARgER 
+improvement in search saving - and in fact, we have already seen that
+the monotonic property in abtweak is of little value if criticalities
+are chosen at KNOWN optimal levels, while if crits are chosen at less
+than optimal values - msp prunes a good deal of search space (these
+correspond to an unusually bad (procedural) selection of next goal to
+solve in spp-tweak).
+
+Our results for spp-tweak have so far been using an approximation 
+algoroithm to actual SPP, and thus it would seem beneficial and
+interesting to modify tweak to be able to use the actual SPP 
+heurisitic and observe these results.
+
+Steve - Oct 11, 1990
+ Based on a discussion of an idea Qiang had this afternoon.
+
+
+2. Effect of # of preconditions in an operator template on performance
+
+Consider the case of 3 hanoi (3 rings, 3 pegs, no other objects of concern)
+
+Case 1
+
+   (moveM x y)
+   MOVEM from  peg-x  to peg-y
+       preconds:   ISPEG peg-x  ISPEG peg-y
+ 
+                   ONM peg-x
+ 
+                   NOT ONS peg-x   
+                   NOT ONS peg-y
+
+Case 2
+
+   (moveM x y z)                   
+   MOVEM from  peg-x  to peg-y with s on peg-y
+       preconds:   ISPEG peg-x  ISPEG peg-y
+ 
+                   ONM peg-x
+ 
+                   ONS peg-z
+
+So we (could) take advantage of the fact that we are only concerned with
+3 pegs in this DOMAIN.  In order for us to Move M from peg x to peg y, we 
+must know that 
+
+1. M is on peg x
+2. Nothing is on top of M (only a Smaller ring could be, in this case S)
+   Effectively this (clear m) precondtion could be expressed
+   as knowing where S is.  If we know S is not on M than M must be clear.
+   so NOT ONS peg-x expresses this fine.
+3. Nothing (smaller than M) can be on the destination peg (namely S again
+   in this case) - so we know that if S is not on peg-y we can apply the 
+   moveM operator.  NOT ONS peg-y
+
+OR 
+   we can take advantage of the domain dependent fact that if
+   NOT ONS peg-y holds and NOT ONS peg-x holds then it MUST be the
+   case that ONS peg-z holds where z =/= x and z=/= y.
+
+The effect of this is to reduce the number of preconditions a particular 
+operator has (& intuitively reduce the number of preconditions that must
+later be solved as goals)
+
+BUT:
+
+  The result of such an action is to make the OPERATOR MOVEM "easier" to
+apply in that it has fewer preconditions that need to be satisfied in 
+order to apply it in a given situation.
+
+That is, the set of plans that exists in a search space in which the
+operator can be applied GROWS and thus increaes the branching factor of the
+search space?
+
+Which is true?
+
+Well - 3 hanoi tests with the simplified preconditions behaved WORSE than
+the complex precondition ones.  (see tweak-results)

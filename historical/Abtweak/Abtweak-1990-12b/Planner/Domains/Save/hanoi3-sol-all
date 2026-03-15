@@ -1,0 +1,72 @@
+(setq soln
+'#S(PLAN ID test COST 0 KVAL 0 CR NIL A
+        (
+         #S(OPERATOR OPID I NAME (I) 
+             PRECONDITIONS NIL
+             EFFECTS
+                 ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) 
+                  (ONB PEG1)(ONM PEG1) (ONS PEG1) 
+                  (NOT ONB PEG2) (NOT ONB PEG3)
+                  (NOT ONM PEG2) (NOT ONM PEG3)
+                  (NOT ONS PEG2) (NOT ONS PEG3)))
+
+         #S(OPERATOR OPID op1 NAME (MOVES PEG1 PEG3) 
+             PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) 
+                (ONS PEG1))
+             EFFECTS
+               ((NOT ONS PEG1) (ONS PEG3)))
+
+         #S(OPERATOR OPID op2 NAME (MOVEM PEG1 PEG2)
+             PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG2) 
+                (NOT ONS PEG1) (NOT ONS PEG2) (ONM PEG1))
+             EFFECTS 
+               ((NOT ONM PEG1) (ONM PEG2)))
+
+         #S(OPERATOR OPID op3 NAME (MOVES PEG3 PEG2) 
+             PRECONDITIONS
+               ((ISPEG PEG3) (ISPEG PEG2) 
+                (ONS PEG3))
+             EFFECTS
+               ((NOT ONS PEG3) (ONS PEG2)))
+
+         #S(OPERATOR OPID op4 NAME (MOVEB PEG1 PEG3) 
+             PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) 
+                (NOT ONS PEG1) (NOT ONM PEG1)
+                (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+             EFFECTS 
+               ((NOT ONB PEG1) (ONB PEG3)))
+
+         #S(OPERATOR OPID op5 NAME (MOVES PEG2 PEG1) 
+             PRECONDITIONS
+               ((ISPEG PEG2) (ISPEG PEG1) 
+                (ONS PEG2))
+             EFFECTS
+               ((NOT ONS PEG2) (ONS PEG1)))
+
+         #S(OPERATOR OPID op6 NAME (MOVEM PEG2 PEG3)
+             PRECONDITIONS
+               ((ISPEG PEG2) (ISPEG PEG3) 
+                (NOT ONS PEG2) (NOT ONS PEG3) (ONM PEG2))
+             EFFECTS 
+               ((NOT ONM PEG2) (ONM PEG3)))
+
+         #S(OPERATOR OPID op7 NAME (MOVES PEG1 PEG3) 
+             PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) 
+                (ONS PEG1))
+             EFFECTS
+               ((NOT ONS PEG1) (ONS PEG3)))
+
+         #S(OPERATOR OPID G NAME (G)
+             PRECONDITIONS
+                 ((ONB PEG3) (ONM PEG3) (ONS PEG3)) 
+             EFFECTS NIL)
+         )
+        B
+        ( (I op1) (op1 op2) (op2 op3) 
+          (op3 op4) (op4 op5) (op5 op6) (op6 op7) (op7 G))
+        NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+)

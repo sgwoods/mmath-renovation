@@ -1,0 +1,122 @@
+;
+; move obj from loc 19 where robot is to loc 18 in same room
+;
+
+; Pos   Size    Selected Goal
+;
+;  1  of 3      (at obj3 loc18)
+;  1  of 1      (holding obj3)
+;  18 of 20     (is-location $20579)
+;  4  of 5      (at robot loc18)
+;  17 of 19     (is-location $20625)
+;  1  of 1      (location-inroom loc19 $20623)
+;  1  of 11     (at robot loc19)
+
+(setq init (make-initial-plan initial '( (at obj3 loc18) )))
+
+---------------------------------------------------------------------------
+(setq s1 (successors init))
+  ;<plan> selected u and p : <INITIAL-PLAN> (G (AT OBJ3 LOC18))
+  ; length 3
+
+(setq s1-1 (first s1))
+
+((I) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+---------------------------------------------------------------------------
+(setq s2 (successors s1-1))
+  ;<plan> selected u and p : <plan20577> (op20563 (HOLDING OBJ3))
+  ; length 1
+
+(setq s2-1 (first s2))
+
+((I) (PICKUP-OBJ OBJ3 $20579 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 $20579 ROBOT) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+---------------------------------------------------------------------------
+(setq s3 (successors s2-1))
+  ;<plan> selected u and p : <plan20581> (op20580 (IS-LOCATION $20579))
+  ; length 20
+
+(setq s3-18 (nth 18 s3))
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+---------------------------------------------------------------------------
+(setq s4 (successors s3-18))
+  ;<plan> selected u and p : <plan20620> (op20563 (AT ROBOT LOC18))
+  ; length 5
+
+(setq s4-0 (nth 0 s4))
+
+((I) (GOTO-ROOM-LOC $20625 LOC18 $20623)) 
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((GOTO-ROOM-LOC $20625 LOC18 $20623) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+---------------------------------------------------------------------------
+(setq s5 (successors s4-1))
+  ;<plan> selected u and p : <plan20664> (op20625 (IS-LOCATION $20625))
+  ; length 19
+
+(setq s5-17 (nth 17 s5))
+
+((I) (GOTO-ROOM-LOC LOC19 LOC18 $20623)) 
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 $20623) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+---------------------------------------------------------------------------
+(setq s6 (successors s5-17))
+  ;<plan> selected u and p : <plan20705> (op20625 (LOCATION-INROOM LOC19 $20623))
+  ; length 1
+
+(setq s6-1 (car s6))
+
+((I) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+---------------------------------------------------------------------------
+(setq s7 (successors s6-1))
+  ;<plan> selected u and p : <plan20708> (op20580 (AT ROBOT LOC19))
+  ; length 11
+
+(setq soln (nth 0 s7))
+
+((I) (PICKUP-OBJ OBJ3 LOC19 ROBOT)) 
+
+((PICKUP-OBJ OBJ3 LOC19 ROBOT) (GOTO-ROOM-LOC LOC19 LOC18 ROOM4)) 
+
+((GOTO-ROOM-LOC LOC19 LOC18 ROOM4) (PUTDOWN OBJ3 LOC18 ROBOT)) 
+
+((PUTDOWN OBJ3 LOC18 ROBOT) (G)) 
+
+
+
+

@@ -1,0 +1,111 @@
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+
+
+type  (start) to re-load planner
+
+Loading init-o.lsp
+Loading /u/sgwoods/Plan/Planner/Search/search-load.o
+Loading /u/sgwoods/Plan/Planner/Search/search.o
+Finished loading /u/sgwoods/Plan/Planner/Search/search.o
+Loading /u/sgwoods/Plan/Planner/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Planner/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Planner/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Planner/Search/list-access.o
+Loading /u/sgwoods/Plan/Planner/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Planner/Search/node-access.o
+Loading /u/sgwoods/Plan/Planner/Search/interface.o
+Finished loading /u/sgwoods/Plan/Planner/Search/interface.o
+Loading /u/sgwoods/Plan/Planner/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Planner/Search/state-expansion.o
+Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Planner/Search/search-load.o
+Loading /u/sgwoods/Plan/Planner/planner.o
+Finished loading /u/sgwoods/Plan/Planner/planner.o
+Loading /u/sgwoods/Plan/Planner/branch.o
+Finished loading /u/sgwoods/Plan/Planner/branch.o
+Loading /u/sgwoods/Plan/Planner/driver.o
+Finished loading /u/sgwoods/Plan/Planner/driver.o
+Loading /u/sgwoods/Plan/Tweak2/init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/tree.o
+Finished loading /u/sgwoods/Plan/Tweak2/tree.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/init.lsp
+Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp
+
+Error: Cannot open the file /u/sgwoods/plan/planner/domains/nils-blocks.
+Error signalled by LOAD.
+
+Broken at LOAD.  Type :H for Help.
+>>
+Error: Cannot open the file /u/sgwoods/plan/planner/domains/hanoi-3.
+Error signalled by LOAD.
+Backtrace:  > evalhook > load-hanoi3 > LOAD
+
+Broken at LOAD.
+>>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/imsb
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/imsb
+T
+
+>>
+Error: #<OBJNULL> is not of type NUMBER.
+Error signalled by DRIVER.
+Backtrace:  > evalhook > DRIVER
+
+Broken at LOAD.
+>>Bye.

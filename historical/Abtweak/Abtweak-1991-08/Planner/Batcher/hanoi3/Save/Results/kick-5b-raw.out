@@ -1,0 +1,260 @@
+Allegro CL 3.1.13.1 [Sun4] (0/0/0)
+Copyright (C) 1985-1990, Franz Inc., Berkeley, CA, USA
+; Loading /u/sgwoods/Plan/Planner/init.lsp.
+
+
+type  (start) to re-load planner
+
+; Loading /u/sgwoods/Plan/Planner/init-o.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search-load.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graphsearch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/list-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/node-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/interface.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/state-expansion.fasl.
+; Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/planner.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/branch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/driver.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/general.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/structs.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/mtc.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/successors.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/tree.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/debug.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Maint/compile.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mtc.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-succ.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-causal.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-msp.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mono.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/Maint/compile.fasl.
+; Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp.
+; Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp.
+domain definition for: NILSSONS-BLOCKS-WORLD
+operators    : 
+(#s(OPERATOR :OPID PICKUP :NAME (PICKUP $X) :PRECONDITIONS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY))) #s(OPERATOR :OPID PUTDOWN :NAME (PUTDOWN $X) :PRECONDITIONS ((HOLDING $X)) :EFFECTS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X))) #s(OPERATOR :OPID STACK :NAME (STACK $X $Y) :PRECONDITIONS ((HOLDING $X) (CLEAR $Y)) :EFFECTS ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X) (NOT CLEAR $Y))) #s(OPERATOR :OPID UNSTACK :NAME (UNSTACK $X $Y) :PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X) (NOT ON $X $Y))))
+initial state: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B) (HANDEMPTY))
+goal state   : ((ON A B) (ON B C))
+; Fast loading /u/sgwoods/Plan/Planner/useful.fasl.
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp.
+domain definition for: NILSSONS-BLOCKS-WORLD
+operators    : 
+(#s(OPERATOR :OPID PICKUP :NAME (PICKUP $X) :PRECONDITIONS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY))) #s(OPERATOR :OPID PUTDOWN :NAME (PUTDOWN $X) :PRECONDITIONS ((HOLDING $X)) :EFFECTS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X))) #s(OPERATOR :OPID STACK :NAME (STACK $X $Y) :PRECONDITIONS ((HOLDING $X) (CLEAR $Y)) :EFFECTS ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X) (NOT CLEAR $Y))) #s(OPERATOR :OPID UNSTACK :NAME (UNSTACK $X $Y) :PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X) (NOT ON $X $Y))))
+initial state: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B) (HANDEMPTY))
+goal state   : ((ON A B) (ON B C))
+
+NIL 
+<cl> 
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/nils/crit6.
+
+T 
+<cl> 
+<cl> expanded  = 20
+generated = 44
+expanded  = 40
+generated = 113
+expanded  = 60
+generated = 198
+expanded  = 80
+generated = 269
+expanded  = 100
+generated = 336
+expanded  = 120
+generated = 394
+expanded  = 140
+generated = 464
+expanded  = 160
+generated = 535
+expanded  = 180
+generated = 613
+expanded  = 200
+generated = 693
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 200
+nodes generated: 693
+solution depth : 0
+max node succ  : 21
+max conflicts  : 2
+branch factors : ((0 1.5) (1 3.25) (2 4.22))
+
+a: criticality levels    : 2
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : T
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 25
+expanded  = 220
+generated = 757
+expanded  = 240
+generated = 856
+expanded  = 260
+generated = 1032
+expanded  = 280
+generated = 1151
+expanded  = 300
+generated = 1254
+expanded  = 320
+generated = 1329
+expanded  = 340
+generated = 1396
+expanded  = 360
+generated = 1452
+expanded  = 380
+generated = 1522
+expanded  = 400
+generated = 1581
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 400
+nodes generated: 1581
+solution depth : 0
+max node succ  : 63
+max conflicts  : 3
+branch factors : ((0 1.23) (1 3.74) (2 5.14))
+
+a: criticality levels    : 2
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : T
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 55
+expanded  = 420
+generated = 1648
+expanded  = 440
+generated = 1743
+expanded  = 460
+generated = 1817
+expanded  = 480
+generated = 1932
+expanded  = 500
+generated = 2011
+expanded  = 520
+generated = 2137
+expanded  = 540
+generated = 2255
+expanded  = 560
+generated = 2365
+expanded  = 580
+generated = 2441
+expanded  = 600
+generated = 2631
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 600
+nodes generated: 2631
+solution depth : 0
+max node succ  : 69
+max conflicts  : 3
+branch factors : ((0 1.23) (1 3.98) (2 5.62))
+
+a: criticality levels    : 2
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : T
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 69
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (UNSTACK C A)) 
+
+((UNSTACK C A) (PUTDOWN C)) 
+
+((PUTDOWN C) (PICKUP B)) 
+
+((PICKUP B) (STACK B C)) 
+
+((STACK B C) (PICKUP A)) 
+
+((PICKUP A) (STACK A B)) 
+
+((STACK A B) (G)) 
+*** node search depth: 14
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 604
+nodes generated: 2647
+solution depth : 14
+max node succ  : 69
+max conflicts  : 3
+branch factors : ((0 1.23) (1 3.99) (2 5.62))
+
+a: criticality levels    : 2
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : T
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 71
+
+NIL 
+<cl> 
+<cl> EOF
+Really exit lisp [n]? 
+; Exiting Lisp

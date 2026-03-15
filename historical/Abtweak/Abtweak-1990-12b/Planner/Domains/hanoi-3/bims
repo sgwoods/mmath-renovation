@@ -1,0 +1,10 @@
+(setq *critical-loaded* 'bims)
+(setq *critical-list* '(
+   (3  (not onb $) (onb $) )
+   (2  (ispeg $) )
+   (1  (not onm $) (onm $) )
+   (0  (not ons $) (ons $) )
+))
+
+(setq *k-list* '(1 1 3 7 ))
+

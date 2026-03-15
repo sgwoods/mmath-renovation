@@ -1,0 +1,12 @@
+(setq *critical-loaded* 'bmmssi)
+(setq *critical-list* '(
+               (5 (onb $)) 
+               (4 (not onm $)) 
+               (3 (onm $)) 
+               (2 (not ons $)) 
+               (1 (ons $))
+               (0 (ispeg $))
+                         ))
+
+(setq *k-list* '(1 2 3 6 7 7))
+

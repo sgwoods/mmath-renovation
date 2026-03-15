@@ -1,0 +1,53 @@
+To restore the planner from the file Planner.tar.zoo, we must uncompress it, and
+then detar it.
+
+1. Go to a directory in which you wish the Planner directory to be placed.
+
+   Verify what you have with a listing of the zoo file:
+   Enter "zoo -list Planner.tar.zoo", it should look like:
+
+Archive Planner.tar.zoo:
+Length    CF  Size Now  Date      Time
+--------  --- --------  --------- --------
+  598016  67%   195187  14 Dec 90 16:24:48+64 28d7   Planner.tar
+   27494  50%    13696  17 Dec 90 01:32:12+64 e0c0   users-manual.tex
+--------  --- --------  --------- --------
+  625510  67%   208883     2 files
+
+2. Move the Planner.tar.zoo file to this directory.
+
+3. Extract using "zoo - extract Planner.tar.zoo"
+
+4. DeTar using "tar -xf Planner.tar"
+
+A directory "Plan" will have been created in the current directory 
+
+5. Remove the TAR file only "rm Planner.tar"
+
+6. Place the Planner.tar.zoo file in a safe place as backup.
+
+7. Change directories to the working directory for the Planner
+   cd Plan/Planner
+
+8. Start up Allegro Common Lisp (the ".clinit.cl" file exists, and
+   the planner will be auto loaded.
+
+9. Compile all LSP files with the command "(compile-all)"
+   (This will also reload the FASL or compiled versions)
+
+10. See Users Manual for Instructions on using the Planner.
+    (Extracted by zoo as "users-manual.tex")
+
+Steve Woods, Dec 14, 1990
+
+#cmd set 1 - used to save this planner
+tar -cf Planner.tar  Plan
+zoo -add Planner.tar.zoo Planner.tar
+zoo -add Planner.tar.zoo users-manual.tex
+rm Planner.tar
+
+#cmd set 2 - used to restore this planner
+zoo -extract Planner.tar.zoo
+tar -xf Planner.tar
+rm Planner.tar
+

@@ -1,0 +1,48 @@
+                
+                PLANNER COMMAND SUMMARY
+
+ general:
+
+ (abtweak initial goal)  - invoke ABTWEAK
+ (tweak initial goal)    - invoke TWEAK
+
+ (cur)       show CURRENT planner settings, flags, expansions, etc.
+
+ (show-dom)  show DOMAIN currently loaded (in Tweak format or AbTweak format)
+
+ 
+ adjust planner settings:
+
+ (ab-mode t/nil)     t changes mode to ABTWEAK, nil to TWEAK
+ (debug-mode t/nil)  t causes display of expansion search space
+ (rand-mode  t/nil)  t causes RANDOM selection of U p- goals to satisfy
+ 
+ 
+ TWEAK - specific
+
+ (sp-mode t/nil)     t causes SINGLE PRODUCER PROPERTY to be turned on
+
+ ABTWEAK - specific
+
+ (msp-mode weak/strong/nil)  set MONOTONIC SOLUTION PROPERTY indicator
+ (prune-mode t/nil)          nil stops anyMSP pruning
+
+ (td-mode t/nil)             t causes TOP DOWN PROPERTY pruning to occur
+ (k-mode t/nil)              t causes *k-list* heuristic to be used
+
+
+DOMAINS
+
+ (load-nils)     ; NILSSON BLOCKS WORLD
+ (load-blocks)   ; CHAPMAN BLOCKS WORLD (Sussmann)
+ (load-hanoi2)   ; hanoi 2 rings (ISPEG)
+ (load-hanoi3)   ; hanoi 3 rings (ISPEG)
+ (load-hanoi4)    
+
+
+MAINTENANCE
+
+ (compile-tw)    ; compile TWEAK
+ (compile-ab)    ; compile ABTWEAK
+ (compile-search); compile SEARCH 
+ (compile-dom)   ; compile DOMAIN definitions

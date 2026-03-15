@@ -1,0 +1,13 @@
+Planner Driver Output
+Domain      : NIL
+Operators   : NIL
+Initial     : NIL
+Goal        : NIL
+Critical Lst: ((0 (HANDEMPTY)) (1 (NOT ON $ $) (ON $ $))
+               (2 (CLEAR $) (NOT CLEAR $) (ONTABLE $) (NOT ONTABLE $)
+                (HOLDING $) (NOT HOLDING $)))
+Critcal Load: NILS-CRIT4
+Top Down Lev: NIL
+Crit Dep Lst: #<OBJNULL>
+ 
+ 

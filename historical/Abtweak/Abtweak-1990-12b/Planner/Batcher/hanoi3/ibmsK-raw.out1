@@ -1,0 +1,67 @@
+
+
+>(planner initial goal
+(planner initial goal
+:planner-mode 'abtweak
+:planner-mode 'abtweak
+:td-mode t)
+:td-mode t)
+:r
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+
+((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+
+((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+
+((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+
+((MOVEM PEG2 PEG3) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (G))
+*** Node Search DEPTH: 26
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 57
+Nodes Generated: 99
+Solution Depth : 26
+Max Node Succ  : 3
+Max Conflicts  : 2
+Branch Factors : ((0 1.82) (1 1.71) (2 1.33) (3 0.0))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : T
+A: Top-Down Pruned       : 6
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 3
+T
+
+>(bye)
+(bye)
+Bye.
+[54]% exit
+exit
+[55]% 
+Process cmushell finished

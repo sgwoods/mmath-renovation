@@ -1,0 +1,145 @@
+Allegro CL 3.1.13.1 [Sun4] (0/0/0)
+Copyright (C) 1985-1990, Franz Inc., Berkeley, CA, USA
+; Loading /u/sgwoods/Plan/Planner/init.lsp.
+
+
+type  (start) to re-load planner
+
+; Loading /u/sgwoods/Plan/Planner/init-o.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search-load.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graphsearch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/list-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/node-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/interface.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/state-expansion.fasl.
+; Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/planner.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/branch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/driver.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/general.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/structs.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/mtc.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/successors.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/tree.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/debug.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Maint/compile.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mtc.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-succ.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-causal.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-msp.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mono.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/Maint/compile.fasl.
+; Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp.
+; Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp.
+domain definition for: NILSSONS-BLOCKS-WORLD
+operators    : 
+(#s(OPERATOR :OPID PICKUP :NAME (PICKUP $X) :PRECONDITIONS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY))) #s(OPERATOR :OPID PUTDOWN :NAME (PUTDOWN $X) :PRECONDITIONS ((HOLDING $X)) :EFFECTS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X))) #s(OPERATOR :OPID STACK :NAME (STACK $X $Y) :PRECONDITIONS ((HOLDING $X) (CLEAR $Y)) :EFFECTS ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X) (NOT CLEAR $Y))) #s(OPERATOR :OPID UNSTACK :NAME (UNSTACK $X $Y) :PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X) (NOT ON $X $Y))))
+initial state: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B) (HANDEMPTY))
+goal state   : ((ON A B) (ON B C))
+; Fast loading /u/sgwoods/Plan/Planner/useful.fasl.
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp.
+domain definition for: HANOI-3-ISPEG
+operators    : 
+(#s(OPERATOR :OPID MOVEB :NAME (MOVEB $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y) (NOT ONM $Y) (ONB $X)) :EFFECTS ((NOT ONB $X) (ONB $Y))) #s(OPERATOR :OPID MOVEM :NAME (MOVEM $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X)) :EFFECTS ((NOT ONM $X) (ONM $Y))) #s(OPERATOR :OPID MOVES :NAME (MOVES $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (ONS $X)) :EFFECTS ((NOT ONS $X) (ONS $Y))))
+initial state: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))
+goal state   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+
+NIL 
+<cl> 
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/isbm.
+
+T 
+<cl> 
+<cl> expanded  = 20
+generated = 33
+expanded  = 40
+generated = 61
+expanded  = 60
+generated = 98
+expanded  = 80
+generated = 128
+expanded  = 100
+generated = 159
+expanded  = 120
+generated = 195
+expanded  = 140
+generated = 230
+expanded  = 160
+generated = 263
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG3)) 
+
+((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2)) 
+
+((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1)) 
+
+((MOVES PEG3 PEG1) (MOVES PEG1 PEG2)) 
+
+((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3)) 
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1)) 
+
+((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3)) 
+
+((MOVEM PEG2 PEG3) (MOVES PEG1 PEG3)) 
+
+((MOVES PEG1 PEG3) (G)) 
+*** node search depth: 28
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 168
+nodes generated: 284
+solution depth : 28
+max node succ  : 4
+max conflicts  : 2
+branch factors : ((0 1.73) (1 1.64) (2 1.33) (3 0.0))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+
+NIL 
+<cl> 
+<cl> EOF
+Really exit lisp [n]? 
+; Exiting Lisp

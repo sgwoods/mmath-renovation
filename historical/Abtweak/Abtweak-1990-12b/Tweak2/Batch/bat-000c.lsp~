@@ -1,0 +1,6 @@
+(load-hanoi3)
+(if (eq *mode* 'abtweak) (toggle))  
+(if (eq *sp-property* nil) (toggle-sp))
+(setq *top-down-flag* t)
+(time (tweak initial goal))
+

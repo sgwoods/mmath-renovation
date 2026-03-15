@@ -1,0 +1,6 @@
+(load "Mcallester-plan/successors")
+(load "Mcallester-plan/find-one-mr-conflict")
+(load "Mcallester-plan/mr-conf-detection")
+(load "Mcallester-plan/mr-declob")
+(load "Mcallester-plan/mr-planner-interface")
+(load "Mcallester-plan/mr-goal")

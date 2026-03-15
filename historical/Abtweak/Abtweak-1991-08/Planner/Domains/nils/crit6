@@ -1,0 +1,10 @@
+(setq *critical-list* '(
+   (0  (not on $ $) (on $ $) )
+   (1  (handempty))
+   (2  (clear $) (not clear $) 
+       (ontable $) (not ontable $)
+       (holding $) (not holding $) )
+ ))
+(setq *critical-loaded* 'nils-crit6)
+
+(setq *k-list* '(2 2 6))

@@ -1,0 +1,1 @@
+(setq *critical-list* '((5 (ispeg $))(4 (onb $)) (3 (not onm $)) (2 (onm $)) (1 (not ons $)) (0 (ons $)))  )

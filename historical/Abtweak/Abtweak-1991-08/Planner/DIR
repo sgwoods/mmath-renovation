@@ -1,0 +1,468 @@
+
+PLANNER DIRECTORY
+
+PLANNER: /u/sgwoods/Plan/Planner/
+
+init
+
+(defun h4 () 
+(defun h3 () 
+(defun h2 () 
+(defun nils () 
+(defun robot () 
+(defun chapman () 
+
+planner
+
+(defvar *ck-line*  0)  ; controls output of lines indicating numexp , numgen
+(defvar *ck-cur*   0)  ; controls output of CUR report ongoing 
+(defvar *max-exp*  0)  ; controls maximum number of expansions allowed till quit
+(defvar *max-gen*  0)  ; controls maximum number of generations allowed till quit
+(defvar *max-open*  0) ; controls maximum size of open list allowed till quit
+(defvar *domain*           nil  "domain name = abtweak/tweak ")
+(defvar *critical-loaded*  nil  "criticality list name")
+(defvar *k-list*           nil  "criticality depth list")
+(defvar *numexpanded*      0    "global number of nodes expanded total")
+(defvar *numgenerated*     0    "global number of nodes generated total")
+(defvar *count*            0    "maximum node successors")
+(defvar *confl-count*      0    "maximum u p- conflicts")
+(defvar *k-branching*      nil  "record branching values in a list")
+(defvar *ab-count*         0    "number abstract nodes generated")
+(defvar *top-down-number*  0    "number nodes pruned via tdp")
+(defvar *w-msp-pruned*     0    "number nodes pruned via w-msp")
+(defvar *s-msp-pruned*     0    "number nodes pruned via s-msp")
+(defvar *mode*             nil  "planner mode = tweak or abtweak")
+(defvar *msp-mode*         nil  "mono. sol. prop. = nil/weak/strong")
+(defvar *msp-weak-mode*    nil  "weak msp clobbering = nec/pos")
+(defvar *abs-goal*         nil  "do not abstract goal preconditions")
+(defvar *td-mode*          nil  "top down mode = t / nil")
+(defvar *crit-depth-mode*  nil  "critical depth mode (use *k-list*)")
+(defvar *determine-mode*   nil  "deter. u and p mode = random / tree / stack")
+(defvar *backwards*        nil  "revers tweak opid select in a-list (det-u-p)")
+(defvar *debug*            nil  "debug mode = t / nil")
+(defvar *show-up*          nil  "show u and p selected as planning goes on")
+(defvar *heuristic*        nil  "one of : d- default, nsg - no sat goals")
+(defun planner (initial goal &key 
+  ; set control global flags (default values specified in planner function)
+(defun make-initial-plan (initial goal)
+(defun goal-p (state)
+(defun which-pri-function ()
+(defun successors&costs (plan)
+(defun print-state (state)
+(defun print-stats ()
+(defun cur () 
+(defun show-dom ()
+(defun tw-make-initial-plan (initial goal)
+(defun tw-goal-p (state)
+(defun tw-which-pri-function ()
+(defun tw-pri-function-1 ()
+(defun tw-pri-function-2 ()
+(defun num-of-ops (plan)
+(defun num-of-sat-goals (plan)
+(defun tw-successors&costs (plan)
+(defun tw-print-stats ()
+(defun gen-stats ()
+(defun tw-show-dom ()
+(defun ab-make-initial-plan (initial goal)
+(defun ab-goal-p (state)
+(defun ab-which-pri-function ()
+(defun ab-pri-function-1 ()
+(defun ab-pri-function-1a ()
+(defun ab-pri-function-2 ()
+(defun ab-pri-function-2a ()
+(defun ab-successors&costs (plan)
+(defun ab-print-stats ()
+(defun ab-show-dom ()
+(defun find-initial-k-val ()
+(defun get-k-vals (c-list ints)
+(defun maxint (intlist prev)
+
+driver
+(defvar *ofile* nil)
+(defun driver (initial goal &key 
+(defun print-title (stream do op init go crl crlo tdl kl)
+(defun print-results (stream do mo abs h de det bac ex ge sd cfc cc bra k kd  td tdp ms mspw w s ab gp)
+
+branch
+(defun init-k-branching ()
+(defun update-br-factor (kval len)
+(defun compute-all-br ()
+(defun avg-br-factor (kval)
+(defun simp (val)
+
+
+SEARCH: /u/sgwoods/Plan/Planner/Search
+
+graphsearch
+
+(defvar *open*   nil)     ; global open list
+(defvar *closed* nil)     ; global closed list
+(defvar *goal*   nil)     ; global solution plan 
+(defvar *solution-depth*   0)     ; global solution plan depth
+(defun graphsearch (initial-state
+
+interface
+
+(defun print-open-list ()
+(defun print-node&depth (node)
+(defun print-success ( node)
+
+list-access
+
+(defun initialize-open (node)
+(defun initialize-closed ()
+(defun list-empty-p (list)
+(defun get-next-open-node ()
+(defun remove-first-node (list)
+(defun insert-node (node open-list)
+(defun get-node-from-list (state list-of-nodes)
+(defun state-isin-p (state list-of-nodes)
+(defun remove-state (state list-of-nodes)
+(defun length-of-open ()
+(defun first-of-open ()
+(defun last-of-open ()
+
+node-access
+
+(defun get-priority (node)
+(defun get-state (node)
+(defun get-cost (node)
+(defun get-solution-depth (node)
+(defun make-node (priority state cost parent-node)
+
+search-load
+
+
+search
+
+(defun search (initial-state)
+
+state-expansion
+
+(defun compute-priority (priority-function state cost)
+
+
+TWEAK: /u/sgwoods/Plan/Planner/Tweak2/
+
+debug
+
+(defun debug-s (parent plan-list)
+
+general
+
+(defun random-element (list)
+(defun my-delete (e list)
+(defun memb (e list)
+(defun substitute-one-list (alist mapping)
+(defun substitute-all-lists (lists mapping)
+(defun clean-up-mapping (substitution-list old-variables)
+(defun remove-all-var-pairs (substitution-list)
+(defmacro create-var ()
+(defmacro create-opid ()
+(defmacro create-planid ()
+(defun var-p (x)
+(defun constant-p (x)
+(defun negate-condition (p)
+(defun get-proposition-params (p)
+
+init
+
+
+mtc
+
+(defun mtc (plan)
+(defun all_preconds_hold-p (plan opids)
+(defun this_opid_ok-p (plan opid)
+(defun preconds_hold-p (plan opid preconds)
+(defun hold-p (plan opid precond)
+(defun one-of-establishers-ok-p (plan establishers opid precond)
+(defun clobberer-exists-p(plan est user precond)
+
+structs
+
+(defstruct plan  
+(defstruct operator 
+(defvar *operators* nil
+(defvar initial  nil
+(defvar goal     nil
+(defvar *cost-rde-exist*  0
+(defvar *cost-rde-add*     0
+(defvar *cost-separation*  0
+(defvar *cost-promotion*   0
+(defvar *cost-demotion*    0
+(defvar *cost-en-intermediate* 0
+(defvar *cost-ep-intermediate* 0
+(defvar *cost-n-intermediate* 0
+(defun create-operator-instance ( &key opid
+(defun create-plan (id &key a b nc (tree nil) (kval 0))
+
+successors
+
+(defun successors ( plan )
+(defun precond-to-index (precond userid plan)
+(defun index-to-precond (precond-index userid plan)
+(defun determine-u-and-p (plan)
+(defun determine-tree-u-and-p (plan)
+(defun determine-first-u-and-p (plan)
+(defun determine-random-u-and-p (plan)
+(defun unsat-up-pairs (plan)
+
+tree
+
+(defun insert-tree (tree parent child)
+(defun get-root (tree)
+(defun get-children (tree)
+(defun replace-subtree (tree parent child)
+(defun pre-order (tree )
+
+
+/u/sgwoods/Plan/Planner/Tweak2/Succ
+
+find-exist-ests
+
+(defun find-exist-ests (plan u p-) 
+
+find-nec-exist-ests
+
+(defun find-nec-exist-ests (plan u p)
+
+find-new-ests
+
+(defun find-new-ests (plan u p-)
+(defun find-new-plan (plan u est mapping)
+
+find-pos-exist-ests
+
+(defun find-pos-exist-ests (plan u p)
+(defmacro get-establisher (pos-est-pairs)
+(defmacro get-establisher-effect (pos-est-pairs)
+(defun make-pos-intermediates (pos-est-pairs u p plan)
+(defun make-est (plan estid effect-of-est u p)
+(defun find_pos_est_pairs (plan pos-ests u p)
+(defun find_est_effect_pairs_for_pos-est (plan pos-estid u p)
+(defun find-all-poss-codes-effects (pos-estid p plan)
+
+select-ops
+
+(defun select-ops (templates  precond)
+(defun find-list-of-op-instances (op-template precond)
+
+
+/u/sgwoods/Plan/Planner/Tweak2/Conf-infer
+
+classify
+
+(defun classify (conflict plan)
+
+conflict-detection
+
+(defun find-conflicts (plan)
+(defun create-conflict-list-for-opid (opid plan)
+(defun create-conflict-list-for-precond (precond opid plan)
+(defun create-conflict-list-for-tuple (precond establisher opid plan)
+(defun find-n-q-pairs (precond establisher opid plan)
+(defun n-q-pairs-for-this-candidate  (candidate precond plan)
+
+declob
+
+(defun declobber-all (intermediates u precond-index)
+(defun declobber (estid  u precond-index plan)
+(defun create-alternative-constraints (estid u precond plan)
+(defun create-set-of-constraints (conflict plan)
+(defun create-cart-products (clauses)
+(defun apply-constraints-to-plan (constraints plan)
+(defun apply-this-constraint-to-plan (constraint plan)
+(defun type-of-constraint (constraint)
+(defun separation-list (p q)
+
+intermed-access
+
+(defun get-inter-estid (intermediate)
+(defun get-inter-plan (intermediate)
+
+
+/u/sgwoods/Plan/Planner/Tweak2/Plan-infer
+
+cr-access
+
+(defun get-cr-in-plan (plan)
+(defun add-cr-to-plan (estid-list userid condition plan)
+(defun get-producer-list-in-cr (cr-element)
+(defun get-condition-in-cr (cr-element)
+(defun get-user-in-cr (cr-element)
+
+plan-dependent
+
+(defun get_id (plan)
+(defun get_cost (plan)   
+(defun get_kval (plan)   
+(defun get_cr (plan)   
+(defun get_a (plan)   
+(defun get_b (plan)   
+(defun get_nc (plan)   
+(defun get_var (plan)   
+(defun get_tree (plan)   
+(defun get_op-count (plan)   
+(defun get_conflicts (plan)   
+(defun get_invalid (plan)   
+(defun invalid-p (plan)
+(defun non-codesignate-p (ele1 ele2 plan)
+(defun nece-before-p (op1 op2 plan)
+(defun transitive-test-before-p (op1 op2 pairs)
+(defun get-conflicts-from-plan (plan)
+(defun get-conflict-pro (conflict)
+(defun get-conflict-u (conflict)
+(defun get-conflict-n (conflict)
+(defun get-conflict-p (conflict)
+(defun get-conflict-q (conflict)
+(defun get-operators-from-plan (plan)
+(defun get-opids-from-plan (plan)
+(defun  get-effects-of-opid (opid plan)
+(defun get-preconditions-of-opid (opid plan)
+(defun get-cost-of-opid (opid plan)
+(defmacro get-operator-effects (operator)
+(defun get-operator-params (operator)
+(defun get-operator-opid (operator)
+(defun create-new-op-instance (op-template)
+(defun apply-mapping-to-op-instance (operator mapping)
+(defun make-copy-of-op-list (op-list)
+(defun make-copy-of-operator (operator)
+(defun make-copy-of-plan (plan)
+(defun add-nc-to-plan (x y plan)
+(defun remove-constant-nonco (plan)
+(defun add-conflicts-to-plan (conflicts plan)
+(defun add-cost-to-plan (plan cost)
+(defun replace-a (x y plan)
+(defun replace-nc (x y plan)
+(defun clean-up-nc (nc)
+(defun replace-cr (x y plan)
+(defun replace-conflicts (x y plan)
+(defun add-nec-to-tree-plan (child parent plan)
+(defun add-order-to-plan (opid1 opid2 plan)
+(defun remv-redun-orders (b candidates)
+(defun add-operator-to-plan (op-instance plan)
+(defun add-para-ncodes (list-of-vars plan)
+(defun mark-invalid-plan (plan)
+
+plan-inference
+
+(defun find_establishers (plan opid precond)
+(defun remove-redundant-establishers (plan list-of-ops)
+(defun nece-est-p (opid precond plan)
+(defun poss-est-p (opid precond plan)
+(defun np-est-p (opid precond plan)
+(defun nece-codesignates-p (prop1 prop2)
+(defun np-codesignates-p (prop1 prop2 plan)
+(defun atom-poss-codesignate (a1 a2 &optional plan)
+(defun poss-codesignates (prop1 prop2 &optional plan)
+(defun nots-do-not-match (p1 p2)
+(defun negate (p1)
+(defun strip-negate (p1)
+(defun all-poss-before (op plan)
+(defun all-nece-before (op plan)
+(defun all-poss-between (op1 op2 plan)
+(defun all-nece-between (op1 op2 plan)
+(defun poss-before-p (op1 op2 plan)
+(defun get-ith-op-effect (op-template index)
+(defun ith (i a-list)
+
+plan-modification
+
+(defun add-prop-nc-to-plan (prop1 prop2 plan)
+(defun apply-mapping-to-plan (mapping plan)
+(defun add-co-to-plan (x y plan)
+(defun substitute-this-by-that (x y plan)
+
+show-plan
+
+(defun show (plan) 
+(defun show-ops (plan &key show-cr (terminal t))
+(defun replace-by-op-name (op-id op-templates)
+(defun sort-orders (op-list orders)
+(defvar *open-file* nil)
+(defun write-open-to-file (file-name &key
+(defun write-one-plan-to-file (plan stream &key show-cr)
+(defun showa (plan)
+(defun showb (plan)
+(defun shownc (plan)
+
+
+ABTWEAK: /u/sgwoods/Plan/Planner/AbTweak2/
+
+init
+
+
+ab-causal
+
+(defun new-cr (plan k)
+(defun find-k-cr (plan k)
+(defun get-est-tuples (plan level-k-oplist)
+(defun get-est-this-op (plan op-pre)
+(defun get-level-k-oplist (a level-k-pre-types)
+(defun get-this-level-k-type (a one-k-pre-type)
+(defun find-this-a-pre (pre-list one-k-pre-type)
+(defun equal-pre (pre-type one-k-pre-type)
+(defun create-tuples (opid pre-list)
+(defun get-level-k-pre (k pre-list)
+
+ab-mono
+
+(defun opt-purge-level-k (old-k-val)
+(defun purge-node-list (open-list remv)
+(defun purge-this-node-list (node-list remv)
+
+ab-msp
+
+(defun violates-msp (plan)
+(defun violates-msp-weak (plan )
+(defun find-all-up-pairs (cr)
+(defun weak-violation-p (plan cr up-pairs)
+(defun all-est-clob-this-cri (plan cr cri)
+(defun get-cr-ests (cr u p-)
+(defun all-ests-clob-p (plan pos-ests u p-)
+(defun nec-clobbered-p (plan e u p-)
+(defun pos-clobbered-p (plan e u p-)
+(defun nec-pos-clobbered-p (plan e u p-)
+(defun np-clobbers-p (plan n-betw p-)
+(defun np-asserts-p (plan n-betw p-)
+(defun n-clobbers-p (plan n-betw p-)
+(defun p-clobbers-p (plan n-betw p-)
+(defun n-asserts-p (plan n-betw p-)
+(defun p-asserts-p (plan n-betw p-)
+(defun violates-msp-strong (plan )
+(defun strong-violation-p (plan cr up-pairs)
+(defun any-est-clob-this-cri (plan cr up-cr)
+(defun any-ests-clob-p (plan pos-ests u p-)
+
+ab-mtc
+
+(defun ab-mtc (plan)
+(defun ab-all_preconds_hold-p (plan opids)
+(defun ab-this_opid_ok-p (plan opid)
+
+ab-succ
+
+(defun ab-successors (plan )
+(defun precond-to-index (precond userid plan)
+(defun index-to-precond (precond-index userid plan)
+(defun ab-determine-u-and-p (plan)
+(defun ab-determine-tree-u-and-p (plan)
+(defun ab-determine-first-u-and-p (plan)
+(defun ab-determine-random-u-and-p (plan)
+(defun ab-unsat-up-pairs (plan)
+(defun adjust-pre-list (opid plist k)
+(defun adjust-pre-list-others (plist k)
+(defun find-crit (pname)
+ (defun substitute-pre (pname)
+(defun find-pre-head (precond)
+(defun sub-pre-tail (params)
+ (defun find-crit1 (pname clist)
+(defun contains-constants-p (params)
+(defun remove-a-constant (pname)
+(defun find-right-constant (pname right-pos)
+(defun replace-i (list with pos)
+(defun sublist (list from to)
+(defun add-a-level (plan )
+(defun update-op-count (op-count max-k length-a lev-k)
+(defun total-ops (op-count)
+

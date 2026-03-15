@@ -1,0 +1,587 @@
+Allegro CL 3.1.13.1 [Sun4] (0/0/0)
+Copyright (C) 1985-1990, Franz Inc., Berkeley, CA, USA
+; Loading /u/sgwoods/Plan/Planner/init.lsp.
+
+
+type  (start) to re-load planner
+
+; Loading /u/sgwoods/Plan/Planner/init-o.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search-load.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graphsearch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/list-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/node-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/interface.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/state-expansion.fasl.
+; Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/planner.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/branch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/driver.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/general.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/structs.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/mtc.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/successors.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/tree.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/debug.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Maint/compile.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mtc.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-succ.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-causal.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-msp.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mono.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/Maint/compile.fasl.
+; Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp.
+; Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp.
+domain definition for: NILSSONS-BLOCKS-WORLD
+operators    : 
+(#s(OPERATOR :OPID PICKUP :NAME (PICKUP $X) :PRECONDITIONS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY))) #s(OPERATOR :OPID PUTDOWN :NAME (PUTDOWN $X) :PRECONDITIONS ((HOLDING $X)) :EFFECTS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X))) #s(OPERATOR :OPID STACK :NAME (STACK $X $Y) :PRECONDITIONS ((HOLDING $X) (CLEAR $Y)) :EFFECTS ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X) (NOT CLEAR $Y))) #s(OPERATOR :OPID UNSTACK :NAME (UNSTACK $X $Y) :PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X) (NOT ON $X $Y))))
+initial state: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B) (HANDEMPTY))
+goal state   : ((ON A B) (ON B C))
+; Fast loading /u/sgwoods/Plan/Planner/useful.fasl.
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp.
+domain definition for: HANOI-3-ISPEG
+operators    : 
+(#s(OPERATOR :OPID MOVEB :NAME (MOVEB $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y) (NOT ONM $Y) (ONB $X)) :EFFECTS ((NOT ONB $X) (ONB $Y))) #s(OPERATOR :OPID MOVEM :NAME (MOVEM $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X)) :EFFECTS ((NOT ONM $X) (ONM $Y))) #s(OPERATOR :OPID MOVES :NAME (MOVES $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (ONS $X)) :EFFECTS ((NOT ONS $X) (ONS $Y))))
+initial state: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))
+goal state   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+
+NIL 
+<cl> 
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/mbis.
+
+T 
+<cl> 
+<cl> Klist = 
+"Klist = " 
+<cl> (1 3 3 7)
+(1 3 3 7) 
+<cl> 
+
+NIL 
+<cl> 
+<cl> expanded  = 20
+generated = 35
+expanded  = 40
+generated = 71
+expanded  = 60
+generated = 107
+expanded  = 80
+generated = 141
+expanded  = 100
+generated = 181
+expanded  = 120
+generated = 213
+expanded  = 140
+generated = 253
+expanded  = 160
+generated = 289
+expanded  = 180
+generated = 329
+expanded  = 200
+generated = 366
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 200
+nodes generated: 366
+solution depth : 0
+max node succ  : 5
+max conflicts  : 2
+branch factors : ((0 1.84) (1 1.0) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+expanded  = 220
+generated = 403
+expanded  = 240
+generated = 439
+expanded  = 260
+generated = 470
+expanded  = 280
+generated = 503
+expanded  = 300
+generated = 544
+expanded  = 320
+generated = 581
+expanded  = 340
+generated = 618
+expanded  = 360
+generated = 656
+expanded  = 380
+generated = 690
+expanded  = 400
+generated = 734
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 400
+nodes generated: 734
+solution depth : 0
+max node succ  : 5
+max conflicts  : 2
+branch factors : ((0 1.84) (1 1.0) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+expanded  = 420
+generated = 767
+expanded  = 440
+generated = 808
+expanded  = 460
+generated = 847
+expanded  = 480
+generated = 882
+expanded  = 500
+generated = 923
+expanded  = 520
+generated = 960
+expanded  = 540
+generated = 1001
+expanded  = 560
+generated = 1031
+expanded  = 580
+generated = 1064
+expanded  = 600
+generated = 1100
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 600
+nodes generated: 1100
+solution depth : 0
+max node succ  : 6
+max conflicts  : 2
+branch factors : ((0 1.84) (1 1.0) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+expanded  = 620
+generated = 1137
+expanded  = 640
+generated = 1176
+expanded  = 660
+generated = 1211
+expanded  = 680
+generated = 1238
+expanded  = 700
+generated = 1274
+expanded  = 720
+generated = 1309
+expanded  = 740
+generated = 1343
+expanded  = 760
+generated = 1375
+expanded  = 780
+generated = 1406
+expanded  = 800
+generated = 1441
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 800
+nodes generated: 1441
+solution depth : 0
+max node succ  : 6
+max conflicts  : 3
+branch factors : ((0 1.8) (1 1.0) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+Warning: 5064152 bytes have been tenured; (gc t) is recommended.
+Warning: 5064240 bytes have been tenured; (gc t) is recommended.
+Warning: 5064240 bytes have been tenured; (gc t) is recommended.
+Warning: 5071528 bytes have been tenured; (gc t) is recommended.
+Warning: 5071792 bytes have been tenured; (gc t) is recommended.
+Warning: 5071792 bytes have been tenured; (gc t) is recommended.
+Warning: 5071792 bytes have been tenured; (gc t) is recommended.
+Warning: 5079064 bytes have been tenured; (gc t) is recommended.
+Warning: 5079264 bytes have been tenured; (gc t) is recommended.
+Warning: 5079264 bytes have been tenured; (gc t) is recommended.
+Warning: 5083280 bytes have been tenured; (gc t) is recommended.
+Warning: 5083384 bytes have been tenured; (gc t) is recommended.
+Warning: 5083384 bytes have been tenured; (gc t) is recommended.
+Warning: 5087488 bytes have been tenured; (gc t) is recommended.
+Warning: 5087488 bytes have been tenured; (gc t) is recommended.
+Warning: 5087488 bytes have been tenured; (gc t) is recommended.
+Warning: 5091432 bytes have been tenured; (gc t) is recommended.
+Warning: 5091544 bytes have been tenured; (gc t) is recommended.
+Warning: 5091544 bytes have been tenured; (gc t) is recommended.
+expanded  = 820
+generated = 1477
+Warning: 5095608 bytes have been tenured; (gc t) is recommended.
+Warning: 5095608 bytes have been tenured; (gc t) is recommended.
+Warning: 5095608 bytes have been tenured; (gc t) is recommended.
+Warning: 5107056 bytes have been tenured; (gc t) is recommended.
+Warning: 5111800 bytes have been tenured; (gc t) is recommended.
+Warning: 5115296 bytes have been tenured; (gc t) is recommended.
+Warning: 5120720 bytes have been tenured; (gc t) is recommended.
+Warning: 5124712 bytes have been tenured; (gc t) is recommended.
+Warning: 5196616 bytes have been tenured; (gc t) is recommended.
+Warning: 5201432 bytes have been tenured; (gc t) is recommended.
+Warning: 5204832 bytes have been tenured; (gc t) is recommended.
+Warning: 5210232 bytes have been tenured; (gc t) is recommended.
+Warning: 5210312 bytes have been tenured; (gc t) is recommended.
+Warning: 5214856 bytes have been tenured; (gc t) is recommended.
+Warning: 5215928 bytes have been tenured; (gc t) is recommended.
+Warning: 5215928 bytes have been tenured; (gc t) is recommended.
+Warning: 5226600 bytes have been tenured; (gc t) is recommended.
+Warning: 5231432 bytes have been tenured; (gc t) is recommended.
+Warning: 5231432 bytes have been tenured; (gc t) is recommended.
+expanded  = 840
+generated = 1513
+Warning: 5235712 bytes have been tenured; (gc t) is recommended.
+Warning: 5243984 bytes have been tenured; (gc t) is recommended.
+Warning: 5243984 bytes have been tenured; (gc t) is recommended.
+Warning: 5248040 bytes have been tenured; (gc t) is recommended.
+Warning: 5255496 bytes have been tenured; (gc t) is recommended.
+Warning: 5260280 bytes have been tenured; (gc t) is recommended.
+Warning: 5260320 bytes have been tenured; (gc t) is recommended.
+Warning: 5338760 bytes have been tenured; (gc t) is recommended.
+Warning: 5338840 bytes have been tenured; (gc t) is recommended.
+Warning: 5342872 bytes have been tenured; (gc t) is recommended.
+Warning: 5349760 bytes have been tenured; (gc t) is recommended.
+Warning: 5351104 bytes have been tenured; (gc t) is recommended.
+Warning: 5355088 bytes have been tenured; (gc t) is recommended.
+Warning: 5359920 bytes have been tenured; (gc t) is recommended.
+Warning: 5359968 bytes have been tenured; (gc t) is recommended.
+Warning: 5364248 bytes have been tenured; (gc t) is recommended.
+Warning: 5373024 bytes have been tenured; (gc t) is recommended.
+Warning: 5373104 bytes have been tenured; (gc t) is recommended.
+Warning: 5383656 bytes have been tenured; (gc t) is recommended.
+Warning: 5383744 bytes have been tenured; (gc t) is recommended.
+Warning: 5383744 bytes have been tenured; (gc t) is recommended.
+Warning: 5389648 bytes have been tenured; (gc t) is recommended.
+Warning: 5389744 bytes have been tenured; (gc t) is recommended.
+Warning: 5389744 bytes have been tenured; (gc t) is recommended.
+Warning: 5395536 bytes have been tenured; (gc t) is recommended.
+Warning: 5395752 bytes have been tenured; (gc t) is recommended.
+Warning: 5395752 bytes have been tenured; (gc t) is recommended.
+Warning: 5395752 bytes have been tenured; (gc t) is recommended.
+Warning: 5399792 bytes have been tenured; (gc t) is recommended.
+Warning: 5399792 bytes have been tenured; (gc t) is recommended.
+expanded  = 860
+generated = 1553
+Warning: 5472000 bytes have been tenured; (gc t) is recommended.
+Warning: 5472000 bytes have been tenured; (gc t) is recommended.
+Warning: 5472000 bytes have been tenured; (gc t) is recommended.
+Warning: 5478608 bytes have been tenured; (gc t) is recommended.
+Warning: 5482952 bytes have been tenured; (gc t) is recommended.
+Warning: 5486968 bytes have been tenured; (gc t) is recommended.
+Warning: 5491024 bytes have been tenured; (gc t) is recommended.
+Warning: 5497600 bytes have been tenured; (gc t) is recommended.
+Warning: 5497600 bytes have been tenured; (gc t) is recommended.
+Warning: 5503472 bytes have been tenured; (gc t) is recommended.
+Warning: 5503584 bytes have been tenured; (gc t) is recommended.
+Warning: 5503584 bytes have been tenured; (gc t) is recommended.
+Warning: 5507080 bytes have been tenured; (gc t) is recommended.
+Warning: 5509600 bytes have been tenured; (gc t) is recommended.
+Warning: 5509600 bytes have been tenured; (gc t) is recommended.
+Warning: 5509600 bytes have been tenured; (gc t) is recommended.
+Warning: 5513736 bytes have been tenured; (gc t) is recommended.
+Warning: 5513736 bytes have been tenured; (gc t) is recommended.
+Warning: 5513736 bytes have been tenured; (gc t) is recommended.
+Warning: 5517640 bytes have been tenured; (gc t) is recommended.
+Warning: 5517640 bytes have been tenured; (gc t) is recommended.
+Warning: 5521592 bytes have been tenured; (gc t) is recommended.
+Warning: 5526000 bytes have been tenured; (gc t) is recommended.
+expanded  = 880
+generated = 1584
+Warning: 5530016 bytes have been tenured; (gc t) is recommended.
+Warning: 5534224 bytes have been tenured; (gc t) is recommended.
+Warning: 5538368 bytes have been tenured; (gc t) is recommended.
+Warning: 5614832 bytes have been tenured; (gc t) is recommended.
+Warning: 5623112 bytes have been tenured; (gc t) is recommended.
+Warning: 5623112 bytes have been tenured; (gc t) is recommended.
+Warning: 5623112 bytes have been tenured; (gc t) is recommended.
+Warning: 5623112 bytes have been tenured; (gc t) is recommended.
+Warning: 5631392 bytes have been tenured; (gc t) is recommended.
+Warning: 5640144 bytes have been tenured; (gc t) is recommended.
+Warning: 5640224 bytes have been tenured; (gc t) is recommended.
+Warning: 5650424 bytes have been tenured; (gc t) is recommended.
+Warning: 5650472 bytes have been tenured; (gc t) is recommended.
+Warning: 5655984 bytes have been tenured; (gc t) is recommended.
+Warning: 5656072 bytes have been tenured; (gc t) is recommended.
+Warning: 5656072 bytes have been tenured; (gc t) is recommended.
+Warning: 5661120 bytes have been tenured; (gc t) is recommended.
+Warning: 5661120 bytes have been tenured; (gc t) is recommended.
+Warning: 5666712 bytes have been tenured; (gc t) is recommended.
+Warning: 5666776 bytes have been tenured; (gc t) is recommended.
+Warning: 5666776 bytes have been tenured; (gc t) is recommended.
+Warning: 5670544 bytes have been tenured; (gc t) is recommended.
+Warning: 5670544 bytes have been tenured; (gc t) is recommended.
+Warning: 5674336 bytes have been tenured; (gc t) is recommended.
+Warning: 5674336 bytes have been tenured; (gc t) is recommended.
+Warning: 5734096 bytes have been tenured; (gc t) is recommended.
+Warning: 5735168 bytes have been tenured; (gc t) is recommended.
+expanded  = 900
+generated = 1623
+Warning: 5735168 bytes have been tenured; (gc t) is recommended.
+Warning: 5768384 bytes have been tenured; (gc t) is recommended.
+Warning: 5768424 bytes have been tenured; (gc t) is recommended.
+Warning: 5775816 bytes have been tenured; (gc t) is recommended.
+Warning: 5780536 bytes have been tenured; (gc t) is recommended.
+Warning: 5784552 bytes have been tenured; (gc t) is recommended.
+Warning: 5789272 bytes have been tenured; (gc t) is recommended.
+Warning: 5793352 bytes have been tenured; (gc t) is recommended.
+Warning: 5797584 bytes have been tenured; (gc t) is recommended.
+Warning: 5801856 bytes have been tenured; (gc t) is recommended.
+Warning: 5805856 bytes have been tenured; (gc t) is recommended.
+Warning: 5806216 bytes have been tenured; (gc t) is recommended.
+Warning: 5813328 bytes have been tenured; (gc t) is recommended.
+Warning: 5818096 bytes have been tenured; (gc t) is recommended.
+Warning: 5818136 bytes have been tenured; (gc t) is recommended.
+Warning: 5896816 bytes have been tenured; (gc t) is recommended.
+Warning: 5901584 bytes have been tenured; (gc t) is recommended.
+Warning: 5901664 bytes have been tenured; (gc t) is recommended.
+Warning: 5901664 bytes have been tenured; (gc t) is recommended.
+Warning: 5908656 bytes have been tenured; (gc t) is recommended.
+expanded  = 920
+generated = 1659
+Warning: 5913392 bytes have been tenured; (gc t) is recommended.
+Warning: 5917472 bytes have been tenured; (gc t) is recommended.
+Warning: 5922272 bytes have been tenured; (gc t) is recommended.
+Warning: 5926304 bytes have been tenured; (gc t) is recommended.
+Warning: 5930072 bytes have been tenured; (gc t) is recommended.
+Warning: 5937512 bytes have been tenured; (gc t) is recommended.
+Warning: 5937584 bytes have been tenured; (gc t) is recommended.
+Warning: 5937584 bytes have been tenured; (gc t) is recommended.
+Warning: 5942328 bytes have been tenured; (gc t) is recommended.
+Warning: 5942328 bytes have been tenured; (gc t) is recommended.
+Warning: 5945848 bytes have been tenured; (gc t) is recommended.
+Warning: 5946512 bytes have been tenured; (gc t) is recommended.
+Warning: 5946512 bytes have been tenured; (gc t) is recommended.
+Warning: 5950480 bytes have been tenured; (gc t) is recommended.
+Warning: 5958240 bytes have been tenured; (gc t) is recommended.
+Warning: 5958320 bytes have been tenured; (gc t) is recommended.
+Warning: 5997136 bytes have been tenured; (gc t) is recommended.
+Warning: 5997136 bytes have been tenured; (gc t) is recommended.
+Warning: 5998600 bytes have been tenured; (gc t) is recommended.
+Warning: 6053744 bytes have been tenured; (gc t) is recommended.
+Warning: 6053744 bytes have been tenured; (gc t) is recommended.
+Warning: 6059632 bytes have been tenured; (gc t) is recommended.
+Warning: 6059776 bytes have been tenured; (gc t) is recommended.
+Warning: 6059776 bytes have been tenured; (gc t) is recommended.
+Warning: 6059776 bytes have been tenured; (gc t) is recommended.
+Warning: 6065128 bytes have been tenured; (gc t) is recommended.
+Warning: 6065232 bytes have been tenured; (gc t) is recommended.
+Warning: 6065232 bytes have been tenured; (gc t) is recommended.
+Warning: 6065232 bytes have been tenured; (gc t) is recommended.
+Warning: 6069208 bytes have been tenured; (gc t) is recommended.
+Warning: 6069208 bytes have been tenured; (gc t) is recommended.
+expanded  = 940
+generated = 1696
+Warning: 6073176 bytes have been tenured; (gc t) is recommended.
+Warning: 6080680 bytes have been tenured; (gc t) is recommended.
+Warning: 6085472 bytes have been tenured; (gc t) is recommended.
+Warning: 6089520 bytes have been tenured; (gc t) is recommended.
+Warning: 6094336 bytes have been tenured; (gc t) is recommended.
+Warning: 6098488 bytes have been tenured; (gc t) is recommended.
+Warning: 6098784 bytes have been tenured; (gc t) is recommended.
+Warning: 6098784 bytes have been tenured; (gc t) is recommended.
+Warning: 6102632 bytes have been tenured; (gc t) is recommended.
+Warning: 6187296 bytes have been tenured; (gc t) is recommended.
+Warning: 6191424 bytes have been tenured; (gc t) is recommended.
+Warning: 6191576 bytes have been tenured; (gc t) is recommended.
+Warning: 6200888 bytes have been tenured; (gc t) is recommended.
+Warning: 6201040 bytes have been tenured; (gc t) is recommended.
+Warning: 6204592 bytes have been tenured; (gc t) is recommended.
+Warning: 6205696 bytes have been tenured; (gc t) is recommended.
+Warning: 6205696 bytes have been tenured; (gc t) is recommended.
+Warning: 6205696 bytes have been tenured; (gc t) is recommended.
+Warning: 6210448 bytes have been tenured; (gc t) is recommended.
+Warning: 6210560 bytes have been tenured; (gc t) is recommended.
+Warning: 6210560 bytes have been tenured; (gc t) is recommended.
+Warning: 6214408 bytes have been tenured; (gc t) is recommended.
+Warning: 6225128 bytes have been tenured; (gc t) is recommended.
+Warning: 6225232 bytes have been tenured; (gc t) is recommended.
+Warning: 6225232 bytes have been tenured; (gc t) is recommended.
+Warning: 6225232 bytes have been tenured; (gc t) is recommended.
+Warning: 6229984 bytes have been tenured; (gc t) is recommended.
+Warning: 6230000 bytes have been tenured; (gc t) is recommended.
+Warning: 6230000 bytes have been tenured; (gc t) is recommended.
+Warning: 6233960 bytes have been tenured; (gc t) is recommended.
+expanded  = 960
+generated = 1733
+Warning: 6238784 bytes have been tenured; (gc t) is recommended.
+Warning: 6238824 bytes have been tenured; (gc t) is recommended.
+Warning: 6246264 bytes have been tenured; (gc t) is recommended.
+Warning: 6250240 bytes have been tenured; (gc t) is recommended.
+Warning: 6250240 bytes have been tenured; (gc t) is recommended.
+Warning: 6260864 bytes have been tenured; (gc t) is recommended.
+Warning: 6261120 bytes have been tenured; (gc t) is recommended.
+Warning: 6261376 bytes have been tenured; (gc t) is recommended.
+Warning: 6335496 bytes have been tenured; (gc t) is recommended.
+Warning: 6339440 bytes have been tenured; (gc t) is recommended.
+Warning: 6339480 bytes have been tenured; (gc t) is recommended.
+Warning: 6339480 bytes have been tenured; (gc t) is recommended.
+Warning: 6339480 bytes have been tenured; (gc t) is recommended.
+Warning: 6343744 bytes have been tenured; (gc t) is recommended.
+Warning: 6352432 bytes have been tenured; (gc t) is recommended.
+Warning: 6352512 bytes have been tenured; (gc t) is recommended.
+Warning: 6356816 bytes have been tenured; (gc t) is recommended.
+Warning: 6357136 bytes have been tenured; (gc t) is recommended.
+Warning: 6371328 bytes have been tenured; (gc t) is recommended.
+Warning: 6371520 bytes have been tenured; (gc t) is recommended.
+Warning: 6371520 bytes have been tenured; (gc t) is recommended.
+Warning: 6377464 bytes have been tenured; (gc t) is recommended.
+Warning: 6377568 bytes have been tenured; (gc t) is recommended.
+Warning: 6377568 bytes have been tenured; (gc t) is recommended.
+Warning: 6377568 bytes have been tenured; (gc t) is recommended.
+Warning: 6381552 bytes have been tenured; (gc t) is recommended.
+Warning: 6381552 bytes have been tenured; (gc t) is recommended.
+Warning: 6381552 bytes have been tenured; (gc t) is recommended.
+Warning: 6389568 bytes have been tenured; (gc t) is recommended.
+expanded  = 980
+generated = 1768
+Warning: 6393800 bytes have been tenured; (gc t) is recommended.
+Warning: 6398632 bytes have been tenured; (gc t) is recommended.
+Warning: 6398952 bytes have been tenured; (gc t) is recommended.
+Warning: 6485776 bytes have been tenured; (gc t) is recommended.
+Warning: 6485776 bytes have been tenured; (gc t) is recommended.
+Warning: 6485776 bytes have been tenured; (gc t) is recommended.
+Warning: 6485776 bytes have been tenured; (gc t) is recommended.
+Warning: 6493952 bytes have been tenured; (gc t) is recommended.
+Warning: 6494080 bytes have been tenured; (gc t) is recommended.
+Warning: 6497888 bytes have been tenured; (gc t) is recommended.
+Warning: 6506912 bytes have been tenured; (gc t) is recommended.
+Warning: 6507464 bytes have been tenured; (gc t) is recommended.
+Warning: 6512000 bytes have been tenured; (gc t) is recommended.
+Warning: 6512000 bytes have been tenured; (gc t) is recommended.
+Warning: 6512000 bytes have been tenured; (gc t) is recommended.
+Warning: 6519040 bytes have been tenured; (gc t) is recommended.
+Warning: 6519264 bytes have been tenured; (gc t) is recommended.
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG3)) 
+
+((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2)) 
+
+((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2)) 
+
+((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3)) 
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG3)) 
+
+((MOVES PEG2 PEG3) (MOVEM PEG2 PEG1)) 
+
+((MOVEM PEG2 PEG1) (MOVES PEG3 PEG2)) 
+
+((MOVES PEG3 PEG2) (MOVEM PEG1 PEG3)) 
+
+((MOVEM PEG1 PEG3) (MOVES PEG2 PEG3)) 
+
+((MOVES PEG2 PEG3) (G)) 
+*** node search depth: 29
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 989
+nodes generated: 1785
+solution depth : 29
+max node succ  : 6
+max conflicts  : 3
+branch factors : ((0 1.8) (1 1.0) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 3
+
+NIL 
+<cl> 
+<cl> Error: attempt to call `BYE' which is an undefined function.
+
+Restart actions (select using :continue):
+ 0: prompt for a new function, instead of `BYE'.
+[1c] <cl> :pop
+<cl> EOF
+Really exit lisp [n]? 
+; Exiting Lisp

@@ -1,0 +1,203 @@
+***************************************************************************
+* DIRECTORY of TWEAK functions
+* 
+* Compiled Oct 2, 1990
+*
+* Revised Dates/Enhancements
+*    Oct 4, 1990
+*
+
+
+/Tweak/init
+
+/Tweak/general
+(defun uappend(list1 list2)
+(defun memb (e list)
+(defun intersection (list1 list2)
+(defun difference (list1 list2)
+(defun substitute-one-list (alist mapping)
+(defun substitute-all-lists (lists mapping)
+(defun clean-up-mapping (substitution-list old-variables)
+(defun remove-all-var-pairs (substitution-list)
+(defmacro create-var ()
+(defmacro create-opid ()
+(defmacro create-planid ()
+(defun var-p (x)
+(defun constant-p (x)
+(defun negate-condition (p)
+(defun get-proposition-params (p)
+
+/Tweak/structs
+(defstruct plan  
+(defstruct operator 
+(defvar *operators* nil
+(defvar initial  nil
+(defvar goal     nil
+(defvar *DEBUG* nil
+(defvar *DOMAIN* nil
+(defvar *MODE*          nil
+(defvar *SEARCH*
+(defvar *cost-rde-exist*  0
+(defvar *cost-rde-add*     0
+(defvar *cost-separation*  0
+(defvar *cost-promotion*   0
+(defvar *cost-demotion*    0
+(defvar *cost-en-intermediate* 0
+(defvar *cost-ep-intermediate* 0
+(defvar *cost-n-intermediate* 0
+(defun create-operator-instance ( &key opid
+(defun create-plan (id &key a b nc (kval 0))
+
+/Tweak/mtc
+(defun mtc (plan)
+(defun all_preconds_hold-p (plan opids)
+(defun this_opid_ok-p (plan opid)
+(defun preconds_hold-p (plan opid preconds)
+(defun hold-p (plan opid precond)
+(defun one-of-establishers-ok-p (plan establishers opid precond)
+(defun clobberer-exists-p(plan est user precond)
+
+/Tweak/successors
+(defun successors ( plan )
+(defun determine-U-and-p (plan)
+
+
+/Tweak/tweak
+(defun tweak (initial goal)
+(defun make-initial-plan (initial goal)
+(defun goal-p (state)
+(defun which-pri-function ()
+(defun num-of-ops (plan)
+(defun num-of-sat-goals (plan)
+(defun successors&costs (plan)
+(defun print-state (state)
+(defun print-stats (numexpanded numgenerated)
+(defun show-dom ()
+
+
+/Tweak/debug
+(defvar *exp-count* 0)
+(defvar *gen-count* 0)
+(defun debug-s (parent plan-list)
+
+
+/Tweak/Succ/
+
+/Tweak/Succ/find-new-ests
+(defun find-new-ests (plan U p-)
+(defun find-new-plan (plan U est mapping)
+(defun add-para-ncodes (list-of-vars plan)
+
+/Tweak/Succ/select-ops
+(defun select-ops (templates  precond)
+(defun find-list-of-op-instances (op-template precond)
+
+/Tweak/Succ/find-exist-ests
+(defun find-exist-ests (plan U p-) 
+
+/Tweak/Succ/find-pos-exist-ests
+(defun find-pos-exist-ests (plan u p)
+(defmacro get-establisher (pos-est-pairs)
+(defmacro get-establisher-effect (pos-est-pairs)
+(defun make-pos-intermediates (pos-est-pairs u p plan)
+(defun make-est (plan estid effect-of-est u p)
+(defun find_pos_est_pairs (plan pos-ests u p)
+(defun find_est_effect_pairs_for_pos-est (plan pos-estid u p)
+(defun find-all-poss-codes-effects (pos-estid p plan)
+
+/Tweak/Succ/find-nec-exist-ests
+(defun find-nec-exist-ests (plan u p)
+(defun make-intermediates (nec-ests p plan)
+
+/Tweak/Conf-infer
+
+/Tweak/Conf-infer/classify
+(defun classify (conflict plan)
+
+/Tweak/Conf-infer/declob
+(defun declobber-all (intermediates U precond)
+(defun declobber (estid  U precond plan)
+(defun create-alternative-constraints (estid U precond plan)
+(defun create-set-of-constraints (conflict plan)
+(defun create-cart-products (clauses)
+(defun apply-constraints-to-plan (constraints plan)
+(defun apply-this-constraint-to-plan (constraint plan)
+(defun type-of-constraint (constraint)
+(defun separation-list (p q)
+
+/Tweak/Conf-infer/conflict-detection
+(defun find-conflicts (plan)
+(defun create-conflict-list-for-opid (opid plan)
+(defun create-conflict-list-for-precond (precond opid plan)
+(defun create-conflict-list-for-tuple (precond establisher opid plan)
+(defun find-N-q-pairs (precond establisher opid plan)
+(defun N-q-pairs-for-this-candidate  (candidate precond plan)
+
+/Tweak/Conf-infer/intermed-access
+(defun get-inter-estid (Intermediate)
+(defun get-inter-plan (Intermediate)
+
+/Tweak/Plan-infer/
+
+/Tweak/Plan-infer/plan-dependent
+(defun invalid-p (plan)
+(defun non-codesignate-p (ele1 ele2 plan)
+(defun nece-before-p (op1 op2 plan)
+(defun transitive-test-before-p (op1 op2 pairs)
+(defun get-conflicts-from-plan (plan)
+(defun get-conflict-Pro (conflict)
+(defun get-conflict-U (conflict)
+(defun get-conflict-N (conflict)
+(defun get-conflict-p (conflict)
+(defun get-conflict-q (conflict)
+(defun get-operators-from-plan (plan)
+(defun get-opids-from-plan (plan)
+(defun  get-effects-of-opid (opid plan)
+(defun get-preconditions-of-opid (opid plan)
+(defun get-cost-of-opid (opid plan)
+(defmacro get-operator-effects (operator)
+(defun get-operator-params (operator)
+(defun get-operator-opid (operator)
+(defun create-new-op-instance (op-template)
+(defun apply-mapping-to-op-instance (operator mapping)
+(defun make-copy-of-op-list (op-list)
+(defun make-copy-of-operator (operator)
+(defun make-copy-of-plan (plan)
+(defun add-nc-to-plan (x y plan)
+(defun remove-constant-nonco (plan)
+(defun add-conflicts-to-plan (conflicts plan)
+(defun add-cost-to-plan (plan cost)
+(defun replace-a (x y plan)
+(defun replace-nc (x y plan)
+(defun replace-conflicts (x y plan)
+(defun add-order-to-plan (opid1 opid2 plan)
+(defun add-operator-to-plan (op-instance plan)
+(defun mark-invalid-plan (plan)
+
+/Tweak/Plan-infer/plan-inference
+(defun find_establishers (plan opid precond)
+(defun remove-redundant-establishers (plan list-of-ops)
+(defun nece-est-p (opid precond plan)
+(defun nece-codesignates-p (prop1 prop2)
+(defun atom-poss-codesignate (a1 a2 &optional plan)
+(defun poss-codesignates (prop1 prop2 &optional plan)
+(defun nots-do-not-match (p1 p2)
+(defun all-poss-before (op plan)
+(defun all-nece-before (op plan)
+(defun all-poss-between (op1 op2 plan)
+(defun poss-before-p (op1 op2 plan)
+(defun get-ith-op-effect (op-template index)
+(defun ith (i a-list)
+
+/Tweak/Plan-infer/plan-modification
+(defun add-prop-nc-to-plan (prop1 prop2 plan)
+(defun apply-mapping-to-plan (mapping plan)
+(defun add-co-to-plan (x y plan)
+(defun substitute-this-by-that (x y plan)
+
+/Tweak/Plan-infer/show-plan
+(defun show (plan) 
+(defun showa (plan)
+(defun showb (plan)
+(defun shownc (plan)
+

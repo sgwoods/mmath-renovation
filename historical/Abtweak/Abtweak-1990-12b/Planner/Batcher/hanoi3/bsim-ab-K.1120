@@ -1,0 +1,25 @@
+Planner Driver Output
+Domain      : HANOI-3-ISPEG
+Operators   : (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X)
+                      (NOT ONS $Y) (NOT ONM $Y) (ONB $X))
+                     EFFECTS ((NOT ONB $X) (ONB $Y)))
+               #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y)
+                      (ONM $X))
+                     EFFECTS ((NOT ONM $X) (ONM $Y)))
+               #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+                     ((NOT ONS $X) (ONS $Y))))
+Initial     : ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+               (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+               (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+               (NOT ONS PEG3))
+Goal        : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+Critical Lst: ((3 (NOT ONB $) (ONB $)) (2 (NOT ONS $) (ONS $))
+               (1 (ISPEG $)) (0 (NOT ONM $) (ONM $)))
+Critcal Load: BSIM
+Top Down Lev: (3 2 1)
+Crit Dep Lst: (1 3 3 7)
+ 
+ 

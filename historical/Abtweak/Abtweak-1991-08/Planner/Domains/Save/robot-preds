@@ -1,0 +1,41 @@
+(armempty)
+
+(is-object block1)
+(is-object block2)
+
+(is-door door1-2)
+
+(is-room room1)
+(is-room room2)
+
+(carriable block1)
+(carriable block2)
+
+(pushable block1)
+(pushable block2)
+
+(dr-to-rm door1-2 room1)
+(dr-to-rm door1-2 room2)
+(connects door1-2 room1 room2)
+(connects door1-2 room2 room1)
+(open door1-2)
+
+(not holding block1)
+(not holding block2)
+
+(next-to robot block2)
+(not next-to robot block1)
+
+(inroom robot room2)
+(inroom block1 room1)
+(inroom block2 room2)
+
+(is-door door1-2)
+
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+Operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y)
+        (NOT ONM $Y) (ONB $X))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X))
+       EFFECTS ((NOT ONM $X) (ONM $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/bsim
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/bsim
+T
+
+>Expanded  = 100
+Generated = 174
+Expanded  = 200
+Generated = 370
+Expanded  = 300
+Generated = 513
+Expanded  = 400
+Generated = 708
+Expanded  = 500
+Generated = 945
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 500
+Nodes Generated: 945
+Solution Depth : 0
+Max Node Succ  : 24
+Max Conflicts  : 3
+Branch Factors : ((0 1.21) (1 0.79) (2 3.2) (3 1.8))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : POS
+A: Weak MSP   pruned     : 33
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 98
+Expanded  = 600
+Generated = 1191
+Expanded  = 700
+Generated = 1391
+Expanded  = 800
+Generated = 1669
+Expanded  = 900
+Generated = 1894
+Expanded  = 1000
+Generated = 2130
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 1000
+Nodes Generated: 2130
+Solution Depth : 0
+Max Node Succ  : 24
+Max Conflicts  : 3
+Branch Factors : ((0 1.23) (1 0.64) (2 3.41) (3 1.8))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: WEAK
+A: Msp Weak Mode         : POS
+A: Weak MSP   pruned     : 50
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 171
+Expanded  = 1100
+Generated = 2343
+Expanded  = 1200
+Generated = 2533
+Expanded  = 1300
+Generated = 2721
+Expanded  = 1400
+Generated = 2921
+
+Correctable error: Relocatable blocks exhausted.
+                   Currently, 211 pages are allocated.
+                   Use ALLOCATE-RELOCATABLE-PAGES to expand the space.
+Signalled by DRIVER.
+If continued: Continues execution.
+
+Broken at DRIVER.  Type :H for Help.
+>>Bye.

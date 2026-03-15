@@ -1,0 +1,180 @@
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/cond-load.o
+Finished loading /u/sgwoods/Plan/Tweak2/cond-load.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Single Producer Property is OFF
+Tweak Random determine-u-and-p is ON
+Loading /u/sgwoods/Plan/Tweak2/random-element.o
+Finished loading /u/sgwoods/Plan/Tweak2/random-element.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading init.lsp
+
+>Loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+T
+
+>Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Single Producer Property is OFF
+NIL
+
+>WEAK
+
+>T
+
+>NIL
+
+>Compiling Examples/nils-ab-test.lsp.
+; (DEFUN RUN ...) is being compiled.
+;; The variable *TEST* is undefined.
+;; The compiler will assume this variable is a global.
+;; The variable *CRITICAL-LOADED* is undefined.
+;; The compiler will assume this variable is a global.
+;; The variable GOAL-PLAN is undefined.
+;; The compiler will assume this variable is a global.
+End of Pass 1.  
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling Examples/nils-ab-test.lsp.
+
+>Loading Examples/nils-ab-test.o
+Finished loading Examples/nils-ab-test.o
+2980
+
+>ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: BLOCKS-WORLD
+AbTweak Random: NIL
+Critical: #<OBJNULL>
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: WEAK
+A: Prune: T
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>Loading /u/sgwoods/Plan/Tweak2/Examples/nils-blocks.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/nils-blocks.lsp
+DOMAIN DEFINITION FOR: NILSSONS-BLOCKS-WORLD
+
+Operators: (#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+                  ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+                  ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X)
+                   (NOT HANDEMPTY)))
+            #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+                  ((HOLDING $X)) EFFECTS
+                  ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)
+                   (NOT HOLDING $X)))
+            #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+                  ((HOLDING $X) (CLEAR $Y)) EFFECTS
+                  ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)
+                   (NOT CLEAR $Y)))
+            #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y) PRECONDITIONS
+                  ((HANDEMPTY) (CLEAR $X) (ON $X $Y)) EFFECTS
+                  ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY)
+                   (HOLDING $X) (NOT ON $X $Y))))
+Initial State: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                (HANDEMPTY))
+Goal State:    ((ON A B) (ON B C))
+Criticalities: ((2 (NOT ON $ $) (ON $ $))
+                (1 (CLEAR $) (NOT CLEAR $) (ONTABLE $) (NOT ONTABLE $)
+                 (HOLDING $) (NOT HOLDING $))
+                (0 (HANDEMPTY)))
+Criticality ID: NILS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+K level List: 
+(0 1 2)
+Loading /u/sgwoods/Plan/Tweak2/Examples/nils/crit1
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/nils/crit1

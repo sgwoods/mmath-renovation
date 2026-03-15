@@ -1,0 +1,50 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;           precedence
+;  
+;   Steven Woods, 1989
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun nece-before-p (op1 op2 plan)
+  "/tweak/plan-infer/plan-dependent.lsp 
+   t iff op1 is necessarily before op2 in plan."
+  (declare
+      (type atom op1)
+      (type atom op2)
+      (type array plan) )
+  (let (
+        (pairs (plan-b plan)))
+    (declare
+        (type list pairs) )
+    (transitive-test-before-p op1 op2 pairs) ))
+
+(defun transitive-test-before-p (op1 op2 pairs)
+  "/tweak/plan-infer/plan-dependent.lsp 
+   returns list of operators before op2 in pairs"
+ (declare
+     (type atom op1)
+     (type atom op2)
+     (type (list list) pairs) )
+ (cond ((null pairs) nil)
+       ((member (list op1 op2) pairs :test 'equal) t)
+       (t (let (
+                (imm-before-op2 
+		 (remove nil
+			 (mapcar #'(lambda (pair)
+				     (if (equal (second pair) op2)
+					 (first pair) nil))
+				 pairs)))
+		(pairs-without-op2
+		 (remove-if #'(lambda (x)
+				(equal (second x)
+				       op2))
+			    pairs)) )
+            (declare
+                (type list imm-before-op2)
+                (type list pairs-without-op2) )
+	    (eval (cons 'or 
+		   (mapcar #'(lambda (op)
+			       (transitive-test-before-p 
+				op1 op pairs-without-op2))
+			   imm-before-op2)))))))
+		

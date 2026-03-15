@@ -1,0 +1,12 @@
+Planner Driver Output
+Domain      : NIL
+Operators   : NIL
+Initial     : NIL
+Goal        : NIL
+Critical Lst: ((3 (ISPEG $)) (2 (NOT ONM $) (ONM $))
+               (1 (NOT ONS $) (ONS $)) (0 (NOT ONB $) (ONB $)))
+Critcal Load: IMSB
+Top Down Lev: #<OBJNULL>
+Crit Dep Lst: (0 1 3 7)
+ 
+ 

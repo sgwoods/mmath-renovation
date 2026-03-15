@@ -1,0 +1,47 @@
+
+- Running AbTweak Test Cases for 24 crits (W-MSP on and off) = 48 runs
+  (submitted oct 16/17)
+
+   Filling in the Tweak test chart and the AbTweak test chart for
+   various combinations of properties.
+
+1) Simplifying codes as Dana suggested in the places he pointed out.
+   (AbTweak)
+
+2) Implementing the option to utilize simpler criticality lists that
+   allow for predicate name valuing only
+
+
+
+3) Modifying the A* operator usage so that it can be tested using our
+   EXACT operator structure definitions.
+
+4) Implementing the strips robot domain as defined in section a.4.2 of
+   the paper I copied from you.
+
+5) Implementing SPP properly in Tweak via Causal relation structure like
+   that of AbTweak - note that SPP approximation that we have been 
+   using may not be complete in some domains because:
+>>   
+   The NEC-EST identified in the successor routine, indicating that no new
+   ops should be addded for thie U p- COULD POSSIBLY be only a side effect
+   establisher, not a NEC-EST added to satisify this exact U p- combination
+   as we are assuming.  (See Qiang for an example in a different def'n of
+   towers of hanoi)
+
+6) Implement Qiang's idea for operator compilation to take advantage of 
+    the top down property and criticality values.  (See Qiang, dated Oct 17)
+
+
+Done:
+
+- clean up NC (remove duplicates)
+- clean up b  (add transitive closure)
+- add parameter non codesignations with addition of operator function
+  (remove elsewhere)
+- modify abtweak to work with new improved tweak
+- test on all domains
+
+   
+   
+

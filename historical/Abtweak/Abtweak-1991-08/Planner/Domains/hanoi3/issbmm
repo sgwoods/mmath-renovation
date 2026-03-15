@@ -1,0 +1,14 @@
+(setq *critical-loaded* 'issbmm)
+(setq *critical-list* '(
+               (5 (ispeg $))
+               (4 (not ons $)) 
+               (3 (ons $))
+               (2 (onb $)) 
+               (1 (not onm $)) 
+               (0 (onm $)) 
+                         ))
+
+(setq *k-list* '(0 3 4 5 6 7))
+
+
+

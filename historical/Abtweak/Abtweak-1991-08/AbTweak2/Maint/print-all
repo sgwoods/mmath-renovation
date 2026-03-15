@@ -1,0 +1,12 @@
+lpr -Pln03_lpaig < /u/sgwoods/Plan/AbTweak2/AB-DIR\
+ /u/sgwoods/Plan/AbTweak2/abtweak.lsp\
+ /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp\
+ /u/sgwoods/Plan/AbTweak2/init.lsp\
+ /u/sgwoods/Plan/AbTweak2/ab-structs.lsp\
+ /u/sgwoods/Plan/AbTweak2/ab-mtc.lsp\
+ /u/sgwoods/Plan/AbTweak2/ab-succ.lsp\
+ /u/sgwoods/Plan/AbTweak2/ab-msp.lsp\
+ /u/sgwoods/Plan/AbTweak2/ab-mono.lsp\
+ /u/sgwoods/Plan/AbTweak2/ab-causal.lsp\
+
+

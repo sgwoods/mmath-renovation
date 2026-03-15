@@ -1,0 +1,31 @@
+Planner Driver Output
+Domain      : NILSSONS-BLOCKS-WORLD
+Operators   : (#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+                     ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+                     ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X)
+                      (NOT HANDEMPTY)))
+               #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+                     ((HOLDING $X)) EFFECTS
+                     ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)
+                      (NOT HOLDING $X)))
+               #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+                     ((HOLDING $X) (CLEAR $Y)) EFFECTS
+                     ((ON $X $Y) (CLEAR $X) (HANDEMPTY)
+                      (NOT HOLDING $X) (NOT CLEAR $Y)))
+               #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y)
+                     PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY))
+                     EFFECTS
+                     ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY)
+                      (HOLDING $X) (NOT ON $X $Y))))
+Initial     : ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+               (HANDEMPTY))
+Goal        : ((ON A B) (ON B C))
+Critical Lst: ((0 (NOT ON $ $) (ON $ $))
+               (1 (CLEAR $) (NOT CLEAR $) (ONTABLE $) (NOT ONTABLE $)
+                (HOLDING $) (NOT HOLDING $))
+               (2 (HANDEMPTY)))
+Critcal Load: NILS-CRIT5
+Top Down Lev: (2 1)
+Crit Dep Lst: (0 1 2)
+ 
+ 

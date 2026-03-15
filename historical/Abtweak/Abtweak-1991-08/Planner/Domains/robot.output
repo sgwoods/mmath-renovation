@@ -1,0 +1,140 @@
+Robot Problem Output Summary
+; note MD results in incompleteness
+
+Goal			Solution Size
+
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+(at robot loc18)	(1)
+
+Tweak			4  	9  	5	3 	0	
+Tweak/MD		3 	4 	4	2 	0
+
+AbTweak			9	14	10	3	0	-	5
+AbTweak/MD   		8	9	9	2	0	-	5
+
+AbTweak/LW		9	14	10	3	0	-	5
+AbTweak/LW/WMSP		9	14	10	3	0	0	5
+
+AbTweak/LW/MD		8	9	9	2	0	-	5
+AbTweak/LW/WMSP/MD	8	9	9	2	0	0	5
+
+(holding obj3)		(1)
+
+Tweak			2	4	3	3	0
+Tweak/MD		2	4	3	3	0
+
+AbTweak			7	9	8	3	0		5
+AbTweak/MD		7	9	8	3	0		5
+			
+AbTweak/LW		7	9	8	3	0		5
+AbTweak/LW/WMSP		7	9	8	3	0		5
+
+AbTweak/LW/MD		7	9	8	3	0	-	5
+AbTweak/LW/MD/WMSP	7	9	8	3	0	-	5
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+(open door4-5)	 	(2)
+
+Tweak			13	31	7	5	0
+Tweak/MD		12	19	6	5	0
+
+AbTweak			18	36	12	5	0	-	5
+AbTweak/MD		17	24	11	5	0	-	5
+			
+AbTweak/LW		18	36	12	5	0	-	5
+AbTweak/LW/WMSP		18	36	12	5	0	0	5
+
+AbTweak/LW/MD		17	24	11	5	0	-	5
+AbTweak/LW/MD/WMSP	17	24	11	5	0	-	5
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+(at obj3 loc20) 	(3)
+
+AbTweak/LW		39	72	13	7	1	-	5
+AbTweak/LW/WMSP		39	69	13	4	1	3	5
+
+AbTweak/LW/MD		21	34	13	3	1	-	5
+AbTweak/LW/MD/WMSP	21	33	13	3	1	1	5
+
+(inroom robot room5)	(4)
+
+AbTweak/LW		69	163	20	7	1	-	5
+AbTweak/LW/WMSP		69	160	20	6	1	3	5
+
+                        (3)
+
+AbTweak/LW/MD		23	35	16	6	0	-	5
+AbTweak/LW/MD/WMSP	23	35	16	6	0	0	5
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+(at robot loc20)	(4)
+
+AbTweak/LW		?>1000	>2056	?	>6	>0		>3
+AbTweak/LW/WMSP		?
+
+AbTweak/LW/MD		134	166	19	6	0	-	5
+AbTweak/LW/MD/WMSP	134	166	19	6	0	0	5
+
+(inroom obj3 room5)	(4)
+
+AbTweak/LW		68	159	19	7	1	-	5
+AbTweak/LW/WMSP		68	156	19	6	1	3	5
+
+AbTweak/LW/MD		26	43	19	6	1	-	5
+AbTweak/LW/MD/WMSP	26	42	19	6	1	1	5
+---------------------------------------------------------------------------
+
+Note: changed method for MD (ignore g), and repaired domain for isa-door
+
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+Initial: at robot loc1 ; at obj3 loc 1 (ie in room1)
+Goal:    (inroom obj3 room2) (holding obj3) (at robot loc4)	
+    
+  (5)
+
+AbTweak/LW/		110	272	21	7	1	-	5
+AbTweak/LW/WMSP		110	269	21	5	1	3	5
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+((inroom obj3 room2) (inroom robot room2) (at robot loc4) (at obj3 loc4))
+
+  (6)
+
+AbTweak/LW		362	880 	22	7	1	-	5
+AbTweak/LW/WMSP		362	877	22	5	1	3	5
+
+---------------------------------------------------------------------------
+Planner		Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS	Open
+
+((inroom obj3 room2) (inroom robot room2) (at obj3 loc4) (at robot loc5))
+   
+   68/162               free                59/150          12/45
+     -> subplan1         -> subplan2         -> subplan3     -> subplan4
+
+  (7)
+
+AbTweak/LW 	139	353	28	7	1	-	5	216 5,6
+AbTweak/LW/WMSP	139	350	28	7	1	3	5
+
+---------------------------------------------------------------------------
+Planner			Exp	Gen	Depth	Max-Suc	Max-Con	Prune	ABS
+
+((INROOM OBJ3 ROOM2) (inroom robot room2) (AT obj3 loc4) (at obj2 loc4) ))
+
+   68/162               free                59/150          37/91
+     -> subplan1         -> subplan2         -> subplan3     -> subplan4
+
+  (8)
+
+AbTweak/LW 		
+AbTweak/LW/WMSP		?>1000	 ?>2402	?	>5	>1	>31	>9
+                           Open Size = 1403    Open Range  (3 6)
+---------------------------------------------------------------------------

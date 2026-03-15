@@ -1,0 +1,663 @@
+\documentstyle[12pt,fullpage]{article}
+
+\newcommand{\tweak}{{\sc Tweak}}
+\newcommand{\sipe}{{\sc Sipe}}
+\newcommand{\noah}{{\sc Noah}}
+\newcommand{\nonlin}{{\sc Nonlin}}
+\newcommand{\abtweak}{{\sc AbTweak\ }}
+
+\title{\abtweak Users Manual}
+
+\author{Steve Woods \and Qiang Yang}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+\begin{center}
+Computer Science Department \\
+University of Waterloo \\
+Waterloo, Ontario, Canada, N2L 3G1\\ 
+\end{center}
+
+\section*{Acknowledgement}
+Support for the research is made available by NSERC operating grant 
+\#OGP0089686 to Qiang Yang.
+
+\section*{Inqueries}
+Please send to :
+
+Steve Woods sgwoods @watdragon.waterloo.edu
+
+and
+
+Qiang Yang qyang@watdragon.waterloo.edu
+
+\newpage
+
+\section{Introduction}
+\abtweak is a nonlinear, hierarchical planner.  Given an initial state description and a goal state description, it finds a partially ordered, least-commtted set of operators to achieve the goal.  It is correct in that every solution plan found necessarily solves the goal from the initial state, and complete in that it will terminate with a solution if one exists.
+
+\abtweak is built on top of the planner Tweak.  For reference of both planners, please see the paper by Chapman \cite{tweak}, by Qiang Yang and Josh Tenenberg \cite{abtweak}, and the Master Thesis by Steve Woods \cite{thesis}.
+
+The planner is designed by Qiang Yang and Josh Tenenberg, and implemented by Steve Woods and Qiang Yang at University of Waterloo, in Allegro Common Lisp.  
+
+Below, we give a brief introduction to the basic components of the planner.  Then we will describe how the planner is used in detail.
+
+\section{Implementation of Tweak}
+Tweak is implemented in three main independent sections: search, constraint management/plan maintenance, and modal truth criterion (MTC) .  
+
+\subsection{Plan representation}
+Each plan is a lisp structure with the following fields:
+\begin{enumerate}
+\item plan-a:  a set of operator structures.
+\item plan-b: a set of pairs of operators, each pair represents a temporal order.
+\item plan-nc: a set of pairs of variables and constants, each pair being a non-codesignation constraint.
+\item plan-cr: a set of establishment relations to be protected.
+\end{enumerate}
+
+It is assumed that a variable is anything of the form \$*, where * can be any character or string.  Any symbols not preceded by "\$" is a constant.  Unique name assumption applies to constants.
+
+\subsection{Search}
+The search is done in a space of plans.  Each node in the search space is a plan.  The root of the tree is a plan with two special operators, the initial state operator and the goal state operator \cite{abtweak}.  A goal state in the space corresponds to a solution plan.
+
+Tweak functions as follows:
+\begin{enumerate}
+\item An initial plan is built from the given INITIAL and GOAL states given, and placed as the only node in a list of OPEN nodes.
+
+\item Select and remove a NODE from OPEN.
+
+\item The MTC routine determines if this NODE represents a plan that necessarily achieves all preconditions of operators, and goals. 
+
+If True, this NODE represents a SOLUTION, and placed in the global variable *goal*.
+
+\item If False, One of the unsatisfied goals or preconditions of operators is selected, and all successors of the plan is generated and inserted in the OPEN list.
+
+\item Loop through step 2 until OPEN becomes empty, or a STOP condition becomes true (ie limits on the size of search imposed by the user), or a SOLUTION is found.
+\end{enumerate}
+
+The search routine is an implementation of the common A* graphsearch
+found in Nilsson's book \cite{nilsson}.  
+No attempt is made to insure that nodes (which are nonlinear plans) are not visited more than once, as this is still a  difficult open problem.  The user can specify various kinds of heuristics for selecting the next node in the OPEN list.  This is described in detail later.
+
+\section{Constraint Management}
+The constraint management portion of Tweak handles the insertion of operators, ordering constraints between pairs of operators as well as the codesignation and non-codesignation of variables and constants within the operators present in a plan.  
+
+Codesignation is handled by simply replacing all variable
+occurences in the plan with a single value as codesignation occurs.  For
+example, if a plan contained the variable \$var, and a constraint was added such
+that \$var was to codesignate with the constant 'block', then all occurences of
+\$var in any plan operator, or other plan structure would be replaced by
+'block'.
+Similarly, if two variables are made to codesignate, all occurences of the
+second are replaced by the first.  In this manner, we avoid the complexity of
+maintaining transitive codesignation relations.  Non codesignation is handled
+by maintaining a list (NC) of pairs, where the two elements in a pair represent
+either a variable and a constant or two variables which are constrained to
+non-codesignate. Before a codesignation is allowed, the NC is checked, and if
+the elements in question already are constrained to non-codesignate, then the
+plan is flagged as invalid, and is not added to the OPEN list.  In much the
+same way ordering relations are maintained.  A list of pairs is in maintained in
+which the current state of operator ordering is represented.  This list
+reflects the transitive closure or orderings, with this closre updated with
+each addition of ordering to the plan.  Once again, an attempt to add an
+ordering that is impossible due to existing orderings will cause the plan to be flagged as invalid by setting the invalid slot of the plan structure to be T.
+
+\section{How to Use the Planner}
+
+\subsection{Defining your Domain}
+
+The first step in using the planner is to define a domain definition.
+A Tweak domain definition consists of an operator set, and an initial and goal state.
+
+Let's take a look at an example first.
+
+If we consider the 2 ring tower of hanoi domain, there can be  two operators, defined as follows:
+
+\begin{verbatim}
+(setq op1 
+  (create-operator-instance
+         :opid 'moveb
+	 :name '(moveb $x $y)
+	 :preconditions '((not ons $x) (onb $x) (not ons $y)
+                          (ispeg $x) (ispeg $y) )
+	 :effects '((not onb $x) (onb $y))))
+
+(setq op2 
+  (create-operator-instance
+	 :opid 'moves
+	 :name '(moves $x $y)
+	 :preconditions '((ons $x)
+	                  (ispeg $x) (ispeg $y) )
+	 :effects '((not ons $x) (ons $y))))
+
+(setq *operators* (list op1 op2))
+\end{verbatim}
+
+Each operator has a name, including a list of parameters that the operator
+accepts, a list of preconditions specifying exactly the state the world must be in so as to allow this operator to be applied, and a list of effects
+specifying exactly what the results of applying this operator are.  Negations
+are allowed, and are specified simply as (not predicate) where the positive
+would be (predicate). These operators are stored in a global variable 
+*operators* so the planner can find and use them.
+
+An initial or a goal state is a list of literals.
+For example,
+if we have three pegs PEG1, PEG2 and PEG3, we represent these facts as:
+(... (ispeg PEG1) (ispeg PEG2) (ispeg PEG3) ... ) within INITIAL.  The fact 
+that other objects in our domain (say BLOCK1 and BLOCK2) are not pegs need
+not be represented, as the default assumption is that a predicate is not true
+until asserted, and once asserted, remains true unless denied.  In this 
+fashion if we were querying the truth values of certain propositions 
+immediately after state INITIAL, we would find that an attempt by the 
+planner to  determine the truth value of (ispeg PEG3)
+would evaulate as T, since this fact is established by INITIAL, and is
+denied by no operator after INITIAL, while a query of (ispeg BLOCK1) would 
+evaluate as nil, since this fact is never established by any operator in our
+plan.  
+
+An initial state specification might look like:
+
+\begin{verbatim}
+(setq initial 
+'((ispeg peg1) 
+ (ispeg peg2) 
+ (ispeg peg3)
+ (onb peg1) (ons peg1) 
+ (not onb peg2)
+ (not onb peg3)
+ (not ons peg2)
+ (not ons peg3)))
+\end{verbatim}
+
+Next, we specify the propositions we wish the planner to achieve with the
+desired plan, in the same manner, and include these in a list GOAL.
+A goal specification for hanoi might look like:
+
+(setq goal '((onb peg3) (ons peg3)))
+
+Where 'initial' and 'goal' are GLOBAL variables.
+
+\subsection{How to Run the planner for TWEAK }
+
+Tweak is started simply by invoking this command to the lisp interpreter:\ 
+(planner initial goal :planner-mode 'tweak)
+
+This command basically asks the planner to find a solution plan to get from the INITIAL state to the GOAL state given the operator set in this DOMAIN using the TWEAK approach to planning.
+
+There are some options that can be selected to adjust the manner in which the planner performs its planning.  These are explained below.
+
+\subsubsection{Specifying Search Heuristic}
+
+The function (tw-which-pre-function) returns a function, which evaluates to be a number.  Each time a new node is generated, the function is eval'd as the computation of the 
+heuristic value of each node/plan in the search space.  
+The oldest, lowest node/plan evaluation of the heuristic is selected next for
+expansion.  Common plan selection Heuristics include:
+\begin{enumerate}
+\item Number of Operators in the Plan (ie prefer smaller plans first).  
+
+\item Number of Operators in the Plan minus number of satisified
+   goals. This is implemented as default in our planner.
+\end{enumerate}
+
+
+\subsubsection{Options in selecting unsatisfied preconditions}
+Given a plan to be expanded, another level of search control exists in selection of preconditions of operators in the plan to achieve.
+As mentioned in the description of TWEAK, it is necessary to decide which of
+(possibly many) unsatisfied preconditions are selected next from which to
+generate successors.  One method (known here as Stack) is to simply examine
+each operator in the plan (last one added to the plan first, and so on) until a
+precondition is found (simply check each operator for preconditions in the
+order they are defined in the domain) that is unsatisifed.  Another method
+implemented in this version of the planner (known as Tree) provides a more
+complex method in which a TREE where an operator A added  to achieve a
+precondition for operator B is stored as a child of B.  In this way, a
+hierarchical structure is built showing 'why' (in some sense) a particular
+operator was added to a plan.  Operators are examined for unsatisifed
+preconditions by traversing the TREE inorder (basically attempting to minimize
+the number of unsatisifed preconditions in 'older' portions of the plan).
+
+The planner can be set up to select goals in any one of 3 fashions:
+ Stack; Tree; or Random.  The default goal selection heuristic used is
+Stack.  If you wish to use either Tree or Random (as described earlier),
+the switch :determine-goal-mode must be set as 'tree or 'random as desired.
+
+For example, to run the planner on our example above using the Tree
+goal selection heuristic, simply enter the
+command:
+
+(planner INITIAL GOAL :planner-mode 'tweak :determine-mode 'tree)
+
+or, for the Stack heuristic,
+
+(planner INITIAL GOAL :planner-mode 'tweak :determine-mode 'stack)
+
+For an entirely different approach to Stack, the switch :backwards-mode can be
+set to t (defualt is nil).  If set, selection will be from the bottom of the
+stack rather than the top.  (More like a queue if you will)
+
+If we wish to eliminate the methodology entirely, we can also force the planner
+to select one of the unsatisfied preconditions completely at random.  To do
+this, simply set the :determine-mode swith to 'random.
+
+\subsubsection{Limiting Search}
+
+Limits can be placed on the size of the search to be performed by Tweak.
+The number of nodes Expanded or Generated can serve as the bound on search, 
+or the size of the OPEN frontier can be the bound.  Default values exist on 
+each of these bounds, and are specified in Search/graph-ctrl.lsp.  In order
+to set these as desired for your run, simply use the following switches:
+:expand-bound <number>    :generate-bound <number> :open-bound <number>
+The planner will abort when the first bound is met, and search statistics 
+up to that point will be displayed.
+
+\subsubsection{Extended Output / Debugging}
+
+While the planner searches, it is usually the case that the user is not 
+interested in seeing each node in the search space in question, but rather 
+only the statistics resulting from the successful search for a plan which 
+achieves the given goal.  However, if the user does wish to have the entire
+search tree displayed, this is possible by setting the :debug-mode switch to 
+t.  When :debug-mode is set to t, each node expanded will be shown, and its
+successors displayed.  In this manner, an entire search tree could be 
+reconstructed, including goal selection information, order of node visitation, and size of each successor set.
+
+\subsubsection{File Output of Planning Results}
+
+A separate function in the planning system providing for output to a file
+rather to the screen is DRIVER.  This function takes the same parameters and
+switches as PLANNER, with the addition of :output-file switch.
+The default is a file in the current directory called ``default-output'', or
+:output-file should simply be set to the pathname of the desired
+output file.  Note that this filename must be a non existant file at the
+time of planner execution, or an error will occur.
+
+\section{Implementation of ABTWEAK}
+
+As stated previously, AbTweak is built on top of Tweak.  AbTweak differs from  Tweak in that planning is performed at various levels of abstraction, with  subsequent solutions becoming more and more refined as planning progresses.  It is important to realize ,however, that more than one possible solution could exist
+at any level of abstraction, and that the lowest level solution may not be 
+reachable from every higher level solution.
+
+\subsection{Search in AbTweak}
+\begin{enumerate}
+\item An initial plan is built from the given INITIAL and GOAL states given, 
+   is given the highest level of abstraction defined in the domain, and is
+   placed as the only node in a list of OPEN nodes.
+
+\item Select and remove a NODE from OPEN.
+
+\item The TC module determines if this NODE represents a plan that necessarily achieves all GOALS stated at the present level of abstraction (K).
+
+a)   If True, this NODE represents a SOLUTION at level (K)
+
+   a1)   If K=0 (ie the lowest level of abstraction) this NODE represents
+         a SOLUTION.
+
+   a2)   If K>0 (ie there exist lower levels of abstraction in this domain),
+         decrease the K value (abstract level) by 1 , and insert this new
+         NODE back in the open list as the only successor.
+
+b)   If False, One of the unsatisfied GOALS or SUBGOALS at this level
+     of abstraction are selected, and all of
+     the successors NODES in which the selected SUBGOAL is necessarily satisfied
+     are generated and added to the OPEN list.
+
+\item Loop through step 2 until OPEN becomes empty, or a STOP condition becomes 
+   true (ie limits on the size of search imposed by the user), or a SOLUTION
+   is found.
+\end{enumerate}
+
+Basically, AbTweak represents a search through multiple levels of abstraction 
+in its domain.  Preference in chosing the next node in OPEN list is given according to the heuristic used, not
+NECESSARILY by the level of abstraction of a particular NODE.
+
+AbTweak functions are similar to Tweak functions, and differ only in that
+allowance is made for the abstractin level each precondition is defined as
+possessing.  These 'Criticality' values are assigned by the user in his domain
+definition as follows:
+
+\begin{verbatim}
+(setq *critical-list* '(
+   (2  (ispeg $) )
+   (1  (not onb $) (onb $) )
+   (0  (not ons $) (ons $) )
+))
+(setq *critical-loaded* 'ibs-default)
+\end{verbatim}
+
+The global variables *CRITICAL-LIST* contains the list of criticality
+assignments for preconditions.  Note that variables are indicated by a
+'\$' symbol throughout the planner implementation.  Preconds may have
+more than one criticality level, for instance (ispeg a) can be
+separate from (ispeg b) and (ispeg \$).  An attempt is made to find a
+fully bound version of the precondition first, and if this is not
+found, a less bound one is looked for until a match is made.  Global
+variable *critical-loaded* should be bound to an identifier for the
+particular criticality loaded.  This will be used on report output.
+
+
+\subsubsection{abs-goal option}
+When ABTWEAK starts planning, the user has the option to choose whether to insert all operators that directly achieve the goal regardless of the criticality of the goals, or wait to insert these operators until planning at their own levels.  The former option is similar to ABTRIPS.
+ If this is the case, planning will
+occur for these goal (in GOAL) as if they had the highest possible level of
+criticality.  If this is descired, simply set the value of :abs-goal to t
+(default nil).
+
+\subsubsection{K List (partial depth first search option)}
+One important contribution of our implementation of \abtweak is the use of a complete search strategy to imitate a depth first search across abstraction levels.  Optionally, the user may wish to enter values for 
+a *k-list*.  This
+global variable may be bounnd to a list of integers, where the integers (left
+to right) represent either the precise depth of search required to achieve a
+solution at level (max criticality) to (0 criticality).  For instance, in the
+hanoi-2 example we have been using, it can be shown that a solution at the
+ispeg level of criticality (2) requires no operators, so we enter a 0 ias the
+first value in the *k-list*.  A solution for level 1 will require 1 (moveB)
+operator to be added to the plan, so we enter a 1 at this position in the
+*k-list*, and level 0 will require 2 (moveS) operators to be added, so we enter
+a 2.  If we now invoke the planner with the :crit-depth-mode switch set to t,
+while the planner is in abtweak :planner-mode, ie
+
+(planner initial goal :planner-mode 'abtweak :crit-depth-mode t)
+
+We will now search in a somewhat more depth-first manner where we 'prefer'
+solutions at level K a little more (ie we prefer them to the extent of the
+value of their corresponding *k-list* entry.  In this way, we realize that a
+solution at level K requires (say N) operators and we do not de-emphasize a
+plan at this level until it has exceeded this N value.  Please refer to the
+references for more information.
+
+\subsubsection{Downward Solution Property}
+
+If the hierarchy satisfies the downward solution property, \cite{downward},  then we can simply discard
+other potential plans at level k when one correct plan is found at that level.
+If the switch :td-mode is set to t (default nil) the planner will discard all
+such plans from the current OPEN list.  Note that if this property is not
+correct for a given domain and the switch is set, the planner is no longer
+complete. 
+
+\subsection{Monotonic Solution Property}
+
+Another useful heuristic approach to restricting the branching factor in some
+domains is to take advantage of the proof given by Yang and Tennenberg that
+(paraphrasing for applicability to this planner!) if we protect the causal
+relations in existence in a correct plan in level K while planning at level
+K-1, completeness is still preserved.  In fact, in this implementation we offer
+two variations on this theme.
+
+\subsubsection{Strong MSP}
+
+Consider a causal relation from a level k-1 correct plan, where
+some set of establishing operators (e1 e2 ... en, n >= 1) establish some
+predicate q in an operator U.
+
+If the insertion of some operator A (that NEC asserts or denies q) is made in
+the plan, Strong MSP states that if any one of e1 no longer establishes q for
+U, then this new plan should be discarded.  Essentially we protect all CRs at
+level K-1 (even if they are side effects).  This property does NOT guarantee completeness in general.  But it does guarantee completeness if every solution plan at each abstraction level is a linear sequence of operators.
+
+To invoke this property in abtweak, use the switch and value :msp-mode 'strong.
+
+\subsubsection{Weak MSP}
+
+\subsubsection*{NEC Weak MSP}
+
+If we consider the previous example exactly, NEC Weak MSP states that if the
+addition of A (where A NEC asserts of denies q) causes ALL of ei to no longer 
+establish q for U, then the new plan should be discarded.  In this way at least
+one of the ei for each U and p are protected from the k-1 level.
+
+Invoke this property in abtweak with the switches and values 
+:msp-mode 'weak :msp-weak-mode 'nec
+
+
+\subsubsection*{POS Weak MSP}
+
+As in the previous examle, POS Weak MSP states that if the 
+addition of A (where A POS asserts or denies q) causes ALL of ei to no longer 
+establish q for U, then the new plan should be discarded.  In this way at least
+one of the ei for each U and p are protected from the k-1 level, in fact we are
+reacting a little quicker than NEC in that as soon as the ei is POS no longer
+an establisher of p for U we prune the plan.
+
+Invoke this property in abtweak with the switches and values 
+:msp-mode 'weak :msp-weak-mode 'pos
+
+\begin{center}
+**Important Note**
+\end{center}
+
+This POS property is defined on a DOMAIN by DOMAIN basis (currently
+for Nilssons-blocks-world, hanoi-2 and hanoi3.  Future domain
+defninitions will have to be added to the function all-ests-clob-p in
+AbTweak2/ab-msp.lsp.  Refer to calls to functions pos-clobbered-p and
+nec-pos-clobbered-p.  (Multiple variable predicates are the concern -
+for example in nilsson's domain
+ if an establishment is made for p=(on a b), p is only possibly denied
+if some operator A asserts of denies q=(on a \$) where \$ is possibly b.
+That is, r=(on \$ \$) is NOT seen to possibly interfere with (on a b).
+
+\section{Domains Provided}
+
+\begin{enumerate}
+\item David Chapman's Blocks-World (Domains/blocks.lsp)
+\item Nilssons's Blocks-World      (Domains/nils-blocks.lsp)
+\item Robot Moving Domain          (Domains/robot.lsp)
+\item Tower of Hanoi (2 rings)     (Domains/hanoi-2.lsp)
+\item Tower of Hanoi (3 rings)     (Domains/hanoi-3.lsp)
+\end{enumerate}
+
+\section{Commonly Used Functionality}
+
+Please refer to DIR in the top directory of planner for a complete
+list of all functions present.  Note each function has a brief
+description attached to it, accessible via (describe 'function).
+
+\begin{description}
+
+\item[PLANNER]
+
+\begin{verbatim}
+ resides /Planner/planner.lsp
+ input   INITIAL state ; GOAL state
+ output  planning run statistics, solution plan if found
+
+(planner initial goal
+   :planner-mode     'tweak  / 'abtweak          (default 'tweak)
+   :determine-mode   'stack / 'tree / 'random    (default 'stack)
+   :backwards-mode   t / nil                     (default nil)
+   :debug-mode       t / nil                     (default nil)
+   :heuristic        'd / 'nsg                   (default 'd)
+   :expand-bound     Integer                     (default 2000)
+   :generate-bound   Integer                     (default 5000)
+   :open-bound       Integer                     (default 1000)
+
+optional switches for 'abtweak only
+
+   :msp-mode         'weak / 'strong / nil       (default nil)
+   :msp-weak-mode    'nec / 'pos                 (default 'nec)
+   :abs-goal         t / nil                     (default nil)
+   :td-mode          t / nil                     (default nil)
+   :crit-depth-mode  t / nil                     (default nil)
+\end{verbatim}
+
+\item[MTC]
+ (mtc plan)
+
+ resides /Tweak2/mtc.lsp
+
+ input   a tweak plan structure
+
+ output  t if plan is correct
+
+
+\item[UNSAT-UP-PAIRS] (unsat-up-pairs plan)
+
+ resides /AbTweak2/successors.lsp
+
+ input   an tweak  plan structure
+
+ output  list of unsatisifed Operator Id, precondition pairs in plan
+
+\item[FIND-CONFLICTS] (find-conflicts plan)
+
+ resides /Tweak2/conflict-detection.lsp
+
+ input  a tweak plan structure
+
+ output a list of CONFLICTS in the plan, where:
+a conflict is the classification of a clobbering of the
+establishement E of some precondition p in operator U by operator C.
+\begin{verbatim}
+       One of:
+          LF (Left Fork)    E < U ; C < U
+          RF (Right Fork)   E < U ; E < C
+          P  (Parallel)     E < U ; ( Possibly C < E, E < C, U < E, C < U )
+          Ln (Linear) E < C < U 
+\end{verbatim}
+(See Qiang Yang, "An Algebraic Approach to Conflict Resolution in
+Planning ", Proceedings of the AAAI90, pages 34-40,  for further detail.)
+
+
+
+Other important functions include:
+
+\item[CLASSIFY]
+ (classify conflict plan)
+
+ resides /Tweak2/classify.lsp
+
+ input  a conflict, and the tweak plan structure it is in
+
+ output the type of conflict it is (see above)
+
+\item[SUCCESSORS]
+ (successors plan)
+
+ resides /Tweak2/successors.lsp
+
+ input   a tweak  plan structure
+
+ output  a list of all successors of the plan, based on the unsat goal chosen
+
+\item[DETERMINE-U-AND-P] 
+(determine-u-and-p plan)
+
+ resides /Tweak2/successors.lsp
+
+ input   a tweak  plan structure
+
+ output  the unsat goal chosen to achieve and create successors from
+
+\item[AB-MTC ](ab-mtc plan)
+
+ resides /AbTweak2/ab-mtc.lsp
+
+ input   an abtweak  plan structure
+
+ output  t if plan is correct at level of the plan (k)
+
+\item[AB-UNSAT-UP-PAIRS]
+ (ab-unsat-up-pairs plan)
+
+ resides /AbTweak2/ab-succ.lsp
+
+ input   an abtweak  plan structure
+
+ output  list of unsatisifed Operator Id, precondition pairs in plan at level K
+
+\item[SUCCESSORS]
+ (ab-successors plan)
+
+ resides /AbTweak2/ab-succ.lsp
+
+ input   an abtweak  plan structure
+
+ output  a list of all successors of the plan, based on the unsat goal chosen
+
+\item[AB-DETERMINE-U-AND-P]
+(ab-determine-u-and-p plan)
+
+ resides /AbTweak2/successors.lsp
+
+ input   an abtweak  plan structure
+
+ output  the unsat goal chosen to achieve and create successors from
+
+\item[GRAPHSEARCH]
+(graphsearch plan)
+
+ resides /Planner/Search/graphsearch.lsp
+
+ input   a plan structure (tweak or abtweak) 
+
+ output  solution plan if found, run statistics
+
+ note    various flag settings are made (see Planner/planner.lsp) based upon 
+         calls to (planner ...)  These setting control the behaviour of
+         graphsearch and the functions used (such as goal-p, etc).
+
+\item[COMPILE]
+(compile-all)
+
+ resides /Planner/compile.lsp
+
+ output  .fasl files (compiled) that will be loaded next time planner started
+
+\item[LOAD]
+
+(load ``init.lsp'')
+
+ resides /Planner/init.lsp
+
+ reload via (start)
+
+\item[SHOW Plan]
+(show <plan-structure>)
+
+in /Planner/show.lsp
+
+input plan structure
+
+output: a pretty print structure of the plan.
+
+\item[Statistics So Far]
+(cur)
+
+outputs the current statistics include the number of nodes expanded and generated.
+
+\item[Show Domain]
+(show-dom)
+
+Outputs a list of initial states, goal states, and operator templates.
+
+\end{description}
+
+\begin{thebibliography}{99}
+
+\bibitem{tweak}
+D. Chapman,  "Planning for Conjunctive Goals",
+{\em Artificial Intelligence},  (32), pages 333-377, 1987.
+
+\bibitem{abtweak}
+Q. Yang and J. Tenenberg,
+"ABTWEAK: Abstracting a Nonlinear, Least Commitment Planner",
+Proceedings of the Eighth National Conference on Artificial
+Intelligence, pages 199-204, 1990.
+
+\bibitem{downward}
+F. Bacchus and Q. Yang, "The Downward Solution Property,"
+submitted for publication, 1990.
+
+\bibitem{nilsson}
+N. J. Nilsson, {\em Principles of Artificial Intelligence}, 
+Morgan Kaufmann Publishers, 1980.
+
+
+\bibitem{thesis}
+Steve Woods, {\em Experiments with \abtweak}, forthcoming, 
+University of Waterloo, 1990.
+
+\end{thebibliography}
+
+\end{document}

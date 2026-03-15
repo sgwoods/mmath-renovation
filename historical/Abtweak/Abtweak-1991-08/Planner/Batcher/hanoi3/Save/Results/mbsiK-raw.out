@@ -1,0 +1,2657 @@
+Allegro CL 3.1.13.1 [Sun4] (0/0/0)
+Copyright (C) 1985-1990, Franz Inc., Berkeley, CA, USA
+; Loading /u/sgwoods/Plan/Planner/init.lsp.
+
+
+type  (start) to re-load planner
+
+; Loading /u/sgwoods/Plan/Planner/init-o.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search-load.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graphsearch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/list-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/node-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/interface.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/state-expansion.fasl.
+; Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/planner.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/branch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/driver.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/general.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/structs.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/mtc.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/successors.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/tree.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/debug.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Maint/compile.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/init.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mtc.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-succ.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-causal.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-msp.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mono.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/Maint/compile.fasl.
+; Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp.
+; Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp.
+domain definition for: NILSSONS-BLOCKS-WORLD
+operators    : 
+(#s(OPERATOR :OPID PICKUP :NAME (PICKUP $X) :PRECONDITIONS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY))) #s(OPERATOR :OPID PUTDOWN :NAME (PUTDOWN $X) :PRECONDITIONS ((HOLDING $X)) :EFFECTS ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X))) #s(OPERATOR :OPID STACK :NAME (STACK $X $Y) :PRECONDITIONS ((HOLDING $X) (CLEAR $Y)) :EFFECTS ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X) (NOT CLEAR $Y))) #s(OPERATOR :OPID UNSTACK :NAME (UNSTACK $X $Y) :PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) :EFFECTS ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X) (NOT ON $X $Y))))
+initial state: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B) (HANDEMPTY))
+goal state   : ((ON A B) (ON B C))
+; Fast loading /u/sgwoods/Plan/Planner/useful.fasl.
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp.
+domain definition for: HANOI-3-ISPEG
+operators    : 
+(#s(OPERATOR :OPID MOVEB :NAME (MOVEB $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y) (NOT ONM $Y) (ONB $X)) :EFFECTS ((NOT ONB $X) (ONB $Y))) #s(OPERATOR :OPID MOVEM :NAME (MOVEM $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X)) :EFFECTS ((NOT ONM $X) (ONM $Y))) #s(OPERATOR :OPID MOVES :NAME (MOVES $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (ONS $X)) :EFFECTS ((NOT ONS $X) (ONS $Y))))
+initial state: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))
+goal state   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+
+NIL 
+<cl> 
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/mbsi.
+
+T 
+<cl> 
+<cl> Klist = 
+"Klist = " 
+<cl> (1 3 7 7)
+(1 3 7 7) 
+<cl> 
+
+NIL 
+<cl> 
+<cl> expanded  = 20
+generated = 36
+expanded  = 40
+generated = 87
+expanded  = 60
+generated = 126
+expanded  = 80
+generated = 173
+expanded  = 100
+generated = 212
+expanded  = 120
+generated = 255
+expanded  = 140
+generated = 309
+expanded  = 160
+generated = 357
+expanded  = 180
+generated = 407
+expanded  = 200
+generated = 441
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 200
+nodes generated: 441
+solution depth : 0
+max node succ  : 11
+max conflicts  : 2
+branch factors : ((0 0.04) (1 2.81) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 24
+expanded  = 220
+generated = 485
+expanded  = 240
+generated = 575
+expanded  = 260
+generated = 635
+expanded  = 280
+generated = 695
+expanded  = 300
+generated = 761
+expanded  = 320
+generated = 849
+expanded  = 340
+generated = 916
+expanded  = 360
+generated = 963
+expanded  = 380
+generated = 1047
+expanded  = 400
+generated = 1109
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 400
+nodes generated: 1109
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.02) (1 3.48) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 44
+expanded  = 420
+generated = 1191
+expanded  = 440
+generated = 1238
+expanded  = 460
+generated = 1292
+expanded  = 480
+generated = 1331
+expanded  = 500
+generated = 1383
+expanded  = 520
+generated = 1435
+expanded  = 540
+generated = 1484
+expanded  = 560
+generated = 1529
+expanded  = 580
+generated = 1568
+expanded  = 600
+generated = 1620
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 600
+nodes generated: 1620
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.02) (1 3.31) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 62
+expanded  = 620
+generated = 1668
+expanded  = 640
+generated = 1709
+expanded  = 660
+generated = 1753
+expanded  = 680
+generated = 1785
+expanded  = 700
+generated = 1829
+expanded  = 720
+generated = 1904
+expanded  = 740
+generated = 1940
+expanded  = 760
+generated = 1978
+expanded  = 780
+generated = 2020
+Warning: 5000320 bytes have been tenured; (gc t) is recommended.
+Warning: 5000456 bytes have been tenured; (gc t) is recommended.
+Warning: 5005560 bytes have been tenured; (gc t) is recommended.
+Warning: 5005608 bytes have been tenured; (gc t) is recommended.
+Warning: 5011264 bytes have been tenured; (gc t) is recommended.
+Warning: 5011264 bytes have been tenured; (gc t) is recommended.
+Warning: 5017448 bytes have been tenured; (gc t) is recommended.
+Warning: 5021776 bytes have been tenured; (gc t) is recommended.
+Warning: 5022176 bytes have been tenured; (gc t) is recommended.
+Warning: 5023552 bytes have been tenured; (gc t) is recommended.
+Warning: 5027928 bytes have been tenured; (gc t) is recommended.
+Warning: 5032976 bytes have been tenured; (gc t) is recommended.
+expanded  = 800
+generated = 2060
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 800
+nodes generated: 2060
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.01) (1 3.48) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 119
+Warning: 5033016 bytes have been tenured; (gc t) is recommended.
+Warning: 5038080 bytes have been tenured; (gc t) is recommended.
+Warning: 5038080 bytes have been tenured; (gc t) is recommended.
+Warning: 5110800 bytes have been tenured; (gc t) is recommended.
+Warning: 5110816 bytes have been tenured; (gc t) is recommended.
+Warning: 5110816 bytes have been tenured; (gc t) is recommended.
+Warning: 5115184 bytes have been tenured; (gc t) is recommended.
+Warning: 5115536 bytes have been tenured; (gc t) is recommended.
+Warning: 5119528 bytes have been tenured; (gc t) is recommended.
+Warning: 5119552 bytes have been tenured; (gc t) is recommended.
+Warning: 5123856 bytes have been tenured; (gc t) is recommended.
+Warning: 5123944 bytes have been tenured; (gc t) is recommended.
+Warning: 5128184 bytes have been tenured; (gc t) is recommended.
+Warning: 5128288 bytes have been tenured; (gc t) is recommended.
+Warning: 5128312 bytes have been tenured; (gc t) is recommended.
+Warning: 5143360 bytes have been tenured; (gc t) is recommended.
+Warning: 5145008 bytes have been tenured; (gc t) is recommended.
+Warning: 5145264 bytes have been tenured; (gc t) is recommended.
+Warning: 5145264 bytes have been tenured; (gc t) is recommended.
+Warning: 5155392 bytes have been tenured; (gc t) is recommended.
+Warning: 5155584 bytes have been tenured; (gc t) is recommended.
+Warning: 5155584 bytes have been tenured; (gc t) is recommended.
+Warning: 5156168 bytes have been tenured; (gc t) is recommended.
+expanded  = 820
+generated = 2105
+Warning: 5156248 bytes have been tenured; (gc t) is recommended.
+Warning: 5156744 bytes have been tenured; (gc t) is recommended.
+Warning: 5157336 bytes have been tenured; (gc t) is recommended.
+Warning: 5162944 bytes have been tenured; (gc t) is recommended.
+Warning: 5163112 bytes have been tenured; (gc t) is recommended.
+Warning: 5163176 bytes have been tenured; (gc t) is recommended.
+Warning: 5163752 bytes have been tenured; (gc t) is recommended.
+Warning: 5164000 bytes have been tenured; (gc t) is recommended.
+Warning: 5164416 bytes have been tenured; (gc t) is recommended.
+Warning: 5168704 bytes have been tenured; (gc t) is recommended.
+Warning: 5171632 bytes have been tenured; (gc t) is recommended.
+Warning: 5173280 bytes have been tenured; (gc t) is recommended.
+Warning: 5173304 bytes have been tenured; (gc t) is recommended.
+Warning: 5179008 bytes have been tenured; (gc t) is recommended.
+Warning: 5179048 bytes have been tenured; (gc t) is recommended.
+Warning: 5210144 bytes have been tenured; (gc t) is recommended.
+Warning: 5210144 bytes have been tenured; (gc t) is recommended.
+Warning: 5264128 bytes have been tenured; (gc t) is recommended.
+Warning: 5264264 bytes have been tenured; (gc t) is recommended.
+Warning: 5267304 bytes have been tenured; (gc t) is recommended.
+Warning: 5268776 bytes have been tenured; (gc t) is recommended.
+Warning: 5268792 bytes have been tenured; (gc t) is recommended.
+Warning: 5268792 bytes have been tenured; (gc t) is recommended.
+expanded  = 840
+generated = 2142
+Warning: 5269392 bytes have been tenured; (gc t) is recommended.
+Warning: 5273016 bytes have been tenured; (gc t) is recommended.
+Warning: 5273016 bytes have been tenured; (gc t) is recommended.
+Warning: 5282160 bytes have been tenured; (gc t) is recommended.
+Warning: 5282216 bytes have been tenured; (gc t) is recommended.
+Warning: 5292232 bytes have been tenured; (gc t) is recommended.
+Warning: 5292448 bytes have been tenured; (gc t) is recommended.
+Warning: 5292720 bytes have been tenured; (gc t) is recommended.
+Warning: 5292720 bytes have been tenured; (gc t) is recommended.
+Warning: 5293296 bytes have been tenured; (gc t) is recommended.
+Warning: 5293696 bytes have been tenured; (gc t) is recommended.
+Warning: 5293696 bytes have been tenured; (gc t) is recommended.
+Warning: 5299400 bytes have been tenured; (gc t) is recommended.
+Warning: 5299464 bytes have been tenured; (gc t) is recommended.
+Warning: 5299464 bytes have been tenured; (gc t) is recommended.
+Warning: 5300064 bytes have been tenured; (gc t) is recommended.
+Warning: 5303024 bytes have been tenured; (gc t) is recommended.
+Warning: 5304416 bytes have been tenured; (gc t) is recommended.
+Warning: 5391712 bytes have been tenured; (gc t) is recommended.
+Warning: 5391984 bytes have been tenured; (gc t) is recommended.
+Warning: 5392240 bytes have been tenured; (gc t) is recommended.
+Warning: 5392240 bytes have been tenured; (gc t) is recommended.
+Warning: 5402240 bytes have been tenured; (gc t) is recommended.
+expanded  = 860
+generated = 2187
+Warning: 5402536 bytes have been tenured; (gc t) is recommended.
+Warning: 5402536 bytes have been tenured; (gc t) is recommended.
+Warning: 5402600 bytes have been tenured; (gc t) is recommended.
+Warning: 5403104 bytes have been tenured; (gc t) is recommended.
+Warning: 5403696 bytes have been tenured; (gc t) is recommended.
+Warning: 5404288 bytes have been tenured; (gc t) is recommended.
+Warning: 5408528 bytes have been tenured; (gc t) is recommended.
+Warning: 5410040 bytes have been tenured; (gc t) is recommended.
+Warning: 5410040 bytes have been tenured; (gc t) is recommended.
+Warning: 5410040 bytes have been tenured; (gc t) is recommended.
+Warning: 5410592 bytes have been tenured; (gc t) is recommended.
+Warning: 5411168 bytes have been tenured; (gc t) is recommended.
+Warning: 5415488 bytes have been tenured; (gc t) is recommended.
+Warning: 5415488 bytes have been tenured; (gc t) is recommended.
+Warning: 5419792 bytes have been tenured; (gc t) is recommended.
+Warning: 5419816 bytes have been tenured; (gc t) is recommended.
+Warning: 5424600 bytes have been tenured; (gc t) is recommended.
+Warning: 5436264 bytes have been tenured; (gc t) is recommended.
+Warning: 5436536 bytes have been tenured; (gc t) is recommended.
+Warning: 5436632 bytes have been tenured; (gc t) is recommended.
+expanded  = 880
+generated = 2226
+Warning: 5446568 bytes have been tenured; (gc t) is recommended.
+Warning: 5446816 bytes have been tenured; (gc t) is recommended.
+Warning: 5446832 bytes have been tenured; (gc t) is recommended.
+Warning: 5446832 bytes have been tenured; (gc t) is recommended.
+Warning: 5447480 bytes have been tenured; (gc t) is recommended.
+Warning: 5448072 bytes have been tenured; (gc t) is recommended.
+Warning: 5448664 bytes have been tenured; (gc t) is recommended.
+Warning: 5448664 bytes have been tenured; (gc t) is recommended.
+Warning: 5453752 bytes have been tenured; (gc t) is recommended.
+Warning: 5453760 bytes have been tenured; (gc t) is recommended.
+Warning: 5453760 bytes have been tenured; (gc t) is recommended.
+Warning: 5453760 bytes have been tenured; (gc t) is recommended.
+Warning: 5454336 bytes have been tenured; (gc t) is recommended.
+Warning: 5458584 bytes have been tenured; (gc t) is recommended.
+Warning: 5458624 bytes have been tenured; (gc t) is recommended.
+Warning: 5462928 bytes have been tenured; (gc t) is recommended.
+Warning: 5462952 bytes have been tenured; (gc t) is recommended.
+Warning: 5483456 bytes have been tenured; (gc t) is recommended.
+Warning: 5483744 bytes have been tenured; (gc t) is recommended.
+Warning: 5548040 bytes have been tenured; (gc t) is recommended.
+Warning: 5554400 bytes have been tenured; (gc t) is recommended.
+Warning: 5558176 bytes have been tenured; (gc t) is recommended.
+expanded  = 900
+generated = 2261
+Warning: 5558312 bytes have been tenured; (gc t) is recommended.
+Warning: 5561232 bytes have been tenured; (gc t) is recommended.
+Warning: 5561936 bytes have been tenured; (gc t) is recommended.
+Warning: 5566272 bytes have been tenured; (gc t) is recommended.
+Warning: 5566272 bytes have been tenured; (gc t) is recommended.
+Warning: 5569800 bytes have been tenured; (gc t) is recommended.
+Warning: 5574176 bytes have been tenured; (gc t) is recommended.
+Warning: 5579088 bytes have been tenured; (gc t) is recommended.
+Warning: 5579624 bytes have been tenured; (gc t) is recommended.
+Warning: 5584032 bytes have been tenured; (gc t) is recommended.
+Warning: 5587488 bytes have been tenured; (gc t) is recommended.
+Warning: 5587600 bytes have been tenured; (gc t) is recommended.
+Warning: 5591872 bytes have been tenured; (gc t) is recommended.
+Warning: 5595328 bytes have been tenured; (gc t) is recommended.
+Warning: 5672368 bytes have been tenured; (gc t) is recommended.
+Warning: 5672424 bytes have been tenured; (gc t) is recommended.
+Warning: 5675968 bytes have been tenured; (gc t) is recommended.
+Warning: 5683192 bytes have been tenured; (gc t) is recommended.
+Warning: 5688288 bytes have been tenured; (gc t) is recommended.
+Warning: 5688384 bytes have been tenured; (gc t) is recommended.
+Warning: 5692720 bytes have been tenured; (gc t) is recommended.
+Warning: 5692768 bytes have been tenured; (gc t) is recommended.
+Warning: 5697048 bytes have been tenured; (gc t) is recommended.
+Warning: 5697136 bytes have been tenured; (gc t) is recommended.
+Warning: 5697176 bytes have been tenured; (gc t) is recommended.
+Warning: 5701464 bytes have been tenured; (gc t) is recommended.
+expanded  = 920
+generated = 2306
+Warning: 5701552 bytes have been tenured; (gc t) is recommended.
+Warning: 5705904 bytes have been tenured; (gc t) is recommended.
+Warning: 5705904 bytes have been tenured; (gc t) is recommended.
+Warning: 5709640 bytes have been tenured; (gc t) is recommended.
+Warning: 5710904 bytes have been tenured; (gc t) is recommended.
+Warning: 5715192 bytes have been tenured; (gc t) is recommended.
+Warning: 5720000 bytes have been tenured; (gc t) is recommended.
+Warning: 5720176 bytes have been tenured; (gc t) is recommended.
+Warning: 5723640 bytes have been tenured; (gc t) is recommended.
+Warning: 5723680 bytes have been tenured; (gc t) is recommended.
+Warning: 5727112 bytes have been tenured; (gc t) is recommended.
+Warning: 5739776 bytes have been tenured; (gc t) is recommended.
+Warning: 5741920 bytes have been tenured; (gc t) is recommended.
+Warning: 5824952 bytes have been tenured; (gc t) is recommended.
+expanded  = 940
+generated = 2342
+Warning: 5838864 bytes have been tenured; (gc t) is recommended.
+Warning: 5851024 bytes have been tenured; (gc t) is recommended.
+Warning: 5854640 bytes have been tenured; (gc t) is recommended.
+Warning: 5869648 bytes have been tenured; (gc t) is recommended.
+Warning: 5934200 bytes have been tenured; (gc t) is recommended.
+Warning: 5958912 bytes have been tenured; (gc t) is recommended.
+Warning: 5959160 bytes have been tenured; (gc t) is recommended.
+Warning: 5959328 bytes have been tenured; (gc t) is recommended.
+Warning: 5969936 bytes have been tenured; (gc t) is recommended.
+Warning: 5970136 bytes have been tenured; (gc t) is recommended.
+Warning: 5970224 bytes have been tenured; (gc t) is recommended.
+Warning: 5974680 bytes have been tenured; (gc t) is recommended.
+Warning: 5974736 bytes have been tenured; (gc t) is recommended.
+Warning: 5974752 bytes have been tenured; (gc t) is recommended.
+Warning: 5984840 bytes have been tenured; (gc t) is recommended.
+Warning: 5985088 bytes have been tenured; (gc t) is recommended.
+Warning: 5985088 bytes have been tenured; (gc t) is recommended.
+Warning: 5985096 bytes have been tenured; (gc t) is recommended.
+Warning: 5985688 bytes have been tenured; (gc t) is recommended.
+Warning: 5986280 bytes have been tenured; (gc t) is recommended.
+Warning: 5986280 bytes have been tenured; (gc t) is recommended.
+Warning: 5990616 bytes have been tenured; (gc t) is recommended.
+Warning: 5990616 bytes have been tenured; (gc t) is recommended.
+Warning: 5990696 bytes have been tenured; (gc t) is recommended.
+expanded  = 960
+generated = 2393
+Warning: 5997312 bytes have been tenured; (gc t) is recommended.
+Warning: 5997312 bytes have been tenured; (gc t) is recommended.
+Warning: 5997312 bytes have been tenured; (gc t) is recommended.
+Warning: 6000912 bytes have been tenured; (gc t) is recommended.
+Warning: 6001496 bytes have been tenured; (gc t) is recommended.
+Warning: 6002104 bytes have been tenured; (gc t) is recommended.
+Warning: 6007856 bytes have been tenured; (gc t) is recommended.
+Warning: 6007992 bytes have been tenured; (gc t) is recommended.
+Warning: 6011040 bytes have been tenured; (gc t) is recommended.
+Warning: 6012464 bytes have been tenured; (gc t) is recommended.
+Warning: 6012488 bytes have been tenured; (gc t) is recommended.
+Warning: 6012488 bytes have been tenured; (gc t) is recommended.
+Warning: 6099736 bytes have been tenured; (gc t) is recommended.
+Warning: 6099936 bytes have been tenured; (gc t) is recommended.
+Warning: 6100016 bytes have been tenured; (gc t) is recommended.
+Warning: 6100016 bytes have been tenured; (gc t) is recommended.
+Warning: 6100592 bytes have been tenured; (gc t) is recommended.
+Warning: 6100592 bytes have been tenured; (gc t) is recommended.
+Warning: 6101184 bytes have been tenured; (gc t) is recommended.
+Warning: 6111048 bytes have been tenured; (gc t) is recommended.
+Warning: 6111328 bytes have been tenured; (gc t) is recommended.
+expanded  = 980
+generated = 2425
+Warning: 6111328 bytes have been tenured; (gc t) is recommended.
+Warning: 6111344 bytes have been tenured; (gc t) is recommended.
+Warning: 6111928 bytes have been tenured; (gc t) is recommended.
+Warning: 6112528 bytes have been tenured; (gc t) is recommended.
+Warning: 6118024 bytes have been tenured; (gc t) is recommended.
+Warning: 6118072 bytes have been tenured; (gc t) is recommended.
+Warning: 6127896 bytes have been tenured; (gc t) is recommended.
+Warning: 6128112 bytes have been tenured; (gc t) is recommended.
+Warning: 6128112 bytes have been tenured; (gc t) is recommended.
+Warning: 6131728 bytes have been tenured; (gc t) is recommended.
+Warning: 6136064 bytes have been tenured; (gc t) is recommended.
+Warning: 6136064 bytes have been tenured; (gc t) is recommended.
+Warning: 6139576 bytes have been tenured; (gc t) is recommended.
+Warning: 6143928 bytes have been tenured; (gc t) is recommended.
+Warning: 6149024 bytes have been tenured; (gc t) is recommended.
+Warning: 6149120 bytes have been tenured; (gc t) is recommended.
+Warning: 6153456 bytes have been tenured; (gc t) is recommended.
+Warning: 6153504 bytes have been tenured; (gc t) is recommended.
+Warning: 6157768 bytes have been tenured; (gc t) is recommended.
+Warning: 6157848 bytes have been tenured; (gc t) is recommended.
+Warning: 6157872 bytes have been tenured; (gc t) is recommended.
+Warning: 6240600 bytes have been tenured; (gc t) is recommended.
+Warning: 6240680 bytes have been tenured; (gc t) is recommended.
+Warning: 6244920 bytes have been tenured; (gc t) is recommended.
+Warning: 6245000 bytes have been tenured; (gc t) is recommended.
+Warning: 6248680 bytes have been tenured; (gc t) is recommended.
+Warning: 6253408 bytes have been tenured; (gc t) is recommended.
+expanded  = 1000
+generated = 2487
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1000
+nodes generated: 2487
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.01) (1 3.55) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 171
+Warning: 6258800 bytes have been tenured; (gc t) is recommended.
+Warning: 6275704 bytes have been tenured; (gc t) is recommended.
+Warning: 6275944 bytes have been tenured; (gc t) is recommended.
+Warning: 6285008 bytes have been tenured; (gc t) is recommended.
+Warning: 6285120 bytes have been tenured; (gc t) is recommended.
+Warning: 6295320 bytes have been tenured; (gc t) is recommended.
+Warning: 6295536 bytes have been tenured; (gc t) is recommended.
+Warning: 6295864 bytes have been tenured; (gc t) is recommended.
+Warning: 6300024 bytes have been tenured; (gc t) is recommended.
+Warning: 6300040 bytes have been tenured; (gc t) is recommended.
+Warning: 6300040 bytes have been tenured; (gc t) is recommended.
+Warning: 6310200 bytes have been tenured; (gc t) is recommended.
+Warning: 6310408 bytes have been tenured; (gc t) is recommended.
+Warning: 6310408 bytes have been tenured; (gc t) is recommended.
+Warning: 6310984 bytes have been tenured; (gc t) is recommended.
+Warning: 6310984 bytes have been tenured; (gc t) is recommended.
+Warning: 6311560 bytes have been tenured; (gc t) is recommended.
+Warning: 6394160 bytes have been tenured; (gc t) is recommended.
+Warning: 6395624 bytes have been tenured; (gc t) is recommended.
+Warning: 6395624 bytes have been tenured; (gc t) is recommended.
+Warning: 6395648 bytes have been tenured; (gc t) is recommended.
+Warning: 6404736 bytes have been tenured; (gc t) is recommended.
+Warning: 6404872 bytes have been tenured; (gc t) is recommended.
+Warning: 6414888 bytes have been tenured; (gc t) is recommended.
+expanded  = 1020
+generated = 2530
+Warning: 6415168 bytes have been tenured; (gc t) is recommended.
+Warning: 6415168 bytes have been tenured; (gc t) is recommended.
+Warning: 6415168 bytes have been tenured; (gc t) is recommended.
+Warning: 6415752 bytes have been tenured; (gc t) is recommended.
+Warning: 6416344 bytes have been tenured; (gc t) is recommended.
+Warning: 6416968 bytes have been tenured; (gc t) is recommended.
+Warning: 6416968 bytes have been tenured; (gc t) is recommended.
+Warning: 6421312 bytes have been tenured; (gc t) is recommended.
+Warning: 6421312 bytes have been tenured; (gc t) is recommended.
+Warning: 6426328 bytes have been tenured; (gc t) is recommended.
+Warning: 6426424 bytes have been tenured; (gc t) is recommended.
+Warning: 6431448 bytes have been tenured; (gc t) is recommended.
+Warning: 6431488 bytes have been tenured; (gc t) is recommended.
+Warning: 6435824 bytes have been tenured; (gc t) is recommended.
+Warning: 6435856 bytes have been tenured; (gc t) is recommended.
+Warning: 6435872 bytes have been tenured; (gc t) is recommended.
+Warning: 6440232 bytes have been tenured; (gc t) is recommended.
+Warning: 6444384 bytes have been tenured; (gc t) is recommended.
+Warning: 6444560 bytes have been tenured; (gc t) is recommended.
+Warning: 6444600 bytes have been tenured; (gc t) is recommended.
+expanded  = 1040
+generated = 2562
+Warning: 6448888 bytes have been tenured; (gc t) is recommended.
+Warning: 6448976 bytes have been tenured; (gc t) is recommended.
+Warning: 6453280 bytes have been tenured; (gc t) is recommended.
+Warning: 6453320 bytes have been tenured; (gc t) is recommended.
+Warning: 6453344 bytes have been tenured; (gc t) is recommended.
+Warning: 6527064 bytes have been tenured; (gc t) is recommended.
+Warning: 6527064 bytes have been tenured; (gc t) is recommended.
+Warning: 6550024 bytes have been tenured; (gc t) is recommended.
+Warning: 6553952 bytes have been tenured; (gc t) is recommended.
+Warning: 6554096 bytes have been tenured; (gc t) is recommended.
+Warning: 6554096 bytes have been tenured; (gc t) is recommended.
+Warning: 6554680 bytes have been tenured; (gc t) is recommended.
+Warning: 6554680 bytes have been tenured; (gc t) is recommended.
+Warning: 6555288 bytes have been tenured; (gc t) is recommended.
+Warning: 6555872 bytes have been tenured; (gc t) is recommended.
+Warning: 6560624 bytes have been tenured; (gc t) is recommended.
+Warning: 6560744 bytes have been tenured; (gc t) is recommended.
+Warning: 6561696 bytes have been tenured; (gc t) is recommended.
+Warning: 6567160 bytes have been tenured; (gc t) is recommended.
+Warning: 6573328 bytes have been tenured; (gc t) is recommended.
+Warning: 6573504 bytes have been tenured; (gc t) is recommended.
+Warning: 6573504 bytes have been tenured; (gc t) is recommended.
+Warning: 6577968 bytes have been tenured; (gc t) is recommended.
+Warning: 6577968 bytes have been tenured; (gc t) is recommended.
+expanded  = 1060
+generated = 2607
+Warning: 6577984 bytes have been tenured; (gc t) is recommended.
+Warning: 6588000 bytes have been tenured; (gc t) is recommended.
+Warning: 6588280 bytes have been tenured; (gc t) is recommended.
+Warning: 6588280 bytes have been tenured; (gc t) is recommended.
+Warning: 6588280 bytes have been tenured; (gc t) is recommended.
+Warning: 6588856 bytes have been tenured; (gc t) is recommended.
+Warning: 6589440 bytes have been tenured; (gc t) is recommended.
+Warning: 6589464 bytes have been tenured; (gc t) is recommended.
+Warning: 6598072 bytes have been tenured; (gc t) is recommended.
+Warning: 6598128 bytes have been tenured; (gc t) is recommended.
+Warning: 6608128 bytes have been tenured; (gc t) is recommended.
+Warning: 6608424 bytes have been tenured; (gc t) is recommended.
+Warning: 6608424 bytes have been tenured; (gc t) is recommended.
+Warning: 6608488 bytes have been tenured; (gc t) is recommended.
+Warning: 6608968 bytes have been tenured; (gc t) is recommended.
+Warning: 6609544 bytes have been tenured; (gc t) is recommended.
+Warning: 6610120 bytes have been tenured; (gc t) is recommended.
+Warning: 6678024 bytes have been tenured; (gc t) is recommended.
+Warning: 6696664 bytes have been tenured; (gc t) is recommended.
+Warning: 6696696 bytes have been tenured; (gc t) is recommended.
+Warning: 6696696 bytes have been tenured; (gc t) is recommended.
+expanded  = 1080
+generated = 2645
+Warning: 6705256 bytes have been tenured; (gc t) is recommended.
+Warning: 6705312 bytes have been tenured; (gc t) is recommended.
+Warning: 6715248 bytes have been tenured; (gc t) is recommended.
+Warning: 6715512 bytes have been tenured; (gc t) is recommended.
+Warning: 6715512 bytes have been tenured; (gc t) is recommended.
+Warning: 6715512 bytes have been tenured; (gc t) is recommended.
+Warning: 6716096 bytes have been tenured; (gc t) is recommended.
+Warning: 6716688 bytes have been tenured; (gc t) is recommended.
+Warning: 6717272 bytes have been tenured; (gc t) is recommended.
+Warning: 6720176 bytes have been tenured; (gc t) is recommended.
+Warning: 6721672 bytes have been tenured; (gc t) is recommended.
+Warning: 6721704 bytes have been tenured; (gc t) is recommended.
+Warning: 6728824 bytes have been tenured; (gc t) is recommended.
+Warning: 6734304 bytes have been tenured; (gc t) is recommended.
+Warning: 6734352 bytes have been tenured; (gc t) is recommended.
+Warning: 6744176 bytes have been tenured; (gc t) is recommended.
+Warning: 6744408 bytes have been tenured; (gc t) is recommended.
+Warning: 6744408 bytes have been tenured; (gc t) is recommended.
+Warning: 6748024 bytes have been tenured; (gc t) is recommended.
+Warning: 6752360 bytes have been tenured; (gc t) is recommended.
+Warning: 6752360 bytes have been tenured; (gc t) is recommended.
+Warning: 6755864 bytes have been tenured; (gc t) is recommended.
+expanded  = 1100
+generated = 2683
+Warning: 6760240 bytes have been tenured; (gc t) is recommended.
+Warning: 6785792 bytes have been tenured; (gc t) is recommended.
+Warning: 6785792 bytes have been tenured; (gc t) is recommended.
+Warning: 6786848 bytes have been tenured; (gc t) is recommended.
+Warning: 6853568 bytes have been tenured; (gc t) is recommended.
+Warning: 6857072 bytes have been tenured; (gc t) is recommended.
+Warning: 6861256 bytes have been tenured; (gc t) is recommended.
+Warning: 6861344 bytes have been tenured; (gc t) is recommended.
+Warning: 6864840 bytes have been tenured; (gc t) is recommended.
+Warning: 6868520 bytes have been tenured; (gc t) is recommended.
+Warning: 6872016 bytes have been tenured; (gc t) is recommended.
+Warning: 6876248 bytes have been tenured; (gc t) is recommended.
+Warning: 6877656 bytes have been tenured; (gc t) is recommended.
+Warning: 6881952 bytes have been tenured; (gc t) is recommended.
+Warning: 6882056 bytes have been tenured; (gc t) is recommended.
+Warning: 6886336 bytes have been tenured; (gc t) is recommended.
+Warning: 6886424 bytes have been tenured; (gc t) is recommended.
+Warning: 6886464 bytes have been tenured; (gc t) is recommended.
+Warning: 6890760 bytes have been tenured; (gc t) is recommended.
+Warning: 6890840 bytes have been tenured; (gc t) is recommended.
+Warning: 6895080 bytes have been tenured; (gc t) is recommended.
+Warning: 6895184 bytes have been tenured; (gc t) is recommended.
+Warning: 6903000 bytes have been tenured; (gc t) is recommended.
+Warning: 6990576 bytes have been tenured; (gc t) is recommended.
+Warning: 6993864 bytes have been tenured; (gc t) is recommended.
+expanded  = 1120
+generated = 2722
+Warning: 6996776 bytes have been tenured; (gc t) is recommended.
+Warning: 6998120 bytes have been tenured; (gc t) is recommended.
+Warning: 6998120 bytes have been tenured; (gc t) is recommended.
+Warning: 7001768 bytes have been tenured; (gc t) is recommended.
+Warning: 7001808 bytes have been tenured; (gc t) is recommended.
+Warning: 7006016 bytes have been tenured; (gc t) is recommended.
+Warning: 7006056 bytes have been tenured; (gc t) is recommended.
+Warning: 7013800 bytes have been tenured; (gc t) is recommended.
+Warning: 7017560 bytes have been tenured; (gc t) is recommended.
+Warning: 7017616 bytes have been tenured; (gc t) is recommended.
+Warning: 7017632 bytes have been tenured; (gc t) is recommended.
+Warning: 7023480 bytes have been tenured; (gc t) is recommended.
+Warning: 7027936 bytes have been tenured; (gc t) is recommended.
+Warning: 7027976 bytes have been tenured; (gc t) is recommended.
+Warning: 7027976 bytes have been tenured; (gc t) is recommended.
+Warning: 7028288 bytes have been tenured; (gc t) is recommended.
+Warning: 7045624 bytes have been tenured; (gc t) is recommended.
+Warning: 7045624 bytes have been tenured; (gc t) is recommended.
+Warning: 7045816 bytes have been tenured; (gc t) is recommended.
+Warning: 7144664 bytes have been tenured; (gc t) is recommended.
+expanded  = 1140
+generated = 2763
+Warning: 7144744 bytes have been tenured; (gc t) is recommended.
+Warning: 7145096 bytes have been tenured; (gc t) is recommended.
+Warning: 7148728 bytes have been tenured; (gc t) is recommended.
+Warning: 7148728 bytes have been tenured; (gc t) is recommended.
+Warning: 7155600 bytes have been tenured; (gc t) is recommended.
+Warning: 7172352 bytes have been tenured; (gc t) is recommended.
+Warning: 7172608 bytes have been tenured; (gc t) is recommended.
+Warning: 7181200 bytes have been tenured; (gc t) is recommended.
+Warning: 7181336 bytes have been tenured; (gc t) is recommended.
+Warning: 7185768 bytes have been tenured; (gc t) is recommended.
+Warning: 7185816 bytes have been tenured; (gc t) is recommended.
+Warning: 7190248 bytes have been tenured; (gc t) is recommended.
+Warning: 7190248 bytes have been tenured; (gc t) is recommended.
+Warning: 7190424 bytes have been tenured; (gc t) is recommended.
+Warning: 7198848 bytes have been tenured; (gc t) is recommended.
+Warning: 7199112 bytes have been tenured; (gc t) is recommended.
+Warning: 7202768 bytes have been tenured; (gc t) is recommended.
+expanded  = 1160
+generated = 2804
+Warning: 7203664 bytes have been tenured; (gc t) is recommended.
+Warning: 7207304 bytes have been tenured; (gc t) is recommended.
+Warning: 7207304 bytes have been tenured; (gc t) is recommended.
+Warning: 7295416 bytes have been tenured; (gc t) is recommended.
+Warning: 7295448 bytes have been tenured; (gc t) is recommended.
+Warning: 7298984 bytes have been tenured; (gc t) is recommended.
+Warning: 7302824 bytes have been tenured; (gc t) is recommended.
+Warning: 7302824 bytes have been tenured; (gc t) is recommended.
+Warning: 7308496 bytes have been tenured; (gc t) is recommended.
+Warning: 7308496 bytes have been tenured; (gc t) is recommended.
+Warning: 7312016 bytes have been tenured; (gc t) is recommended.
+Warning: 7315576 bytes have been tenured; (gc t) is recommended.
+Warning: 7319464 bytes have been tenured; (gc t) is recommended.
+Warning: 7328016 bytes have been tenured; (gc t) is recommended.
+Warning: 7338944 bytes have been tenured; (gc t) is recommended.
+Warning: 7347032 bytes have been tenured; (gc t) is recommended.
+Warning: 7447376 bytes have been tenured; (gc t) is recommended.
+Warning: 7447552 bytes have been tenured; (gc t) is recommended.
+Warning: 7456224 bytes have been tenured; (gc t) is recommended.
+Warning: 7456320 bytes have been tenured; (gc t) is recommended.
+expanded  = 1180
+generated = 2849
+Warning: 7460752 bytes have been tenured; (gc t) is recommended.
+Warning: 7460800 bytes have been tenured; (gc t) is recommended.
+Warning: 7465240 bytes have been tenured; (gc t) is recommended.
+Warning: 7465240 bytes have been tenured; (gc t) is recommended.
+Warning: 7465376 bytes have been tenured; (gc t) is recommended.
+Warning: 7469656 bytes have been tenured; (gc t) is recommended.
+Warning: 7469760 bytes have been tenured; (gc t) is recommended.
+Warning: 7469904 bytes have been tenured; (gc t) is recommended.
+Warning: 7477136 bytes have been tenured; (gc t) is recommended.
+Warning: 7477256 bytes have been tenured; (gc t) is recommended.
+Warning: 7481544 bytes have been tenured; (gc t) is recommended.
+Warning: 7481584 bytes have been tenured; (gc t) is recommended.
+Warning: 7485112 bytes have been tenured; (gc t) is recommended.
+Warning: 7495048 bytes have been tenured; (gc t) is recommended.
+Warning: 7496944 bytes have been tenured; (gc t) is recommended.
+Warning: 7566392 bytes have been tenured; (gc t) is recommended.
+Warning: 7567712 bytes have been tenured; (gc t) is recommended.
+Warning: 7568816 bytes have been tenured; (gc t) is recommended.
+Warning: 7604576 bytes have been tenured; (gc t) is recommended.
+Warning: 7609088 bytes have been tenured; (gc t) is recommended.
+Warning: 7609088 bytes have been tenured; (gc t) is recommended.
+Warning: 7613520 bytes have been tenured; (gc t) is recommended.
+Warning: 7613528 bytes have been tenured; (gc t) is recommended.
+expanded  = 1200
+generated = 2898
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1200
+nodes generated: 2898
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.04) (1 3.55) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 217
+Warning: 7613680 bytes have been tenured; (gc t) is recommended.
+Warning: 7622184 bytes have been tenured; (gc t) is recommended.
+Warning: 7622320 bytes have been tenured; (gc t) is recommended.
+Warning: 7626664 bytes have been tenured; (gc t) is recommended.
+Warning: 7626800 bytes have been tenured; (gc t) is recommended.
+Warning: 7626936 bytes have been tenured; (gc t) is recommended.
+Warning: 7627072 bytes have been tenured; (gc t) is recommended.
+Warning: 7627784 bytes have been tenured; (gc t) is recommended.
+Warning: 7627808 bytes have been tenured; (gc t) is recommended.
+Warning: 7631344 bytes have been tenured; (gc t) is recommended.
+Warning: 7636376 bytes have been tenured; (gc t) is recommended.
+Warning: 7641296 bytes have been tenured; (gc t) is recommended.
+Warning: 7641408 bytes have been tenured; (gc t) is recommended.
+Warning: 7644936 bytes have been tenured; (gc t) is recommended.
+Warning: 7648496 bytes have been tenured; (gc t) is recommended.
+Warning: 7652024 bytes have been tenured; (gc t) is recommended.
+Warning: 7652064 bytes have been tenured; (gc t) is recommended.
+Warning: 7751592 bytes have been tenured; (gc t) is recommended.
+Warning: 7751688 bytes have been tenured; (gc t) is recommended.
+expanded  = 1220
+generated = 2928
+Warning: 7756000 bytes have been tenured; (gc t) is recommended.
+Warning: 7756128 bytes have been tenured; (gc t) is recommended.
+Warning: 7756264 bytes have been tenured; (gc t) is recommended.
+Warning: 7756264 bytes have been tenured; (gc t) is recommended.
+Warning: 7757096 bytes have been tenured; (gc t) is recommended.
+Warning: 7757128 bytes have been tenured; (gc t) is recommended.
+Warning: 7760648 bytes have been tenured; (gc t) is recommended.
+Warning: 7767928 bytes have been tenured; (gc t) is recommended.
+Warning: 7768136 bytes have been tenured; (gc t) is recommended.
+Warning: 7772464 bytes have been tenured; (gc t) is recommended.
+Warning: 7775320 bytes have been tenured; (gc t) is recommended.
+Warning: 7775824 bytes have been tenured; (gc t) is recommended.
+Warning: 7786328 bytes have been tenured; (gc t) is recommended.
+Warning: 7794328 bytes have been tenured; (gc t) is recommended.
+Warning: 7794408 bytes have been tenured; (gc t) is recommended.
+Warning: 7800352 bytes have been tenured; (gc t) is recommended.
+Warning: 7827456 bytes have been tenured; (gc t) is recommended.
+Warning: 7827456 bytes have been tenured; (gc t) is recommended.
+Warning: 7900608 bytes have been tenured; (gc t) is recommended.
+Warning: 7900688 bytes have been tenured; (gc t) is recommended.
+expanded  = 1240
+generated = 2966
+Warning: 7904112 bytes have been tenured; (gc t) is recommended.
+Warning: 7904976 bytes have been tenured; (gc t) is recommended.
+Warning: 7907400 bytes have been tenured; (gc t) is recommended.
+Warning: 7907904 bytes have been tenured; (gc t) is recommended.
+Warning: 7916672 bytes have been tenured; (gc t) is recommended.
+Warning: 7932360 bytes have been tenured; (gc t) is recommended.
+Warning: 7937120 bytes have been tenured; (gc t) is recommended.
+Warning: 7941392 bytes have been tenured; (gc t) is recommended.
+Warning: 7948688 bytes have been tenured; (gc t) is recommended.
+Warning: 7948768 bytes have been tenured; (gc t) is recommended.
+Warning: 8061960 bytes have been tenured; (gc t) is recommended.
+Warning: 8073520 bytes have been tenured; (gc t) is recommended.
+Warning: 8073800 bytes have been tenured; (gc t) is recommended.
+Warning: 8074040 bytes have been tenured; (gc t) is recommended.
+Warning: 8074336 bytes have been tenured; (gc t) is recommended.
+Warning: 8084064 bytes have been tenured; (gc t) is recommended.
+Warning: 8084432 bytes have been tenured; (gc t) is recommended.
+expanded  = 1260
+generated = 3025
+Warning: 8085456 bytes have been tenured; (gc t) is recommended.
+Warning: 8089328 bytes have been tenured; (gc t) is recommended.
+Warning: 8093592 bytes have been tenured; (gc t) is recommended.
+Warning: 8093720 bytes have been tenured; (gc t) is recommended.
+Warning: 8097192 bytes have been tenured; (gc t) is recommended.
+Warning: 8104720 bytes have been tenured; (gc t) is recommended.
+Warning: 8208568 bytes have been tenured; (gc t) is recommended.
+Warning: 8218696 bytes have been tenured; (gc t) is recommended.
+Warning: 8219016 bytes have been tenured; (gc t) is recommended.
+Warning: 8219016 bytes have been tenured; (gc t) is recommended.
+Warning: 8243008 bytes have been tenured; (gc t) is recommended.
+Warning: 8253336 bytes have been tenured; (gc t) is recommended.
+Warning: 8253632 bytes have been tenured; (gc t) is recommended.
+Warning: 8253872 bytes have been tenured; (gc t) is recommended.
+Warning: 8254112 bytes have been tenured; (gc t) is recommended.
+Warning: 8257736 bytes have been tenured; (gc t) is recommended.
+Warning: 8262072 bytes have been tenured; (gc t) is recommended.
+Warning: 8262120 bytes have been tenured; (gc t) is recommended.
+Warning: 8266376 bytes have been tenured; (gc t) is recommended.
+Warning: 8266416 bytes have been tenured; (gc t) is recommended.
+Warning: 8269968 bytes have been tenured; (gc t) is recommended.
+Warning: 8273632 bytes have been tenured; (gc t) is recommended.
+Warning: 8353384 bytes have been tenured; (gc t) is recommended.
+Warning: 8353384 bytes have been tenured; (gc t) is recommended.
+Warning: 8354216 bytes have been tenured; (gc t) is recommended.
+Warning: 8402784 bytes have been tenured; (gc t) is recommended.
+Warning: 8402976 bytes have been tenured; (gc t) is recommended.
+Warning: 8403256 bytes have been tenured; (gc t) is recommended.
+Warning: 8403512 bytes have been tenured; (gc t) is recommended.
+expanded  = 1280
+generated = 3112
+Warning: 8407248 bytes have been tenured; (gc t) is recommended.
+Warning: 8407248 bytes have been tenured; (gc t) is recommended.
+Warning: 8411560 bytes have been tenured; (gc t) is recommended.
+Warning: 8411560 bytes have been tenured; (gc t) is recommended.
+Warning: 8415488 bytes have been tenured; (gc t) is recommended.
+Warning: 8418776 bytes have been tenured; (gc t) is recommended.
+Warning: 8429344 bytes have been tenured; (gc t) is recommended.
+Warning: 8431936 bytes have been tenured; (gc t) is recommended.
+Warning: 8432016 bytes have been tenured; (gc t) is recommended.
+Warning: 8436696 bytes have been tenured; (gc t) is recommended.
+Warning: 8436736 bytes have been tenured; (gc t) is recommended.
+Warning: 8537456 bytes have been tenured; (gc t) is recommended.
+Warning: 8538336 bytes have been tenured; (gc t) is recommended.
+Warning: 8538336 bytes have been tenured; (gc t) is recommended.
+Warning: 8541880 bytes have been tenured; (gc t) is recommended.
+Warning: 8544568 bytes have been tenured; (gc t) is recommended.
+Warning: 8545752 bytes have been tenured; (gc t) is recommended.
+Warning: 8558640 bytes have been tenured; (gc t) is recommended.
+Warning: 8558832 bytes have been tenured; (gc t) is recommended.
+Warning: 8558920 bytes have been tenured; (gc t) is recommended.
+Warning: 8563112 bytes have been tenured; (gc t) is recommended.
+Warning: 8563160 bytes have been tenured; (gc t) is recommended.
+Warning: 8566704 bytes have been tenured; (gc t) is recommended.
+Warning: 8574664 bytes have been tenured; (gc t) is recommended.
+Warning: 8574744 bytes have been tenured; (gc t) is recommended.
+Warning: 8600560 bytes have been tenured; (gc t) is recommended.
+expanded  = 1300
+generated = 3180
+Warning: 8610784 bytes have been tenured; (gc t) is recommended.
+Warning: 8610784 bytes have been tenured; (gc t) is recommended.
+Warning: 8706176 bytes have been tenured; (gc t) is recommended.
+Warning: 8709984 bytes have been tenured; (gc t) is recommended.
+Warning: 8710040 bytes have been tenured; (gc t) is recommended.
+Warning: 8714480 bytes have been tenured; (gc t) is recommended.
+Warning: 8714480 bytes have been tenured; (gc t) is recommended.
+Warning: 8718832 bytes have been tenured; (gc t) is recommended.
+Warning: 8718832 bytes have been tenured; (gc t) is recommended.
+Warning: 8719088 bytes have been tenured; (gc t) is recommended.
+Warning: 8726376 bytes have been tenured; (gc t) is recommended.
+Warning: 8726376 bytes have been tenured; (gc t) is recommended.
+Warning: 8739040 bytes have been tenured; (gc t) is recommended.
+Warning: 8739256 bytes have been tenured; (gc t) is recommended.
+Warning: 8743512 bytes have been tenured; (gc t) is recommended.
+Warning: 8743600 bytes have been tenured; (gc t) is recommended.
+Warning: 8747800 bytes have been tenured; (gc t) is recommended.
+Warning: 8747840 bytes have been tenured; (gc t) is recommended.
+Warning: 8747968 bytes have been tenured; (gc t) is recommended.
+Warning: 8756656 bytes have been tenured; (gc t) is recommended.
+Warning: 8861736 bytes have been tenured; (gc t) is recommended.
+expanded  = 1320
+generated = 3225
+Warning: 8861904 bytes have been tenured; (gc t) is recommended.
+Warning: 8862296 bytes have been tenured; (gc t) is recommended.
+Warning: 8864152 bytes have been tenured; (gc t) is recommended.
+Warning: 8868456 bytes have been tenured; (gc t) is recommended.
+Warning: 8871400 bytes have been tenured; (gc t) is recommended.
+Warning: 8872800 bytes have been tenured; (gc t) is recommended.
+Warning: 8872800 bytes have been tenured; (gc t) is recommended.
+Warning: 8876776 bytes have been tenured; (gc t) is recommended.
+Warning: 8876856 bytes have been tenured; (gc t) is recommended.
+Warning: 8885344 bytes have been tenured; (gc t) is recommended.
+Warning: 8886104 bytes have been tenured; (gc t) is recommended.
+Warning: 8886104 bytes have been tenured; (gc t) is recommended.
+Warning: 8890384 bytes have been tenured; (gc t) is recommended.
+Warning: 8890432 bytes have been tenured; (gc t) is recommended.
+Warning: 8890456 bytes have been tenured; (gc t) is recommended.
+Warning: 8894464 bytes have been tenured; (gc t) is recommended.
+Warning: 8895016 bytes have been tenured; (gc t) is recommended.
+Warning: 8903040 bytes have been tenured; (gc t) is recommended.
+Warning: 8903184 bytes have been tenured; (gc t) is recommended.
+Warning: 8907256 bytes have been tenured; (gc t) is recommended.
+Warning: 8907456 bytes have been tenured; (gc t) is recommended.
+Warning: 8907584 bytes have been tenured; (gc t) is recommended.
+Warning: 8997896 bytes have been tenured; (gc t) is recommended.
+expanded  = 1340
+generated = 3268
+Warning: 9016896 bytes have been tenured; (gc t) is recommended.
+Warning: 9016984 bytes have been tenured; (gc t) is recommended.
+Warning: 9022952 bytes have been tenured; (gc t) is recommended.
+Warning: 9025960 bytes have been tenured; (gc t) is recommended.
+Warning: 9026016 bytes have been tenured; (gc t) is recommended.
+Warning: 9030368 bytes have been tenured; (gc t) is recommended.
+Warning: 9030368 bytes have been tenured; (gc t) is recommended.
+Warning: 9034736 bytes have been tenured; (gc t) is recommended.
+Warning: 9034736 bytes have been tenured; (gc t) is recommended.
+Warning: 9038168 bytes have been tenured; (gc t) is recommended.
+Warning: 9041336 bytes have been tenured; (gc t) is recommended.
+Warning: 9053376 bytes have been tenured; (gc t) is recommended.
+Warning: 9053512 bytes have been tenured; (gc t) is recommended.
+Warning: 9057728 bytes have been tenured; (gc t) is recommended.
+Warning: 9057776 bytes have been tenured; (gc t) is recommended.
+Warning: 9061392 bytes have been tenured; (gc t) is recommended.
+Warning: 9061392 bytes have been tenured; (gc t) is recommended.
+Warning: 9068040 bytes have been tenured; (gc t) is recommended.
+Warning: 9135824 bytes have been tenured; (gc t) is recommended.
+Warning: 9137224 bytes have been tenured; (gc t) is recommended.
+Warning: 9196872 bytes have been tenured; (gc t) is recommended.
+Warning: 9213816 bytes have been tenured; (gc t) is recommended.
+Warning: 9216648 bytes have been tenured; (gc t) is recommended.
+Warning: 9216848 bytes have been tenured; (gc t) is recommended.
+Warning: 9218000 bytes have been tenured; (gc t) is recommended.
+Warning: 9218216 bytes have been tenured; (gc t) is recommended.
+Warning: 9218424 bytes have been tenured; (gc t) is recommended.
+Warning: 9225200 bytes have been tenured; (gc t) is recommended.
+expanded  = 1360
+generated = 3336
+Warning: 9230712 bytes have been tenured; (gc t) is recommended.
+Warning: 9230800 bytes have been tenured; (gc t) is recommended.
+Warning: 9235888 bytes have been tenured; (gc t) is recommended.
+Warning: 9235984 bytes have been tenured; (gc t) is recommended.
+Warning: 9235984 bytes have been tenured; (gc t) is recommended.
+Warning: 9241176 bytes have been tenured; (gc t) is recommended.
+Warning: 9241232 bytes have been tenured; (gc t) is recommended.
+Warning: 9241880 bytes have been tenured; (gc t) is recommended.
+Warning: 9241896 bytes have been tenured; (gc t) is recommended.
+Warning: 9246120 bytes have been tenured; (gc t) is recommended.
+Warning: 9247008 bytes have been tenured; (gc t) is recommended.
+Warning: 9247008 bytes have been tenured; (gc t) is recommended.
+Warning: 9247648 bytes have been tenured; (gc t) is recommended.
+Warning: 9356920 bytes have been tenured; (gc t) is recommended.
+Warning: 9357104 bytes have been tenured; (gc t) is recommended.
+Warning: 9357104 bytes have been tenured; (gc t) is recommended.
+Warning: 9362128 bytes have been tenured; (gc t) is recommended.
+Warning: 9362184 bytes have been tenured; (gc t) is recommended.
+Warning: 9362184 bytes have been tenured; (gc t) is recommended.
+Warning: 9365864 bytes have been tenured; (gc t) is recommended.
+Warning: 9369544 bytes have been tenured; (gc t) is recommended.
+Warning: 9373368 bytes have been tenured; (gc t) is recommended.
+Warning: 9390520 bytes have been tenured; (gc t) is recommended.
+Warning: 9394440 bytes have been tenured; (gc t) is recommended.
+Warning: 9406056 bytes have been tenured; (gc t) is recommended.
+Warning: 9406232 bytes have been tenured; (gc t) is recommended.
+Warning: 9406440 bytes have been tenured; (gc t) is recommended.
+Warning: 9415840 bytes have been tenured; (gc t) is recommended.
+Warning: 9416056 bytes have been tenured; (gc t) is recommended.
+Warning: 9416056 bytes have been tenured; (gc t) is recommended.
+Warning: 9421168 bytes have been tenured; (gc t) is recommended.
+Warning: 9421224 bytes have been tenured; (gc t) is recommended.
+Warning: 9424288 bytes have been tenured; (gc t) is recommended.
+Warning: 9425880 bytes have been tenured; (gc t) is recommended.
+Warning: 9425880 bytes have been tenured; (gc t) is recommended.
+Warning: 9425920 bytes have been tenured; (gc t) is recommended.
+expanded  = 1380
+generated = 3391
+Warning: 9425920 bytes have been tenured; (gc t) is recommended.
+Warning: 9430440 bytes have been tenured; (gc t) is recommended.
+Warning: 9430480 bytes have been tenured; (gc t) is recommended.
+Warning: 9430480 bytes have been tenured; (gc t) is recommended.
+Warning: 9430504 bytes have been tenured; (gc t) is recommended.
+Warning: 9541176 bytes have been tenured; (gc t) is recommended.
+Warning: 9541224 bytes have been tenured; (gc t) is recommended.
+Warning: 9545408 bytes have been tenured; (gc t) is recommended.
+Warning: 9546272 bytes have been tenured; (gc t) is recommended.
+Warning: 9546272 bytes have been tenured; (gc t) is recommended.
+Warning: 9549912 bytes have been tenured; (gc t) is recommended.
+Warning: 9549952 bytes have been tenured; (gc t) is recommended.
+Warning: 9553672 bytes have been tenured; (gc t) is recommended.
+Warning: 9561184 bytes have been tenured; (gc t) is recommended.
+Warning: 9570272 bytes have been tenured; (gc t) is recommended.
+Warning: 9570512 bytes have been tenured; (gc t) is recommended.
+Warning: 9577408 bytes have been tenured; (gc t) is recommended.
+Warning: 9582512 bytes have been tenured; (gc t) is recommended.
+Warning: 9589488 bytes have been tenured; (gc t) is recommended.
+Warning: 9593320 bytes have been tenured; (gc t) is recommended.
+Warning: 9650216 bytes have been tenured; (gc t) is recommended.
+Warning: 9653120 bytes have been tenured; (gc t) is recommended.
+Warning: 9715408 bytes have been tenured; (gc t) is recommended.
+Warning: 9721192 bytes have been tenured; (gc t) is recommended.
+Warning: 9724968 bytes have been tenured; (gc t) is recommended.
+Warning: 9725056 bytes have been tenured; (gc t) is recommended.
+Warning: 9729288 bytes have been tenured; (gc t) is recommended.
+Warning: 9730256 bytes have been tenured; (gc t) is recommended.
+expanded  = 1400
+generated = 3448
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1400
+nodes generated: 3448
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.08) (1 3.56) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 239
+Warning: 9730256 bytes have been tenured; (gc t) is recommended.
+Warning: 9735400 bytes have been tenured; (gc t) is recommended.
+Warning: 9735536 bytes have been tenured; (gc t) is recommended.
+Warning: 9735536 bytes have been tenured; (gc t) is recommended.
+Warning: 9736144 bytes have been tenured; (gc t) is recommended.
+Warning: 9736144 bytes have been tenured; (gc t) is recommended.
+Warning: 9740808 bytes have been tenured; (gc t) is recommended.
+Warning: 9740808 bytes have been tenured; (gc t) is recommended.
+Warning: 9740840 bytes have been tenured; (gc t) is recommended.
+Warning: 9745728 bytes have been tenured; (gc t) is recommended.
+Warning: 9746544 bytes have been tenured; (gc t) is recommended.
+Warning: 9746544 bytes have been tenured; (gc t) is recommended.
+Warning: 9751072 bytes have been tenured; (gc t) is recommended.
+Warning: 9751072 bytes have been tenured; (gc t) is recommended.
+Warning: 9754712 bytes have been tenured; (gc t) is recommended.
+Warning: 9754752 bytes have been tenured; (gc t) is recommended.
+Warning: 9764800 bytes have been tenured; (gc t) is recommended.
+Warning: 9770416 bytes have been tenured; (gc t) is recommended.
+Warning: 9770616 bytes have been tenured; (gc t) is recommended.
+Warning: 9887528 bytes have been tenured; (gc t) is recommended.
+Warning: 9887728 bytes have been tenured; (gc t) is recommended.
+Warning: 9895664 bytes have been tenured; (gc t) is recommended.
+Warning: 9897048 bytes have been tenured; (gc t) is recommended.
+Warning: 9897136 bytes have been tenured; (gc t) is recommended.
+Warning: 9902192 bytes have been tenured; (gc t) is recommended.
+Warning: 9902336 bytes have been tenured; (gc t) is recommended.
+Warning: 9902336 bytes have been tenured; (gc t) is recommended.
+Warning: 9907464 bytes have been tenured; (gc t) is recommended.
+Warning: 9907624 bytes have been tenured; (gc t) is recommended.
+Warning: 9907872 bytes have been tenured; (gc t) is recommended.
+Warning: 9908320 bytes have been tenured; (gc t) is recommended.
+Warning: 9913872 bytes have been tenured; (gc t) is recommended.
+Warning: 9917600 bytes have been tenured; (gc t) is recommended.
+Warning: 9917656 bytes have been tenured; (gc t) is recommended.
+Warning: 9920888 bytes have been tenured; (gc t) is recommended.
+expanded  = 1420
+generated = 3500
+Warning: 9922496 bytes have been tenured; (gc t) is recommended.
+Warning: 9922496 bytes have been tenured; (gc t) is recommended.
+Warning: 9922504 bytes have been tenured; (gc t) is recommended.
+Warning: 9922504 bytes have been tenured; (gc t) is recommended.
+Warning: 9923160 bytes have been tenured; (gc t) is recommended.
+Warning: 9923160 bytes have been tenured; (gc t) is recommended.
+Warning: 9926864 bytes have been tenured; (gc t) is recommended.
+Warning: 9932600 bytes have been tenured; (gc t) is recommended.
+Warning: 9932728 bytes have been tenured; (gc t) is recommended.
+Warning: 9937840 bytes have been tenured; (gc t) is recommended.
+Warning: 9937952 bytes have been tenured; (gc t) is recommended.
+Warning: 9937952 bytes have been tenured; (gc t) is recommended.
+Warning: 9941560 bytes have been tenured; (gc t) is recommended.
+Warning: 9945280 bytes have been tenured; (gc t) is recommended.
+Warning: 9945280 bytes have been tenured; (gc t) is recommended.
+Warning: 9949024 bytes have been tenured; (gc t) is recommended.
+Warning: 9949024 bytes have been tenured; (gc t) is recommended.
+Warning: 10067032 bytes have been tenured; (gc t) is recommended.
+Warning: 10067184 bytes have been tenured; (gc t) is recommended.
+Warning: 10067184 bytes have been tenured; (gc t) is recommended.
+Warning: 10072272 bytes have been tenured; (gc t) is recommended.
+Warning: 10072416 bytes have been tenured; (gc t) is recommended.
+Warning: 10072416 bytes have been tenured; (gc t) is recommended.
+Warning: 10073032 bytes have been tenured; (gc t) is recommended.
+Warning: 10073656 bytes have been tenured; (gc t) is recommended.
+Warning: 10073680 bytes have been tenured; (gc t) is recommended.
+Warning: 10077312 bytes have been tenured; (gc t) is recommended.
+Warning: 10077352 bytes have been tenured; (gc t) is recommended.
+Warning: 10083088 bytes have been tenured; (gc t) is recommended.
+Warning: 10083136 bytes have been tenured; (gc t) is recommended.
+Warning: 10088160 bytes have been tenured; (gc t) is recommended.
+Warning: 10088200 bytes have been tenured; (gc t) is recommended.
+Warning: 10088200 bytes have been tenured; (gc t) is recommended.
+expanded  = 1440
+generated = 3543
+Warning: 10091880 bytes have been tenured; (gc t) is recommended.
+Warning: 10095560 bytes have been tenured; (gc t) is recommended.
+Warning: 10103056 bytes have been tenured; (gc t) is recommended.
+Warning: 10113640 bytes have been tenured; (gc t) is recommended.
+Warning: 10113680 bytes have been tenured; (gc t) is recommended.
+Warning: 10117112 bytes have been tenured; (gc t) is recommended.
+Warning: 10174792 bytes have been tenured; (gc t) is recommended.
+Warning: 10174792 bytes have been tenured; (gc t) is recommended.
+Warning: 10251536 bytes have been tenured; (gc t) is recommended.
+Warning: 10251752 bytes have been tenured; (gc t) is recommended.
+Warning: 10251944 bytes have been tenured; (gc t) is recommended.
+Warning: 10251944 bytes have been tenured; (gc t) is recommended.
+Warning: 10257064 bytes have been tenured; (gc t) is recommended.
+Warning: 10257152 bytes have been tenured; (gc t) is recommended.
+Warning: 10257152 bytes have been tenured; (gc t) is recommended.
+Warning: 10261680 bytes have been tenured; (gc t) is recommended.
+Warning: 10261680 bytes have been tenured; (gc t) is recommended.
+Warning: 10262024 bytes have been tenured; (gc t) is recommended.
+Warning: 10269272 bytes have been tenured; (gc t) is recommended.
+Warning: 10269272 bytes have been tenured; (gc t) is recommended.
+Warning: 10286968 bytes have been tenured; (gc t) is recommended.
+Warning: 10296272 bytes have been tenured; (gc t) is recommended.
+Warning: 10296472 bytes have been tenured; (gc t) is recommended.
+Warning: 10296688 bytes have been tenured; (gc t) is recommended.
+Warning: 10296912 bytes have been tenured; (gc t) is recommended.
+Warning: 10296912 bytes have been tenured; (gc t) is recommended.
+Warning: 10301952 bytes have been tenured; (gc t) is recommended.
+Warning: 10302000 bytes have been tenured; (gc t) is recommended.
+Warning: 10305568 bytes have been tenured; (gc t) is recommended.
+Warning: 10306424 bytes have been tenured; (gc t) is recommended.
+Warning: 10306424 bytes have been tenured; (gc t) is recommended.
+Warning: 10310096 bytes have been tenured; (gc t) is recommended.
+expanded  = 1460
+generated = 3609
+Warning: 10318408 bytes have been tenured; (gc t) is recommended.
+Warning: 10432760 bytes have been tenured; (gc t) is recommended.
+Warning: 10434640 bytes have been tenured; (gc t) is recommended.
+Warning: 10435272 bytes have been tenured; (gc t) is recommended.
+Warning: 10464944 bytes have been tenured; (gc t) is recommended.
+Warning: 10476416 bytes have been tenured; (gc t) is recommended.
+Warning: 10476632 bytes have been tenured; (gc t) is recommended.
+Warning: 10476840 bytes have been tenured; (gc t) is recommended.
+Warning: 10477040 bytes have been tenured; (gc t) is recommended.
+Warning: 10477208 bytes have been tenured; (gc t) is recommended.
+Warning: 10477368 bytes have been tenured; (gc t) is recommended.
+Warning: 10481240 bytes have been tenured; (gc t) is recommended.
+Warning: 10488952 bytes have been tenured; (gc t) is recommended.
+Warning: 10498656 bytes have been tenured; (gc t) is recommended.
+Warning: 10498864 bytes have been tenured; (gc t) is recommended.
+Warning: 10498912 bytes have been tenured; (gc t) is recommended.
+Warning: 10504152 bytes have been tenured; (gc t) is recommended.
+Warning: 10504264 bytes have been tenured; (gc t) is recommended.
+Warning: 10504264 bytes have been tenured; (gc t) is recommended.
+Warning: 10509600 bytes have been tenured; (gc t) is recommended.
+Warning: 10509736 bytes have been tenured; (gc t) is recommended.
+Warning: 10509736 bytes have been tenured; (gc t) is recommended.
+Warning: 10510376 bytes have been tenured; (gc t) is recommended.
+Warning: 10510376 bytes have been tenured; (gc t) is recommended.
+Warning: 10628112 bytes have been tenured; (gc t) is recommended.
+Warning: 10628240 bytes have been tenured; (gc t) is recommended.
+Warning: 10628240 bytes have been tenured; (gc t) is recommended.
+Warning: 10628880 bytes have been tenured; (gc t) is recommended.
+Warning: 10629392 bytes have been tenured; (gc t) is recommended.
+Warning: 10634752 bytes have been tenured; (gc t) is recommended.
+Warning: 10634752 bytes have been tenured; (gc t) is recommended.
+Warning: 10639856 bytes have been tenured; (gc t) is recommended.
+Warning: 10639960 bytes have been tenured; (gc t) is recommended.
+Warning: 10639960 bytes have been tenured; (gc t) is recommended.
+Warning: 10643696 bytes have been tenured; (gc t) is recommended.
+Warning: 10643736 bytes have been tenured; (gc t) is recommended.
+Warning: 10657184 bytes have been tenured; (gc t) is recommended.
+Warning: 10666064 bytes have been tenured; (gc t) is recommended.
+Warning: 10666224 bytes have been tenured; (gc t) is recommended.
+Warning: 10666424 bytes have been tenured; (gc t) is recommended.
+Warning: 10666864 bytes have been tenured; (gc t) is recommended.
+Warning: 10676224 bytes have been tenured; (gc t) is recommended.
+expanded  = 1480
+generated = 3686
+Warning: 10680168 bytes have been tenured; (gc t) is recommended.
+Warning: 10680272 bytes have been tenured; (gc t) is recommended.
+Warning: 10685400 bytes have been tenured; (gc t) is recommended.
+Warning: 10685728 bytes have been tenured; (gc t) is recommended.
+Warning: 10685728 bytes have been tenured; (gc t) is recommended.
+Warning: 10690856 bytes have been tenured; (gc t) is recommended.
+Warning: 10690992 bytes have been tenured; (gc t) is recommended.
+Warning: 10690992 bytes have been tenured; (gc t) is recommended.
+Warning: 10691648 bytes have been tenured; (gc t) is recommended.
+Warning: 10691648 bytes have been tenured; (gc t) is recommended.
+Warning: 10696856 bytes have been tenured; (gc t) is recommended.
+Warning: 10696960 bytes have been tenured; (gc t) is recommended.
+Warning: 10696960 bytes have been tenured; (gc t) is recommended.
+Warning: 10697600 bytes have been tenured; (gc t) is recommended.
+Warning: 10700296 bytes have been tenured; (gc t) is recommended.
+Warning: 10700296 bytes have been tenured; (gc t) is recommended.
+Warning: 10817200 bytes have been tenured; (gc t) is recommended.
+Warning: 10822288 bytes have been tenured; (gc t) is recommended.
+Warning: 10822480 bytes have been tenured; (gc t) is recommended.
+Warning: 10822480 bytes have been tenured; (gc t) is recommended.
+Warning: 10822480 bytes have been tenured; (gc t) is recommended.
+Warning: 10826272 bytes have been tenured; (gc t) is recommended.
+Warning: 10829896 bytes have been tenured; (gc t) is recommended.
+Warning: 10853760 bytes have been tenured; (gc t) is recommended.
+Warning: 10859952 bytes have been tenured; (gc t) is recommended.
+Warning: 10860120 bytes have been tenured; (gc t) is recommended.
+Warning: 10860288 bytes have been tenured; (gc t) is recommended.
+Warning: 10860488 bytes have been tenured; (gc t) is recommended.
+Warning: 10864376 bytes have been tenured; (gc t) is recommended.
+Warning: 10868264 bytes have been tenured; (gc t) is recommended.
+Warning: 10877912 bytes have been tenured; (gc t) is recommended.
+Warning: 10878080 bytes have been tenured; (gc t) is recommended.
+Warning: 10887784 bytes have been tenured; (gc t) is recommended.
+Warning: 10887952 bytes have been tenured; (gc t) is recommended.
+Warning: 10888000 bytes have been tenured; (gc t) is recommended.
+Warning: 10893240 bytes have been tenured; (gc t) is recommended.
+Warning: 10893352 bytes have been tenured; (gc t) is recommended.
+Warning: 10893352 bytes have been tenured; (gc t) is recommended.
+Warning: 10898672 bytes have been tenured; (gc t) is recommended.
+Warning: 10898800 bytes have been tenured; (gc t) is recommended.
+Warning: 10898832 bytes have been tenured; (gc t) is recommended.
+expanded  = 1500
+generated = 3749
+Warning: 10899440 bytes have been tenured; (gc t) is recommended.
+Warning: 10899440 bytes have been tenured; (gc t) is recommended.
+Warning: 10955864 bytes have been tenured; (gc t) is recommended.
+Warning: 10955864 bytes have been tenured; (gc t) is recommended.
+Warning: 10955864 bytes have been tenured; (gc t) is recommended.
+Warning: 11029400 bytes have been tenured; (gc t) is recommended.
+Warning: 11029728 bytes have been tenured; (gc t) is recommended.
+Warning: 11029728 bytes have been tenured; (gc t) is recommended.
+Warning: 11030344 bytes have been tenured; (gc t) is recommended.
+Warning: 11030344 bytes have been tenured; (gc t) is recommended.
+Warning: 11030968 bytes have been tenured; (gc t) is recommended.
+Warning: 11030992 bytes have been tenured; (gc t) is recommended.
+Warning: 11034712 bytes have been tenured; (gc t) is recommended.
+Warning: 11034792 bytes have been tenured; (gc t) is recommended.
+Warning: 11040592 bytes have been tenured; (gc t) is recommended.
+Warning: 11040640 bytes have been tenured; (gc t) is recommended.
+Warning: 11046464 bytes have been tenured; (gc t) is recommended.
+Warning: 11046560 bytes have been tenured; (gc t) is recommended.
+Warning: 11046560 bytes have been tenured; (gc t) is recommended.
+Warning: 11050336 bytes have been tenured; (gc t) is recommended.
+Warning: 11053408 bytes have been tenured; (gc t) is recommended.
+Warning: 11054120 bytes have been tenured; (gc t) is recommended.
+Warning: 11057936 bytes have been tenured; (gc t) is recommended.
+Warning: 11057936 bytes have been tenured; (gc t) is recommended.
+Warning: 11067528 bytes have been tenured; (gc t) is recommended.
+Warning: 11067752 bytes have been tenured; (gc t) is recommended.
+Warning: 11067752 bytes have been tenured; (gc t) is recommended.
+Warning: 11073000 bytes have been tenured; (gc t) is recommended.
+Warning: 11073144 bytes have been tenured; (gc t) is recommended.
+Warning: 11073144 bytes have been tenured; (gc t) is recommended.
+Warning: 11073768 bytes have been tenured; (gc t) is recommended.
+Warning: 11073768 bytes have been tenured; (gc t) is recommended.
+Warning: 11074424 bytes have been tenured; (gc t) is recommended.
+Warning: 11074424 bytes have been tenured; (gc t) is recommended.
+Warning: 11078208 bytes have been tenured; (gc t) is recommended.
+Warning: 11083936 bytes have been tenured; (gc t) is recommended.
+expanded  = 1520
+generated = 3785
+Warning: 11084064 bytes have been tenured; (gc t) is recommended.
+Warning: 11084064 bytes have been tenured; (gc t) is recommended.
+Warning: 11205432 bytes have been tenured; (gc t) is recommended.
+Warning: 11205544 bytes have been tenured; (gc t) is recommended.
+Warning: 11205544 bytes have been tenured; (gc t) is recommended.
+Warning: 11209280 bytes have been tenured; (gc t) is recommended.
+Warning: 11209320 bytes have been tenured; (gc t) is recommended.
+Warning: 11213056 bytes have been tenured; (gc t) is recommended.
+Warning: 11221112 bytes have been tenured; (gc t) is recommended.
+Warning: 11221112 bytes have been tenured; (gc t) is recommended.
+Warning: 11221112 bytes have been tenured; (gc t) is recommended.
+Warning: 11231904 bytes have been tenured; (gc t) is recommended.
+Warning: 11235728 bytes have been tenured; (gc t) is recommended.
+Warning: 11245360 bytes have been tenured; (gc t) is recommended.
+Warning: 11245488 bytes have been tenured; (gc t) is recommended.
+Warning: 11255136 bytes have been tenured; (gc t) is recommended.
+Warning: 11255360 bytes have been tenured; (gc t) is recommended.
+Warning: 11255360 bytes have been tenured; (gc t) is recommended.
+Warning: 11260600 bytes have been tenured; (gc t) is recommended.
+Warning: 11260672 bytes have been tenured; (gc t) is recommended.
+Warning: 11260672 bytes have been tenured; (gc t) is recommended.
+Warning: 11266016 bytes have been tenured; (gc t) is recommended.
+Warning: 11266112 bytes have been tenured; (gc t) is recommended.
+Warning: 11266448 bytes have been tenured; (gc t) is recommended.
+Warning: 11266736 bytes have been tenured; (gc t) is recommended.
+Warning: 11272528 bytes have been tenured; (gc t) is recommended.
+Warning: 11276448 bytes have been tenured; (gc t) is recommended.
+Warning: 11276544 bytes have been tenured; (gc t) is recommended.
+Warning: 11276544 bytes have been tenured; (gc t) is recommended.
+Warning: 11281240 bytes have been tenured; (gc t) is recommended.
+Warning: 11281304 bytes have been tenured; (gc t) is recommended.
+Warning: 11281312 bytes have been tenured; (gc t) is recommended.
+Warning: 11281312 bytes have been tenured; (gc t) is recommended.
+Warning: 11281928 bytes have been tenured; (gc t) is recommended.
+Warning: 11281952 bytes have been tenured; (gc t) is recommended.
+Warning: 11403184 bytes have been tenured; (gc t) is recommended.
+Warning: 11403256 bytes have been tenured; (gc t) is recommended.
+Warning: 11409032 bytes have been tenured; (gc t) is recommended.
+Warning: 11409120 bytes have been tenured; (gc t) is recommended.
+expanded  = 1540
+generated = 3842
+Warning: 11409120 bytes have been tenured; (gc t) is recommended.
+Warning: 11414400 bytes have been tenured; (gc t) is recommended.
+Warning: 11414456 bytes have been tenured; (gc t) is recommended.
+Warning: 11418184 bytes have been tenured; (gc t) is recommended.
+Warning: 11418240 bytes have been tenured; (gc t) is recommended.
+Warning: 11422024 bytes have been tenured; (gc t) is recommended.
+Warning: 11422024 bytes have been tenured; (gc t) is recommended.
+Warning: 11425840 bytes have been tenured; (gc t) is recommended.
+Warning: 11425840 bytes have been tenured; (gc t) is recommended.
+Warning: 11435448 bytes have been tenured; (gc t) is recommended.
+Warning: 11435600 bytes have been tenured; (gc t) is recommended.
+Warning: 11435600 bytes have been tenured; (gc t) is recommended.
+Warning: 11440888 bytes have been tenured; (gc t) is recommended.
+Warning: 11440952 bytes have been tenured; (gc t) is recommended.
+Warning: 11441440 bytes have been tenured; (gc t) is recommended.
+Warning: 11441768 bytes have been tenured; (gc t) is recommended.
+Warning: 11442192 bytes have been tenured; (gc t) is recommended.
+Warning: 11442216 bytes have been tenured; (gc t) is recommended.
+Warning: 11445264 bytes have been tenured; (gc t) is recommended.
+Warning: 11445984 bytes have been tenured; (gc t) is recommended.
+Warning: 11451744 bytes have been tenured; (gc t) is recommended.
+Warning: 11451848 bytes have been tenured; (gc t) is recommended.
+Warning: 11454936 bytes have been tenured; (gc t) is recommended.
+Warning: 11457104 bytes have been tenured; (gc t) is recommended.
+Warning: 11457104 bytes have been tenured; (gc t) is recommended.
+Warning: 11457424 bytes have been tenured; (gc t) is recommended.
+Warning: 11460864 bytes have been tenured; (gc t) is recommended.
+Warning: 11464600 bytes have been tenured; (gc t) is recommended.
+Warning: 11476144 bytes have been tenured; (gc t) is recommended.
+Warning: 11477456 bytes have been tenured; (gc t) is recommended.
+Warning: 11601688 bytes have been tenured; (gc t) is recommended.
+Warning: 11605352 bytes have been tenured; (gc t) is recommended.
+expanded  = 1560
+generated = 3883
+Warning: 11606752 bytes have been tenured; (gc t) is recommended.
+Warning: 11610896 bytes have been tenured; (gc t) is recommended.
+Warning: 11610944 bytes have been tenured; (gc t) is recommended.
+Warning: 11615240 bytes have been tenured; (gc t) is recommended.
+Warning: 11615240 bytes have been tenured; (gc t) is recommended.
+Warning: 11618680 bytes have been tenured; (gc t) is recommended.
+Warning: 11636688 bytes have been tenured; (gc t) is recommended.
+Warning: 11636880 bytes have been tenured; (gc t) is recommended.
+Warning: 11637048 bytes have been tenured; (gc t) is recommended.
+Warning: 11637264 bytes have been tenured; (gc t) is recommended.
+Warning: 11641048 bytes have been tenured; (gc t) is recommended.
+Warning: 11641048 bytes have been tenured; (gc t) is recommended.
+Warning: 11648216 bytes have been tenured; (gc t) is recommended.
+Warning: 11648216 bytes have been tenured; (gc t) is recommended.
+Warning: 11648560 bytes have been tenured; (gc t) is recommended.
+Warning: 11650816 bytes have been tenured; (gc t) is recommended.
+Warning: 11650816 bytes have been tenured; (gc t) is recommended.
+Warning: 11650840 bytes have been tenured; (gc t) is recommended.
+Warning: 11655048 bytes have been tenured; (gc t) is recommended.
+Warning: 11655128 bytes have been tenured; (gc t) is recommended.
+Warning: 11735504 bytes have been tenured; (gc t) is recommended.
+Warning: 11746096 bytes have been tenured; (gc t) is recommended.
+Warning: 11746128 bytes have been tenured; (gc t) is recommended.
+Warning: 11746128 bytes have been tenured; (gc t) is recommended.
+Warning: 11793992 bytes have been tenured; (gc t) is recommended.
+Warning: 11797808 bytes have been tenured; (gc t) is recommended.
+Warning: 11797808 bytes have been tenured; (gc t) is recommended.
+Warning: 11802992 bytes have been tenured; (gc t) is recommended.
+Warning: 11802992 bytes have been tenured; (gc t) is recommended.
+Warning: 11807432 bytes have been tenured; (gc t) is recommended.
+Warning: 11807536 bytes have been tenured; (gc t) is recommended.
+Warning: 11807536 bytes have been tenured; (gc t) is recommended.
+Warning: 11816936 bytes have been tenured; (gc t) is recommended.
+Warning: 11821192 bytes have been tenured; (gc t) is recommended.
+expanded  = 1580
+generated = 3947
+Warning: 11826656 bytes have been tenured; (gc t) is recommended.
+Warning: 11826784 bytes have been tenured; (gc t) is recommended.
+Warning: 11832680 bytes have been tenured; (gc t) is recommended.
+Warning: 11832824 bytes have been tenured; (gc t) is recommended.
+Warning: 11832824 bytes have been tenured; (gc t) is recommended.
+Warning: 11836304 bytes have been tenured; (gc t) is recommended.
+Warning: 11979248 bytes have been tenured; (gc t) is recommended.
+Warning: 11983088 bytes have been tenured; (gc t) is recommended.
+Warning: 11983224 bytes have been tenured; (gc t) is recommended.
+Warning: 11983352 bytes have been tenured; (gc t) is recommended.
+Warning: 11983488 bytes have been tenured; (gc t) is recommended.
+Warning: 11987384 bytes have been tenured; (gc t) is recommended.
+Warning: 11987384 bytes have been tenured; (gc t) is recommended.
+Warning: 11992368 bytes have been tenured; (gc t) is recommended.
+Warning: 11992592 bytes have been tenured; (gc t) is recommended.
+Warning: 11992592 bytes have been tenured; (gc t) is recommended.
+Warning: 11992592 bytes have been tenured; (gc t) is recommended.
+Warning: 11997704 bytes have been tenured; (gc t) is recommended.
+Warning: 11997760 bytes have been tenured; (gc t) is recommended.
+Warning: 11997760 bytes have been tenured; (gc t) is recommended.
+Warning: 11998400 bytes have been tenured; (gc t) is recommended.
+Warning: 11999712 bytes have been tenured; (gc t) is recommended.
+Warning: 11999712 bytes have been tenured; (gc t) is recommended.
+Warning: 11999712 bytes have been tenured; (gc t) is recommended.
+Warning: 12017912 bytes have been tenured; (gc t) is recommended.
+Warning: 12024352 bytes have been tenured; (gc t) is recommended.
+Warning: 12024512 bytes have been tenured; (gc t) is recommended.
+Warning: 12024680 bytes have been tenured; (gc t) is recommended.
+Warning: 12028560 bytes have been tenured; (gc t) is recommended.
+Warning: 12028616 bytes have been tenured; (gc t) is recommended.
+Warning: 12028616 bytes have been tenured; (gc t) is recommended.
+Warning: 12033192 bytes have been tenured; (gc t) is recommended.
+Warning: 12033192 bytes have been tenured; (gc t) is recommended.
+Warning: 12033256 bytes have been tenured; (gc t) is recommended.
+Warning: 12037464 bytes have been tenured; (gc t) is recommended.
+Warning: 12037544 bytes have been tenured; (gc t) is recommended.
+Warning: 12037544 bytes have been tenured; (gc t) is recommended.
+Warning: 12177824 bytes have been tenured; (gc t) is recommended.
+Warning: 12178616 bytes have been tenured; (gc t) is recommended.
+Warning: 12178816 bytes have been tenured; (gc t) is recommended.
+Warning: 12178992 bytes have been tenured; (gc t) is recommended.
+Warning: 12182808 bytes have been tenured; (gc t) is recommended.
+Warning: 12182808 bytes have been tenured; (gc t) is recommended.
+expanded  = 1600
+generated = 4018
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1600
+nodes generated: 4018
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.07) (1 3.58) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 265
+Warning: 12187992 bytes have been tenured; (gc t) is recommended.
+Warning: 12187992 bytes have been tenured; (gc t) is recommended.
+Warning: 12192440 bytes have been tenured; (gc t) is recommended.
+Warning: 12192544 bytes have been tenured; (gc t) is recommended.
+Warning: 12192552 bytes have been tenured; (gc t) is recommended.
+Warning: 12197112 bytes have been tenured; (gc t) is recommended.
+Warning: 12217000 bytes have been tenured; (gc t) is recommended.
+Warning: 12227192 bytes have been tenured; (gc t) is recommended.
+Warning: 12235224 bytes have been tenured; (gc t) is recommended.
+Warning: 12235400 bytes have been tenured; (gc t) is recommended.
+Warning: 12235568 bytes have been tenured; (gc t) is recommended.
+Warning: 12235736 bytes have been tenured; (gc t) is recommended.
+Warning: 12235896 bytes have been tenured; (gc t) is recommended.
+Warning: 12236056 bytes have been tenured; (gc t) is recommended.
+Warning: 12239904 bytes have been tenured; (gc t) is recommended.
+Warning: 12261320 bytes have been tenured; (gc t) is recommended.
+Warning: 12261952 bytes have been tenured; (gc t) is recommended.
+Warning: 12371480 bytes have been tenured; (gc t) is recommended.
+Warning: 12371480 bytes have been tenured; (gc t) is recommended.
+Warning: 12376736 bytes have been tenured; (gc t) is recommended.
+Warning: 12376776 bytes have been tenured; (gc t) is recommended.
+Warning: 12376776 bytes have been tenured; (gc t) is recommended.
+Warning: 12377520 bytes have been tenured; (gc t) is recommended.
+Warning: 12393672 bytes have been tenured; (gc t) is recommended.
+Warning: 12395992 bytes have been tenured; (gc t) is recommended.
+Warning: 12396168 bytes have been tenured; (gc t) is recommended.
+Warning: 12396336 bytes have been tenured; (gc t) is recommended.
+Warning: 12399528 bytes have been tenured; (gc t) is recommended.
+Warning: 12400272 bytes have been tenured; (gc t) is recommended.
+Warning: 12400272 bytes have been tenured; (gc t) is recommended.
+Warning: 12405464 bytes have been tenured; (gc t) is recommended.
+Warning: 12405528 bytes have been tenured; (gc t) is recommended.
+Warning: 12406144 bytes have been tenured; (gc t) is recommended.
+Warning: 12423984 bytes have been tenured; (gc t) is recommended.
+Warning: 12436152 bytes have been tenured; (gc t) is recommended.
+Warning: 12436328 bytes have been tenured; (gc t) is recommended.
+expanded  = 1620
+generated = 4095
+Warning: 12436496 bytes have been tenured; (gc t) is recommended.
+Warning: 12436704 bytes have been tenured; (gc t) is recommended.
+Warning: 12436872 bytes have been tenured; (gc t) is recommended.
+Warning: 12437000 bytes have been tenured; (gc t) is recommended.
+Warning: 12441024 bytes have been tenured; (gc t) is recommended.
+Warning: 12444640 bytes have been tenured; (gc t) is recommended.
+Warning: 12447200 bytes have been tenured; (gc t) is recommended.
+Warning: 12454256 bytes have been tenured; (gc t) is recommended.
+Warning: 12454352 bytes have been tenured; (gc t) is recommended.
+Warning: 12454352 bytes have been tenured; (gc t) is recommended.
+Warning: 12524488 bytes have been tenured; (gc t) is recommended.
+Warning: 12524488 bytes have been tenured; (gc t) is recommended.
+Warning: 12524488 bytes have been tenured; (gc t) is recommended.
+Warning: 12585512 bytes have been tenured; (gc t) is recommended.
+Warning: 12585512 bytes have been tenured; (gc t) is recommended.
+Warning: 12585512 bytes have been tenured; (gc t) is recommended.
+Warning: 12586392 bytes have been tenured; (gc t) is recommended.
+Warning: 12586392 bytes have been tenured; (gc t) is recommended.
+Warning: 12586416 bytes have been tenured; (gc t) is recommended.
+Warning: 12586752 bytes have been tenured; (gc t) is recommended.
+Warning: 12602416 bytes have been tenured; (gc t) is recommended.
+Warning: 12608464 bytes have been tenured; (gc t) is recommended.
+Warning: 12608584 bytes have been tenured; (gc t) is recommended.
+Warning: 12608712 bytes have been tenured; (gc t) is recommended.
+Warning: 12608872 bytes have been tenured; (gc t) is recommended.
+Warning: 12612688 bytes have been tenured; (gc t) is recommended.
+Warning: 12612688 bytes have been tenured; (gc t) is recommended.
+Warning: 12622184 bytes have been tenured; (gc t) is recommended.
+Warning: 12622368 bytes have been tenured; (gc t) is recommended.
+Warning: 12622368 bytes have been tenured; (gc t) is recommended.
+Warning: 12627520 bytes have been tenured; (gc t) is recommended.
+Warning: 12627664 bytes have been tenured; (gc t) is recommended.
+expanded  = 1640
+generated = 4139
+Warning: 12627664 bytes have been tenured; (gc t) is recommended.
+Warning: 12628424 bytes have been tenured; (gc t) is recommended.
+Warning: 12628424 bytes have been tenured; (gc t) is recommended.
+Warning: 12629176 bytes have been tenured; (gc t) is recommended.
+Warning: 12629304 bytes have been tenured; (gc t) is recommended.
+Warning: 12629328 bytes have been tenured; (gc t) is recommended.
+Warning: 12629328 bytes have been tenured; (gc t) is recommended.
+Warning: 12637336 bytes have been tenured; (gc t) is recommended.
+Warning: 12647280 bytes have been tenured; (gc t) is recommended.
+Warning: 12647320 bytes have been tenured; (gc t) is recommended.
+Warning: 12777792 bytes have been tenured; (gc t) is recommended.
+Warning: 12777872 bytes have been tenured; (gc t) is recommended.
+Warning: 12777872 bytes have been tenured; (gc t) is recommended.
+Warning: 12788320 bytes have been tenured; (gc t) is recommended.
+Warning: 12790840 bytes have been tenured; (gc t) is recommended.
+Warning: 12799368 bytes have been tenured; (gc t) is recommended.
+Warning: 12799536 bytes have been tenured; (gc t) is recommended.
+Warning: 12799768 bytes have been tenured; (gc t) is recommended.
+Warning: 12803536 bytes have been tenured; (gc t) is recommended.
+Warning: 12803536 bytes have been tenured; (gc t) is recommended.
+Warning: 12808512 bytes have been tenured; (gc t) is recommended.
+Warning: 12808648 bytes have been tenured; (gc t) is recommended.
+Warning: 12808912 bytes have been tenured; (gc t) is recommended.
+Warning: 12809368 bytes have been tenured; (gc t) is recommended.
+Warning: 12813920 bytes have been tenured; (gc t) is recommended.
+Warning: 12817760 bytes have been tenured; (gc t) is recommended.
+Warning: 12840112 bytes have been tenured; (gc t) is recommended.
+Warning: 12852384 bytes have been tenured; (gc t) is recommended.
+Warning: 12852560 bytes have been tenured; (gc t) is recommended.
+Warning: 12852736 bytes have been tenured; (gc t) is recommended.
+Warning: 12852904 bytes have been tenured; (gc t) is recommended.
+Warning: 12853064 bytes have been tenured; (gc t) is recommended.
+Warning: 12853224 bytes have been tenured; (gc t) is recommended.
+expanded  = 1660
+generated = 4202
+Warning: 12853344 bytes have been tenured; (gc t) is recommended.
+Warning: 12984808 bytes have been tenured; (gc t) is recommended.
+Warning: 12988688 bytes have been tenured; (gc t) is recommended.
+Warning: 12992592 bytes have been tenured; (gc t) is recommended.
+Warning: 12992592 bytes have been tenured; (gc t) is recommended.
+Warning: 12997800 bytes have been tenured; (gc t) is recommended.
+Warning: 12997904 bytes have been tenured; (gc t) is recommended.
+Warning: 12997904 bytes have been tenured; (gc t) is recommended.
+Warning: 13011872 bytes have been tenured; (gc t) is recommended.
+Warning: 13024408 bytes have been tenured; (gc t) is recommended.
+Warning: 13024600 bytes have been tenured; (gc t) is recommended.
+Warning: 13024760 bytes have been tenured; (gc t) is recommended.
+Warning: 13024928 bytes have been tenured; (gc t) is recommended.
+Warning: 13028792 bytes have been tenured; (gc t) is recommended.
+Warning: 13028848 bytes have been tenured; (gc t) is recommended.
+Warning: 13032592 bytes have been tenured; (gc t) is recommended.
+Warning: 13034168 bytes have been tenured; (gc t) is recommended.
+Warning: 13034168 bytes have been tenured; (gc t) is recommended.
+Warning: 13034784 bytes have been tenured; (gc t) is recommended.
+Warning: 13048560 bytes have been tenured; (gc t) is recommended.
+Warning: 13048816 bytes have been tenured; (gc t) is recommended.
+Warning: 13048816 bytes have been tenured; (gc t) is recommended.
+Warning: 13064984 bytes have been tenured; (gc t) is recommended.
+Warning: 13065160 bytes have been tenured; (gc t) is recommended.
+Warning: 13065288 bytes have been tenured; (gc t) is recommended.
+Warning: 13069144 bytes have been tenured; (gc t) is recommended.
+Warning: 13072992 bytes have been tenured; (gc t) is recommended.
+Warning: 13072992 bytes have been tenured; (gc t) is recommended.
+Warning: 13211408 bytes have been tenured; (gc t) is recommended.
+Warning: 13211576 bytes have been tenured; (gc t) is recommended.
+Warning: 13211648 bytes have been tenured; (gc t) is recommended.
+Warning: 13211648 bytes have been tenured; (gc t) is recommended.
+Warning: 13216928 bytes have been tenured; (gc t) is recommended.
+Warning: 13217136 bytes have been tenured; (gc t) is recommended.
+Warning: 13217136 bytes have been tenured; (gc t) is recommended.
+Warning: 13217720 bytes have been tenured; (gc t) is recommended.
+Warning: 13217848 bytes have been tenured; (gc t) is recommended.
+Warning: 13218328 bytes have been tenured; (gc t) is recommended.
+Warning: 13218328 bytes have been tenured; (gc t) is recommended.
+Warning: 13232984 bytes have been tenured; (gc t) is recommended.
+Warning: 13240480 bytes have been tenured; (gc t) is recommended.
+expanded  = 1680
+generated = 4273
+Warning: 13240656 bytes have been tenured; (gc t) is recommended.
+Warning: 13240824 bytes have been tenured; (gc t) is recommended.
+Warning: 13240984 bytes have been tenured; (gc t) is recommended.
+Warning: 13244824 bytes have been tenured; (gc t) is recommended.
+Warning: 13244824 bytes have been tenured; (gc t) is recommended.
+Warning: 13254400 bytes have been tenured; (gc t) is recommended.
+Warning: 13254584 bytes have been tenured; (gc t) is recommended.
+Warning: 13254584 bytes have been tenured; (gc t) is recommended.
+Warning: 13259792 bytes have been tenured; (gc t) is recommended.
+Warning: 13259936 bytes have been tenured; (gc t) is recommended.
+Warning: 13259936 bytes have been tenured; (gc t) is recommended.
+Warning: 13260560 bytes have been tenured; (gc t) is recommended.
+Warning: 13260560 bytes have been tenured; (gc t) is recommended.
+Warning: 13261200 bytes have been tenured; (gc t) is recommended.
+Warning: 13261200 bytes have been tenured; (gc t) is recommended.
+Warning: 13269264 bytes have been tenured; (gc t) is recommended.
+Warning: 13279248 bytes have been tenured; (gc t) is recommended.
+Warning: 13279288 bytes have been tenured; (gc t) is recommended.
+Warning: 13283488 bytes have been tenured; (gc t) is recommended.
+Warning: 13283528 bytes have been tenured; (gc t) is recommended.
+Warning: 13312376 bytes have been tenured; (gc t) is recommended.
+Warning: 13314256 bytes have been tenured; (gc t) is recommended.
+Warning: 13315008 bytes have been tenured; (gc t) is recommended.
+Warning: 13443304 bytes have been tenured; (gc t) is recommended.
+Warning: 13443472 bytes have been tenured; (gc t) is recommended.
+Warning: 13443656 bytes have been tenured; (gc t) is recommended.
+Warning: 13447464 bytes have been tenured; (gc t) is recommended.
+Warning: 13447464 bytes have been tenured; (gc t) is recommended.
+Warning: 13447800 bytes have been tenured; (gc t) is recommended.
+Warning: 13452024 bytes have been tenured; (gc t) is recommended.
+expanded  = 1700
+generated = 4319
+Warning: 13452024 bytes have been tenured; (gc t) is recommended.
+Warning: 13452152 bytes have been tenured; (gc t) is recommended.
+Warning: 13452152 bytes have been tenured; (gc t) is recommended.
+Warning: 13456760 bytes have been tenured; (gc t) is recommended.
+Warning: 13479872 bytes have been tenured; (gc t) is recommended.
+Warning: 13493912 bytes have been tenured; (gc t) is recommended.
+Warning: 13495200 bytes have been tenured; (gc t) is recommended.
+Warning: 13495368 bytes have been tenured; (gc t) is recommended.
+Warning: 13495536 bytes have been tenured; (gc t) is recommended.
+Warning: 13495696 bytes have been tenured; (gc t) is recommended.
+Warning: 13495896 bytes have been tenured; (gc t) is recommended.
+Warning: 13496312 bytes have been tenured; (gc t) is recommended.
+Warning: 13563864 bytes have been tenured; (gc t) is recommended.
+Warning: 13564888 bytes have been tenured; (gc t) is recommended.
+Warning: 13564888 bytes have been tenured; (gc t) is recommended.
+Warning: 13648520 bytes have been tenured; (gc t) is recommended.
+Warning: 13648672 bytes have been tenured; (gc t) is recommended.
+Warning: 13648672 bytes have been tenured; (gc t) is recommended.
+Warning: 13653824 bytes have been tenured; (gc t) is recommended.
+Warning: 13654152 bytes have been tenured; (gc t) is recommended.
+Warning: 13654152 bytes have been tenured; (gc t) is recommended.
+Warning: 13654952 bytes have been tenured; (gc t) is recommended.
+Warning: 13654952 bytes have been tenured; (gc t) is recommended.
+Warning: 13660072 bytes have been tenured; (gc t) is recommended.
+Warning: 13660208 bytes have been tenured; (gc t) is recommended.
+Warning: 13660208 bytes have been tenured; (gc t) is recommended.
+Warning: 13660848 bytes have been tenured; (gc t) is recommended.
+Warning: 13660848 bytes have been tenured; (gc t) is recommended.
+Warning: 13677616 bytes have been tenured; (gc t) is recommended.
+Warning: 13690528 bytes have been tenured; (gc t) is recommended.
+Warning: 13690648 bytes have been tenured; (gc t) is recommended.
+Warning: 13690808 bytes have been tenured; (gc t) is recommended.
+Warning: 13690984 bytes have been tenured; (gc t) is recommended.
+Warning: 13694880 bytes have been tenured; (gc t) is recommended.
+Warning: 13704344 bytes have been tenured; (gc t) is recommended.
+Warning: 13704528 bytes have been tenured; (gc t) is recommended.
+Warning: 13704528 bytes have been tenured; (gc t) is recommended.
+Warning: 13709776 bytes have been tenured; (gc t) is recommended.
+Warning: 13709912 bytes have been tenured; (gc t) is recommended.
+Warning: 13709912 bytes have been tenured; (gc t) is recommended.
+Warning: 13710568 bytes have been tenured; (gc t) is recommended.
+expanded  = 1720
+generated = 4390
+Warning: 13710568 bytes have been tenured; (gc t) is recommended.
+Warning: 13715824 bytes have been tenured; (gc t) is recommended.
+Warning: 13715960 bytes have been tenured; (gc t) is recommended.
+Warning: 13715960 bytes have been tenured; (gc t) is recommended.
+Warning: 13716600 bytes have been tenured; (gc t) is recommended.
+Warning: 13716600 bytes have been tenured; (gc t) is recommended.
+Warning: 13835592 bytes have been tenured; (gc t) is recommended.
+Warning: 13836392 bytes have been tenured; (gc t) is recommended.
+Warning: 13883248 bytes have been tenured; (gc t) is recommended.
+Warning: 13883416 bytes have been tenured; (gc t) is recommended.
+Warning: 13883632 bytes have been tenured; (gc t) is recommended.
+Warning: 13883800 bytes have been tenured; (gc t) is recommended.
+Warning: 13883960 bytes have been tenured; (gc t) is recommended.
+Warning: 13887816 bytes have been tenured; (gc t) is recommended.
+Warning: 13891664 bytes have been tenured; (gc t) is recommended.
+Warning: 13901128 bytes have been tenured; (gc t) is recommended.
+Warning: 13901288 bytes have been tenured; (gc t) is recommended.
+Warning: 13910752 bytes have been tenured; (gc t) is recommended.
+Warning: 13910920 bytes have been tenured; (gc t) is recommended.
+Warning: 13910976 bytes have been tenured; (gc t) is recommended.
+Warning: 13915384 bytes have been tenured; (gc t) is recommended.
+Warning: 13916376 bytes have been tenured; (gc t) is recommended.
+Warning: 13916376 bytes have been tenured; (gc t) is recommended.
+Warning: 13917120 bytes have been tenured; (gc t) is recommended.
+Warning: 13917120 bytes have been tenured; (gc t) is recommended.
+Warning: 13926760 bytes have been tenured; (gc t) is recommended.
+Warning: 13927016 bytes have been tenured; (gc t) is recommended.
+Warning: 13927016 bytes have been tenured; (gc t) is recommended.
+Warning: 13930728 bytes have been tenured; (gc t) is recommended.
+Warning: 13932344 bytes have been tenured; (gc t) is recommended.
+Warning: 13932344 bytes have been tenured; (gc t) is recommended.
+Warning: 13932968 bytes have been tenured; (gc t) is recommended.
+Warning: 13932968 bytes have been tenured; (gc t) is recommended.
+Warning: 13933592 bytes have been tenured; (gc t) is recommended.
+Warning: 13933616 bytes have been tenured; (gc t) is recommended.
+Warning: 13937328 bytes have been tenured; (gc t) is recommended.
+Warning: 13937368 bytes have been tenured; (gc t) is recommended.
+Warning: 14074952 bytes have been tenured; (gc t) is recommended.
+Warning: 14075032 bytes have been tenured; (gc t) is recommended.
+Warning: 14075032 bytes have been tenured; (gc t) is recommended.
+Warning: 14084656 bytes have been tenured; (gc t) is recommended.
+expanded  = 1740
+generated = 4450
+Warning: 14084840 bytes have been tenured; (gc t) is recommended.
+Warning: 14084840 bytes have been tenured; (gc t) is recommended.
+Warning: 14088616 bytes have been tenured; (gc t) is recommended.
+Warning: 14090216 bytes have been tenured; (gc t) is recommended.
+Warning: 14090216 bytes have been tenured; (gc t) is recommended.
+Warning: 14090880 bytes have been tenured; (gc t) is recommended.
+Warning: 14090896 bytes have been tenured; (gc t) is recommended.
+Warning: 14091520 bytes have been tenured; (gc t) is recommended.
+Warning: 14091520 bytes have been tenured; (gc t) is recommended.
+Warning: 14092592 bytes have been tenured; (gc t) is recommended.
+Warning: 14092592 bytes have been tenured; (gc t) is recommended.
+Warning: 14111088 bytes have been tenured; (gc t) is recommended.
+Warning: 14124160 bytes have been tenured; (gc t) is recommended.
+Warning: 14124312 bytes have been tenured; (gc t) is recommended.
+Warning: 14124472 bytes have been tenured; (gc t) is recommended.
+Warning: 14124640 bytes have been tenured; (gc t) is recommended.
+Warning: 14128504 bytes have been tenured; (gc t) is recommended.
+Warning: 14137872 bytes have been tenured; (gc t) is recommended.
+Warning: 14138072 bytes have been tenured; (gc t) is recommended.
+Warning: 14147440 bytes have been tenured; (gc t) is recommended.
+Warning: 14147632 bytes have been tenured; (gc t) is recommended.
+Warning: 14147688 bytes have been tenured; (gc t) is recommended.
+Warning: 14150808 bytes have been tenured; (gc t) is recommended.
+Warning: 14153096 bytes have been tenured; (gc t) is recommended.
+Warning: 14153096 bytes have been tenured; (gc t) is recommended.
+Warning: 14153752 bytes have been tenured; (gc t) is recommended.
+Warning: 14153752 bytes have been tenured; (gc t) is recommended.
+Warning: 14163296 bytes have been tenured; (gc t) is recommended.
+Warning: 14163488 bytes have been tenured; (gc t) is recommended.
+Warning: 14171064 bytes have been tenured; (gc t) is recommended.
+Warning: 14171128 bytes have been tenured; (gc t) is recommended.
+Warning: 14304048 bytes have been tenured; (gc t) is recommended.
+Warning: 14304128 bytes have been tenured; (gc t) is recommended.
+Warning: 14304128 bytes have been tenured; (gc t) is recommended.
+Warning: 14304752 bytes have been tenured; (gc t) is recommended.
+expanded  = 1760
+generated = 4497
+Warning: 14304752 bytes have been tenured; (gc t) is recommended.
+Warning: 14305392 bytes have been tenured; (gc t) is recommended.
+Warning: 14305392 bytes have been tenured; (gc t) is recommended.
+Warning: 14309168 bytes have been tenured; (gc t) is recommended.
+Warning: 14309168 bytes have been tenured; (gc t) is recommended.
+Warning: 14312960 bytes have been tenured; (gc t) is recommended.
+Warning: 14312960 bytes have been tenured; (gc t) is recommended.
+Warning: 14322480 bytes have been tenured; (gc t) is recommended.
+Warning: 14322640 bytes have been tenured; (gc t) is recommended.
+Warning: 14322696 bytes have been tenured; (gc t) is recommended.
+Warning: 14325800 bytes have been tenured; (gc t) is recommended.
+Warning: 14328096 bytes have been tenured; (gc t) is recommended.
+Warning: 14328096 bytes have been tenured; (gc t) is recommended.
+Warning: 14328712 bytes have been tenured; (gc t) is recommended.
+Warning: 14328712 bytes have been tenured; (gc t) is recommended.
+Warning: 14329336 bytes have been tenured; (gc t) is recommended.
+Warning: 14329360 bytes have been tenured; (gc t) is recommended.
+Warning: 14333072 bytes have been tenured; (gc t) is recommended.
+Warning: 14334008 bytes have been tenured; (gc t) is recommended.
+Warning: 14337720 bytes have been tenured; (gc t) is recommended.
+Warning: 14342488 bytes have been tenured; (gc t) is recommended.
+Warning: 14349200 bytes have been tenured; (gc t) is recommended.
+Warning: 14354840 bytes have been tenured; (gc t) is recommended.
+Warning: 14355864 bytes have been tenured; (gc t) is recommended.
+Warning: 14479176 bytes have been tenured; (gc t) is recommended.
+Warning: 14502816 bytes have been tenured; (gc t) is recommended.
+Warning: 14502816 bytes have been tenured; (gc t) is recommended.
+Warning: 14512720 bytes have been tenured; (gc t) is recommended.
+Warning: 14521248 bytes have been tenured; (gc t) is recommended.
+Warning: 14521448 bytes have been tenured; (gc t) is recommended.
+expanded  = 1780
+generated = 4546
+Warning: 14521664 bytes have been tenured; (gc t) is recommended.
+Warning: 14525528 bytes have been tenured; (gc t) is recommended.
+Warning: 14525528 bytes have been tenured; (gc t) is recommended.
+Warning: 14529968 bytes have been tenured; (gc t) is recommended.
+Warning: 14530072 bytes have been tenured; (gc t) is recommended.
+Warning: 14530096 bytes have been tenured; (gc t) is recommended.
+Warning: 14543128 bytes have been tenured; (gc t) is recommended.
+Warning: 14547400 bytes have been tenured; (gc t) is recommended.
+Warning: 14550928 bytes have been tenured; (gc t) is recommended.
+Warning: 14551488 bytes have been tenured; (gc t) is recommended.
+Warning: 14551488 bytes have been tenured; (gc t) is recommended.
+Warning: 14570656 bytes have been tenured; (gc t) is recommended.
+Warning: 14570848 bytes have been tenured; (gc t) is recommended.
+Warning: 14571048 bytes have been tenured; (gc t) is recommended.
+Warning: 14608176 bytes have been tenured; (gc t) is recommended.
+Warning: 14608616 bytes have been tenured; (gc t) is recommended.
+Warning: 14711920 bytes have been tenured; (gc t) is recommended.
+Warning: 14716424 bytes have been tenured; (gc t) is recommended.
+Warning: 14716464 bytes have been tenured; (gc t) is recommended.
+Warning: 14716464 bytes have been tenured; (gc t) is recommended.
+Warning: 14721088 bytes have been tenured; (gc t) is recommended.
+Warning: 14729408 bytes have been tenured; (gc t) is recommended.
+Warning: 14733240 bytes have been tenured; (gc t) is recommended.
+Warning: 14763048 bytes have been tenured; (gc t) is recommended.
+Warning: 14766888 bytes have been tenured; (gc t) is recommended.
+Warning: 14767104 bytes have been tenured; (gc t) is recommended.
+Warning: 14767312 bytes have been tenured; (gc t) is recommended.
+expanded  = 1800
+generated = 4613
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1800
+nodes generated: 4613
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.1) (1 3.66) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 296
+Warning: 14767528 bytes have been tenured; (gc t) is recommended.
+Warning: 14771520 bytes have been tenured; (gc t) is recommended.
+Warning: 14771568 bytes have been tenured; (gc t) is recommended.
+Warning: 14776752 bytes have been tenured; (gc t) is recommended.
+Warning: 14776848 bytes have been tenured; (gc t) is recommended.
+Warning: 14776848 bytes have been tenured; (gc t) is recommended.
+Warning: 14781448 bytes have been tenured; (gc t) is recommended.
+Warning: 14781488 bytes have been tenured; (gc t) is recommended.
+Warning: 14781552 bytes have been tenured; (gc t) is recommended.
+Warning: 14876216 bytes have been tenured; (gc t) is recommended.
+Warning: 14877216 bytes have been tenured; (gc t) is recommended.
+Warning: 14957784 bytes have been tenured; (gc t) is recommended.
+Warning: 14958000 bytes have been tenured; (gc t) is recommended.
+Warning: 14958160 bytes have been tenured; (gc t) is recommended.
+Warning: 14958336 bytes have been tenured; (gc t) is recommended.
+Warning: 14958544 bytes have been tenured; (gc t) is recommended.
+Warning: 14968056 bytes have been tenured; (gc t) is recommended.
+Warning: 14968248 bytes have been tenured; (gc t) is recommended.
+Warning: 14968296 bytes have been tenured; (gc t) is recommended.
+Warning: 14973520 bytes have been tenured; (gc t) is recommended.
+Warning: 14973568 bytes have been tenured; (gc t) is recommended.
+Warning: 14973568 bytes have been tenured; (gc t) is recommended.
+Warning: 14978848 bytes have been tenured; (gc t) is recommended.
+Warning: 14978848 bytes have been tenured; (gc t) is recommended.
+Warning: 14979608 bytes have been tenured; (gc t) is recommended.
+Warning: 14979640 bytes have been tenured; (gc t) is recommended.
+Warning: 14989056 bytes have been tenured; (gc t) is recommended.
+Warning: 14989320 bytes have been tenured; (gc t) is recommended.
+Warning: 14989320 bytes have been tenured; (gc t) is recommended.
+Warning: 14994472 bytes have been tenured; (gc t) is recommended.
+expanded  = 1820
+generated = 4666
+Warning: 14994632 bytes have been tenured; (gc t) is recommended.
+Warning: 14994856 bytes have been tenured; (gc t) is recommended.
+Warning: 14995360 bytes have been tenured; (gc t) is recommended.
+Warning: 14995360 bytes have been tenured; (gc t) is recommended.
+Warning: 14996240 bytes have been tenured; (gc t) is recommended.
+Warning: 14996264 bytes have been tenured; (gc t) is recommended.
+Warning: 14996264 bytes have been tenured; (gc t) is recommended.
+Warning: 14999992 bytes have been tenured; (gc t) is recommended.
+Warning: 15132960 bytes have been tenured; (gc t) is recommended.
+Warning: 15132960 bytes have been tenured; (gc t) is recommended.
+Warning: 15132960 bytes have been tenured; (gc t) is recommended.
+Warning: 15151304 bytes have been tenured; (gc t) is recommended.
+Warning: 15151360 bytes have been tenured; (gc t) is recommended.
+Warning: 15154376 bytes have been tenured; (gc t) is recommended.
+Warning: 15155104 bytes have been tenured; (gc t) is recommended.
+Warning: 15158880 bytes have been tenured; (gc t) is recommended.
+Warning: 15158880 bytes have been tenured; (gc t) is recommended.
+Warning: 15162984 bytes have been tenured; (gc t) is recommended.
+Warning: 15176752 bytes have been tenured; (gc t) is recommended.
+Warning: 15182536 bytes have been tenured; (gc t) is recommended.
+Warning: 15182776 bytes have been tenured; (gc t) is recommended.
+Warning: 15190408 bytes have been tenured; (gc t) is recommended.
+Warning: 15201896 bytes have been tenured; (gc t) is recommended.
+Warning: 15202056 bytes have been tenured; (gc t) is recommended.
+Warning: 15347336 bytes have been tenured; (gc t) is recommended.
+Warning: 15354160 bytes have been tenured; (gc t) is recommended.
+Warning: 15363424 bytes have been tenured; (gc t) is recommended.
+Warning: 15363592 bytes have been tenured; (gc t) is recommended.
+Warning: 15364000 bytes have been tenured; (gc t) is recommended.
+expanded  = 1840
+generated = 4723
+Warning: 15373664 bytes have been tenured; (gc t) is recommended.
+Warning: 15373792 bytes have been tenured; (gc t) is recommended.
+Warning: 15378216 bytes have been tenured; (gc t) is recommended.
+Warning: 15378776 bytes have been tenured; (gc t) is recommended.
+Warning: 15378776 bytes have been tenured; (gc t) is recommended.
+Warning: 15383944 bytes have been tenured; (gc t) is recommended.
+Warning: 15384104 bytes have been tenured; (gc t) is recommended.
+Warning: 15384280 bytes have been tenured; (gc t) is recommended.
+Warning: 15384864 bytes have been tenured; (gc t) is recommended.
+Warning: 15384864 bytes have been tenured; (gc t) is recommended.
+Warning: 15389448 bytes have been tenured; (gc t) is recommended.
+Warning: 15389488 bytes have been tenured; (gc t) is recommended.
+Warning: 15389560 bytes have been tenured; (gc t) is recommended.
+Warning: 15389664 bytes have been tenured; (gc t) is recommended.
+Warning: 15397936 bytes have been tenured; (gc t) is recommended.
+Warning: 15398024 bytes have been tenured; (gc t) is recommended.
+Warning: 15402056 bytes have been tenured; (gc t) is recommended.
+Warning: 15402320 bytes have been tenured; (gc t) is recommended.
+Warning: 15403504 bytes have been tenured; (gc t) is recommended.
+Warning: 15407224 bytes have been tenured; (gc t) is recommended.
+Warning: 15407224 bytes have been tenured; (gc t) is recommended.
+Warning: 15565776 bytes have been tenured; (gc t) is recommended.
+Warning: 15565968 bytes have been tenured; (gc t) is recommended.
+Warning: 15566280 bytes have been tenured; (gc t) is recommended.
+Warning: 15575776 bytes have been tenured; (gc t) is recommended.
+Warning: 15575896 bytes have been tenured; (gc t) is recommended.
+Warning: 15581744 bytes have been tenured; (gc t) is recommended.
+Warning: 15585496 bytes have been tenured; (gc t) is recommended.
+Warning: 15585544 bytes have been tenured; (gc t) is recommended.
+Warning: 15590728 bytes have been tenured; (gc t) is recommended.
+Warning: 15590824 bytes have been tenured; (gc t) is recommended.
+expanded  = 1860
+generated = 4771
+Warning: 15590824 bytes have been tenured; (gc t) is recommended.
+Warning: 15596064 bytes have been tenured; (gc t) is recommended.
+Warning: 15596112 bytes have been tenured; (gc t) is recommended.
+Warning: 15596744 bytes have been tenured; (gc t) is recommended.
+Warning: 15596896 bytes have been tenured; (gc t) is recommended.
+Warning: 15603160 bytes have been tenured; (gc t) is recommended.
+Warning: 15606536 bytes have been tenured; (gc t) is recommended.
+Warning: 15606584 bytes have been tenured; (gc t) is recommended.
+Warning: 15611608 bytes have been tenured; (gc t) is recommended.
+Warning: 15611872 bytes have been tenured; (gc t) is recommended.
+Warning: 15611872 bytes have been tenured; (gc t) is recommended.
+Warning: 15612632 bytes have been tenured; (gc t) is recommended.
+Warning: 15612632 bytes have been tenured; (gc t) is recommended.
+Warning: 15613512 bytes have been tenured; (gc t) is recommended.
+Warning: 15613536 bytes have been tenured; (gc t) is recommended.
+Warning: 15613536 bytes have been tenured; (gc t) is recommended.
+Warning: 15617264 bytes have been tenured; (gc t) is recommended.
+Warning: 15623016 bytes have been tenured; (gc t) is recommended.
+Warning: 15623144 bytes have been tenured; (gc t) is recommended.
+Warning: 15628848 bytes have been tenured; (gc t) is recommended.
+Warning: 15628976 bytes have been tenured; (gc t) is recommended.
+Warning: 15628976 bytes have been tenured; (gc t) is recommended.
+Warning: 15654264 bytes have been tenured; (gc t) is recommended.
+Warning: 15654264 bytes have been tenured; (gc t) is recommended.
+Warning: 15654896 bytes have been tenured; (gc t) is recommended.
+Warning: 15780424 bytes have been tenured; (gc t) is recommended.
+Warning: 15784248 bytes have been tenured; (gc t) is recommended.
+Warning: 15784248 bytes have been tenured; (gc t) is recommended.
+Warning: 15793688 bytes have been tenured; (gc t) is recommended.
+Warning: 15793856 bytes have been tenured; (gc t) is recommended.
+Warning: 15793856 bytes have been tenured; (gc t) is recommended.
+expanded  = 1880
+generated = 4808
+Warning: 15798968 bytes have been tenured; (gc t) is recommended.
+Warning: 15799096 bytes have been tenured; (gc t) is recommended.
+Warning: 15799776 bytes have been tenured; (gc t) is recommended.
+Warning: 15799904 bytes have been tenured; (gc t) is recommended.
+Warning: 15800200 bytes have been tenured; (gc t) is recommended.
+Warning: 15800728 bytes have been tenured; (gc t) is recommended.
+Warning: 15800752 bytes have been tenured; (gc t) is recommended.
+Warning: 15800752 bytes have been tenured; (gc t) is recommended.
+Warning: 15804480 bytes have been tenured; (gc t) is recommended.
+Warning: 15812720 bytes have been tenured; (gc t) is recommended.
+Warning: 15812808 bytes have been tenured; (gc t) is recommended.
+Warning: 15817072 bytes have been tenured; (gc t) is recommended.
+Warning: 15817936 bytes have been tenured; (gc t) is recommended.
+Warning: 15817936 bytes have been tenured; (gc t) is recommended.
+Warning: 15821656 bytes have been tenured; (gc t) is recommended.
+Warning: 15821656 bytes have been tenured; (gc t) is recommended.
+Warning: 15833064 bytes have been tenured; (gc t) is recommended.
+Warning: 15925704 bytes have been tenured; (gc t) is recommended.
+Warning: 15925864 bytes have been tenured; (gc t) is recommended.
+Warning: 15926024 bytes have been tenured; (gc t) is recommended.
+Warning: 16013688 bytes have been tenured; (gc t) is recommended.
+Warning: 16013856 bytes have been tenured; (gc t) is recommended.
+Warning: 16014160 bytes have been tenured; (gc t) is recommended.
+Warning: 16018232 bytes have been tenured; (gc t) is recommended.
+Warning: 16018232 bytes have been tenured; (gc t) is recommended.
+Warning: 16023640 bytes have been tenured; (gc t) is recommended.
+Warning: 16023640 bytes have been tenured; (gc t) is recommended.
+Warning: 16028232 bytes have been tenured; (gc t) is recommended.
+expanded  = 1900
+generated = 4858
+Warning: 16028416 bytes have been tenured; (gc t) is recommended.
+Warning: 16028416 bytes have been tenured; (gc t) is recommended.
+Warning: 16028568 bytes have been tenured; (gc t) is recommended.
+Warning: 16036408 bytes have been tenured; (gc t) is recommended.
+Warning: 16044464 bytes have been tenured; (gc t) is recommended.
+Warning: 16069712 bytes have been tenured; (gc t) is recommended.
+Warning: 16069944 bytes have been tenured; (gc t) is recommended.
+Warning: 16077552 bytes have been tenured; (gc t) is recommended.
+Warning: 16077752 bytes have been tenured; (gc t) is recommended.
+Warning: 16080688 bytes have been tenured; (gc t) is recommended.
+Warning: 16181888 bytes have been tenured; (gc t) is recommended.
+Warning: 16181888 bytes have been tenured; (gc t) is recommended.
+Warning: 16227024 bytes have been tenured; (gc t) is recommended.
+Warning: 16232432 bytes have been tenured; (gc t) is recommended.
+Warning: 16232432 bytes have been tenured; (gc t) is recommended.
+Warning: 16232432 bytes have been tenured; (gc t) is recommended.
+Warning: 16237224 bytes have been tenured; (gc t) is recommended.
+Warning: 16237224 bytes have been tenured; (gc t) is recommended.
+Warning: 16237368 bytes have been tenured; (gc t) is recommended.
+Warning: 16237400 bytes have been tenured; (gc t) is recommended.
+Warning: 16247152 bytes have been tenured; (gc t) is recommended.
+Warning: 16247320 bytes have been tenured; (gc t) is recommended.
+Warning: 16247320 bytes have been tenured; (gc t) is recommended.
+Warning: 16252080 bytes have been tenured; (gc t) is recommended.
+Warning: 16252144 bytes have been tenured; (gc t) is recommended.
+Warning: 16252208 bytes have been tenured; (gc t) is recommended.
+Warning: 16252272 bytes have been tenured; (gc t) is recommended.
+Warning: 16252896 bytes have been tenured; (gc t) is recommended.
+expanded  = 1920
+generated = 4910
+Warning: 16253152 bytes have been tenured; (gc t) is recommended.
+Warning: 16253288 bytes have been tenured; (gc t) is recommended.
+Warning: 16253312 bytes have been tenured; (gc t) is recommended.
+Warning: 16257056 bytes have been tenured; (gc t) is recommended.
+Warning: 16257616 bytes have been tenured; (gc t) is recommended.
+Warning: 16262568 bytes have been tenured; (gc t) is recommended.
+Warning: 16262568 bytes have been tenured; (gc t) is recommended.
+Warning: 16267992 bytes have been tenured; (gc t) is recommended.
+Warning: 16267992 bytes have been tenured; (gc t) is recommended.
+Warning: 16271784 bytes have been tenured; (gc t) is recommended.
+Warning: 16271784 bytes have been tenured; (gc t) is recommended.
+Warning: 16280024 bytes have been tenured; (gc t) is recommended.
+Warning: 16283880 bytes have been tenured; (gc t) is recommended.
+Warning: 16288104 bytes have been tenured; (gc t) is recommended.
+Warning: 16440656 bytes have been tenured; (gc t) is recommended.
+Warning: 16443416 bytes have been tenured; (gc t) is recommended.
+Warning: 16444728 bytes have been tenured; (gc t) is recommended.
+Warning: 16446088 bytes have been tenured; (gc t) is recommended.
+Warning: 16464648 bytes have been tenured; (gc t) is recommended.
+Warning: 16484288 bytes have been tenured; (gc t) is recommended.
+Warning: 16484480 bytes have been tenured; (gc t) is recommended.
+Warning: 16484680 bytes have been tenured; (gc t) is recommended.
+Warning: 16484808 bytes have been tenured; (gc t) is recommended.
+Warning: 16490080 bytes have been tenured; (gc t) is recommended.
+Warning: 16490208 bytes have been tenured; (gc t) is recommended.
+expanded  = 1940
+generated = 4959
+Warning: 16490208 bytes have been tenured; (gc t) is recommended.
+Warning: 16494904 bytes have been tenured; (gc t) is recommended.
+Warning: 16494944 bytes have been tenured; (gc t) is recommended.
+Warning: 16494944 bytes have been tenured; (gc t) is recommended.
+Warning: 16498960 bytes have been tenured; (gc t) is recommended.
+Warning: 16666720 bytes have been tenured; (gc t) is recommended.
+Warning: 16666872 bytes have been tenured; (gc t) is recommended.
+Warning: 16667088 bytes have been tenured; (gc t) is recommended.
+Warning: 16667256 bytes have been tenured; (gc t) is recommended.
+Warning: 16676968 bytes have been tenured; (gc t) is recommended.
+Warning: 16677160 bytes have been tenured; (gc t) is recommended.
+Warning: 16677208 bytes have been tenured; (gc t) is recommended.
+Warning: 16682536 bytes have been tenured; (gc t) is recommended.
+Warning: 16682584 bytes have been tenured; (gc t) is recommended.
+Warning: 16682952 bytes have been tenured; (gc t) is recommended.
+Warning: 16687392 bytes have been tenured; (gc t) is recommended.
+Warning: 16687392 bytes have been tenured; (gc t) is recommended.
+Warning: 16687560 bytes have been tenured; (gc t) is recommended.
+Warning: 16687560 bytes have been tenured; (gc t) is recommended.
+Warning: 16697296 bytes have been tenured; (gc t) is recommended.
+Warning: 16697424 bytes have been tenured; (gc t) is recommended.
+Warning: 16697424 bytes have been tenured; (gc t) is recommended.
+Warning: 16700016 bytes have been tenured; (gc t) is recommended.
+Warning: 16700016 bytes have been tenured; (gc t) is recommended.
+Warning: 16700112 bytes have been tenured; (gc t) is recommended.
+Warning: 16702352 bytes have been tenured; (gc t) is recommended.
+Warning: 16703104 bytes have been tenured; (gc t) is recommended.
+Warning: 16703240 bytes have been tenured; (gc t) is recommended.
+Warning: 16703376 bytes have been tenured; (gc t) is recommended.
+expanded  = 1960
+generated = 5008
+Warning: 16703408 bytes have been tenured; (gc t) is recommended.
+Warning: 16708200 bytes have been tenured; (gc t) is recommended.
+Warning: 16712712 bytes have been tenured; (gc t) is recommended.
+Warning: 16714216 bytes have been tenured; (gc t) is recommended.
+Warning: 16716536 bytes have been tenured; (gc t) is recommended.
+Warning: 16718656 bytes have been tenured; (gc t) is recommended.
+Warning: 16718656 bytes have been tenured; (gc t) is recommended.
+Warning: 16872712 bytes have been tenured; (gc t) is recommended.
+Warning: 16872712 bytes have been tenured; (gc t) is recommended.
+Warning: 16876560 bytes have been tenured; (gc t) is recommended.
+Warning: 16876560 bytes have been tenured; (gc t) is recommended.
+Warning: 16880416 bytes have been tenured; (gc t) is recommended.
+Warning: 16893744 bytes have been tenured; (gc t) is recommended.
+Warning: 16893904 bytes have been tenured; (gc t) is recommended.
+Warning: 16897968 bytes have been tenured; (gc t) is recommended.
+Warning: 16901936 bytes have been tenured; (gc t) is recommended.
+Warning: 16909864 bytes have been tenured; (gc t) is recommended.
+Warning: 16921680 bytes have been tenured; (gc t) is recommended.
+Warning: 16921920 bytes have been tenured; (gc t) is recommended.
+Warning: 16925824 bytes have been tenured; (gc t) is recommended.
+expanded  = 1980
+generated = 5056
+Warning: 16965344 bytes have been tenured; (gc t) is recommended.
+Warning: 16966104 bytes have been tenured; (gc t) is recommended.
+Warning: 17098792 bytes have been tenured; (gc t) is recommended.
+Warning: 17103528 bytes have been tenured; (gc t) is recommended.
+Warning: 17107936 bytes have been tenured; (gc t) is recommended.
+Warning: 17118192 bytes have been tenured; (gc t) is recommended.
+Warning: 17118312 bytes have been tenured; (gc t) is recommended.
+Warning: 17128560 bytes have been tenured; (gc t) is recommended.
+Warning: 17132480 bytes have been tenured; (gc t) is recommended.
+Warning: 17152072 bytes have been tenured; (gc t) is recommended.
+Warning: 17152272 bytes have been tenured; (gc t) is recommended.
+Warning: 17159984 bytes have been tenured; (gc t) is recommended.
+Warning: 17222368 bytes have been tenured; (gc t) is recommended.
+Warning: 17222368 bytes have been tenured; (gc t) is recommended.
+Warning: 17308400 bytes have been tenured; (gc t) is recommended.
+Warning: 17313808 bytes have been tenured; (gc t) is recommended.
+Warning: 17313808 bytes have been tenured; (gc t) is recommended.
+Warning: 17313808 bytes have been tenured; (gc t) is recommended.
+Warning: 17319248 bytes have been tenured; (gc t) is recommended.
+Warning: 17319248 bytes have been tenured; (gc t) is recommended.
+Warning: 17320008 bytes have been tenured; (gc t) is recommended.
+Warning: 17320048 bytes have been tenured; (gc t) is recommended.
+Warning: 17325320 bytes have been tenured; (gc t) is recommended.
+Warning: 17325424 bytes have been tenured; (gc t) is recommended.
+Warning: 17325536 bytes have been tenured; (gc t) is recommended.
+Warning: 17326184 bytes have been tenured; (gc t) is recommended.
+Warning: 17334576 bytes have been tenured; (gc t) is recommended.
+Warning: 17334704 bytes have been tenured; (gc t) is recommended.
+Warning: 17334704 bytes have been tenured; (gc t) is recommended.
+expanded  = 2000
+generated = 5106
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 2000
+nodes generated: 5106
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.16) (1 3.63) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 317
+Warning: 17339408 bytes have been tenured; (gc t) is recommended.
+Warning: 17339408 bytes have been tenured; (gc t) is recommended.
+Warning: 17343200 bytes have been tenured; (gc t) is recommended.
+Warning: 17343200 bytes have been tenured; (gc t) is recommended.
+Warning: 17359544 bytes have been tenured; (gc t) is recommended.
+Warning: 17359744 bytes have been tenured; (gc t) is recommended.
+Warning: 17359864 bytes have been tenured; (gc t) is recommended.
+Warning: 17369752 bytes have been tenured; (gc t) is recommended.
+Warning: 17369872 bytes have been tenured; (gc t) is recommended.
+Warning: 17487280 bytes have been tenured; (gc t) is recommended.
+Warning: 17487280 bytes have been tenured; (gc t) is recommended.
+Warning: 17533880 bytes have been tenured; (gc t) is recommended.
+Warning: 17539224 bytes have been tenured; (gc t) is recommended.
+Warning: 17539320 bytes have been tenured; (gc t) is recommended.
+Warning: 17539320 bytes have been tenured; (gc t) is recommended.
+Warning: 17544648 bytes have been tenured; (gc t) is recommended.
+Warning: 17544752 bytes have been tenured; (gc t) is recommended.
+Warning: 17545464 bytes have been tenured; (gc t) is recommended.
+Warning: 17545616 bytes have been tenured; (gc t) is recommended.
+Warning: 17548224 bytes have been tenured; (gc t) is recommended.
+Warning: 17555440 bytes have been tenured; (gc t) is recommended.
+Warning: 17555488 bytes have been tenured; (gc t) is recommended.
+Warning: 17560816 bytes have been tenured; (gc t) is recommended.
+Warning: 17560952 bytes have been tenured; (gc t) is recommended.
+Warning: 17560952 bytes have been tenured; (gc t) is recommended.
+Warning: 17561712 bytes have been tenured; (gc t) is recommended.
+Warning: 17561712 bytes have been tenured; (gc t) is recommended.
+Warning: 17562592 bytes have been tenured; (gc t) is recommended.
+Warning: 17562728 bytes have been tenured; (gc t) is recommended.
+expanded  = 2020
+generated = 5155
+Warning: 17562752 bytes have been tenured; (gc t) is recommended.
+Warning: 17562752 bytes have been tenured; (gc t) is recommended.
+Warning: 17566568 bytes have been tenured; (gc t) is recommended.
+Warning: 17572520 bytes have been tenured; (gc t) is recommended.
+Warning: 17572616 bytes have been tenured; (gc t) is recommended.
+Warning: 17577944 bytes have been tenured; (gc t) is recommended.
+Warning: 17578040 bytes have been tenured; (gc t) is recommended.
+Warning: 17581792 bytes have been tenured; (gc t) is recommended.
+Warning: 17581840 bytes have been tenured; (gc t) is recommended.
+Warning: 17585688 bytes have been tenured; (gc t) is recommended.
+Warning: 17585688 bytes have been tenured; (gc t) is recommended.
+Warning: 17589568 bytes have been tenured; (gc t) is recommended.
+Warning: 17595920 bytes have been tenured; (gc t) is recommended.
+Warning: 17599400 bytes have been tenured; (gc t) is recommended.
+Warning: 17599440 bytes have been tenured; (gc t) is recommended.
+Warning: 17743040 bytes have been tenured; (gc t) is recommended.
+Warning: 17743824 bytes have been tenured; (gc t) is recommended.
+Warning: 17743824 bytes have been tenured; (gc t) is recommended.
+Warning: 17760856 bytes have been tenured; (gc t) is recommended.
+Warning: 17760984 bytes have been tenured; (gc t) is recommended.
+Warning: 17761184 bytes have been tenured; (gc t) is recommended.
+Warning: 17761864 bytes have been tenured; (gc t) is recommended.
+Warning: 17762000 bytes have been tenured; (gc t) is recommended.
+Warning: 17762024 bytes have been tenured; (gc t) is recommended.
+Warning: 17762024 bytes have been tenured; (gc t) is recommended.
+Warning: 17765816 bytes have been tenured; (gc t) is recommended.
+Warning: 17774264 bytes have been tenured; (gc t) is recommended.
+Warning: 17774352 bytes have been tenured; (gc t) is recommended.
+Warning: 17779552 bytes have been tenured; (gc t) is recommended.
+Warning: 17779632 bytes have been tenured; (gc t) is recommended.
+Warning: 17779632 bytes have been tenured; (gc t) is recommended.
+expanded  = 2040
+generated = 5196
+Warning: 17783424 bytes have been tenured; (gc t) is recommended.
+Warning: 17787240 bytes have been tenured; (gc t) is recommended.
+Warning: 17799872 bytes have been tenured; (gc t) is recommended.
+Warning: 17800080 bytes have been tenured; (gc t) is recommended.
+Warning: 17808432 bytes have been tenured; (gc t) is recommended.
+Warning: 17810104 bytes have been tenured; (gc t) is recommended.
+Warning: 17810152 bytes have been tenured; (gc t) is recommended.
+Warning: 17815456 bytes have been tenured; (gc t) is recommended.
+Warning: 17815544 bytes have been tenured; (gc t) is recommended.
+Warning: 17815544 bytes have been tenured; (gc t) is recommended.
+Warning: 17820968 bytes have been tenured; (gc t) is recommended.
+Warning: 17820968 bytes have been tenured; (gc t) is recommended.
+Warning: 17821712 bytes have been tenured; (gc t) is recommended.
+Warning: 17821736 bytes have been tenured; (gc t) is recommended.
+Warning: 17979600 bytes have been tenured; (gc t) is recommended.
+Warning: 17983040 bytes have been tenured; (gc t) is recommended.
+Warning: 17983040 bytes have been tenured; (gc t) is recommended.
+Warning: 17983040 bytes have been tenured; (gc t) is recommended.
+Warning: 17983200 bytes have been tenured; (gc t) is recommended.
+Warning: 17991632 bytes have been tenured; (gc t) is recommended.
+Warning: 17991720 bytes have been tenured; (gc t) is recommended.
+Warning: 17995520 bytes have been tenured; (gc t) is recommended.
+Warning: 17997000 bytes have been tenured; (gc t) is recommended.
+Warning: 17997000 bytes have been tenured; (gc t) is recommended.
+Warning: 18000792 bytes have been tenured; (gc t) is recommended.
+Warning: 18000792 bytes have been tenured; (gc t) is recommended.
+Warning: 18008272 bytes have been tenured; (gc t) is recommended.
+Warning: 18008272 bytes have been tenured; (gc t) is recommended.
+Warning: 18008368 bytes have been tenured; (gc t) is recommended.
+Warning: 18027248 bytes have been tenured; (gc t) is recommended.
+Warning: 18027344 bytes have been tenured; (gc t) is recommended.
+Warning: 18037208 bytes have been tenured; (gc t) is recommended.
+Warning: 18037296 bytes have been tenured; (gc t) is recommended.
+Warning: 18042568 bytes have been tenured; (gc t) is recommended.
+expanded  = 2060
+generated = 5252
+Warning: 18042656 bytes have been tenured; (gc t) is recommended.
+Warning: 18042656 bytes have been tenured; (gc t) is recommended.
+Warning: 18048016 bytes have been tenured; (gc t) is recommended.
+Warning: 18048064 bytes have been tenured; (gc t) is recommended.
+Warning: 18048760 bytes have been tenured; (gc t) is recommended.
+Warning: 18048856 bytes have been tenured; (gc t) is recommended.
+Warning: 18056448 bytes have been tenured; (gc t) is recommended.
+Warning: 18058688 bytes have been tenured; (gc t) is recommended.
+Warning: 18058728 bytes have been tenured; (gc t) is recommended.
+Warning: 18220368 bytes have been tenured; (gc t) is recommended.
+Warning: 18221960 bytes have been tenured; (gc t) is recommended.
+Warning: 18221960 bytes have been tenured; (gc t) is recommended.
+Warning: 18222608 bytes have been tenured; (gc t) is recommended.
+Warning: 18222736 bytes have been tenured; (gc t) is recommended.
+Warning: 18223032 bytes have been tenured; (gc t) is recommended.
+Warning: 18223584 bytes have been tenured; (gc t) is recommended.
+Warning: 18223720 bytes have been tenured; (gc t) is recommended.
+Warning: 18223744 bytes have been tenured; (gc t) is recommended.
+Warning: 18226808 bytes have been tenured; (gc t) is recommended.
+Warning: 18227552 bytes have been tenured; (gc t) is recommended.
+Warning: 18232952 bytes have been tenured; (gc t) is recommended.
+Warning: 18233008 bytes have been tenured; (gc t) is recommended.
+Warning: 18238376 bytes have been tenured; (gc t) is recommended.
+Warning: 18238440 bytes have been tenured; (gc t) is recommended.
+Warning: 18242224 bytes have been tenured; (gc t) is recommended.
+Warning: 18242224 bytes have been tenured; (gc t) is recommended.
+Warning: 18246072 bytes have been tenured; (gc t) is recommended.
+Warning: 18249904 bytes have been tenured; (gc t) is recommended.
+Warning: 18249976 bytes have been tenured; (gc t) is recommended.
+expanded  = 2080
+generated = 5289
+Warning: 18259576 bytes have been tenured; (gc t) is recommended.
+Warning: 18259824 bytes have been tenured; (gc t) is recommended.
+Warning: 18259824 bytes have been tenured; (gc t) is recommended.
+Warning: 18265008 bytes have been tenured; (gc t) is recommended.
+Warning: 18265136 bytes have been tenured; (gc t) is recommended.
+Warning: 18265760 bytes have been tenured; (gc t) is recommended.
+Warning: 18265936 bytes have been tenured; (gc t) is recommended.
+Warning: 18266560 bytes have been tenured; (gc t) is recommended.
+Warning: 18266816 bytes have been tenured; (gc t) is recommended.
+Warning: 18266952 bytes have been tenured; (gc t) is recommended.
+Warning: 18266976 bytes have been tenured; (gc t) is recommended.
+Warning: 18270712 bytes have been tenured; (gc t) is recommended.
+Warning: 18270752 bytes have been tenured; (gc t) is recommended.
+Warning: 18438288 bytes have been tenured; (gc t) is recommended.
+Warning: 18438392 bytes have been tenured; (gc t) is recommended.
+Warning: 18438392 bytes have been tenured; (gc t) is recommended.
+Warning: 18443088 bytes have been tenured; (gc t) is recommended.
+Warning: 18443088 bytes have been tenured; (gc t) is recommended.
+Warning: 18446144 bytes have been tenured; (gc t) is recommended.
+Warning: 18446880 bytes have been tenured; (gc t) is recommended.
+Warning: 18454336 bytes have been tenured; (gc t) is recommended.
+Warning: 18463048 bytes have been tenured; (gc t) is recommended.
+expanded  = 2100
+generated = 5320
+Warning: 18472616 bytes have been tenured; (gc t) is recommended.
+Warning: 18473808 bytes have been tenured; (gc t) is recommended.
+Warning: 18477824 bytes have been tenured; (gc t) is recommended.
+Warning: 18477824 bytes have been tenured; (gc t) is recommended.
+Warning: 18487776 bytes have been tenured; (gc t) is recommended.
+Warning: 18493744 bytes have been tenured; (gc t) is recommended.
+Warning: 18493920 bytes have been tenured; (gc t) is recommended.
+Warning: 18494024 bytes have been tenured; (gc t) is recommended.
+Warning: 18494352 bytes have been tenured; (gc t) is recommended.
+Warning: 18499328 bytes have been tenured; (gc t) is recommended.
+Warning: 18499328 bytes have been tenured; (gc t) is recommended.
+Warning: 18502376 bytes have been tenured; (gc t) is recommended.
+Warning: 18504104 bytes have been tenured; (gc t) is recommended.
+Warning: 18504104 bytes have been tenured; (gc t) is recommended.
+Warning: 18504232 bytes have been tenured; (gc t) is recommended.
+Warning: 18528952 bytes have been tenured; (gc t) is recommended.
+Warning: 18529000 bytes have been tenured; (gc t) is recommended.
+Warning: 18530072 bytes have been tenured; (gc t) is recommended.
+Warning: 18676200 bytes have been tenured; (gc t) is recommended.
+Warning: 18680528 bytes have been tenured; (gc t) is recommended.
+Warning: 18680608 bytes have been tenured; (gc t) is recommended.
+Warning: 18680608 bytes have been tenured; (gc t) is recommended.
+Warning: 18684800 bytes have been tenured; (gc t) is recommended.
+Warning: 18697168 bytes have been tenured; (gc t) is recommended.
+Warning: 18697344 bytes have been tenured; (gc t) is recommended.
+Warning: 18697536 bytes have been tenured; (gc t) is recommended.
+Warning: 18697536 bytes have been tenured; (gc t) is recommended.
+Warning: 18702752 bytes have been tenured; (gc t) is recommended.
+Warning: 18702864 bytes have been tenured; (gc t) is recommended.
+Warning: 18702864 bytes have been tenured; (gc t) is recommended.
+Warning: 18707504 bytes have been tenured; (gc t) is recommended.
+Warning: 18707648 bytes have been tenured; (gc t) is recommended.
+Warning: 18707648 bytes have been tenured; (gc t) is recommended.
+Warning: 18707776 bytes have been tenured; (gc t) is recommended.
+Warning: 18707904 bytes have been tenured; (gc t) is recommended.
+Warning: 18720144 bytes have been tenured; (gc t) is recommended.
+Warning: 18720296 bytes have been tenured; (gc t) is recommended.
+expanded  = 2120
+generated = 5381
+Warning: 18720472 bytes have been tenured; (gc t) is recommended.
+Warning: 18720528 bytes have been tenured; (gc t) is recommended.
+Warning: 18726288 bytes have been tenured; (gc t) is recommended.
+Warning: 18727312 bytes have been tenured; (gc t) is recommended.
+Warning: 18727352 bytes have been tenured; (gc t) is recommended.
+Warning: 18727352 bytes have been tenured; (gc t) is recommended.
+Warning: 18786672 bytes have been tenured; (gc t) is recommended.
+Warning: 18786672 bytes have been tenured; (gc t) is recommended.
+Warning: 18786672 bytes have been tenured; (gc t) is recommended.
+Warning: 18895752 bytes have been tenured; (gc t) is recommended.
+Warning: 18896504 bytes have been tenured; (gc t) is recommended.
+Warning: 18896768 bytes have been tenured; (gc t) is recommended.
+Warning: 18896768 bytes have been tenured; (gc t) is recommended.
+Warning: 18896768 bytes have been tenured; (gc t) is recommended.
+Warning: 18901296 bytes have been tenured; (gc t) is recommended.
+Warning: 18922080 bytes have been tenured; (gc t) is recommended.
+Warning: 18938240 bytes have been tenured; (gc t) is recommended.
+Warning: 18938496 bytes have been tenured; (gc t) is recommended.
+Warning: 18938712 bytes have been tenured; (gc t) is recommended.
+Warning: 18938880 bytes have been tenured; (gc t) is recommended.
+Warning: 18939112 bytes have been tenured; (gc t) is recommended.
+Warning: 18943072 bytes have been tenured; (gc t) is recommended.
+Warning: 18943128 bytes have been tenured; (gc t) is recommended.
+Warning: 18947504 bytes have been tenured; (gc t) is recommended.
+Warning: 18947704 bytes have been tenured; (gc t) is recommended.
+Warning: 18947704 bytes have been tenured; (gc t) is recommended.
+Warning: 18947728 bytes have been tenured; (gc t) is recommended.
+Warning: 18955320 bytes have been tenured; (gc t) is recommended.
+Warning: 19056696 bytes have been tenured; (gc t) is recommended.
+Warning: 19056952 bytes have been tenured; (gc t) is recommended.
+Warning: 19056952 bytes have been tenured; (gc t) is recommended.
+Warning: 19147296 bytes have been tenured; (gc t) is recommended.
+Warning: 19147432 bytes have been tenured; (gc t) is recommended.
+Warning: 19147640 bytes have been tenured; (gc t) is recommended.
+Warning: 19154984 bytes have been tenured; (gc t) is recommended.
+Warning: 19157088 bytes have been tenured; (gc t) is recommended.
+Warning: 19157256 bytes have been tenured; (gc t) is recommended.
+expanded  = 2140
+generated = 5454
+Warning: 19160856 bytes have been tenured; (gc t) is recommended.
+Warning: 19162376 bytes have been tenured; (gc t) is recommended.
+Warning: 19162376 bytes have been tenured; (gc t) is recommended.
+Warning: 19163032 bytes have been tenured; (gc t) is recommended.
+Warning: 19163032 bytes have been tenured; (gc t) is recommended.
+Warning: 19172440 bytes have been tenured; (gc t) is recommended.
+Warning: 19172552 bytes have been tenured; (gc t) is recommended.
+Warning: 19172552 bytes have been tenured; (gc t) is recommended.
+Warning: 19177184 bytes have been tenured; (gc t) is recommended.
+Warning: 19177184 bytes have been tenured; (gc t) is recommended.
+Warning: 19179000 bytes have been tenured; (gc t) is recommended.
+Warning: 19179000 bytes have been tenured; (gc t) is recommended.
+Warning: 19179640 bytes have been tenured; (gc t) is recommended.
+Warning: 19179984 bytes have been tenured; (gc t) is recommended.
+Warning: 19181496 bytes have been tenured; (gc t) is recommended.
+Warning: 19185120 bytes have been tenured; (gc t) is recommended.
+Warning: 19188888 bytes have been tenured; (gc t) is recommended.
+Warning: 19205160 bytes have been tenured; (gc t) is recommended.
+Warning: 19210744 bytes have been tenured; (gc t) is recommended.
+Warning: 19210944 bytes have been tenured; (gc t) is recommended.
+Warning: 19312648 bytes have been tenured; (gc t) is recommended.
+Warning: 19312856 bytes have been tenured; (gc t) is recommended.
+Warning: 19386528 bytes have been tenured; (gc t) is recommended.
+Warning: 19394072 bytes have been tenured; (gc t) is recommended.
+Warning: 19394232 bytes have been tenured; (gc t) is recommended.
+Warning: 19397368 bytes have been tenured; (gc t) is recommended.
+Warning: 19401832 bytes have been tenured; (gc t) is recommended.
+Warning: 19413864 bytes have been tenured; (gc t) is recommended.
+Warning: 19414064 bytes have been tenured; (gc t) is recommended.
+Warning: 19419712 bytes have been tenured; (gc t) is recommended.
+expanded  = 2160
+generated = 5511
+Warning: 19423600 bytes have been tenured; (gc t) is recommended.
+Warning: 19423696 bytes have been tenured; (gc t) is recommended.
+Warning: 19424032 bytes have been tenured; (gc t) is recommended.
+Warning: 19428336 bytes have been tenured; (gc t) is recommended.
+Warning: 19428336 bytes have been tenured; (gc t) is recommended.
+Warning: 19428376 bytes have been tenured; (gc t) is recommended.
+Warning: 19428376 bytes have been tenured; (gc t) is recommended.
+Warning: 19432896 bytes have been tenured; (gc t) is recommended.
+Warning: 19432952 bytes have been tenured; (gc t) is recommended.
+Warning: 19432952 bytes have been tenured; (gc t) is recommended.
+Warning: 19432976 bytes have been tenured; (gc t) is recommended.
+Warning: 19439256 bytes have been tenured; (gc t) is recommended.
+Warning: 19574024 bytes have been tenured; (gc t) is recommended.
+Warning: 19574024 bytes have been tenured; (gc t) is recommended.
+Warning: 19614224 bytes have been tenured; (gc t) is recommended.
+Warning: 19623520 bytes have been tenured; (gc t) is recommended.
+Warning: 19623672 bytes have been tenured; (gc t) is recommended.
+Warning: 19630520 bytes have been tenured; (gc t) is recommended.
+Warning: 19633208 bytes have been tenured; (gc t) is recommended.
+Warning: 19633264 bytes have been tenured; (gc t) is recommended.
+Warning: 19636952 bytes have been tenured; (gc t) is recommended.
+Warning: 19638472 bytes have been tenured; (gc t) is recommended.
+Warning: 19638472 bytes have been tenured; (gc t) is recommended.
+Warning: 19639120 bytes have been tenured; (gc t) is recommended.
+Warning: 19639120 bytes have been tenured; (gc t) is recommended.
+Warning: 19648512 bytes have been tenured; (gc t) is recommended.
+Warning: 19648624 bytes have been tenured; (gc t) is recommended.
+Warning: 19648960 bytes have been tenured; (gc t) is recommended.
+Warning: 19653272 bytes have been tenured; (gc t) is recommended.
+Warning: 19653272 bytes have been tenured; (gc t) is recommended.
+Warning: 19653280 bytes have been tenured; (gc t) is recommended.
+Warning: 19653280 bytes have been tenured; (gc t) is recommended.
+expanded  = 2180
+generated = 5555
+Warning: 19653920 bytes have been tenured; (gc t) is recommended.
+Warning: 19656904 bytes have been tenured; (gc t) is recommended.
+Warning: 19657584 bytes have been tenured; (gc t) is recommended.
+Warning: 19661224 bytes have been tenured; (gc t) is recommended.
+Warning: 19661296 bytes have been tenured; (gc t) is recommended.
+Warning: 19670496 bytes have been tenured; (gc t) is recommended.
+Warning: 19670760 bytes have been tenured; (gc t) is recommended.
+Warning: 19670760 bytes have been tenured; (gc t) is recommended.
+Warning: 19675232 bytes have been tenured; (gc t) is recommended.
+Warning: 19675360 bytes have been tenured; (gc t) is recommended.
+Warning: 19675408 bytes have been tenured; (gc t) is recommended.
+Warning: 19675424 bytes have been tenured; (gc t) is recommended.
+Warning: 19676048 bytes have been tenured; (gc t) is recommended.
+Warning: 19676048 bytes have been tenured; (gc t) is recommended.
+Warning: 19679704 bytes have been tenured; (gc t) is recommended.
+Warning: 19679704 bytes have been tenured; (gc t) is recommended.
+Warning: 19824944 bytes have been tenured; (gc t) is recommended.
+Warning: 19835320 bytes have been tenured; (gc t) is recommended.
+Warning: 19836024 bytes have been tenured; (gc t) is recommended.
+Warning: 19838280 bytes have been tenured; (gc t) is recommended.
+Warning: 19870264 bytes have been tenured; (gc t) is recommended.
+Warning: 19875664 bytes have been tenured; (gc t) is recommended.
+Warning: 19875664 bytes have been tenured; (gc t) is recommended.
+Warning: 19876216 bytes have been tenured; (gc t) is recommended.
+Warning: 19885112 bytes have been tenured; (gc t) is recommended.
+Warning: 19885264 bytes have been tenured; (gc t) is recommended.
+Warning: 19885264 bytes have been tenured; (gc t) is recommended.
+Warning: 19889608 bytes have been tenured; (gc t) is recommended.
+Warning: 19889712 bytes have been tenured; (gc t) is recommended.
+expanded  = 2200
+generated = 5598
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 2200
+nodes generated: 5598
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.2) (1 3.64) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 344
+Warning: 19889720 bytes have been tenured; (gc t) is recommended.
+Warning: 19889744 bytes have been tenured; (gc t) is recommended.
+Warning: 19893888 bytes have been tenured; (gc t) is recommended.
+Warning: 19893888 bytes have been tenured; (gc t) is recommended.
+Warning: 19900608 bytes have been tenured; (gc t) is recommended.
+Warning: 19903408 bytes have been tenured; (gc t) is recommended.
+Warning: 19903464 bytes have been tenured; (gc t) is recommended.
+Warning: 19906496 bytes have been tenured; (gc t) is recommended.
+Warning: 19907904 bytes have been tenured; (gc t) is recommended.
+Warning: 19907904 bytes have been tenured; (gc t) is recommended.
+Warning: 19907928 bytes have been tenured; (gc t) is recommended.
+Warning: 19912040 bytes have been tenured; (gc t) is recommended.
+Warning: 19912040 bytes have been tenured; (gc t) is recommended.
+Warning: 20085728 bytes have been tenured; (gc t) is recommended.
+Warning: 20092104 bytes have been tenured; (gc t) is recommended.
+Warning: 20092256 bytes have been tenured; (gc t) is recommended.
+Warning: 20092256 bytes have been tenured; (gc t) is recommended.
+
+*************************************************
+*         solution plan found                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG3)) 
+
+((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2)) 
+
+((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2)) 
+
+((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3)) 
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG3)) 
+
+((MOVES PEG2 PEG3) (MOVEM PEG2 PEG1)) 
+
+((MOVEM PEG2 PEG1) (MOVES PEG3 PEG2)) 
+
+((MOVES PEG3 PEG2) (MOVEM PEG1 PEG3)) 
+
+((MOVEM PEG1 PEG3) (MOVES PEG2 PEG3)) 
+
+((MOVES PEG2 PEG3) (G)) 
+*** node search depth: 29
+
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 2209
+nodes generated: 5621
+solution depth : 29
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.2) (1 3.64) (2 2.15) (3 1.5))
+
+a: criticality levels    : 3
+a: criticality depth mode: T
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 346
+
+NIL 
+<cl> 
+<cl> Error: attempt to call `BYE' which is an undefined function.
+
+Restart actions (select using :continue):
+ 0: prompt for a new function, instead of `BYE'.
+[1c] <cl> :pop
+<cl> EOF
+Really exit lisp [n]? 
+; Exiting Lisp

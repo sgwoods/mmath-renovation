@@ -1,0 +1,243 @@
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/msib
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/msib
+T
+
+>expanded  = 20
+generated = 34
+expanded  = 40
+generated = 76
+expanded  = 60
+generated = 116
+expanded  = 80
+generated = 153
+expanded  = 100
+generated = 183
+expanded  = 120
+generated = 226
+expanded  = 140
+generated = 263
+expanded  = 160
+generated = 307
+expanded  = 180
+generated = 344
+expanded  = 200
+generated = 380
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 200
+Nodes Generated: 380
+Solution Depth : 0
+Max Node Succ  : 5
+Max Conflicts  : 2
+Branch Factors : ((0 1.92) (1 1.0) (2 2.33) (3 1.5))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: T
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 3
+expanded  = 220
+generated = 407
+expanded  = 240
+generated = 440
+expanded  = 260
+generated = 476
+expanded  = 280
+generated = 512
+expanded  = 300
+generated = 559
+expanded  = 320
+generated = 589
+expanded  = 340
+generated = 635
+expanded  = 360
+generated = 674
+expanded  = 380
+generated = 714
+expanded  = 400
+generated = 753
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 400
+Nodes Generated: 753
+Solution Depth : 0
+Max Node Succ  : 5
+Max Conflicts  : 3
+Branch Factors : ((0 1.89) (1 1.0) (2 2.33) (3 1.5))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: T
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 3
+expanded  = 420
+generated = 792
+expanded  = 440
+generated = 833
+expanded  = 460
+generated = 875
+expanded  = 480
+generated = 921
+expanded  = 500
+generated = 969
+expanded  = 520
+generated = 1014
+expanded  = 540
+generated = 1056
+expanded  = 560
+generated = 1099
+expanded  = 580
+generated = 1133
+expanded  = 600
+generated = 1174
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 600
+Nodes Generated: 1174
+Solution Depth : 0
+Max Node Succ  : 5
+Max Conflicts  : 3
+Branch Factors : ((0 1.96) (1 1.0) (2 2.33) (3 1.5))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: T
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 3
+expanded  = 620
+generated = 1207
+expanded  = 640
+generated = 1239
+expanded  = 660
+generated = 1279
+expanded  = 680
+generated = 1319
+expanded  = 700
+generated = 1355
+expanded  = 720
+generated = 1400
+expanded  = 740
+generated = 1441
+expanded  = 760
+generated = 1475
+expanded  = 780
+generated = 1510
+expanded  = 800
+generated = 1542
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 800
+Nodes Generated: 1542
+Solution Depth : 0
+Max Node Succ  : 5
+Max Conflicts  : 3
+Branch Factors : ((0 1.93) (1 1.0) (2 2.33) (3 1.5))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: T
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 3
+expanded  = 820
+generated = 1578
+expanded  = 840
+generated = 1620
+expanded  = 860
+generated = 1652
+expanded  = 880
+generated = 1685
+expanded  = 900
+generated = 1717
+expanded  = 920
+generated = 1759
+expanded  = 940
+generated = 1796
+expanded  = 960
+generated = 1842
+expanded  = 980
+generated = 1883
+expanded  = 1000
+generated = 1926
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 1000
+Nodes Generated: 1926
+Solution Depth : 0
+Max Node Succ  : 5
+Max Conflicts  : 3
+Branch Factors : ((0 1.93) (1 1.0) (2 2.33) (3 1.5))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: T
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 3
+expanded  = 1020
+generated = 1966
+expanded  = 1040
+generated = 2008
+
+Correctable error: The storage for structure is exhausted.
+                   Currently, 85 pages are allocated.
+                   Use ALLOCATE to expand the space.
+Signalled by DRIVER.
+If continued: Continues execution.
+
+Broken at DRIVER.  Type :H for Help.
+>>Bye.

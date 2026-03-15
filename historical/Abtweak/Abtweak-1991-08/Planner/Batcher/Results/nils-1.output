@@ -1,0 +1,1130 @@
+
+>(planner initial '((on a c)) :planner-mode 'tweak :debug-mode t)
+***Debug*******************
+Node Expanded       ::INITIAL-PLAN
+Expanded Number     :: 1
+Number of Children  :: 1
+Total Gen so far    :: 0
+Succs (raw)   ::
+(#S(PLAN ID plan414 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((I op412) (op412 G)) NC NIL VAR NIL CONFLICTS NIL INVALID
+         NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan414
+Expanded Number     :: 2
+Number of Children  :: 2
+Total Gen so far    :: 1
+Succs (raw)   ::
+(#S(PLAN ID plan422 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op416 op412) (I op416) (op412 G)) NC NIL VAR NIL CONFLICTS
+         NIL INVALID NIL)
+ #S(PLAN ID plan423 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op419 op412) (I op419) (op412 G)) NC ((A $418)) VAR NIL
+         CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan422
+Expanded Number     :: 3
+Number of Children  :: 3
+Total Gen so far    :: 3
+Succs (raw)   ::
+(#S(PLAN ID plan435 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op425 op416) (I op425) (op416 op412) (op412 G)) NC NIL VAR
+         NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan436 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op428 op416) (I op428) (op416 op412) (op412 G)) NC
+         ((A $427)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan437 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op431 NAME (UNSTACK $429 A) PRECONDITIONS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $429) (NOT HANDEMPTY)
+                 (HOLDING $429) (NOT ON $429 A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op431 op416) (I op431) (op416 op412) (op412 G)) NC
+         (($429 A)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan423
+Expanded Number     :: 4
+Number of Children  :: 1
+Total Gen so far    :: 6
+Succs (raw)   ::
+(#S(PLAN ID plan442 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op440 op419) (I op440) (op419 op412) (op412 G)) NC
+         ((A $418)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan435
+Expanded Number     :: 5
+Number of Children  :: 2
+Total Gen so far    :: 7
+Succs (raw)   ::
+(#S(PLAN ID plan450 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op444 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op444 op425) (I op444) (op425 op416) (op416 op412)
+          (op412 G))
+         NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan451 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op447 NAME (UNSTACK A $446) PRECONDITIONS
+                ((ON A $446) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $446) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $446)))
+          #S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op447 op425) (I op447) (op425 op416) (op416 op412)
+          (op412 G))
+         NC ((A $446)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan436
+Expanded Number     :: 6
+Number of Children  :: 2
+Total Gen so far    :: 9
+Succs (raw)   ::
+(#S(PLAN ID plan459 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op453 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op453 op428) (I op453) (op428 op416) (op416 op412)
+          (op412 G))
+         NC ((A $427)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan460 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op456 NAME (UNSTACK A $455) PRECONDITIONS
+                ((ON A $455) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $455) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $455)))
+          #S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op456 op428) (I op456) (op428 op416) (op416 op412)
+          (op412 G))
+         NC ((A $455) (A $427)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan437
+Expanded Number     :: 7
+Number of Children  :: 2
+Total Gen so far    :: 11
+Succs (raw)   ::
+(#S(PLAN ID plan466 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B ((op431 op416) (I op431) (op416 op412) (op412 G)) NC NIL VAR
+         NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan467 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op464 NAME (STACK $429 A) PRECONDITIONS
+                ((HOLDING $429) (CLEAR A)) EFFECTS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)
+                 (NOT HOLDING $429) (NOT CLEAR A)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK $429 A) PRECONDITIONS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $429) (NOT HANDEMPTY)
+                 (HOLDING $429) (NOT ON $429 A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op464 op431) (I op464) (op431 op416) (op416 op412)
+          (op412 G))
+         NC (($429 A)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan442
+Expanded Number     :: 8
+Number of Children  :: 2
+Total Gen so far    :: 13
+Succs (raw)   ::
+(#S(PLAN ID plan475 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op469 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op469 op440) (I op469) (op440 op419) (op419 op412)
+          (op412 G))
+         NC ((A $418)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan476 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op472 NAME (UNSTACK A $471) PRECONDITIONS
+                ((ON A $471) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $471) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $471)))
+          #S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op472 op440) (I op472) (op440 op419) (op419 op412)
+          (op412 G))
+         NC ((A $471) (A $418)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan466
+Expanded Number     :: 9
+Number of Children  :: 2
+Total Gen so far    :: 15
+Succs (raw)   ::
+(#S(PLAN ID plan485 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op479 NAME (PUTDOWN $478) PRECONDITIONS
+                ((HOLDING $478)) EFFECTS
+                ((ONTABLE $478) (CLEAR $478) (HANDEMPTY)
+                 (NOT HOLDING $478)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op431 op479) (op479 op416) (I op431) (op416 op412)
+          (op412 G))
+         NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan486 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op482 NAME (STACK $480 $481) PRECONDITIONS
+                ((HOLDING $480) (CLEAR $481)) EFFECTS
+                ((ON $480 $481) (CLEAR $480) (HANDEMPTY)
+                 (NOT HOLDING $480) (NOT CLEAR $481)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op431 op482) (op482 op416) (I op431) (op416 op412)
+          (op412 G))
+         NC (($480 $481)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan450
+Expanded Number     :: 10
+Number of Children  :: 3
+Total Gen so far    :: 17
+Succs (raw)   ::
+(#S(PLAN ID plan498 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op488 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op444 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op488 op444) (I op488) (op444 op425) (op425 op416)
+          (op416 op412) (op412 G))
+         NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan499 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op491 NAME (STACK A $490) PRECONDITIONS
+                ((HOLDING A) (CLEAR $490)) EFFECTS
+                ((ON A $490) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $490)))
+          #S(OPERATOR OPID op444 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op491 op444) (I op491) (op444 op425) (op425 op416)
+          (op416 op412) (op412 G))
+         NC ((A $490)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan500 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op494 NAME (UNSTACK $492 A) PRECONDITIONS
+                ((ON $492 A) (CLEAR $492) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $492) (NOT HANDEMPTY)
+                 (HOLDING $492) (NOT ON $492 A)))
+          #S(OPERATOR OPID op444 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op494 op444) (I op494) (op444 op425) (op425 op416)
+          (op416 op412) (op412 G))
+         NC (($492 A)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan451
+Expanded Number     :: 11
+Number of Children  :: 1
+Total Gen so far    :: 20
+Succs (raw)   ::
+(#S(PLAN ID plan505 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op503 NAME (STACK A $446) PRECONDITIONS
+                ((HOLDING A) (CLEAR $446)) EFFECTS
+                ((ON A $446) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $446)))
+          #S(OPERATOR OPID op447 NAME (UNSTACK A $446) PRECONDITIONS
+                ((ON A $446) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $446) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $446)))
+          #S(OPERATOR OPID op425 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op503 op447) (I op503) (op447 op425) (op425 op416)
+          (op416 op412) (op412 G))
+         NC ((A $446)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan459
+Expanded Number     :: 12
+Number of Children  :: 3
+Total Gen so far    :: 21
+Succs (raw)   ::
+(#S(PLAN ID plan517 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op507 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op453 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op507 op453) (I op507) (op453 op428) (op428 op416)
+          (op416 op412) (op412 G))
+         NC ((A $427)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan518 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op510 NAME (STACK A $509) PRECONDITIONS
+                ((HOLDING A) (CLEAR $509)) EFFECTS
+                ((ON A $509) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $509)))
+          #S(OPERATOR OPID op453 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op510 op453) (I op510) (op453 op428) (op428 op416)
+          (op416 op412) (op412 G))
+         NC ((A $509) (A $427)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan519 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op513 NAME (UNSTACK $511 A) PRECONDITIONS
+                ((ON $511 A) (CLEAR $511) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $511) (NOT HANDEMPTY)
+                 (HOLDING $511) (NOT ON $511 A)))
+          #S(OPERATOR OPID op453 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op513 op453) (I op513) (op453 op428) (op428 op416)
+          (op416 op412) (op412 G))
+         NC (($511 A) (A $427)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan460
+Expanded Number     :: 13
+Number of Children  :: 1
+Total Gen so far    :: 24
+Succs (raw)   ::
+(#S(PLAN ID plan524 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op522 NAME (STACK A $455) PRECONDITIONS
+                ((HOLDING A) (CLEAR $455)) EFFECTS
+                ((ON A $455) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $455)))
+          #S(OPERATOR OPID op456 NAME (UNSTACK A $455) PRECONDITIONS
+                ((ON A $455) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $455) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $455)))
+          #S(OPERATOR OPID op428 NAME (STACK A $427) PRECONDITIONS
+                ((HOLDING A) (CLEAR $427)) EFFECTS
+                ((ON A $427) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $427)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op522 op456) (I op522) (op456 op428) (op428 op416)
+          (op416 op412) (op412 G))
+         NC ((A $455) (A $427)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan467
+Expanded Number     :: 14
+Number of Children  :: 2
+Total Gen so far    :: 25
+Succs (raw)   ::
+(#S(PLAN ID plan532 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op526 NAME (PICKUP $429) PRECONDITIONS
+                ((ONTABLE $429) (CLEAR $429) (HANDEMPTY)) EFFECTS
+                ((HOLDING $429) (NOT ONTABLE $429) (NOT CLEAR $429)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op464 NAME (STACK $429 A) PRECONDITIONS
+                ((HOLDING $429) (CLEAR A)) EFFECTS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)
+                 (NOT HOLDING $429) (NOT CLEAR A)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK $429 A) PRECONDITIONS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $429) (NOT HANDEMPTY)
+                 (HOLDING $429) (NOT ON $429 A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op526 op464) (I op526) (op464 op431) (op431 op416)
+          (op416 op412) (op412 G))
+         NC (($429 A)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan533 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op529 NAME (UNSTACK $429 $528) PRECONDITIONS
+                ((ON $429 $528) (CLEAR $429) (HANDEMPTY)) EFFECTS
+                ((CLEAR $528) (NOT CLEAR $429) (NOT HANDEMPTY)
+                 (HOLDING $429) (NOT ON $429 $528)))
+          #S(OPERATOR OPID op464 NAME (STACK $429 A) PRECONDITIONS
+                ((HOLDING $429) (CLEAR A)) EFFECTS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)
+                 (NOT HOLDING $429) (NOT CLEAR A)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK $429 A) PRECONDITIONS
+                ((ON $429 A) (CLEAR $429) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $429) (NOT HANDEMPTY)
+                 (HOLDING $429) (NOT ON $429 A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op529 op464) (I op529) (op464 op431) (op431 op416)
+          (op416 op412) (op412 G))
+         NC (($429 $528) ($429 A)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan475
+Expanded Number     :: 15
+Number of Children  :: 3
+Total Gen so far    :: 27
+Succs (raw)   ::
+(#S(PLAN ID plan545 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op535 NAME (PUTDOWN A) PRECONDITIONS
+                ((HOLDING A)) EFFECTS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)))
+          #S(OPERATOR OPID op469 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op535 op469) (I op535) (op469 op440) (op440 op419)
+          (op419 op412) (op412 G))
+         NC ((A $418)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan546 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op538 NAME (STACK A $537) PRECONDITIONS
+                ((HOLDING A) (CLEAR $537)) EFFECTS
+                ((ON A $537) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $537)))
+          #S(OPERATOR OPID op469 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op538 op469) (I op538) (op469 op440) (op440 op419)
+          (op419 op412) (op412 G))
+         NC ((A $537) (A $418)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan547 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op541 NAME (UNSTACK $539 A) PRECONDITIONS
+                ((ON $539 A) (CLEAR $539) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR $539) (NOT HANDEMPTY)
+                 (HOLDING $539) (NOT ON $539 A)))
+          #S(OPERATOR OPID op469 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op541 op469) (I op541) (op469 op440) (op440 op419)
+          (op419 op412) (op412 G))
+         NC (($539 A) (A $418)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan476
+Expanded Number     :: 16
+Number of Children  :: 1
+Total Gen so far    :: 30
+Succs (raw)   ::
+(#S(PLAN ID plan552 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op550 NAME (STACK A $471) PRECONDITIONS
+                ((HOLDING A) (CLEAR $471)) EFFECTS
+                ((ON A $471) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $471)))
+          #S(OPERATOR OPID op472 NAME (UNSTACK A $471) PRECONDITIONS
+                ((ON A $471) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $471) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $471)))
+          #S(OPERATOR OPID op440 NAME (STACK A $418) PRECONDITIONS
+                ((HOLDING A) (CLEAR $418)) EFFECTS
+                ((ON A $418) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR $418)))
+          #S(OPERATOR OPID op419 NAME (UNSTACK A $418) PRECONDITIONS
+                ((ON A $418) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((CLEAR $418) (NOT CLEAR A) (NOT HANDEMPTY) (HOLDING A)
+                 (NOT ON A $418)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op550 op472) (I op550) (op472 op440) (op440 op419)
+          (op419 op412) (op412 G))
+         NC ((A $471) (A $418)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan485
+Expanded Number     :: 17
+Number of Children  :: 3
+Total Gen so far    :: 31
+Succs (raw)   ::
+(#S(PLAN ID plan561 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op479 NAME (PUTDOWN C) PRECONDITIONS
+                ((HOLDING C)) EFFECTS
+                ((ONTABLE C) (CLEAR C) (HANDEMPTY) (NOT HOLDING C)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op431 op479) (op479 op416) (I op431) (op416 op412)
+          (op412 G))
+         NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan562 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op555 NAME (PICKUP $478) PRECONDITIONS
+                ((ONTABLE $478) (CLEAR $478) (HANDEMPTY)) EFFECTS
+                ((HOLDING $478) (NOT ONTABLE $478) (NOT CLEAR $478)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op479 NAME (PUTDOWN $478) PRECONDITIONS
+                ((HOLDING $478)) EFFECTS
+                ((ONTABLE $478) (CLEAR $478) (HANDEMPTY)
+                 (NOT HOLDING $478)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op555 op479) (I op555) (op431 op479) (op479 op416) (I op431)
+          (op416 op412) (op412 G))
+         NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan563 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op558 NAME (UNSTACK $478 $557) PRECONDITIONS
+                ((ON $478 $557) (CLEAR $478) (HANDEMPTY)) EFFECTS
+                ((CLEAR $557) (NOT CLEAR $478) (NOT HANDEMPTY)
+                 (HOLDING $478) (NOT ON $478 $557)))
+          #S(OPERATOR OPID op479 NAME (PUTDOWN $478) PRECONDITIONS
+                ((HOLDING $478)) EFFECTS
+                ((ONTABLE $478) (CLEAR $478) (HANDEMPTY)
+                 (NOT HOLDING $478)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op558 op479) (I op558) (op431 op479) (op479 op416) (I op431)
+          (op416 op412) (op412 G))
+         NC (($478 $557)) VAR NIL CONFLICTS NIL INVALID NIL))
+***************************
+***Debug*******************
+Node Expanded       ::plan486
+Expanded Number     :: 18
+Number of Children  :: 3
+Total Gen so far    :: 34
+Succs (raw)   ::
+(#S(PLAN ID plan572 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op482 NAME (STACK C $481) PRECONDITIONS
+                ((HOLDING C) (CLEAR $481)) EFFECTS
+                ((ON C $481) (CLEAR C) (HANDEMPTY) (NOT HOLDING C)
+                 (NOT CLEAR $481)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op431 op482) (op482 op416) (I op431) (op416 op412)
+          (op412 G))
+         NC ((C $481)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan573 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op566 NAME (PICKUP $480) PRECONDITIONS
+                ((ONTABLE $480) (CLEAR $480) (HANDEMPTY)) EFFECTS
+                ((HOLDING $480) (NOT ONTABLE $480) (NOT CLEAR $480)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op482 NAME (STACK $480 $481) PRECONDITIONS
+                ((HOLDING $480) (CLEAR $481)) EFFECTS
+                ((ON $480 $481) (CLEAR $480) (HANDEMPTY)
+                 (NOT HOLDING $480) (NOT CLEAR $481)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op566 op482) (I op566) (op431 op482) (op482 op416) (I op431)
+          (op416 op412) (op412 G))
+         NC (($480 $481)) VAR NIL CONFLICTS NIL INVALID NIL)
+ #S(PLAN ID plan574 COST 0 KVAL 0 CR NIL A
+         (#S(OPERATOR OPID op569 NAME (UNSTACK $480 $568) PRECONDITIONS
+                ((ON $480 $568) (CLEAR $480) (HANDEMPTY)) EFFECTS
+                ((CLEAR $568) (NOT CLEAR $480) (NOT HANDEMPTY)
+                 (HOLDING $480) (NOT ON $480 $568)))
+          #S(OPERATOR OPID op482 NAME (STACK $480 $481) PRECONDITIONS
+                ((HOLDING $480) (CLEAR $481)) EFFECTS
+                ((ON $480 $481) (CLEAR $480) (HANDEMPTY)
+                 (NOT HOLDING $480) (NOT CLEAR $481)))
+          #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+                ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+                 (NOT ON C A)))
+          #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+                ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                 (NOT HANDEMPTY)))
+          #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+                ((HOLDING A) (CLEAR C)) EFFECTS
+                ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A)
+                 (NOT CLEAR C)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                 (HANDEMPTY)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS
+                NIL))
+         B
+         ((op569 op482) (I op569) (op431 op482) (op482 op416) (I op431)
+          (op416 op412) (op412 G))
+         NC (($480 $568) ($480 $481)) VAR NIL CONFLICTS NIL INVALID
+         NIL))
+***************************
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op479 NAME (PUTDOWN C) PRECONDITIONS ((HOLDING C))
+       EFFECTS ((ONTABLE C) (CLEAR C) (HANDEMPTY) (NOT HOLDING C)))
+ #S(OPERATOR OPID op431 NAME (UNSTACK C A) PRECONDITIONS
+       ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+       ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY) (HOLDING C)
+        (NOT ON C A)))
+ #S(OPERATOR OPID op416 NAME (PICKUP A) PRECONDITIONS
+       ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+       ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A) (NOT HANDEMPTY)))
+ #S(OPERATOR OPID op412 NAME (STACK A C) PRECONDITIONS
+       ((HOLDING A) (CLEAR C)) EFFECTS
+       ((ON A C) (CLEAR A) (HANDEMPTY) (NOT HOLDING A) (NOT CLEAR C)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+        (HANDEMPTY)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A C)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op431 op479) (op479 op416) (I op431) (op416 op412) (op412 G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 7
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : T
+Nodes Expanded : 18
+Nodes Generated: 37
+Solution Depth : 0
+
+T
+
+>

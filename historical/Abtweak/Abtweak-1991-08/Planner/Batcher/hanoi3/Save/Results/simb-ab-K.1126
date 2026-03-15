@@ -1,0 +1,50 @@
+
+planner driver output
+domain      : HANOI-3-ISPEG
+operators   : (#s(OPERATOR :OPID MOVEB :NAME (MOVEB $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y) (NOT ONM $Y) (ONB $X)) :EFFECTS ((NOT ONB $X) (ONB $Y))) #s(OPERATOR :OPID MOVEM :NAME (MOVEM $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X)) :EFFECTS ((NOT ONM $X) (ONM $Y))) #s(OPERATOR :OPID MOVES :NAME (MOVES $X $Y) :PRECONDITIONS ((ISPEG $X) (ISPEG $Y) (ONS $X)) :EFFECTS ((NOT ONS $X) (ONS $Y))))
+initial     : ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))
+goal        : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+critical lst: ((3 (NOT ONS $) (ONS $)) (2 (ISPEG $)) (1 (NOT ONM $) (ONM $)) (0 (NOT ONB $) (ONB $)))
+critcal load: SIMB
+top down lev: (3 2 1)
+crit dep lst: (1 1 3 7)
+ 
+ cpu time (non-gc) 713684 msec user, 1734 msec system
+cpu time (gc)     75916 msec user, 1450 msec system
+cpu time (total)  789600 msec user, 3184 msec system
+real time  798320 msec
+
+ solution found 
+ 
+ (domain info)
+ domain          : HANOI-3-ISPEG
+ 
+ (planning info)
+ planner mode    : ABTWEAK
+ search  type    : 4
+ heuristic       : D
+ debug           : NIL
+ determine mode  : FIRST
+ backwards mode  : NIL
+ nodes expanded  : 962
+ nodes generated : 1770
+ solution depth  : 31
+ max conflicts   : 3
+ max node succ   : 5
+ branch factors  : ((0 1.85) (1 1.64) (2 0.0) (3 1.5))
+ 
+ a: criticality levels     : 3
+ a: critical depth mode    : T
+ a: k learning mode        : NIL
+ a: top down flag             : NIL
+ a: top down pruned           : 0
+ a: abs goal mode             : NIL
+ a: monotonic sol property    : NIL
+ a: msp weak mode             : NEC
+ a: weak msp   pruned         : 0
+ a: strong msp pruned         : 0
+ a: abstract nodes gen        : 3
+ 
+ 
+ goal plan: #s(PLAN :ID plan3677 :COST 0 :KVAL 0 :CR ((op98 (ONS PEG1) (I)) (G (ONS PEG3) (op98)) (op98 (ISPEG PEG1) (I)) (op98 (ISPEG PEG3) (I)) (op104 (ONM PEG1) (I)) (G (ONM PEG3) (op104))) :TREE (G ((op98 (op148 op3364)) (op104 (op118)) (op212 (op237 op328)) op3659)) :A (#s(OPERATOR :OPID op3659 :NAME (MOVEM PEG2 PEG3) :PRECONDITIONS ((ISPEG PEG2) (ISPEG PEG3) (NOT ONS PEG2) (NOT ONS PEG3) (ONM PEG2)) :EFFECTS ((NOT ONM PEG2) (ONM PEG3))) #s(OPERATOR :OPID op3364 :NAME (MOVES PEG2 PEG1) :PRECONDITIONS ((ISPEG PEG2) (ISPEG PEG1) (ONS PEG2)) :EFFECTS ((NOT ONS PEG2) (ONS PEG1))) #s(OPERATOR :OPID op328 :NAME (MOVEM PEG3 PEG2) :PRECONDITIONS ((ISPEG PEG3) (ISPEG PEG2) (NOT ONS PEG3) (NOT ONS PEG2) (ONM PEG3)) :EFFECTS ((NOT ONM PEG3) (ONM PEG2))) #s(OPERATOR :OPID op237 :NAME (MOVES PEG1 PEG2) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG2) (ONS PEG1)) :EFFECTS ((NOT ONS PEG1) (ONS PEG2))) #s(OPERATOR :OPID op212 :NAME (MOVEB PEG1 PEG3) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1)) :EFFECTS ((NOT ONB PEG1) (ONB PEG3))) #s(OPERATOR :OPID op148 :NAME (MOVES PEG2 PEG1) :PRECONDITIONS ((ISPEG PEG2) (ISPEG PEG1) (ONS PEG2)) :EFFECTS ((NOT ONS PEG2) (ONS PEG1))) #s(OPERATOR :OPID op118 :NAME (MOVES PEG1 PEG2) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG2) (ONS PEG1)) :EFFECTS ((NOT ONS PEG1) (ONS PEG2))) #s(OPERATOR :OPID op104 :NAME (MOVEM PEG1 PEG3) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONS PEG3) (ONM PEG1)) :EFFECTS ((NOT ONM PEG1) (ONM PEG3))) #s(OPERATOR :OPID op98 :NAME (MOVES PEG1 PEG3) :PRECONDITIONS ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) :EFFECTS ((NOT ONS PEG1) (ONS PEG3))) #s(OPERATOR :OPID I :NAME (I) :PRECONDITIONS NIL :EFFECTS ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3))) #s(OPERATOR :OPID G :NAME (G) :PRECONDITIONS ((ONB PEG3) (ONM PEG3) (ONS PEG3)) :EFFECTS NIL)) :B ((op3659 op98) (op3364 op3659) (op212 op3364) (op328 op237) (op148 op328) (op237 op212) (op104 op148) (op118 op104) (I op118) (op98 G)) :NC NIL :VAR NIL :CONFLICTS NIL :OP-COUNT ((0 5) (1 3) (2 0) (3 1)) :INVALID NIL)
+ 

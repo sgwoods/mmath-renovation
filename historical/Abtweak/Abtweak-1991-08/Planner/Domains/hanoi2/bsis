@@ -1,0 +1,10 @@
+(setq *critical-loaded* 'bsis)
+(setq *critical-list* '(
+               (3 (onb $)) 
+               (2 (not ons $)) 
+               (1 (ispeg $))
+               (0 (ons $))
+                         ))
+
+(setq *k-list* '(1 2 2 3))
+

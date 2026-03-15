@@ -1,0 +1,4 @@
+cp bat-0.sh   bat-$1.sh
+cp bat-0a.sh  bat-$1a.sh
+cp bat-0b.sh  bat-$1b.sh
+cp bat-0c.lsp bat-$1c.lsp

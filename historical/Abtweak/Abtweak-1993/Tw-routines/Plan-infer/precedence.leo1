@@ -1,0 +1,50 @@
+;;; precedence, leonard-1
+;;; From leonard@nssdcs.gsfc.nasa.gov Sat Jul 25 07:27:27 1992
+
+;;; Hi.  I ftp'ed Abtweak a few days ago with an eye toward using it for a
+;;; image processing planner we are developing here.  After running the
+;;; planner on some of the small test problems, it seemed kinda slow to me
+;;; (60 sec for the 3 ring hanoi problem.)  When I ran abtweak through the
+;;; profiler, I found there was one function (transitive-test-before-p)
+;;; that took almost all of the processor time.  So I reprogrammed it in
+;;; two different ways; the first seems to be faster (about 15 sec) on
+;;; small examples and also a bit neater; whereas the second is based on
+;;; what I think is a better algorithm, although it seems to be taking a
+;;; little longer (18 sec or so).  Anyway, here they are.  If I have the
+;;; inclination and time I might write a graph sweep-and-mark algorithm to
+;;; improve this business even more.
+
+;;; Semi-understandable version: replaces mapcars with do-loops,
+;;;  adds extra checks at start for 'I and 'G, and pushes check for
+;;;  exact (op1 op2) link into the body of the function.
+
+(defun transitive-test-before-p (op1 op2 pairs)
+  "/tweak/plan-infer/plan-dependent.lisp 
+   returns t iff op1 precedes op2 (possibly transitively) in pairs"
+ (declare
+  (type atom op1)
+  (type atom op2)
+  (type list pairs) )
+
+  (cond 
+   ((null pairs) nil)
+   ((eq op2 'i) nil)
+   ((eq op1 'g) nil)
+   (t (let ((imm-before-op2 nil)
+	    (pairs-without-op2 nil))
+	(declare
+	 (type list imm-before-op2)
+	 (type list pairs-without-op2) )
+	
+	(dolist (pair pairs)
+		(cond ((eq op2 (second pair))
+		       (cond ((eq op1 (first pair))
+			      (return-from transitive-test-before-p t))
+			     ((setq imm-before-op2 
+				    (cons (first pair) imm-before-op2)))))
+		      ((setq pairs-without-op2
+			     (cons pair pairs-without-op2)))))		
+	
+	(dolist (op imm-before-op2 nil)
+		(if (transitive-test-before-p op1 op pairs-without-op2)
+		    (return t)))))))

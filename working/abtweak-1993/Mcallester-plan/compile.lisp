@@ -1,0 +1,6 @@
+(compile-file "./Mcallester-plan/successors")
+(compile-file "./Mcallester-plan/find-one-mr-conflict")
+(compile-file "./Mcallester-plan/mr-conf-detection")
+(compile-file "./Mcallester-plan/mr-declob")
+(compile-file "./Mcallester-plan/mr-planner-interface")
+(compile-file "./Mcallester-plan/mr-goal")

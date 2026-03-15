@@ -1,0 +1,118 @@
+Planner Driver Output
+Domain      : HANOI-3-ISPEG
+Operators   : (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X)
+                      (NOT ONS $Y) (NOT ONM $Y) (ONB $X))
+                     EFFECTS ((NOT ONB $X) (ONB $Y)))
+               #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y)
+                      (ONM $X))
+                     EFFECTS ((NOT ONM $X) (ONM $Y)))
+               #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                     ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+                     ((NOT ONS $X) (ONS $Y))))
+Initial     : ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+               (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+               (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+               (NOT ONS PEG3))
+Goal        : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+Critical Lst: ((3 (NOT ONB $) (ONB $)) (2 (ISPEG $))
+               (1 (NOT ONS $) (ONS $)) (0 (NOT ONM $) (ONM $)))
+Critcal Load: BISM
+Top Down Lev: (3 2 1)
+Crit Dep Lst: (0 1 2 4)
+ 
+ 
+real time : -44327.830 secs
+run time  : 9171.316 secs
+ SOLUTION FOUND 
+ 
+ (Domain Info)
+ Domain          : HANOI-3-ISPEG
+ 
+ (Planning Info)
+ Planner Mode    : ABTWEAK
+ Search  Type    : 4
+ Heuristic       : D
+ Debug           : NIL
+ Random Mode     : NIL
+ Backwards Mode  : NIL
+ Nodes Expanded  : 1257
+ Nodes Generated : 2197
+ Solution Depth  : 24
+ Max Conflicts   : 3
+ Max Node Succ   : 6
+ Branch Factors  : ((0 1.81) (1 1.78) (2 1.62) (3 1.83))
+ 
+ A: Criticality Levels     : 3
+ A: Critical Depth Mode    : NIL
+ A: K Learning Mode        : NIL
+ A: Top Down Flag             : NIL
+ A: Top Down Pruned           : 0
+ A: ABS Goal Mode             : NIL
+ A: Monotonic Sol Property    : NIL
+ A: MSP Weak Mode             : NEC
+ A: Weak MSP   pruned         : 0
+ A: Strong MSP pruned         : 0
+ A: Abstract Nodes GEN        : 69
+ 
+ 
+ Goal Plan: #S(PLAN ID plan7191 COST 0 KVAL 0 CR
+                    ((op2 (ONB PEG1) (I)) (G (ONB PEG3) (op2))
+                     (op2 (ISPEG PEG1) (I)) (op2 (ISPEG PEG3) (I))
+                     (op2 (NOT ONS PEG1) (op16))
+                     (op2 (NOT ONS PEG3) (op26))
+                     (op316 (ONS PEG2) (op26))
+                     (op292 (ONS PEG1) (op316))
+                     (op26 (ONS PEG3) (op16)) (op16 (ONS PEG1) (I))
+                     (G (ONS PEG3) (op292)))
+                    A
+                    (#S(OPERATOR OPID op7156 NAME (MOVEM PEG2 PEG3)
+                           PRECONDITIONS
+                           ((ISPEG PEG2) (ISPEG PEG3) (NOT ONS PEG2)
+                            (NOT ONS PEG3) (ONM PEG2))
+                           EFFECTS ((NOT ONM PEG2) (ONM PEG3)))
+                     #S(OPERATOR OPID op418 NAME (MOVEM PEG1 PEG2)
+                           PRECONDITIONS
+                           ((ISPEG PEG1) (ISPEG PEG2) (NOT ONS PEG1)
+                            (NOT ONS PEG2) (ONM PEG1))
+                           EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+                     #S(OPERATOR OPID op316 NAME (MOVES PEG2 PEG1)
+                           PRECONDITIONS
+                           ((ISPEG PEG2) (ISPEG PEG1) (ONS PEG2))
+                           EFFECTS ((NOT ONS PEG2) (ONS PEG1)))
+                     #S(OPERATOR OPID op292 NAME (MOVES PEG1 PEG3)
+                           PRECONDITIONS
+                           ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1))
+                           EFFECTS ((NOT ONS PEG1) (ONS PEG3)))
+                     #S(OPERATOR OPID op26 NAME (MOVES PEG3 PEG2)
+                           PRECONDITIONS
+                           ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3))
+                           EFFECTS ((NOT ONS PEG3) (ONS PEG2)))
+                     #S(OPERATOR OPID op16 NAME (MOVES PEG1 PEG3)
+                           PRECONDITIONS
+                           ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1))
+                           EFFECTS ((NOT ONS PEG1) (ONS PEG3)))
+                     #S(OPERATOR OPID op2 NAME (MOVEB PEG1 PEG3)
+                           PRECONDITIONS
+                           ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1)
+                            (NOT ONM PEG1) (NOT ONS PEG3)
+                            (NOT ONM PEG3) (ONB PEG1))
+                           EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+                     #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL
+                           EFFECTS
+                           ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3)
+                            (ONB PEG1) (ONM PEG1) (ONS PEG1)
+                            (NOT ONB PEG2) (NOT ONB PEG3)
+                            (NOT ONM PEG2) (NOT ONM PEG3)
+                            (NOT ONS PEG2) (NOT ONS PEG3)))
+                     #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+                           ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS
+                           NIL))
+                    B
+                    ((op7156 op292) (op316 op7156) (op418 op26)
+                     (op16 op418) (op2 op316) (op292 G) (op26 op2)
+                     (I op16))
+                    NC NIL VAR NIL CONFLICTS NIL OP-COUNT
+                    ((0 2) (1 4) (2 0) (3 1)) INVALID NIL)
+ 

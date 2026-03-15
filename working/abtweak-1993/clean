@@ -1,0 +1,52 @@
+#!/bin/sh
+
+echo Removing binaries from all directories ...
+
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd Ab-routines
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Domains
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Mcallester-plan
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../My-routines
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Plan-routines
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Search-routines
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Tw-routines
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd Conf-infer
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Plan-infer
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../Succ
+rm -rf *.sbin
+rm -rf *.fasl
+
+cd ../..
+
+echo Cleanup of binary files done.
+
+

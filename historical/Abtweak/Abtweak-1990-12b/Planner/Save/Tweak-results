@@ -1,0 +1,80 @@
+; /Tweak/Examples/Tweak-results
+;
+; TWEAK OUTPUT
+;
+; this file contains output from various runs summarized by a chart at the
+;  top 
+
+Note:
+1) Runs prior to Oct 11 utilize Tweak domains for Hanoi which do not restrict
+ the domain to placing rings on peg1, peg2, or peg3 
+2) Runs prior to Oct 10 utilize MTC incorrect in that establishers identified
+ were allowed to be POSSIBLE, not required to be NECESSARY due to a bug.
+ This problem was recognized in Hanoi-4 by a conflict classification error.
+ (indicated by *badmtc but correct plan; &  *incorrect )
+
+           Expand   Generate   Depth  SPP  Debug  REAL-time  RUN-time  Date
+
+Hanoi (2) - compiled (old)  
+
+*badmtc     12         26        8    nil   nil   109.117s   12.067s   Oct 5
+                                                   17.250s    7.900s   Oct 13
+*badmtc     12         19        8    t*    nil     49.75s    8.45s    Oct 5
+                                                   25.650s    6.367s   Oct 13
+
+Hanoi (2) - compiled (ISPEG)
+
+            13         26        8    nil   nil   31.850s    9.583s    Oct 11
+                                                  35.500s    9.617s    Oct 13
+            13         20        8    t*    nil   18.067s    7.033s    Oct 11
+                                                  13.500s    7.600s    Oct 13
+  Random    
+            13         26        8    nil   nil    12.4s     9.56s     Oct 22
+                                                   24.6s    11.07s     Oct 22
+                                                   17.12s   11.38s     Oct 22
+                            MAX                   
+
+            29         51   (4)  9    nil   nil                        Nov 2
+            19         34   (3)  9    nil   nil    40.23s   17.18s     Nov 2
+            18         36   (5)  8    nil   nil    35.21s   19.25s     Nov 2
+            17         34   (5)  8    nil   nil    40.3s    18.2s      Nov 2
+            21         37   (3)  9    nil   nil    92.93s   18.58s     Nov 2
+
+Hanoi (2a) - compiled (simplified preconditions)
+
+            12         24        9    nil   nil   11.417s    8.583s    Oct 14
+
+Hanoi (3) - compiled (old)
+
+*incorrect  44         94        14   nil   nil   875.233s   123.833s  Oct 5
+*incorrect  39         58        14   t*    nil   482.850s    65.633s  Oct 5
+
+            37         78        16   nil   nil   111.733s   51.617s   Oct 13
+                                                  115.150s   55.883s   Oct 13o
+                                                  159.817s   55.850s   Oct 13n
+            33         52        16   t*    nil    65.567s   32.500s   Oct 13
+
+Hanoi (3) - compiled (ISPEG)
+
+            1029       1712      ?    nil   nil     ?         ?        Oct 12-q
+            1029       1712      20   nil   nil -33358.770s 12282.020s Oct 13 
+            1029       1712      20   nil   nil     ?         ?        Oct 13
+
+Random  *bat000                       t*    nil 
+
+Hanoi (3a) - compiled (simplified preconditions)
+
+            Ran Out of Space                                           Oct 13
+            Ran Out of Space                                           Oct 14
+              *open* = 1057,   OPS = 8  Exp = 1405  Gen = 2462
+
+Hanoi (4) - compiled
+
+*incorrect   1530       2556      26   t*    nil  50711.400s  28340.520s Oct 10
+
+Blocks (Suss) - compiled
+
+            22         45        9    nil   nil   165.417s   25.100s   Oct 5
+            22         35        9    t*    nil   127.400s   19.583s   Oct 5
+
+

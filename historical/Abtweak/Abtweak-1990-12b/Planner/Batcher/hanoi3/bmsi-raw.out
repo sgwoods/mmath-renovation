@@ -1,0 +1,78 @@
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+Operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y)
+        (NOT ONM $Y) (ONB $X))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X))
+       EFFECTS ((NOT ONM $X) (ONM $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/bmsi
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/bmsi
+T
+
+>Expanded  = 100
+Generated = 209
+Expanded  = 200
+Generated = 436
+Expanded  = 300
+Generated = 641
+Expanded  = 400
+Generated = 857
+Expanded  = 500
+Generated = 1128
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Random-Mode    : NIL
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 500
+Nodes Generated: 1128
+Solution Depth : 0
+Max Node Succ  : 24
+Max Conflicts  : 3
+Branch Factors : ((0 0.07) (1 1.96) (2 3.22) (3 1.8))
+
+A: Criticality Levels    : 3
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 74
+Expanded  = 600
+Generated = 1412
+Expanded  = 700
+Generated = 1680
+Expanded  = 800
+Generated = 1954
+
+Correctable error: The storage for structure is exhausted.
+                   Currently, 93 pages are allocated.
+                   Use ALLOCATE to expand the space.
+Signalled by DRIVER.
+If continued: Continues execution.
+
+Broken at DRIVER.  Type :H for Help.
+>>Bye.

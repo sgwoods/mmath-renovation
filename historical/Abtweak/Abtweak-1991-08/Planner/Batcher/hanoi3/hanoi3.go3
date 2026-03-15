@@ -1,0 +1,4 @@
+batch -v -j "2nd-H3-2" big -c "sh ibssmm.sh3"
+batch -v -j "2nd-H3-3" big -c "sh immbss.sh3"
+batch -v -j "2nd-H3-4" big -c "sh immssb.sh3"
+

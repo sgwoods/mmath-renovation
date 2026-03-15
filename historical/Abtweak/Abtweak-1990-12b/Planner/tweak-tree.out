@@ -1,0 +1,83 @@
+
+>(planner initial goal :determine-mode 'tree)
+Selected U and P : (G (ON A B))
+Selected U and P : (op112 (HOLDING A))
+Selected U and P : (op119 (ON A $118))
+Selected U and P : (op116 (CLEAR A))
+Selected U and P : (op136 (ON $134 A))
+Selected U and P : (op116 (HANDEMPTY))
+Selected U and P : (op133 (HOLDING A))
+Selected U and P : (op130 (HOLDING A))
+Selected U and P : (op126 (HOLDING A))
+Selected U and P : (op182 (ON A $181))
+Selected U and P : (op179 (CLEAR A))
+Selected U and P : (op173 (ON A $172))
+Selected U and P : (op170 (CLEAR A))
+Selected U and P : (op164 (ON A $163))
+Selected U and P : (op161 (CLEAR A))
+Selected U and P : (op155 (HOLDING $153))
+Selected U and P : (op155 (CLEAR $154))
+Selected U and P : (op112 (CLEAR B))
+Selected U and P : (op116 (CLEAR A))
+Selected U and P : (op152 (HOLDING $151))
+Selected U and P : (G (ON B C))
+Selected U and P : (op136 (CLEAR C))
+Selected U and P : (op316 (HOLDING B))
+Selected U and P : (op146 (HOLDING $134))
+Selected U and P : (op351 (ON $134 $350))
+Selected U and P : (op116 (HANDEMPTY))
+Selected U and P : (op348 (ONTABLE $134))
+Selected U and P : (op146 (CLEAR A))
+Selected U and P : (op136 (HANDEMPTY))
+Selected U and P : (op116 (HANDEMPTY))
+Selected U and P : (op112 (CLEAR B))
+Selected U and P : (op342 (ON B $341))
+Selected U and P : (op342 (ON B $341))
+Selected U and P : (op112 (CLEAR B))
+Selected U and P : (op342 (ON B $341))
+Selected U and P : (op342 (ON B $341))
+Selected U and P : (op136 (HANDEMPTY))
+Selected U and P : (op116 (HANDEMPTY))
+Selected U and P : (op112 (CLEAR B))
+Selected U and P : (op339 (CLEAR B))
+Selected U and P : (op339 (HANDEMPTY))
+Selected U and P : (op112 (CLEAR B))
+Selected U and P : (op339 (HANDEMPTY))
+Selected U and P : (op339 (HANDEMPTY))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (UNSTACK C A))
+
+((UNSTACK C A) (PUTDOWN C))
+
+((PUTDOWN C) (PICKUP B))
+
+((PICKUP B) (STACK B C))
+
+((STACK B C) (PICKUP A))
+
+((PICKUP A) (STACK A B))
+
+((STACK A B) (G))
+*** Node Search DEPTH: 13
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 44
+Nodes Generated: 129
+Solution Depth : 13
+Max Node Succ  : 8
+Max Conflicts  : 2
+Branch Factors : ((0 2.71))
+
+T

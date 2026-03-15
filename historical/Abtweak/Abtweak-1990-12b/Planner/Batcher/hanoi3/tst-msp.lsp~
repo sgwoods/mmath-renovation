@@ -1,0 +1,24 @@
+(setq tst
+'#S(PLAN ID |plan10| COST 0 KVAL 1 CR
+        ((|op2| (ONB PEG1) (I)) (G (ONB PEG3) (|op2|))
+         (|op2| (ISPEG PEG1) (I)) (|op2| (ISPEG PEG3) (I)))
+        TREE nil A
+        (
+         #S(OPERATOR OPID |op2| NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+                (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+               EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+         #S(OPERATOR OPID opx NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+                (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+               EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+         #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+        B ((I |op2|) (|op2| opx) (opx G)) NC NIL VAR NIL CONFLICTS NIL OP-COUNT
+        ((2 0) (3 1)) INVALID NIL)
+)

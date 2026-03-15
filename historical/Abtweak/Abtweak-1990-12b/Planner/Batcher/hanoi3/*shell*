@@ -1,0 +1,761 @@
+
+>(load-hanoi2)
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-2.o
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-2.o
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+Operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X) (ISPEG $Y))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State   : ((ONB PEG3) (ONS PEG3))
+NIL
+
+>goal
+((ONB PEG3) (ONS PEG3))
+
+>(planner initial goal)
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG2))
+
+((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG3))
+
+((MOVES PEG2 PEG3) (G))
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 12
+Nodes Generated: 22
+Solution Depth : 8
+Max Node Succ  : 5
+Max Conflicts  : 1
+Branch Factors : ((0 1.83))
+
+T
+
+>goal
+((ONB PEG3) (ONS PEG3))
+
+>(planner initial goal :determine-mode 'tree)
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG2))
+
+((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG3))
+
+((MOVES PEG2 PEG3) (G))
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 12
+Nodes Generated: 23
+Solution Depth : 9
+Max Node Succ  : 5
+Max Conflicts  : 1
+Branch Factors : ((0 1.88))
+
+T
+
+>(setq goal (reverse goal))
+((ONS PEG3) (ONB PEG3))
+
+>(time (planner initial goal))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG2))
+
+((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG3))
+
+((MOVES PEG2 PEG3) (G))
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 21
+Nodes Generated: 43
+Solution Depth : 8
+Max Node Succ  : 6
+Max Conflicts  : 2
+Branch Factors : ((0 1.96))
+
+real time : 116.067 secs
+run time  : 20.550 secs
+T
+
+>
+
+Correctable error: Continues execution.
+Signalled by PLANNER.
+If continued: Console interrupt.
+
+Broken at PLANNER.  Type :H for Help.
+>>:q
+
+Top level.
+>(time (planner initial goal :determine-mode 'tree))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG2))
+
+((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG3))
+
+((MOVES PEG2 PEG3) (G))
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 20
+Nodes Generated: 41
+Solution Depth : 8
+Max Node Succ  : 6
+Max Conflicts  : 1
+Branch Factors : ((0 1.94))
+
+real time : 56.650 secs
+run time  : 19.900 secs
+T
+
+>(load-hanoi3)
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+Operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y)
+        (NOT ONM $Y) (ONB $X))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X))
+       EFFECTS ((NOT ONM $X) (ONM $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>goal
+((ONB PEG3) (ONM PEG3) (ONS PEG3))
+
+>(time (planner inital goal :determine-mode 'tree))
+
+Error: The variable INITAL is unbound.
+Error signalled by MULTIPLE-VALUE-LIST.
+
+Broken at MULTIPLE-VALUE-LIST.  Type :H for Help.
+>>:q
+
+Top level.
+>(time (planner initial goal :determine-mode 'tree))
+Expanded  = 100
+Generated = 161
+Expanded  = 200
+Generated = 332
+Expanded  = 300
+Generated = 516
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+
+((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+
+((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+
+((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+
+((MOVEM PEG2 PEG3) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (G))
+*** Node Search DEPTH: 23
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 301
+Nodes Generated: 520
+Solution Depth : 23
+Max Node Succ  : 5
+Max Conflicts  : 2
+Branch Factors : ((0 1.77))
+
+real time : -62291.750 secs
+run time  : 1257.283 secs
+T
+
+>goal
+goal
+((ONB PEG3) (ONM PEG3) (ONS PEG3))
+
+>*goal*
+
+
+>(load "sample")
+Loading sample.lsp
+Finished loading sample.lsp
+T
+
+>sample
+#S(PLAN ID |plan2200| COST 0 KVAL 0 CR NIL TREE (G) A
+        (#S(OPERATOR OPID OP5 NAME (MOVES $4 PEG3) PRECONDITIONS
+               ((ISPEG $4) (ISPEG PEG3) (ONS $4)) EFFECTS
+               ((NOT ONS $4) (ONS PEG3)))
+         #S(OPERATOR OPID OP4 NAME (MOVEM $3 PEG3) PRECONDITIONS
+               ((ISPEG $3) (ISPEG PEG3) (NOT ONS $3) (NOT ONS PEG3)
+                (ONM $3))
+               EFFECTS ((NOT ONM $3) (ONM PEG3)))
+         #S(OPERATOR OPID OP2 NAME (MOVEM PEG1 $2) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG $2) (NOT ONS PEG1) (NOT ONS $2)
+                (ONM PEG1))
+               EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+         #S(OPERATOR OPID OP1 NAME (MOVES PEG1 $1) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG $1) (ONS PEG1)) EFFECTS
+               ((NOT ONS PEG1) (ONS $1)))
+         #S(OPERATOR OPID OP3 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+                (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+               EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+         #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+        B ((I OP1) (OP1 OP2) (OP2 OP3) (OP3 OP4) (OP4 OP5) (OP5 G)) NC
+        (($1 PEG1) ($2 PEG1) ($3 PEG3) ($4 PEG3)) VAR ($1 $2 $3 $4)
+        CONFLICTS NIL OP-COUNT NIL INVALID NIL)
+
+>(successors sample)
+NIL
+
+>(show sample)
+
+
+((I) (MOVES PEG1 $1))
+
+((MOVES PEG1 $1) (MOVEM PEG1 $2))
+
+((MOVEM PEG1 $2) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVEM $3 PEG3))
+
+((MOVEM $3 PEG3) (MOVES $4 PEG3))
+
+((MOVES $4 PEG3) (G))
+(NIL (($1 PEG1) ($2 PEG1) ($3 PEG3) ($4 PEG3)))
+
+>(find-conflicts sample)
+((? OP5 I (ISPEG $4) NIL) (? OP5 I (ONS $4) NIL)
+ (? OP4 I (ISPEG $3) NIL) (? OP4 I (NOT ONS $3) NIL)
+ (I OP4 OP1 (NOT ONS PEG3) (NOT ONS $1)) (? OP4 I (ONM $3) NIL)
+ (? OP2 I (ISPEG $2) NIL) (? OP2 I (NOT ONS $2) NIL)
+ (? OP1 I (ISPEG $1) NIL) (I OP3 OP1 (NOT ONS PEG3) (NOT ONS $1)))
+
+>(determine-u-and-p sample)
+NIL
+
+>(determine-first-u-and-p sample)
+(OP5 (ISPEG $4))
+
+>(successors sample)
+NIL
+
+>(cur)
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 301
+Nodes Generated: 520
+Solution Depth : 23
+Max Node Succ  : 5
+Max Conflicts  : 2
+Branch Factors : ((0 1.76))
+
+NIL
+
+>()
+NIL
+
+>(planner initial goal :determine-mode 'first)
+
+Correctable error: Continues execution.
+Signalled by PLANNER.
+If continued: Console interrupt.
+
+Broken at PLANNER.  Type :H for Help.
+>>:q
+
+Top level.
+>(successors sample)
+(#S(PLAN ID |plan2216| COST 0 KVAL 0 CR NIL TREE (G) A
+         (#S(OPERATOR OPID OP5 NAME (MOVES PEG1 PEG3) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+                ((NOT ONS PEG1) (ONS PEG3)))
+          #S(OPERATOR OPID OP4 NAME (MOVEM $3 PEG3) PRECONDITIONS
+                ((ISPEG $3) (ISPEG PEG3) (NOT ONS $3) (NOT ONS PEG3)
+                 (ONM $3))
+                EFFECTS ((NOT ONM $3) (ONM PEG3)))
+          #S(OPERATOR OPID OP2 NAME (MOVEM PEG1 $2) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG $2) (NOT ONS PEG1) (NOT ONS $2)
+                 (ONM PEG1))
+                EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+          #S(OPERATOR OPID OP1 NAME (MOVES PEG1 $1) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG $1) (ONS PEG1)) EFFECTS
+                ((NOT ONS PEG1) (ONS $1)))
+          #S(OPERATOR OPID OP3 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1)
+                 (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3)
+                 (ONB PEG1))
+                EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                 (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                 (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                 (NOT ONS PEG3)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+                ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+         B ((I OP1) (OP1 OP2) (OP2 OP3) (OP3 OP4) (OP4 OP5) (OP5 G)) NC
+         (($1 PEG1) ($2 PEG1) ($3 PEG3)) VAR NIL CONFLICTS NIL OP-COUNT
+         NIL INVALID NIL)
+ #S(PLAN ID |plan2217| COST 0 KVAL 0 CR NIL TREE (G) A
+         (#S(OPERATOR OPID OP5 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+                ((ISPEG PEG2) (ISPEG PEG3) (ONS PEG2)) EFFECTS
+                ((NOT ONS PEG2) (ONS PEG3)))
+          #S(OPERATOR OPID OP4 NAME (MOVEM $3 PEG3) PRECONDITIONS
+                ((ISPEG $3) (ISPEG PEG3) (NOT ONS $3) (NOT ONS PEG3)
+                 (ONM $3))
+                EFFECTS ((NOT ONM $3) (ONM PEG3)))
+          #S(OPERATOR OPID OP2 NAME (MOVEM PEG1 $2) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG $2) (NOT ONS PEG1) (NOT ONS $2)
+                 (ONM PEG1))
+                EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+          #S(OPERATOR OPID OP1 NAME (MOVES PEG1 $1) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG $1) (ONS PEG1)) EFFECTS
+                ((NOT ONS PEG1) (ONS $1)))
+          #S(OPERATOR OPID OP3 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+                ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1)
+                 (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3)
+                 (ONB PEG1))
+                EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+          #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+                ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                 (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                 (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                 (NOT ONS PEG3)))
+          #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+                ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+         B ((I OP1) (OP1 OP2) (OP2 OP3) (OP3 OP4) (OP4 OP5) (OP5 G)) NC
+         (($1 PEG1) ($2 PEG1) ($3 PEG3)) VAR NIL CONFLICTS NIL OP-COUNT
+         NIL INVALID NIL))
+
+>(load-blocks)
+Loading /u/sgwoods/Plan/Planner/Domains/blocks.o
+Finished loading /u/sgwoods/Plan/Planner/Domains/blocks.o
+DOMAIN DEFINITION FOR: BLOCKS-WORLD
+Operators    : 
+(#S(OPERATOR OPID PUTON NAME (PUTON $X $Y $Z) PRECONDITIONS
+       ((NOT-TABLE $X) (NOT-TABLE $Y) (ON $X $Z) (CLEAR $X) (CLEAR $Y))
+       EFFECTS ((ON $X $Y) (NOT ON $X $Z) (NOT CLEAR $Y) (CLEAR $Z)))
+ #S(OPERATOR OPID NEWTOWER NAME (NEWTOWER $X $Z) PRECONDITIONS
+       ((NOT-TABLE $X) (NOT-TABLE $Z) (ON $X $Z) (CLEAR $X)) EFFECTS
+       ((ON $X TABLE) (NOT ON $X $Z) (CLEAR $Z))))
+Initial State: ((ON C A) (ON A TABLE) (ON B TABLE) (CLEAR C) (CLEAR B)
+                (NOT-TABLE A) (NOT-TABLE B) (NOT-TABLE C))
+Goal State   : ((ON A B) (ON B C))
+NIL
+
+>(planner initial goal)
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (NEWTOWER C A))
+
+((NEWTOWER C A) (PUTON B C TABLE))
+
+((PUTON B C TABLE) (PUTON A B TABLE))
+
+((PUTON A B TABLE) (G))
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 8
+Nodes Generated: 22
+Solution Depth : 9
+Max Node Succ  : 5
+Max Conflicts  : 1
+Branch Factors : ((0 1.78))
+
+T
+
+>(time (planner initial goal))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (NEWTOWER C A))
+
+((NEWTOWER C A) (PUTON B C TABLE))
+
+((PUTON B C TABLE) (PUTON A B TABLE))
+
+((PUTON A B TABLE) (G))
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 8
+Nodes Generated: 22
+Solution Depth : 9
+Max Node Succ  : 5
+Max Conflicts  : 1
+Branch Factors : ((0 1.8))
+
+real time : 24.567 secs
+run time  : 14.283 secs
+T
+
+>(time (planner initial goal :determine-mode 'tree))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (NEWTOWER C A))
+
+((NEWTOWER C A) (PUTON B C TABLE))
+
+((PUTON B C TABLE) (PUTON A B TABLE))
+
+((PUTON A B TABLE) (G))
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 8
+Nodes Generated: 22
+Solution Depth : 9
+Max Node Succ  : 5
+Max Conflicts  : 1
+Branch Factors : ((0 1.82))
+
+real time : 18.100 secs
+run time  : 14.850 secs
+T
+
+>(setq init (make-initial-plan initial goal))
+#S(PLAN ID INITIAL-PLAN COST 0 KVAL 0 CR NIL TREE (G) A
+        (#S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ON C A) (ON A TABLE) (ON B TABLE) (CLEAR C) (CLEAR B)
+                (NOT-TABLE A) (NOT-TABLE B) (NOT-TABLE C)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A B) (ON B C))
+               EFFECTS NIL))
+        B ((I G)) NC NIL VAR NIL CONFLICTS NIL OP-COUNT NIL INVALID
+        NIL)
+
+>(graphsearch init)
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (NEWTOWER C A))
+
+((NEWTOWER C A) (PUTON B C TABLE))
+
+((PUTON B C TABLE) (PUTON A B TABLE))
+
+((PUTON A B TABLE) (G))
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 8
+Nodes Generated: 22
+Solution Depth : 9
+Max Node Succ  : 5
+Max Conflicts  : 1
+Branch Factors : ((0 1.84))
+
+T
+
+>(planner initial goal)
+
+Correctable error: Continues execution.
+Signalled by PLANNER.
+If continued: Console interrupt.
+
+Broken at PLANNER.  Type :H for Help.
+>>
+Correctable error: Continues execution.:q
+
+Signalled by READ.
+If continued: Console interrupt.
+
+Broken at READ.
+>>>
+Top level.
+>(cur)
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 2
+Nodes Generated: 1
+Solution Depth : 0
+Max Node Succ  : 1
+Max Conflicts  : 0
+Branch Factors : ((0 1.83))
+
+NIL
+
+>sample
+#S(PLAN ID |plan2200| COST 0 KVAL 0 CR NIL TREE (G) A
+        (#S(OPERATOR OPID OP5 NAME (MOVES $4 PEG3) PRECONDITIONS
+               ((ISPEG $4) (ISPEG PEG3) (ONS $4)) EFFECTS
+               ((NOT ONS $4) (ONS PEG3)))
+         #S(OPERATOR OPID OP4 NAME (MOVEM $3 PEG3) PRECONDITIONS
+               ((ISPEG $3) (ISPEG PEG3) (NOT ONS $3) (NOT ONS PEG3)
+                (ONM $3))
+               EFFECTS ((NOT ONM $3) (ONM PEG3)))
+         #S(OPERATOR OPID OP2 NAME (MOVEM PEG1 $2) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG $2) (NOT ONS PEG1) (NOT ONS $2)
+                (ONM PEG1))
+               EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+         #S(OPERATOR OPID OP1 NAME (MOVES PEG1 $1) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG $1) (ONS PEG1)) EFFECTS
+               ((NOT ONS PEG1) (ONS $1)))
+         #S(OPERATOR OPID OP3 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+                (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+               EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+         #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+        B ((I OP1) (OP1 OP2) (OP2 OP3) (OP3 OP4) (OP4 OP5) (OP5 G)) NC
+        (($1 PEG1) ($2 PEG1) ($3 PEG3) ($4 PEG3)) VAR ($1 $2 $3 $4)
+        CONFLICTS NIL OP-COUNT NIL INVALID NIL)
+
+>(load-hanoi3)
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+Operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y)
+        (NOT ONM $Y) (ONB $X))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X))
+       EFFECTS ((NOT ONM $X) (ONM $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>(cur)
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 2
+Nodes Generated: 1
+Solution Depth : 0
+Max Node Succ  : 1
+Max Conflicts  : 0
+Branch Factors : ((0 1.83))
+
+NIL
+
+>(graphsearch sample)
+
+Correctable error: Continues execution.
+Signalled by GRAPHSEARCH.
+If continued: Console interrupt.
+
+Broken at GRAPHSEARCH.  Type :H for Help.
+>>(cur)
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 13
+Nodes Generated: 23
+Solution Depth : 0
+Max Node Succ  : 3
+Max Conflicts  : 1
+Branch Factors : ((0 1.83))
+
+NIL
+
+>>:r
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (MOVES PEG1 PEG2))
+
+((MOVES PEG1 PEG2) (MOVEM PEG1 PEG3))
+
+((MOVEM PEG1 PEG3) (MOVEB PEG1 PEG3))
+
+((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+
+((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+
+((MOVEM PEG2 PEG3) (MOVES PEG1 PEG3))
+
+((MOVES PEG1 PEG3) (G))
+*** Node Search DEPTH: 10
+
+TWEAK PLANNER RUN STATISTICS
+Planner-Mode   : TWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : FIRST
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 24
+Nodes Generated: 48
+Solution Depth : 10
+Max Node Succ  : 3
+Max Conflicts  : 1
+Branch Factors : ((0 1.84))
+
+T
+
+>

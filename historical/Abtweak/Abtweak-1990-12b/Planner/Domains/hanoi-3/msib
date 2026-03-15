@@ -1,0 +1,10 @@
+(setq *critical-loaded* 'msib)
+(setq *critical-list* '(
+   (3  (not onM $) (onM $) )
+   (2  (not onS $) (onS $) )
+   (1  (ispeg $) )
+   (0  (not onB $) (onB $) )
+))
+
+(setq *k-list* '(1 3 3 7))
+

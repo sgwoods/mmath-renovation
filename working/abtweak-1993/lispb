@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for i in *.lisp
+do
+a=`echo $i | sed "s/\.lisp/\.lsp/"`
+mv $i $a
+done
+
+
+

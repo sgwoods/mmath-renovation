@@ -1,0 +1,78 @@
+
+>Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+DOMAIN DEFINITION FOR: NILSSONS-BLOCKS-WORLD
+Operators    : 
+(#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY)))
+ #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+       ((HOLDING $X)) EFFECTS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)))
+ #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+       ((HOLDING $X) (CLEAR $Y)) EFFECTS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)
+        (NOT CLEAR $Y)))
+ #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y) PRECONDITIONS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X)
+        (NOT ON $X $Y))))
+Initial State: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                (HANDEMPTY))
+Goal State   : ((ON A B) (ON B C))
+NIL
+
+>Loading /u/sgwoods/Plan/Planner/Domains/nils/crit3
+Finished loading /u/sgwoods/Plan/Planner/Domains/nils/crit3
+T
+
+>
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+
+
+((I) (UNSTACK C A))
+
+((UNSTACK C A) (PUTDOWN C))
+
+((PUTDOWN C) (PICKUP B))
+
+((PICKUP B) (STACK B C))
+
+((STACK B C) (PICKUP A))
+
+((PICKUP A) (STACK A B))
+
+((STACK A B) (G))
+*** Node Search DEPTH: 15
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner-Mode   : ABTWEAK
+Search Type    : 4
+Debug          : NIL
+Determine via  : TREE
+Backwards-Mode : NIL
+Heuristic      : D
+Nodes Expanded : 90
+Nodes Generated: 266
+Solution Depth : 15
+Max Node Succ  : 8
+Max Conflicts  : 2
+Branch Factors : ((0 3.05) (1 1.0) (2 0.0))
+
+A: Criticality Levels    : 2
+A: Criticality Depth Mode: NIL
+A: K Learning Mode       : NIL
+A: Top-Down Flag         : NIL
+A: Top-Down Pruned       : 0
+A: ABS Goal Mode         : NIL
+A: Monotonic Sol Property: NIL
+A: Msp Weak Mode         : NEC
+A: Weak MSP   pruned     : 0
+A: Strong MSP pruned     : 0
+A: Abstract nodes GEN    : 2
+T
+
+>Bye.

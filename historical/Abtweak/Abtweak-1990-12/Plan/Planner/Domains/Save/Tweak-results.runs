@@ -1,0 +1,903 @@
+; ***************************************************************************
+;  OUTPUT from RUNS follows
+; ***************************************************************************
+
+HANOI 2 (Oct 5)
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op46 NAME (MOVES $44 PEG3) PRECONDITIONS ((ONS $44))
+       EFFECTS ((NOT ONS $44) (ONS PEG3)))
+ #S(OPERATOR OPID op8 NAME (MOVES PEG1 $44) PRECONDITIONS ((ONS PEG1))
+       EFFECTS ((NOT ONS PEG1) (ONS $44)))
+ #S(OPERATOR OPID op2 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3)) EFFECTS
+       ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op2 op46) (op8 op46) (I op46) (op46 G) (op8 op2) (I op8) (op8 G)
+ (I op2) (op2 G) (I G))
+
+Non Codesignations: 
+(($44 PEG3) (PEG3 $44) (PEG1 $44))
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 12
+Total #      nodes generated: 26
+
+real time : 109.117 secs
+run time  : 12.067 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op335 NAME (MOVES $333 PEG3) PRECONDITIONS
+       ((ONS $333)) EFFECTS ((NOT ONS $333) (ONS PEG3)))
+ #S(OPERATOR OPID op297 NAME (MOVES PEG1 $333) PRECONDITIONS
+             ((ONS PEG1)) EFFECTS ((NOT ONS PEG1) (ONS $333)))
+ #S(OPERATOR OPID op291 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3)) EFFECTS
+       ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op291 op335) (op335 G) (op297 op291) (I op297))
+
+Non Codesignations: 
+((PEG3 $333) (PEG1 $333))
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 12
+Total #      nodes generated: 26
+
+real time : 17.250 secs
+run time  : 7.900 secs
+T
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op123 NAME (MOVES $121 PEG3) PRECONDITIONS
+       ((ONS $121)) EFFECTS ((NOT ONS $121) (ONS PEG3)))
+ #S(OPERATOR OPID op91 NAME (MOVES PEG1 $121) PRECONDITIONS
+             ((ONS PEG1)) EFFECTS ((NOT ONS PEG1) (ONS $121)))
+ #S(OPERATOR OPID op85 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3)) EFFECTS
+       ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op85 op123) (op91 op123) (I op123) (op123 G) (op91 op85) (I op91)
+ (op91 G) (I op85) (op85 G) (I G))
+
+Non Codesignations: 
+(($121 PEG3) (PEG3 $121) (PEG1 $121))
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 12
+Total #      nodes generated: 19
+
+real time : 49.750 secs
+run time  : 8.450 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op269 NAME (MOVES $267 PEG3) PRECONDITIONS
+       ((ONS $267)) EFFECTS ((NOT ONS $267) (ONS PEG3)))
+ #S(OPERATOR OPID op237 NAME (MOVES PEG1 $267) PRECONDITIONS
+             ((ONS PEG1)) EFFECTS ((NOT ONS PEG1) (ONS $267)))
+ #S(OPERATOR OPID op231 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3)) EFFECTS
+       ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op231 op269) (op269 G) (op237 op231) (I op237))
+
+Non Codesignations: 
+((PEG3 $267) (PEG1 $267))
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 12
+Total #      nodes generated: 19
+
+real time : 25.650 secs
+run time  : 6.367 secs
+T
+
+
+HANOI-2 (ISPEG)
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op118 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op83 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op77 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op77 op118) (op118 G) (op83 op77) (I op83))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 13
+Total #      nodes generated: 20
+
+real time : 18.067 secs
+run time  : 7.033 secs
+T
+
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op383 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op348 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op342 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op342 op383) (op383 G) (op348 op342) (I op348))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2-ISPEG
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 13
+Total #      nodes generated: 20
+
+real time : 13.500 secs
+run time  : 7.600 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op186 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op146 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op140 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op140 op186) (op186 G) (op146 op140) (I op146))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 13
+Total #      nodes generated: 26
+
+real time : 31.850 secs
+run time  : 9.583 secs
+T
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op303 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op263 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op257 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op257 op303) (op303 G) (op263 op257) (I op263))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 8
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2-ISPEG
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 13
+Total #      nodes generated: 26
+
+real time : 35.500 secs
+run time  : 9.617 secs
+T
+
+HANOI-2a (simplified)
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op43 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op16 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op3 NAME (MOVEB PEG1 PEG3 PEG2) PRECONDITIONS
+       ((ONB PEG1) (ONS PEG2) (ISPEG PEG1) (ISPEG PEG3) (ISPEG PEG2))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op3 op43) (op43 G) (op16 op3) (I op16))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-2-ISPEG
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 12
+Total #      nodes generated: 24
+
+real time : 11.417 secs
+run time  : 8.583 secs
+T
+
+
+HANOI-3 (Oct 5)
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op733 NAME (MOVES $731 PEG3) PRECONDITIONS
+       ((ONS $731)) EFFECTS ((NOT ONS $731) (ONS PEG3)))
+ #S(OPERATOR OPID op682 NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+             ((NOT ONS PEG2) (NOT ONS PEG3) (ONM PEG2)) EFFECTS
+             ((NOT ONM PEG2) (ONM PEG3)))
+ #S(OPERATOR OPID op501 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONS PEG2) (ONM PEG1)) EFFECTS
+       ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op476 NAME (MOVES PEG1 $731) PRECONDITIONS
+       ((ONS PEG1)) EFFECTS ((NOT ONS PEG1) (ONS $731)))
+ #S(OPERATOR OPID op470 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3)
+        (ONB PEG1))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op682 op733) (op476 op733) (I op733) (op733 G) (op470 op682)
+ (I op682) (op682 G) (op501 op470) (I op501) (op501 G) (op476 op470)
+ (I op476) (op476 G) (I op470) (op470 G) (I G))
+
+Non Codesignations: 
+(($731 PEG3) ($680 $731) (PEG3 $731) (PEG2 $731) ($500 $731)
+ (PEG1 $731))
+
+*** Node Search DEPTH: 14
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 44
+Total #      nodes generated: 94
+
+real time : 875.233 secs
+run time  : 123.833 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op159 NAME (MOVES $157 PEG3) PRECONDITIONS
+       ((ONS $157)) EFFECTS ((NOT ONS $157) (ONS PEG3)))
+ #S(OPERATOR OPID op136 NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+             ((NOT ONS PEG2) (NOT ONS PEG3) (ONM PEG2)) EFFECTS
+             ((NOT ONM PEG2) (ONM PEG3)))
+ #S(OPERATOR OPID op33 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONS PEG2) (ONM PEG1)) EFFECTS
+       ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op8 NAME (MOVES PEG1 $157) PRECONDITIONS ((ONS PEG1))
+       EFFECTS ((NOT ONS PEG1) (ONS $157)))
+ #S(OPERATOR OPID op2 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3)
+        (ONB PEG1))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op136 op159) (op8 op159) (I op159) (op159 G) (op2 op136) (I op136)
+ (op136 G) (op33 op2) (I op33) (op33 G) (op8 op2) (I op8) (op8 G)
+ (I op2) (op2 G) (I G))
+
+Non Codesignations: 
+(($157 PEG3) ($134 $157) (PEG3 $157) (PEG2 $157) ($32 $157)
+ (PEG1 $157))
+
+*** Node Search DEPTH: 14
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 39
+Total #      nodes generated: 58
+
+real time : 482.850 secs
+run time  : 65.633 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op218 NAME (MOVES $216 PEG3) PRECONDITIONS
+       ((ONS $216)) EFFECTS ((NOT ONS $216) (ONS PEG3)))
+ #S(OPERATOR OPID op161 NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+             ((NOT ONS PEG2) (NOT ONS PEG3) (ONM PEG2)) EFFECTS
+             ((NOT ONM PEG2) (ONM PEG3)))
+ #S(OPERATOR OPID op33 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONS PEG2) (ONM PEG1)) EFFECTS
+       ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op8 NAME (MOVES PEG1 $216) PRECONDITIONS ((ONS PEG1))
+       EFFECTS ((NOT ONS PEG1) (ONS $216)))
+ #S(OPERATOR OPID op2 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3)
+        (ONB PEG1))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op161 op218) (op218 G) (op2 op161) (op8 op33) (op33 op2) (I op8))
+
+Non Codesignations: 
+(($159 $216) (PEG3 $216) (PEG2 $216) ($32 $216) (PEG1 $216))
+
+*** Node Search DEPTH: 16
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 37
+Total #      nodes generated: 78
+
+real time : 111.733 secs
+run time  : 51.617 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op146 NAME (MOVES $144 PEG3) PRECONDITIONS
+       ((ONS $144)) EFFECTS ((NOT ONS $144) (ONS PEG3)))
+ #S(OPERATOR OPID op112 NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+             ((NOT ONS PEG2) (NOT ONS PEG3) (ONM PEG2)) EFFECTS
+             ((NOT ONM PEG2) (ONM PEG3)))
+ #S(OPERATOR OPID op33 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONS PEG2) (ONM PEG1)) EFFECTS
+       ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op8 NAME (MOVES PEG1 $144) PRECONDITIONS ((ONS PEG1))
+       EFFECTS ((NOT ONS PEG1) (ONS $144)))
+ #S(OPERATOR OPID op2 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG3) (NOT ONM PEG3)
+        (ONB PEG1))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+        (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op112 op146) (op146 G) (op2 op112) (op8 op33) (op33 op2) (I op8))
+
+Non Codesignations: 
+(($110 $144) (PEG3 $144) (PEG2 $144) ($32 $144) (PEG1 $144))
+
+*** Node Search DEPTH: 16
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 33
+Total #      nodes generated: 52
+
+real time : 65.567 secs
+run time  : 32.500 secs
+T
+
+
+HANOI-3 (ISPEG)
+
+
+;****** SOLUTION TO HANOI-3 run (good MTC, no clean up - Oct 12)
+
+#S(PLAN ID |plan6155| COST 0 KVAL 0 CR NIL A
+        (#S(OPERATOR OPID |op5705| NAME (MOVES PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+               ((NOT ONS PEG1) (ONS PEG3)))
+         #S(OPERATOR OPID |op1908| NAME (MOVES PEG2 PEG1) PRECONDITIONS
+               ((ISPEG PEG2) (ISPEG PEG1) (ONS PEG2)) EFFECTS
+               ((NOT ONS PEG2) (ONS PEG1)))
+         #S(OPERATOR OPID |op1555| NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+               ((ISPEG PEG2) (ISPEG PEG3) (NOT ONS PEG2) (NOT ONS PEG3)
+                (ONM PEG2))
+               EFFECTS ((NOT ONM PEG2) (ONM PEG3)))
+         #S(OPERATOR OPID |op353| NAME (MOVES PEG3 PEG2) PRECONDITIONS
+               ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) EFFECTS
+               ((NOT ONS PEG3) (ONS PEG2)))
+         #S(OPERATOR OPID |op300| NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG2) (NOT ONS PEG1) (NOT ONS PEG2)
+                (ONM PEG1))
+               EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+         #S(OPERATOR OPID |op286| NAME (MOVES PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+               ((NOT ONS PEG1) (ONS PEG3)))
+         #S(OPERATOR OPID |op277| NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+               ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+                (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+               EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+         #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+        B
+        ((|op1555| |op5705|) (|op5705| G) (|op277| |op1908|)
+         (|op1908| |op1555|) (|op300| |op353|) (|op353| |op277|)
+         (|op286| |op300|) (I |op286|))
+        NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+
+(print-stats)
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 1029
+Total #      nodes generated: 1712
+
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op5430 NAME (MOVES PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG3)))
+ #S(OPERATOR OPID op1633 NAME (MOVES PEG2 PEG1) PRECONDITIONS
+             ((ISPEG PEG2) (ISPEG PEG1) (ONS PEG2)) EFFECTS
+             ((NOT ONS PEG2) (ONS PEG1)))
+ #S(OPERATOR OPID op1280 NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+             ((ISPEG PEG2) (ISPEG PEG3) (NOT ONS PEG2) (NOT ONS PEG3)
+              (ONM PEG2))
+             EFFECTS ((NOT ONM PEG2) (ONM PEG3)))
+ #S(OPERATOR OPID op78 NAME (MOVES PEG3 PEG2) PRECONDITIONS
+       ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) EFFECTS
+       ((NOT ONS PEG3) (ONS PEG2)))
+ #S(OPERATOR OPID op25 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+             ((ISPEG PEG1) (ISPEG PEG2) (NOT ONS PEG1) (NOT ONS PEG2)
+              (ONM PEG1))
+             EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op11 NAME (MOVES PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG3)))
+ #S(OPERATOR OPID op2 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+             ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+              (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+             EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1)
+        (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2)
+        (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op1280 op5430) (op5430 G) (op2 op1633) (op1633 op1280) (op25 op78)
+ (op78 op2) (op11 op25) (I op11))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 20
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3-ISPEG
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 1029
+Total #      nodes generated: 1712
+
+real time : -33358.770 secs
+run time  : 12282.020 secs
+T
+
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op7656 NAME (MOVES PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG3)))
+ #S(OPERATOR OPID op3859 NAME (MOVES PEG2 PEG1) PRECONDITIONS
+             ((ISPEG PEG2) (ISPEG PEG1) (ONS PEG2)) EFFECTS
+             ((NOT ONS PEG2) (ONS PEG1)))
+ #S(OPERATOR OPID op3506 NAME (MOVEM PEG2 PEG3) PRECONDITIONS
+             ((ISPEG PEG2) (ISPEG PEG3) (NOT ONS PEG2) (NOT ONS PEG3)
+              (ONM PEG2))
+             EFFECTS ((NOT ONM PEG2) (ONM PEG3)))
+ #S(OPERATOR OPID op2304 NAME (MOVES PEG3 PEG2) PRECONDITIONS
+       ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) EFFECTS
+       ((NOT ONS PEG3) (ONS PEG2)))
+ #S(OPERATOR OPID op2251 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+             ((ISPEG PEG1) (ISPEG PEG2) (NOT ONS PEG1) (NOT ONS PEG2)
+              (ONM PEG1))
+             EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op2237 NAME (MOVES PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG3)))
+ #S(OPERATOR OPID op2228 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+             ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+              (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+             EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1)
+        (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2)
+        (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op3506 op7656) (op7656 G) (op2228 op3859) (op3859 op3506)
+ (op2251 op2304) (op2304 op2228) (op2237 op2251) (I op2237))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 20
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-3
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 1029
+Total #      nodes generated: 1712
+
+T
+
+
+
+
+HANOI-4 (Oct 10)
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op7137 NAME (MOVES $7135 PEG3) PRECONDITIONS
+       ((ONS $7135)) EFFECTS ((NOT ONS $7135) (ONS PEG3)))
+ #S(OPERATOR OPID op7076 NAME (MOVEM $7074 PEG3) PRECONDITIONS
+       ((NOT ONS $7074) (NOT ONS PEG3) (ONM $7074)) EFFECTS
+       ((NOT ONM $7074) (ONM PEG3)))
+ #S(OPERATOR OPID op6835 NAME (MOVEB PEG2 PEG3) PRECONDITIONS
+       ((NOT ONS PEG2) (NOT ONM PEG2) (NOT ONS PEG3) (NOT ONM PEG3)
+        (ONB PEG2))
+       EFFECTS ((NOT ONB PEG2) (ONB PEG3)))
+ #S(OPERATOR OPID op494 NAME (MOVEB PEG1 PEG2) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONM PEG1) (NOT ONS PEG2) (NOT ONM PEG2)
+        (ONB PEG1))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG2)))
+ #S(OPERATOR OPID op85 NAME (MOVES $7074 $7135) PRECONDITIONS
+       ((ONS $7074)) EFFECTS ((NOT ONS $7074) (ONS $7135)))
+ #S(OPERATOR OPID op33 NAME (MOVEM PEG1 $7074) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONS $7074) (ONM PEG1)) EFFECTS
+       ((NOT ONM PEG1) (ONM $7074)))
+ #S(OPERATOR OPID op8 NAME (MOVES PEG1 $7074) PRECONDITIONS
+       ((ONS PEG1)) EFFECTS ((NOT ONS PEG1) (ONS $7074)))
+ #S(OPERATOR OPID op2 NAME (MOVEH PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (NOT ONM PEG1) (NOT ONB PEG1) (NOT ONS PEG3)
+        (NOT ONM PEG3) (NOT ONB PEG3) (ONH PEG1))
+       EFFECTS ((NOT ONH PEG1) (ONH PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ONH PEG1) (ONB PEG1) (ONM PEG1) (ONS PEG1) (NOT ONH PEG2)
+        (NOT ONH PEG3) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2)
+        (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONH PEG3) (ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op7076 op7137) (op7137 G) (op6835 op7076) (op2 op6835) (op33 op494)
+ (op494 op2) (op8 op85) (op85 op33) (I op8))
+
+Non Codesignations: 
+(($6833 $7074) ($6833 $7135) (PEG3 $7074) (PEG3 $7135) (PEG2 $7074)
+ (PEG2 $7135) ($493 $7074) ($493 $7135) (PEG1 $7135) ($7074 $7135)
+ (PEG1 $7074))
+
+*** Node Search DEPTH: 26
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : HANOI-4
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 1530
+Total #      nodes generated: 2556
+
+real time : 50711.400 secs
+run time  : 28340.520 secs
+T
+
+
+BLOCKS (Oct 5)
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op231 NAME (PUTON B C TABLE) PRECONDITIONS
+       ((NOT-TABLE B) (NOT-TABLE C) (ON B TABLE) (CLEAR B) (CLEAR C))
+       EFFECTS ((ON B C) (NOT ON B TABLE) (NOT CLEAR C) (CLEAR TABLE)))
+ #S(OPERATOR OPID op168 NAME (NEWTOWER C A) PRECONDITIONS
+       ((NOT-TABLE C) (NOT-TABLE A) (ON C A) (CLEAR C)) EFFECTS
+       ((ON C TABLE) (NOT ON C A) (CLEAR A)))
+ #S(OPERATOR OPID op146 NAME (PUTON A B TABLE) PRECONDITIONS
+       ((NOT-TABLE A) (NOT-TABLE B) (ON A TABLE) (CLEAR A) (CLEAR B))
+       EFFECTS ((ON A B) (NOT ON A TABLE) (NOT CLEAR B) (CLEAR TABLE)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ON C A) (ON A TABLE) (ON B TABLE) (CLEAR C) (CLEAR B)
+        (NOT-TABLE A) (NOT-TABLE B) (NOT-TABLE C)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A B) (ON B C)) EFFECTS
+       NIL))
+
+Order Constraints  (a < b):
+((op168 op231) (op231 op146) (I op231) (op231 G) (op168 op146)
+ (I op168) (op168 G) (I op146) (op146 G) (I G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : BLOCKS-WORLD
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 22
+Total #      nodes generated: 45
+
+real time : 165.417 secs
+run time  : 25.100 secs
+T
+
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op412 NAME (PUTON B C TABLE) PRECONDITIONS
+       ((NOT-TABLE B) (NOT-TABLE C) (ON B TABLE) (CLEAR B) (CLEAR C))
+       EFFECTS ((ON B C) (NOT ON B TABLE) (NOT CLEAR C) (CLEAR TABLE)))
+ #S(OPERATOR OPID op349 NAME (NEWTOWER C A) PRECONDITIONS
+       ((NOT-TABLE C) (NOT-TABLE A) (ON C A) (CLEAR C)) EFFECTS
+       ((ON C TABLE) (NOT ON C A) (CLEAR A)))
+ #S(OPERATOR OPID op327 NAME (PUTON A B TABLE) PRECONDITIONS
+       ((NOT-TABLE A) (NOT-TABLE B) (ON A TABLE) (CLEAR A) (CLEAR B))
+       EFFECTS ((ON A B) (NOT ON A TABLE) (NOT CLEAR B) (CLEAR TABLE)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ON C A) (ON A TABLE) (ON B TABLE) (CLEAR C) (CLEAR B)
+        (NOT-TABLE A) (NOT-TABLE B) (NOT-TABLE C)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ON A B) (ON B C)) EFFECTS
+       NIL))
+
+Order Constraints  (a < b):
+((op349 op412) (op412 op327) (I op412) (op412 G) (op349 op327)
+ (I op349) (op349 G) (I op327) (op327 G) (I G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 9
+
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : BLOCKS-WORLD
+Search Type: 4
+SPP property: T
+Debug  Flag:NIL
+Total #      nodes expanded: 22
+Total #      nodes generated: 35
+
+real time : 127.400 secs
+run time  : 19.583 secs
+T

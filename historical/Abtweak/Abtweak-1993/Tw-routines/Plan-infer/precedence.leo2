@@ -1,0 +1,83 @@
+;;; precedence, leonard-2
+;;; From leonard@nssdcs.gsfc.nasa.gov Sat Jul 25 07:27:27 1992
+
+;;; Hi.  I ftp'ed Abtweak a few days ago with an eye toward using it for a
+;;; image processing planner we are developing here.  After running the
+;;; planner on some of the small test problems, it seemed kinda slow to me
+;;; (60 sec for the 3 ring hanoi problem.)  When I ran abtweak through the
+;;; profiler, I found there was one function (transitive-test-before-p)
+;;; that took almost all of the processor time.  So I reprogrammed it in
+;;; two different ways; the first seems to be faster (about 15 sec) on
+;;; small examples and also a bit neater; whereas the second is based on
+;;; what I think is a better algorithm, although it seems to be taking a
+;;; little longer (18 sec or so).  Anyway, here they are.  If I have the
+;;; inclination and time I might write a graph sweep-and-mark algorithm to
+;;; improve this business even more.
+
+;;; Obscure version.  Copies list of pairs, then picks through it
+;;; removing arcs if they match op2 and doing the right thing.  This
+;;; algorithm is much more efficient (in big-O terms anyway) than the other,
+;;; because a particular arc can never be searched across more than once.
+
+(defun transitive-test-before-p (op1 op2 pairs)
+  "/tweak/plan-infer/plan-dependent.lisp 
+   returns t iff op1 precedes op2 (possibly transitively) in pairs"
+ (declare
+  (type atom op1)
+  (type atom op2)
+  (type list pairs) )
+
+  (cond 
+   ((eq op2 'i)  nil)
+   ((eq op1 'g)  nil)
+   ((null pairs) nil)
+   ((destructive-transitive-test-before-p 
+	op1 op2 (cons :dummy (copy-alist pairs))
+#|
+	;; or use the following if the code is never reentrant: (can it be?)
+	op1 op2 (rplacd '(:dummy) (copy-alist pairs))
+|#
+	))))
+
+(defun destructive-transitive-test-before-p (op1 op2 pairs)
+  "/tweak/plan-infer/plan-dependent.lisp 
+   returns t iff op1 precedes op2 (possibly transitively) in (cdr pairs);
+   pairs should be the list of pairs you want, with an extra cons on front."
+  (declare
+   (type atom op1)
+   (type atom op2)
+   (type list pairs))
+  
+  (let ((imm-before-op2 nil)
+	(a pairs)
+	(b (cdr pairs))
+	pair)
+    (declare
+     (type list imm-before-op2)
+     (type list a)
+     (type list b)
+     (type list pair))
+    
+    (do nil
+	((null b) nil)
+	
+	(setq pair (car b))
+	
+	(cond ((eq op2 (second pair))
+	       (if (eq op1 (first pair))
+		   (return-from destructive-transitive-test-before-p t))
+	       ;; Else, unlink this pair from the list
+	       (rplacd a (setq b (cdr b)))
+	       ;;  and link op1 into the imm-before-list
+	       (rplacd pair imm-before-op2)
+	       (setq imm-before-op2 pair))
+	      (t
+	       ;; Otherwise, just move down the list
+	       (setq a b)
+	       (setq b (cdr b)))))
+    
+    (dolist (op imm-before-op2 nil)
+	    (cond ((eq op 'i)  nil)
+		  ((destructive-transitive-test-before-p op1 op pairs)
+		   (return t))))))
+

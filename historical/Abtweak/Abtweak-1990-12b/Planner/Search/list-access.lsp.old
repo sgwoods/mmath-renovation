@@ -1,0 +1,91 @@
+; /Planner/Search/list-access.lsp
+; OPEN and CLOSED list rountines
+; both OPEN and CLOSED are implemented using priority lists
+;
+; Note this version of GS has been modified via declarations to be planning structure
+;  specific, and references are made to state as an instance of type PLAN
+;  in order to speed up the compiled version of this code
+;   SGW Oct 2, 1990
+
+; Written by Steve Woods, April 1990
+; Modified by Steve Woods Oct  1990
+
+(defun initialize-open (node)
+   "Planner/Search/list-access"
+   (declare
+       (type list node))
+   (setq *open* (list node)))
+
+(defun initialize-closed ()
+   "Planner/Search/list-access"
+   (setq *closed* nil))
+
+(defun list-empty-p (list)
+   "Planner/Search/list-access"
+   (declare 
+       (type list list))
+   (null list))
+
+(defun get-next-open-node ()
+   "Planner/Search/list-access
+    returns the node on open with the least cost"
+   (car *open*))
+
+(defun remove-first-node (list)
+   "Planner/Search/list-access"
+   (declare
+       (type list list) )
+   (setq list (cdr list)))
+
+(defun get-node-from-list (state list-of-nodes)
+   "Planner/Search/list-access
+    get node with state from list"
+   (declare
+       (type plan state)
+       (type (list list) list-of-nodes) )
+   (car (member state list-of-nodes :test 
+      #'(lambda (state node) (equal state (get-state node))))))
+
+(defun state-isin-p (state list-of-nodes)
+  "Planner/Search/list-access
+   true if state is in list-of-nodes"
+  (declare
+      (type plan state)
+      (type (list list) list-of-nodes) )  
+  (member state list-of-nodes :test #'(lambda (state node) 
+        (equal state (get-state node)))))
+
+(defun remove-state (state list-of-nodes)
+   "Planner/Search/list-access
+    removes state from list-of-nodes"
+  (declare
+      (type plan state)
+      (type (list list) list-of-nodes) )
+  (set-difference list-of-nodes (list state) 
+     :test #'(lambda(node state) (equal (get-state node) state))))
+         
+(defun insert-node (order-open-dfs-p node list-of-nodes)
+   "Planner/Search/list-access
+    Inserts node into list-of-nodes either by 
+       DFS - Greater Cost First
+       BFS - Least   Cost First "
+   (declare
+       (type boolean order-open-dfs-p)
+       (type list node)
+       (type (list list) list-of-nodes) )
+   (if order-open-dfs-p
+       ; DFS 
+       (do ((remaining-nodes list-of-nodes (cdr remaining-nodes))
+             (result nil (append result (list (car remaining-nodes)) )))
+          ((or (null remaining-nodes) 
+               (< (get-priority (car remaining-nodes)) (get-priority node)))
+            (append result (list node) remaining-nodes) ))
+       ; BFS
+       (do ((remaining-nodes list-of-nodes (cdr remaining-nodes))
+             (result nil (append result (list (car remaining-nodes)) )))
+          ((or (null remaining-nodes) 
+               (> (get-priority (car remaining-nodes)) (get-priority node)))
+            (append result (list node) remaining-nodes) ))
+    ))
+                
+

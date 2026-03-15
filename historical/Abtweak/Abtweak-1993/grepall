@@ -1,0 +1,21 @@
+#!/bin/sh
+
+a='lisp'
+
+grep -i $1 *.$a
+grep -i $1 Ab-routines/*.$a
+grep -i $1 Domains/*.$a
+grep -i $1 Mcallester-plan/*.$a
+grep -i $1 My-routines/*.$a
+grep -i $1 Plan-routines/*.$a
+grep -i $1 Search-routines/*.$a
+grep -i $1 Tw-routines/*.$a
+grep -i $1 Tw-routines/Conf-infer/*.$a
+grep -i $1 Tw-routines/Plan-infer/*.$a
+grep -i $1 Tw-routines/Succ/*.$a
+
+
+
+
+
+

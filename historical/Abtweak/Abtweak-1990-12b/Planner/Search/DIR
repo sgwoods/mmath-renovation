@@ -1,0 +1,47 @@
+
+/Search/graphsearch
+
+(defvar *open* nil)
+(defvar *closed* nil)
+(defun graphsearch (initial-state
+
+/Search/interface
+
+(defun print-open-list ()
+(defun print-node&depth (node)
+(defun print-success (prt_flag node numexpanded numgenerated)
+(defun cur () 
+
+/Search/list-access
+
+(defun initialize-open (node)
+(defun initialize-closed ()
+(defun list-empty-p (list)
+(defun get-next-open-node ()
+(defun remove-first-node (list)
+(defun get-node-from-list (state list-of-nodes)
+(defun state-isin-p (state list-of-nodes)
+(defun remove-state (state list-of-nodes)
+(defun insert-node (order-open-dfs-p node list-of-nodes)
+
+/Search/node-access
+
+(defun get-priority (node)
+(defun get-state (node)
+(defun get-cost (node)
+(defun get-solution-depth (node)
+(defun make-node (priority state cost parent-node)
+
+/Search/search-load
+
+/Search/search
+
+(defun search (initial-state
+(defun ida-search (initial-state 
+(defun c_graphsearch (initial-state 
+
+/Search/state-expansion
+
+(defun compute-priority (priority-function state cost)
+
+

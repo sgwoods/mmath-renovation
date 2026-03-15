@@ -1,0 +1,741 @@
+Allegro CL 3.1.13.1 [Sun4] (0/0/0)
+Copyright (C) 1985-1990, Franz Inc., Berkeley, CA, USA
+; Loading /u/sgwoods/Plan/Planner/init.lsp.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search-load.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/search.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/graphsearch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/list-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/node-access.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/interface.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Search/state-expansion.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/planner.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/branch.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/driver.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/compile.fasl.
+; Loading /u/sgwoods/Plan/Tweak2/init.lsp.
+; Fast loading /u/sgwoods/Plan/Tweak2/general.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/structs.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/mtc.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/successors.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/tree.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/discard-ops.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.fasl.
+; Fast loading /u/sgwoods/Plan/Tweak2/debug.fasl.
+; Loading /u/sgwoods/Plan/AbTweak2/init.lsp.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mtc.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-succ.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-causal.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-msp.fasl.
+; Fast loading /u/sgwoods/Plan/AbTweak2/ab-mono.fasl.
+; Fast loading /u/sgwoods/Plan/Planner/Domains/hanoi-2.fasl.
+<cl> 
+; Fast loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.fasl.
+
+T 
+<cl> 
+; Loading /u/sgwoods/Plan/Planner/Domains/hanoi3/bsmi.
+
+T 
+<cl> 
+<cl> expanded  = 20     generated = 37     Open Size = 18
+expanded  = 40     generated = 77     Open Size = 38
+expanded  = 60     generated = 116     Open Size = 57
+expanded  = 80     generated = 164     Open Size = 85
+expanded  = 100     generated = 220     Open Size = 121
+expanded  = 120     generated = 265     Open Size = 146
+expanded  = 140     generated = 315     Open Size = 176
+expanded  = 160     generated = 364     Open Size = 205
+expanded  = 180     generated = 429     Open Size = 250
+expanded  = 200     generated = 477     Open Size = 278
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 200
+nodes generated: 477
+solution depth : 0
+max node succ  : 15
+max conflicts  : 2
+branch factors : ((0 0.0) (1 2.69) (2 2.8) (3 1.75))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 24
+expanded  = 220     generated = 516     Open Size = 297
+expanded  = 240     generated = 575     Open Size = 336
+expanded  = 260     generated = 605     Open Size = 346
+expanded  = 280     generated = 672     Open Size = 393
+expanded  = 300     generated = 717     Open Size = 418
+expanded  = 320     generated = 755     Open Size = 436
+expanded  = 340     generated = 797     Open Size = 458
+expanded  = 360     generated = 838     Open Size = 479
+expanded  = 380     generated = 895     Open Size = 516
+expanded  = 400     generated = 939     Open Size = 540
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 400
+nodes generated: 939
+solution depth : 0
+max node succ  : 15
+max conflicts  : 2
+branch factors : ((0 0.12) (1 2.51) (2 3.14) (3 1.75))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 54
+expanded  = 420     generated = 987     Open Size = 568
+expanded  = 440     generated = 1032     Open Size = 593
+expanded  = 460     generated = 1074     Open Size = 615
+expanded  = 480     generated = 1116     Open Size = 637
+expanded  = 500     generated = 1163     Open Size = 664
+expanded  = 520     generated = 1220     Open Size = 701
+expanded  = 540     generated = 1272     Open Size = 733
+expanded  = 560     generated = 1341     Open Size = 782
+expanded  = 580     generated = 1403     Open Size = 824
+expanded  = 600     generated = 1489     Open Size = 890
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 600
+nodes generated: 1489
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.11) (1 2.52) (2 3.25) (3 1.8))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 80
+expanded  = 620     generated = 1539     Open Size = 920
+expanded  = 640     generated = 1592     Open Size = 953
+expanded  = 660     generated = 1643     Open Size = 984
+expanded  = 680     generated = 1706     Open Size = 1027
+expanded  = 700     generated = 1773     Open Size = 1074
+expanded  = 720     generated = 1832     Open Size = 1113
+expanded  = 740     generated = 1880     Open Size = 1141
+expanded  = 760     generated = 1925     Open Size = 1166
+expanded  = 780     generated = 1972     Open Size = 1193
+expanded  = 800     generated = 2016     Open Size = 1217
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 800
+nodes generated: 2016
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.16) (1 2.47) (2 3.37) (3 1.8))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 103
+expanded  = 820     generated = 2080     Open Size = 1261
+expanded  = 840     generated = 2147     Open Size = 1308
+expanded  = 860     generated = 2231     Open Size = 1372
+expanded  = 880     generated = 2282     Open Size = 1403
+expanded  = 900     generated = 2328     Open Size = 1429
+expanded  = 920     generated = 2384     Open Size = 1465
+expanded  = 940     generated = 2426     Open Size = 1487
+expanded  = 960     generated = 2489     Open Size = 1530
+expanded  = 980     generated = 2523     Open Size = 1544
+expanded  = 1000     generated = 2575     Open Size = 1576
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 1000
+nodes generated: 2575
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.16) (1 2.37) (2 3.42) (3 1.8))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 130
+expanded  = 1020     generated = 2627     Open Size = 1608
+expanded  = 1040     generated = 2679     Open Size = 1640
+expanded  = 1060     generated = 2721     Open Size = 1662
+expanded  = 1080     generated = 2764     Open Size = 1685
+expanded  = 1100     generated = 2810     Open Size = 1711
+expanded  = 1120     generated = 2876     Open Size = 1757
+expanded  = 1140     generated = 2914     Open Size = 1775
+expanded  = 1160     generated = 2960     Open Size = 1801
+expanded  = 1180     generated = 3005     Open Size = 1826
+expanded  = 1200     generated = 3051     Open Size = 1852
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 1200
+nodes generated: 3051
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.15) (1 2.26) (2 3.48) (3 1.8))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 173
+expanded  = 1220     generated = 3124     Open Size = 1905
+expanded  = 1240     generated = 3162     Open Size = 1923
+expanded  = 1260     generated = 3207     Open Size = 1948
+expanded  = 1280     generated = 3257     Open Size = 1978
+expanded  = 1300     generated = 3300     Open Size = 2001
+expanded  = 1320     generated = 3345     Open Size = 2026
+expanded  = 1340     generated = 3392     Open Size = 2053
+expanded  = 1360     generated = 3430     Open Size = 2071
+expanded  = 1380     generated = 3483     Open Size = 2104
+expanded  = 1400     generated = 3534     Open Size = 2135
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 1400
+nodes generated: 3534
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.15) (1 2.16) (2 3.63) (3 1.8))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 230
+expanded  = 1420     generated = 3580     Open Size = 2161
+expanded  = 1440     generated = 3629     Open Size = 2190
+expanded  = 1460     generated = 3683     Open Size = 2224
+expanded  = 1480     generated = 3729     Open Size = 2250
+expanded  = 1500     generated = 3774     Open Size = 2275
+expanded  = 1520     generated = 3824     Open Size = 2305
+expanded  = 1540     generated = 3856     Open Size = 2317
+expanded  = 1560     generated = 3898     Open Size = 2339
+expanded  = 1580     generated = 3943     Open Size = 2364
+expanded  = 1600     generated = 3993     Open Size = 2394
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 1600
+nodes generated: 3993
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.14) (1 2.07) (2 3.72) (3 1.8))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 284
+expanded  = 1620     generated = 4039     Open Size = 2420
+expanded  = 1640     generated = 4085     Open Size = 2446
+expanded  = 1660     generated = 4134     Open Size = 2475
+expanded  = 1680     generated = 4177     Open Size = 2498
+expanded  = 1700     generated = 4221     Open Size = 2522
+expanded  = 1720     generated = 4265     Open Size = 2546
+expanded  = 1740     generated = 4320     Open Size = 2581
+expanded  = 1760     generated = 4372     Open Size = 2613
+expanded  = 1780     generated = 4417     Open Size = 2638
+expanded  = 1800     generated = 4465     Open Size = 2666
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 1800
+nodes generated: 4465
+solution depth : 0
+max node succ  : 24
+max conflicts  : 3
+branch factors : ((0 0.14) (1 2.04) (2 3.6) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 313
+expanded  = 1820     generated = 4508     Open Size = 2689
+expanded  = 1840     generated = 4555     Open Size = 2716
+expanded  = 1860     generated = 4597     Open Size = 2738
+expanded  = 1880     generated = 4660     Open Size = 2781
+expanded  = 1900     generated = 4719     Open Size = 2820
+expanded  = 1920     generated = 4766     Open Size = 2847
+expanded  = 1940     generated = 4833     Open Size = 2894
+expanded  = 1960     generated = 4879     Open Size = 2920
+expanded  = 1980     generated = 4952     Open Size = 2973
+expanded  = 2000     generated = 5015     Open Size = 3016
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 2000
+nodes generated: 5015
+solution depth : 0
+max node succ  : 27
+max conflicts  : 3
+branch factors : ((0 0.12) (1 2.14) (2 3.55) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 336
+expanded  = 2020     generated = 5060     Open Size = 3041
+expanded  = 2040     generated = 5107     Open Size = 3068
+expanded  = 2060     generated = 5167     Open Size = 3108
+expanded  = 2080     generated = 5217     Open Size = 3138
+expanded  = 2100     generated = 5277     Open Size = 3178
+expanded  = 2120     generated = 5336     Open Size = 3217
+expanded  = 2140     generated = 5387     Open Size = 3248
+expanded  = 2160     generated = 5455     Open Size = 3296
+expanded  = 2180     generated = 5521     Open Size = 3342
+expanded  = 2200     generated = 5557     Open Size = 3358
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 2200
+nodes generated: 5557
+solution depth : 0
+max node succ  : 32
+max conflicts  : 3
+branch factors : ((0 0.18) (1 2.29) (2 3.55) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 342
+expanded  = 2220     generated = 5619     Open Size = 3400
+expanded  = 2240     generated = 5662     Open Size = 3423
+expanded  = 2260     generated = 5712     Open Size = 3453
+expanded  = 2280     generated = 5761     Open Size = 3482
+expanded  = 2300     generated = 5814     Open Size = 3515
+expanded  = 2320     generated = 5861     Open Size = 3542
+expanded  = 2340     generated = 5901     Open Size = 3562
+expanded  = 2360     generated = 5957     Open Size = 3598
+expanded  = 2380     generated = 6001     Open Size = 3622
+expanded  = 2400     generated = 6047     Open Size = 3648
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 2400
+nodes generated: 6047
+solution depth : 0
+max node succ  : 32
+max conflicts  : 3
+branch factors : ((0 0.16) (1 2.35) (2 3.55) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 353
+expanded  = 2420     generated = 6086     Open Size = 3667
+expanded  = 2440     generated = 6126     Open Size = 3687
+expanded  = 2460     generated = 6171     Open Size = 3712
+expanded  = 2480     generated = 6219     Open Size = 3740
+expanded  = 2500     generated = 6270     Open Size = 3771
+expanded  = 2520     generated = 6310     Open Size = 3791
+expanded  = 2540     generated = 6378     Open Size = 3839
+expanded  = 2560     generated = 6423     Open Size = 3864
+expanded  = 2580     generated = 6477     Open Size = 3898
+expanded  = 2600     generated = 6544     Open Size = 3945
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 2600
+nodes generated: 6544
+solution depth : 0
+max node succ  : 32
+max conflicts  : 3
+branch factors : ((0 0.13) (1 2.41) (2 3.56) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 369
+expanded  = 2620     generated = 6583     Open Size = 3964
+expanded  = 2640     generated = 6619     Open Size = 3980
+expanded  = 2660     generated = 6682     Open Size = 4023
+expanded  = 2680     generated = 6766     Open Size = 4087
+expanded  = 2700     generated = 6834     Open Size = 4135
+expanded  = 2720     generated = 6866     Open Size = 4147
+expanded  = 2740     generated = 6906     Open Size = 4167
+expanded  = 2760     generated = 6980     Open Size = 4221
+expanded  = 2780     generated = 7032     Open Size = 4253
+expanded  = 2800     generated = 7080     Open Size = 4281
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 2800
+nodes generated: 7080
+solution depth : 0
+max node succ  : 32
+max conflicts  : 3
+branch factors : ((0 0.12) (1 2.49) (2 3.54) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 390
+expanded  = 2820     generated = 7131     Open Size = 4312
+expanded  = 2840     generated = 7195     Open Size = 4356
+expanded  = 2860     generated = 7235     Open Size = 4376
+expanded  = 2880     generated = 7318     Open Size = 4439
+expanded  = 2900     generated = 7378     Open Size = 4479
+expanded  = 2920     generated = 7439     Open Size = 4520
+expanded  = 2940     generated = 7501     Open Size = 4562
+expanded  = 2960     generated = 7534     Open Size = 4575
+expanded  = 2980     generated = 7596     Open Size = 4617
+expanded  = 3000     generated = 7655     Open Size = 4656
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 3000
+nodes generated: 7655
+solution depth : 0
+max node succ  : 33
+max conflicts  : 3
+branch factors : ((0 0.12) (1 2.59) (2 3.54) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 412
+expanded  = 3020     generated = 7719     Open Size = 4700
+expanded  = 3040     generated = 7752     Open Size = 4713
+expanded  = 3060     generated = 7807     Open Size = 4748
+expanded  = 3080     generated = 7851     Open Size = 4772
+expanded  = 3100     generated = 7892     Open Size = 4793
+expanded  = 3120     generated = 7958     Open Size = 4839
+expanded  = 3140     generated = 8013     Open Size = 4874
+expanded  = 3160     generated = 8063     Open Size = 4904
+expanded  = 3180     generated = 8114     Open Size = 4935
+expanded  = 3200     generated = 8182     Open Size = 4983
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 3200
+nodes generated: 8182
+solution depth : 0
+max node succ  : 33
+max conflicts  : 3
+branch factors : ((0 0.15) (1 2.61) (2 3.58) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 443
+expanded  = 3220     generated = 8214     Open Size = 4995
+expanded  = 3240     generated = 8256     Open Size = 5017
+expanded  = 3260     generated = 8339     Open Size = 5080
+expanded  = 3280     generated = 8400     Open Size = 5121
+expanded  = 3300     generated = 8457     Open Size = 5158
+expanded  = 3320     generated = 8517     Open Size = 5198
+expanded  = 3340     generated = 8583     Open Size = 5244
+expanded  = 3360     generated = 8613     Open Size = 5254
+expanded  = 3380     generated = 8677     Open Size = 5298
+expanded  = 3400     generated = 8736     Open Size = 5337
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 3400
+nodes generated: 8736
+solution depth : 0
+max node succ  : 33
+max conflicts  : 3
+branch factors : ((0 0.14) (1 2.67) (2 3.58) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 464
+expanded  = 3420     generated = 8786     Open Size = 5367
+expanded  = 3440     generated = 8831     Open Size = 5392
+expanded  = 3460     generated = 8868     Open Size = 5409
+expanded  = 3480     generated = 8917     Open Size = 5438
+expanded  = 3500     generated = 8961     Open Size = 5462
+expanded  = 3520     generated = 9010     Open Size = 5491
+expanded  = 3540     generated = 9068     Open Size = 5529
+expanded  = 3560     generated = 9123     Open Size = 5564
+expanded  = 3580     generated = 9176     Open Size = 5597
+expanded  = 3600     generated = 9234     Open Size = 5635
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 3600
+nodes generated: 9234
+solution depth : 0
+max node succ  : 33
+max conflicts  : 3
+branch factors : ((0 0.15) (1 2.67) (2 3.6) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 489
+expanded  = 3620     generated = 9300     Open Size = 5681
+expanded  = 3640     generated = 9354     Open Size = 5715
+expanded  = 3660     generated = 9407     Open Size = 5748
+expanded  = 3680     generated = 9468     Open Size = 5789
+expanded  = 3700     generated = 9533     Open Size = 5834
+expanded  = 3720     generated = 9582     Open Size = 5863
+expanded  = 3740     generated = 9620     Open Size = 5881
+expanded  = 3760     generated = 9705     Open Size = 5946
+expanded  = 3780     generated = 9768     Open Size = 5989
+expanded  = 3800     generated = 9824     Open Size = 6025
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 3800
+nodes generated: 9824
+solution depth : 0
+max node succ  : 33
+max conflicts  : 3
+branch factors : ((0 0.15) (1 2.71) (2 3.6) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 497
+expanded  = 3820     generated = 9896     Open Size = 6077
+expanded  = 3840     generated = 9928     Open Size = 6089
+expanded  = 3860     generated = 9975     Open Size = 6116
+One of set Limits Reached...
+
+Expanded  3873 / 6000
+Generated 10029 / 10000
+OPEN Size 6157 / 10000
+
+Final Search stats are :
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+debug          : NIL
+determine via  : STACK
+backwards-mode : NIL
+heuristic      : D
+motive-discard : NIL
+nodes expanded : 3873
+nodes generated: 10029
+solution depth : 0
+max node succ  : 33
+max conflicts  : 3
+branch factors : ((0 0.14) (1 2.73) (2 3.6) (3 1.83))
+
+a: criticality levels    : 3
+a: criticality depth mode: NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: NIL
+a: msp weak mode         : NEC
+a: weak msp   pruned     : 0
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 506
+
+Break: in Graphsearch
+
+Restart actions (select using :continue):
+ 0: return from break.
+[1c] <cl> :pop
+<cl> EOF
+Really exit lisp [n]? 
+; Exiting Lisp

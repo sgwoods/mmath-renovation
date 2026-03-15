@@ -1,0 +1,199 @@
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.o
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.o
+Finished loading init.lsp
+
+>Loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+T
+
+>NIL
+
+>WEAK
+
+>T
+
+>NIL
+
+>Loading output.o
+Finished loading output.o
+3016
+
+>Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3.o
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X)
+                   (NOT ONS $Y) (NOT ONM $Y) (ONB $X))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+                  ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y)
+                   (ONM $X))
+                  EFFECTS ((NOT ONM $X) (ONM $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+Criticalities: ((3 (ISPEG $)) (2 (NOT ONB $) (ONB $))
+                (1 (NOT ONM $) (ONM $)) (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBMS-DEFAULT
+Top-Down-Levels to eliminate: (3 2 1)
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/isbm
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/isbm
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op3725 NAME (MOVEM PEG2 PEG1) PRECONDITIONS
+       ((ISPEG PEG2) (ISPEG PEG1) (NOT ONS PEG2) (NOT ONS PEG1)
+        (ONM PEG2))
+       EFFECTS ((NOT ONM PEG2) (ONM PEG1)))
+ #S(OPERATOR OPID op3437 NAME (MOVEM PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONS PEG3)
+        (ONM PEG1))
+       EFFECTS ((NOT ONM PEG1) (ONM PEG3)))
+ #S(OPERATOR OPID op1768 NAME (MOVEM PEG1 PEG2) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG2) (NOT ONS PEG1) (NOT ONS PEG2)
+        (ONM PEG1))
+       EFFECTS ((NOT ONM PEG1) (ONM PEG2)))
+ #S(OPERATOR OPID op1547 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (NOT ONS PEG1) (NOT ONM PEG1)
+        (NOT ONS PEG3) (NOT ONM PEG3) (ONB PEG1))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID op492 NAME (MOVES PEG1 PEG3) PRECONDITIONS
+       ((ISPEG PEG1) (ISPEG PEG3) (ONS PEG1)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG3)))
+ #S(OPERATOR OPID op207 NAME (MOVES PEG3 PEG2) PRECONDITIONS
+       ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) EFFECTS
+       ((NOT ONS PEG3) (ONS PEG2)))
+ #S(OPERATOR OPID op70 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+             ((ISPEG PEG2) (ISPEG PEG3) (ONS PEG2)) EFFECTS
+             ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op13 NAME (MOVES PEG3 PEG2) PRECONDITIONS
+       ((ISPEG PEG3) (ISPEG PEG2) (ONS PEG3)) EFFECTS
+       ((NOT ONS PEG3) (ONS PEG2)))
+ #S(OPERATOR OPID op3 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ISPEG PEG2) (ISPEG PEG3) (ONS PEG2)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONM PEG1)
+        (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONM PEG2)
+        (NOT ONM PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+       ((ONB PEG3) (ONM PEG3) (ONS PEG3)) EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op3725 op13) (op70 op3725) (op3437 op3) (op13 op3437) (op1768 op207)
+ (op492 op1768) (op1547 op70) (op207 op1547) (I op492) (op3 G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 29
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-3-ISPEG
+AbTweak Random: NIL
+Critical: ISBM
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 3
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: WEAK
+A: Prune: T
+A: W-MSP pruned :683
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 20
+Total #      nodes expanded: 1920
+Total #      nodes generated: 2564
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/ismb
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/ismb

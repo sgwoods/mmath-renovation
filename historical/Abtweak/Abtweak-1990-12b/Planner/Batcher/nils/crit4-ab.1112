@@ -1,0 +1,108 @@
+Planner Driver Output
+Domain      : NILSSONS-BLOCKS-WORLD
+Operators   : (#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+                     ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+                     ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X)
+                      (NOT HANDEMPTY)))
+               #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+                     ((HOLDING $X)) EFFECTS
+                     ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)
+                      (NOT HOLDING $X)))
+               #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+                     ((HOLDING $X) (CLEAR $Y)) EFFECTS
+                     ((ON $X $Y) (CLEAR $X) (HANDEMPTY)
+                      (NOT HOLDING $X) (NOT CLEAR $Y)))
+               #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y)
+                     PRECONDITIONS ((ON $X $Y) (CLEAR $X) (HANDEMPTY))
+                     EFFECTS
+                     ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY)
+                      (HOLDING $X) (NOT ON $X $Y))))
+Initial     : ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+               (HANDEMPTY))
+Goal        : ((ON A B) (ON B C))
+Critical Lst: ((0 (HANDEMPTY)) (1 (NOT ON $ $) (ON $ $))
+               (2 (CLEAR $) (NOT CLEAR $) (ONTABLE $) (NOT ONTABLE $)
+                (HOLDING $) (NOT HOLDING $)))
+Critcal Load: NILS-CRIT4
+Top Down Lev: (2 1)
+Crit Dep Lst: (0 1 2)
+ 
+ 
+real time : 1420.417 secs
+run time  : 297.183 secs
+ SOLUTION FOUND 
+ 
+ (Domain Info)
+ Domain          : NILSSONS-BLOCKS-WORLD
+ 
+ (Planning Info)
+ Planner Mode    : ABTWEAK
+ Search  Type    : 4
+ Heuristic       : D
+ Debug           : NIL
+ Random Mode     : NIL
+ Backwards Mode  : NIL
+ Nodes Expanded  : 42
+ Nodes Generated : 168
+ Solution Depth  : 14
+ Max Conflicts   : 3
+ Max Node Succ   : 69
+ Branch Factors  : ((0 4.67) (1 4.11) (2 0.0))
+ 
+ A: Criticality Levels     : 2
+ A: Critical Depth Mode    : NIL
+ A: K Learning Mode        : NIL
+ A: Top Down Flag             : NIL
+ A: Top Down Pruned           : 0
+ A: ABS Goal Mode             : NIL
+ A: Monotonic Sol Property    : NIL
+ A: MSP Weak Mode             : NEC
+ A: Weak MSP   pruned         : 0
+ A: Strong MSP pruned         : 0
+ A: Abstract Nodes GEN        : 2
+ 
+ 
+ Goal Plan: #S(PLAN ID plan493 COST 0 KVAL 0 CR
+                    ((op27 (ON C A) (I)) (G (ON A B) (op3))
+                     (G (ON B C) (op43)))
+                    A
+                    (#S(OPERATOR OPID op165 NAME (PUTDOWN C)
+                           PRECONDITIONS ((HOLDING C)) EFFECTS
+                           ((ONTABLE C) (CLEAR C) (HANDEMPTY)
+                            (NOT HOLDING C)))
+                     #S(OPERATOR OPID op47 NAME (PICKUP B)
+                           PRECONDITIONS
+                           ((ONTABLE B) (CLEAR B) (HANDEMPTY)) EFFECTS
+                           ((HOLDING B) (NOT ONTABLE B) (NOT CLEAR B)
+                            (NOT HANDEMPTY)))
+                     #S(OPERATOR OPID op43 NAME (STACK B C)
+                           PRECONDITIONS ((HOLDING B) (CLEAR C))
+                           EFFECTS
+                           ((ON B C) (CLEAR B) (HANDEMPTY)
+                            (NOT HOLDING B) (NOT CLEAR C)))
+                     #S(OPERATOR OPID op27 NAME (UNSTACK C A)
+                           PRECONDITIONS
+                           ((ON C A) (CLEAR C) (HANDEMPTY)) EFFECTS
+                           ((CLEAR A) (NOT CLEAR C) (NOT HANDEMPTY)
+                            (HOLDING C) (NOT ON C A)))
+                     #S(OPERATOR OPID op7 NAME (PICKUP A) PRECONDITIONS
+                           ((ONTABLE A) (CLEAR A) (HANDEMPTY)) EFFECTS
+                           ((HOLDING A) (NOT ONTABLE A) (NOT CLEAR A)
+                            (NOT HANDEMPTY)))
+                     #S(OPERATOR OPID op3 NAME (STACK A B)
+                           PRECONDITIONS ((HOLDING A) (CLEAR B))
+                           EFFECTS
+                           ((ON A B) (CLEAR A) (HANDEMPTY)
+                            (NOT HOLDING A) (NOT CLEAR B)))
+                     #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL
+                           EFFECTS
+                           ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C)
+                            (CLEAR B) (HANDEMPTY)))
+                     #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+                           ((ON A B) (ON B C)) EFFECTS NIL))
+                    B
+                    ((op43 op7) (op165 op47) (op27 op165) (op47 op43)
+                     (I op27) (op7 op3) (op3 G))
+                    NC NIL VAR NIL CONFLICTS NIL OP-COUNT
+                    ((0 0) (1 6) (2 0)) INVALID NIL)
+ 

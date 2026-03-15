@@ -1,0 +1,7 @@
+emacs bat-$1.sh 
+emacs bat-$1a.sh 
+emacs bat-$1b.sh 
+emacs bat-$1c.lsp
+
+sh bat-$1.sh &
+

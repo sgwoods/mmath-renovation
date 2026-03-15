@@ -1,0 +1,11 @@
+lpr -Pln03_lpaig <  /u/sgwoods/Plan/Tweak2/Search/DIR\
+ /u/sgwoods/Plan/Tweak2/Search/graphsearch.lsp\
+ /u/sgwoods/Plan/Tweak2/Search/interface.lsp\
+ /u/sgwoods/Plan/Tweak2/Search/list-access.lsp\
+ /u/sgwoods/Plan/Tweak2/Search/node-access.lsp\
+ /u/sgwoods/Plan/Tweak2/Search/search-load.lsp\
+ /u/sgwoods/Plan/Tweak2/Search/search.lsp\
+ /u/sgwoods/Plan/Tweak2/Search/state-expansion.lsp\
+
+
+

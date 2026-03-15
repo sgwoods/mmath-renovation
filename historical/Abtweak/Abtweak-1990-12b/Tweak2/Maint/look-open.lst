@@ -1,0 +1,17 @@
+(defun look ()
+   (minmax (ops *open*) 100 0))
+(defun  ops (list)
+    (if (eq (car list) nil)
+        nil
+        (cons
+               (length (plan-a (second (first list))))
+               (ops (cdr list)) ) ))
+(defun minmax (nums min max)
+    (if (eq (car nums) nil)
+        (list min max)
+        (if (> (car nums) max)
+            (minmax (cdr nums) min (car nums))
+            (if (< (car nums) min)
+                (minmax (cdr nums) (car nums) max)
+                (minmax (cdr nums) min max)) ) ) )
+    

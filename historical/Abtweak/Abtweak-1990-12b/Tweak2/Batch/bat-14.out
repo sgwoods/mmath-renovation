@@ -1,0 +1,131 @@
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.o
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.o
+Finished loading init.lsp
+
+>Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3.o
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-3.o
+DOMAIN DEFINITION FOR: HANOI-3-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X)
+                   (NOT ONS $Y) (NOT ONM $Y) (ONB $X))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+                  ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y)
+                   (ONM $X))
+                  EFFECTS ((NOT ONM $X) (ONM $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>Loading Examples/hanoi-3/mbsi
+Finished loading Examples/hanoi-3/mbsi
+T
+
+>Loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+T
+
+>NIL
+
+>WEAK
+
+>T
+
+>NIL
+
+>
+Correctable error: The storage for structure is exhausted.
+                   Currently, 92 pages are allocated.
+                   Use ALLOCATE to expand the space.
+Signalled by ABTWEAK.
+If continued: Continues execution.
+
+Broken at ABTWEAK.  Type :H for Help.
+>>Bye.

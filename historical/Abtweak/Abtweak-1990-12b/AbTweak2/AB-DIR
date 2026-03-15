@@ -1,0 +1,99 @@
+***************************************************************************
+* DIRECTORY of TWEAK functions
+* 
+* Compiled Oct 2, 1990
+*
+* Revised Dates/Enhancements
+*    Oct 4, 1990
+* 
+
+/AbTweak/
+
+/AbTweak2/ab-causal.lsp
+(defun new-CR (plan k)
+(defun find-k-CR (plan k)
+(defun get-est-tuples (plan level-k-oplist)
+(defun get-est-this-op (plan op-pre)
+(defun get-level-k-oplist (A level-k-pre-types)
+(defun get-this-level-k-type (A one-k-pre-type)
+(defun find-this-a-pre (pre-list one-k-pre-type)
+(defun equal-pre (pre-type one-k-pre-type)
+(defun create-tuples (opid pre-list)
+(defun get-level-k-pre (k pre-list)
+
+/AbTweak2/ab-mono.lsp
+(defun opt-purge-level-k (old-k-val)
+(defun purge-node-list (node-list k)
+
+/AbTweak2/ab-msp.lsp
+(defun violates-msp (plan prune-flag msp-flag)
+(defun violates-msp-weak (plan )
+(defun find-all-Up-pairs (cr)
+(defun weak-violation-p (plan cr Up-pairs)
+(defun all-est-clob-this-CRi (plan cr CRi)
+(defun get-cr-ests (cr U p-)
+(defun all-ests-clob-p (plan Pos-Ests U p-)
+(defun NEC-clobbered-p (plan E U p-)
+(defun n-clobbers-p (plan N-betw p-)
+(defun n-asserts-p (plan N-betw p-)
+(defun violates-msp-strong (plan )
+(defun strong-violation-p (plan cr Up-pairs)
+(defun any-est-clob-this-CRi (plan cr Up-cr)
+(defun any-ests-clob-p (plan Pos-Ests U p-)
+
+/AbTweak2/ab-mtc.lsp
+(defun ab-mtc (plan)
+(defun ab-all_preconds_hold-p (plan opids)
+(defun ab-this_opid_ok-p (plan opid)
+
+
+/AbTweak2/ab-structs.lsp
+(defvar *critical-list* nil
+(defvar *top-down-levels* nil
+(defvar *ab-count* 0
+(defvar *MSP-FLAG*      nil
+(defvar *W-MSP-PRUNED* 0
+(defvar *S-MSP-PRUNED* 0
+(defvar *PRUNE-FLAG*    nil
+(defvar *TOP-DOWN-FLAG*    nil
+(defvar *TOP-DOWN-NUM*    0
+
+
+/AbTweak2/ab-succ.lsp
+(defun ab-successors (plan )
+(defun ab-determine-U-and-p (plan)
+(defun adjust-pre-list (plist k)
+(defun find-crit (pname)
+ (defun substitute-pre (pname)
+(defun find-pre-head (precond)
+(defun sub-pre-tail (params)
+ (defun find-crit1 (pname clist)
+(defun contains-constants-p (params)
+(defun remove-a-constant (pname)
+(defun find-right-constant (pname right-pos)
+(defun replace-i (list with pos)
+(defun sublist (list from to)
+(defun add-a-level (plan )
+
+
+/AbTweak2/abtweak.lsp
+(defun abtweak (initial goal)
+(defun make-initial-plan (initial goal)
+(defun find-initial-k-val ()
+(defun get-k-vals (c-list ints)
+(defun maxint (intlist prev)
+(defun goal-p (state)
+(defun which-pri-function ()
+(defun num-of-ops (plan)
+(defun num-of-sat-goals (plan)
+;(defun which-pri-function ()
+;(defun which-pri-function ()
+(defun successors&costs (plan)
+(defun print-state (state)
+(defun print-stats (numexpanded numgenerated)
+(defun show-dom ()
+
+
+/AbTweak2/abtweak-flags.lsp
+
+

@@ -1,0 +1,1814 @@
+2>[57]% tw2
+2>[58]% kcl
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/general.lsp
+Loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/debug.lsp
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.o
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.o
+Finished loading init.lsp
+
+>(- 3 1)
+2
+
+>(- 1 3)
+-2
+
+>(setq *k-list* '(0 2 4))
+(0 2 4)
+
+>(nth 0 *k-list*)
+0
+
+>(0 2 4)
+
+>(nth 0 *k-list*)
+0
+
+>(defun try (set)
+   (if (eq set t)
+       (defun fred () 'fred-1)
+       (defun fred () 'fred-2)))
+TRY
+
+>(try t)
+FRED
+
+>(fred)
+FRED-1
+
+>(try nil)
+FRED
+
+>(fred)
+FRED-2
+
+>(cur)
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : BLOCKS-WORLD
+Tweak Random: NIL
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+
+NIL
+
+>(bye)
+Bye.
+2>[59]% kcl
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/general.lsp
+Loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+
+Error: Unexpected end of #<input stream "/u/sgwoods/Plan/Tweak2/cond-load.lsp">.
+Error signalled by LOAD.
+
+Broken at LOAD.  Type :H for Help.
+>>(load "init")
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/general.lsp
+Loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Single Producer Property is OFF
+
+Error: The variable *AB-RANDOM* is unbound.
+Error signalled by AND.
+Backtrace:  > evalhook > load > cond-load > or > AND
+
+Broken at LOAD.
+>>(load "init")
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/general.lsp
+Loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+:q
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Single Producer Property is OFF
+Tweak Random determine-u-and-p is ON
+Loading /u/sgwoods/Plan/Tweak2/random-element.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/random-element.lsp
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/debug.lsp
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading init.lsp
+T
+
+>>
+>(show-cur)
+
+Error: The function SHOW-CUR is undefined.
+Error signalled by EVAL.
+
+Broken at EVAL.  Type :H for Help.
+>>:q
+
+Top level.
+>(show-dom)
+DOMAIN DEFINITION FOR: BLOCKS-WORLD
+
+Operators: (#S(OPERATOR OPID PUTON NAME (PUTON $X $Y $Z) PRECONDITIONS
+                  ((NOT-TABLE $X) (NOT-TABLE $Y) (ON $X $Z) (CLEAR $X)
+                   (CLEAR $Y))
+                  EFFECTS
+                  ((ON $X $Y) (NOT ON $X $Z) (NOT CLEAR $Y) (CLEAR $Z)))
+            #S(OPERATOR OPID NEWTOWER NAME (NEWTOWER $X $Z)
+                  PRECONDITIONS
+                  ((NOT-TABLE $X) (NOT-TABLE $Z) (ON $X $Z) (CLEAR $X))
+                  EFFECTS ((ON $X TABLE) (NOT ON $X $Z) (CLEAR $Z))))
+Initial State: ((ON C A) (ON A TABLE) (ON B TABLE) (CLEAR C) (CLEAR B)
+                (NOT-TABLE A) (NOT-TABLE B) (NOT-TABLE C))
+Goal State:    ((ON A B) (ON B C))
+NIL
+
+>(cur)
+TWEAK PLANNER RUN STATISTICS
+Planner Mode Loaded: TWEAK
+Domain : BLOCKS-WORLD
+Tweak Random: T
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+
+NIL
+
+>(mode 'abtweak)
+Loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-structs.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+T
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: BLOCKS-WORLD
+AbTweak Random: NIL
+Critical: #<OBJNULL>
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(load-hanoi2)
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: NIL
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(rand-mode t)
+AbTweak Random det-u-and-po is OFF
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: NIL
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(rand-mode t)
+AbTweak Random det-u-and-po is OFF
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: NIL
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(load "cond-load")
+Loading cond-load.lsp
+Finished loading cond-load.lsp
+T
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: NIL
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(rand-mode t)
+AbTweak Random determine-u-and-p is ON
+Loading /u/sgwoods/Plan/AbTweak2/random-element.o
+Finished loading /u/sgwoods/Plan/AbTweak2/random-element.o
+T
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(mode 'abtweak)
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.lsp
+
+Error: Unexpected end of #<input stream "/u/sgwoods/Plan/AbTweak2/abtweak.lsp">.
+Error signalled by LOAD.
+
+Broken at LOAD.  Type :H for Help.
+>>:q
+
+Top level.
+>(mode 'abtweak)
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+ABTWEAK
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(k-mode t)
+WHICH-PRI-FUNCTION
+
+>
+
+
+WHICH-PRI-FUNCTION - internal symbol in USER package
+-----------------------------------------------------------------------------
+WHICH-PRI-FUNCTION                                                 [Function]
+/AbTweak/abtweak.lsp
+           Priority calculation - heuristic (K-mode ON)
+-----------------------------------------------------------------------------
+
+
+>(k-mode nil)
+WHICH-PRI-FUNCTION
+
+>(describe 'which-pri-function)
+
+WHICH-PRI-FUNCTION - internal symbol in USER package
+-----------------------------------------------------------------------------
+WHICH-PRI-FUNCTION                                                 [Function]
+/AbTweak/abtweak.lsp
+           Priority calculation - heuristic (K-mode OFF)
+-----------------------------------------------------------------------------
+
+
+>(k-mode t)
+WHICH-PRI-FUNCTION
+
+>(sur)
+
+Error: The function SUR is undefined.
+Error signalled by EVAL.
+
+Broken at EVAL.  Type :H for Help.
+>>:q
+
+Top level.
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(show-dom)
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+
+Error: The variable *KL-LIST* is unbound.
+Error signalled by SHOW-DOM.
+
+Broken at SHOW-DOM.  Type :H for Help.
+>>(load "../AbTweak2/abtweak")
+Loading ../AbTweak2/abtweak.lsp
+Finished loading ../AbTweak2/abtweak.lsp
+T
+
+>>:q
+
+Top level.
+>(show-dom)
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+
+Error: (0 2) is not a stream.
+Error signalled by PRINC.
+
+Broken at PRINC.  Type :H for Help.
+>>(load "../AbTweak2/abtweak")
+Loading ../AbTweak2/abtweak.lsp
+Finished loading ../AbTweak2/abtweak.lsp
+T
+
+>>:q
+
+Top level.
+>(show-dom)
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+K level List: 
+(0 2)
+NIL
+
+>(abtweak initial goal)
+
+Error: NIL is not of type NUMBER.
+Error signalled by -.
+
+Broken at -.  Type :H for Help.
+>>:q
+
+Top level.
+>(load-hanoi2)
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+K level List: 
+(0 1 2)
+NIL
+
+>(show-dom)
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+K level List: 
+(0 1 2)
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 0
+Total #      nodes generated: 0
+NIL
+
+>(abtweak initial goal)
+
+Correctable error: Continues execution.
+Signalled by PLAN-B.
+If continued: Console interrupt.
+
+Broken at PLAN-B.  Type :H for Help.
+>>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 7
+Total #      nodes generated: 9
+NIL
+
+>>:r
+
+Correctable error: Continues execution.
+Signalled by LIST.
+If continued: Console interrupt.
+
+Broken at LIST.  Type :H for Help.
+>>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 10
+Total #      nodes generated: 16
+NIL
+
+>>:r
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op31 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op16 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op3 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op3 op31) (op31 G) (op16 op3) (I op16))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 10
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 12
+Total #      nodes generated: 23
+T
+
+>(compile-ab)
+Compiling /u/sgwoods/Plan/AbTweak2/init.lsp.
+Loading /u/sgwoods/Plan/Tweak2/init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/general.lsp
+Loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/structs.lsp
+Loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.lsp
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.lsp
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/cond-load.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/successors.lsp
+Single Producer Property is OFF
+Tweak Random determine-u-and-p is ON
+Loading /u/sgwoods/Plan/Tweak2/random-element.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/random-element.lsp
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/debug.lsp
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-structs.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-structs.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.lsp
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.lsp
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-init.lsp
+End of Pass 1.  
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/init.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/ab-mtc.lsp.
+End of Pass 1.  
+;; Note: Tail-recursive call of AB-ALL_PRECONDS_HOLD-P was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/ab-mtc.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/ab-structs.lsp.
+End of Pass 1.  
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/ab-structs.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/abtweak.lsp.
+; (IF (EQ *K-MODE* ...) ...) is being compiled.
+;; The variable *K-MODE* is undefined.
+;; The compiler will assume this variable is a global.
+; (DEFUN PRINT-STATS ...) is being compiled.
+;; The variable *AB-RANDOM* is undefined.
+;; The compiler will assume this variable is a global.
+;; The variable *CRITICAL-LOADED* is undefined.
+;; The compiler will assume this variable is a global.
+; (DEFUN SHOW-DOM ...) is being compiled.
+;; The variable *K-LIST* is undefined.
+;; The compiler will assume this variable is a global.
+End of Pass 1.  
+;; Note: Tail-recursive call of GET-K-VALS was replaced by iteration.
+;; Note: Tail-recursive call of MAXINT was replaced by iteration.
+;; Note: Tail-recursive call of MAXINT was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/abtweak.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/ab-succ.lsp.
+; (SETQ *AB-RANDOM* ...) is being compiled.
+;; The variable *AB-RANDOM* is undefined.
+;; The compiler will assume this variable is a global.
+End of Pass 1.  
+;; Note: Tail-recursive call of ADJUST-PRE-LIST was replaced by iteration.
+;; Note: Tail-recursive call of FIND-CRIT1 was replaced by iteration.
+;; Note: Tail-recursive call of FIND-RIGHT-CONSTANT was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/ab-succ.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/random-element.lsp.
+; (SETQ *AB-RANDOM* ...) is being compiled.
+;; The variable *AB-RANDOM* is undefined.
+;; The compiler will assume this variable is a global.
+End of Pass 1.  
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/random-element.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/ab-msp.lsp.
+End of Pass 1.  
+;; Note: Tail-recursive call of GET-CR-ESTS was replaced by iteration.
+;; Note: Tail-recursive call of N-CLOBBERS-P was replaced by iteration.
+;; Note: Tail-recursive call of N-ASSERTS-P was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/ab-msp.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/ab-mono.lsp.
+End of Pass 1.  
+;; Note: Tail-recursive call of PURGE-NODE-LIST was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/ab-mono.lsp.
+Compiling /u/sgwoods/Plan/AbTweak2/ab-causal.lsp.
+End of Pass 1.  
+;; Note: Tail-recursive call of GET-EST-TUPLES was replaced by iteration.
+;; Note: Tail-recursive call of GET-THIS-LEVEL-K-TYPE was replaced by iteration.
+;; Note: Tail-recursive call of FIND-THIS-A-PRE was replaced by iteration.
+;; Note: Tail-recursive call of GET-LEVEL-K-PRE was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling /u/sgwoods/Plan/AbTweak2/ab-causal.lsp.
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: BLOCKS-WORLD
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 12
+Total #      nodes generated: 23
+NIL
+
+>(load-hanoi2)
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+K level List: 
+(0 1 2)
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 12
+Total #      nodes generated: 23
+NIL
+
+>(k-mode t)
+WHICH-PRI-FUNCTION
+
+>(rand-mode nil)
+AbTweak Random det-u-and-po is OFF
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: NIL
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 12
+Total #      nodes generated: 23
+NIL
+
+>(time (abtweak initial goal))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op99 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op84 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op71 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op71 op99) (op99 G) (op84 op71) (I op84))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 10
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: NIL
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 12
+Total #      nodes generated: 21
+real time : 139.500 secs
+run time  : 93.350 secs
+T
+
+>(rand-mode t)
+AbTweak Random determine-u-and-p is ON
+Loading /u/sgwoods/Plan/AbTweak2/random-element.o
+Finished loading /u/sgwoods/Plan/AbTweak2/random-element.o
+T
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 12
+Total #      nodes generated: 21
+NIL
+
+>(time (abtweak initial goal))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op176 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+       ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op146 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+             ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+             ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op133 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op176 op133) (I op176) (op133 op146) (op146 G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 10
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: T
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 16
+Total #      nodes generated: 26
+real time : 173.333 secs
+run time  : 124.683 secs
+T
+
+>(k-mode nil)
+WHICH-PRI-FUNCTION
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 2
+Total #      nodes expanded: 16
+Total #      nodes generated: 26
+NIL
+
+>(time (abtweak initial goal))
+
+Correctable error: Continues execution.
+Signalled by LIST.
+If continued: Console interrupt.
+
+Broken at LIST.  Type :H for Help.
+>>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 3
+Total #      nodes expanded: 22
+Total #      nodes generated: 31
+NIL
+
+>>:r
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op252 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+       ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op230 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+             ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+             ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op217 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op252 op217) (I op252) (op217 op230) (op230 G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 11
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 3
+Total #      nodes expanded: 23
+Total #      nodes generated: 33
+real time : 269.400 secs
+run time  : 180.517 secs
+T
+
+>(time (abtweak initial goal))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op363 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+       ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+       ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op338 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+             ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+             ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op323 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op323 op363) (op363 G) (op338 op323) (I op338))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 10
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 3
+Total #      nodes expanded: 19
+Total #      nodes generated: 33
+real time : 356.283 secs
+run time  : 170.183 secs
+T
+
+>(defun da (plan) (ab-determine-u-and-p plan))
+DA
+
+>(setq init (make-initial-plan initial goal))
+#S(PLAN ID INITIAL-PLAN COST 0 KVAL 2 CR NIL A
+        (#S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONS PEG3)) EFFECTS NIL))
+        B ((I G)) NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+
+>(da init)
+
+Error: 0 is not of type (INTEGER 0 *).
+Error signalled by AB-DETERMINE-U-AND-P.
+
+Broken at AB-DETERMINE-U-AND-P.  Type :H for Help.
+>>:b
+Backtrace:  > eval > da > AB-DETERMINE-U-AND-P
+
+>>:q
+
+Top level.
+>(ab-mtc init)
+T
+
+>init
+#S(PLAN ID INITIAL-PLAN COST 0 KVAL 2 CR NIL A
+        (#S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONS PEG3)) EFFECTS NIL))
+        B ((I G)) NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+
+>(setf (plan-kval init) 1)
+1
+
+>init
+#S(PLAN ID INITIAL-PLAN COST 0 KVAL 1 CR NIL A
+        (#S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+               ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3)))
+         #S(OPERATOR OPID G NAME (G) PRECONDITIONS
+               ((ONB PEG3) (ONS PEG3)) EFFECTS NIL))
+        B ((I G)) NC NIL VAR NIL CONFLICTS NIL INVALID NIL)
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(da init)
+(G (ONB PEG3))
+
+>(compile-file "general.lsp")
+Compiling general.lsp.
+End of Pass 1.  
+;; Note: Tail-recursive call of MY-DELETE was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling general.lsp.
+
+>(compile-file "tweak")
+Compiling tweak.lsp.
+; (DEFUN PRINT-STATS ...) is being compiled.
+;; The variable *TW-RANDOM* is undefined.
+;; The compiler will assume this variable is a global.
+End of Pass 1.  
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling tweak.lsp.
+
+>(compile-file "../AbTweaK2/abtweak")
+The source file ../AbTweaK2/abtweak.lsp is not found.
+
+>(compile-file "../AbTweak2/abtweak.lsp")
+Compiling ../AbTweak2/abtweak.lsp.
+; (IF (EQ *K-MODE* ...) ...) is being compiled.
+;; The variable *K-MODE* is undefined.
+;; The compiler will assume this variable is a global.
+; (DEFUN PRINT-STATS ...) is being compiled.
+;; The variable *AB-RANDOM* is undefined.
+;; The compiler will assume this variable is a global.
+;; The variable *CRITICAL-LOADED* is undefined.
+;; The compiler will assume this variable is a global.
+; (DEFUN SHOW-DOM ...) is being compiled.
+;; The variable *K-LIST* is undefined.
+;; The compiler will assume this variable is a global.
+End of Pass 1.  
+;; Note: Tail-recursive call of GET-K-VALS was replaced by iteration.
+;; Note: Tail-recursive call of MAXINT was replaced by iteration.
+;; Note: Tail-recursive call of MAXINT was replaced by iteration.
+End of Pass 2.  
+OPTIMIZE levels: Safety=0 (No runtime error checking), Space=0, Speed=3
+Finished compiling ../AbTweak2/abtweak.lsp.
+
+>(load "init")
+Loading init.lsp
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/cond-load.o
+Finished loading /u/sgwoods/Plan/Tweak2/cond-load.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Single Producer Property is OFF
+Tweak Random determine-u-and-p is ON
+Loading /u/sgwoods/Plan/Tweak2/random-element.o
+Finished loading /u/sgwoods/Plan/Tweak2/random-element.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search.o
+Loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/list-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/node-access.o
+Loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/interface.o
+Loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Tweak2/Search/search-load.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/load-functions.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/blocks.lsp
+Finished loading init.lsp
+T
+
+>*mode*
+TWEAK
+
+>(mode 'tweak)
+Loading /u/sgwoods/Plan/Tweak2/tweak.o
+Finished loading /u/sgwoods/Plan/Tweak2/tweak.o
+Loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/tweak-flags.lsp
+TWEAK
+
+>(mode 'abtweak)
+Loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak.o
+Loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/abtweak-flags.lsp
+ABTWEAK
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: BLOCKS-WORLD
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 19
+Total #      nodes generated: 33
+NIL
+
+>(load-hanoi2)
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+Loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2/load-tests.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Examples/hanoi-2.lsp
+DOMAIN DEFINITION FOR: HANOI-2-ISPEG
+
+Operators: (#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+                  ((NOT ONS $X) (ONB $X) (NOT ONS $Y) (ISPEG $X)
+                   (ISPEG $Y))
+                  EFFECTS ((NOT ONB $X) (ONB $Y)))
+            #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+                  ((ONS $X) (ISPEG $X) (ISPEG $Y)) EFFECTS
+                  ((NOT ONS $X) (ONS $Y))))
+Initial State: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+Goal State:    ((ONB PEG3) (ONS PEG3))
+Criticalities: ((2 (ISPEG $)) (1 (NOT ONB $) (ONB $))
+                (0 (NOT ONS $) (ONS $)))
+Criticality ID: IBS-DEFAULT
+Top-Down-Levels to eliminate: (2 1)
+K level List: 
+(0 1 2)
+NIL
+
+>(cur)
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 0
+Total #      nodes expanded: 19
+Total #      nodes generated: 33
+NIL
+
+>(time (abtweak initial goal))
+
+*************************************************
+*         SOLUTION PLAN FOUND                    
+*************************************************
+
+Valid Operators used in Plan: 
+(#S(OPERATOR OPID op443 NAME (MOVES PEG1 PEG2) PRECONDITIONS
+       ((ONS PEG1) (ISPEG PEG1) (ISPEG PEG2)) EFFECTS
+       ((NOT ONS PEG1) (ONS PEG2)))
+ #S(OPERATOR OPID op437 NAME (MOVES PEG2 PEG3) PRECONDITIONS
+             ((ONS PEG2) (ISPEG PEG2) (ISPEG PEG3)) EFFECTS
+             ((NOT ONS PEG2) (ONS PEG3)))
+ #S(OPERATOR OPID op422 NAME (MOVEB PEG1 PEG3) PRECONDITIONS
+       ((NOT ONS PEG1) (ONB PEG1) (NOT ONS PEG3) (ISPEG PEG1)
+        (ISPEG PEG3))
+       EFFECTS ((NOT ONB PEG1) (ONB PEG3)))
+ #S(OPERATOR OPID I NAME (I) PRECONDITIONS NIL EFFECTS
+       ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1) (ONS PEG1)
+        (NOT ONB PEG2) (NOT ONB PEG3) (NOT ONS PEG2) (NOT ONS PEG3)))
+ #S(OPERATOR OPID G NAME (G) PRECONDITIONS ((ONB PEG3) (ONS PEG3))
+       EFFECTS NIL))
+
+Order Constraints  (a < b):
+((op443 op422) (op422 op437) (I op443) (op437 G))
+
+Non Codesignations: 
+NIL
+
+*** Node Search DEPTH: 11
+
+ABTWEAK PLANNER  RUN STATISTICS
+Planner Mode Loaded: ABTWEAK
+Domain: HANOI-2-ISPEG
+AbTweak Random: T
+Critical: IBS-DEFAULT
+Search Type: 4
+SPP property: NIL
+Debug  Flag:NIL
+A: K levels: 2
+A: K setting: NIL
+A: Top-Down Flag: NIL
+A: Top-Down pruned: 0
+A: MSP: NIL
+A: Prune: NIL
+A: W-MSP pruned :0
+A: S-MSP pruned :0
+A: Total # ABSTRACT nodes     : 3
+Total #      nodes expanded: 24
+Total #      nodes generated: 41
+real time : 104.333 secs
+run time  : 37.933 secs
+T
+
+>

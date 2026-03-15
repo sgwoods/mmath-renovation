@@ -1,0 +1,21 @@
+(load-hanoi3)
+
+(setq *critical-loaded* 'ibmmss)
+(setq *critical-list* '(
+               (5 (ispeg $))
+               (4 (onb $)) 
+               (3 (not onm $)) 
+               (2 (onm $)) 
+               (1 (not ons $)) 
+               (0 (ons $))
+                         ))
+
+(setq *k-list* '(0 0 0 0 0 0))
+
+(driver initial goal 
+:planner-mode 'abtweak
+:output-file "/u/sgwoods/Plan/Planner/Batcher/hanoi3/bmmssi-ab.1128")
+
+(bye)
+
+

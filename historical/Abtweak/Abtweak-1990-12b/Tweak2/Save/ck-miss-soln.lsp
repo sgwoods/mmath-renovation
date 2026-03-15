@@ -1,0 +1,45 @@
+; /Tweak/ck-miss-soln.lsp
+
+;When solution # operators is know - abort if solution missed due
+; to error !!
+
+; LOOK returns a list consisting of the (min max) where
+;  min refers to the MINIMUM number of operators in use in a plan in *OPEN*
+;  max refers to the MAXIMUM number of operators in use in a plan in *OPEN*
+
+; Solution has been missed if MIN exceeds known
+
+(defun soln-err-p (known)
+  "/Tweak/ck-miss-soln.lsp "
+     (if (> (first (look)) known)
+         t ; SOLUTION MISSED
+         nil ))
+
+(defun look ()
+  "/Tweak/ck-miss-soln.lsp "
+   (minmax (ops *open*) 100 0))
+
+(defun ops2 ()
+  (let ( (result nil) )
+    (dolist (node *open*)
+      (cons (length (plan-a (second node))) result)
+     )))
+
+(defun  ops (list)
+  "/Tweak/ck-miss-soln.lsp "
+    (if (eq (car list) nil)
+        nil
+        (cons
+               (length (plan-a (second (first list))))
+               (ops (cdr list)) ) ))
+
+(defun minmax (nums min max)
+  "/Tweak/ck-miss-soln.lsp "
+    (if (eq (car nums) nil)
+        (list min max)
+        (if (> (car nums) max)
+            (minmax (cdr nums) min (car nums))
+            (if (< (car nums) min)
+                (minmax (cdr nums) (car nums) max)
+                (minmax (cdr nums) min max)) ) ) )
+    

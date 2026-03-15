@@ -1,0 +1,468 @@
+;***************************************************************************
+; Strips ROBOT domain definition
+;***************************************************************************
+(setq *domain* 'robot)
+
+; operators
+
+; Pickup  OBJ when robot next to OBJ and OBJ can be carried
+(setq o1 (make-operator
+	 :opid 'pickup-obj
+	 :name '(pickup-obj $obj $loc robot)
+	 :preconditions '(
+			  (armempty)
+                          (is-location $loc)
+                          (is-object   $obj)
+			  (carriable   $obj)
+			  (at robot    $loc)
+			  (at $obj     $loc)
+			 )
+	 :effects '(
+                    (not armempty)
+		    (holding $obj)
+                    (not at  $obj $loc)
+                   )))
+
+; Putdown  OBJ next-to robot 
+;   Note object has an effect of inroom
+; 
+(setq o2 (make-operator
+	 :opid 'putdown
+	 :name '(putdown $obj $loc robot)
+	 :preconditions '(
+                          (holding $obj)
+                          (at  robot $loc)
+			 )
+	 :effects '(
+                    (not holding   $obj)
+                    (at  $obj  $loc)
+                    (armempty)
+                   )))
+
+; Go to Location within room
+(setq o3 (make-operator
+	 :opid 'goto-room-loc
+	 :name '(goto-room-loc $from $to $room)
+	 :preconditions '(
+                          (is-location $from)
+                          (is-location $to)
+                          (location-inroom  $from  $room)
+                          (location-inroom  $to    $room)
+                          (inroom robot $room)
+                          (at robot $from)
+			 )
+	 :effects '(
+                    (not at robot $from)
+                    (at robot $to)
+                   )))
+
+; Push box to door leading to room
+(setq o4 (make-operator
+	 :opid 'push-to-dr
+	 :name '(push-to-dr $door-nm $door-loc $from-room $to-room 
+                            $box  $start-loc robot)
+	 :preconditions '(
+                          (is-object $box)
+                          (pushable $box)
+                          (is-room  $from-room)
+                          (is-room  $to-room)
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-door-loc $door-nm $door-loc)
+                          (is-location $door-loc)
+                          (is-location $start-loc)
+                          (location-inroom  $door-loc  $from-room)
+                          (location-inroom  $start-loc $from-room)
+                          (inroom  robot $from-room)
+                          (inroom  $box  $from-room)
+                          (at $box  $start-loc)
+  		          (at robot $start-loc)
+			 )
+	 :effects '(
+                    (not at robot $start-loc)
+                    (not at $box  $start-loc)
+                    (at $box  $door-loc)
+                    (at robot $door-loc)
+                   )))
+
+; Push BOX through DOOR between 2 rooms
+(setq o5 (make-operator
+	 :opid 'push-thru-dr
+	 :name '(push-thru-dr $box $door-nm $from-room $to-room 
+                              $door-loc robot)
+	 :preconditions '(
+                          (is-object $box)
+                          (pushable $box)
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-room  $from-room)
+                          (is-room  $to-room)
+                          (is-door-loc $door-nm $door-loc)
+                          (is-location $door-loc)
+                          (location-inroom $door-loc $from-room)
+                          (location-inroom $door-loc $to-room)
+                          (open     $door-nm)
+                          (inroom   robot $from-room)
+                          (inroom   $box  $from-room)
+  		          (at $box   $door-loc)
+  		          (at robot  $door-loc)
+			 )
+	 :effects '(
+                    (not inroom robot $from-room)
+                    (inroom robot $to-room)
+
+                    (not inroom $box $from-room)
+                    (inroom $box $to-room)
+                   )))
+
+; GO through door from room2 to room1
+(setq o6 (make-operator
+	 :opid 'go-thru-dr
+	 :name '(go-thru-dr $door-nm $from-room $to-room 
+                            $door-loc )
+	 :preconditions '(
+                          (armempty)
+                          (is-room  $from-room)
+                          (is-room  $to-room)
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-door-loc $door-nm $door-loc)
+                          (is-location $door-loc)
+                          (location-inroom $door-loc $from-room)
+                          (location-inroom $door-loc $to-room)
+                          (open     $door-nm)
+                          (inroom robot $from-room)
+  		          (at robot     $door-loc)
+			 )
+	 :effects '(
+                    (not inroom robot $from-room)
+                    (inroom robot $to-room)
+                   )))
+
+; Carry B1 through door-nm from from-room to to-room
+(setq o7 (make-operator
+	 :opid 'carry-thru-dr
+	 :name '(carry-thru-dr $box $door-nm $from-room $to-room 
+                               $door-loc robot)
+	 :preconditions '(
+                          (is-object $box)
+  		          (holding $box)
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-room  $from-room)
+                          (is-room  $to-room)
+                          (is-door-loc $door-nm $door-loc)
+                          (is-location $door-loc)
+                          (location-inroom $door-loc $from-room)
+                          (location-inroom $door-loc $to-room)
+                          (open     $door-nm)
+                          (inroom   robot $from-room)
+                          (inroom   $box  $from-room)
+  		          (at robot  $door-loc)
+			 )
+	 :effects '(
+                    (not inroom robot $from-room)
+                    (inroom robot $to-room)
+                    (not inroom $box $from-room)
+                    (inroom $box $to-room)
+                   )))
+
+; Go to Door D1 (in Room 1)
+(setq o8 (make-operator
+	 :opid 'goto-dr
+	 :name '(goto-dr $door-nm $from-room $to-room $door-loc $start-loc)
+	 :preconditions '(
+                          (is-room  $from-room)
+                          (is-room  $to-room)
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-door-loc $door-nm $door-loc)
+                          (is-location $door-loc)
+                          (is-location $start-loc)
+                          (location-inroom  $door-loc  $from-room)
+                          (location-inroom  $start-loc $from-room)
+                          (inroom  robot $from-room)
+  		          (at robot $start-loc)
+			 )
+	 :effects '(
+                    (not at robot $start-loc)
+                    (at robot $door-loc)
+                   )))
+
+; Push B1 to B2 (in Room )
+;
+(setq o9 (make-operator
+	 :opid 'push-box
+	 :name '(push-box $box1 $box2 $room $box-loc1 $box-loc2 robot)
+	 :preconditions '(
+                          (is-object  $box1)
+                          (is-object  $box2)
+                          (pushable   $box1)
+                          (at $box1 $box-loc1)
+                          (at $box1 $box-loc2)
+                          (is-location $box-loc1)
+                          (is-location $box-loc2)
+                          (at robot $box-loc1)
+                          (location-inroom     $box-loc1 $room)
+                          (location-inroom     $box-loc2 $room)
+                          (inroom     robot $room)
+                          (inroom     $box1 $room)
+                          (inroom     $box2 $room)
+			 )
+	 :effects '(
+                    (not at robot $box-loc1)
+                    (not at $box1  $box-loc1)
+                    (at robot $box-loc2)
+                    (at $box1 $box-loc2)
+                   )))
+
+; Go to Object B in ROOM
+(setq o10 (make-operator
+	 :opid 'goto-obj
+	 :name '(goto-obj $obj $room $obj-loc $r-loc)
+	 :preconditions '(
+                          (is-object $obj)
+                          (at $obj $obj-loc)
+                          (at robot $r-loc)
+                          (is-location $obj-loc)
+                          (is-location $r-loc)
+                          (location-inroom  $obj-loc  $room)
+                          (location-inroom  $r-loc    $room)
+                          (inroom robot $room)
+                          (inroom $obj  $room)
+			 )
+	 :effects '(
+                    (not at robot $r-loc)
+                    (at  robot $obj-loc)       
+                   )))
+
+; Open door
+(setq o11 (make-operator
+	 :opid 'open
+	 :name '(open $door-nm $door-loc $from-room $to-room)
+	 :preconditions '(
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-door-loc $door-nm $door-loc )
+                          (location-inroom $door-loc $from-room)
+                          (location-inroom $door-loc $to-room)
+                          (inroom robot $from-room)
+                          (at robot $door-loc)       
+                          (not open $door-nm)
+			 )
+	 :effects '(
+                    (open $door-nm)
+                   )))
+
+; Close door
+(setq o12 (make-operator
+	 :opid 'close
+	 :name '(close $door-nm $door-loc $from-room $to-room)
+	 :preconditions '(
+                          (is-door  $door-nm $from-room $to-room)
+                          (is-door-loc $door-nm $door-loc )
+                          (location-inroom $door-loc $from-room)
+                          (location-inroom $door-loc $to-room)
+                          (inroom robot $from-room)
+                          (at robot $door-loc)       
+                          (open $door-nm)
+			 )
+	 :effects '(
+                    (not open $door-nm)
+                   )))
+
+(setq *operators* (list o1 o2 o3 o4 o5 o6 o7 o8 o9 o10 o11 o12 ))
+
+; initial state
+;
+(setq initial 
+'(
+    (armempty)
+    
+    (is-object box1)
+    (is-object box2)
+    (is-object box3)
+
+    (carriable box1)
+    (carriable box2)
+    (carriable box3)
+    
+    (pushable box1)
+    (pushable box2)
+    (pushable box3)  
+
+    (is-room room1)
+    (is-room room2)
+    (is-room room3)
+    (is-room room4)
+    (is-room room5)
+    (is-room room6)
+
+    (is-location loc1 )
+    (location-inroom loc1 room1)
+    (is-location loc2 )
+    (location-inroom loc2 room1)
+
+    (is-door-loc door1-2 loc3)
+    (is-location loc3)
+    (location-inroom loc3 room1)
+    (location-inroom loc3 room2)
+    (is-door door1-2 room1 room2)
+    (is-door door1-2 room2 room1)
+    (open door1-2)
+
+    (is-location loc4 )
+    (location-inroom loc4 room2)
+    (is-location loc5 )
+    (location-inroom loc5 room2)
+
+    (is-door-loc door2-6 loc6)
+    (is-location loc6)
+    (location-inroom loc6 room2)
+    (location-inroom loc6 room6)
+    (is-door door2-6 room2 room6)
+    (is-door door2-6 room6 room2)
+    (open door2-6)
+
+    (is-door-loc door2-5 loc7)
+    (is-location loc7)
+    (location-inroom loc7 room2)
+    (location-inroom loc7 room5)
+    (is-door door2-5 room2 room5)
+    (is-door door2-5 room5 room2)
+    (open door2-5)
+
+    (is-door-loc door2-3 loc8)
+    (is-location loc8)
+    (location-inroom loc8 room2)
+    (location-inroom loc8 room3)
+    (is-door door2-3 room2 room3)
+    (is-door door2-3 room3 room2)
+    (open door2-3)
+
+    (is-location loc9 )
+    (location-inroom loc9 room3)
+    (is-location loc10)
+    (location-inroom loc9 room3)
+
+    (is-door-loc door3-5 loc11)
+    (is-location loc11)
+    (location-inroom loc11 room3)
+    (location-inroom loc11 room5)
+    (is-door door3-5 room3 room5)
+    (is-door door3-5 room5 room3)
+    (open door3-5)
+
+    (is-location loc12)
+    (location-inroom loc12 room6)
+    (is-location loc13)
+    (location-inroom loc13 room6)
+    (is-location loc14)
+    (location-inroom loc14 room6)
+
+    (is-door-loc door5-6 loc15)
+    (is-location loc15)
+    (location-inroom loc15 room5)
+    (location-inroom loc15 room6)
+    (is-door door5-6 room5 room6)
+    (is-door door5-6 room6 room5)
+    (open door5-6)
+
+    (is-location loc16)
+    (location-inroom loc16 room5)
+
+    (is-door-loc door4-5 loc17)
+    (is-location loc17)
+    (location-inroom loc17 room4)
+    (location-inroom loc17 room5)
+    (is-door door4-5 room4 room5)
+    (is-door door4-5 room5 room4)
+    (not open door4-5)
+
+    (is-location loc18)
+    (location-inroom loc18 room4)
+    (is-location loc19)
+    (location-inroom loc19 room4)
+    (is-location loc20)
+    (location-inroom loc20 room5)
+
+    (at robot loc19)
+    (inroom robot room4)
+    (at box1 loc13)
+    (inroom box1 room6)
+    (at box2 loc14)
+    (inroom box2 room6)
+    (at box3 loc19)
+    (inroom box3 room4)
+))
+
+;goal state
+;
+(setq goal '(
+ (inroom robot room1)
+            ))
+
+;***************************************************************************
+; abtweak domain part - refered to only in abtweak
+;***************************************************************************
+
+(setq *critical-list* '(
+   (4  (armempty) (not armempty) 
+       (is-location $) (carriable $) (is-door-loc $ $) (is-door $ $ $)
+       (location-inroom $ $) (is-object $) (is-room $) (pushable $) (carriable $) )
+   (3  (inroom $ $) )
+   (2  (at     $ $) )
+   (1  (open $) (not open $) )
+   (0  (holding $) )
+))
+
+(setq *k-list* '(0 1 2 3 4))  ; simple default
+
+(setq *top-down-levels*     
+'(
+  4
+  3
+  2
+  1
+  0
+))
+
+;******** NEW OPERATOR MOTIVATION LISTS **********
+;
+; invoke via switch :motive-discard t
+;
+; How SHOULD we NOT achieve each goal (via new establishers) ?
+
+(setq *not-motive* '(
+( (inroom robot $) ( push-thru-dr carry-thru-dr ) )
+))
+
+
+; goal/operator list for this domain / branching factor in brackets
+;
+;                                    New           Existing
+;                                    Establisher   Establisher
+
+; Goal = (inroom robot ? )  [3] 
+;  push-thru-dr                     ignore            
+;  go-thru-dr
+;  carry-thru-dr                    ignore
+
+; Goal = (inroom ? ? )      [2]
+;  push-thru-dr             
+;  carry-thru-dr           
+
+;Goal = ( at robot ? )      [5]
+;  goto-room-loc
+;  push-to-dr              
+;  goto-dr
+;  push-box                
+;  goto-obj                 
+
+; Goal = (at ? ?)           [3]
+;  putdown (via a carry)
+;  push-to-dr
+;  push-box
+
+; Goal = (holding  $)       [1]
+;  pickup
+
+; Goal = (open $)           [1]
+;  open
+
+; Goal = (not open $)       [1]
+;  close

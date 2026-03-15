@@ -1,0 +1,523 @@
+KCl (Kyoto Common Lisp)  June 3, 1987
+Loading init.lsp
+
+
+type  (start) to re-load planner
+
+Loading init-o.lsp
+Loading /u/sgwoods/Plan/Planner/Search/search-load.o
+Loading /u/sgwoods/Plan/Planner/Search/search.o
+Finished loading /u/sgwoods/Plan/Planner/Search/search.o
+Loading /u/sgwoods/Plan/Planner/Search/graphsearch.o
+Finished loading /u/sgwoods/Plan/Planner/Search/graphsearch.o
+Loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.o
+Finished loading /u/sgwoods/Plan/Planner/Search/graph-ctrl.o
+Loading /u/sgwoods/Plan/Planner/Search/list-access.o
+Finished loading /u/sgwoods/Plan/Planner/Search/list-access.o
+Loading /u/sgwoods/Plan/Planner/Search/node-access.o
+Finished loading /u/sgwoods/Plan/Planner/Search/node-access.o
+Loading /u/sgwoods/Plan/Planner/Search/interface.o
+Finished loading /u/sgwoods/Plan/Planner/Search/interface.o
+Loading /u/sgwoods/Plan/Planner/Search/state-expansion.o
+Finished loading /u/sgwoods/Plan/Planner/Search/state-expansion.o
+Loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Planner/Search/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Planner/Search/search-load.o
+Loading /u/sgwoods/Plan/Planner/planner.o
+Finished loading /u/sgwoods/Plan/Planner/planner.o
+Loading /u/sgwoods/Plan/Planner/branch.o
+Finished loading /u/sgwoods/Plan/Planner/branch.o
+Loading /u/sgwoods/Plan/Planner/driver.o
+Finished loading /u/sgwoods/Plan/Planner/driver.o
+Loading /u/sgwoods/Plan/Tweak2/init.o
+Loading /u/sgwoods/Plan/Tweak2/general.o
+Finished loading /u/sgwoods/Plan/Tweak2/general.o
+Loading /u/sgwoods/Plan/Tweak2/structs.o
+Finished loading /u/sgwoods/Plan/Tweak2/structs.o
+Loading /u/sgwoods/Plan/Tweak2/mtc.o
+Finished loading /u/sgwoods/Plan/Tweak2/mtc.o
+Loading /u/sgwoods/Plan/Tweak2/successors.o
+Finished loading /u/sgwoods/Plan/Tweak2/successors.o
+Loading /u/sgwoods/Plan/Tweak2/tree.o
+Finished loading /u/sgwoods/Plan/Tweak2/tree.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-new-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/select-ops.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-pos-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Finished loading /u/sgwoods/Plan/Tweak2/Succ/find-nec-exist-ests.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/classify.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/declob.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/conflict-detection.o
+Loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Conf-infer/intermed-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-dependent.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-inference.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/cr-access.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/plan-modification.o
+Loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Finished loading /u/sgwoods/Plan/Tweak2/Plan-infer/show-plan.o
+Loading /u/sgwoods/Plan/Tweak2/debug.o
+Finished loading /u/sgwoods/Plan/Tweak2/debug.o
+Loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/Tweak2/init.o
+Loading /u/sgwoods/Plan/AbTweak2/init.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mtc.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-succ.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-causal.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-msp.o
+Loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Finished loading /u/sgwoods/Plan/AbTweak2/ab-mono.o
+Loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/Maint/compile.lsp
+Finished loading /u/sgwoods/Plan/AbTweak2/init.o
+Loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/load-functions.lsp
+Loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/nils-blocks.lsp
+domain definition for: NILSSONS-BLOCKS-WORLD
+operators    : 
+(#S(OPERATOR OPID PICKUP NAME (PICKUP $X) PRECONDITIONS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((HOLDING $X) (NOT ONTABLE $X) (NOT CLEAR $X) (NOT HANDEMPTY)))
+ #S(OPERATOR OPID PUTDOWN NAME (PUTDOWN $X) PRECONDITIONS
+       ((HOLDING $X)) EFFECTS
+       ((ONTABLE $X) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)))
+ #S(OPERATOR OPID STACK NAME (STACK $X $Y) PRECONDITIONS
+       ((HOLDING $X) (CLEAR $Y)) EFFECTS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY) (NOT HOLDING $X)
+        (NOT CLEAR $Y)))
+ #S(OPERATOR OPID UNSTACK NAME (UNSTACK $X $Y) PRECONDITIONS
+       ((ON $X $Y) (CLEAR $X) (HANDEMPTY)) EFFECTS
+       ((CLEAR $Y) (NOT CLEAR $X) (NOT HANDEMPTY) (HOLDING $X)
+        (NOT ON $X $Y))))
+initial state: ((ON C A) (ONTABLE A) (ONTABLE B) (CLEAR C) (CLEAR B)
+                (HANDEMPTY))
+goal state   : ((ON A B) (ON B C))
+Loading useful.o
+Finished loading useful.o
+Finished loading init-o.lsp
+Finished loading init.lsp
+
+>Loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp
+Finished loading /u/sgwoods/Plan/Planner/Domains/hanoi-3.lsp
+domain definition for: HANOI-3-ISPEG
+operators    : 
+(#S(OPERATOR OPID MOVEB NAME (MOVEB $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONM $X) (NOT ONS $Y)
+        (NOT ONM $Y) (ONB $X))
+       EFFECTS ((NOT ONB $X) (ONB $Y)))
+ #S(OPERATOR OPID MOVEM NAME (MOVEM $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (NOT ONS $X) (NOT ONS $Y) (ONM $X))
+       EFFECTS ((NOT ONM $X) (ONM $Y)))
+ #S(OPERATOR OPID MOVES NAME (MOVES $X $Y) PRECONDITIONS
+       ((ISPEG $X) (ISPEG $Y) (ONS $X)) EFFECTS
+       ((NOT ONS $X) (ONS $Y))))
+initial state: ((ISPEG PEG1) (ISPEG PEG2) (ISPEG PEG3) (ONB PEG1)
+                (ONM PEG1) (ONS PEG1) (NOT ONB PEG2) (NOT ONB PEG3)
+                (NOT ONM PEG2) (NOT ONM PEG3) (NOT ONS PEG2)
+                (NOT ONS PEG3))
+goal state   : ((ONB PEG3) (ONM PEG3) (ONS PEG3))
+NIL
+
+>BMMISS
+
+>((5 (ONB $)) (4 (NOT ONM $)) (3 (ONM $)) (2 (ISPEG $)) (1 (NOT ONS $))
+ (0 (ONS $)))
+
+>(0 0 0 0 0 0)
+
+>expanded  = 20
+generated = 29
+expanded  = 40
+generated = 56
+expanded  = 60
+generated = 83
+expanded  = 80
+generated = 117
+expanded  = 100
+generated = 152
+expanded  = 120
+generated = 194
+expanded  = 140
+generated = 228
+expanded  = 160
+generated = 259
+expanded  = 180
+generated = 286
+expanded  = 200
+generated = 306
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 200
+nodes generated: 306
+solution depth : 0
+max node succ  : 10
+max conflicts  : 2
+branch factors : ((0 0.0) (1 1.13) (2 0.83) (3 2.2) (4 3.08) (5 1.75))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 79
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 50
+expanded  = 220
+generated = 331
+expanded  = 240
+generated = 354
+expanded  = 260
+generated = 383
+expanded  = 280
+generated = 412
+expanded  = 300
+generated = 440
+expanded  = 320
+generated = 460
+expanded  = 340
+generated = 501
+expanded  = 360
+generated = 527
+expanded  = 380
+generated = 569
+expanded  = 400
+generated = 596
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 400
+nodes generated: 596
+solution depth : 0
+max node succ  : 10
+max conflicts  : 2
+branch factors : ((0 0.0) (1 1.26) (2 0.76) (3 1.93) (4 3.55) (5 1.8))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 202
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 100
+expanded  = 420
+generated = 620
+expanded  = 440
+generated = 657
+expanded  = 460
+generated = 698
+expanded  = 480
+generated = 733
+expanded  = 500
+generated = 782
+expanded  = 520
+generated = 815
+expanded  = 540
+generated = 852
+expanded  = 560
+generated = 899
+expanded  = 580
+generated = 934
+expanded  = 600
+generated = 981
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 600
+nodes generated: 981
+solution depth : 0
+max node succ  : 11
+max conflicts  : 3
+branch factors : ((0 0.0) (1 1.24) (2 0.72) (3 1.87) (4 4.78) (5 1.8))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 250
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 148
+expanded  = 620
+generated = 1027
+expanded  = 640
+generated = 1074
+expanded  = 660
+generated = 1119
+expanded  = 680
+generated = 1163
+expanded  = 700
+generated = 1197
+expanded  = 720
+generated = 1243
+expanded  = 740
+generated = 1276
+expanded  = 760
+generated = 1315
+expanded  = 780
+generated = 1358
+expanded  = 800
+generated = 1389
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 800
+nodes generated: 1389
+solution depth : 0
+max node succ  : 11
+max conflicts  : 3
+branch factors : ((0 0.0) (1 1.24) (2 0.71) (3 1.74) (4 5.08) (5 1.8))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 283
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 205
+expanded  = 820
+generated = 1431
+expanded  = 840
+generated = 1465
+expanded  = 860
+generated = 1508
+expanded  = 880
+generated = 1556
+expanded  = 900
+generated = 1599
+expanded  = 920
+generated = 1631
+expanded  = 940
+generated = 1665
+expanded  = 960
+generated = 1704
+expanded  = 980
+generated = 1741
+expanded  = 1000
+generated = 1771
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1000
+nodes generated: 1771
+solution depth : 0
+max node succ  : 11
+max conflicts  : 3
+branch factors : ((0 0.0) (1 1.26) (2 0.68) (3 1.72) (4 5.23) (5 1.8))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 371
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 257
+expanded  = 1020
+generated = 1802
+expanded  = 1040
+generated = 1841
+expanded  = 1060
+generated = 1872
+expanded  = 1080
+generated = 1914
+expanded  = 1100
+generated = 1956
+expanded  = 1120
+generated = 1990
+expanded  = 1140
+generated = 2025
+expanded  = 1160
+generated = 2071
+expanded  = 1180
+generated = 2099
+expanded  = 1200
+generated = 2124
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1200
+nodes generated: 2124
+solution depth : 0
+max node succ  : 11
+max conflicts  : 3
+branch factors : ((0 0.0) (1 1.26) (2 0.63) (3 1.64) (4 4.93) (5 1.8))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 481
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 310
+expanded  = 1220
+generated = 2144
+expanded  = 1240
+generated = 2163
+expanded  = 1260
+generated = 2187
+expanded  = 1280
+generated = 2205
+expanded  = 1300
+generated = 2226
+expanded  = 1320
+generated = 2244
+expanded  = 1340
+generated = 2265
+expanded  = 1360
+generated = 2284
+expanded  = 1380
+generated = 2305
+expanded  = 1400
+generated = 2327
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1400
+nodes generated: 2327
+solution depth : 0
+max node succ  : 11
+max conflicts  : 3
+branch factors : ((0 0.0) (1 1.26) (2 0.42) (3 1.72) (4 4.93) (5 1.8))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 766
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 384
+expanded  = 1420
+generated = 2345
+expanded  = 1440
+generated = 2366
+expanded  = 1460
+generated = 2392
+expanded  = 1480
+generated = 2422
+expanded  = 1500
+generated = 2448
+expanded  = 1520
+generated = 2473
+expanded  = 1540
+generated = 2491
+expanded  = 1560
+generated = 2535
+expanded  = 1580
+generated = 2573
+expanded  = 1600
+generated = 2607
+abtweak planner  run statistics
+planner-mode   : ABTWEAK
+search type    : 4
+debug          : NIL
+determine via  : FIRST
+backwards-mode : NIL
+heuristic      : D
+nodes expanded : 1600
+nodes generated: 2607
+solution depth : 0
+max node succ  : 11
+max conflicts  : 3
+branch factors : ((0 0.0) (1 1.25) (2 0.36) (3 1.71) (4 4.82) (5 1.83))
+
+a: criticality levels    : 5
+a: criticality depth mode: NIL
+a: k learning mode       : NIL
+a: top-down flag         : NIL
+a: top-down pruned       : 0
+a: abs goal mode         : NIL
+a: monotonic sol property: WEAK
+a: msp weak mode         : POS
+a: weak msp   pruned     : 928
+a: strong msp pruned     : 0
+a: abstract nodes gen    : 442
+expanded  = 1620
+generated = 2648
+expanded  = 1640
+generated = 2692
+expanded  = 1660
+generated = 2738
+expanded  = 1680
+generated = 2769
+expanded  = 1700
+generated = 2791
+expanded  = 1720
+generated = 2811
+expanded  = 1740
+generated = 2834
+expanded  = 1760
+generated = 2866
+expanded  = 1780
+generated = 2903
