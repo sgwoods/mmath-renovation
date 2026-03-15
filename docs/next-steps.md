@@ -10,10 +10,10 @@ It complements:
 
 ## Current Priorities
 
-1. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
-2. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
-3. Expand historical sample-case coverage from the shipped manual domains, especially transportation, stylistics, and scheduling.
-4. Revisit `hanoi-4` as a performance and historical-fidelity problem now that the fatal SBCL heap blow-up is fixed and we know that the current MP and left-wedge settings are not reducing search.
+1. Reconstruct the published Hanoi hierarchy variants and permutations, then script `hanoi-4` comparisons across those hierarchies with MP and left-wedge toggles.
+2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
+3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+4. Expand historical sample-case coverage from the shipped manual domains, especially transportation, stylistics, and scheduling.
 
 ## Suggested GitHub Issues
 
@@ -31,16 +31,16 @@ The issue tracker should stay focused on a few parallel tracks:
 ## Suggested Order
 
 1. Mark each benchmark row in the validation matrix as matched, partially matched, or still open.
-2. Trim the remaining SBCL style/redefinition noise in the working tree.
-3. Widen the smoke suite into more 1993 shipped sample domains.
-4. Only then spend more time on larger robot or Hanoi variants.
+2. Script and compare the historically defined Hanoi hierarchy options instead of relying only on the default `*critical-list-1*`.
+3. Trim the remaining SBCL style/redefinition noise in the working tree.
+4. Widen the smoke suite into more 1993 shipped sample domains.
 
 ## Exit Criteria For The Next Milestone
 
 The next milestone should be considered complete when:
 
 - the robot left-wedge comparison is scripted and documented
-- one larger abstraction benchmark runs successfully or fails in a well-understood way without fatal SBCL runtime instability
+- `hanoi-4` has either a successful run or a hierarchy-by-hierarchy explanation that is grounded in the historical abstractions rather than only the default one
 - planner-level termination checks for open, generate, and DFS failure modes remain reproducible via the smoke runner
 - the issue tracker reflects the major technical and validation workstreams
 - the status document can be updated from smoke-test output without rediscovering prior context

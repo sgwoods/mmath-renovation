@@ -7,6 +7,7 @@ It complements:
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
+- [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 
 ## Current Result
 
@@ -52,6 +53,10 @@ Observed DFS run:
 - The fatal high-bound SBCL failure is now fixed in the working tree.
 - At higher bounds, the benchmark is still expensive, but it now terminates normally with `EXPAND-LIMIT-EXCEEDED` rather than exhausting the heap.
 - The no-MP and default-MP high-bound runs are now both stable enough to compare as ordinary planner results.
+- The working-vs-historical algorithm review now strengthens the diagnosis:
+  - the active `hanoi-4` domain and default hierarchy match the archival snapshots
+  - the main working-tree precedence rewrite preserves the historical precedence relation on randomized equivalence checks
+  - the search gap therefore looks more like a control or fidelity problem than a replaced planner algorithm
 
 ## Evidence Against A Gross Semantic Break
 
@@ -97,5 +102,6 @@ The best current classification for `hanoi-4` is:
 - likely a search-growth and control-setting problem first
 - no longer reproducing the earlier MP / ordering heap blow-up under the same high-bound SBCL run
 - not evidence of a major semantic break in the Hanoi domain encoding itself
+- not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a performance and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: why the restored abstraction controls are not producing the historically expected search reduction on this benchmark
+- most immediate open question: why the restored abstraction controls and default Hanoi hierarchy are not producing the historically expected search reduction on this benchmark
