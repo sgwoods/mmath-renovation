@@ -8,6 +8,7 @@ It complements:
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
+- [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
@@ -24,11 +25,13 @@ It complements:
 
 ## Current Priorities
 
-1. Unify the main experiment infrastructure around one restored working
-   environment:
-   standardize the current smoke, historical-control, comparison, and trace
-   workflows so the repo behaves like one restored experimental system instead
-   of a collection of separate probes.
+1. Continue unifying the main experiment infrastructure around one restored
+   working environment:
+   the repo now has a common front door at
+   [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh),
+   and the next step is to keep moving the current smoke,
+   historical-control, comparison, and trace workflows toward one shared
+   harness vocabulary and result shape.
 2. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.

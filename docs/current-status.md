@@ -10,6 +10,7 @@ For deeper technical detail, see:
 - [Publications index](/Users/stevenwoods/mmath-renovation/publications/README.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
+- [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 trace workflow](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
@@ -44,6 +45,8 @@ For deeper technical detail, see:
 - Top-level recommendation: converge the repo toward one unified restored
   experimental environment, then keep `hanoi-4` as the highest-priority open
   benchmark inside that structure
+- First unification step now in place: the repo has a single experiment entry
+  point at [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to

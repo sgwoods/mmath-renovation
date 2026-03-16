@@ -14,6 +14,9 @@ It is the best place to answer two questions:
 For the newer top-level framing around one unified restored experimental
 environment, see [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md).
 
+The first concrete consolidation step is now the shared experiment front door
+documented in [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md).
+
 ## Plan State
 
 ### Track 1: Runtime Restoration
@@ -80,6 +83,9 @@ Focus on:
 - standardizing how historical-control runs, smoke runs, and trace runs are
   expressed
 - using the Hanoi compatibility layer as the first model for that structure
+- extending the new shared entry point in
+  [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
+  so it becomes the normal way to invoke the environment
 
 Reason:
 
