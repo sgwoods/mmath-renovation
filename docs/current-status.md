@@ -17,6 +17,7 @@ For deeper technical detail, see:
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
+- [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -52,11 +53,19 @@ Verified smoke results:
 | `hanoi4-abtweak` | `abtweak` | Bounded failure | `EXPAND-LIMIT-EXCEEDED` at the same exploratory larger-Hanoi bounds |
 | `macro-hanoi-tweak` | `tweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
 | `macro-hanoi-abtweak` | `abtweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
+| `macro-hanoi4-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `macro-hanoi4-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `computer-tweak` | `tweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
 | `computer-abtweak` | `abtweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
 | `biology-goal1-abtweak` | `abtweak` | Solves | Cost `8`, plan length `10`, `kval 0` |
+| `biology-goal2-abtweak` | `abtweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
+| `biology-goal3-abtweak` | `abtweak` | Solves | Cost `2`, plan length `4`, `kval 0` |
 | `fly-dc-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `database-goal0-tweak` | `tweak` | Solves | Cost `2`, plan length `4`, `kval 0` |
+| `database-goal2-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `database-goal2-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `database-goal4-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `database-goal4-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `robot1-abtweak` | `abtweak` | Solves | User-defined heuristic path, primary effects, cost `16`, plan length `18`, `kval 0` |
 | `robot1-abtweak-no-lw` | `abtweak` | Bounded failure | Same robot setup, `:left-wedge-mode nil`, `EXPAND-LIMIT-EXCEEDED` |
 | `robot1-tweak` | `tweak` | Bounded failure | Still `EXPAND-LIMIT-EXCEEDED` even with a larger exploratory bound set |
@@ -76,7 +85,7 @@ Verified smoke results:
   - `robot1-abtweak-no-lw` also fails, which makes it a second robot-domain left-wedge comparison rather than a duplicate of `simple-robot-2`
 - Several additional historically shipped sample domains are now verified under SBCL:
   - `computer` solves in both `tweak` and `abtweak`
-  - `biology` goal 1 solves in `abtweak`
+  - `biology` goals 1, 2, and 3 solve in `abtweak`
   - `fly` to Washington DC solves in `abtweak`
   - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
 - The first broader cross-domain sweep now extends that coverage:
@@ -84,7 +93,8 @@ Verified smoke results:
   - `blocks` / `interchange` and `blocks` / `flatten` solve in both modes
   - `fly` to both Washington DC and San Francisco solves in both modes
   - `biology` goal 1 solves in both modes, and the full checked-in `biology` goal solves in `abtweak`
-  - `database` query 1 and query 3 solve in both modes after a small numeric-constant compatibility fix in `var-p`
+  - `database` query 1, query 2, query 3, and query 4 solve in both modes after a small numeric-constant compatibility fix in `var-p`
+  - the larger shipped `macro-hanoi` goal pair now solves in both modes too
   - `driving.lisp` and large parts of `newd.lisp` still look like a different planner framework rather than direct AbTweak smoke targets
   - `scheduling.lisp` is a mixed case whose current checked-in entry point depends on that alternate framework
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
@@ -118,10 +128,15 @@ Verified smoke results:
       - the first open node at the 20k `ismb` bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions
       - the highlighted `(ISPEG $var)` case is not a broken binding artifact; it branches cleanly into the expected `(MOVES PEG1 PEG3)` and `(MOVES PEG2 PEG3)` existing-establisher refinements from `I`
       - this points the remaining `hanoi-4` work more toward heuristic and control quality than toward a gross establisher-logic bug
+    - the new frontier-quality snapshot sharpens that diagnosis further:
+      - the best priority bucket is dominated by concrete `kval 0` plans with roughly `9` to `17` unsatisfied user/precondition pairs
+      - the best open node by closure quality has only `2` unsatisfied pairs, but sits in a worse priority bucket at `kval 2`
+      - this makes the current leading hypothesis a ranking problem that prefers concreteness over closure
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
+  - the frontier-quality comparison is recorded in [docs/hanoi4-frontier-quality.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md#L1)
   - the algorithm comparison note is [docs/algorithm-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md#L1)
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`

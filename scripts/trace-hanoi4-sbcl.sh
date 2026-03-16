@@ -52,6 +52,7 @@ cat >"$trace_lisp" <<EOF
        (planner-log (concatenate 'string trace-dir "planner-output.txt"))
        (summary-log (concatenate 'string trace-dir "summary.txt"))
        (open-log (concatenate 'string trace-dir "open-frontier.txt"))
+       (quality-log (concatenate 'string trace-dir "frontier-quality.txt"))
        (solution-log (concatenate 'string trace-dir "solution.txt"))
        (drp-log (concatenate 'string trace-dir "drp-stack.txt"))
        (result (plan initial goal
@@ -81,6 +82,7 @@ cat >"$trace_lisp" <<EOF
     (format stream "~%")
     (write-trace-summary stream))
   (write-open-frontier-snapshot open-log :limit $OPEN_SNAPSHOT_LIMIT)
+  (write-frontier-quality-snapshot quality-log :limit $OPEN_SNAPSHOT_LIMIT)
   (write-solution-snapshot solution-log)
   (write-drp-stack-snapshot drp-log)
   (format t "TRACE-DIR: ~A~%" trace-dir)

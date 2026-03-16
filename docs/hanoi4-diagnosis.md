@@ -10,6 +10,7 @@ It complements:
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
+- [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 
 ## Current Result
@@ -77,6 +78,10 @@ Observed DFS run:
   - the first open node at the 20k bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions
   - the highlighted `(ISPEG $var)` case is semantically valid and branches into the two expected existing-establisher refinements from `I`
   - that makes the remaining `hanoi-4` gap look more like heuristic and control quality than a broken establisher path
+  - a direct frontier-quality pass now sharpens that further:
+    - the best priority bucket is dominated by concrete `kval 0` move skeletons with roughly `9` to `17` unsatisfied user/precondition pairs
+    - the best closure-oriented node in the same frontier has only `2` unsatisfied pairs, but sits in a worse priority bucket at higher abstraction
+    - that suggests the active ranking is favoring concreteness more than closure quality
 
 ## Evidence Against A Gross Semantic Break
 
@@ -128,4 +133,4 @@ The best current classification for `hanoi-4` is:
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: what further tuning is needed to push the now clearly stronger `ismb` hierarchy from improved bounded behavior to a full solution
+- most immediate open question: how does this frontier-ranking pattern compare with `tweak`, and is that where the restored search is diverging from the historically stronger Hanoi behavior

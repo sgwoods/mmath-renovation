@@ -47,6 +47,88 @@
      :invalid (when (typep plan 'plan) (plan-invalid plan))
      :next-user-precond up)))
 
+(defun plan-unsat-user-precond-pairs (plan)
+  "Return all currently unsatisfied user/precondition pairs for PLAN."
+  (cond
+   ((not (typep plan 'plan)) nil)
+   ((eq *planner-mode* 'abtweak)
+    (ignore-errors (ab-unsat-up-pairs plan)))
+   (t
+    (ignore-errors (unsat-user-precond-pairs plan)))))
+
+(defun frontier-node-quality-summary (node)
+  (let* ((plan (get-state node))
+         (unsat-pairs (plan-unsat-user-precond-pairs plan)))
+    (list
+     :priority (get-priority node)
+     :search-cost (get-cost node)
+     :heuristic-component (- (get-priority node) (get-cost node))
+     :solution-depth (get-solution-depth node)
+     :plan-id (when (typep plan 'plan) (plan-id plan))
+     :plan-cost (when (typep plan 'plan) (plan-cost plan))
+     :plan-kval (when (typep plan 'plan) (plan-kval plan))
+     :plan-length (when (typep plan 'plan) (length (plan-a plan)))
+     :unsat-count (if unsat-pairs (length unsat-pairs) 0)
+     :first-unsat (first unsat-pairs)
+     :next-user-precond (ignore-errors
+                          (when (and (typep plan 'plan)
+                                     (not (goal-p plan))
+                                     (eq *planner-mode* 'abtweak))
+                            (ab-determine-u-and-p plan))))))
+
+(defun frontier-best-unsat-count (nodes)
+  (let ((counts
+         (remove nil
+                 (mapcar #'(lambda (node)
+                             (let ((plan (get-state node)))
+                               (when (typep plan 'plan)
+                                 (length (plan-unsat-user-precond-pairs plan)))))
+                         nodes))))
+    (when counts
+      (apply #'min counts))))
+
+(defun frontier-sort-by-priority (nodes)
+  (sort (copy-list nodes) #'< :key #'get-priority))
+
+(defun frontier-sort-by-unsat-count (nodes)
+  (sort (copy-list nodes)
+        #'(lambda (node1 node2)
+            (let* ((summary1 (frontier-node-quality-summary node1))
+                   (summary2 (frontier-node-quality-summary node2))
+                   (unsat1 (getf summary1 :unsat-count))
+                   (unsat2 (getf summary2 :unsat-count))
+                   (priority1 (getf summary1 :priority))
+	                   (priority2 (getf summary2 :priority)))
+	              (if (= unsat1 unsat2)
+	                  (< priority1 priority2)
+	                (< unsat1 unsat2))))))
+
+(defun write-frontier-quality-snapshot (pathname &key (limit 50))
+  (with-open-file (stream pathname
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (let* ((nodes (flatten-open-nodes))
+           (priority-sorted (frontier-sort-by-priority nodes))
+           (unsat-sorted (frontier-sort-by-unsat-count nodes))
+           (best-unsat (frontier-best-unsat-count nodes)))
+      (format stream "Open node count: ~S~%" (length nodes))
+      (format stream "Best unsatisfied-pair count in OPEN: ~S~%~%" best-unsat)
+
+      (format stream "Top nodes by priority:~%")
+      (loop for node in priority-sorted
+            for rank from 1
+            while (<= rank limit) do
+              (format stream "~&===== PRIORITY RANK ~D =====~%" rank)
+              (format stream "~S~%~%" (frontier-node-quality-summary node)))
+
+      (format stream "~%Top nodes by unsatisfied-pair count:~%")
+      (loop for node in unsat-sorted
+            for rank from 1
+            while (<= rank limit) do
+              (format stream "~&===== UNSAT RANK ~D =====~%" rank)
+              (format stream "~S~%~%" (frontier-node-quality-summary node))))))
+
 (defun write-plan-snapshot (plan stream)
   (format stream "Plan id: ~S~%" (plan-id plan))
   (format stream "Plan cost: ~S~%" (plan-cost plan))

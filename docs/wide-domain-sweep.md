@@ -20,6 +20,8 @@ The wider sweep strengthens the restoration story considerably:
   goal solves in `abtweak`
 - `database` query 1 and query 3 solve in both modes after a small SBCL
   compatibility fix in `var-p`
+- additional shipped biology goals, database queries, and a larger macro-Hanoi
+  goal pair now solve under the smoke runner too
 
 The sweep also clarified the current project boundary:
 
@@ -51,6 +53,19 @@ candidate variable names. After that:
 
 - `database-goal1-abtweak` solves with cost `2`, length `4`, `kval 0`
 - `database-goal3-abtweak` solves with cost `2`, length `4`, `kval 0`
+- `database-goal2-abtweak` solves with cost `3`, length `5`, `kval 0`
+- `database-goal4-abtweak` solves with cost `3`, length `5`, `kval 0`
+
+The latest sample expansion also found:
+
+- `biology-goal2-abtweak` solves with cost `1`, length `3`, `kval 0`
+- `biology-goal3-abtweak` solves with cost `2`, length `4`, `kval 0`
+- `database-goal2-tweak` and `database-goal2-abtweak` both solve with cost `3`,
+  length `5`, `kval 0`
+- `database-goal4-tweak` and `database-goal4-abtweak` both solve with cost `3`,
+  length `5`, `kval 0`
+- `macro-hanoi4-tweak` and `macro-hanoi4-abtweak` both solve with cost `3`,
+  length `5`, `kval 0`
 
 ## Reproducible Sweep
 

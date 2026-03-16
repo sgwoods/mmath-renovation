@@ -471,6 +471,46 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  macro-hanoi4-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/macro-hanoi.lisp")
+      (let ((result (plan initial-4 goal-4
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 2000
+                          :generate-bound 10000
+                          :open-bound 10000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: macro-hanoi4-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  macro-hanoi4-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/macro-hanoi.lisp")
+      (let ((result (plan initial-4 goal-4
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 2000
+                          :generate-bound 10000
+                          :open-bound 10000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: macro-hanoi4-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   robot2-tweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -699,6 +739,46 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  biology-goal2-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/biology.lisp")
+      (let ((result (plan initial goal2
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 1000
+                          :generate-bound 4000
+                          :open-bound 4000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: biology-goal2-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  biology-goal3-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/biology.lisp")
+      (let ((result (plan initial goal3
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 1000
+                          :generate-bound 4000
+                          :open-bound 4000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: biology-goal3-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   biology-full-abtweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -863,6 +943,46 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  database-goal2-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/database.lisp")
+      (let ((result (plan init2 goal2
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 30000
+                          :open-bound 30000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: database-goal2-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  database-goal2-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/database.lisp")
+      (let ((result (plan init2 goal2
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 30000
+                          :open-bound 30000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: database-goal2-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   database-goal3-tweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -903,9 +1023,49 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  database-goal4-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/database.lisp")
+      (let ((result (plan init4 goal4
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 30000
+                          :open-bound 30000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: database-goal4-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  database-goal4-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/database.lisp")
+      (let ((result (plan init4 goal4
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 5000
+                          :generate-bound 30000
+                          :open-bound 30000
+                          :cpu-sec-limit 20)))
+        (format t "CASE: database-goal4-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, registers-abtweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-interchange-tweak, blocks-interchange-abtweak, blocks-flatten-tweak, blocks-flatten-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw, computer-tweak, computer-abtweak, biology-goal1-tweak, biology-goal1-abtweak, biology-full-abtweak, fly-sf-tweak, fly-sf-abtweak, fly-dc-tweak, fly-dc-abtweak, database-goal0-tweak, database-goal1-tweak, database-goal1-abtweak, database-goal3-tweak, database-goal3-abtweak" >&2
+    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, registers-abtweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-interchange-tweak, blocks-interchange-abtweak, blocks-flatten-tweak, blocks-flatten-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, macro-hanoi4-tweak, macro-hanoi4-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw, computer-tweak, computer-abtweak, biology-goal1-tweak, biology-goal1-abtweak, biology-goal2-abtweak, biology-goal3-abtweak, biology-full-abtweak, fly-sf-tweak, fly-sf-abtweak, fly-dc-tweak, fly-dc-abtweak, database-goal0-tweak, database-goal1-tweak, database-goal1-abtweak, database-goal2-tweak, database-goal2-abtweak, database-goal3-tweak, database-goal3-abtweak, database-goal4-tweak, database-goal4-abtweak" >&2
     exit 2
     ;;
 esac

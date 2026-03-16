@@ -9,6 +9,7 @@ It complements:
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
+- [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
@@ -16,15 +17,15 @@ It complements:
 ## Current Priorities
 
 1. Push the promising `hanoi-4` `ismb` path further, but keep the focus on search quality rather than broad parameter churn:
-   compare frontier quality against heuristic priority, and check whether the planner is overvaluing valid move skeletons that still leave too many necessary conditions open.
+   compare `tweak` and `abtweak` frontier quality directly, and check whether the planner is overvaluing valid move skeletons that still leave too many necessary conditions open.
 2. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 3. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
-1. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
-2. are the best `hanoi-4` frontier nodes being ranked too highly even though they still carry many unsatisfied necessary preconditions?
+1. does `tweak` show the same “concreteness over closure” frontier pattern as `abtweak`, or is that divergence specific to the restored abstraction path?
+2. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
 3. should `critical-list-2` now be treated mainly as a comparison hierarchy while `ismb` becomes the primary `hanoi-4` restoration target?
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
@@ -63,7 +64,7 @@ The issue tracker should stay focused on a few parallel tracks:
 The next milestone should be considered complete when:
 
 - the robot left-wedge comparison is scripted and documented
-- `hanoi-4` has either a successful run or a hierarchy-by-hierarchy explanation that is grounded in the historical abstractions and published hierarchy discussion
+- `hanoi-4` has either a successful run or a hierarchy-by-hierarchy explanation that is grounded in the historical abstractions, published hierarchy discussion, and current frontier-quality evidence
 - planner-level termination checks for open, generate, and DFS failure modes remain reproducible via the smoke runner
 - the issue tracker reflects the major technical and validation workstreams
 - the status document can be updated from smoke-test output without rediscovering prior context
