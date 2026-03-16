@@ -29,17 +29,9 @@ It does not yet implement historical `strong` MSP.
 
 ## Current Result
 
-The first comparison set is aimed at the previously strongest correspondence
-cases:
-
-- `isbm`, weak `NEC`, no critical-depth
-- `imbs`, weak `NEC`, no critical-depth
-- `isbm`, no MSP, critical-depth
-- `ibsm`, no MSP, critical-depth
-- `ismb`, no MSP, critical-depth
-
-These are the cases where the restored SBCL port was already closest to the
-archived 1991 outputs.
+The comparison set now includes both the originally strongest correspondence
+cases and a wider weak-`POS` family recovered from the archived 1991 batch
+files.
 
 Current representative results:
 
@@ -48,12 +40,18 @@ Current representative results:
 | `isbm` | `weak` | `nec` | `nil` | `1083 / 1433` | `1083 / 1433` |
 | `imbs` | `weak` | `nec` | `nil` | `166 / 233` | `166 / 233` |
 | `imbs` | `weak` | `pos` | `nil` | `149 / 206` | `149 / 206` |
+| `sbim` | `weak` | `pos` | `nil` | `332 / 490` | `332 / 490` |
+| `sbmi` | `weak` | `pos` | `nil` | `573 / 1071` | `573 / 1071` |
+| `simb` | `weak` | `pos` | `nil` | `785 / 995` | `785 / 995` |
+| `sibm` | `weak` | `pos` | `nil` | `482 / 620` | `482 / 620` |
+| `smib` | `weak` | `pos` | `nil` | `899 / 1236` | `899 / 1236` |
+| `misb` | `weak` | `pos` | `nil` | `682 / 1040` | `682 / 1040` |
 | `isbm` | `nil` | `nec` | `t` | `168 / 284` | `168 / 284` |
 | `ibsm` | `nil` | `nec` | `t` | `828 / 1471` | `828 / 1471` |
 | `ismb` | `nil` | `nec` | `t` | `963 / 1771` | `963 / 1771` |
 
 Those cases now match the archived 1991 results exactly at the expanded /
-generated level, including one verified weak-`POS` case.
+generated level across both weak-`NEC` and a broader weak-`POS` slice.
 
 The comparison can be rerun with:
 
@@ -69,6 +67,5 @@ ways:
 1. it makes the old control vocabulary explicit in the current working tree
 2. it separates "1993 baseline behavior" from "1991 experiment emulation"
 
-That gives us a cleaner path for future comparisons, especially if we decide to
-extend the same compatibility surface to larger Hanoi cases and to more of the
-weak-`POS` families later.
+That gives us a cleaner path for future comparisons, especially as we begin
+extending the same compatibility surface to `hanoi-4`.

@@ -17,14 +17,15 @@ It complements:
 - [Hanoi-3 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md)
 - [Hanoi-3 MSP correspondence](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md)
 - [Hanoi-3 1991 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md)
+- [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
 ## Current Priorities
 
-1. Push the promising `hanoi-4` `ismb` path further, but keep the focus on search quality rather than broad parameter churn:
+1. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
-   The new `hanoi-3` compatibility layer now re-exposes weak-`NEC`, one verified weak-`POS` case, and critical-depth behavior well enough to reproduce representative archived cases exactly, so the remaining validation target is whether we want to widen that same compatibility surface across more `POS` families and then into larger Hanoi cases.
+   The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.
 2. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 3. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
@@ -37,8 +38,15 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 4. why does `ismb` prune much more aggressively than `isbm` even though `isbm` appears to rank frontier quality better?
 5. can we combine what now looks like the two winning properties:
    `ismb`-style pruning and `isbm`-style frontier ranking?
-6. how far should we extend the new compatibility layer beyond the currently verified weak-`NEC` and critical-depth cases?
-7. which additional weak-`POS` archived cases should be the next validation targets?
+6. how do the `legacy-1991-default` `hanoi-4` runs compare to the stronger later `ismb` and `isbm` families under the same historical-control vocabulary?
+7. should the `hanoi-3` compatibility layer be widened again to include the remaining archived weak-`POS` and critical-depth families beyond the now-verified representative slice?
+
+Right now, the first answer to question 6 is already leaning in one direction:
+the archived 1991 four-disk default hierarchy is a useful baseline, but it is
+not currently competitive with `ismb`. That makes the next `hanoi-4`
+compatibility question more specific: whether the historical-control vocabulary
+helps clarify the difference between `ismb` and `isbm`, not whether the older
+default itself is the missing good hierarchy.
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 

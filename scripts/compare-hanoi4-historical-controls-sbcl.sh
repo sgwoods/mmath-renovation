@@ -5,7 +5,7 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 WORKDIR="$REPO_ROOT/working/abtweak-1993"
 SBCL_BIN=${SBCL_BIN:-/opt/homebrew/bin/sbcl}
-TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/abtweak-hanoi3-historical.XXXXXX")
+TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/abtweak-hanoi4-historical.XXXXXX")
 EXPAND_BOUND=${EXPAND_BOUND:-20000}
 GENERATE_BOUND=${GENERATE_BOUND:-80000}
 OPEN_BOUND=${OPEN_BOUND:-80000}
@@ -27,8 +27,8 @@ run_case() {
 
   eval_form='(progn
     (load "init-sbcl.lisp")
-    (load "Domains/hanoi-3.lisp")
-    (let ((result (historical-hanoi3-plan initial goal
+    (load "Domains/hanoi-4.lisp")
+    (let ((result (historical-hanoi4-plan initial goal
                                           :hierarchy (quote '"$hierarchy"')
                                           :planner-mode (quote abtweak)
                                           :msp-mode (quote '"$msp_mode"')
@@ -70,10 +70,7 @@ print_row() {
   msp_mode=$2
   weak_mode=$3
   crit_depth=$4
-  historical_file=$5
-  historical_expanded=$6
-  historical_generated=$7
-  log_file=$8
+  log_file=$5
 
   solution_type=$(extract_value "SOLUTION-TYPE" "$log_file")
   solution_value=$(extract_value "SOLUTION-VALUE" "$log_file")
@@ -87,7 +84,7 @@ print_row() {
     outcome=${solution_value:-unknown}
   fi
 
-  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s | `%s` | `%s` |\n' \
+  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s |\n' \
     "$hierarchy" \
     "$msp_mode" \
     "$weak_mode" \
@@ -95,16 +92,14 @@ print_row() {
     "$outcome" \
     "${expanded:-"-"}" \
     "${generated:-"-"}" \
-    "${mp_pruned:-"-"}" \
-    "$historical_expanded / $historical_generated" \
-    "$historical_file"
+    "${mp_pruned:-"-"}"
 }
 
 cat <<EOF
-# Hanoi-3 Historical Controls Comparison
+# Hanoi-4 Historical Controls Comparison
 
-This report exercises the small 1991-style Hanoi compatibility layer now wired
-into the SBCL working port.
+This report exercises the initial hanoi-4 historical-control wrapper on top of
+the working 1993 SBCL port.
 
 Bounds used:
 
@@ -113,42 +108,21 @@ Bounds used:
 - open bound: $OPEN_BOUND
 - CPU seconds: $CPU_SEC_LIMIT
 
-| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned | Historical | Source |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 EOF
 
-log_file=$(run_case isbm weak nec nil isbm-weak-nec)
-print_row isbm weak nec nil "isbm-ab-WN.1126" 1083 1433 "$log_file"
+log_file=$(run_case legacy-1991-default nil nec nil legacy-default-no-msp)
+print_row legacy-1991-default nil nec nil "$log_file"
 
-log_file=$(run_case imbs weak nec nil imbs-weak-nec)
-print_row imbs weak nec nil "imbs-ab-Wn.1129" 166 233 "$log_file"
+log_file=$(run_case legacy-1991-default weak nec nil legacy-default-weak-nec)
+print_row legacy-1991-default weak nec nil "$log_file"
 
-log_file=$(run_case imbs weak pos nil imbs-weak-pos)
-print_row imbs weak pos nil "imbs2-raw.out" 149 206 "$log_file"
+log_file=$(run_case legacy-1991-default weak pos nil legacy-default-weak-pos)
+print_row legacy-1991-default weak pos nil "$log_file"
 
-log_file=$(run_case sbim weak pos nil sbim-weak-pos)
-print_row sbim weak pos nil "sbim-raw.out" 332 490 "$log_file"
+log_file=$(run_case legacy-1991-default nil nec t legacy-default-crit-depth)
+print_row legacy-1991-default nil nec t "$log_file"
 
-log_file=$(run_case sbmi weak pos nil sbmi-weak-pos)
-print_row sbmi weak pos nil "sbmi-raw.out" 573 1071 "$log_file"
-
-log_file=$(run_case simb weak pos nil simb-weak-pos)
-print_row simb weak pos nil "simb-raw.out" 785 995 "$log_file"
-
-log_file=$(run_case sibm weak pos nil sibm-weak-pos)
-print_row sibm weak pos nil "sibm-raw.out" 482 620 "$log_file"
-
-log_file=$(run_case smib weak pos nil smib-weak-pos)
-print_row smib weak pos nil "smib-raw.out" 899 1236 "$log_file"
-
-log_file=$(run_case misb weak pos nil misb-weak-pos)
-print_row misb weak pos nil "misb-raw.out" 682 1040 "$log_file"
-
-log_file=$(run_case isbm nil nec t isbm-crit-depth)
-print_row isbm nil nec t "isbmK-raw.out" 168 284 "$log_file"
-
-log_file=$(run_case ibsm nil nec t ibsm-crit-depth)
-print_row ibsm nil nec t "ibsmK-raw.out" 828 1471 "$log_file"
-
-log_file=$(run_case ismb nil nec t ismb-crit-depth)
-print_row ismb nil nec t "ismbK-raw.out" 963 1771 "$log_file"
+log_file=$(run_case ismb weak pos nil ismb-weak-pos)
+print_row ismb weak pos nil "$log_file"

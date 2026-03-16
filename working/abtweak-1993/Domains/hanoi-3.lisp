@@ -108,6 +108,71 @@
    (0  (not onm $) (onm $) )
 ))
 
+; additional historically archived 1991-08 permutation hierarchies
+; preserved here so the working SBCL port can reproduce the broader hanoi-3
+; experiment family without touching the frozen archival trees.
+(setq *sbim* '(
+   (3  (not ons $) (ons $) )
+   (2  (not onb $) (onb $) )
+   (1  (ispeg $) )
+   (0  (not onm $) (onm $) )
+))
+
+(setq *sbmi* '(
+   (3  (not ons $) (ons $) )
+   (2  (not onb $) (onb $) )
+   (1  (not onm $) (onm $) )
+   (0  (ispeg $) )
+))
+
+(setq *simb* '(
+   (3  (not ons $) (ons $) )
+   (2  (ispeg $) )
+   (1  (not onm $) (onm $) )
+   (0  (not onb $) (onb $) )
+))
+
+(setq *sibm* '(
+   (3  (not ons $) (ons $) )
+   (2  (ispeg $) )
+   (1  (not onb $) (onb $) )
+   (0  (not onm $) (onm $) )
+))
+
+(setq *smib* '(
+   (3  (not ons $) (ons $) )
+   (2  (not onm $) (onm $) )
+   (1  (ispeg $) )
+   (0  (not onb $) (onb $) )
+))
+
+(setq *smbi* '(
+   (3  (not ons $) (ons $) )
+   (2  (not onm $) (onm $) )
+   (1  (not onb $) (onb $) )
+   (0  (ispeg $) )
+))
+
+(setq *misb* '(
+   (3  (not onm $) (onm $) )
+   (2  (ispeg $) )
+   (1  (not ons $) (ons $) )
+   (0  (not onb $) (onb $) )
+))
+
+(setq *msbi* '(
+   (3  (not onm $) (onm $) )
+   (2  (not ons $) (ons $) )
+   (1  (not onb $) (onb $) )
+   (0  (ispeg $) )
+))
+
+(setq *msib* '(
+   (3  (not onm $) (onm $) )
+   (2  (not ons $) (ons $) )
+   (1  (ispeg $) )
+   (0  (not onb $) (onb $) )
+))
 
 
 (setq *critical-loaded* 'ibms-new-default)
@@ -122,6 +187,15 @@
 ;
 (setq *k-list-1* '(0 1 3 7))
 (setq *k-list-2* '(0 1 3 5 7 9))
+(setq *sbim-k-list* '(1 3 3 7))
+(setq *sbmi-k-list* '(1 3 7 7))
+(setq *simb-k-list* '(1 1 3 7))
+(setq *sibm-k-list* '(1 1 3 7))
+(setq *smib-k-list* '(1 3 3 7))
+(setq *smbi-k-list* '(1 3 7 7))
+(setq *misb-k-list* '(1 1 3 7))
+(setq *msbi-k-list* '(1 3 7 7))
+(setq *msib-k-list* '(1 3 3 7))
 
 (setq *critical-list* *critical-list-1* )
 (setq *left-wedge-list* *k-list-1*)
