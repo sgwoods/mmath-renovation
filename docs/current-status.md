@@ -49,6 +49,8 @@ For deeper technical detail, see:
   point at [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
 - Benchmark-family status is now surfaced directly through the harness via
   `status` / `report benchmark-status`
+- The harness now provides lightweight machine-readable summaries for
+  `run`, `status`, `report`, and `trace`
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to

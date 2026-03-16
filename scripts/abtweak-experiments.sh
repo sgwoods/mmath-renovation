@@ -18,6 +18,7 @@ Usage:
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run CASE
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run CASE --json
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report NAME
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report NAME --json
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace NAME
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace NAME --json
 
@@ -34,12 +35,23 @@ Examples:
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak --json
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report compare-core
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status --json
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos
 EOF
 }
 
 json_escape() {
   printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
+}
+
+json_escape_multiline() {
+  awk 'BEGIN { sep="" }
+       {
+         gsub(/\\/,"\\\\");
+         gsub(/"/,"\\\"");
+         printf "%s%s", sep, $0;
+         sep="\\n";
+       }' "$1"
 }
 
 extract_value() {
@@ -138,6 +150,22 @@ emit_status_json() {
     {"family":"1991-hanoi-msp-compatibility","status":"reproduced"},
     {"family":"alternate-reset-domain-framework","status":"open"}
   ]
+}
+EOF
+}
+
+emit_report_json() {
+  report_name=$1
+  file=$2
+  title=$(sed -n 's/^# //p' "$file" | head -n 1)
+  [ -n "$title" ] || title="$report_name"
+
+  cat <<EOF
+{
+  "kind": "report",
+  "report": "$(json_escape "$report_name")",
+  "title": "$(json_escape "$title")",
+  "report_markdown": "$(json_escape_multiline "$file")"
 }
 EOF
 }
@@ -321,7 +349,22 @@ EOF
       echo "Missing report name." >&2
       exit 2
     fi
-    run_report "$report_name"
+    output_mode=${3:-text}
+    case "$output_mode" in
+      text)
+        run_report "$report_name"
+        ;;
+      --json)
+        tmp_file=$(mktemp "${TMPDIR:-/tmp}/abtweak-report.XXXXXX")
+        trap 'rm -f "$tmp_file"' EXIT INT TERM
+        run_report "$report_name" >"$tmp_file" 2>&1
+        emit_report_json "$report_name" "$tmp_file"
+        ;;
+      *)
+        echo "Unknown report option: $output_mode" >&2
+        exit 2
+        ;;
+    esac
     ;;
   trace)
     trace_name=${2:-}

@@ -17,7 +17,7 @@ The current front door is:
 
 ## Top-Level Commands
 
-The unified harness supports five top-level commands:
+The unified harness supports six top-level commands:
 
 1. `help`
 2. `list`
@@ -34,6 +34,8 @@ sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak --json
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status
+sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status --json
+sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report hanoi3-historical
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos
 ```
 
@@ -101,6 +103,21 @@ These map to the existing comparison scripts, but the intent is that users
 should call them through one shared vocabulary instead of memorizing separate
 script filenames.
 
+The `report` surface now also supports a first JSON wrapper:
+
+```sh
+sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status --json
+```
+
+That wrapper exposes the report name, its top heading, and the emitted markdown
+body as one machine-readable object.
+
+The historical Hanoi report families should now be treated as harness-native
+entry points:
+
+- `report hanoi3-historical`
+- `report hanoi4-historical`
+
 ### `trace NAME`
 
 This is the standard trace surface.
@@ -145,7 +162,8 @@ This harness improves:
 - naming consistency
 - the distinction between single-case runs, reports, and traces
 - the project-level visibility of benchmark-family status
-- the machine-readable summaries available for `run`, `status`, and `trace`
+- the machine-readable summaries available for `run`, `status`, `report`, and
+  `trace`
 
 It does not by itself:
 
@@ -160,10 +178,8 @@ Those remain separate project tracks.
 
 The next natural follow-ons are:
 
-1. add a benchmark-family status command or generated summary
-2. extend the lightweight JSON summaries from `run`, `status`, and `trace`
-   into the `report` surface too
-3. bring the historical-control naming used in the Hanoi compatibility work
+1. add richer metadata around the available cases, reports, and trace presets
+2. bring more of the historical-control naming used in the Hanoi compatibility work
    further into the same shared harness vocabulary
-4. decide whether the alternate `reset-domain` framework should eventually be
+3. decide whether the alternate `reset-domain` framework should eventually be
    exposed through the same front door
