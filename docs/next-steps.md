@@ -7,6 +7,7 @@ It complements:
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
+- [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
@@ -23,12 +24,17 @@ It complements:
 
 ## Current Priorities
 
-1. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
+1. Unify the main experiment infrastructure around one restored working
+   environment:
+   standardize the current smoke, historical-control, comparison, and trace
+   workflows so the repo behaves like one restored experimental system instead
+   of a collection of separate probes.
+2. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.
-2. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
-3. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
-4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+3. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
+4. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
+5. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
@@ -83,10 +89,11 @@ The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/m
 
 The recommended order now is:
 
-1. `#14`
-2. `#13`
-3. `#16`
-4. `#12`
+1. unify the experiment infrastructure
+2. `#14`
+3. `#13`
+4. `#16`
+5. `#12`
 
 The rationale and alternatives are recorded in [docs/refreshed-plan.md](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md#L1).
 
@@ -105,10 +112,12 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Push `hanoi-4` further with the now-better-understood `ismb` settings.
-2. Widen the smoke suite into more 1993 shipped operator-style sample domains.
-3. Decide whether to open a separate phase-2 restoration track for the `reset-domain` framework.
-4. Trim the remaining SBCL style/redefinition noise in the working tree.
+1. Unify the current runners and historical-control surfaces into one restored
+   experiment environment.
+2. Push `hanoi-4` further with the now-better-understood `ismb` settings.
+3. Widen the smoke suite into more 1993 shipped operator-style sample domains.
+4. Decide whether to open a separate phase-2 restoration track for the `reset-domain` framework.
+5. Trim the remaining SBCL style/redefinition noise in the working tree.
 
 ## Exit Criteria For The Next Milestone
 

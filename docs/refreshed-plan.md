@@ -11,6 +11,9 @@ It is the best place to answer two questions:
 1. where are we now?
 2. what should we do next?
 
+For the newer top-level framing around one unified restored experimental
+environment, see [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md).
+
 ## Plan State
 
 ### Track 1: Runtime Restoration
@@ -61,12 +64,36 @@ What is still open:
 
 ## Recommended Next Sequence
 
-### 1. Push `hanoi-4` Further
+This sequence is still valid, but it should now be read inside the broader
+unified-goal framing:
+
+- one implementation base
+- one historical compatibility surface
+- one experiment harness
+
+### 1. Unify The Main Experiment Infrastructure
+
+Focus on:
+
+- treating the current runners and compatibility helpers as one restored
+  experimental environment rather than separate local tools
+- standardizing how historical-control runs, smoke runs, and trace runs are
+  expressed
+- using the Hanoi compatibility layer as the first model for that structure
+
+Reason:
+
+The project is now mature enough that consolidation is a higher-value next step
+than continuing to accumulate isolated probes. This is the cleanest route to a
+single working equivalent of the historical experimental infrastructure.
+
+### 2. Push `hanoi-4` Further
 
 Focus on:
 
 - `ismb` with MP enabled
 - `critical-list-2` with MP enabled
+- `isbm` weak-`POS` as the best current frontier-quality comparison
 
 Reason:
 
@@ -76,7 +103,7 @@ Relevant issue:
 
 - [#14 Investigate hanoi-4 performance after precedence-fix stabilization](https://github.com/sgwoods/mmath-renovation/issues/14)
 
-### 2. Expand Historically Grounded Coverage
+### 3. Expand Historically Grounded Coverage
 
 Focus on:
 
@@ -94,7 +121,7 @@ Relevant issue:
 
 - [#13 Expand historical shipped sample-domain smoke coverage](https://github.com/sgwoods/mmath-renovation/issues/13)
 
-### 3. Decide The Alternate Framework Boundary
+### 4. Decide The Alternate Framework Boundary
 
 Focus on:
 
@@ -112,7 +139,7 @@ Relevant issue:
 
 - [#16 Evaluate reset-domain planner files as a separate restoration track](https://github.com/sgwoods/mmath-renovation/issues/16)
 
-### 4. Trim Residual SBCL Noise
+### 5. Trim Residual SBCL Noise
 
 Focus on:
 
@@ -134,10 +161,11 @@ Relevant issue:
 
 Order:
 
-1. `#14`
-2. `#13`
-3. `#16`
-4. `#12`
+1. unify the experiment infrastructure
+2. `#14`
+3. `#13`
+4. `#16`
+5. `#12`
 
 Why choose it:
 
@@ -185,14 +213,19 @@ It risks deferring the hardest and most informative restoration question.
 
 Recommended order:
 
-1. `#14`
-2. `#13`
-3. `#16`
-4. `#12`
+1. unify the experiment infrastructure
+2. `#14`
+3. `#13`
+4. `#16`
+5. `#12`
 
 Why this order makes the most sense:
 
-- `hanoi-4` is the clearest remaining boundary between “strong partial restoration” and “historically convincing restoration”
+- the project is now strong enough that the highest-value top-level move is to
+  consolidate it into one restored experiment environment rather than keep
+  growing ad hoc runners
+- `hanoi-4` is still the clearest remaining benchmark boundary between “strong
+  partial restoration” and “historically convincing restoration”
 - the publications and hierarchy mapping work mean we now have enough context to investigate `hanoi-4` intelligently
 - once that line is pushed as far as practical, broader sample coverage is the
   highest-value way to widen confidence in the restoration

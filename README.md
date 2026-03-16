@@ -46,6 +46,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Abtweak-1993 baseline](./docs/abtweak-1993-baseline.md): current working baseline, SBCL load status, and next porting steps
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results
 - [Refreshed plan](./docs/refreshed-plan.md): current plan state, recommended issue order, and the main sensible alternatives from here
+- [Unified restoration plan](./docs/unified-restoration-plan.md): top-level plan for converging the repo into one restored experimental environment that can stand in for the historical AbTweak code lines
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Historical validation matrix](./docs/historical-validation-matrix.md): mapping from historically reported benchmark themes to runnable local domains
@@ -81,11 +82,11 @@ Direct links and brief notes for each item are collected in [docs/references.md]
 
 ## Immediate Next Steps
 
-1. locate or import any surviving source snapshots associated with the CMU AI Repository package
-2. identify the original implementation language, build assumptions, and example domains
-3. compare the recovered historical snapshots and choose an initial runnable baseline
-4. capture a small set of canonical planning scenarios from the papers and thesis
-5. decide how much of the initial work should aim at faithful reconstruction versus a modern reference implementation
+1. converge the current runners, historical-control wrappers, and trace workflows into one coherent restored experiment environment
+2. keep `hanoi-4` as the highest-value open benchmark inside that unified structure
+3. widen historically grounded operator-style coverage where it improves the validation story
+4. continue tightening the claim-by-claim reproduction matrix against the checked-in publications
+5. decide whether the alternate `reset-domain` / `defstep` framework belongs in the same restoration milestone or in a later dedicated phase
 
 ## Historical Code
 
