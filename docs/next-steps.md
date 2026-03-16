@@ -12,13 +12,14 @@ It complements:
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
+- [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
 ## Current Priorities
 
 1. Push the promising `hanoi-4` `ismb` path further, but keep the focus on search quality rather than broad parameter churn:
-   compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case, while `ismb` remains the main target.
+   compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
 2. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 3. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
@@ -28,6 +29,7 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 1. which current `hanoi-4` hierarchy/control combinations best match the historically good-versus-bad Hanoi hierarchy story in the thesis?
 2. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
 3. should `isbm` now replace `critical-list-2` as the main alternate `hanoi-4b` comparison hierarchy?
+4. why does `ismb` prune much more aggressively than `isbm` even though `isbm` appears to rank frontier quality better?
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 

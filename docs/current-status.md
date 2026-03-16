@@ -16,6 +16,7 @@ For deeper technical detail, see:
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
+- [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
@@ -115,6 +116,11 @@ Verified smoke results:
       - `isbm` is the strongest alternate candidate at `25235` generated on the 20k bound and `129865` on the 100k bound
       - `ibsm` is close behind at `26172` generated on the 20k bound and `133751` on the 100k bound
       - `imbs`, despite strong archived `hanoi3` results, is weak on the current four-disk benchmark at `34836` generated on the 20k bound and `178178` on the 100k bound
+    - direct frontier tracing now refines that conclusion:
+      - `ismb` still wins on raw search reduction and MP pruning
+      - `isbm` keeps much cleaner states in the top priority bucket, with top-ranked nodes around `6` to `9` unsatisfied pairs instead of the `9` to `17` seen in `ismb`
+      - `isbm` also keeps its best unsatisfied-pair node in the top bucket, while `ismb` demotes its best such node into the next bucket
+      - so `isbm` is now the best comparison hierarchy for diagnosing ranking quality, even though `ismb` remains the strongest practical runtime hierarchy
     - `ismb` and `critical-list-2` both show strong MP sensitivity, while the default `critical-list-1` does not
     - after the latest cleanup pass, `ismb` with MP and left-wedge also reaches clean `EXPAND-LIMIT-EXCEEDED` results at `150000` expansions (`184610` generated, `183236` MP prunes) and `200000` expansions (`243578` generated, `245293` MP prunes)
     - `ismb` with `:drp-mode t` still does not solve, but it now reports `OPEN-EXHAUSTED` honestly instead of leaving the untouched initial plan in `*solution*`
@@ -149,6 +155,7 @@ Verified smoke results:
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the candidate-hierarchy follow-up is recorded in [docs/hanoi4b-candidate-hierarchies.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md#L1)
+  - the ranking-quality follow-up is recorded in [docs/hanoi4b-frontier-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
   - the frontier-quality comparison is recorded in [docs/hanoi4-frontier-quality.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md#L1)
