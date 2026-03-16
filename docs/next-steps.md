@@ -31,7 +31,9 @@ It complements:
    [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh),
    and the next step is to keep moving the current smoke,
    historical-control, comparison, and trace workflows toward one shared
-   harness vocabulary and result shape.
+   harness vocabulary and result shape. The new benchmark-family `status`
+   surface and the named weak-`POS` Hanoi trace presets are the latest step in
+   that direction.
 2. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.

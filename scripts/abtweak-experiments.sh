@@ -13,22 +13,132 @@ Usage:
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list cases
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list reports
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list traces
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status --json
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run CASE
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run CASE --json
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report NAME
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace NAME
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace NAME --json
 
 Commands:
   help        Show this help.
   list        Show the standardized experiment surface.
+  status      Show the benchmark-family status summary.
   run         Execute one named smoke case.
   report      Execute one named comparison/report script.
   trace       Execute one named trace workflow.
 
 Examples:
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak --json
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status
   sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report compare-core
-  HIERARCHY=isbm MP_WEAK_MODE=pos HISTORICAL_MODE=t LEFT_WEDGE_MODE=nil \\
-    sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos
+EOF
+}
+
+json_escape() {
+  printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
+}
+
+extract_value() {
+  key=$1
+  file=$2
+  sed -n "s/^$key: //p" "$file" | head -n 1
+}
+
+emit_run_json() {
+  case_name=$1
+  file=$2
+  plan_result=$(extract_value "PLAN-RESULT" "$file")
+  solution_value=$(extract_value "SOLUTION-VALUE" "$file")
+  solution_type=$(extract_value "SOLUTION-TYPE" "$file")
+  solution_len=$(extract_value "SOLUTION-LEN" "$file")
+  solution_cost=$(extract_value "SOLUTION-COST" "$file")
+  solution_kval=$(extract_value "SOLUTION-KVAL" "$file")
+  num_expanded=$(extract_value "NUM-EXPANDED" "$file")
+  num_generated=$(extract_value "NUM-GENERATED" "$file")
+  mp_pruned=$(extract_value "MP-PRUNED" "$file")
+
+  [ -n "$plan_result" ] || plan_result="null"
+  [ -n "$solution_value" ] || solution_value="null"
+  [ -n "$solution_type" ] || solution_type="null"
+  [ -n "$solution_len" ] || solution_len="null"
+  [ -n "$solution_cost" ] || solution_cost="null"
+  [ -n "$solution_kval" ] || solution_kval="null"
+  [ -n "$num_expanded" ] || num_expanded="null"
+  [ -n "$num_generated" ] || num_generated="null"
+  [ -n "$mp_pruned" ] || mp_pruned="null"
+
+  if [ "$solution_type" = "PLAN" ]; then
+    solution_value="PLAN"
+  fi
+
+  cat <<EOF
+{
+  "kind": "run",
+  "case": "$(json_escape "$case_name")",
+  "plan_result": "$(json_escape "$plan_result")",
+  "solution_value": "$(json_escape "$solution_value")",
+  "solution_type": "$(json_escape "$solution_type")",
+  "solution_len": "$(json_escape "$solution_len")",
+  "solution_cost": "$(json_escape "$solution_cost")",
+  "solution_kval": "$(json_escape "$solution_kval")",
+  "num_expanded": "$(json_escape "$num_expanded")",
+  "num_generated": "$(json_escape "$num_generated")",
+  "mp_pruned": "$(json_escape "$mp_pruned")"
+}
+EOF
+}
+
+emit_trace_json() {
+  trace_name=$1
+  file=$2
+  trace_dir=$(extract_value "TRACE-DIR" "$file")
+  plan_result=$(extract_value "PLAN-RESULT" "$file")
+  solution_value=$(extract_value "SOLUTION-VALUE" "$file")
+  num_expanded=$(extract_value "NUM-EXPANDED" "$file")
+  num_generated=$(extract_value "NUM-GENERATED" "$file")
+  mp_pruned=$(extract_value "MP-PRUNED" "$file")
+
+  [ -n "$trace_dir" ] || trace_dir="null"
+  [ -n "$plan_result" ] || plan_result="null"
+  [ -n "$solution_value" ] || solution_value="null"
+  [ -n "$num_expanded" ] || num_expanded="null"
+  [ -n "$num_generated" ] || num_generated="null"
+  [ -n "$mp_pruned" ] || mp_pruned="null"
+
+  cat <<EOF
+{
+  "kind": "trace",
+  "trace": "$(json_escape "$trace_name")",
+  "trace_dir": "$(json_escape "$trace_dir")",
+  "plan_result": "$(json_escape "$plan_result")",
+  "solution_value": "$(json_escape "$solution_value")",
+  "num_expanded": "$(json_escape "$num_expanded")",
+  "num_generated": "$(json_escape "$num_generated")",
+  "mp_pruned": "$(json_escape "$mp_pruned")"
+}
+EOF
+}
+
+emit_status_json() {
+  cat <<'EOF'
+{
+  "kind": "status",
+  "families": [
+    {"family":"blocks-baseline","status":"reproduced"},
+    {"family":"hanoi-3","status":"reproduced"},
+    {"family":"hanoi-4","status":"partially-reproduced"},
+    {"family":"robot-with-user-heuristic","status":"reproduced"},
+    {"family":"registers-and-tiny-regressions","status":"reproduced"},
+    {"family":"macro-hanoi-variants","status":"reproduced"},
+    {"family":"shipped-operator-style-sample-domains","status":"reproduced"},
+    {"family":"1991-hanoi-msp-compatibility","status":"reproduced"},
+    {"family":"alternate-reset-domain-framework","status":"open"}
+  ]
+}
 EOF
 }
 
@@ -38,6 +148,7 @@ list_cases() {
 
 list_reports() {
   cat <<'EOF'
+benchmark-status
 compare-core
 wide-domain-sweep
 hanoi3-hierarchies
@@ -52,6 +163,9 @@ list_traces() {
   cat <<'EOF'
 hanoi3
 hanoi4
+hanoi4-ismb-weak-pos
+hanoi4-isbm-weak-pos
+hanoi4-legacy-1991
 EOF
 }
 
@@ -59,26 +173,29 @@ run_report() {
   report_name=$1
 
   case "$report_name" in
+    benchmark-status)
+      sh "$SCRIPT_DIR/benchmark-status-sbcl.sh"
+      ;;
     compare-core)
-      exec "$SCRIPT_DIR/compare-abtweak-1993-sbcl.sh"
+      sh "$SCRIPT_DIR/compare-abtweak-1993-sbcl.sh"
       ;;
     wide-domain-sweep)
-      exec "$SCRIPT_DIR/wide-domain-sweep-sbcl.sh"
+      sh "$SCRIPT_DIR/wide-domain-sweep-sbcl.sh"
       ;;
     hanoi3-hierarchies)
-      exec "$SCRIPT_DIR/compare-hanoi3-hierarchies-sbcl.sh"
+      sh "$SCRIPT_DIR/compare-hanoi3-hierarchies-sbcl.sh"
       ;;
     hanoi3-historical)
-      exec "$SCRIPT_DIR/compare-hanoi3-historical-controls-sbcl.sh"
+      sh "$SCRIPT_DIR/compare-hanoi3-historical-controls-sbcl.sh"
       ;;
     hanoi4-controls)
-      exec "$SCRIPT_DIR/compare-hanoi4-controls-sbcl.sh"
+      sh "$SCRIPT_DIR/compare-hanoi4-controls-sbcl.sh"
       ;;
     hanoi4-hierarchies)
-      exec "$SCRIPT_DIR/compare-hanoi4-hierarchies-sbcl.sh"
+      sh "$SCRIPT_DIR/compare-hanoi4-hierarchies-sbcl.sh"
       ;;
     hanoi4-historical)
-      exec "$SCRIPT_DIR/compare-hanoi4-historical-controls-sbcl.sh"
+      sh "$SCRIPT_DIR/compare-hanoi4-historical-controls-sbcl.sh"
       ;;
     *)
       echo "Unknown report: $report_name" >&2
@@ -95,10 +212,20 @@ run_trace() {
 
   case "$trace_name" in
     hanoi3)
-      exec "$SCRIPT_DIR/trace-hanoi3-sbcl.sh"
+      sh "$SCRIPT_DIR/trace-hanoi3-sbcl.sh"
       ;;
     hanoi4)
-      exec "$SCRIPT_DIR/trace-hanoi4-sbcl.sh"
+      sh "$SCRIPT_DIR/trace-hanoi4-sbcl.sh"
+      ;;
+    hanoi4-ismb-weak-pos)
+      HIERARCHY=ismb sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
+      ;;
+    hanoi4-isbm-weak-pos)
+      HIERARCHY=isbm sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
+      ;;
+    hanoi4-legacy-1991)
+      HIERARCHY=legacy-1991-default HISTORICAL_MODE=t MSP_MODE=weak MP_WEAK_MODE=pos LEFT_WEDGE_MODE=nil \
+        sh "$SCRIPT_DIR/trace-hanoi4-sbcl.sh"
       ;;
     *)
       echo "Unknown trace workflow: $trace_name" >&2
@@ -150,13 +277,43 @@ EOF
         ;;
     esac
     ;;
+  status)
+    output_mode=${2:-text}
+    case "$output_mode" in
+      text)
+        sh "$SCRIPT_DIR/benchmark-status-sbcl.sh"
+        ;;
+      --json)
+        emit_status_json
+        ;;
+      *)
+        echo "Unknown status option: $output_mode" >&2
+        exit 2
+        ;;
+    esac
+    ;;
   run)
     case_name=${2:-}
     if [ -z "$case_name" ]; then
       echo "Missing case name for run." >&2
       exit 2
     fi
-    exec "$SMOKE_SCRIPT" "$case_name"
+    output_mode=${3:-text}
+    case "$output_mode" in
+      text)
+        exec "$SMOKE_SCRIPT" "$case_name"
+        ;;
+      --json)
+        tmp_file=$(mktemp "${TMPDIR:-/tmp}/abtweak-run.XXXXXX")
+        trap 'rm -f "$tmp_file"' EXIT INT TERM
+        "$SMOKE_SCRIPT" "$case_name" >"$tmp_file" 2>&1
+        emit_run_json "$case_name" "$tmp_file"
+        ;;
+      *)
+        echo "Unknown run option: $output_mode" >&2
+        exit 2
+        ;;
+    esac
     ;;
   report)
     report_name=${2:-}
@@ -172,7 +329,22 @@ EOF
       echo "Missing trace workflow name." >&2
       exit 2
     fi
-    run_trace "$trace_name"
+    output_mode=${3:-text}
+    case "$output_mode" in
+      text)
+        run_trace "$trace_name"
+        ;;
+      --json)
+        tmp_file=$(mktemp "${TMPDIR:-/tmp}/abtweak-trace.XXXXXX")
+        trap 'rm -f "$tmp_file"' EXIT INT TERM
+        run_trace "$trace_name" >"$tmp_file" 2>&1
+        emit_trace_json "$trace_name" "$tmp_file"
+        ;;
+      *)
+        echo "Unknown trace option: $output_mode" >&2
+        exit 2
+        ;;
+    esac
     ;;
   *)
     echo "Unknown command: $COMMAND" >&2

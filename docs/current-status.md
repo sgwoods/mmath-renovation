@@ -47,6 +47,8 @@ For deeper technical detail, see:
   benchmark inside that structure
 - First unification step now in place: the repo has a single experiment entry
   point at [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
+- Benchmark-family status is now surfaced directly through the harness via
+  `status` / `report benchmark-status`
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to

@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+
+HISTORICAL_MODE=${HISTORICAL_MODE:-t}
+MP_MODE=${MP_MODE:-t}
+MSP_MODE=${MSP_MODE:-weak}
+MP_WEAK_MODE=${MP_WEAK_MODE:-pos}
+LEFT_WEDGE_MODE=${LEFT_WEDGE_MODE:-nil}
+export HISTORICAL_MODE MP_MODE MSP_MODE MP_WEAK_MODE LEFT_WEDGE_MODE
+
+exec "$SCRIPT_DIR/trace-hanoi4-sbcl.sh"
