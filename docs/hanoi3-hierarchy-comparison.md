@@ -8,6 +8,7 @@ It complements:
 
 - [Hanoi-3 versus Hanoi-4](/Users/stevenwoods/mmath-renovation/docs/hanoi3-vs-hanoi4.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
+- [Hanoi-3 MSP correspondence](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 
 ## Supported Current Variants
@@ -137,7 +138,10 @@ alternate-control results:
 - current `ismb`, MP off, LW on: `963` / `1771`
 
 So the restored port is now much closer to the historically reported variation
-support, even though the MP-on behavior of some hierarchies still looks off.
+support. The follow-up in
+[Hanoi-3 MSP correspondence](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md)
+shows that several apparent MP mismatches come from comparing the current
+1993-style control surface with the wrong 1991 experiment family.
 
 ## Current Takeaway
 
@@ -149,8 +153,11 @@ The current restored `hanoi-3` story is:
 3. `critical-list-1` is still the best current practical default
 4. `imbs` is the strongest restored permutation-style hierarchy with MP and
    Left-Wedge both enabled
-5. `ismb` and `isbm` look much more historically plausible when MP is off than
-   when it is on
+5. `ismb` and `isbm` still line up best with the older no-MP or critical-depth
+   run families
+6. part of the remaining MP-on mismatch is historical interface drift:
+   the 1991 experiment code exposed weak-`NEC`, weak-`POS`, and critical-depth
+   settings that are not first-class controls in the 1993 planner
 
 ## Reproducibility
 

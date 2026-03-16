@@ -54,6 +54,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Hanoi-4 diagnosis](./docs/hanoi4-diagnosis.md): current evidence on whether the larger Hanoi benchmark is blocked by bounds, control settings, or a deeper porting issue
 - [Hanoi-4 hierarchy comparison](./docs/hanoi4-hierarchy-comparison.md): direct comparison of the historical Hanoi hierarchy choices and how they change MP and left-wedge behavior under SBCL
 - [Hanoi-4 control comparison](./docs/hanoi4-control-comparison.md): targeted comparison of the live heuristic and abstraction-control choices on the strongest current Hanoi hierarchy
+- [Hanoi-3 MSP correspondence](./docs/hanoi3-msp-correspondence.md): explains how the 1991 MSP experiment surface differs from the 1993 planner baseline and why some `hanoi-3` results only match when compared to the right historical run family
 - [Algorithm correspondence review](./docs/algorithm-correspondence.md): comparison of the archival 1993 algorithms and the SBCL working tree, including what changed and what did not
 - [Reset-domain assessment](./docs/reset-domain-assessment.md): recommendation on treating the alternate `reset-domain` / `defstep` material as a separate restoration track
 - [Next steps](./docs/next-steps.md): living short-list of recommended technical and historical follow-up work
