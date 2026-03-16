@@ -8,7 +8,11 @@ TRACE_ROOT="$REPO_ROOT/analysis/hanoi4-traces"
 SBCL_BIN=${SBCL_BIN:-/opt/homebrew/bin/sbcl}
 PLANNER_MODE=${PLANNER_MODE:-abtweak}
 HIERARCHY=${HIERARCHY:-ismb}
+HISTORICAL_MODE=${HISTORICAL_MODE:-nil}
 MP_MODE=${MP_MODE:-t}
+MSP_MODE=${MSP_MODE:-weak}
+MP_WEAK_MODE=${MP_WEAK_MODE:-nec}
+CRIT_DEPTH_MODE=${CRIT_DEPTH_MODE:-nil}
 LEFT_WEDGE_MODE=${LEFT_WEDGE_MODE:-t}
 DRP_MODE=${DRP_MODE:-nil}
 EXPAND_BOUND=${EXPAND_BOUND:-50000}
@@ -18,11 +22,15 @@ CPU_SEC_LIMIT=${CPU_SEC_LIMIT:-60}
 OPEN_SNAPSHOT_LIMIT=${OPEN_SNAPSHOT_LIMIT:-200}
 
 timestamp=$(date +"%Y%m%d-%H%M%S")
-case_slug="hanoi4-${PLANNER_MODE}-${HIERARCHY}-mp-${MP_MODE}-lw-${LEFT_WEDGE_MODE}-drp-${DRP_MODE}-${timestamp}"
+case_slug="hanoi4-${PLANNER_MODE}-${HIERARCHY}-hist-${HISTORICAL_MODE}-mp-${MP_MODE}-msp-${MSP_MODE}-weak-${MP_WEAK_MODE}-crit-${CRIT_DEPTH_MODE}-lw-${LEFT_WEDGE_MODE}-drp-${DRP_MODE}-${timestamp}"
 trace_dir="$TRACE_ROOT/$case_slug"
 mkdir -p "$trace_dir"
 
 case "$HIERARCHY" in
+  legacy-1991-default)
+    CRIT_EXPR='*legacy-1991-default*'
+    LW_EXPR='*legacy-1991-k-list*'
+    ;;
   critical-list-1)
     CRIT_EXPR='*critical-list-1*'
     LW_EXPR='*k-list-1*'
@@ -57,6 +65,7 @@ trace_lisp="$trace_dir/trace-run.lisp"
 cat >"$trace_lisp" <<EOF
 (load "init-sbcl.lisp")
 (load "sbcl-trace-utils.lisp")
+(load "historical-hanoi-compat.lisp")
 (load "Domains/hanoi-4.lisp")
 (setq *critical-list* $CRIT_EXPR)
 (setq *left-wedge-list* $LW_EXPR)
@@ -68,16 +77,30 @@ cat >"$trace_lisp" <<EOF
        (quality-log (concatenate 'string trace-dir "frontier-quality.txt"))
        (solution-log (concatenate 'string trace-dir "solution.txt"))
        (drp-log (concatenate 'string trace-dir "drp-stack.txt"))
-	       (result (plan initial goal
-	                     :planner-mode '$PLANNER_MODE
-	                     :mp-mode $MP_MODE
-	                     :left-wedge-mode $LEFT_WEDGE_MODE
-	                     :drp-mode $DRP_MODE
-                     :output-file planner-log
-                     :expand-bound $EXPAND_BOUND
-                     :generate-bound $GENERATE_BOUND
-                     :open-bound $OPEN_BOUND
-                     :cpu-sec-limit $CPU_SEC_LIMIT)))
+	       (result (if $HISTORICAL_MODE
+                           (historical-hanoi4-plan initial goal
+	                                             :hierarchy '$HIERARCHY
+                                                     :planner-mode '$PLANNER_MODE
+                                                     :msp-mode '$MSP_MODE
+                                                     :msp-weak-mode '$MP_WEAK_MODE
+                                                     :crit-depth-mode $CRIT_DEPTH_MODE
+                                                     :left-wedge-mode $LEFT_WEDGE_MODE
+                                                     :output-file planner-log
+                                                     :expand-bound $EXPAND_BOUND
+                                                     :generate-bound $GENERATE_BOUND
+                                                     :open-bound $OPEN_BOUND
+                                                     :cpu-sec-limit $CPU_SEC_LIMIT)
+                         (plan initial goal
+	                       :planner-mode '$PLANNER_MODE
+	                       :mp-mode $MP_MODE
+                               :mp-weak-mode '$MP_WEAK_MODE
+	                       :left-wedge-mode $LEFT_WEDGE_MODE
+	                       :drp-mode $DRP_MODE
+                               :output-file planner-log
+                               :expand-bound $EXPAND_BOUND
+                               :generate-bound $GENERATE_BOUND
+                               :open-bound $OPEN_BOUND
+                               :cpu-sec-limit $CPU_SEC_LIMIT))))
   (with-open-file (stream summary-log
                           :direction :output
                           :if-exists :supersede
@@ -86,7 +109,11 @@ cat >"$trace_lisp" <<EOF
 	    (format stream "Plan result: ~S~%" result)
 	    (format stream "Requested planner mode: ~S~%" '$PLANNER_MODE)
 	    (format stream "Hierarchy: ~S~%" '$HIERARCHY)
+    (format stream "Historical mode: ~S~%" $HISTORICAL_MODE)
     (format stream "MP mode: ~S~%" '$MP_MODE)
+    (format stream "MSP mode: ~S~%" '$MSP_MODE)
+    (format stream "MP weak mode: ~S~%" '$MP_WEAK_MODE)
+    (format stream "Crit-depth mode: ~S~%" '$CRIT_DEPTH_MODE)
     (format stream "Left-wedge mode: ~S~%" '$LEFT_WEDGE_MODE)
     (format stream "DRP mode: ~S~%" '$DRP_MODE)
     (format stream "Expand bound: ~S~%" $EXPAND_BOUND)

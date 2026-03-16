@@ -39,3 +39,17 @@ GENERATE_BOUND=80000 \
 OPEN_BOUND=80000 \
 /Users/stevenwoods/mmath-renovation/scripts/trace-hanoi4-sbcl.sh
 ```
+
+Historical-control comparison example:
+
+```sh
+HISTORICAL_MODE=t \
+HIERARCHY=isbm \
+MSP_MODE=weak \
+MP_WEAK_MODE=pos \
+LEFT_WEDGE_MODE=nil \
+EXPAND_BOUND=20000 \
+GENERATE_BOUND=80000 \
+OPEN_BOUND=80000 \
+/Users/stevenwoods/mmath-renovation/scripts/trace-hanoi4-sbcl.sh
+```

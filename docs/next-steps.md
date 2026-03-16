@@ -58,6 +58,16 @@ That suggests the next `hanoi-4` step should be to compare `ismb` and `isbm`
 frontier quality again under weak-`POS`, not to keep investing effort in the
 archived four-disk default.
 
+That weak-`POS` frontier comparison is now done too:
+
+- `ismb` keeps the slight edge on raw generated-node count
+- `isbm` has the clearly cleaner top frontier
+
+So the next recommended `hanoi-4` question is now narrower:
+can we identify which part of the `isbm` weak-`POS` behavior is producing the
+cleaner frontier, and whether that can be carried over without losing the
+pruning strength that still makes `ismb` the best raw bounded path?
+
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
 The recommended order now is:

@@ -197,3 +197,54 @@ That makes the next best `hanoi-4` work more focused:
 3. keep the existing historical algorithm intact while using these reports to
    isolate where the restored ranking diverges from the historically stronger
    behavior
+
+## Weak-POS Follow-Up
+
+The latest follow-up traces compare the two most interesting four-disk
+hierarchies under the historical weak-`POS` control vocabulary, with
+left-wedge disabled to isolate the weak-MSP effect:
+
+- [hanoi4-abtweak-ismb-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260316-173414](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/hanoi4-abtweak-ismb-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260316-173414)
+- [hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260316-173414](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260316-173414)
+
+The split is now quite clear.
+
+For `ismb` weak-`POS`:
+
+- `24568` generated
+- `27007` MP pruned
+- `4567` open nodes
+- top priority buckets: `2416` nodes at `16`, `2151` at `17`
+- best unsatisfied-pair count in OPEN: `2`
+- but the top-ranked nodes are still mostly:
+  - `kval 0`
+  - plan cost `15` to `16`
+  - plan length `17` to `18`
+  - unsatisfied-pair counts around `11` to `16`
+
+For `isbm` weak-`POS`:
+
+- `24748` generated
+- `21293` MP pruned
+- `4747` open nodes
+- top priority buckets: `1680` nodes at `14`, `2963` at `15`, `104` at `16`
+- best unsatisfied-pair count in OPEN: `2`
+- and the top-ranked nodes are much cleaner:
+  - usually unsatisfied-pair counts around `3` to `6`
+  - many top states remain at `kval 1`
+  - the best-closure node with unsatisfied count `2` is still in the top bucket
+
+So weak-`POS` changes the four-disk story in a very specific way:
+
+1. `ismb` still wins slightly on raw generated-node count.
+2. `isbm` wins decisively on frontier quality.
+3. under weak-`POS`, the earlier AbTweak “good node demoted behind concrete
+   skeletons” problem is much less severe for `isbm` than for `ismb`.
+
+That means the live tradeoff is now explicit:
+
+- `ismb`: stronger pruning, dirtier frontier
+- `isbm`: weaker pruning, cleaner frontier
+
+The next meaningful question is whether we can borrow `isbm`'s cleaner weak-`POS`
+ranking behavior without giving up too much of `ismb`'s pruning strength.

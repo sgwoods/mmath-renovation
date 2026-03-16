@@ -186,6 +186,9 @@ Verified smoke results:
       `35214` to `37046` generated for the `legacy-1991-default` runs versus `24568` for `ismb` weak-`POS`
     - `ismb` remains the strongest raw four-disk historical-control path, but weak-`POS` helps `isbm` much more than it helps `ismb`:
       `isbm` improves from `26264` to `24748` generated under weak-`POS`, while `ismb` stays effectively flat at `24565` to `24568`
+    - the weak-`POS` frontier traces sharpen that split:
+      - `ismb` still has the better raw pruning story
+      - `isbm` has the much cleaner top frontier, with top-ranked states around `3` to `6` unsatisfied pairs instead of the `11` to `16` seen in `ismb`
     - the starting point is recorded in [docs/hanoi4-1991-compatibility.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)

@@ -78,6 +78,9 @@ Observed DFS run:
     - under the same historical vocabulary, `ismb` remains best on raw generated-node count
     - weak-`POS` helps `isbm` much more than `ismb`, narrowing the gap between them
     - crit-depth remains materially worse than weak MSP for both of those hierarchies
+    - frontier tracing under weak-`POS` now makes the tradeoff more concrete:
+      - `ismb` still prunes harder, but its top frontier bucket remains dominated by dirty `kval 0` states with roughly `11` to `16` unsatisfied pairs
+      - `isbm` keeps much cleaner states in the top bucket, often around `3` to `6` unsatisfied pairs, and retains its best `2`-unsatisfied node there as well
 - Direct frontier inspection now narrows the likely failure mode:
   - the best-looking `ismb` frontier nodes are not one-step-away solutions
   - the first open node at the 20k bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions
