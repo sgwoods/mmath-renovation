@@ -18,6 +18,7 @@ For deeper technical detail, see:
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
+- [Left-Wedge intent comparison](/Users/stevenwoods/mmath-renovation/docs/left-wedge-intent-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -138,11 +139,14 @@ Verified smoke results:
         - AbTweak is using `search-cost + num-of-unsat-goals + left-wedge-adjustment`
         - top concrete Hanoi nodes often win with base goal heuristic `0` and left-wedge `-7`
         - unresolved non-goal obligations are not represented directly in that score
+      - comparison with the historical manual/report/thesis now suggests this raw Left-Wedge pressure toward refinement is intended design, not a bug by itself
+      - the remaining question is whether the current Hanoi hierarchy/control pairing is a historically "good hierarchy" case where that pressure should help, or a case where it should hurt
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
   - the frontier-quality comparison is recorded in [docs/hanoi4-frontier-quality.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md#L1)
+  - the historical intent comparison is recorded in [docs/left-wedge-intent-comparison.md](/Users/stevenwoods/mmath-renovation/docs/left-wedge-intent-comparison.md#L1)
   - the algorithm comparison note is [docs/algorithm-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md#L1)
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`
