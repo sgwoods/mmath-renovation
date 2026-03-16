@@ -1,0 +1,1901 @@
+===== OPEN NODE 1 =====
+(:PRIORITY 0 :SEARCH-COST 6 :SOLUTION-DEPTH 18 :PLAN-ID |plan98| :PLAN-COST 6
+ :PLAN-KVAL 0 :PLAN-LENGTH 8 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op96| (ISPEG $95)))
+
+Plan id: |plan98|
+Plan cost: 6
+Plan kval: 0
+Plan length: 8
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG2 $95))
+  ((MOVES PEG2 $95) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG2 $95)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG2 $95))
+
+===== OPEN NODE 2 =====
+(:PRIORITY 0 :SEARCH-COST 6 :SOLUTION-DEPTH 17 :PLAN-ID |plan92| :PLAN-COST 6
+ :PLAN-KVAL 0 :PLAN-LENGTH 8 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op88| (ISPEG $87)))
+
+Plan id: |plan92|
+Plan cost: 6
+Plan kval: 0
+Plan length: 8
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 $87))
+  ((I) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 $87) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG2 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG1 $87)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG1 $87))
+
+===== OPEN NODE 3 =====
+(:PRIORITY 0 :SEARCH-COST 6 :SOLUTION-DEPTH 17 :PLAN-ID |plan91| :PLAN-COST 6
+ :PLAN-KVAL 0 :PLAN-LENGTH 8 :NUM-ORDERS 7 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op88| (ISPEG $87)))
+
+Plan id: |plan91|
+Plan cost: 6
+Plan kval: 0
+Plan length: 8
+Order count: 7
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVES PEG1 $87))
+  ((MOVES PEG1 $87) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG1 $87)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG1 $87))
+
+===== OPEN NODE 4 =====
+(:PRIORITY 0 :SEARCH-COST 6 :SOLUTION-DEPTH 17 :PLAN-ID |plan84| :PLAN-COST 6
+ :PLAN-KVAL 0 :PLAN-LENGTH 8 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op82| (ISPEG $81)))
+
+Plan id: |plan84|
+Plan cost: 6
+Plan kval: 0
+Plan length: 8
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG2 PEG3))
+  ((MOVES PEG2 PEG3) (MOVES PEG3 $81))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 $81) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $81)
+  (MOVES PEG2 PEG3)
+  (MOVES PEG1 PEG2)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $81))
+
+===== OPEN NODE 5 =====
+(:PRIORITY 1 :SEARCH-COST 8 :SOLUTION-DEPTH 26 :PLAN-ID |plan324| :PLAN-COST 8
+ :PLAN-KVAL 0 :PLAN-LENGTH 10 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op320| (ISPEG $319)))
+
+Plan id: |plan324|
+Plan cost: 8
+Plan kval: 0
+Plan length: 10
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 $319))
+  ((MOVES PEG3 $319) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG2 PEG3) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (G))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $319)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $319))
+
+===== OPEN NODE 6 =====
+(:PRIORITY 1 :SEARCH-COST 8 :SOLUTION-DEPTH 25 :PLAN-ID |plan316| :PLAN-COST 8
+ :PLAN-KVAL 0 :PLAN-LENGTH 10 :NUM-ORDERS 11 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op313| (ISPEG $311)))
+
+Plan id: |plan316|
+Plan cost: 8
+Plan kval: 0
+Plan length: 10
+Order count: 11
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES $311 PEG1))
+  ((MOVES $311 PEG1) (MOVES PEG1 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (G))
+  ((MOVES PEG3 PEG2) (MOVES PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $311 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($311 PEG1))
+
+===== OPEN NODE 7 =====
+(:PRIORITY 1 :SEARCH-COST 8 :SOLUTION-DEPTH 25 :PLAN-ID |plan302| :PLAN-COST 8
+ :PLAN-KVAL 0 :PLAN-LENGTH 10 :NUM-ORDERS 11 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op298| (ISPEG $296)))
+
+Plan id: |plan302|
+Plan cost: 8
+Plan kval: 0
+Plan length: 10
+Order count: 11
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES $296 PEG2))
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES $296 PEG2) (MOVES PEG2 PEG3))
+  ((MOVES PEG2 PEG3) (MOVES PEG2 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $296 PEG2)
+  (MOVES PEG2 PEG3)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($296 PEG2))
+
+===== OPEN NODE 8 =====
+(:PRIORITY 1 :SEARCH-COST 8 :SOLUTION-DEPTH 25 :PLAN-ID |plan301| :PLAN-COST 8
+ :PLAN-KVAL 0 :PLAN-LENGTH 10 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op298| (ISPEG $296)))
+
+Plan id: |plan301|
+Plan cost: 8
+Plan kval: 0
+Plan length: 10
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVES PEG2 PEG1) (MOVES $296 PEG2))
+  ((MOVES $296 PEG2) (MOVES PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+  ((MOVES PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $296 PEG2)
+  (MOVES PEG2 PEG3)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($296 PEG2))
+
+===== OPEN NODE 9 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 22 :PLAN-ID |plan284| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op281| (ISPEG $280)))
+
+Plan id: |plan284|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 $280))
+  ((MOVES PEG3 $280) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG1))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $280)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $280))
+
+===== OPEN NODE 10 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 21 :PLAN-ID |plan276| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op272| (ISPEG $271)))
+
+Plan id: |plan276|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 $271))
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 $271) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG1))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG1 $271)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG1 $271))
+
+===== OPEN NODE 11 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 21 :PLAN-ID |plan275| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op272| (ISPEG $271)))
+
+Plan id: |plan275|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVES PEG1 $271))
+  ((MOVES PEG1 $271) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG1 $271)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG1 $271))
+
+===== OPEN NODE 12 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan268| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op264| (ISPEG $263)))
+
+Plan id: |plan268|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG2 $263))
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG2 $263) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG2 $263)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG2 $263))
+
+===== OPEN NODE 13 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan267| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op264| (ISPEG $263)))
+
+Plan id: |plan267|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 $263))
+  ((MOVES PEG2 $263) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG2 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG2 $263)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG2 $263))
+
+===== OPEN NODE 14 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan260| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 11 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op256| (ISPEG $255)))
+
+Plan id: |plan260|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 11
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 $255))
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG2))
+  ((MOVES PEG1 $255) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG2 PEG1))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG1 $255)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG1 $255))
+
+===== OPEN NODE 15 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan259| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op256| (ISPEG $255)))
+
+Plan id: |plan259|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVES PEG1 $255))
+  ((MOVES PEG1 $255) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG1 $255)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG1 $255))
+
+===== OPEN NODE 16 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan252| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op250| (ISPEG $249)))
+
+Plan id: |plan252|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG2 PEG3) (MOVES PEG3 $249))
+  ((MOVES PEG3 $249) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $249)
+  (MOVES PEG2 PEG3)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $249))
+
+===== OPEN NODE 17 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan242| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op240| (ISPEG $239)))
+
+Plan id: |plan242|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG2 $239))
+  ((MOVES PEG2 $239) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG2 $239)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG2 $239))
+
+===== OPEN NODE 18 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan236| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op234| (ISPEG $233)))
+
+Plan id: |plan236|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 $233))
+  ((MOVES PEG3 $233) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $233)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $233))
+
+===== OPEN NODE 19 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan226| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op224| (ISPEG $222)))
+
+Plan id: |plan226|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES $222 PEG1))
+  ((MOVES $222 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $222 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($222 PEG1))
+
+===== OPEN NODE 20 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan220| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op216| (ISPEG $214)))
+
+Plan id: |plan220|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES $214 PEG1))
+  ((MOVES $214 PEG1) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $214 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($214 PEG1))
+
+===== OPEN NODE 21 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan219| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op216| (ISPEG $214)))
+
+Plan id: |plan219|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES $214 PEG1))
+  ((MOVES $214 PEG1) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $214 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($214 PEG1))
+
+===== OPEN NODE 22 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan212| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op210| (ISPEG $208)))
+
+Plan id: |plan212|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES $208 PEG1))
+  ((MOVES $208 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $208 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($208 PEG1))
+
+===== OPEN NODE 23 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan206| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op202| (ISPEG $200)))
+
+Plan id: |plan206|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES $200 PEG1))
+  ((MOVES $200 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $200 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($200 PEG1))
+
+===== OPEN NODE 24 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 19 :PLAN-ID |plan205| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op202| (ISPEG $200)))
+
+Plan id: |plan205|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES $200 PEG1))
+  ((MOVES $200 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $200 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($200 PEG1))
+
+===== OPEN NODE 25 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan194| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op192| (ISPEG $191)))
+
+Plan id: |plan194|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG2 $191))
+  ((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG2 $191) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG2 $191)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG2 $191))
+
+===== OPEN NODE 26 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan188| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op186| (ISPEG $185)))
+
+Plan id: |plan188|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 $185))
+  ((MOVES PEG1 PEG3) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVES PEG3 $185) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $185)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $185))
+
+===== OPEN NODE 27 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 21 :PLAN-ID |plan178| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op176| (ISPEG $174)))
+
+Plan id: |plan178|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES $174 PEG1))
+  ((MOVES $174 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $174 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($174 PEG1))
+
+===== OPEN NODE 28 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan172| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op168| (ISPEG $166)))
+
+Plan id: |plan172|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES $166 PEG1))
+  ((MOVES $166 PEG1) (MOVES PEG1 PEG2))
+  ((MOVES PEG1 PEG2) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $166 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($166 PEG1))
+
+===== OPEN NODE 29 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan171| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op168| (ISPEG $166)))
+
+Plan id: |plan171|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES $166 PEG1))
+  ((MOVES $166 PEG1) (MOVES PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $166 PEG1)
+  (MOVES PEG1 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($166 PEG1))
+
+===== OPEN NODE 30 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 21 :PLAN-ID |plan164| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op162| (ISPEG $160)))
+
+Plan id: |plan164|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES $160 PEG1))
+  ((MOVES $160 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $160 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($160 PEG1))
+
+===== OPEN NODE 31 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan158| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 8 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op154| (ISPEG $152)))
+
+Plan id: |plan158|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 8
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES $152 PEG1))
+  ((MOVES $152 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $152 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($152 PEG1))
+
+===== OPEN NODE 32 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 20 :PLAN-ID |plan157| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op154| (ISPEG $152)))
+
+Plan id: |plan157|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES $152 PEG1))
+  ((MOVES $152 PEG1) (MOVES PEG1 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $152 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($152 PEG1))
+
+===== OPEN NODE 33 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 21 :PLAN-ID |plan146| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op144| (ISPEG $142)))
+
+Plan id: |plan146|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVES $142 PEG3))
+  ((MOVES PEG3 PEG1) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES $142 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $142 PEG3)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($142 PEG3))
+
+===== OPEN NODE 34 =====
+(:PRIORITY 1 :SEARCH-COST 7 :SOLUTION-DEPTH 21 :PLAN-ID |plan140| :PLAN-COST 7
+ :PLAN-KVAL 0 :PLAN-LENGTH 9 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op138| (ISPEG $136)))
+
+Plan id: |plan140|
+Plan cost: 7
+Plan kval: 0
+Plan length: 9
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVES $136 PEG3))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES $136 PEG3) (MOVES PEG3 PEG1))
+  ((MOVES PEG3 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $136 PEG3)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG3 PEG1)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($136 PEG3))
+
+===== OPEN NODE 35 =====
+(:PRIORITY 1 :SEARCH-COST 3 :SOLUTION-DEPTH 9 :PLAN-ID |plan37| :PLAN-COST 3
+ :PLAN-KVAL 1 :PLAN-LENGTH 5 :NUM-ORDERS 5 :NUM-CAUSAL-RELATIONS 2
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op32| (ONM PEG1)))
+
+Plan id: |plan37|
+Plan cost: 3
+Plan kval: 1
+Plan length: 5
+Order count: 5
+CR count: 2
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVEM PEG1 PEG3))
+  ((I) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG1 PEG3) (G))
+  ((MOVEB PEG1 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+
+Operators:
+  (MOVEM PEG1 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: NIL
+
+===== OPEN NODE 36 =====
+(:PRIORITY 2 :SEARCH-COST 8 :SOLUTION-DEPTH 26 :PLAN-ID |plan323| :PLAN-COST 8
+ :PLAN-KVAL 0 :PLAN-LENGTH 10 :NUM-ORDERS 9 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op320| (ISPEG $319)))
+
+Plan id: |plan323|
+Plan cost: 8
+Plan kval: 0
+Plan length: 10
+Order count: 9
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVES PEG3 $319))
+  ((MOVES PEG3 $319) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES PEG3 $319)
+  (MOVES PEG1 PEG3)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $319))
+
+===== OPEN NODE 37 =====
+(:PRIORITY 2 :SEARCH-COST 8 :SOLUTION-DEPTH 26 :PLAN-ID |plan308| :PLAN-COST 8
+ :PLAN-KVAL 0 :PLAN-LENGTH 10 :NUM-ORDERS 10 :NUM-CAUSAL-RELATIONS 7
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op306| (ISPEG $304)))
+
+Plan id: |plan308|
+Plan cost: 8
+Plan kval: 0
+Plan length: 10
+Order count: 10
+CR count: 7
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVES PEG1 PEG3))
+  ((MOVES PEG1 PEG3) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVES PEG3 PEG2))
+  ((MOVES PEG3 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVES PEG3 PEG2) (MOVES PEG2 PEG3))
+  ((MOVES PEG2 PEG3) (MOVES $304 PEG2))
+  ((MOVEB PEG1 PEG3) (MOVES PEG2 PEG1))
+  ((MOVES PEG2 PEG1) (MOVEM PEG2 PEG3))
+  ((MOVES $304 PEG2) (MOVES PEG2 PEG1))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+  (|op3| (NOT ONM PEG1) (|op17|))
+  (|op3| (NOT ONM PEG3) (I))
+  (|op32| (ONM PEG2) (|op17|))
+  (|op17| (ONM PEG1) (I))
+  (G (ONM PEG3) (|op32|))
+
+Operators:
+  (MOVES $304 PEG2)
+  (MOVES PEG2 PEG3)
+  (MOVES PEG2 PEG1)
+  (MOVES PEG3 PEG2)
+  (MOVES PEG1 PEG3)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($304 PEG2))
+
+===== OPEN NODE 38 =====
+(:PRIORITY 2 :SEARCH-COST 4 :SOLUTION-DEPTH 11 :PLAN-ID |plan53| :PLAN-COST 4
+ :PLAN-KVAL 1 :PLAN-LENGTH 6 :NUM-ORDERS 6 :NUM-CAUSAL-RELATIONS 2
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op49| (ISPEG $48)))
+
+Plan id: |plan53|
+Plan cost: 4
+Plan kval: 1
+Plan length: 6
+Order count: 6
+CR count: 2
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVEM PEG3 $48))
+  ((I) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM PEG3 $48) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+
+Operators:
+  (MOVEM PEG3 $48)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $48))
+
+===== OPEN NODE 39 =====
+(:PRIORITY 2 :SEARCH-COST 4 :SOLUTION-DEPTH 10 :PLAN-ID |plan45| :PLAN-COST 4
+ :PLAN-KVAL 1 :PLAN-LENGTH 6 :NUM-ORDERS 6 :NUM-CAUSAL-RELATIONS 2
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op42| (ISPEG $40)))
+
+Plan id: |plan45|
+Plan cost: 4
+Plan kval: 1
+Plan length: 6
+Order count: 6
+CR count: 2
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVEM $40 PEG2))
+  ((I) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEB PEG1 PEG3))
+  ((MOVEM $40 PEG2) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (G))
+  ((MOVEB PEG1 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+
+Operators:
+  (MOVEM $40 PEG2)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($40 PEG2))
+
+===== OPEN NODE 40 =====
+(:PRIORITY 2 :SEARCH-COST 3 :SOLUTION-DEPTH 8 :PLAN-ID |plan29| :PLAN-COST 3
+ :PLAN-KVAL 1 :PLAN-LENGTH 5 :NUM-ORDERS 4 :NUM-CAUSAL-RELATIONS 2
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op27| (ISPEG $26)))
+
+Plan id: |plan29|
+Plan cost: 3
+Plan kval: 1
+Plan length: 5
+Order count: 4
+CR count: 2
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVEM PEG1 PEG3))
+  ((MOVEM PEG1 PEG3) (MOVEM PEG3 $26))
+  ((MOVEM PEG3 $26) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+
+Operators:
+  (MOVEM PEG3 $26)
+  (MOVEM PEG1 PEG3)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $26))
+
+===== OPEN NODE 41 =====
+(:PRIORITY 3 :SEARCH-COST 4 :SOLUTION-DEPTH 11 :PLAN-ID |plan52| :PLAN-COST 4
+ :PLAN-KVAL 1 :PLAN-LENGTH 6 :NUM-ORDERS 5 :NUM-CAUSAL-RELATIONS 2
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op49| (ISPEG $48)))
+
+Plan id: |plan52|
+Plan cost: 4
+Plan kval: 1
+Plan length: 6
+Order count: 5
+CR count: 2
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVEM PEG1 PEG2))
+  ((MOVEM PEG1 PEG2) (MOVEM PEG2 PEG3))
+  ((MOVEM PEG2 PEG3) (MOVEM PEG3 $48))
+  ((MOVEM PEG3 $48) (MOVEB PEG1 PEG3))
+  ((MOVEB PEG1 PEG3) (G))
+
+Causal relations:
+  (|op3| (ONB PEG1) (I))
+  (G (ONB PEG3) (|op3|))
+
+Operators:
+  (MOVEM PEG3 $48)
+  (MOVEM PEG2 PEG3)
+  (MOVEM PEG1 PEG2)
+  (MOVEB PEG1 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: ((PEG3 $48))
+
+===== OPEN NODE 42 =====
+(:PRIORITY 3 :SEARCH-COST 2 :SOLUTION-DEPTH 5 :PLAN-ID |plan14| :PLAN-COST 2
+ :PLAN-KVAL 2 :PLAN-LENGTH 4 :NUM-ORDERS 3 :NUM-CAUSAL-RELATIONS 0
+ :NUM-CONFLICTS 0 :INVALID NIL :NEXT-USER-PRECOND (|op12| (ISPEG $10)))
+
+Plan id: |plan14|
+Plan cost: 2
+Plan kval: 2
+Plan length: 4
+Order count: 3
+CR count: 0
+Conflict count: 0
+Invalid: NIL
+
+Orders:
+  ((I) (MOVEB $10 PEG2))
+  ((MOVEB $10 PEG2) (MOVEB PEG2 PEG3))
+  ((MOVEB PEG2 PEG3) (G))
+
+Causal relations:
+
+Operators:
+  (MOVEB $10 PEG2)
+  (MOVEB PEG2 PEG3)
+  (I)
+  (G)
+
+Non-codesignations: (($10 PEG2))
+

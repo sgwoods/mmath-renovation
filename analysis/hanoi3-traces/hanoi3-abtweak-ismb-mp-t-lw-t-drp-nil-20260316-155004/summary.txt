@@ -1,0 +1,29 @@
+Case: hanoi3-abtweak-ismb-mp-t-lw-t-drp-nil-20260316-155004
+Plan result: NIL
+Requested planner mode: ABTWEAK
+Hierarchy: ISMB
+MP mode: T
+Left-wedge mode: T
+DRP mode: NIL
+Expand bound: 20000
+Generate bound: 80000
+Open bound: 80000
+CPU limit: 30
+
+Planner mode: ABTWEAK
+Control strategy: BFS
+Solution value: EXPAND-LIMIT-EXCEEDED
+Solution type: SYMBOL
+Expanded: 20001
+Generated: 23778
+MP pruned: 23190
+Open length: 3777
+Closed length: 0
+Abs node count: 16
+DRP stack depth: 0
+Current level: 0
+Abs branching counts: #(0 9 6 1)
+Open priority buckets:
+  (8 2166)
+  (9 1608)
+  (10 3)

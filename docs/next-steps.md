@@ -13,6 +13,7 @@ It complements:
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
+- [Hanoi-3 versus Hanoi-4](/Users/stevenwoods/mmath-renovation/docs/hanoi3-vs-hanoi4.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -30,6 +31,8 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 2. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
 3. should `isbm` now replace `critical-list-2` as the main alternate `hanoi-4b` comparison hierarchy?
 4. why does `ismb` prune much more aggressively than `isbm` even though `isbm` appears to rank frontier quality better?
+5. can we combine what now looks like the two winning properties:
+   `ismb`-style pruning and `isbm`-style frontier ranking?
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
