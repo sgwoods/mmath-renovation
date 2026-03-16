@@ -132,6 +132,8 @@ Verified smoke results:
       - the best priority bucket is dominated by concrete `kval 0` plans with roughly `9` to `17` unsatisfied user/precondition pairs
       - the best open node by closure quality has only `2` unsatisfied pairs, but sits in a worse priority bucket at `kval 2`
       - this makes the current leading hypothesis a ranking problem that prefers concreteness over closure
+      - a matching `tweak` trace at the same 20k bound still has a much larger frontier, but its best closure-oriented nodes stay in the same top priority bucket
+      - that makes the bucket-separation effect look specific to the restored `abtweak` path rather than a generic property of `hanoi-4`
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)

@@ -82,6 +82,10 @@ Observed DFS run:
     - the best priority bucket is dominated by concrete `kval 0` move skeletons with roughly `9` to `17` unsatisfied user/precondition pairs
     - the best closure-oriented node in the same frontier has only `2` unsatisfied pairs, but sits in a worse priority bucket at higher abstraction
     - that suggests the active ranking is favoring concreteness more than closure quality
+  - a matching `tweak` frontier trace makes that result more specific:
+    - `tweak` still has a much larger frontier at the same 20k bound
+    - but its best closure-oriented nodes remain in the same top priority bucket as the rest of the best-ranked frontier
+    - the bucket-separation effect currently looks specific to the restored `abtweak` path rather than a generic `hanoi-4` property
 
 ## Evidence Against A Gross Semantic Break
 
@@ -133,4 +137,4 @@ The best current classification for `hanoi-4` is:
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: how does this frontier-ranking pattern compare with `tweak`, and is that where the restored search is diverging from the historically stronger Hanoi behavior
+- most immediate open question: which part of the restored `abtweak` ranking is causing better closure-oriented Hanoi states to lose priority to more concrete partial plans

@@ -17,14 +17,14 @@ It complements:
 ## Current Priorities
 
 1. Push the promising `hanoi-4` `ismb` path further, but keep the focus on search quality rather than broad parameter churn:
-   compare `tweak` and `abtweak` frontier quality directly, and check whether the planner is overvaluing valid move skeletons that still leave too many necessary conditions open.
+   inspect the restored `abtweak` ranking stack directly, and check why it is overvaluing valid move skeletons that still leave too many necessary conditions open.
 2. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 3. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
-1. does `tweak` show the same “concreteness over closure” frontier pattern as `abtweak`, or is that divergence specific to the restored abstraction path?
+1. which part of the restored `abtweak` ranking stack is pushing better closure-oriented `hanoi-4` states behind the concrete `kval 0` bucket?
 2. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
 3. should `critical-list-2` now be treated mainly as a comparison hierarchy while `ismb` becomes the primary `hanoi-4` restoration target?
 

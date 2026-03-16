@@ -6,6 +6,7 @@ REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 WORKDIR="$REPO_ROOT/working/abtweak-1993"
 TRACE_ROOT="$REPO_ROOT/analysis/hanoi4-traces"
 SBCL_BIN=${SBCL_BIN:-/opt/homebrew/bin/sbcl}
+PLANNER_MODE=${PLANNER_MODE:-abtweak}
 HIERARCHY=${HIERARCHY:-ismb}
 MP_MODE=${MP_MODE:-t}
 LEFT_WEDGE_MODE=${LEFT_WEDGE_MODE:-t}
@@ -17,7 +18,7 @@ CPU_SEC_LIMIT=${CPU_SEC_LIMIT:-60}
 OPEN_SNAPSHOT_LIMIT=${OPEN_SNAPSHOT_LIMIT:-200}
 
 timestamp=$(date +"%Y%m%d-%H%M%S")
-case_slug="hanoi4-${HIERARCHY}-mp-${MP_MODE}-lw-${LEFT_WEDGE_MODE}-drp-${DRP_MODE}-${timestamp}"
+case_slug="hanoi4-${PLANNER_MODE}-${HIERARCHY}-mp-${MP_MODE}-lw-${LEFT_WEDGE_MODE}-drp-${DRP_MODE}-${timestamp}"
 trace_dir="$TRACE_ROOT/$case_slug"
 mkdir -p "$trace_dir"
 
@@ -55,11 +56,11 @@ cat >"$trace_lisp" <<EOF
        (quality-log (concatenate 'string trace-dir "frontier-quality.txt"))
        (solution-log (concatenate 'string trace-dir "solution.txt"))
        (drp-log (concatenate 'string trace-dir "drp-stack.txt"))
-       (result (plan initial goal
-                     :planner-mode 'abtweak
-                     :mp-mode $MP_MODE
-                     :left-wedge-mode $LEFT_WEDGE_MODE
-                     :drp-mode $DRP_MODE
+	       (result (plan initial goal
+	                     :planner-mode '$PLANNER_MODE
+	                     :mp-mode $MP_MODE
+	                     :left-wedge-mode $LEFT_WEDGE_MODE
+	                     :drp-mode $DRP_MODE
                      :output-file planner-log
                      :expand-bound $EXPAND_BOUND
                      :generate-bound $GENERATE_BOUND
@@ -70,8 +71,9 @@ cat >"$trace_lisp" <<EOF
                           :if-exists :supersede
                           :if-does-not-exist :create)
     (format stream "Case: $case_slug~%")
-    (format stream "Plan result: ~S~%" result)
-    (format stream "Hierarchy: ~S~%" '$HIERARCHY)
+	    (format stream "Plan result: ~S~%" result)
+	    (format stream "Requested planner mode: ~S~%" '$PLANNER_MODE)
+	    (format stream "Hierarchy: ~S~%" '$HIERARCHY)
     (format stream "MP mode: ~S~%" '$MP_MODE)
     (format stream "Left-wedge mode: ~S~%" '$LEFT_WEDGE_MODE)
     (format stream "DRP mode: ~S~%" '$DRP_MODE)

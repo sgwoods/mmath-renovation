@@ -19,6 +19,7 @@ Each trace directory contains:
 Suggested first use:
 
 ```sh
+PLANNER_MODE=abtweak \
 HIERARCHY=ismb \
 EXPAND_BOUND=50000 \
 GENERATE_BOUND=200000 \
@@ -27,3 +28,14 @@ OPEN_BOUND=200000 \
 ```
 
 This tracing workflow is intended to help answer whether the planner is making obviously bad search decisions, getting stuck in a suspicious abstraction/refinement pattern, or simply exhausting a large but reasonable search frontier.
+
+Useful variants:
+
+```sh
+PLANNER_MODE=tweak \
+HIERARCHY=ismb \
+EXPAND_BOUND=20000 \
+GENERATE_BOUND=80000 \
+OPEN_BOUND=80000 \
+/Users/stevenwoods/mmath-renovation/scripts/trace-hanoi4-sbcl.sh
+```
