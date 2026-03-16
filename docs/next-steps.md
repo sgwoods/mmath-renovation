@@ -9,15 +9,17 @@ It complements:
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
+- [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
+- [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
 ## Current Priorities
 
-1. Push the promising `hanoi-4` hierarchy settings further, but shift the immediate diagnostic toward frontier quality under `ismb` plus MP:
-   compare heuristic priority against unsatisfied-precondition count, and check whether search is overvaluing move skeletons that still leave many necessary conditions open.
-2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
-3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
-4. Decide whether the `reset-domain` / `defstep` files (`driving`, `scheduling`, parts of `newd`) should become a separate restoration track, since the wider operator-domain sweep now looks healthy.
+1. Push the promising `hanoi-4` `ismb` path further, but keep the focus on search quality rather than broad parameter churn:
+   compare frontier quality against heuristic priority, and check whether the planner is overvaluing valid move skeletons that still leave too many necessary conditions open.
+2. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
+3. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
+4. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
@@ -27,12 +29,12 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
-The recommended order remains:
+The recommended order now is:
 
 1. `#14`
-2. `#11`
-3. `#12`
-4. `#13`
+2. `#13`
+3. `#16`
+4. `#12`
 
 The rationale and alternatives are recorded in [docs/refreshed-plan.md](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md#L1).
 
@@ -51,10 +53,10 @@ The issue tracker should stay focused on a few parallel tracks:
 
 ## Suggested Order
 
-1. Push `hanoi-4` further with the now-better-understood `ismb` and `critical-list-2` settings.
-2. Mark each benchmark row in the validation matrix as matched, partially matched, or still open.
-3. Trim the remaining SBCL style/redefinition noise in the working tree.
-4. Widen the smoke suite into more 1993 shipped sample domains.
+1. Push `hanoi-4` further with the now-better-understood `ismb` settings.
+2. Widen the smoke suite into more 1993 shipped operator-style sample domains.
+3. Decide whether to open a separate phase-2 restoration track for the `reset-domain` framework.
+4. Trim the remaining SBCL style/redefinition noise in the working tree.
 
 ## Exit Criteria For The Next Milestone
 

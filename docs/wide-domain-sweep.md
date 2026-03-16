@@ -23,9 +23,13 @@ The wider sweep strengthens the restoration story considerably:
 
 The sweep also clarified the current project boundary:
 
-- `driving.lisp`, `scheduling.lisp`, and parts of `newd.lisp` use a different
+- `driving.lisp` and large parts of `newd.lisp` use a different
   `reset-domain` / `defstep` planner framework and should not yet be treated as
   direct AbTweak smoke cases
+- `scheduling.lisp` is mixed rather than cleanly standalone:
+  it uses the direct operator representation, but its checked-in entry point
+  depends on `scheduling-world-domain`, which only appears in the alternate
+  `newd.lisp` framework
 - `stylistics.lisp` does not currently ship an active benchmark pair to run
   directly
 

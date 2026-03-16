@@ -53,7 +53,9 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Wide domain sweep](./docs/wide-domain-sweep.md): broader SBCL sweep across shipped operator-style domains, including what is still out of scope
 - [Hanoi-4 diagnosis](./docs/hanoi4-diagnosis.md): current evidence on whether the larger Hanoi benchmark is blocked by bounds, control settings, or a deeper porting issue
 - [Hanoi-4 hierarchy comparison](./docs/hanoi4-hierarchy-comparison.md): direct comparison of the historical Hanoi hierarchy choices and how they change MP and left-wedge behavior under SBCL
+- [Hanoi-4 control comparison](./docs/hanoi4-control-comparison.md): targeted comparison of the live heuristic and abstraction-control choices on the strongest current Hanoi hierarchy
 - [Algorithm correspondence review](./docs/algorithm-correspondence.md): comparison of the archival 1993 algorithms and the SBCL working tree, including what changed and what did not
+- [Reset-domain assessment](./docs/reset-domain-assessment.md): recommendation on treating the alternate `reset-domain` / `defstep` material as a separate restoration track
 - [Next steps](./docs/next-steps.md): living short-list of recommended technical and historical follow-up work
 
 As the project grows, this repository should add:

@@ -15,8 +15,10 @@ For deeper technical detail, see:
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
+- [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
+- [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
 ## Repository State
 
@@ -27,9 +29,9 @@ For deeper technical detail, see:
 ## Plan State
 
 - Runtime restoration: first milestone substantially achieved
-- Historical validation: in progress, with a much stronger source base now that the publications are checked into the repo
+- Historical validation: in progress, and the validation matrix is now explicitly labeled against the published expectations
 - Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage
-- Recommended next track: push `hanoi-4`, then label the validation matrix, then trim remaining SBCL warning noise
+- Recommended next track: push the strongest remaining `hanoi-4` path, then widen historically grounded coverage, then decide how much of the alternate `reset-domain` framework to revive
 
 ## Current Restoration Milestone
 
@@ -83,7 +85,8 @@ Verified smoke results:
   - `fly` to both Washington DC and San Francisco solves in both modes
   - `biology` goal 1 solves in both modes, and the full checked-in `biology` goal solves in `abtweak`
   - `database` query 1 and query 3 solve in both modes after a small numeric-constant compatibility fix in `var-p`
-  - `driving.lisp`, `scheduling.lisp`, and `newd.lisp` still look like a different planner framework rather than direct AbTweak smoke targets
+  - `driving.lisp` and large parts of `newd.lisp` still look like a different planner framework rather than direct AbTweak smoke targets
+  - `scheduling.lisp` is a mixed case whose current checked-in entry point depends on that alternate framework
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
 - `macro-hanoi` now solves in both `tweak` and `abtweak`.
 - The current `hanoi-4` diagnosis is now more specific than “just bound-limited”:
@@ -100,7 +103,11 @@ Verified smoke results:
     - after the latest cleanup pass, `ismb` with MP and left-wedge also reaches clean `EXPAND-LIMIT-EXCEEDED` results at `150000` expansions (`184610` generated, `183236` MP prunes) and `200000` expansions (`243578` generated, `245293` MP prunes)
     - `ismb` with `:drp-mode t` still does not solve, but it now reports `OPEN-EXHAUSTED` honestly instead of leaving the untouched initial plan in `*solution*`
     - `critical-list-2` has not improved as much under the same deeper runs and can still exhaust the default SBCL heap by `150000`, which makes `ismb` the clearer current restoration target
-    - the checked-in publications now let us interpret those local hierarchies more precisely:
+  - the new control comparison narrows the live `hanoi-4` question further:
+    - on `ismb`, the default `num-of-unsat-goals` heuristic is better than a zero heuristic at both 20k and 100k
+    - `:abstract-goal-mode t` materially helps on `ismb`, while `:existing-only t` makes no observed difference at the tested bounds
+    - `critical-list-2` remains a useful comparison hierarchy, but it is no longer the best current runtime target
+  - the checked-in publications now let us interpret those local hierarchies more precisely:
       - `critical-list-1` is the default `IBMS`-style family extended to four disks
       - `ismb` is the `ISMB` family, with omitted `onh` falling to criticality `0` by historical `find-crit` behavior
       - `critical-list-2` is best read as a positive/negative criticality-label experiment rather than a simple permutation like `IBMS`
@@ -113,6 +120,7 @@ Verified smoke results:
       - this points the remaining `hanoi-4` work more toward heuristic and control quality than toward a gross establisher-logic bug
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
+  - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
   - the algorithm comparison note is [docs/algorithm-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md#L1)
 - Planner bound handling is now healthier under SBCL:
@@ -138,7 +146,7 @@ Verified smoke results:
 
 - The archival source trees are preserved as historical artifacts, including old compiled Lisp outputs.
 - Most remaining risk is semantic validation, not basic SBCL compatibility.
-- The largest open gaps are now pushing the best `hanoi-4` hierarchy configurations toward a full solve, labeling the current benchmark set against the published claims, and trimming the remaining non-fatal SBCL style/redefinition noise.
+- The largest open gaps are now pushing the best `hanoi-4` configuration toward a full solve, widening historically grounded sample coverage, and deciding how much of the alternate `reset-domain` framework to restore after the main AbTweak path.
 
 ## Reproducible Commands
 
@@ -147,6 +155,7 @@ Verified smoke results:
 - Comparison runner: [scripts/compare-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh)
 - Wide sweep runner: [scripts/wide-domain-sweep-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/wide-domain-sweep-sbcl.sh)
 - Hanoi hierarchy runner: [scripts/compare-hanoi4-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-hierarchies-sbcl.sh)
+- Hanoi controls runner: [scripts/compare-hanoi4-controls-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-controls-sbcl.sh)
 
 Representative checks:
 

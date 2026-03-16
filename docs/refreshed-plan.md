@@ -42,8 +42,8 @@ What is done:
 
 What is still open:
 
-- benchmark rows still need explicit labels such as `matched`, `partially matched`, or `open`
-- the most important published claims still need direct row-by-row comparison
+- the labeled matrix still needs to be kept current as new benchmark evidence is added
+- the most important published claims still need more exact row-by-row metric comparison where the papers report counts
 
 ### Track 3: Benchmark Coverage
 
@@ -76,22 +76,43 @@ Relevant issue:
 
 - [#14 Investigate hanoi-4 performance after precedence-fix stabilization](https://github.com/sgwoods/mmath-renovation/issues/14)
 
-### 2. Label The Validation Matrix
+### 2. Expand Historically Grounded Coverage
 
 Focus on:
 
-- mark each benchmark/theme as `matched`, `partially matched`, or `open`
-- tie each label to a specific published claim
+- more shipped operator-style sample domains
+- more directly reproducible examples that exercise features not yet represented
+  in the smoke suite
 
 Reason:
 
-The repo now has enough evidence that the next big improvement is interpretability. This turns the project from “working port” into “historically accountable restoration.”
+The matrix is now labeled, and the direct operator-style sweep is healthy
+enough that broader historically grounded coverage is the best next confidence
+builder after `hanoi-4`.
 
 Relevant issue:
 
-- [#11 Label historical validation matrix against published claims](https://github.com/sgwoods/mmath-renovation/issues/11)
+- [#13 Expand historical shipped sample-domain smoke coverage](https://github.com/sgwoods/mmath-renovation/issues/13)
 
-### 3. Trim Residual SBCL Noise
+### 3. Decide The Alternate Framework Boundary
+
+Focus on:
+
+- `driving.lisp`
+- `newd.lisp`
+- the mixed `scheduling.lisp` entry points
+
+Reason:
+
+The repo now has enough evidence to say this is not just “more domains.”
+It is a separate planner framework boundary, and deciding that explicitly keeps
+the main restoration story clean.
+
+Relevant issue:
+
+- [#16 Evaluate reset-domain planner files as a separate restoration track](https://github.com/sgwoods/mmath-renovation/issues/16)
+
+### 4. Trim Residual SBCL Noise
 
 Focus on:
 
@@ -107,21 +128,6 @@ Relevant issue:
 
 - [#12 Trim residual SBCL style and redefinition noise](https://github.com/sgwoods/mmath-renovation/issues/12)
 
-### 4. Expand Historical Sample Coverage
-
-Focus on:
-
-- more shipped 1993 sample domains
-- additional runnable examples that exercise planner features not yet represented in the smoke suite
-
-Reason:
-
-This broadens confidence, but it is a lower priority than resolving the main remaining Hanoi question and labeling the current evidence.
-
-Relevant issue:
-
-- [#13 Expand historical shipped sample-domain smoke coverage](https://github.com/sgwoods/mmath-renovation/issues/13)
-
 ## Best Alternatives
 
 ### Option A: Performance-First
@@ -129,9 +135,9 @@ Relevant issue:
 Order:
 
 1. `#14`
-2. `#11`
-3. `#12`
-4. `#13`
+2. `#13`
+3. `#16`
+4. `#12`
 
 Why choose it:
 
@@ -145,10 +151,10 @@ Historical labeling stays a little behind while we keep working the hard benchma
 
 Order:
 
-1. `#11`
+1. `#13`
 2. `#14`
-3. `#12`
-4. `#13`
+3. `#16`
+4. `#12`
 
 Why choose it:
 
@@ -162,8 +168,8 @@ The biggest live runtime question, `hanoi-4`, remains unresolved a bit longer.
 
 Order:
 
-1. `#13`
-2. `#11`
+1. `#16`
+2. `#13`
 3. `#14`
 4. `#12`
 
@@ -180,13 +186,17 @@ It risks deferring the hardest and most informative restoration question.
 Recommended order:
 
 1. `#14`
-2. `#11`
-3. `#12`
-4. `#13`
+2. `#13`
+3. `#16`
+4. `#12`
 
 Why this order makes the most sense:
 
 - `hanoi-4` is the clearest remaining boundary between “strong partial restoration” and “historically convincing restoration”
 - the publications and hierarchy mapping work mean we now have enough context to investigate `hanoi-4` intelligently
-- once that line is pushed as far as practical, the validation matrix can be labeled with much stronger confidence
-- warning cleanup and broader sample coverage are both worthwhile, but they are secondary to those two higher-signal tasks
+- once that line is pushed as far as practical, broader sample coverage is the
+  highest-value way to widen confidence in the restoration
+- the alternate `reset-domain` material should be treated deliberately as a
+  separate framework question, not mixed into the main smoke story by accident
+- warning cleanup is still worthwhile, but it is now a support task rather than
+  the main line of progress
