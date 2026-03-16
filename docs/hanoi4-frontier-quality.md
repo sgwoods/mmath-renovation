@@ -248,3 +248,56 @@ That means the live tradeoff is now explicit:
 
 The next meaningful question is whether we can borrow `isbm`'s cleaner weak-`POS`
 ranking behavior without giving up too much of `ismb`'s pruning strength.
+
+## What Weak-POS Seems To Be Buying
+
+A final follow-up compared weak-`NEC` and weak-`POS` directly on both `isbm`
+and `ismb`, again with left-wedge disabled so the weak-MSP effect was easier
+to isolate.
+
+New traces:
+
+- [hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-nec-crit-nil-lw-nil-drp-nil-20260316-174707](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-nec-crit-nil-lw-nil-drp-nil-20260316-174707)
+- [hanoi4-abtweak-ismb-hist-t-mp-t-msp-weak-weak-nec-crit-nil-lw-nil-drp-nil-20260316-174707](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/hanoi4-abtweak-ismb-hist-t-mp-t-msp-weak-weak-nec-crit-nil-lw-nil-drp-nil-20260316-174707)
+
+The most useful facts are:
+
+1. On `isbm`, weak-`POS` changes the frontier a lot.
+   - weak-`NEC`: `26264` generated, `6263` open
+   - weak-`POS`: `24748` generated, `4747` open
+   - both runs have the same abstraction branching counts: `#(0 25 10 1)`
+
+2. On `ismb`, weak-`POS` changes the frontier very little.
+   - weak-`NEC`: `24565` generated, `4564` open
+   - weak-`POS`: `24568` generated, `4567` open
+   - the abstraction counts stay very similar there too
+
+That means the improvement is not primarily from generating a different
+abstraction tree. It is mostly from pruning different states after the same
+basic hierarchy-driven expansion pattern is underway.
+
+The code path supports that reading:
+
+- weak-`NEC` uses [nece-est-p](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Tw-routines/Plan-infer/plan-inference.lisp#L62), which only treats exact necessary establishment as relevant
+- weak-`POS` uses [poss-est-p](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Tw-routines/Plan-infer/plan-inference.lisp#L77), wired through [ab-mp-check.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Ab-routines/ab-mp-check.lisp#L1), so it prunes operators that possibly clobber or re-establish a protected condition
+
+The hierarchy difference then explains why that stronger pruning helps `isbm`
+more than `ismb`:
+
+- `ismb` puts `ons` at level `2`, `onm` at `1`, and delays `onb` to `0`
+- `isbm` puts `ons` at `2`, `onb` at `1`, and delays `onm` to `0`
+
+So in `isbm`, big-disk facts become abstract obligations earlier. Weak-`POS`
+can then prune more medium-disk concrete churn that might still possibly
+interfere with those higher-level `onb` commitments. In `ismb`, the big-disk
+commitments remain delayed to the concrete level, so weak-`POS` has far less
+leverage to clean the frontier before the search has already concretized.
+
+That is the strongest current explanation for the observed split:
+
+- the cleaner frontier mostly comes from the `isbm` hierarchy itself
+- weak-`POS` is what materially removes many of the dirty concretized states
+  within that hierarchy
+- `ismb` still wins on raw pruning because its hierarchy collapses the overall
+  search better, but weak-`POS` does not have the same opportunity to improve
+  frontier quality there

@@ -68,6 +68,17 @@ can we identify which part of the `isbm` weak-`POS` behavior is producing the
 cleaner frontier, and whether that can be carried over without losing the
 pruning strength that still makes `ismb` the best raw bounded path?
 
+The latest answer is:
+
+- the hierarchy itself is a big part of the cleaner `isbm` shape
+- weak-`POS` is what materially cuts away many dirty concretized `isbm` states
+- that improvement happens without changing the abstraction branching counts
+
+So the next recommended `hanoi-4` step is no longer another broad comparison.
+It is to inspect whether the current scorer can be nudged, instrumented, or
+diagnosed in a way that borrows `isbm`'s cleaner weak-`POS` frontier behavior
+without giving up the stronger overall pruning that still favors `ismb`.
+
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
 The recommended order now is:

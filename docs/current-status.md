@@ -189,6 +189,8 @@ Verified smoke results:
     - the weak-`POS` frontier traces sharpen that split:
       - `ismb` still has the better raw pruning story
       - `isbm` has the much cleaner top frontier, with top-ranked states around `3` to `6` unsatisfied pairs instead of the `11` to `16` seen in `ismb`
+      - the weak-`NEC` versus weak-`POS` comparison suggests the mechanism is real pruning inside `isbm`, not a different abstraction tree:
+        `isbm` keeps the same abstraction branching counts while weak-`POS` cuts the frontier from `6263` open nodes to `4747`
     - the starting point is recorded in [docs/hanoi4-1991-compatibility.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)

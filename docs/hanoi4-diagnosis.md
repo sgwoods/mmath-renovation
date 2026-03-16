@@ -81,6 +81,11 @@ Observed DFS run:
     - frontier tracing under weak-`POS` now makes the tradeoff more concrete:
       - `ismb` still prunes harder, but its top frontier bucket remains dominated by dirty `kval 0` states with roughly `11` to `16` unsatisfied pairs
       - `isbm` keeps much cleaner states in the top bucket, often around `3` to `6` unsatisfied pairs, and retains its best `2`-unsatisfied node there as well
+    - the weak-`NEC` versus weak-`POS` follow-up now suggests why:
+      - on `isbm`, weak-`POS` cuts generated nodes and open-node count substantially without changing the abstraction branching counts
+      - on `ismb`, weak-`POS` barely changes either
+      - this points to a pruning effect inside the same hierarchy, not a different hierarchy tree
+      - the likely reason is that `isbm` lifts `onb` above `onm`, giving weak-`POS` more leverage to prune medium-disk concrete churn that might interfere with higher-level big-disk commitments
 - Direct frontier inspection now narrows the likely failure mode:
   - the best-looking `ismb` frontier nodes are not one-step-away solutions
   - the first open node at the 20k bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions
