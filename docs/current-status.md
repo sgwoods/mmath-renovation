@@ -14,6 +14,7 @@ For deeper technical detail, see:
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
+- [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 
 ## Repository State
@@ -98,9 +99,13 @@ Verified smoke results:
   - the working-vs-historical review now shows that the `hanoi-4` domain and default abstraction hierarchy are unchanged from the archival code, and that the main precedence rewrite in the working tree preserves the historical reachability relation on randomized checks
   - a dedicated trace runner now exists for larger `hanoi-4` diagnosis:
     - it writes planner output, summary stats, open-frontier snapshots, and DRP-stack snapshots into timestamped directories under [analysis/hanoi4-traces](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
-    - the first `ismb` trace at a 5k bound already suggests a lot of frontier churn among near-complete `kval 0` plans with unresolved `(ispeg $var)` preconditions and repeated peg-shuffling moves, which is useful evidence for inspecting search quality rather than just termination reason
+    - direct frontier inspection now shows those "near-complete" states are actually valid but still heavily underconstrained partial plans:
+      - the first open node at the 20k `ismb` bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions
+      - the highlighted `(ISPEG $var)` case is not a broken binding artifact; it branches cleanly into the expected `(MOVES PEG1 PEG3)` and `(MOVES PEG2 PEG3)` existing-establisher refinements from `I`
+      - this points the remaining `hanoi-4` work more toward heuristic and control quality than toward a gross establisher-logic bug
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
+  - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
   - the algorithm comparison note is [docs/algorithm-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md#L1)
 - Planner bound handling is now healthier under SBCL:
   - open exhaustion now records `OPEN-EXHAUSTED` instead of leaving the initial plan in `*solution*`

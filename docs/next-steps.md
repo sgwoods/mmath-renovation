@@ -8,10 +8,12 @@ It complements:
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
+- [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 
 ## Current Priorities
 
-1. Push the promising `hanoi-4` hierarchy settings further, starting with `ismb` plus MP and `critical-list-2` plus MP, to see whether one can reach a full solution under higher or better-tuned bounds.
+1. Push the promising `hanoi-4` hierarchy settings further, but shift the immediate diagnostic toward frontier quality under `ismb` plus MP:
+   compare heuristic priority against unsatisfied-precondition count, and check whether search is overvaluing move skeletons that still leave many necessary conditions open.
 2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
 3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 4. Widen the smoke suite into more historically shipped 1993 sample domains where that adds real validation coverage.
@@ -19,7 +21,7 @@ It complements:
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
 1. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
-2. can the remaining larger-bound MP hotspot in the non-`ismb` paths be reduced further?
+2. are the best `hanoi-4` frontier nodes being ranked too highly even though they still carry many unsatisfied necessary preconditions?
 3. should `critical-list-2` now be treated mainly as a comparison hierarchy while `ismb` becomes the primary `hanoi-4` restoration target?
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.

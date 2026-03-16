@@ -8,6 +8,7 @@ It complements:
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
+- [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 
 ## Current Result
@@ -70,6 +71,11 @@ Observed DFS run:
   - `critical-list-1` still behaves like a poor hierarchy
   - `critical-list-2` and especially `ismb` now show the kind of MP-sensitive improvement the historical work would lead us to expect
   - the best 20k-bound configuration so far is `ismb` with MP enabled
+- Direct frontier inspection now narrows the likely failure mode:
+  - the best-looking `ismb` frontier nodes are not one-step-away solutions
+  - the first open node at the 20k bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions
+  - the highlighted `(ISPEG $var)` case is semantically valid and branches into the two expected existing-establisher refinements from `I`
+  - that makes the remaining `hanoi-4` gap look more like heuristic and control quality than a broken establisher path
 
 ## Evidence Against A Gross Semantic Break
 
@@ -116,8 +122,9 @@ So DFS is now available as an execution path, and on `hanoi-4` it now provides a
 The best current classification for `hanoi-4` is:
 
 - likely a search-growth and control-setting problem first
+- more specifically, a search-quality problem among valid but heavily underconstrained partial plans
 - no longer reproducing the earlier MP / ordering heap blow-up under the same high-bound SBCL run
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
-- best revisited next as a hierarchy-quality and historical-validation problem rather than a fatal-runtime bug
+- best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
 - most immediate open question: what further tuning is needed to push the now clearly stronger `ismb` hierarchy from improved bounded behavior to a full solution
