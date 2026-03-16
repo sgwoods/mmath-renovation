@@ -10,6 +10,7 @@ EXPAND_BOUND=${EXPAND_BOUND:-20000}
 GENERATE_BOUND=${GENERATE_BOUND:-80000}
 OPEN_BOUND=${OPEN_BOUND:-80000}
 CPU_SEC_LIMIT=${CPU_SEC_LIMIT:-30}
+HIERARCHIES=${HIERARCHIES:-"critical-list-1 critical-list-2 ismb imbs ibsm isbm"}
 
 cleanup() {
   rm -rf "$TMP_DIR"
@@ -28,6 +29,15 @@ hierarchy_lisp() {
     ismb)
       printf '%s\n' '*ismb*'
       ;;
+    imbs)
+      printf '%s\n' '*imbs*'
+      ;;
+    ibsm)
+      printf '%s\n' '*ibsm*'
+      ;;
+    isbm)
+      printf '%s\n' '*isbm*'
+      ;;
     *)
       echo "Unknown hierarchy: $1" >&2
       exit 2
@@ -44,6 +54,15 @@ left_wedge_lisp() {
       printf '%s\n' '*k-list-2*'
       ;;
     ismb)
+      printf '%s\n' "'(0 1 3 7)"
+      ;;
+    imbs)
+      printf '%s\n' "'(0 1 3 7)"
+      ;;
+    ibsm)
+      printf '%s\n' "'(0 1 3 7)"
+      ;;
+    isbm)
       printf '%s\n' "'(0 1 3 7)"
       ;;
     *)
@@ -193,7 +212,7 @@ Bounds used:
 Notes:
 
 - critical-list-1 and critical-list-2 use the domain-defined left-wedge lists.
-- ismb has no dedicated left-wedge list in the domain file, so this script uses the four-level Hanoi list (0 1 3 7) as an explicit reconstruction assumption.
+- the permutation-style families ismb, imbs, ibsm, and isbm have no dedicated left-wedge list in the domain file, so this script uses the four-level Hanoi list (0 1 3 7) as an explicit reconstruction assumption.
 
 | Planner | Hierarchy | MP | Left-Wedge | Outcome | Expanded | Generated | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -202,7 +221,7 @@ EOF
 tweak_log=$(run_tweak_case)
 print_row_from_log "tweak" "-" "-" "-" "baseline without abstraction hierarchy" "$tweak_log"
 
-for hierarchy in critical-list-1 critical-list-2 ismb; do
+for hierarchy in $HIERARCHIES; do
   for setting in "t t default-abtweak" "nil t no-mp" "t nil no-left-wedge" "nil nil no-mp-no-left-wedge"; do
     old_ifs=$IFS
     IFS=' '

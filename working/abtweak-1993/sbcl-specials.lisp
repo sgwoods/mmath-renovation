@@ -40,6 +40,8 @@
 (defvar *cs* nil)
 (defvar *ismb* nil)
 (defvar *imbs* nil)
+(defvar *ibsm* nil)
+(defvar *isbm* nil)
 (defvar *k-list-1* nil)
 (defvar *k-list-2* nil)
 

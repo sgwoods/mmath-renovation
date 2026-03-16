@@ -104,6 +104,30 @@
    (0  (not onb $) (onb $) )
 ))
 
+; additional permutation-style hierarchy variants, mirroring the historical
+; hanoi-3 experiment family while allowing omitted predicates to fall to
+; criticality 0 via find-crit.
+(setq *imbs* '(
+   (3 (ispeg $))
+   (2  (not onm $) (onm $) )
+   (1  (not onb $) (onb $) )
+   (0  (not ons $) (ons $) )
+))
+
+(setq *ibsm* '(
+   (3 (ispeg $))
+   (2  (not onb $) (onb $) )
+   (1  (not ons $) (ons $) )
+   (0  (not onm $) (onm $) )
+))
+
+(setq *isbm* '(
+   (3 (ispeg $))
+   (2  (not ons $) (ons $) )
+   (1  (not onb $) (onb $) )
+   (0  (not onm $) (onm $) )
+))
+
 
 (setq *critical-loaded* '*critical-list-1*)
 
