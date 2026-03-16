@@ -50,6 +50,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Historical validation matrix](./docs/historical-validation-matrix.md): mapping from historically reported benchmark themes to runnable local domains
 - [Tweak vs AbTweak comparison](./docs/tweak-vs-abtweak-comparison.md): first structured side-by-side comparison across the current passing SBCL benchmarks
+- [Wide domain sweep](./docs/wide-domain-sweep.md): broader SBCL sweep across shipped operator-style domains, including what is still out of scope
 - [Hanoi-4 diagnosis](./docs/hanoi4-diagnosis.md): current evidence on whether the larger Hanoi benchmark is blocked by bounds, control settings, or a deeper porting issue
 - [Hanoi-4 hierarchy comparison](./docs/hanoi4-hierarchy-comparison.md): direct comparison of the historical Hanoi hierarchy choices and how they change MP and left-wedge behavior under SBCL
 - [Algorithm correspondence review](./docs/algorithm-correspondence.md): comparison of the archival 1993 algorithms and the SBCL working tree, including what changed and what did not

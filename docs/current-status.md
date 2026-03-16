@@ -12,6 +12,7 @@ For deeper technical detail, see:
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 trace workflow](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
+- [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
@@ -76,6 +77,13 @@ Verified smoke results:
   - `biology` goal 1 solves in `abtweak`
   - `fly` to Washington DC solves in `abtweak`
   - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
+- The first broader cross-domain sweep now extends that coverage:
+  - `registers` solves in both `tweak` and `abtweak`
+  - `blocks` / `interchange` and `blocks` / `flatten` solve in both modes
+  - `fly` to both Washington DC and San Francisco solves in both modes
+  - `biology` goal 1 solves in both modes, and the full checked-in `biology` goal solves in `abtweak`
+  - `database` query 1 and query 3 solve in both modes after a small numeric-constant compatibility fix in `var-p`
+  - `driving.lisp`, `scheduling.lisp`, and `newd.lisp` still look like a different planner framework rather than direct AbTweak smoke targets
 - The most useful side-by-side comparison currently lives in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md#L1).
 - `macro-hanoi` now solves in both `tweak` and `abtweak`.
 - The current `hanoi-4` diagnosis is now more specific than “just bound-limited”:
@@ -137,6 +145,7 @@ Verified smoke results:
 - Loader: [scripts/load-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/load-abtweak-1993-sbcl.sh)
 - Smoke runner: [scripts/smoke-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh)
 - Comparison runner: [scripts/compare-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh)
+- Wide sweep runner: [scripts/wide-domain-sweep-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/wide-domain-sweep-sbcl.sh)
 - Hanoi hierarchy runner: [scripts/compare-hanoi4-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-hierarchies-sbcl.sh)
 
 Representative checks:

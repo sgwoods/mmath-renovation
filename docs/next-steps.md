@@ -9,6 +9,7 @@ It complements:
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
+- [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 
 ## Current Priorities
 
@@ -16,7 +17,7 @@ It complements:
    compare heuristic priority against unsatisfied-precondition count, and check whether search is overvaluing move skeletons that still leave many necessary conditions open.
 2. Use the source-backed validation matrix to label the current benchmark set as matching, partially matching, or still untested against the historical claims.
 3. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
-4. Widen the smoke suite into more historically shipped 1993 sample domains where that adds real validation coverage.
+4. Decide whether the `reset-domain` / `defstep` files (`driving`, `scheduling`, parts of `newd`) should become a separate restoration track, since the wider operator-domain sweep now looks healthy.
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 

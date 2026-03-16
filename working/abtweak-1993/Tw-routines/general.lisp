@@ -115,7 +115,10 @@
 (defun var-p (x)
   "/tweak/general.lsp
    return t iff x is variable, =$y."
-  (string-equal "$" (string x) :end2 1))
+  (and (or (symbolp x)
+           (stringp x)
+           (characterp x))
+       (string-equal "$" (string x) :end2 1)))
 
 
 (defun constant-p (x)
@@ -136,4 +139,3 @@
   "/tweak/general.lsp
    returns the list of parameters of p"
   (if (equal (car p) 'not) (cddr p) (cdr p)))
-
