@@ -50,29 +50,36 @@
 			(get-condition-in-cr relation)
 			(get-user-in-cr relation) plan))))))
 
+(defun normalized-mp-weak-mode ()
+  "Return the supported weak-MP compatibility mode."
+  (if (eq *mp-weak-mode* 'pos)
+      'pos
+    'nec))
+
+(defun mp-est-p (operator condition plan)
+  "Test whether OPERATOR establishes CONDITION under the selected weak-MP mode."
+  (case (normalized-mp-weak-mode)
+    (pos
+     (if (eq *domain* 'nilssons-blocks-world)
+	 (np-est-p operator condition plan)
+       (poss-est-p operator condition plan)))
+    (t
+     (nece-est-p operator condition plan))))
+
+(defun mp-violates-condition-p (operator condition plan)
+  "True when OPERATOR either clobbers CONDITION or re-establishes it."
+  (or (mp-est-p operator (negate condition) plan)
+      (mp-est-p operator condition plan)))
+
 (defun this-one-violated (est condition user plan)
   "t iff this particular relation is violated."
-  ;; The historical version materialized ALL-NECE-BETWEEN before scanning it.
-  ;; For large Hanoi runs this creates substantial garbage inside MP pruning.
+  ;; The historical weak-MSP check scans necessarily-between operators, but
+  ;; the clobbering test depends on *MP-WEAK-MODE* (NEC vs POS).  We retain
+  ;; the copy-free scan to avoid allocator churn on larger Hanoi cases.
   (dolist (operator (get-opids-from-plan plan) nil)
     (when (and (not (equal operator est))
                (not (equal operator user))
                (nece-before-p est operator plan)
                (nece-before-p operator user plan)
-               (or (asserts-negative operator condition plan)
-                   (asserts-positive operator condition plan)))
+               (mp-violates-condition-p operator condition plan))
       (return t))))
-
-
-(defun asserts-negative (operator condition plan)
-  (let ((effects (get-effects-of-opid operator plan)))
-    (if (member 'not condition)
-	(member (cdr condition)
-		effects :test 'equal)
-      (member (cons 'not condition)
-	      effects :test 'equal))))
-
-(defun asserts-positive (operator condition plan)
-  (let ((effects (get-effects-of-opid operator plan)))
-    (member condition
-	    effects :test 'equal)))

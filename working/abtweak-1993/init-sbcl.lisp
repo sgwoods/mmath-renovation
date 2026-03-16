@@ -22,3 +22,4 @@
 (load "Plan-routines/planner-heuristic")
 (load "Mcallester-plan/init")
 (load "plan")
+(load "historical-hanoi-compat.lisp")

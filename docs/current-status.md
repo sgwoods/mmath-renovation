@@ -20,6 +20,7 @@ For deeper technical detail, see:
 - [Hanoi-3 versus Hanoi-4](/Users/stevenwoods/mmath-renovation/docs/hanoi3-vs-hanoi4.md)
 - [Hanoi-3 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md)
 - [Hanoi-3 MSP correspondence](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md)
+- [Hanoi-3 1991 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
@@ -172,10 +173,11 @@ Verified smoke results:
     - `critical-list-1` remains the best practical current default at `57` expanded / `99` generated
     - `imbs` is the strongest current permutation-style hierarchy with MP and Left-Wedge both enabled at `86` expanded / `129` generated
     - several of the apparent MP mismatches are now explained by historical control-surface drift between the 1991 and 1993 code lines
-    - the current `isbm` and `imbs` MP-on, Left-Wedge-off runs line up exactly with archived weak-`NEC` results
-    - the current no-MP Left-Wedge-on results for `ismb`, `ibsm`, and `isbm` line up strikingly well with archived critical-depth/no-MP runs
+    - the new 1991 compatibility layer now reproduces representative archived cases exactly:
+      `isbm` weak-`NEC`, `imbs` weak-`NEC`, `imbs` weak-`POS`, and the no-MP critical-depth runs for `ismb`, `ibsm`, and `isbm`
   - the `hanoi-3` hierarchy matrix is recorded in [docs/hanoi3-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md#L1)
   - the MSP correspondence note is recorded in [docs/hanoi3-msp-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md#L1)
+  - the compatibility harness note is recorded in [docs/hanoi3-1991-compatibility.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
   - the frontier-quality comparison is recorded in [docs/hanoi4-frontier-quality.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md#L1)
@@ -213,6 +215,7 @@ Verified smoke results:
 - Comparison runner: [scripts/compare-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh)
 - Wide sweep runner: [scripts/wide-domain-sweep-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/wide-domain-sweep-sbcl.sh)
 - Hanoi-3 hierarchy runner: [scripts/compare-hanoi3-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi3-hierarchies-sbcl.sh)
+- Hanoi-3 historical controls runner: [scripts/compare-hanoi3-historical-controls-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi3-historical-controls-sbcl.sh)
 - Hanoi hierarchy runner: [scripts/compare-hanoi4-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-hierarchies-sbcl.sh)
 - Hanoi controls runner: [scripts/compare-hanoi4-controls-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-controls-sbcl.sh)
 

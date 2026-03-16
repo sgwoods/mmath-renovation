@@ -7,6 +7,7 @@
                                  (planner-mode 'abtweak)
 				 (continue-p nil)
                                  (mp-mode  t)
+                                 (mp-weak-mode 'nec)
                                  (abstract-goal-mode  t) 
                                  (drp-mode         nil)
                                  (left-wedge-mode t)
@@ -39,6 +40,7 @@
         (type list goal) 
         (type atom planner-mode)            ; tweak / abtweak / mr /mr-crit
         (type atom mp-mode)                 ; t/nil
+        (type atom mp-weak-mode)            ; nec/pos
         (type symbol abstract-goal-mode)      ; t / nil
         (type symbol drp-mode)             ; t / nil
         (type symbol left-wedge-mode)      ; t/ nil
@@ -54,7 +56,7 @@
 
   ; set control global flags (default values specified in planner function)
   (initialize-global-variables
-   planner-mode continue-p mp-mode abstract-goal-mode 
+   planner-mode continue-p mp-mode mp-weak-mode abstract-goal-mode 
    drp-mode left-wedge-mode subgoal-determine-mode debug-mode
    heuristic-mode use-primary-effect-p expand-bound
    generate-bound open-bound output-file cpu-sec-limit drp-debug-mode
@@ -130,5 +132,4 @@
     (ab-successors&costs plan))
    (t
     (tw-successors&costs plan))))
-
 

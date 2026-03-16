@@ -24,6 +24,7 @@
 
 (defvar *planner-mode*             nil  "planner mode = tweak or abtweak")
 (defvar *mp-mode*         nil  "mono. prop. = t/nil")
+(defvar *mp-weak-mode*    'nec "weak mono. prop. clobbering = nec/pos")
 (defvar *abstract-goal-p*  nil  "nil if do not abstract goal conditions")
 (defvar *drp-mode*          nil  "downward refinement mode = t / nil")
 (defvar *left-wedge-mode*  nil  "left-wedge mode (use *lw-list*)")
@@ -37,7 +38,7 @@ abstract plan can have.")
 
 (defun initialize-global-variables (
 
-   planner-mode continue-p mp-mode abstract-goal-mode
+   planner-mode continue-p mp-mode mp-weak-mode abstract-goal-mode
    drp-mode left-wedge-mode subgoal-determine-mode debug-mode
    heuristic-mode use-primary-effect-p expand-bound
    generate-bound open-bound output-file cpu-sec-limit drp-debug-mode
@@ -49,6 +50,7 @@ abstract plan can have.")
   (setq *control-strategy* control-strategy)
   (setq *planner-mode*      planner-mode)
   (setq *mp-mode*        mp-mode)
+  (setq *mp-weak-mode*   mp-weak-mode)
   (setq *abstract-goal-mode*        abstract-goal-mode)
   (setq *drp-mode*         drp-mode)
   (setq *left-wedge-mode* left-wedge-mode)

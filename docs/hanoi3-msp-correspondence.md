@@ -7,6 +7,7 @@ they are compared against the wrong historical control family.
 It complements:
 
 - [Hanoi-3 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md)
+- [Hanoi-3 1991 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 
@@ -94,14 +95,9 @@ The better current reading is:
 That does not prove the current `hanoi-3` MP path is perfect, but it does mean
 the remaining gap is narrower and more historically specific.
 
-## Recommended Next Step
+## Follow-Through
 
-If we want closer paper-era reproduction rather than just a faithful
-`Abtweak-1993` restoration, the next technical step should be a compatibility
-layer that can explicitly model:
-
-- weak `NEC`
-- weak `POS`
-- critical-depth mode
-
-for the Hanoi comparison harness.
+The first version of that compatibility layer now exists in
+[Hanoi-3 1991 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md),
+including exact representative matches for the strongest archived `NEC` and
+critical-depth comparison cases.

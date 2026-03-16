@@ -6,6 +6,7 @@
 (defvar *solution-limit* 0)
 (defvar *continue-p* nil)
 (defvar *control-strategy* 'bfs)
+(defvar *mp-weak-mode* 'nec)
 (defvar *abstract-goal-mode* nil)
 (defvar *heuristic-mode* nil)
 (defvar *subgoal-determine-mode* nil)
