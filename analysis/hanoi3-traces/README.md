@@ -6,6 +6,10 @@ The main runner is:
 
 - [scripts/trace-hanoi3-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/trace-hanoi3-sbcl.sh)
 
+The matching hierarchy comparison runner is:
+
+- [scripts/compare-hanoi3-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi3-hierarchies-sbcl.sh)
+
 Each trace directory contains:
 
 - `planner-output.txt`: the planner's normal historical text output

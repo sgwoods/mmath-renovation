@@ -94,6 +94,20 @@
    (0  (not ons $) (ons $) )
 ))
 
+(setq *ibsm* '(
+   (3 (ispeg $))
+   (2  (not onb $) (onb $) )
+   (1  (not ons $) (ons $) )
+   (0  (not onm $) (onm $) )
+))
+
+(setq *isbm* '(
+   (3 (ispeg $))
+   (2  (not ons $) (ons $) )
+   (1  (not onb $) (onb $) )
+   (0  (not onm $) (onm $) )
+))
+
 
 
 (setq *critical-loaded* 'ibms-new-default)

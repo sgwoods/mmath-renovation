@@ -18,6 +18,7 @@ For deeper technical detail, see:
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
 - [Hanoi-3 versus Hanoi-4](/Users/stevenwoods/mmath-renovation/docs/hanoi3-vs-hanoi4.md)
+- [Hanoi-3 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
@@ -41,6 +42,10 @@ For deeper technical detail, see:
 ## Current Restoration Milestone
 
 The working `Abtweak-1993` baseline now source-loads under SBCL and solves a small but meaningful set of historical example problems.
+
+The active `hanoi-3` domain also now supports a wider historically relevant
+hierarchy family, including `ibsm` and `isbm`, not just the smaller earlier
+subset.
 
 Verified smoke results:
 
@@ -161,6 +166,13 @@ Verified smoke results:
   - the candidate-hierarchy follow-up is recorded in [docs/hanoi4b-candidate-hierarchies.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md#L1)
   - the ranking-quality follow-up is recorded in [docs/hanoi4b-frontier-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md#L1)
   - the cross-size comparison is recorded in [docs/hanoi3-vs-hanoi4.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-vs-hanoi4.md#L1)
+  - the current `hanoi-3` hierarchy matrix is now much closer to the historical experiment space:
+    - `critical-list-1`, `critical-list-2`, `imbs`, `ibsm`, `isbm`, and `ismb` are now all directly supported in the active domain
+    - `critical-list-1` remains the best practical current default at `57` expanded / `99` generated
+    - `imbs` is the strongest current permutation-style hierarchy with MP and Left-Wedge both enabled at `86` expanded / `129` generated
+    - `ismb` and `isbm` look much more historically plausible when MP is off than when it is on
+    - the current no-MP results for `ismb`, `ibsm`, and `isbm` line up strikingly well with the archived `hanoi3` result files
+  - the `hanoi-3` hierarchy matrix is recorded in [docs/hanoi3-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
   - the frontier-quality comparison is recorded in [docs/hanoi4-frontier-quality.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md#L1)
@@ -197,6 +209,7 @@ Verified smoke results:
 - Smoke runner: [scripts/smoke-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh)
 - Comparison runner: [scripts/compare-abtweak-1993-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-abtweak-1993-sbcl.sh)
 - Wide sweep runner: [scripts/wide-domain-sweep-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/wide-domain-sweep-sbcl.sh)
+- Hanoi-3 hierarchy runner: [scripts/compare-hanoi3-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi3-hierarchies-sbcl.sh)
 - Hanoi hierarchy runner: [scripts/compare-hanoi4-hierarchies-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-hierarchies-sbcl.sh)
 - Hanoi controls runner: [scripts/compare-hanoi4-controls-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-controls-sbcl.sh)
 
