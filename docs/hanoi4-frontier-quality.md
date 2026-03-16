@@ -125,6 +125,44 @@ So the larger plain-Tweak frontier still looks like an ordinary bounded search.
 The frontier-quality mismatch is more specific to the abstraction-side ranking
 in the restored `abtweak` path.
 
+### 5. The AbTweak score breakdown points straight at left-wedge plus goal-only heuristic
+
+The traced score components make the ranking effect more concrete.
+
+For the strongest top-ranked `abtweak` nodes:
+
+- search cost: `15`
+- base goal heuristic: `0`
+- left-wedge adjustment: `-7`
+- resulting heuristic component: `-7`
+- final priority: `8`
+
+Those are the concrete `kval 0`, length-`17` move skeletons that still carry
+roughly `9` to `17` unsatisfied user/precondition pairs.
+
+By contrast, the best closure-oriented `abtweak` node has:
+
+- search cost: `7`
+- base goal heuristic: `3`
+- left-wedge adjustment: `-1`
+- resulting heuristic component: `2`
+- final priority: `9`
+
+So the cleaner node loses even though it has only `2` unsatisfied pairs,
+because:
+
+1. the base heuristic only counts unsatisfied goal literals on `G`
+2. it does not count the broader unresolved user/precondition obligations
+3. left-wedge gives the concrete `kval 0` nodes a strong `-7` bonus
+
+That means the current bad ranking is not mysterious. It follows directly from
+the present score formula:
+
+- `priority = search-cost + num-of-unsat-goals + left-wedge-adjustment`
+
+and in this case the left-wedge reward for concreteness is strong enough to
+outweigh closure quality.
+
 ## Side-By-Side Summary
 
 | Planner mode | Open nodes | Best unsat count | Top priority bucket | Best-closure node location | Main pattern |
@@ -144,11 +182,16 @@ The new frontier-quality evidence strengthens the `hanoi-4` diagnosis:
   - the issue is not just that `hanoi-4` is hard
   - it is that the restored abstraction path appears to demote some of its best
     closure-oriented states behind more concrete partial plans
+- the immediate numeric explanation is now visible in the traces:
+  - the base heuristic only sees unsatisfied goal literals
+  - left-wedge gives `kval 0` nodes a strong negative bonus
+  - unresolved non-goal obligations are currently invisible to the score
 
 That makes the next best `hanoi-4` work more focused:
 
-1. inspect which part of the `abtweak` ranking stack is pushing those better
-   closure states behind the concrete `kval 0` bucket
+1. inspect whether this left-wedge-dominated ranking is historically intended
+   for Hanoi-4, or whether the restored search is applying the score in a way
+   that differs from the original experimental setup
 2. inspect whether the left-wedge term or the current heuristic should be
    augmented by an unsatisfied-pair signal for diagnostic purposes
 3. keep the existing historical algorithm intact while using these reports to

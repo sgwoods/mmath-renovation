@@ -56,13 +56,44 @@
    (t
     (ignore-errors (unsat-user-precond-pairs plan)))))
 
+(defun trace-base-goal-heuristic (plan)
+  "Return the base TWEAK heuristic term used inside both tweak and abtweak."
+  (cond
+   ((not (typep plan 'plan)) 0)
+   ((equal *heuristic-mode* 'num-of-unsat-goals)
+    (ignore-errors (or (num-of-unsat-goals plan) 0)))
+   ((equal *heuristic-mode* 'user-defined)
+    (ignore-errors
+      (let ((fn (user-heuristic)))
+        (if fn
+            (or (funcall fn plan) 0)
+          0))))
+   (t 0)))
+
+(defun trace-left-wedge-adjustment (plan)
+  "Return the left-wedge adjustment term currently applied to PLAN."
+  (cond
+   ((not (typep plan 'plan)) 0)
+   ((not *left-wedge-mode*) 0)
+   ((not (eq *planner-mode* 'abtweak)) 0)
+   (t
+    (ignore-errors
+      (let ((fn (left-wedge-function)))
+        (if fn
+            (or (funcall fn plan) 0)
+          0))))))
+
 (defun frontier-node-quality-summary (node)
   (let* ((plan (get-state node))
-         (unsat-pairs (plan-unsat-user-precond-pairs plan)))
+         (unsat-pairs (plan-unsat-user-precond-pairs plan))
+         (base-goal-heuristic (trace-base-goal-heuristic plan))
+         (left-wedge-adjustment (trace-left-wedge-adjustment plan)))
     (list
      :priority (get-priority node)
      :search-cost (get-cost node)
      :heuristic-component (- (get-priority node) (get-cost node))
+     :base-goal-heuristic base-goal-heuristic
+     :left-wedge-adjustment left-wedge-adjustment
      :solution-depth (get-solution-depth node)
      :plan-id (when (typep plan 'plan) (plan-id plan))
      :plan-cost (when (typep plan 'plan) (plan-cost plan))

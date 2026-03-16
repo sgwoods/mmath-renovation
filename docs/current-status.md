@@ -134,6 +134,10 @@ Verified smoke results:
       - this makes the current leading hypothesis a ranking problem that prefers concreteness over closure
       - a matching `tweak` trace at the same 20k bound still has a much larger frontier, but its best closure-oriented nodes stay in the same top priority bucket
       - that makes the bucket-separation effect look specific to the restored `abtweak` path rather than a generic property of `hanoi-4`
+      - the score breakdown now makes the mechanism visible:
+        - AbTweak is using `search-cost + num-of-unsat-goals + left-wedge-adjustment`
+        - top concrete Hanoi nodes often win with base goal heuristic `0` and left-wedge `-7`
+        - unresolved non-goal obligations are not represented directly in that score
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)
   - the hierarchy matrix is recorded in [docs/hanoi4-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)

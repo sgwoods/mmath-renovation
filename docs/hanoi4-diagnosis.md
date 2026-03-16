@@ -86,6 +86,10 @@ Observed DFS run:
     - `tweak` still has a much larger frontier at the same 20k bound
     - but its best closure-oriented nodes remain in the same top priority bucket as the rest of the best-ranked frontier
     - the bucket-separation effect currently looks specific to the restored `abtweak` path rather than a generic `hanoi-4` property
+  - the latest score breakdown now gives a concrete mechanism for that effect:
+    - AbTweak priority is `search-cost + num-of-unsat-goals + left-wedge-adjustment`
+    - the top `kval 0` nodes often have base goal heuristic `0` and left-wedge adjustment `-7`
+    - cleaner `kval 1/2` nodes can still lose because unresolved non-goal obligations are not represented in the score
 
 ## Evidence Against A Gross Semantic Break
 
@@ -137,4 +141,4 @@ The best current classification for `hanoi-4` is:
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: which part of the restored `abtweak` ranking is causing better closure-oriented Hanoi states to lose priority to more concrete partial plans
+- most immediate open question: is this strongly left-wedge-driven concrete-node preference historically intended for the Hanoi-4 setup, or is it where the restored search behavior is diverging
