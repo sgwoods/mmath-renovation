@@ -124,5 +124,20 @@ print_row legacy-1991-default weak pos nil "$log_file"
 log_file=$(run_case legacy-1991-default nil nec t legacy-default-crit-depth)
 print_row legacy-1991-default nil nec t "$log_file"
 
+log_file=$(run_case ismb weak nec nil ismb-weak-nec)
+print_row ismb weak nec nil "$log_file"
+
 log_file=$(run_case ismb weak pos nil ismb-weak-pos)
 print_row ismb weak pos nil "$log_file"
+
+log_file=$(run_case ismb nil nec t ismb-crit-depth)
+print_row ismb nil nec t "$log_file"
+
+log_file=$(run_case isbm weak nec nil isbm-weak-nec)
+print_row isbm weak nec nil "$log_file"
+
+log_file=$(run_case isbm weak pos nil isbm-weak-pos)
+print_row isbm weak pos nil "$log_file"
+
+log_file=$(run_case isbm nil nec t isbm-crit-depth)
+print_row isbm nil nec t "$log_file"

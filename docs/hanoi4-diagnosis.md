@@ -73,6 +73,11 @@ Observed DFS run:
   - `critical-list-1` still behaves like a poor hierarchy
   - `critical-list-2` and especially `ismb` now show the kind of MP-sensitive improvement the historical work would lead us to expect
   - the best 20k-bound configuration so far is `ismb` with MP enabled
+  - the new historical-control comparison sharpens it again:
+    - the archived `legacy-1991-default` four-disk hierarchy is clearly weaker than both `ismb` and `isbm`
+    - under the same historical vocabulary, `ismb` remains best on raw generated-node count
+    - weak-`POS` helps `isbm` much more than `ismb`, narrowing the gap between them
+    - crit-depth remains materially worse than weak MSP for both of those hierarchies
 - Direct frontier inspection now narrows the likely failure mode:
   - the best-looking `ismb` frontier nodes are not one-step-away solutions
   - the first open node at the 20k bound has cost `15` and length `17`, but still `15` unsatisfied necessary preconditions

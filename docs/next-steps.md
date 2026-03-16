@@ -48,6 +48,16 @@ compatibility question more specific: whether the historical-control vocabulary
 helps clarify the difference between `ismb` and `isbm`, not whether the older
 default itself is the missing good hierarchy.
 
+The latest comparison now gives a first answer to that too:
+
+- `ismb` still wins on raw generated-node count under the historical controls
+- weak-`POS` helps `isbm` substantially more than it helps `ismb`
+- crit-depth remains a worse control choice for both
+
+That suggests the next `hanoi-4` step should be to compare `ismb` and `isbm`
+frontier quality again under weak-`POS`, not to keep investing effort in the
+archived four-disk default.
+
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
 The recommended order now is:

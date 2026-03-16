@@ -52,8 +52,8 @@ sh /Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-historical-control
 
 ## Current Result
 
-At the standard 20k expansion bound, the initial four-disk historical-control
-comparison currently looks like this:
+At the standard 20k expansion bound, the current four-disk historical-control
+comparison looks like this:
 
 | Hierarchy | MSP | Weak Mode | Crit-Depth | Current SBCL |
 | --- | --- | --- | --- | --- |
@@ -61,12 +61,26 @@ comparison currently looks like this:
 | `legacy-1991-default` | `weak` | `nec` | `nil` | `20001 / 35214`, `EXPAND-LIMIT-EXCEEDED` |
 | `legacy-1991-default` | `weak` | `pos` | `nil` | `20001 / 35214`, `EXPAND-LIMIT-EXCEEDED` |
 | `legacy-1991-default` | `nil` | `nec` | `t` | `20001 / 37046`, `EXPAND-LIMIT-EXCEEDED` |
+| `ismb` | `weak` | `nec` | `nil` | `20001 / 24565`, `EXPAND-LIMIT-EXCEEDED` |
 | `ismb` | `weak` | `pos` | `nil` | `20001 / 24568`, `EXPAND-LIMIT-EXCEEDED` |
+| `ismb` | `nil` | `nec` | `t` | `20001 / 38142`, `EXPAND-LIMIT-EXCEEDED` |
+| `isbm` | `weak` | `nec` | `nil` | `20001 / 26264`, `EXPAND-LIMIT-EXCEEDED` |
+| `isbm` | `weak` | `pos` | `nil` | `20001 / 24748`, `EXPAND-LIMIT-EXCEEDED` |
+| `isbm` | `nil` | `nec` | `t` | `20001 / 36898`, `EXPAND-LIMIT-EXCEEDED` |
 
 The immediate takeaway is that the archived 1991 four-disk default hierarchy is
 not the strongest current path. Even before solving `hanoi-4`, the current
-port's `ismb` family is already generating substantially fewer nodes than the
-older `legacy-1991-default` baseline.
+port's `ismb` and `isbm` families are already generating substantially fewer
+nodes than the older `legacy-1991-default` baseline.
+
+The more specific takeaway is:
+
+1. `ismb` still has the best raw bounded behavior in this historical-control
+   comparison.
+2. weak-`POS` helps `isbm` materially more than it helps `ismb`:
+   `26264` down to `24748` generated for `isbm`, versus essentially no change
+   for `ismb` (`24565` to `24568`).
+3. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
 
 ## Current Interpretation
 
@@ -79,3 +93,5 @@ main immediate value is:
 2. separating "1993 hierarchy tuning" from "1991 control-family comparison"
 3. giving the ongoing `hanoi-4` investigation one more historically grounded
    baseline
+4. showing that the main remaining four-disk tradeoff is between `ismb` raw
+   pruning strength and `isbm`'s stronger response to weak-`POS`

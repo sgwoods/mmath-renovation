@@ -184,6 +184,8 @@ Verified smoke results:
     - the new wrapper supports the same `msp-mode`, `msp-weak-mode`, and `crit-depth-mode` vocabulary as the `hanoi-3` compatibility layer
     - at the standard 20k bound, `legacy-1991-default` is clearly weaker than the current best `ismb` path:
       `35214` to `37046` generated for the `legacy-1991-default` runs versus `24568` for `ismb` weak-`POS`
+    - `ismb` remains the strongest raw four-disk historical-control path, but weak-`POS` helps `isbm` much more than it helps `ismb`:
+      `isbm` improves from `26264` to `24748` generated under weak-`POS`, while `ismb` stays effectively flat at `24565` to `24568`
     - the starting point is recorded in [docs/hanoi4-1991-compatibility.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md#L1)
   - the control matrix is recorded in [docs/hanoi4-control-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md#L1)
   - the direct frontier inspection is recorded in [docs/hanoi4-frontier-forensics.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md#L1)
