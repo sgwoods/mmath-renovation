@@ -118,6 +118,31 @@ shows the `isbm` weak-`POS` path is not just "cleaner but a little slower."
 At deeper bounds it is now the better historical-control path on both
 frontier quality and raw generated-node count.
 
+## Left-Wedge Return On The Stronger Path
+
+Once `isbm` weak-`POS` emerged as the better deep-bound historical-control
+path, the next question was whether re-enabling Left-Wedge would help or hurt.
+
+Using the harness-native preset:
+
+```sh
+sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos-lw
+```
+
+the current result is clearly positive:
+
+| Config | Bound | Expanded | Generated | MP Pruned | Open length | Outcome |
+| --- | --- | --- | --- | --- | --- | --- |
+| `isbm`, weak-`POS`, no left-wedge | `20000` | `20001` | `24748` | `21293` | `4747` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS`, left-wedge | `20000` | `20001` | `23272` | `21286` | `3271` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS`, no left-wedge | `50000` | `50001` | `61605` | `54586` | `11604` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS`, left-wedge | `50000` | `50001` | `58817` | `54466` | `8816` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS`, no left-wedge | `100000` | `100001` | `123240` | `111179` | `23239` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS`, left-wedge | `100000` | `100001` | `116646` | `110674` | `16645` | `EXPAND-LIMIT-EXCEEDED` |
+
+This makes `isbm` weak-`POS` plus Left-Wedge the strongest current `hanoi-4`
+historical-control path in the restored environment.
+
 ## Current Interpretation
 
 This is still a starting point, not a finished historical reproduction story.
@@ -130,5 +155,6 @@ main immediate value is:
 3. giving the ongoing `hanoi-4` investigation one more historically grounded
    baseline
 4. showing that the main remaining four-disk tradeoff has sharpened:
-   `ismb` still prunes more aggressively, but `isbm` weak-`POS` now appears to
-   scale better overall at the deeper tested bounds
+   `ismb` still prunes more aggressively, but `isbm` weak-`POS` now scales
+   better overall at the deeper tested bounds, and adding Left-Wedge improves
+   that stronger path further

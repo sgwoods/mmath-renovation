@@ -39,7 +39,8 @@ It complements:
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.
    The newest harness-native deeper weak-`POS` runs now sharpen that further:
    `isbm` is no longer just the cleaner-frontier comparison case; by `50000`
-   and `100000` it is also slightly ahead of `ismb` on raw generated nodes.
+   and `100000` it is also slightly ahead of `ismb` on raw generated nodes,
+   and re-enabling Left-Wedge improves that stronger `isbm` line again.
 3. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 4. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 5. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
@@ -47,7 +48,7 @@ It complements:
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
 1. which current `hanoi-4` hierarchy/control combinations best match the historically good-versus-bad Hanoi hierarchy story in the thesis?
-2. can the improved `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve?
+2. can the improved `isbm` weak-`POS` plus Left-Wedge path be pushed from cleaner bounded failure into a full solve?
 3. should `isbm` now replace `ismb` as the main historical-control `hanoi-4` target, not just the main alternate comparison hierarchy?
 4. why does `ismb` still prune much more aggressively than `isbm` even though `isbm` now appears to scale better overall under weak-`POS`?
 5. can we combine what now looks like the two winning properties:

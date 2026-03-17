@@ -36,7 +36,7 @@ sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status --json
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report hanoi3-historical
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos
+sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos-lw
 ```
 
 ## Standardized Surfaces
@@ -128,6 +128,7 @@ The current named trace workflows are:
 - `hanoi4`
 - `hanoi4-ismb-weak-pos`
 - `hanoi4-isbm-weak-pos`
+- `hanoi4-isbm-weak-pos-lw`
 - `hanoi4-legacy-1991`
 
 These keep the existing environment-variable control style where it is useful,

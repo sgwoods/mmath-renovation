@@ -203,6 +203,8 @@ Verified smoke results:
     - `isbm` improves from `26264` to `24748` generated under weak-`POS` at 20k, while `ismb` stays effectively flat there (`24565` to `24568`)
     - at deeper bounds, the weak-`POS` `isbm` path now scales a bit better:
       `61605` vs `61943` generated at `50000`, and `123240` vs `125029` at `100000`
+    - re-enabling Left-Wedge on that stronger `isbm` weak-`POS` line improves it further:
+      `23272` at `20000`, `58817` at `50000`, and `116646` at `100000`
     - the weak-`POS` frontier traces sharpen that split:
       - `ismb` still has the better raw pruning story
       - `isbm` has the much cleaner top frontier, with top-ranked states around `3` to `6` unsatisfied pairs instead of the `11` to `16` seen in `ismb`
