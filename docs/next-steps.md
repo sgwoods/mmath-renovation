@@ -48,7 +48,7 @@ It complements:
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
 1. which current `hanoi-4` hierarchy/control combinations best match the historically good-versus-bad Hanoi hierarchy story in the thesis?
-2. can the improved `isbm` weak-`POS` plus Left-Wedge path be pushed from cleaner bounded failure into a full solve?
+2. can the improved `isbm` weak-`POS` plus Left-Wedge path be pushed past the current `200000`-expansion bounded failure into a full solve?
 3. should `isbm` now replace `ismb` as the main historical-control `hanoi-4` target, not just the main alternate comparison hierarchy?
 4. why does `ismb` still prune much more aggressively than `isbm` even though `isbm` now appears to scale better overall under weak-`POS`?
 5. can we combine what now looks like the two winning properties:

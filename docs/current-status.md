@@ -204,7 +204,10 @@ Verified smoke results:
     - at deeper bounds, the weak-`POS` `isbm` path now scales a bit better:
       `61605` vs `61943` generated at `50000`, and `123240` vs `125029` at `100000`
     - re-enabling Left-Wedge on that stronger `isbm` weak-`POS` line improves it further:
-      `23272` at `20000`, `58817` at `50000`, and `116646` at `100000`
+      `23272` at `20000`, `58817` at `50000`, `116646` at `100000`, and `234872` at `200000`
+    - even with that stronger path, `hanoi-4` is still not solved in the restored code:
+      the current best run still ends in `EXPAND-LIMIT-EXCEEDED`
+    - plain `tweak` also still does not solve `hanoi-4` in the practical restored modes checked so far, including a direct DFS run
     - the weak-`POS` frontier traces sharpen that split:
       - `ismb` still has the better raw pruning story
       - `isbm` has the much cleaner top frontier, with top-ranked states around `3` to `6` unsatisfied pairs instead of the `11` to `16` seen in `ismb`

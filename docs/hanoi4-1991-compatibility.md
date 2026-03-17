@@ -139,6 +139,7 @@ the current result is clearly positive:
 | `isbm`, weak-`POS`, left-wedge | `50000` | `50001` | `58817` | `54466` | `8816` | `EXPAND-LIMIT-EXCEEDED` |
 | `isbm`, weak-`POS`, no left-wedge | `100000` | `100001` | `123240` | `111179` | `23239` | `EXPAND-LIMIT-EXCEEDED` |
 | `isbm`, weak-`POS`, left-wedge | `100000` | `100001` | `116646` | `110674` | `16645` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS`, left-wedge | `200000` | `200001` | `234872` | `224678` | `34871` | `EXPAND-LIMIT-EXCEEDED` |
 
 This makes `isbm` weak-`POS` plus Left-Wedge the strongest current `hanoi-4`
 historical-control path in the restored environment.

@@ -156,4 +156,8 @@ The best current classification for `hanoi-4` is:
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
 - current strongest historical-control path: `isbm` with weak-`POS` and Left-Wedge, because it improves further over the no-left-wedge `isbm` weak-`POS` line at `20000`, `50000`, and `100000`
+- even that strongest current path still reaches `EXPAND-LIMIT-EXCEEDED` at `200000`, with `234872` generated and `224678` MP prunes
+- plain `tweak` still does not solve `hanoi-4` in the restored code on the practical modes tested so far:
+  - BFS still fails at the higher exploratory bounds
+  - DFS with `:solution-limit 20` also fails at `50001` expanded / `50020` generated
 - most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close
