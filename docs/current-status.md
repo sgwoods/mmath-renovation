@@ -193,13 +193,16 @@ Verified smoke results:
   - the `hanoi-3` hierarchy matrix is recorded in [docs/hanoi3-hierarchy-comparison.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-hierarchy-comparison.md#L1)
   - the MSP correspondence note is recorded in [docs/hanoi3-msp-correspondence.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md#L1)
   - the compatibility harness note is recorded in [docs/hanoi3-1991-compatibility.md](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md#L1)
-  - the four-disk historical-control wrapper has now been started too:
+    - the four-disk historical-control wrapper has now been started too:
     - the archived 1991 `hanoi-4` default hierarchy is exposed as `legacy-1991-default`
     - the new wrapper supports the same `msp-mode`, `msp-weak-mode`, and `crit-depth-mode` vocabulary as the `hanoi-3` compatibility layer
     - at the standard 20k bound, `legacy-1991-default` is clearly weaker than the current best `ismb` path:
       `35214` to `37046` generated for the `legacy-1991-default` runs versus `24568` for `ismb` weak-`POS`
-    - `ismb` remains the strongest raw four-disk historical-control path, but weak-`POS` helps `isbm` much more than it helps `ismb`:
-      `isbm` improves from `26264` to `24748` generated under weak-`POS`, while `ismb` stays effectively flat at `24565` to `24568`
+    - the newer harness-driven deeper weak-`POS` comparison now shifts the practical four-disk story:
+      at `20000`, `ismb` is still slightly better on raw generated nodes, but by `50000` and `100000`, `isbm` weak-`POS` is slightly ahead on generated nodes as well as cleaner in the frontier
+    - `isbm` improves from `26264` to `24748` generated under weak-`POS` at 20k, while `ismb` stays effectively flat there (`24565` to `24568`)
+    - at deeper bounds, the weak-`POS` `isbm` path now scales a bit better:
+      `61605` vs `61943` generated at `50000`, and `123240` vs `125029` at `100000`
     - the weak-`POS` frontier traces sharpen that split:
       - `ismb` still has the better raw pruning story
       - `isbm` has the much cleaner top frontier, with top-ranked states around `3` to `6` unsatisfied pairs instead of the `11` to `16` seen in `ismb`

@@ -75,12 +75,13 @@ Observed DFS run:
   - the best 20k-bound configuration so far is `ismb` with MP enabled
   - the new historical-control comparison sharpens it again:
     - the archived `legacy-1991-default` four-disk hierarchy is clearly weaker than both `ismb` and `isbm`
-    - under the same historical vocabulary, `ismb` remains best on raw generated-node count
-    - weak-`POS` helps `isbm` much more than `ismb`, narrowing the gap between them
+    - under the same historical vocabulary at the original 20k bound, `ismb` remains slightly better on raw generated-node count
+    - weak-`POS` helps `isbm` much more than `ismb`, and the deeper harness-native traces now show that `isbm` overtakes `ismb` by `50000` and stays ahead at `100000`
     - crit-depth remains materially worse than weak MSP for both of those hierarchies
     - frontier tracing under weak-`POS` now makes the tradeoff more concrete:
       - `ismb` still prunes harder, but its top frontier bucket remains dominated by dirty `kval 0` states with roughly `11` to `16` unsatisfied pairs
       - `isbm` keeps much cleaner states in the top bucket, often around `3` to `6` unsatisfied pairs, and retains its best `2`-unsatisfied node there as well
+      - that cleaner frontier is no longer coming at a raw-search cost penalty once the weak-`POS` runs are pushed to `50000` and `100000`
     - the weak-`NEC` versus weak-`POS` follow-up now suggests why:
       - on `isbm`, weak-`POS` cuts generated nodes and open-node count substantially without changing the abstraction branching counts
       - on `ismb`, weak-`POS` barely changes either
@@ -154,4 +155,5 @@ The best current classification for `hanoi-4` is:
 - not evidence of a major semantic break in the Hanoi domain encoding itself
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
-- most immediate open question: is this strongly left-wedge-driven concrete-node preference historically intended for the Hanoi-4 setup, or is it where the restored search behavior is diverging
+- current strongest historical-control path: `isbm` with weak-`POS`, because it now combines the cleaner frontier story with slightly better deep-bound raw node counts than `ismb`
+- most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close

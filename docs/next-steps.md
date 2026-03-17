@@ -37,6 +37,9 @@ It complements:
 2. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.
+   The newest harness-native deeper weak-`POS` runs now sharpen that further:
+   `isbm` is no longer just the cleaner-frontier comparison case; by `50000`
+   and `100000` it is also slightly ahead of `ismb` on raw generated nodes.
 3. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 4. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 5. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
@@ -44,9 +47,9 @@ It complements:
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
 1. which current `hanoi-4` hierarchy/control combinations best match the historically good-versus-bad Hanoi hierarchy story in the thesis?
-2. can the improved `ismb` plus MP path be pushed from clean `200000`-expansion termination to a full solve?
-3. should `isbm` now replace `critical-list-2` as the main alternate `hanoi-4b` comparison hierarchy?
-4. why does `ismb` prune much more aggressively than `isbm` even though `isbm` appears to rank frontier quality better?
+2. can the improved `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve?
+3. should `isbm` now replace `ismb` as the main historical-control `hanoi-4` target, not just the main alternate comparison hierarchy?
+4. why does `ismb` still prune much more aggressively than `isbm` even though `isbm` now appears to scale better overall under weak-`POS`?
 5. can we combine what now looks like the two winning properties:
    `ismb`-style pruning and `isbm`-style frontier ranking?
 6. how do the `legacy-1991-default` `hanoi-4` runs compare to the stronger later `ismb` and `isbm` families under the same historical-control vocabulary?
@@ -61,23 +64,29 @@ default itself is the missing good hierarchy.
 
 The latest comparison now gives a first answer to that too:
 
-- `ismb` still wins on raw generated-node count under the historical controls
+- at the original `20000` bound, `ismb` still wins slightly on raw generated-node count under the historical controls
 - weak-`POS` helps `isbm` substantially more than it helps `ismb`
 - crit-depth remains a worse control choice for both
 
-That suggests the next `hanoi-4` step should be to compare `ismb` and `isbm`
-frontier quality again under weak-`POS`, not to keep investing effort in the
-archived four-disk default.
+That led to the next `hanoi-4` step:
+compare `ismb` and `isbm` frontier quality again under weak-`POS`, not keep
+investing effort in the archived four-disk default.
 
 That weak-`POS` frontier comparison is now done too:
 
-- `ismb` keeps the slight edge on raw generated-node count
+- at `20000`, `ismb` keeps the slight edge on raw generated-node count
 - `isbm` has the clearly cleaner top frontier
+
+The deeper harness-native weak-`POS` runs now sharpen that further:
+
+- by `50000`, `isbm` is slightly ahead on raw generated-node count
+- at `100000`, `isbm` is still slightly ahead
+- `isbm` keeps the cleaner frontier while doing so
 
 So the next recommended `hanoi-4` question is now narrower:
 can we identify which part of the `isbm` weak-`POS` behavior is producing the
-cleaner frontier, and whether that can be carried over without losing the
-pruning strength that still makes `ismb` the best raw bounded path?
+cleaner frontier and better scaling, and whether that can be pushed into a
+full solve or explained more exactly if it still fails?
 
 The latest answer is:
 
@@ -87,8 +96,8 @@ The latest answer is:
 
 So the next recommended `hanoi-4` step is no longer another broad comparison.
 It is to inspect whether the current scorer can be nudged, instrumented, or
-diagnosed in a way that borrows `isbm`'s cleaner weak-`POS` frontier behavior
-without giving up the stronger overall pruning that still favors `ismb`.
+diagnosed in a way that explains why `isbm` weak-`POS` is now scaling better
+despite `ismb` still pruning more aggressively.
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
@@ -119,7 +128,7 @@ The issue tracker should stay focused on a few parallel tracks:
 
 1. Unify the current runners and historical-control surfaces into one restored
    experiment environment.
-2. Push `hanoi-4` further with the now-better-understood `ismb` settings.
+2. Push `hanoi-4` further with the now-stronger `isbm` weak-`POS` path.
 3. Widen the smoke suite into more 1993 shipped operator-style sample domains.
 4. Decide whether to open a separate phase-2 restoration track for the `reset-domain` framework.
 5. Trim the remaining SBCL style/redefinition noise in the working tree.

@@ -47,7 +47,7 @@ Hanoi-4 hierarchy and control vocabulary instead of only the later 1993 ones?
 ## Reproducible Command
 
 ```sh
-sh /Users/stevenwoods/mmath-renovation/scripts/compare-hanoi4-historical-controls-sbcl.sh
+sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report hanoi4-historical
 ```
 
 ## Current Result
@@ -82,6 +82,42 @@ The more specific takeaway is:
    for `ismb` (`24565` to `24568`).
 3. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
 
+## Deeper Weak-POS Follow-Up
+
+The new harness-native trace presets make it easier to compare the two most
+interesting historical-control paths directly:
+
+```sh
+EXPAND_BOUND=50000 GENERATE_BOUND=200000 OPEN_BOUND=200000 CPU_SEC_LIMIT=30 \
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-ismb-weak-pos --json
+
+EXPAND_BOUND=50000 GENERATE_BOUND=200000 OPEN_BOUND=200000 CPU_SEC_LIMIT=30 \
+  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos --json
+```
+
+At deeper bounds, the story changes in a useful way:
+
+| Hierarchy | Bound | Expanded | Generated | MP Pruned | Open length | Outcome |
+| --- | --- | --- | --- | --- | --- | --- |
+| `ismb`, weak-`POS` | `20000` | `20001` | `24568` | `27007` | `4567` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS` | `20000` | `20001` | `24748` | `21293` | `4747` | `EXPAND-LIMIT-EXCEEDED` |
+| `ismb`, weak-`POS` | `50000` | `50001` | `61943` | `68448` | `11942` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS` | `50000` | `50001` | `61605` | `54586` | `11604` | `EXPAND-LIMIT-EXCEEDED` |
+| `ismb`, weak-`POS` | `100000` | `100001` | `125029` | `139321` | `25028` | `EXPAND-LIMIT-EXCEEDED` |
+| `isbm`, weak-`POS` | `100000` | `100001` | `123240` | `111179` | `23239` | `EXPAND-LIMIT-EXCEEDED` |
+
+So the live scaling picture is now:
+
+1. `ismb` is slightly better at the original 20k comparison point.
+2. `isbm` catches up by 50k and is slightly ahead on raw generated nodes.
+3. that advantage is still present at 100k.
+4. `isbm` keeps the cleaner frontier while doing so.
+
+That is a stronger result than the earlier 20k-only comparison, because it
+shows the `isbm` weak-`POS` path is not just "cleaner but a little slower."
+At deeper bounds it is now the better historical-control path on both
+frontier quality and raw generated-node count.
+
 ## Current Interpretation
 
 This is still a starting point, not a finished historical reproduction story.
@@ -93,5 +129,6 @@ main immediate value is:
 2. separating "1993 hierarchy tuning" from "1991 control-family comparison"
 3. giving the ongoing `hanoi-4` investigation one more historically grounded
    baseline
-4. showing that the main remaining four-disk tradeoff is between `ismb` raw
-   pruning strength and `isbm`'s stronger response to weak-`POS`
+4. showing that the main remaining four-disk tradeoff has sharpened:
+   `ismb` still prunes more aggressively, but `isbm` weak-`POS` now appears to
+   scale better overall at the deeper tested bounds
