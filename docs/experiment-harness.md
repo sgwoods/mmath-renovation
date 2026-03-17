@@ -92,6 +92,7 @@ The current named reports are:
 
 - `benchmark-status`
 - `compare-core`
+- `hanoi-search-baselines`
 - `wide-domain-sweep`
 - `hanoi3-hierarchies`
 - `hanoi3-historical`

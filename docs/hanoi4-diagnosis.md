@@ -12,6 +12,7 @@ It complements:
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
+- [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
 ## Current Result
 
@@ -127,6 +128,25 @@ That makes the current best explanation:
 - the latest cleanup pass sharpens the remaining hotspot:
   - the old ordering-cleanup allocator path no longer stops `ismb` at the earlier point
   - `critical-list-2` still shows heap growth in the MP violation path, while `ismb` now gets through that same general region much more cleanly
+
+## External Baseline Sanity Check
+
+A retained side experiment now gives us plain state-space Hanoi baselines in
+[analysis/hanoi-baselines/standard-transfer.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/standard-transfer.md#L1).
+
+Those results are not directly comparable to AbTweak node counts, because they
+operate on ordinary puzzle states rather than least-commitment partial plans.
+But they are still useful as a sanity check:
+
+- plain graph-search BFS solves standard `hanoi-4` at depth `15`
+- plain graph-search DFS also solves it, though with a longer `27`-move path
+- plain graph-search A* solves it at depth `15`
+
+That strengthens the case that the current restored-planner failure is not
+explained by the four-disk transfer problem being intrinsically difficult in a
+generic search sense. The remaining gap is much more likely to be about the
+planner's search/control behavior than about the existence of a reachable
+solution.
 
 ## Important Limitation
 

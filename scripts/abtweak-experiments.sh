@@ -178,6 +178,7 @@ list_reports() {
   cat <<'EOF'
 benchmark-status
 compare-core
+hanoi-search-baselines
 wide-domain-sweep
 hanoi3-hierarchies
 hanoi3-historical
@@ -207,6 +208,9 @@ run_report() {
       ;;
     compare-core)
       sh "$SCRIPT_DIR/compare-abtweak-1993-sbcl.sh"
+      ;;
+    hanoi-search-baselines)
+      sh "$SCRIPT_DIR/run-hanoi-search-baselines.sh"
       ;;
     wide-domain-sweep)
       sh "$SCRIPT_DIR/wide-domain-sweep-sbcl.sh"

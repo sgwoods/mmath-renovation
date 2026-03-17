@@ -9,6 +9,7 @@ It complements:
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
+- [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
@@ -41,6 +42,10 @@ It complements:
    `isbm` is no longer just the cleaner-frontier comparison case; by `50000`
    and `100000` it is also slightly ahead of `ismb` on raw generated nodes,
    and re-enabling Left-Wedge improves that stronger `isbm` line again.
+   The new external Hanoi BFS/DFS/A* baseline also now solves standard
+   `hanoi-4` immediately, which makes the remaining restored-planner gap look
+   more like a planner-specific search/control problem than a generic puzzle
+   difficulty issue.
 3. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 4. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 5. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
@@ -50,7 +55,7 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 1. which current `hanoi-4` hierarchy/control combinations best match the historically good-versus-bad Hanoi hierarchy story in the thesis?
 2. can the improved `isbm` weak-`POS` plus Left-Wedge path be pushed past the current `200000`-expansion bounded failure into a full solve?
 3. should `isbm` now replace `ismb` as the main historical-control `hanoi-4` target, not just the main alternate comparison hierarchy?
-4. why does `ismb` still prune much more aggressively than `isbm` even though `isbm` now appears to scale better overall under weak-`POS`?
+4. why does plain state-space BFS solve `hanoi-4` immediately while the restored planner still fails cleanly at much higher bounds?
 5. can we combine what now looks like the two winning properties:
    `ismb`-style pruning and `isbm`-style frontier ranking?
 6. how do the `legacy-1991-default` `hanoi-4` runs compare to the stronger later `ismb` and `isbm` families under the same historical-control vocabulary?

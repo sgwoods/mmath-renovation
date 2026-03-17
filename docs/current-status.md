@@ -11,6 +11,7 @@ For deeper technical detail, see:
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
+- [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 trace workflow](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
@@ -51,6 +52,8 @@ For deeper technical detail, see:
   `status` / `report benchmark-status`
 - The harness now provides lightweight machine-readable summaries for
   `run`, `status`, `report`, and `trace`
+- A retained side-experiment comparison framework now exists for plain
+  state-space Hanoi BFS/DFS/A* baselines
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to
