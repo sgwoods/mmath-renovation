@@ -16,6 +16,7 @@ It complements:
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
+- [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
@@ -129,6 +130,10 @@ The new frozen-frontier replay experiment now sharpens the immediate
   - the best closure-oriented inserted node is still actual rank `4`
   - the later frontier distortion is therefore likely compounding over
     repeated refinement and continued expansion, not appearing all at once
+- the new lineage trace now makes that compounding pattern explicit:
+  - dirty priority leaders descend through long low-`kval` ancestry chains
+  - their unsatisfied counts worsen steadily as refinement continues
+  - healthy closure leaders keep much shorter and cleaner abstract ancestry
 
 So the next best `hanoi-4` work is no longer another broad settings sweep
 first. It is to inspect what repeated refinement pattern turns moderately

@@ -234,6 +234,122 @@
         (setq found t)
         (return rank)))))
 
+(defun score-trace-find-record (records plan-id)
+  (find plan-id records :key #'(lambda (record) (getf record :plan-id))
+        :test #'equal))
+
+(defun score-trace-duplicate-plan-ids (records)
+  (let ((seen nil)
+        (dups nil))
+    (dolist (record records (nreverse dups))
+      (let ((plan-id (getf record :plan-id)))
+        (when plan-id
+          (if (member plan-id seen :test 'equal)
+              (unless (member plan-id dups :test 'equal)
+                (push plan-id dups))
+            (push plan-id seen)))))))
+
+(defun frontier-node-lineage-records (node records &key (limit 25))
+  (let ((result nil)
+        (seen nil)
+        (current-id (frontier-plan-id node))
+        (steps 0))
+    (loop while (and current-id (< steps limit)) do
+      (when (member current-id seen :test 'equal)
+        (return))
+      (push current-id seen)
+      (let ((record (score-trace-find-record records current-id)))
+        (unless record
+          (return))
+        (push record result)
+        (setq current-id (getf record :parent-plan-id))
+        (incf steps)))
+    (nreverse result)))
+
+(defun write-lineage-steps (stream title records)
+  (format stream "### ~A~%~%" title)
+  (if (null records)
+      (format stream "_No insertion lineage recovered._~%~%")
+    (progn
+      (format stream
+              "| Step | Plan id | Parent id | Insertion | Actual | No LW | Unsat-aware | Kval | Cost | Length | Unsat |~%")
+      (format stream
+              "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |~%")
+      (loop for record in records
+            for step from 1 do
+              (format stream
+                      "| ~D | ~S | ~S | ~S | ~S | ~S | ~S | ~S | ~S | ~S | ~S |~%"
+                      step
+                      (getf record :plan-id)
+                      (getf record :parent-plan-id)
+                      (getf record :insertion-index)
+                      (getf record :priority)
+                      (getf record :no-left-wedge-score)
+                      (getf record :unsat-aware-score)
+                      (getf record :plan-kval)
+                      (getf record :plan-cost)
+                      (getf record :plan-length)
+                      (getf record :unsat-count)))
+      (format stream "~%"))))
+
+(defun write-score-trace-lineage-report (pathname &key (count 3))
+  (with-open-file (stream pathname
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (let* ((records (score-trace-records))
+           (nodes (flatten-open-nodes))
+           (actual-top
+            (frontier-top-distinct-nodes nodes
+                                         #'frontier-sort-by-priority
+                                         count))
+           (closure-top
+            (frontier-top-distinct-nodes nodes
+                                         #'frontier-sort-by-unsat-count
+                                         count))
+           (dup-plan-ids (score-trace-duplicate-plan-ids records)))
+      (format stream "# Hanoi-4 Lineage Trace~%~%")
+      (format stream "- Recorded insertions: `~S`~%" (length records))
+      (format stream "- Open nodes at termination: `~S`~%" (length nodes))
+      (format stream "- Duplicate inserted plan ids: `~S`~%~%"
+              (length dup-plan-ids))
+
+      (format stream "## Top Priority Frontier Lineages~%~%")
+      (dolist (node actual-top)
+        (let ((summary (frontier-node-quality-summary node)))
+          (format stream "## Frontier priority node `~S`~%~%"
+                  (getf summary :plan-id))
+          (format stream "- Priority: `~S`~%" (getf summary :priority))
+          (format stream "- Kval: `~S`~%" (getf summary :plan-kval))
+          (format stream "- Cost: `~S`~%" (getf summary :plan-cost))
+          (format stream "- Length: `~S`~%" (getf summary :plan-length))
+          (format stream "- Unsatisfied pairs: `~S`~%~%"
+                  (getf summary :unsat-count))
+          (write-lineage-steps
+           stream
+           "Insertion lineage"
+           (frontier-node-lineage-records node records))))
+
+      (format stream "## Top Closure-Oriented Frontier Lineages~%~%")
+      (dolist (node closure-top)
+        (let ((summary (frontier-node-quality-summary node)))
+          (format stream "## Frontier closure node `~S`~%~%"
+                  (getf summary :plan-id))
+          (format stream "- Priority: `~S`~%" (getf summary :priority))
+          (format stream "- Kval: `~S`~%" (getf summary :plan-kval))
+          (format stream "- Cost: `~S`~%" (getf summary :plan-cost))
+          (format stream "- Length: `~S`~%" (getf summary :plan-length))
+          (format stream "- Unsatisfied pairs: `~S`~%~%"
+                  (getf summary :unsat-count))
+          (write-lineage-steps
+           stream
+           "Insertion lineage"
+           (frontier-node-lineage-records node records))))
+
+      (format stream "## Interpretation~%~%")
+      (format stream "- If the priority leaders all descend through repeated low-`kval` insertions with worsening unsatisfied counts, the compounding-refinement hypothesis gets stronger.~%")
+      (format stream "- If the closure leaders retain short, abstract lineages, then the historical baseline is still generating healthier alternatives that are simply not surviving as long in OPEN.~%"))))
+
 (defun write-score-trace-snapshot (pathname &key (limit 50))
   (with-open-file (stream pathname
                           :direction :output

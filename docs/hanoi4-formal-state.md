@@ -11,6 +11,7 @@ It complements:
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
+- [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -70,6 +71,10 @@ The main chain of evidence now is:
 - [insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md#L1):
   the same general bias is already present at insertion time, but much less
   extremely; the best closure-oriented inserted node is still actual rank `4`
+- [lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md#L1):
+  the dirty frontier leaders now show long low-`kval` ancestry chains with
+  steadily worsening unsatisfied counts, while the clean closure-oriented
+  nodes keep shorter healthier abstract lineages
 
 That makes the current best diagnosis:
 
@@ -118,6 +123,7 @@ Those traces now also write:
 
 - `insertion-score-trace.txt`
 - `insertion-score-report.md`
+- `lineage-report.md`
 
 External sanity check:
 
@@ -144,8 +150,8 @@ When we return to `hanoi-4`, the most useful questions are now:
 If work resumes here later, the best immediate next experiment is:
 
 - keep the same `isbm + weak-POS + left-wedge` source run
-- trace the lineage from early well-ranked inserted nodes to the later dirty
-  `kval 0` frontier leaders
+- compare one dirty priority-lineage branch and one healthy closure-lineage
+  branch step by step
 - compare that against the historically intended left-wedge use described in
   the report/thesis
 

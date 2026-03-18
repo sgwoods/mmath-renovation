@@ -14,6 +14,7 @@ It complements:
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
+- [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -215,4 +216,13 @@ The best current classification for `hanoi-4` is:
     frontier leaders
   - this suggests the worst `hanoi-4` ranking problem compounds over repeated
     refinement steps rather than appearing fully formed at first insertion
+- the new lineage trace strengthens that further:
+  - the top dirty frontier leaders now have reconstructible long low-`kval`
+    ancestry chains
+  - along those chains, unsatisfied-pair counts steadily worsen while the
+    actual score remains attractive
+  - the healthiest closure-oriented frontier node keeps a much shorter and
+    cleaner abstract lineage
+  - so the current failure looks more like compounding overconcretization than
+    a single bad expansion or a single catastrophically bad insertion event
 - most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close

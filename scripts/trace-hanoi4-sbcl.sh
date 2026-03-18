@@ -78,6 +78,7 @@ cat >"$trace_lisp" <<EOF
        (quality-log (concatenate 'string trace-dir "frontier-quality.txt"))
        (score-log (concatenate 'string trace-dir "insertion-score-trace.txt"))
        (score-report-log (concatenate 'string trace-dir "insertion-score-report.md"))
+       (lineage-report-log (concatenate 'string trace-dir "lineage-report.md"))
        (solution-log (concatenate 'string trace-dir "solution.txt"))
        (drp-log (concatenate 'string trace-dir "drp-stack.txt"))
        (result (progn
@@ -131,6 +132,7 @@ cat >"$trace_lisp" <<EOF
   (write-frontier-quality-snapshot quality-log :limit $OPEN_SNAPSHOT_LIMIT)
   (write-score-trace-snapshot score-log :limit $OPEN_SNAPSHOT_LIMIT)
   (write-score-trace-report score-report-log)
+  (write-score-trace-lineage-report lineage-report-log :count 3)
   (disable-score-trace)
   (write-solution-snapshot solution-log)
   (write-drp-stack-snapshot drp-log)
