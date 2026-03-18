@@ -109,6 +109,44 @@ That is not yet a full solve, but it is consistent with the earlier
 frontier-quality diagnosis: closure-oriented nodes appear healthier than the
 states the current scoring actually prefers.
 
+## Structural Split In The Replayed Nodes
+
+Looking into the raw replay records makes the contrast more concrete.
+
+The replay-dead sampled `abtweak` priority nodes were mostly:
+
+- `kval 0`
+- plan cost `14`
+- plan length `16`
+- unsatisfied-pair counts between about `12` and `22`
+
+The healthiest sampled `abtweak` closure node was instead:
+
+- `kval 2`
+- plan cost `6`
+- plan length `8`
+- unsatisfied-pair count `2`
+
+The sampled `tweak` live nodes looked different again:
+
+- `kval 0`
+- plan cost `8` to `9`
+- plan length `10` to `11`
+- unsatisfied-pair counts between about `5` and `7`
+
+So the current replay evidence does not just say "`abtweak` is worse." It says
+something more specific:
+
+- the brittle `abtweak` states are usually more concretized and more committed
+  than the live `tweak` states
+- many of them are close to full move skeletons, but still carry a large number
+  of unresolved obligations
+- the healthiest `abtweak` state in the sample is the less-concretized,
+  cleaner closure-oriented one
+
+That points even more strongly at an overconcretization problem in the active
+`abtweak` frontier ranking.
+
 ## Current Conclusion
 
 The frozen-frontier replay experiment strengthens the working diagnosis:
@@ -118,5 +156,5 @@ The frozen-frontier replay experiment strengthens the working diagnosis:
 - the restored `abtweak` path appears to surface many frontier nodes that are
   much more locally brittle than the corresponding `tweak` frontier nodes
 - the next best investigation is therefore not another broad parameter sweep
-  first; it is to inspect what makes these replay-dead `abtweak` states rank
-  so highly in the original search
+  first; it is to inspect what makes these replay-dead, heavily concretized
+  `abtweak` states rank so highly in the original search

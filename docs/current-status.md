@@ -187,6 +187,9 @@ Verified smoke results:
           nodes stay live to the replay bound
         - under the same continuation idea, most sampled `abtweak` frontier
           nodes die quickly with `OPEN-EXHAUSTED`
+        - the replay-dead `abtweak` states are typically heavily concretized
+          `kval 0` move skeletons with high unsatisfied-pair counts, while the
+          healthiest sampled `abtweak` replay is a cleaner `kval 2` state
         - the healthiest sampled `abtweak` replay comes from the
           closure-oriented cohort rather than the top-ranked cohort
         - that makes the current `tweak` / `abtweak` gap look more like an

@@ -187,6 +187,11 @@ The best current classification for `hanoi-4` is:
     live to the replay bound
   - under the same replay policy, most sampled `abtweak` frontier nodes die
     quickly with `OPEN-EXHAUSTED`
+  - the replay-dead `abtweak` states are typically heavily concretized
+    `kval 0` move skeletons around cost `14`, length `16`, and roughly `12` to
+    `22` unsatisfied pairs
+  - the healthiest sampled `abtweak` replay is a cleaner `kval 2` state with
+    cost `6`, length `8`, and only `2` unsatisfied pairs
   - that makes the remaining gap look more like frontier-quality brittleness in
     the restored `abtweak` path than a generic inability to continue from any
     `hanoi-4` partial plan

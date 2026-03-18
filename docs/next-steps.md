@@ -117,6 +117,9 @@ The new frozen-frontier replay experiment now sharpens the immediate
   quickly
 - the healthiest sampled `abtweak` node comes from the closure-oriented cohort
   rather than the top-ranked cohort
+- the replay-dead `abtweak` states are typically heavily concretized
+  `kval 0` move skeletons with high unsatisfied-pair counts, while the
+  healthiest sampled `abtweak` replay is a cleaner `kval 2` state
 
 So the next best `hanoi-4` work is no longer another broad settings sweep
 first. It is to inspect what structural feature makes those replay-dead
