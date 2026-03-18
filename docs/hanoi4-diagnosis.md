@@ -11,6 +11,7 @@ It complements:
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
+- [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -180,4 +181,13 @@ The best current classification for `hanoi-4` is:
 - plain `tweak` still does not solve `hanoi-4` in the restored code on the practical modes tested so far:
   - BFS still fails at the higher exploratory bounds
   - DFS with `:solution-limit 20` also fails at `50001` expanded / `50020` generated
+- the new frozen-frontier replay experiment sharpens the `tweak` / `abtweak`
+  split further:
+  - under a neutral replay policy, all sampled `tweak` frontier nodes remain
+    live to the replay bound
+  - under the same replay policy, most sampled `abtweak` frontier nodes die
+    quickly with `OPEN-EXHAUSTED`
+  - that makes the remaining gap look more like frontier-quality brittleness in
+    the restored `abtweak` path than a generic inability to continue from any
+    `hanoi-4` partial plan
 - most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close

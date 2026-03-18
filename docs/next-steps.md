@@ -13,6 +13,7 @@ It complements:
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
+- [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
@@ -106,6 +107,20 @@ diagnosed in a way that explains why `isbm` weak-`POS` is now scaling better
 despite `ismb` still pruning more aggressively.
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
+
+The new frozen-frontier replay experiment now sharpens the immediate
+`hanoi-4` hypothesis further:
+
+- under a neutral continuation policy, all sampled `tweak` frontier nodes stay
+  search-live to the replay bound
+- under the same continuation idea, most sampled `abtweak` frontier nodes die
+  quickly
+- the healthiest sampled `abtweak` node comes from the closure-oriented cohort
+  rather than the top-ranked cohort
+
+So the next best `hanoi-4` work is no longer another broad settings sweep
+first. It is to inspect what structural feature makes those replay-dead
+`abtweak` states rank so highly in the original search.
 
 The recommended order now is:
 

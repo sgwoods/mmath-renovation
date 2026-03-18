@@ -183,6 +183,7 @@ wide-domain-sweep
 hanoi3-hierarchies
 hanoi3-historical
 hanoi4-controls
+hanoi4-frontier-replay
 hanoi4-hierarchies
 hanoi4-historical
 EOF
@@ -223,6 +224,9 @@ run_report() {
       ;;
     hanoi4-controls)
       sh "$SCRIPT_DIR/compare-hanoi4-controls-sbcl.sh"
+      ;;
+    hanoi4-frontier-replay)
+      sh "$SCRIPT_DIR/compare-hanoi4-frontier-replay-sbcl.sh"
       ;;
     hanoi4-hierarchies)
       sh "$SCRIPT_DIR/compare-hanoi4-hierarchies-sbcl.sh"

@@ -251,3 +251,241 @@
         (when open-list
           (let ((node (car open-list)))
             (format stream "~S~%~%" (node-state-summary node))))))))
+
+(defun make-replay-copy-of-plan (plan)
+  "Return a replay-safe copy of PLAN for diagnostic restarts."
+  (declare (type plan plan))
+  (remove-constant-nonco
+   (make-plan
+    :id        (create-planid)
+    :a         (make-copy-of-op-list (plan-a plan))
+    :b         (copy-tree (plan-b plan))
+    :nc        (copy-tree (plan-nc plan))
+    :cr        (copy-tree (plan-cr plan))
+    :var       (copy-tree (plan-var plan))
+    :cost      (plan-cost plan)
+    :kval      (plan-kval plan)
+    :conflicts (copy-tree (plan-conflicts plan))
+    :op-count  (copy-tree (plan-op-count plan))
+    :invalid   (plan-invalid plan))))
+
+(defun frontier-plan-id (node)
+  (let ((plan (get-state node)))
+    (when (typep plan 'plan)
+      (plan-id plan))))
+
+(defun frontier-top-distinct-nodes (nodes sort-fn count)
+  "Return up to COUNT nodes from NODES after SORT-FN, distinct by plan id."
+  (let ((sorted (funcall sort-fn nodes))
+        (seen nil)
+        (result nil))
+    (dolist (node sorted (nreverse result))
+      (when (< (length result) count)
+        (let ((plan-id (frontier-plan-id node)))
+          (when (and plan-id
+                     (not (member plan-id seen :test 'equal)))
+            (push node result)
+            (push plan-id seen)))))))
+
+(defun replay-frontier-node
+    (node &key
+          (planner-mode *planner-mode*)
+          (mp-mode *mp-mode*)
+          (mp-weak-mode *mp-weak-mode*)
+          (abstract-goal-mode *abstract-goal-mode*)
+          (left-wedge-mode nil)
+          (drp-mode nil)
+          (heuristic-mode 'user-defined)
+          (use-primary-effect-p *use-primary-effect-p*)
+          (control-strategy 'bfs)
+          (existing-only nil)
+          (solution-limit 100)
+          (expand-bound 10000)
+          (generate-bound 50000)
+          (open-bound 50000)
+          (cpu-sec-limit 30))
+  "Restart search from NODE's plan under a simpler diagnostic continuation."
+  (let* ((plan (get-state node))
+         (replay-plan (and (typep plan 'plan)
+                           (make-replay-copy-of-plan plan)))
+         (result (and replay-plan
+                      (plan initial goal
+                            :planner-mode planner-mode
+                            :mp-mode mp-mode
+                            :mp-weak-mode mp-weak-mode
+                            :abstract-goal-mode abstract-goal-mode
+                            :left-wedge-mode left-wedge-mode
+                            :drp-mode drp-mode
+                            :heuristic-mode heuristic-mode
+                            :use-primary-effect-p use-primary-effect-p
+                            :control-strategy control-strategy
+                            :existing-only existing-only
+                            :solution-limit solution-limit
+                            :expand-bound expand-bound
+                            :generate-bound generate-bound
+                            :open-bound open-bound
+                            :cpu-sec-limit cpu-sec-limit
+                            :output-file 'no-output
+                            :init-plan replay-plan))))
+    (list
+     :result result
+     :solution *solution*
+     :solution-type (type-of *solution*)
+     :solution-cost (when (typep *solution* 'plan) (plan-cost *solution*))
+     :solution-kval (when (typep *solution* 'plan) (plan-kval *solution*))
+     :solution-length (when (typep *solution* 'plan)
+                        (length (plan-a *solution*)))
+     :num-expanded *num-expanded*
+     :num-generated *num-generated*
+     :mp-pruned *mp-pruned*)))
+
+(defun frontier-replay-record
+    (node cohort rank &key
+          (planner-mode *planner-mode*)
+          (mp-mode *mp-mode*)
+          (mp-weak-mode *mp-weak-mode*)
+          (abstract-goal-mode *abstract-goal-mode*)
+          (left-wedge-mode nil)
+          (drp-mode nil)
+          (heuristic-mode 'user-defined)
+          (use-primary-effect-p *use-primary-effect-p*)
+          (control-strategy 'bfs)
+          (existing-only nil)
+          (solution-limit 100)
+          (expand-bound 10000)
+          (generate-bound 50000)
+          (open-bound 50000)
+          (cpu-sec-limit 30))
+  (let ((source-summary (frontier-node-quality-summary node))
+        (replay-summary
+         (replay-frontier-node
+          node
+          :planner-mode planner-mode
+          :mp-mode mp-mode
+          :mp-weak-mode mp-weak-mode
+          :abstract-goal-mode abstract-goal-mode
+          :left-wedge-mode left-wedge-mode
+          :drp-mode drp-mode
+          :heuristic-mode heuristic-mode
+          :use-primary-effect-p use-primary-effect-p
+          :control-strategy control-strategy
+          :existing-only existing-only
+          :solution-limit solution-limit
+          :expand-bound expand-bound
+          :generate-bound generate-bound
+          :open-bound open-bound
+          :cpu-sec-limit cpu-sec-limit)))
+    (list
+     :cohort cohort
+     :source-rank rank
+     :source source-summary
+     :replay replay-summary)))
+
+(defun frontier-replay-cohort
+    (nodes cohort count sort-fn &key
+          (planner-mode *planner-mode*)
+          (mp-mode *mp-mode*)
+          (mp-weak-mode *mp-weak-mode*)
+          (abstract-goal-mode *abstract-goal-mode*)
+          (left-wedge-mode nil)
+          (drp-mode nil)
+          (heuristic-mode 'user-defined)
+          (use-primary-effect-p *use-primary-effect-p*)
+          (control-strategy 'bfs)
+          (existing-only nil)
+          (solution-limit 100)
+          (expand-bound 10000)
+          (generate-bound 50000)
+          (open-bound 50000)
+          (cpu-sec-limit 30))
+  (let ((selected (frontier-top-distinct-nodes nodes sort-fn count))
+        (records nil)
+        (rank 0))
+    (dolist (node selected (nreverse records))
+      (incf rank)
+      (push
+       (frontier-replay-record
+        node cohort rank
+        :planner-mode planner-mode
+        :mp-mode mp-mode
+        :mp-weak-mode mp-weak-mode
+        :abstract-goal-mode abstract-goal-mode
+        :left-wedge-mode left-wedge-mode
+        :drp-mode drp-mode
+        :heuristic-mode heuristic-mode
+        :use-primary-effect-p use-primary-effect-p
+        :control-strategy control-strategy
+        :existing-only existing-only
+        :solution-limit solution-limit
+        :expand-bound expand-bound
+        :generate-bound generate-bound
+        :open-bound open-bound
+        :cpu-sec-limit cpu-sec-limit)
+       records))))
+
+(defun replay-solved-p (record)
+  (eq (getf (getf record :replay) :solution-type) 'plan))
+
+(defun replay-best-solution-length (records)
+  (let ((lengths
+         (remove nil
+                 (mapcar #'(lambda (record)
+                             (getf (getf record :replay) :solution-length))
+                         records))))
+    (when lengths
+      (apply #'min lengths))))
+
+(defun write-frontier-replay-report
+    (pathname title source-summary priority-records closure-records)
+  (labels
+      ((write-record-line (stream record)
+         (let* ((source (getf record :source))
+                (replay (getf record :replay))
+                (solution-type (getf replay :solution-type))
+                (outcome (if (eq solution-type 'plan)
+                             'solved
+                           (getf replay :solution))))
+           (format stream
+                   "| ~A | ~D | ~S | ~S | ~S | ~S | ~S | ~S | ~S | ~S |~%"
+                   (getf record :cohort)
+                   (getf record :source-rank)
+                   (getf source :priority)
+                   (getf source :plan-kval)
+                   (getf source :plan-cost)
+                   (getf source :unsat-count)
+                   outcome
+                   (getf replay :num-expanded)
+                   (getf replay :num-generated)
+                   (getf replay :solution-length)))))
+    (with-open-file (stream pathname
+                            :direction :output
+                            :if-exists :supersede
+                            :if-does-not-exist :create)
+      (format stream "# ~A~%~%" title)
+      (format stream "## Source Frontier~%~%")
+      (format stream "- Open nodes: `~S`~%" (getf source-summary :open-count))
+      (format stream "- Best unsatisfied-pair count: `~S`~%"
+              (getf source-summary :best-unsat-count))
+      (format stream "- Priority bucket leader count: `~S`~%"
+              (getf source-summary :top-bucket-count))
+      (format stream "- Replay heuristic: `user-defined` (zero)~%")
+      (format stream "- Replay left-wedge: `nil`~%")
+      (format stream "- Replay control strategy: `bfs`~%~%")
+      (format stream "## Replay Outcomes~%~%")
+      (format stream
+              "| Cohort | Rank | Source priority | Source kval | Source cost | Source unsat | Replay outcome | Replay expanded | Replay generated | Replay solution length |~%")
+      (format stream
+              "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |~%")
+      (dolist (record priority-records)
+        (write-record-line stream record))
+      (dolist (record closure-records)
+        (write-record-line stream record))
+      (format stream "~%## Cohort Summary~%~%")
+      (format stream "- Priority cohort solved count: `~D`~%"
+              (count-if #'replay-solved-p priority-records))
+      (format stream "- Closure cohort solved count: `~D`~%"
+              (count-if #'replay-solved-p closure-records))
+      (format stream "- Priority cohort best replay solution length: `~S`~%"
+              (replay-best-solution-length priority-records))
+      (format stream "- Closure cohort best replay solution length: `~S`~%"
+              (replay-best-solution-length closure-records)))))

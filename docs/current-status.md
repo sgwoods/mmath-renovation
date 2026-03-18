@@ -28,6 +28,7 @@ For deeper technical detail, see:
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
+- [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Left-Wedge intent comparison](/Users/stevenwoods/mmath-renovation/docs/left-wedge-intent-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
@@ -54,6 +55,8 @@ For deeper technical detail, see:
   `run`, `status`, `report`, and `trace`
 - A retained side-experiment comparison framework now exists for plain
   state-space Hanoi BFS/DFS/A* baselines
+- A new frozen-frontier replay report now exists for `hanoi-4`, exposed
+  through the harness as `report hanoi4-frontier-replay`
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to
@@ -179,6 +182,15 @@ Verified smoke results:
         - AbTweak is using `search-cost + num-of-unsat-goals + left-wedge-adjustment`
         - top concrete Hanoi nodes often win with base goal heuristic `0` and left-wedge `-7`
         - unresolved non-goal obligations are not represented directly in that score
+      - the new frozen-frontier replay experiment now sharpens that diagnosis:
+        - under a neutral continuation policy, all sampled `tweak` frontier
+          nodes stay live to the replay bound
+        - under the same continuation idea, most sampled `abtweak` frontier
+          nodes die quickly with `OPEN-EXHAUSTED`
+        - the healthiest sampled `abtweak` replay comes from the
+          closure-oriented cohort rather than the top-ranked cohort
+        - that makes the current `tweak` / `abtweak` gap look more like an
+          abstraction-side frontier-quality problem than a generic search-hardness issue
       - comparison with the historical manual/report/thesis now suggests this raw Left-Wedge pressure toward refinement is intended design, not a bug by itself
       - the remaining question is whether the current Hanoi hierarchy/control pairing is a historically "good hierarchy" case where that pressure should help, or a case where it should hurt
   - details are recorded in [docs/hanoi4-diagnosis.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md#L1)

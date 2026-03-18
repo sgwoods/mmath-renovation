@@ -97,6 +97,7 @@ The current named reports are:
 - `hanoi3-hierarchies`
 - `hanoi3-historical`
 - `hanoi4-controls`
+- `hanoi4-frontier-replay`
 - `hanoi4-hierarchies`
 - `hanoi4-historical`
 
@@ -118,6 +119,7 @@ entry points:
 
 - `report hanoi3-historical`
 - `report hanoi4-historical`
+- `report hanoi4-frontier-replay`
 
 ### `trace NAME`
 
