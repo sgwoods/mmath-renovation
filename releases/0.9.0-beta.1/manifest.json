@@ -1,0 +1,16 @@
+{
+  "version": "0.9.0-beta.1",
+  "timestamp_utc": "2026-03-18T22:51:29Z",
+  "git_branch": "main",
+  "git_commit": "54053befb67a8cae9c55576502e5aa0649e21ffb",
+  "version_file": "/Users/stevenwoods/mmath-renovation/VERSION",
+  "changelog_file": "/Users/stevenwoods/mmath-renovation/CHANGELOG.md",
+  "current_status_file": "/Users/stevenwoods/mmath-renovation/docs/current-status.md",
+  "generated_files": [
+    "/Users/stevenwoods/mmath-renovation/releases/0.9.0-beta.1/manifest.json",
+    "/Users/stevenwoods/mmath-renovation/releases/0.9.0-beta.1/status.json",
+    "/Users/stevenwoods/mmath-renovation/releases/0.9.0-beta.1/benchmark-status.md",
+    "/Users/stevenwoods/mmath-renovation/releases/0.9.0-beta.1/current-status.md",
+    "/Users/stevenwoods/mmath-renovation/releases/0.9.0-beta.1/release-summary.md"
+  ]
+}

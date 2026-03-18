@@ -27,6 +27,10 @@ Current milestone:
 
 - the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, solves `hanoi-3` and `macro-hanoi` in both `tweak` and `abtweak`, shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`, runs `hanoi-4` to a bounded search outcome in both modes under the restored BFS path, and can execute the historical DFS path again under SBCL
 
+Current pre-release version:
+
+- `0.9.0-beta.1`
+
 ## What AbTweak Is
 
 AbTweak combines abstraction with nonlinear, least-commitment planning. In the cited work, abstraction is used to simplify planning problems by suppressing lower-criticality preconditions at higher levels of the hierarchy, while TWEAK-style nonlinear planning preserves partial ordering and deferred commitment in the evolving plan structure.
@@ -45,6 +49,9 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Snapshot inventory](./docs/snapshot-inventory.md): comparison of the recovered AbTweak trees and recommended porting baseline
 - [Abtweak-1993 baseline](./docs/abtweak-1993-baseline.md): current working baseline, SBCL load status, and next porting steps
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results
+- [Release process](./docs/release-process.md): versioning, release cadence, snapshot contents, tag policy, and Pages update rules
+- [Changelog](./CHANGELOG.md): numbered restoration checkpoints
+- [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
 - [Refreshed plan](./docs/refreshed-plan.md): current plan state, recommended issue order, and the main sensible alternatives from here
 - [Unified restoration plan](./docs/unified-restoration-plan.md): top-level plan for converging the repo into one restored experimental environment that can stand in for the historical AbTweak code lines
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
