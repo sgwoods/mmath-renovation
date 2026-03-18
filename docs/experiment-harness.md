@@ -100,6 +100,7 @@ The current named reports are:
 - `hanoi4-frontier-replay`
 - `hanoi4-hierarchies`
 - `hanoi4-historical`
+- `hanoi4-score-sensitivity`
 
 These map to the existing comparison scripts, but the intent is that users
 should call them through one shared vocabulary instead of memorizing separate
@@ -120,6 +121,7 @@ entry points:
 - `report hanoi3-historical`
 - `report hanoi4-historical`
 - `report hanoi4-frontier-replay`
+- `report hanoi4-score-sensitivity`
 
 ### `trace NAME`
 

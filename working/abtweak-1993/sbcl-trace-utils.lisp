@@ -134,6 +134,45 @@
 	                  (< priority1 priority2)
 	                (< unsat1 unsat2))))))
 
+(defun frontier-no-left-wedge-score (node)
+  (let ((summary (frontier-node-quality-summary node)))
+    (+ (getf summary :search-cost)
+       (getf summary :base-goal-heuristic))))
+
+(defun frontier-unsat-aware-score (node)
+  (let ((summary (frontier-node-quality-summary node)))
+    (+ (getf summary :search-cost)
+       (getf summary :base-goal-heuristic)
+       (getf summary :unsat-count))))
+
+(defun frontier-sort-by-score (nodes score-fn)
+  (sort (copy-list nodes)
+        #'(lambda (node1 node2)
+            (let ((score1 (funcall score-fn node1))
+                  (score2 (funcall score-fn node2)))
+              (if (= score1 score2)
+                  (< (get-priority node1) (get-priority node2))
+                (< score1 score2))))))
+
+(defun frontier-rank-of-plan-id (nodes plan-id)
+  (let ((rank 0)
+        (found nil))
+    (dolist (node nodes (and found rank))
+      (incf rank)
+      (when (equal (frontier-plan-id node) plan-id)
+        (setq found t)
+        (return rank)))))
+
+(defun frontier-top-n-summaries (nodes sort-fn count)
+  (mapcar #'frontier-node-quality-summary
+          (frontier-top-distinct-nodes nodes sort-fn count)))
+
+(defun average-of-key (records key)
+  (if (null records)
+      0
+    (/ (apply #'+ (mapcar #'(lambda (record) (getf record key)) records))
+       (length records))))
+
 (defun write-frontier-quality-snapshot (pathname &key (limit 50))
   (with-open-file (stream pathname
                           :direction :output

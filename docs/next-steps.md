@@ -14,6 +14,7 @@ It complements:
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
+- [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
@@ -120,6 +121,8 @@ The new frozen-frontier replay experiment now sharpens the immediate
 - the replay-dead `abtweak` states are typically heavily concretized
   `kval 0` move skeletons with high unsatisfied-pair counts, while the
   healthiest sampled `abtweak` replay is a cleaner `kval 2` state
+- the score-sensitivity pass now shows that the clean closure-oriented node is
+  actual rank `1149`, but becomes rank `1` as soon as left-wedge is removed
 
 So the next best `hanoi-4` work is no longer another broad settings sweep
 first. It is to inspect what structural feature makes those replay-dead

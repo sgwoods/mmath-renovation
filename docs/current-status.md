@@ -29,6 +29,7 @@ For deeper technical detail, see:
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
+- [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Left-Wedge intent comparison](/Users/stevenwoods/mmath-renovation/docs/left-wedge-intent-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
@@ -57,6 +58,8 @@ For deeper technical detail, see:
   state-space Hanoi BFS/DFS/A* baselines
 - A new frozen-frontier replay report now exists for `hanoi-4`, exposed
   through the harness as `report hanoi4-frontier-replay`
+- A new score-sensitivity report now exists for `hanoi-4`, exposed through
+  the harness as `report hanoi4-score-sensitivity`
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to
@@ -192,6 +195,13 @@ Verified smoke results:
           healthiest sampled `abtweak` replay is a cleaner `kval 2` state
         - the healthiest sampled `abtweak` replay comes from the
           closure-oriented cohort rather than the top-ranked cohort
+        - the new score-sensitivity report now makes the ranking failure much
+          more explicit:
+          - the best closure-oriented node is actual rank `1149`
+          - without left-wedge, that same node becomes rank `1`
+          - under an unsat-aware score, it also becomes rank `1`
+          - the actual top-20 frontier and the no-left-wedge top-20 frontier
+            have `0 / 20` overlap
         - that makes the current `tweak` / `abtweak` gap look more like an
           abstraction-side frontier-quality problem than a generic search-hardness issue
       - comparison with the historical manual/report/thesis now suggests this raw Left-Wedge pressure toward refinement is intended design, not a bug by itself

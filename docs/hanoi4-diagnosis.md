@@ -12,6 +12,7 @@ It complements:
 - [Hanoi-4 frontier forensics](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-forensics.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
+- [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -187,12 +188,20 @@ The best current classification for `hanoi-4` is:
     live to the replay bound
   - under the same replay policy, most sampled `abtweak` frontier nodes die
     quickly with `OPEN-EXHAUSTED`
-  - the replay-dead `abtweak` states are typically heavily concretized
-    `kval 0` move skeletons around cost `14`, length `16`, and roughly `12` to
-    `22` unsatisfied pairs
-  - the healthiest sampled `abtweak` replay is a cleaner `kval 2` state with
-    cost `6`, length `8`, and only `2` unsatisfied pairs
-  - that makes the remaining gap look more like frontier-quality brittleness in
-    the restored `abtweak` path than a generic inability to continue from any
-    `hanoi-4` partial plan
+- the replay-dead `abtweak` states are typically heavily concretized
+  `kval 0` move skeletons around cost `14`, length `16`, and roughly `12` to
+  `22` unsatisfied pairs
+- the healthiest sampled `abtweak` replay is a cleaner `kval 2` state with
+  cost `6`, length `8`, and only `2` unsatisfied pairs
+- the new score-sensitivity pass makes the mechanism much more specific:
+  - the best closure-oriented node sits at actual rank `1149`
+  - without left-wedge, that same node jumps to rank `1`
+  - with an unsat-aware score, it also jumps to rank `1`
+  - the actual top-ranked node falls from rank `1` to rank `71` without
+    left-wedge and to rank `724` under the unsat-aware score
+  - the top-20 actual frontier and the top-20 no-left-wedge frontier have
+    `0 / 20` overlap
+- that makes the remaining gap look more like frontier-quality brittleness in
+  the restored `abtweak` path than a generic inability to continue from any
+  `hanoi-4` partial plan
 - most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close
