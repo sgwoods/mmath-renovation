@@ -50,6 +50,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
+- [Publication domain crosswalk](./docs/publication-domain-crosswalk.md): concise mapping from each domain family to the papers/manual and whether we can rerun it exactly, strongly, partially, or not yet
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Hanoi-4 formal state](./docs/hanoi4-formal-state.md): formal handoff note capturing the current four-disk diagnosis, strongest runtime path, and recommended re-entry point
 - [Hanoi-4 frontier replay](./docs/hanoi4-frontier-replay.md): frozen-frontier replay experiment showing that sampled `tweak` frontier nodes remain live under neutral replay while most sampled `abtweak` frontier nodes do not
