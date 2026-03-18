@@ -17,6 +17,9 @@ environment, see [Unified restoration plan](/Users/stevenwoods/mmath-renovation/
 The first concrete consolidation step is now the shared experiment front door
 documented in [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md).
 
+The algorithm-boundary rule is now documented in
+[Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md).
+
 ## Plan State
 
 ### Track 1: Runtime Restoration

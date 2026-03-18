@@ -29,6 +29,8 @@ It should end as:
 - one documented compatibility surface for historically important controls
 - one benchmark matrix that lets us rerun and compare the historically reported
   AbTweak behavior
+- one explicit boundary between the historical restored baseline and any later
+  non-domain-specific strategy extensions
 
 In practical terms, that means the working tree should eventually provide a
 single place from which we can run:
@@ -37,6 +39,23 @@ single place from which we can run:
 2. the historically important 1991-era control variations where those matter
 3. the shipped operator-style examples and the main published benchmark cases
 4. the comparison and tracing workflows needed to validate the results
+
+## Strategy Boundary
+
+The restored `Abtweak-1993` baseline should remain historically aligned by
+default.
+
+That means:
+
+- historical controls, scoring, and abstraction behavior stay in the baseline
+  unless there is strong evidence that the restored code is simply wrong
+- instrumentation and diagnostics are encouraged
+- generic non-domain-specific search improvements should not be folded into the
+  baseline silently
+
+If we introduce a new general strategy to help cases like `hanoi-4`, it should
+be named and documented as a distinct extension rather than relabeled as the
+historical AbTweak baseline.
 
 ## Where We Are Now
 
