@@ -15,6 +15,7 @@ It complements:
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
+- [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -225,4 +226,11 @@ The best current classification for `hanoi-4` is:
     cleaner abstract lineage
   - so the current failure looks more like compounding overconcretization than
     a single bad expansion or a single catastrophically bad insertion event
+- the new divergence note localizes the first clear fork:
+  - around insertion `6137` to `6157`, a healthy `kval 2` continuation and a
+    concretized `kval 1` continuation have almost the same closure quality
+  - the concretized continuation wins immediately because its Left-Wedge
+    adjustment is much stronger
+  - the same effect repeats when the line is reinserted at `kval 0`, where
+    unresolved obligations get worse but the actual score improves again
 - most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close

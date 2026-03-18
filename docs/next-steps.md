@@ -17,6 +17,7 @@ It complements:
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
+- [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
@@ -134,6 +135,13 @@ The new frozen-frontier replay experiment now sharpens the immediate
   - dirty priority leaders descend through long low-`kval` ancestry chains
   - their unsatisfied counts worsen steadily as refinement continues
   - healthy closure leaders keep much shorter and cleaner abstract ancestry
+- the new divergence note now shows the first local crossover:
+  - an abstract `kval 2` branch and a concretized `kval 1` branch have almost
+    the same closure quality
+  - the concretized branch wins immediately because Left-Wedge gets stronger
+    at the lower level
+  - the same branch is then reintroduced again at `kval 0`, where closure gets
+    worse but actual score improves further
 
 So the next best `hanoi-4` work is no longer another broad settings sweep
 first. It is to inspect what repeated refinement pattern turns moderately

@@ -12,6 +12,7 @@ It complements:
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
+- [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -75,6 +76,10 @@ The main chain of evidence now is:
   the dirty frontier leaders now show long low-`kval` ancestry chains with
   steadily worsening unsatisfied counts, while the clean closure-oriented
   nodes keep shorter healthier abstract lineages
+- [lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md#L1):
+  the first clear fork happens around insertion `6137` to `6157`, where a
+  concretized branch wins over a similarly clean abstract branch because the
+  Left-Wedge bonus strengthens sharply on the lower `kval`
 
 That makes the current best diagnosis:
 
@@ -152,6 +157,7 @@ If work resumes here later, the best immediate next experiment is:
 - keep the same `isbm + weak-POS + left-wedge` source run
 - compare one dirty priority-lineage branch and one healthy closure-lineage
   branch step by step
+- inspect the exact level-drop reinsertion path for those branches
 - compare that against the historically intended left-wedge use described in
   the report/thesis
 
