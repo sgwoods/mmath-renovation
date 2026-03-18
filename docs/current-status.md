@@ -33,6 +33,7 @@ For deeper technical detail, see:
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
+- [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Left-Wedge intent comparison](/Users/stevenwoods/mmath-renovation/docs/left-wedge-intent-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
@@ -63,6 +64,9 @@ For deeper technical detail, see:
   through the harness as `report hanoi4-frontier-replay`
 - A new score-sensitivity report now exists for `hanoi-4`, exposed through
   the harness as `report hanoi4-score-sensitivity`
+- The `hanoi-4` trace workflow now also records insertion-time score traces,
+  which show that the ranking bias is already present when nodes are created
+  but becomes much worse after repeated refinement
 - Recommended next track: unify the experiment infrastructure, push the
   strongest remaining `hanoi-4` path, then widen historically grounded
   coverage, then decide how much of the alternate `reset-domain` framework to

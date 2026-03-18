@@ -20,6 +20,7 @@ GENERATE_BOUND=${GENERATE_BOUND:-200000}
 OPEN_BOUND=${OPEN_BOUND:-200000}
 CPU_SEC_LIMIT=${CPU_SEC_LIMIT:-60}
 OPEN_SNAPSHOT_LIMIT=${OPEN_SNAPSHOT_LIMIT:-200}
+SCORE_TRACE_LIMIT=${SCORE_TRACE_LIMIT:-5000}
 
 timestamp=$(date +"%Y%m%d-%H%M%S")
 case_slug="hanoi4-${PLANNER_MODE}-${HIERARCHY}-hist-${HISTORICAL_MODE}-mp-${MP_MODE}-msp-${MSP_MODE}-weak-${MP_WEAK_MODE}-crit-${CRIT_DEPTH_MODE}-lw-${LEFT_WEDGE_MODE}-drp-${DRP_MODE}-${timestamp}"
@@ -75,9 +76,13 @@ cat >"$trace_lisp" <<EOF
        (summary-log (concatenate 'string trace-dir "summary.txt"))
        (open-log (concatenate 'string trace-dir "open-frontier.txt"))
        (quality-log (concatenate 'string trace-dir "frontier-quality.txt"))
+       (score-log (concatenate 'string trace-dir "insertion-score-trace.txt"))
+       (score-report-log (concatenate 'string trace-dir "insertion-score-report.md"))
        (solution-log (concatenate 'string trace-dir "solution.txt"))
        (drp-log (concatenate 'string trace-dir "drp-stack.txt"))
-	       (result (if $HISTORICAL_MODE
+       (result (progn
+                 (reset-score-trace :limit $SCORE_TRACE_LIMIT)
+                 (if $HISTORICAL_MODE
                            (historical-hanoi4-plan initial goal
 	                                             :hierarchy '$HIERARCHY
                                                      :planner-mode '$PLANNER_MODE
@@ -95,12 +100,12 @@ cat >"$trace_lisp" <<EOF
 	                       :mp-mode $MP_MODE
                                :mp-weak-mode '$MP_WEAK_MODE
 	                       :left-wedge-mode $LEFT_WEDGE_MODE
-	                       :drp-mode $DRP_MODE
+                       :drp-mode $DRP_MODE
                                :output-file planner-log
                                :expand-bound $EXPAND_BOUND
-                               :generate-bound $GENERATE_BOUND
-                               :open-bound $OPEN_BOUND
-                               :cpu-sec-limit $CPU_SEC_LIMIT))))
+	                       :generate-bound $GENERATE_BOUND
+	                       :open-bound $OPEN_BOUND
+	                       :cpu-sec-limit $CPU_SEC_LIMIT)))))
   (with-open-file (stream summary-log
                           :direction :output
                           :if-exists :supersede
@@ -124,6 +129,9 @@ cat >"$trace_lisp" <<EOF
     (write-trace-summary stream))
   (write-open-frontier-snapshot open-log :limit $OPEN_SNAPSHOT_LIMIT)
   (write-frontier-quality-snapshot quality-log :limit $OPEN_SNAPSHOT_LIMIT)
+  (write-score-trace-snapshot score-log :limit $OPEN_SNAPSHOT_LIMIT)
+  (write-score-trace-report score-report-log)
+  (disable-score-trace)
   (write-solution-snapshot solution-log)
   (write-drp-stack-snapshot drp-log)
   (format t "TRACE-DIR: ~A~%" trace-dir)

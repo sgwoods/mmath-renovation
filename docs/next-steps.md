@@ -15,6 +15,7 @@ It complements:
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
+- [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 control comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-control-comparison.md)
 - [Hanoi-4b candidate hierarchies](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-candidate-hierarchies.md)
 - [Hanoi-4b frontier comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4b-frontier-comparison.md)
@@ -123,10 +124,15 @@ The new frozen-frontier replay experiment now sharpens the immediate
   healthiest sampled `abtweak` replay is a cleaner `kval 2` state
 - the score-sensitivity pass now shows that the clean closure-oriented node is
   actual rank `1149`, but becomes rank `1` as soon as left-wedge is removed
+- the new insertion-time trace now shows that the bias is already present when
+  nodes are created, but much less extremely:
+  - the best closure-oriented inserted node is still actual rank `4`
+  - the later frontier distortion is therefore likely compounding over
+    repeated refinement and continued expansion, not appearing all at once
 
 So the next best `hanoi-4` work is no longer another broad settings sweep
-first. It is to inspect what structural feature makes those replay-dead
-`abtweak` states rank so highly in the original search.
+first. It is to inspect what repeated refinement pattern turns moderately
+favored inserted nodes into the very dirty frontier leaders seen later.
 
 The recommended order now is:
 

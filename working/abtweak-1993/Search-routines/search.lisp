@@ -166,6 +166,11 @@
 					   newstate newcost)
 		       newstate newcost node))
 
+            (when (and (boundp '*score-trace-enabled*)
+                       *score-trace-enabled*
+                       (fboundp 'record-score-trace-node))
+              (record-score-trace-node newnode state))
+
             (setq *num-generated* (1+ *num-generated*)) ;count generated node
 
 	    (if (> *num-generated* *generate-bound*)

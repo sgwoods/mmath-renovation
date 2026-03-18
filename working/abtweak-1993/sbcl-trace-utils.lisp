@@ -1,5 +1,9 @@
 ;;; Helpers for writing post-run search traces under SBCL.
 
+(defvar *score-trace-enabled* nil)
+(defvar *score-trace-limit* 5000)
+(defvar *score-trace-records* nil)
+
 (defun trace-control-strategy ()
   *control-strategy*)
 
@@ -144,6 +148,169 @@
     (+ (getf summary :search-cost)
        (getf summary :base-goal-heuristic)
        (getf summary :unsat-count))))
+
+(defun reset-score-trace (&key (limit 5000))
+  (setq *score-trace-enabled* t)
+  (setq *score-trace-limit* limit)
+  (setq *score-trace-records* nil))
+
+(defun disable-score-trace ()
+  (setq *score-trace-enabled* nil))
+
+(defun score-trace-record-summary (record)
+  (list
+   :insertion-index (getf record :insertion-index)
+   :priority (getf record :priority)
+   :no-left-wedge-score (getf record :no-left-wedge-score)
+   :unsat-aware-score (getf record :unsat-aware-score)
+   :search-cost (getf record :search-cost)
+   :base-goal-heuristic (getf record :base-goal-heuristic)
+   :left-wedge-adjustment (getf record :left-wedge-adjustment)
+   :plan-id (getf record :plan-id)
+   :plan-kval (getf record :plan-kval)
+   :plan-cost (getf record :plan-cost)
+   :plan-length (getf record :plan-length)
+   :unsat-count (getf record :unsat-count)
+   :parent-plan-id (getf record :parent-plan-id)
+   :parent-kval (getf record :parent-kval)
+   :parent-cost (getf record :parent-cost)
+   :parent-length (getf record :parent-length)
+   :parent-unsat-count (getf record :parent-unsat-count)
+   :first-unsat (getf record :first-unsat)))
+
+(defun record-score-trace-node (node parent-state)
+  (when (and *score-trace-enabled*
+             (< (length *score-trace-records*) *score-trace-limit*))
+    (let* ((summary (frontier-node-quality-summary node))
+           (plan (get-state node))
+           (parent-unsat (if (typep parent-state 'plan)
+                             (plan-unsat-user-precond-pairs parent-state)
+                           nil)))
+      (push
+       (list
+        :insertion-index (1+ *num-generated*)
+        :priority (getf summary :priority)
+        :no-left-wedge-score (frontier-no-left-wedge-score node)
+        :unsat-aware-score (frontier-unsat-aware-score node)
+        :search-cost (getf summary :search-cost)
+        :base-goal-heuristic (getf summary :base-goal-heuristic)
+        :left-wedge-adjustment (getf summary :left-wedge-adjustment)
+        :plan-id (when (typep plan 'plan) (plan-id plan))
+        :plan-kval (getf summary :plan-kval)
+        :plan-cost (getf summary :plan-cost)
+        :plan-length (getf summary :plan-length)
+        :unsat-count (getf summary :unsat-count)
+        :first-unsat (getf summary :first-unsat)
+        :parent-plan-id (when (typep parent-state 'plan)
+                          (plan-id parent-state))
+        :parent-kval (when (typep parent-state 'plan)
+                       (plan-kval parent-state))
+        :parent-cost (when (typep parent-state 'plan)
+                       (plan-cost parent-state))
+        :parent-length (when (typep parent-state 'plan)
+                         (length (plan-a parent-state)))
+        :parent-unsat-count (if parent-unsat (length parent-unsat) 0))
+       *score-trace-records*))))
+
+(defun score-trace-records ()
+  (reverse *score-trace-records*))
+
+(defun sort-score-trace-records (records key)
+  (sort (copy-list records)
+        #'(lambda (rec1 rec2)
+            (let ((score1 (getf rec1 key))
+                  (score2 (getf rec2 key)))
+              (if (= score1 score2)
+                  (< (getf rec1 :insertion-index)
+                     (getf rec2 :insertion-index))
+                (< score1 score2))))))
+
+(defun score-trace-rank-of-plan-id (records plan-id key)
+  (let ((rank 0)
+        (found nil))
+    (dolist (record (sort-score-trace-records records key) (and found rank))
+      (incf rank)
+      (when (equal (getf record :plan-id) plan-id)
+        (setq found t)
+        (return rank)))))
+
+(defun write-score-trace-snapshot (pathname &key (limit 50))
+  (with-open-file (stream pathname
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (let* ((records (score-trace-records))
+           (actual (sort-score-trace-records records :priority))
+           (no-lw (sort-score-trace-records records :no-left-wedge-score))
+           (unsat-aware (sort-score-trace-records records :unsat-aware-score)))
+      (format stream "Recorded insertions: ~S~%~%" (length records))
+      (format stream "Top inserted nodes by actual score:~%")
+      (loop for record in actual
+            for rank from 1
+            while (<= rank limit) do
+              (format stream "~&===== ACTUAL INSERTION RANK ~D =====~%" rank)
+              (format stream "~S~%~%" (score-trace-record-summary record)))
+      (format stream "~%Top inserted nodes by no-left-wedge score:~%")
+      (loop for record in no-lw
+            for rank from 1
+            while (<= rank limit) do
+              (format stream "~&===== NO-LW INSERTION RANK ~D =====~%" rank)
+              (format stream "~S~%~%" (score-trace-record-summary record)))
+      (format stream "~%Top inserted nodes by unsat-aware score:~%")
+      (loop for record in unsat-aware
+            for rank from 1
+            while (<= rank limit) do
+              (format stream "~&===== UNSAT-AWARE INSERTION RANK ~D =====~%" rank)
+              (format stream "~S~%~%" (score-trace-record-summary record))))))
+
+(defun write-score-trace-report (pathname)
+  (with-open-file (stream pathname
+                          :direction :output
+                          :if-exists :supersede
+                          :if-does-not-exist :create)
+    (let* ((records (score-trace-records))
+           (actual (sort-score-trace-records records :priority))
+           (closure (sort-score-trace-records records :unsat-count))
+           (actual-top (first actual))
+           (closure-top (first closure)))
+      (format stream "# Hanoi-4 Insertion Score Trace~%~%")
+      (format stream "- Recorded inserted nodes: `~S`~%~%" (length records))
+      (when actual-top
+        (format stream "## Actual Top Inserted Node~%~%")
+        (format stream "- Plan id: `~S`~%" (getf actual-top :plan-id))
+        (format stream "- Insertion index: `~S`~%" (getf actual-top :insertion-index))
+        (format stream "- Actual score: `~S`~%" (getf actual-top :priority))
+        (format stream "- No-left-wedge score: `~S`~%" (getf actual-top :no-left-wedge-score))
+        (format stream "- Unsat-aware score: `~S`~%" (getf actual-top :unsat-aware-score))
+        (format stream "- Kval: `~S`~%" (getf actual-top :plan-kval))
+        (format stream "- Cost: `~S`~%" (getf actual-top :plan-cost))
+        (format stream "- Length: `~S`~%" (getf actual-top :plan-length))
+        (format stream "- Unsatisfied pairs: `~S`~%" (getf actual-top :unsat-count))
+        (format stream "- Base heuristic: `~S`~%" (getf actual-top :base-goal-heuristic))
+        (format stream "- Left-wedge adjustment: `~S`~%" (getf actual-top :left-wedge-adjustment))
+        (format stream "- Rank without left-wedge: `~S`~%" (score-trace-rank-of-plan-id records (getf actual-top :plan-id) :no-left-wedge-score))
+        (format stream "- Rank under unsat-aware score: `~S`~%~%"
+                (score-trace-rank-of-plan-id records (getf actual-top :plan-id) :unsat-aware-score)))
+      (when closure-top
+        (format stream "## Best Closure-Oriented Inserted Node~%~%")
+        (format stream "- Plan id: `~S`~%" (getf closure-top :plan-id))
+        (format stream "- Insertion index: `~S`~%" (getf closure-top :insertion-index))
+        (format stream "- Actual score: `~S`~%" (getf closure-top :priority))
+        (format stream "- No-left-wedge score: `~S`~%" (getf closure-top :no-left-wedge-score))
+        (format stream "- Unsat-aware score: `~S`~%" (getf closure-top :unsat-aware-score))
+        (format stream "- Kval: `~S`~%" (getf closure-top :plan-kval))
+        (format stream "- Cost: `~S`~%" (getf closure-top :plan-cost))
+        (format stream "- Length: `~S`~%" (getf closure-top :plan-length))
+        (format stream "- Unsatisfied pairs: `~S`~%" (getf closure-top :unsat-count))
+        (format stream "- Base heuristic: `~S`~%" (getf closure-top :base-goal-heuristic))
+        (format stream "- Left-wedge adjustment: `~S`~%" (getf closure-top :left-wedge-adjustment))
+        (format stream "- Rank under actual score: `~S`~%" (score-trace-rank-of-plan-id records (getf closure-top :plan-id) :priority))
+        (format stream "- Rank without left-wedge: `~S`~%" (score-trace-rank-of-plan-id records (getf closure-top :plan-id) :no-left-wedge-score))
+        (format stream "- Rank under unsat-aware score: `~S`~%~%"
+                (score-trace-rank-of-plan-id records (getf closure-top :plan-id) :unsat-aware-score)))
+      (format stream "## Interpretation~%~%")
+      (format stream "- This report captures the score shape at insertion time, before OPEN ordering and later pruning distort the picture further.~%")
+      (format stream "- Large rank shifts here indicate the ranking bias is already present when nodes are created, not only after they accumulate in the frontier.~%"))))
 
 (defun frontier-sort-by-score (nodes score-fn)
   (sort (copy-list nodes)

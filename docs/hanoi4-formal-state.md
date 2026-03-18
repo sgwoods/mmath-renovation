@@ -10,6 +10,7 @@ It complements:
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
+- [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -66,13 +67,18 @@ The main chain of evidence now is:
 - [score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md#L1):
   the clean closure-oriented node is actual rank `1149`, but jumps to rank `1`
   as soon as left-wedge is removed
+- [insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md#L1):
+  the same general bias is already present at insertion time, but much less
+  extremely; the best closure-oriented inserted node is still actual rank `4`
 
 That makes the current best diagnosis:
 
-- the restored `abtweak` score is over-selecting dirty, heavily concretized
-  partial plans
+- the restored `abtweak` score is over-selecting increasingly dirty,
+  concretized partial plans
 - unresolved obligations are not being charged strongly enough
 - left-wedge refinement pressure is dominating the `hanoi-4` search shape
+- the strongest distortion appears to compound over repeated refinements, not
+  arise fully formed at the first insertion
 
 ## Exact Score-Sensitivity Result To Remember
 
@@ -108,6 +114,11 @@ sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hano
 sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-legacy-1991
 ```
 
+Those traces now also write:
+
+- `insertion-score-trace.txt`
+- `insertion-score-report.md`
+
 External sanity check:
 
 ```sh
@@ -133,8 +144,8 @@ When we return to `hanoi-4`, the most useful questions are now:
 If work resumes here later, the best immediate next experiment is:
 
 - keep the same `isbm + weak-POS + left-wedge` source run
-- instrument the exact node-insertion scoring path for the concrete `kval 0`
-  states that outrank the cleaner closure-oriented states
+- trace the lineage from early well-ranked inserted nodes to the later dirty
+  `kval 0` frontier leaders
 - compare that against the historically intended left-wedge use described in
   the report/thesis
 

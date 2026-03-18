@@ -12,6 +12,8 @@ Each trace directory contains:
 - `summary.txt`: a compact machine-readable run summary
 - `open-frontier.txt`: a snapshot of the top remaining open states after termination
 - `frontier-quality.txt`: frontier summaries ranked by search priority and by unsatisfied-precondition count
+- `insertion-score-trace.txt`: inserted-node score summaries ranked by actual, no-left-wedge, and unsat-aware score
+- `insertion-score-report.md`: short insertion-time interpretation report for the same run
 - `solution.txt`: the final `*solution*` value, with plan details if it is a real plan
 - `drp-stack.txt`: a snapshot of the DRP stack at termination
 - `trace-run.lisp`: the exact SBCL script used to produce the trace

@@ -13,6 +13,7 @@ It complements:
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
+- [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 
@@ -204,4 +205,14 @@ The best current classification for `hanoi-4` is:
 - that makes the remaining gap look more like frontier-quality brittleness in
   the restored `abtweak` path than a generic inability to continue from any
   `hanoi-4` partial plan
+- the new insertion-time score trace narrows that diagnosis again:
+  - the insertion bias is real, but much less extreme than the final frontier
+    distortion
+  - the best closure-oriented inserted node is still actual rank `4`, not
+    buried deep in the search immediately
+  - the actual top inserted node is already a `kval 0` state helped strongly
+    by left-wedge, but it is still relatively healthy compared with the later
+    frontier leaders
+  - this suggests the worst `hanoi-4` ranking problem compounds over repeated
+    refinement steps rather than appearing fully formed at first insertion
 - most immediate open question: can the better-scaling `isbm` weak-`POS` path be pushed from cleaner bounded failure into a full solve, or explain more exactly why it still does not close
