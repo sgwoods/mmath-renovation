@@ -49,7 +49,9 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Unified restoration plan](./docs/unified-restoration-plan.md): top-level plan for converging the repo into one restored experimental environment that can stand in for the historical AbTweak code lines
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
+- [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
+- [Hanoi-4 formal state](./docs/hanoi4-formal-state.md): formal handoff note capturing the current four-disk diagnosis, strongest runtime path, and recommended re-entry point
 - [Hanoi-4 frontier replay](./docs/hanoi4-frontier-replay.md): frozen-frontier replay experiment showing that sampled `tweak` frontier nodes remain live under neutral replay while most sampled `abtweak` frontier nodes do not
 - [Hanoi-4 score sensitivity](./docs/hanoi4-score-sensitivity.md): diagnostic report showing that the clean closure-oriented `hanoi-4` node jumps from actual rank `1149` to rank `1` when left-wedge pressure is removed
 - [Historical validation matrix](./docs/historical-validation-matrix.md): mapping from historically reported benchmark themes to runnable local domains
