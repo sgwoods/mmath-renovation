@@ -110,25 +110,69 @@ three-peg four-disk transfer problem.
 
 ## D. Performance Graphs
 
+These are shown as simple horizontal bar graphs so they stay readable in plain
+Markdown and terminal views.
+
 ### Comparable Current Partial-Plan Strategies At The Standard 20k Bound
 
-```mermaid
-xychart-beta
-    title "Hanoi-4 current strategy comparison (generated nodes at 20k bound)"
-    x-axis ["tweak","legacy91-nec","crit1+mp+lw","crit2+mp+lw","ismb+mp+lw","ismb+weak-pos","isbm+weak-pos","isbm+weak-pos+lw"]
-    y-axis "Generated nodes" 0 --> 40000
-    bar [34234,35214,35175,32461,24228,24568,24748,23272]
+Scale: longest bar in this graph is `38621` generated nodes.
+
+```text
+ISBM + weak-POS + Left-Wedge   23272 | ########################
+ISMB + MP + Left-Wedge         24228 | #########################
+ISMB + weak-POS                24568 | #########################
+ISBM + weak-POS                24748 | ##########################
+ISBM + weak-NEC                26264 | ###########################
+Critical-list-2 + MP + LW      32461 | ##################################
+Tweak BFS baseline             34234 | ####################################
+Legacy 1991 default + weak-POS 35214 | #####################################
+Legacy 1991 default + weak-NEC 35214 | #####################################
+Critical-list-1 + MP + LW      35175 | #####################################
+Legacy 1991 default + crit     37046 | #######################################
+Critical-list-2 + no MP + LW   38621 | ########################################
 ```
+
+Lower is better here.
+
+### Strongest Historical-Control Families Across Larger Bounds
+
+Scale: longest bar in this graph is `234872` generated nodes.
+
+```text
+20k  ISBM + weak-POS + LW  23272  | ####
+20k  ISMB + weak-POS       24568  | ####
+20k  ISBM + weak-POS       24748  | ####
+
+50k  ISBM + weak-POS + LW  58817  | ##########
+50k  ISBM + weak-POS       61605  | ##########
+50k  ISMB + weak-POS       61943  | ###########
+
+100k ISBM + weak-POS + LW 116646  | ####################
+100k ISBM + weak-POS      123240  | #####################
+100k ISMB + weak-POS      125029  | #####################
+
+200k ISBM + weak-POS + LW 234872  | ########################################
+```
+
+This is the clearest current scaling picture:
+
+- `ISBM + weak-POS + Left-Wedge` is the best measured path so far
+- `ISBM + weak-POS` becomes slightly better than `ISMB + weak-POS` at deeper
+  bounds
+- none of these runs closes the full `hanoi-4` problem yet
 
 ### Reference State-Space Baselines
 
-```mermaid
-xychart-beta
-    title "Hanoi-4 reference state-space baselines (generated states)"
-    x-axis ["bfs","dfs","astar"]
-    y-axis "Generated states" 0 --> 220
-    bar [209,199,158]
+Scale: longest bar in this graph is `209` generated states.
+
+```text
+Reference A*   158 | ##############################
+Reference DFS  199 | ######################################
+Reference BFS  209 | ########################################
 ```
+
+Lower is better here too, but this is a different search model from the
+partial-plan runs above.
 
 ## E. What This Means Right Now
 
