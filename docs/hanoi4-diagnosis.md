@@ -18,6 +18,7 @@ It complements:
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
+- [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -189,6 +190,16 @@ The new reinsertion-obligation note makes that local mechanism more explicit:
 
 That is the clearest current local picture of why the branch keeps winning even
 as it becomes more concrete and eventually dirtier.
+
+The new accounting-rules note now explains the code-level reason:
+
+- the base heuristic counts full unsatisfied `G` goals only
+- level-correctness and subgoal choice operate on current-level visible
+  preconditions
+- so lower-level concrete blockers can become newly visible without worsening
+  the base goal heuristic
+- if the no-left-wedge score stays flat, the stronger lower-level Left-Wedge
+  bonus is then enough to make the branch look better
 
 ## Important Limitation
 

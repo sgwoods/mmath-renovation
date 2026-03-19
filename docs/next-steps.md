@@ -135,6 +135,19 @@ So the next best `hanoi-4` question is now even narrower:
 why does the current visible-goal accounting let those lower-level
 reintroductions beat the remaining healthy `k2` alternatives?
 
+The answer is now partly established:
+
+- the base heuristic counts full unsatisfied `G` goals only
+- it does not directly count non-goal open obligations
+- level-correctness and subgoal choice do work on the current visible
+  obligations
+- so lower-level blockers can appear without worsening the base goal heuristic
+
+That means the next best `hanoi-4` question is now:
+is this exact score/accounting split historically faithful for the published
+good-Hanoi experiments, or is there still a fidelity mismatch in how the
+restored path combines goal accounting with Left-Wedge?
+
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
 

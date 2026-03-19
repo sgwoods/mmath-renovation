@@ -15,6 +15,7 @@ It complements:
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
+- [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -98,6 +99,11 @@ The main chain of evidence now is:
   `k1` with visible goal `(G (ONB PEG3))`, to `k0` with concrete blocker
   `(NOT ONM PEG1)`, while the no-left-wedge score stays fixed and the actual
   score improves through stronger Left-Wedge reward
+- [goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md):
+  the code-level split is now explicit: the base heuristic counts full
+  unsatisfied `G` goals only, while level-correctness and subgoal choice
+  operate on current-level visible preconditions, so newly visible concrete
+  blockers do not necessarily worsen the base heuristic
 
 That makes the current best diagnosis:
 
