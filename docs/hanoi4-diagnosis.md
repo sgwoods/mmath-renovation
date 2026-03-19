@@ -19,6 +19,7 @@ It complements:
 - [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
+- [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -200,6 +201,17 @@ The new accounting-rules note now explains the code-level reason:
   the base goal heuristic
 - if the no-left-wedge score stays flat, the stronger lower-level Left-Wedge
   bonus is then enough to make the branch look better
+
+The new historical-fidelity note strengthens the interpretation again:
+
+- the same score structure is present in the archived `1991-05` and `1993`
+  code lines
+- the same `num-of-unsat-goals` implementation is present there too
+- the same `adjust-pre-list` / `abstract-goal-mode` behavior is present there
+- the manual text matches the broad score shape
+
+So this split now looks much more like inherited AbTweak behavior than a
+modern restoration defect.
 
 ## Important Limitation
 

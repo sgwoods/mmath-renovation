@@ -16,6 +16,7 @@ It complements:
 - [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
+- [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -104,6 +105,10 @@ The main chain of evidence now is:
   unsatisfied `G` goals only, while level-correctness and subgoal choice
   operate on current-level visible preconditions, so newly visible concrete
   blockers do not necessarily worsen the base heuristic
+- [historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md):
+  the same split is now confirmed in the archived `1991-05` and `1993` code
+  lines and is broadly consistent with the shipped manual text, so it looks
+  much more like historical baseline behavior than a new porting defect
 
 That makes the current best diagnosis:
 

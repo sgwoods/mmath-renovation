@@ -148,6 +148,18 @@ is this exact score/accounting split historically faithful for the published
 good-Hanoi experiments, or is there still a fidelity mismatch in how the
 restored path combines goal accounting with Left-Wedge?
 
+That historical-fidelity check is now mostly answered:
+
+- the same split exists in the archived `1991-05` and `1993` code
+- the shipped manual describes the same broad heuristic and Left-Wedge shape
+- so this now looks more like inherited baseline behavior than a restoration
+  regression
+
+So the next best `hanoi-4` question is no longer "did the port invent this?"
+It is:
+which historically successful hierarchy/control combinations avoid or overcome
+this concretization trap?
+
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
 
