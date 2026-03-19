@@ -14,6 +14,7 @@ It is meant to be maintained as the project evolves.
 
 It complements:
 
+- [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
@@ -26,6 +27,18 @@ Maintained data file:
 - [analysis/hanoi4-strategy-performance.csv](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-strategy-performance.csv)
 
 ## Reading Guide
+
+Important scope note:
+
+- the exact published numeric Hanoi figure rows we can now reproduce are for
+  the original three-disk predicate family in
+  [hanoi-3.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-3.lisp#L1)
+- the shipped four-disk benchmark in
+  [hanoi-4.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-4.lisp#L1)
+  adds `onh` / `moveh`, so it is best treated as a later historically grounded
+  extension rather than as a direct figure-for-figure publication rerun
+- see [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+  for the exact reproduction surface
 
 This crosswalk uses three evidence labels:
 
@@ -195,8 +208,9 @@ The cleanest current summary is:
 
 The next most useful update to this document would be:
 
-1. transcribe the exact publication-side `hanoi-4` table digits from the
-   checked-in thesis/report PDFs into the publication rows above
+1. keep the exact publication-side alignment concentrated in
+   [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+   and use this note for the four-disk extension story
 2. add any newly measured strategy/control combinations to
    [analysis/hanoi4-strategy-performance.csv](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-strategy-performance.csv)
 3. keep the `20000`-bound graph stable as the main like-for-like comparison

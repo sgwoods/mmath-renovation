@@ -22,6 +22,7 @@ For deeper technical detail, see:
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)
 - [Hanoi-4 trace workflow](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 - [Hanoi-4 formal state](/Users/stevenwoods/mmath-renovation/docs/hanoi4-formal-state.md)
+- [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
@@ -95,6 +96,10 @@ The working `Abtweak-1993` baseline now source-loads under SBCL and solves a sma
 The active `hanoi-3` domain also now supports a wider historically relevant
 hierarchy family, including `ibsm` and `isbm`, not just the smaller earlier
 subset.
+
+The original published Hanoi figure rows are now aligned directly against the
+restored `hanoi-3` family, with exact row-level reproduction across the main
+thesis hierarchy table and qualitative agreement on the thesis `>6000` rows.
 
 Verified smoke results:
 

@@ -10,6 +10,7 @@
     ((critical-list-2) '*critical-list-2*)
     ((ismb) '*ismb*)
     ((imbs) '*imbs*)
+    ((imsb) '*imsb*)
     ((ibsm) '*ibsm*)
     ((isbm) '*isbm*)
     ((sbim) '*sbim*)

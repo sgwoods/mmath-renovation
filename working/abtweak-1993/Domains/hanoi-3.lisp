@@ -94,6 +94,13 @@
    (0  (not ons $) (ons $) )
 ))
 
+(setq *imsb* '(
+   (3 (ispeg $))
+   (2  (not onm $) (onm $) )
+   (1  (not ons $) (ons $) )
+   (0  (not onb $) (onb $) )
+))
+
 (setq *ibsm* '(
    (3 (ispeg $))
    (2  (not onb $) (onb $) )

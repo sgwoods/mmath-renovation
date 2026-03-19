@@ -4,6 +4,7 @@ This note records the current diagnosis for the `hanoi-4` benchmark under the re
 
 It complements:
 
+- [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
@@ -266,6 +267,9 @@ The best current classification for `hanoi-4` is:
 - increasingly suggestive of an incomplete reconstruction of the historically
   strongest Hanoi hierarchy/control combination, rather than a generic porting
   regression
+- no longer evidence that the repo has failed to reproduce the original
+  published Hanoi figure rows, because those rows now align directly with the
+  restored three-disk family instead
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
 - current strongest historical-control path: `isbm` with weak-`POS` and Left-Wedge, because it improves further over the no-left-wedge `isbm` weak-`POS` line at `20000`, `50000`, and `100000`

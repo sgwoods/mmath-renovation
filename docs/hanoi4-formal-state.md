@@ -19,6 +19,7 @@ It complements:
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
+- [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
 
@@ -28,6 +29,8 @@ We are trying to determine why the restored `Abtweak-1993` planner still does
 not solve the shipped `hanoi-4` benchmark under SBCL, even though:
 
 - `hanoi-3` is working well
+- the original published Hanoi figure rows now reproduce directly on the
+  restored `hanoi-3` family
 - the broader operator-style restoration is strong across many other domains
 - plain state-space Hanoi solvers solve the same four-disk transfer easily
 

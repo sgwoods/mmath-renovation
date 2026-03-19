@@ -55,6 +55,14 @@ Current representative results:
 Those cases now match the archived 1991 results exactly at the expanded /
 generated level across both weak-`NEC` and a broader weak-`POS` slice.
 
+The exact publication-side Hanoi alignment is now even stronger as well:
+
+- the original thesis figure rows for `IBMS`, `IMBS`, `IBSM`, `IMSB`, `ISBM`,
+  and `ISMB` are now compared directly in
+  [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+- `IMSB` is now restored as a named active hierarchy in the working tree, and
+  its thesis rows (`918`, `636`, `5170`, `2672`) now reproduce exactly too
+
 The first restored `strong` MSP check is also informative:
 
 - on representative `hanoi-3` `isbm`, `strong` currently produces the same

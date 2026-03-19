@@ -42,6 +42,7 @@
 (defvar *cs* nil)
 (defvar *ismb* nil)
 (defvar *imbs* nil)
+(defvar *imsb* nil)
 (defvar *ibsm* nil)
 (defvar *isbm* nil)
 (defvar *sbim* nil)

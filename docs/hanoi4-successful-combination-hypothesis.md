@@ -7,6 +7,7 @@ details may still be missing from the restored comparison surface.
 
 It complements:
 
+- [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
@@ -14,6 +15,19 @@ It complements:
 - [Hanoi-4 formal state](/Users/stevenwoods/mmath-renovation/docs/hanoi4-formal-state.md)
 
 ## Published Story
+
+One scope distinction is now important:
+
+- the original published numeric Hanoi rows align directly with the three-disk
+  predicate family in
+  [hanoi-3.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-3.lisp#L1)
+- the current shipped four-disk benchmark in
+  [hanoi-4.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-4.lisp#L1)
+  is a later extension with added `onh`
+- so the publication story below applies to `hanoi-4` primarily by hierarchy
+  and control analogy, not as a direct row-for-row figure match
+- the exact row-level publication reproduction now lives in
+  [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 
 The publication set does not support the claim that AbTweak should always beat
 Tweak on `hanoi-4`. The stronger historical claim is narrower:
@@ -41,17 +55,18 @@ The same sources also indicate that:
 - P-WMP can materially improve the good hierarchies
 - Left-Wedge can be dramatically better on the good hierarchies
 
-The thesis OCR text suggests a representative `hanoi-4` outcome pattern of
-roughly:
+The checked-in thesis/report now support a more precise reading:
 
-- `tweak`: about `524` expanded
-- plain `abtweak` on a poor hierarchy: about `723` expanded
-- AbTweak with P-WMP on a good hierarchy: about `314` expanded
-- AbTweak with Left-Wedge on a good hierarchy: about `82` expanded
+- the original published numeric Hanoi rows correspond directly to the
+  three-disk predicate family now reproduced in
+  [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+- those rows show exactly the expected pattern: some hierarchy/control pairs
+  are excellent, some are poor, and Left-Wedge plus P-WMP can be either very
+  strong or very weak depending on hierarchy
+- the shipped four-disk `hanoi-4` benchmark should therefore inherit the
+  publication claim directionally, not numerically
 
-Those exact digits should still be treated as publication-derived but
-OCR-mediated until they are transcribed directly from the figures. The
-directional result is much clearer than the exact numbers:
+The directional result is much clearer than any one four-disk extrapolation:
 
 - good hierarchy + P-WMP helps
 - good hierarchy + Left-Wedge helps more
