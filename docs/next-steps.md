@@ -123,6 +123,18 @@ question again:
   at those `add-a-level` reinsertion points, not to keep broadening the search
   settings first
 
+That reinsertion inspection is now done for the current best `isbm` branch:
+
+- the branch is clean at `k2`
+- it is then reintroduced at `k1` with visible goal `(G (ONB PEG3))`
+- it is reintroduced again at `k0` with concrete blocker `(NOT ONM PEG1)`
+- across those steps, the no-left-wedge score stays fixed while the actual
+  score improves through stronger Left-Wedge reward
+
+So the next best `hanoi-4` question is now even narrower:
+why does the current visible-goal accounting let those lower-level
+reintroductions beat the remaining healthy `k2` alternatives?
+
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
 

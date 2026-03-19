@@ -14,6 +14,7 @@ It complements:
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
+- [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -92,6 +93,11 @@ The main chain of evidence now is:
   same early `k2` band where the optimal projection still makes sense, while
   the dirty priority branch is rewarded for dropping to `k1` and `k0` much
   earlier than the reference path would make natural
+- [reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md):
+  the exact local fork now shows the same branch going from clean `k2`, to
+  `k1` with visible goal `(G (ONB PEG3))`, to `k0` with concrete blocker
+  `(NOT ONM PEG1)`, while the no-left-wedge score stays fixed and the actual
+  score improves through stronger Left-Wedge reward
 
 That makes the current best diagnosis:
 

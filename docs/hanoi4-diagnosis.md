@@ -17,6 +17,7 @@ It complements:
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
+- [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -177,6 +178,17 @@ The new optimal-versus-lineage comparison sharpens that further:
 - that does not yet prove a historical bug, but it strengthens the case that
   the remaining gap is a control-quality problem around level-drop
   reintroduction rather than a malformed `isbm` hierarchy
+
+The new reinsertion-obligation note makes that local mechanism more explicit:
+
+- the same branch is clean at `k2`
+- is then reintroduced at `k1` with visible goal obligation `(G (ONB PEG3))`
+- and is reintroduced again at `k0` with concrete blocker `(NOT ONM PEG1)`
+- across those reinsertions, the no-left-wedge score stays constant while the
+  actual score improves because the Left-Wedge reward strengthens
+
+That is the clearest current local picture of why the branch keeps winning even
+as it becomes more concrete and eventually dirtier.
 
 ## Important Limitation
 
