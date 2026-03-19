@@ -15,6 +15,7 @@ It complements:
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
+- [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
 
 ## Current Problem Statement
 
@@ -80,6 +81,11 @@ The main chain of evidence now is:
   the first clear fork happens around insertion `6137` to `6157`, where a
   concretized branch wins over a similarly clean abstract branch because the
   Left-Wedge bonus strengthens sharply on the lower `kval`
+- [optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md):
+  on the optimal four-disk state-space path, `ismb` reaches its visible `k1`
+  goal slice much earlier than `isbm`, while `isbm` keeps a harder visible
+  `k1` target until the final step; that gives us a clean external picture of
+  why `isbm` may resist premature apparent progress better
 
 That makes the current best diagnosis:
 
@@ -134,6 +140,7 @@ External sanity check:
 
 ```sh
 sh /Users/stevenwoods/mmath-renovation/scripts/run-hanoi-search-baselines.sh
+sh /Users/stevenwoods/mmath-renovation/scripts/run-hanoi-projection-report.sh
 ```
 
 ## Current Open Questions

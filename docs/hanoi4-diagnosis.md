@@ -18,6 +18,7 @@ It complements:
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
+- [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
 
 ## Current Result
 
@@ -152,6 +153,19 @@ explained by the four-disk transfer problem being intrinsically difficult in a
 generic search sense. The remaining gap is much more likely to be about the
 planner's search/control behavior than about the existence of a reachable
 solution.
+
+The new optimal projection report sharpens the hierarchy story too:
+
+- under `critical-list-1`, the highest visible goal slice (`H3`) is not first
+  reached until the midpoint `H` move at step `8`
+- under `ismb`, the visible `k2` and `k1` goal slices are first reached very
+  early, already by step `3`
+- under `isbm`, the top visible `k2` slice still reaches early, but the `k1`
+  visible goal slice (`B3 S3`) is not first reached until the final step `15`
+
+That makes `isbm` look structurally less prone to "early apparent progress"
+than `ismb` on the optimal path itself, which is at least directionally
+consistent with the cleaner `isbm` frontier we now see in the restored runs.
 
 ## Important Limitation
 

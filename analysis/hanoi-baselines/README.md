@@ -24,3 +24,8 @@ Retained code:
 Current checked-in report:
 
 - [standard-transfer.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/standard-transfer.md)
+- [hanoi4-optimal-projection.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
+
+Additional entry point:
+
+- [run-hanoi-projection-report.sh](/Users/stevenwoods/mmath-renovation/scripts/run-hanoi-projection-report.sh)
