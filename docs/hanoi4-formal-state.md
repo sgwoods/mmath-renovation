@@ -17,6 +17,7 @@ It complements:
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
+- [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -60,6 +61,9 @@ control path we have restored, but it still terminates with
   relation and did not show randomized mismatches
 - the remaining gap therefore does not currently look like "we accidentally
   replaced AbTweak with a different planner"
+- the same score/accounting split now also appears to be historically faithful,
+  which makes the remaining gap look more like incomplete recovery of the best
+  historical four-disk control combination than like a modern porting defect
 
 ### 3. The frontier evidence points at abstraction-side ranking, not at generic search hardness
 
@@ -175,20 +179,24 @@ When we return to `hanoi-4`, the most useful questions are now:
    the restored path?
 2. Is the goal-only heuristic appropriate for this benchmark, given how many
    unresolved non-goal obligations remain on the preferred `kval 0` plans?
-3. Can we reproduce a historically plausible `hanoi-4` success by changing only
+3. Which recovered four-disk hierarchy actually corresponds most closely to the
+   publication-side good hierarchy families such as `ILMS` and `IMLS`?
+4. Did explicit goal-ordering controls or `strong` MSP materially affect the
+   published four-disk successes, and do we still need to reconstruct them?
+5. Can we reproduce a historically plausible `hanoi-4` success by changing only
    historically defensible controls, rather than inventing a new heuristic?
-4. If not, is there still a semantic mismatch in the abstraction-side successor
+6. If not, is there still a semantic mismatch in the abstraction-side successor
    ranking or pruning path?
 
 ## Recommended Re-entry Point
 
 If work resumes here later, the best immediate next experiment is:
 
-- keep the same `isbm + weak-POS + left-wedge` source run
-- compare one dirty priority-lineage branch and one healthy closure-lineage
-  branch step by step
-- inspect the exact level-drop reinsertion path for those branches
-- compare that against the historically intended left-wedge use described in
-  the report/thesis
+- continue from the same `isbm + weak-POS + left-wedge` source run
+- tighten the publication-to-code mapping for the good four-disk hierarchy
+  families
+- inspect whether goal-ordering and `strong` MSP are recoverable as historical
+  controls before considering any new strategy extension
 
-That is a much better next step than another generic bound increase.
+That is a better next step than another generic bound increase or a new
+non-historical heuristic.

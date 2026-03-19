@@ -20,6 +20,7 @@ It complements:
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
+- [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -213,6 +214,22 @@ The new historical-fidelity note strengthens the interpretation again:
 So this split now looks much more like inherited AbTweak behavior than a
 modern restoration defect.
 
+The newest historical-combination review narrows the remaining uncertainty:
+
+- the publication set consistently points to good Hanoi hierarchies in the
+  `ILMS` / `IMLS` family, with P-WMP and especially Left-Wedge as the strong
+  successful controls
+- the archived early four-disk default is therefore best treated as a baseline,
+  not as the missing strong configuration
+- the strongest current reconstructed four-disk path, `isbm + weak-POS +
+  Left-Wedge`, is historically plausible but not yet proven to be the same as
+  the publication's best hierarchy family
+- the most credible missing historical details are now:
+  - exact mapping from publication hierarchy labels onto the recovered
+    four-disk hierarchy variants
+  - explicit goal-ordering controls referenced in the thesis figures
+  - `strong` MSP from the 1991 control vocabulary
+
 ## Important Limitation
 
 The DFS control-strategy path is now restored enough to run under SBCL, but it is not yet a useful comparison mode.
@@ -238,6 +255,9 @@ The best current classification for `hanoi-4` is:
 - more specifically, a search-quality problem among valid but heavily underconstrained partial plans
 - no longer reproducing the earlier MP / ordering heap blow-up under the same high-bound SBCL run
 - not evidence of a major semantic break in the Hanoi domain encoding itself
+- increasingly suggestive of an incomplete reconstruction of the historically
+  strongest Hanoi hierarchy/control combination, rather than a generic porting
+  regression
 - not presently explained by a fundamental rewrite of the archived AbTweak algorithms in the working tree
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
 - current strongest historical-control path: `isbm` with weak-`POS` and Left-Wedge, because it improves further over the no-left-wedge `isbm` weak-`POS` line at `20000`, `50000`, and `100000`

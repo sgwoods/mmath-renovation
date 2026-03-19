@@ -26,6 +26,7 @@ It complements:
 - [Hanoi-3 MSP correspondence](/Users/stevenwoods/mmath-renovation/docs/hanoi3-msp-correspondence.md)
 - [Hanoi-3 1991 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
+- [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -155,10 +156,21 @@ That historical-fidelity check is now mostly answered:
 - so this now looks more like inherited baseline behavior than a restoration
   regression
 
-So the next best `hanoi-4` question is no longer "did the port invent this?"
-It is:
+The next best `hanoi-4` question is therefore no longer "did the port invent
+this?" It is:
 which historically successful hierarchy/control combinations avoid or overcome
-this concretization trap?
+this concretization trap, and which historically meaningful controls are still
+missing from the reconstructed four-disk surface?
+
+The new successful-combination note narrows that list:
+
+- publication-side good Hanoi families are centered on `ILMS` / `IMLS`
+- bad families include `ISML` / `ISLM`
+- P-WMP and especially Left-Wedge are the main reported successful controls
+- the current compatibility layer still does not expose:
+  - a clean publication-to-code mapping for the good four-disk hierarchy family
+  - explicit goal-ordering controls from the thesis figure labels
+  - `strong` MSP from the 1991 control surface
 
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
@@ -192,8 +204,14 @@ The new frozen-frontier replay experiment now sharpens the immediate
     worse but actual score improves further
 
 So the next best `hanoi-4` work is no longer another broad settings sweep
-first. It is to inspect what repeated refinement pattern turns moderately
-favored inserted nodes into the very dirty frontier leaders seen later.
+first. It is:
+
+1. tighten the publication-to-code mapping for the historically good four-disk
+   hierarchy families
+2. determine whether thesis-era goal ordering and `strong` MSP can be
+   reconstructed cleanly as historical controls
+3. only then return to deeper `hanoi-4` runtime pushes inside that recovered
+   control surface
 
 The recommended order now is:
 
