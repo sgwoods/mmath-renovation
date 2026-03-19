@@ -61,6 +61,7 @@
 		   (msp-mode nil)
 		   (msp-weak-mode 'nec)
 		   (crit-depth-mode nil)
+		   (determine-mode 'stack)
 		   (left-wedge-mode nil)
 		   (output-file 'no-output)
 		   (expand-bound 20000)
@@ -73,6 +74,7 @@
 	:planner-mode planner-mode
 	:mp-mode (historical-msp->mp-mode msp-mode)
 	:mp-weak-mode msp-weak-mode
+	:subgoal-determine-mode determine-mode
 	:left-wedge-mode (or left-wedge-mode crit-depth-mode)
 	:output-file output-file
 	:expand-bound expand-bound
@@ -113,6 +115,7 @@
 		   (msp-mode nil)
 		   (msp-weak-mode 'nec)
 		   (crit-depth-mode nil)
+		   (determine-mode 'stack)
 		   (left-wedge-mode nil)
 		   (output-file 'no-output)
 		   (expand-bound 20000)
@@ -125,6 +128,7 @@
 	:planner-mode planner-mode
 	:mp-mode (historical-msp->mp-mode msp-mode)
 	:mp-weak-mode msp-weak-mode
+	:subgoal-determine-mode determine-mode
 	:left-wedge-mode (or left-wedge-mode crit-depth-mode)
 	:output-file output-file
 	:expand-bound expand-bound

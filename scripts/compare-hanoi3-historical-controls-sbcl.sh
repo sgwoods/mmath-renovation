@@ -22,7 +22,8 @@ run_case() {
   msp_mode=$2
   msp_weak_mode=$3
   crit_depth_mode=$4
-  slug=$5
+  determine_mode=$5
+  slug=$6
   log_file="$TMP_DIR/${slug}.log"
 
   eval_form='(progn
@@ -34,6 +35,7 @@ run_case() {
                                           :msp-mode (quote '"$msp_mode"')
                                           :msp-weak-mode (quote '"$msp_weak_mode"')
                                           :crit-depth-mode '"$crit_depth_mode"'
+                                          :determine-mode (quote '"$determine_mode"')
                                           :output-file (quote no-output)
                                           :expand-bound '"$EXPAND_BOUND"'
                                           :generate-bound '"$GENERATE_BOUND"'
@@ -71,10 +73,11 @@ print_row() {
   msp_mode=$2
   weak_mode=$3
   crit_depth=$4
-  historical_file=$5
-  historical_expanded=$6
-  historical_generated=$7
-  log_file=$8
+  determine_mode=$5
+  historical_file=$6
+  historical_expanded=$7
+  historical_generated=$8
+  log_file=$9
 
   solution_type=$(extract_value "SOLUTION-TYPE" "$log_file")
   solution_value=$(extract_value "SOLUTION-VALUE" "$log_file")
@@ -89,11 +92,12 @@ print_row() {
     outcome=${solution_value:-unknown}
   fi
 
-  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s | %s | `%s` | `%s` |\n' \
+  printf '| `%s` | `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s | %s | `%s` | `%s` |\n' \
     "$hierarchy" \
     "$msp_mode" \
     "$weak_mode" \
     "$crit_depth" \
+    "$determine_mode" \
     "$outcome" \
     "${expanded:-"-"}" \
     "${generated:-"-"}" \
@@ -116,45 +120,48 @@ Bounds used:
 - open bound: $OPEN_BOUND
 - CPU seconds: $CPU_SEC_LIMIT
 
-| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned | Strong MP Pruned | Historical | Source |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Hierarchy | MSP | Weak Mode | Crit-Depth | Determine | Outcome | Expanded | Generated | MP Pruned | Strong MP Pruned | Historical | Source |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 EOF
 
-log_file=$(run_case isbm weak nec nil isbm-weak-nec)
-print_row isbm weak nec nil "isbm-ab-WN.1126" 1083 1433 "$log_file"
+log_file=$(run_case isbm weak nec nil stack isbm-weak-nec)
+print_row isbm weak nec nil stack "isbm-ab-WN.1126" 1083 1433 "$log_file"
 
-log_file=$(run_case imbs weak nec nil imbs-weak-nec)
-print_row imbs weak nec nil "imbs-ab-Wn.1129" 166 233 "$log_file"
+log_file=$(run_case imbs weak nec nil stack imbs-weak-nec)
+print_row imbs weak nec nil stack "imbs-ab-Wn.1129" 166 233 "$log_file"
 
-log_file=$(run_case imbs weak pos nil imbs-weak-pos)
-print_row imbs weak pos nil "imbs2-raw.out" 149 206 "$log_file"
+log_file=$(run_case imbs weak pos nil stack imbs-weak-pos)
+print_row imbs weak pos nil stack "imbs2-raw.out" 149 206 "$log_file"
 
-log_file=$(run_case sbim weak pos nil sbim-weak-pos)
-print_row sbim weak pos nil "sbim-raw.out" 332 490 "$log_file"
+log_file=$(run_case sbim weak pos nil stack sbim-weak-pos)
+print_row sbim weak pos nil stack "sbim-raw.out" 332 490 "$log_file"
 
-log_file=$(run_case sbmi weak pos nil sbmi-weak-pos)
-print_row sbmi weak pos nil "sbmi-raw.out" 573 1071 "$log_file"
+log_file=$(run_case sbmi weak pos nil stack sbmi-weak-pos)
+print_row sbmi weak pos nil stack "sbmi-raw.out" 573 1071 "$log_file"
 
-log_file=$(run_case simb weak pos nil simb-weak-pos)
-print_row simb weak pos nil "simb-raw.out" 785 995 "$log_file"
+log_file=$(run_case simb weak pos nil stack simb-weak-pos)
+print_row simb weak pos nil stack "simb-raw.out" 785 995 "$log_file"
 
-log_file=$(run_case sibm weak pos nil sibm-weak-pos)
-print_row sibm weak pos nil "sibm-raw.out" 482 620 "$log_file"
+log_file=$(run_case sibm weak pos nil stack sibm-weak-pos)
+print_row sibm weak pos nil stack "sibm-raw.out" 482 620 "$log_file"
 
-log_file=$(run_case smib weak pos nil smib-weak-pos)
-print_row smib weak pos nil "smib-raw.out" 899 1236 "$log_file"
+log_file=$(run_case smib weak pos nil stack smib-weak-pos)
+print_row smib weak pos nil stack "smib-raw.out" 899 1236 "$log_file"
 
-log_file=$(run_case misb weak pos nil misb-weak-pos)
-print_row misb weak pos nil "misb-raw.out" 682 1040 "$log_file"
+log_file=$(run_case misb weak pos nil stack misb-weak-pos)
+print_row misb weak pos nil stack "misb-raw.out" 682 1040 "$log_file"
 
-log_file=$(run_case isbm nil nec t isbm-crit-depth)
-print_row isbm nil nec t "isbmK-raw.out" 168 284 "$log_file"
+log_file=$(run_case isbm nil nec t stack isbm-crit-depth)
+print_row isbm nil nec t stack "isbmK-raw.out" 168 284 "$log_file"
 
-log_file=$(run_case ibsm nil nec t ibsm-crit-depth)
-print_row ibsm nil nec t "ibsmK-raw.out" 828 1471 "$log_file"
+log_file=$(run_case ibsm nil nec t stack ibsm-crit-depth)
+print_row ibsm nil nec t stack "ibsmK-raw.out" 828 1471 "$log_file"
 
-log_file=$(run_case ismb nil nec t ismb-crit-depth)
-print_row ismb nil nec t "ismbK-raw.out" 963 1771 "$log_file"
+log_file=$(run_case ismb nil nec t stack ismb-crit-depth)
+print_row ismb nil nec t stack "ismbK-raw.out" 963 1771 "$log_file"
 
-log_file=$(run_case isbm strong nec nil isbm-strong)
-print_row isbm strong nec nil "no direct archived row isolated yet" "-" "-" "$log_file"
+log_file=$(run_case isbm strong nec nil stack isbm-strong)
+print_row isbm strong nec nil stack "no direct archived row isolated yet" "-" "-" "$log_file"
+
+log_file=$(run_case isbm weak nec nil tree isbm-weak-nec-tree)
+print_row isbm weak nec nil tree "no direct archived row isolated yet" "-" "-" "$log_file"

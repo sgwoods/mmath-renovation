@@ -37,6 +37,10 @@
   "/tweak/plan-infer/plan-dependent.lsp "
   (plan-var plan))
 
+(defun get_tree (plan)
+  "/tweak/plan-infer/plan-dependent.lsp "
+  (plan-tree plan))
+
 (defun get_op-count (plan)   
   "/tweak/plan-infer/plan-dependent.lsp "
   (plan-op-count plan))
@@ -400,6 +404,7 @@
    (make-plan
         :id        (create-planid)
         :a         (make-copy-of-op-list (plan-a plan))
+        :tree      (copy-tree (plan-tree plan))
         :b         (plan-b plan)
         :nc        (plan-nc plan)
         :cr        (plan-cr plan)
@@ -448,6 +453,18 @@
 			  nc-list)))
     (setf (plan-nc plan) nc-list)
     plan))
+
+
+(defun add-nec-to-tree-plan (child parent plan)
+  "/tweak/plan-infer/plan-dependent.lsp 
+   return plan with child added under parent for an updated tree"
+  (declare
+      (type atom child)
+      (type atom parent)
+      (type plan plan))
+  (setf (plan-tree plan)
+        (insert-tree (plan-tree plan) parent child))
+  plan)
 
 	
 

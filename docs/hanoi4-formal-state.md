@@ -182,7 +182,8 @@ When we return to `hanoi-4`, the most useful questions are now:
 3. Which recovered four-disk hierarchy actually corresponds most closely to the
    publication-side good hierarchy families such as `ILMS` and `IMLS`?
 4. Did explicit goal-ordering controls or `strong` MSP materially affect the
-   published four-disk successes, and do we still need to reconstruct them?
+   published four-disk successes, now that `strong` MSP and `tree`
+   goal-ordering are both runnable again as compatibility controls?
 5. Can we reproduce a historically plausible `hanoi-4` success by changing only
    historically defensible controls, rather than inventing a new heuristic?
 6. If not, is there still a semantic mismatch in the abstraction-side successor
@@ -195,9 +196,12 @@ If work resumes here later, the best immediate next experiment is:
 - continue from the same `isbm + weak-POS + left-wedge` source run
 - tighten the publication-to-code mapping for the good four-disk hierarchy
   families
-- treat `strong` MSP as restored and usable in the compatibility surface
-- inspect whether tree-style goal ordering can be recovered as a historical
-  control before considering any new strategy extension
+- treat `strong` MSP and `tree` goal-ordering as restored historical controls,
+  but keep `stack` as the current representative winner on the main `isbm`
+  four-disk path
+- inspect whether any other historically plausible hierarchy/control pairing
+  makes better use of the restored tree mode before considering any new
+  strategy extension
 
 That is a better next step than another generic bound increase or a new
 non-historical heuristic.

@@ -21,7 +21,8 @@ That wrapper currently supports:
 - `msp-mode` = `nil`, `weak`, or `strong`
 - `msp-weak-mode` = `nec` or `pos`
 - `crit-depth-mode`
-- no tree goal-ordering surface yet in the active 1993 baseline
+- `determine-mode` = `stack` or `tree`, restored as an optional historical
+  compatibility control rather than a 1993 default
 
 It also reintroduces the archived 1991 four-disk default hierarchy in
 [hanoi-4.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-4.lisp#L1):
@@ -87,6 +88,13 @@ The more specific takeaway is:
    attribution from `mp-pruned` to `strong-mp-pruned`.
 4. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
 
+The report script now also exposes `Determine` and `Left-Wedge` columns, so it
+can include representative non-default rows such as the restored tree-ordering
+comparison:
+
+- `isbm`, weak-`POS`, `tree`, `left-wedge t`:
+  `20001 / 27373`, `EXPAND-LIMIT-EXCEEDED`
+
 ## Deeper Weak-POS Follow-Up
 
 The new harness-native trace presets make it easier to compare the two most
@@ -149,22 +157,24 @@ the current result is clearly positive:
 This makes `isbm` weak-`POS` plus Left-Wedge the strongest current `hanoi-4`
 historical-control path in the restored environment.
 
-## What Is Still Missing
+## Tree Goal Ordering Follow-Up
 
-The next missing historical-control surface is no longer `strong` MSP.
-It is goal ordering.
+Tree goal ordering is no longer blocked. The working compatibility layer now
+restores the needed plan-tree support, tree helpers, and `determine-mode tree`
+selection path as an explicitly optional historical control.
 
-The earlier experiment line used both stack and tree goal ordering, but the
-active 1993 baseline no longer preserves plan-tree state:
+Representative direct checks now show:
 
-- [structs.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Tw-routines/structs.lisp#L9)
-  no longer includes a `tree` slot in `plan`
-- [create-plan](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Tw-routines/structs.lisp#L60)
-  still accepts `:tree`, but does not store it
-- the active successor code only implements `random` and `stack` selection
+- `hanoi-3`, `isbm`, weak-`NEC`, no Left-Wedge:
+  - `stack`: `1083 / 1433`
+  - `tree`: `2630 / 3779`
+- `hanoi-4`, `isbm`, weak-`POS`, Left-Wedge:
+  - `stack`: `20001 / 23272`, `EXPAND-LIMIT-EXCEEDED`
+  - `tree`: `20001 / 27373`, `EXPAND-LIMIT-EXCEEDED`
 
-So `tree` goal ordering is now the clearest blocked historical-control
-recovery task for the Hanoi experiments.
+So tree ordering is now a live historical comparison surface, but it is not
+currently improving the representative `isbm` runs. That makes it useful for
+fidelity checking, not yet for promoting a new main `hanoi-4` path.
 
 ## Current Interpretation
 

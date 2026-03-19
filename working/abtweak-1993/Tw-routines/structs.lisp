@@ -17,6 +17,7 @@
  (cr   nil)          ; abtweak:: existing causal relations to be preserved
                      ;           from abstraction level kval + 1
  (a   nil)           ; operator structure list
+ (tree nil)          ; optional operator tree for historical tree ordering
  (b   nil)           ; operator orderings
  (nc  nil)           ; non-codesignations
  (var nil)           ; variables used in plan codes/ncodes
@@ -75,6 +76,7 @@
    :id id
    :a  a   
    :cost cost
+   :tree tree
    :b b
    :nc nc
    :conflicts nil
@@ -83,4 +85,3 @@
 
 ; note: every plan should have a initial state i and a goal state
 ; g, so that i is before every other ops, and g is after.
-

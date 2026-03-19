@@ -27,6 +27,7 @@
   (create-plan
 	   'initial-plan
 	   :a (list i g)
+	   :tree (list 'g)
 	   :b '(( i g))
 	   :cost 0)))
 
@@ -55,4 +56,3 @@
         (t
   (mapcar #'(lambda (state) (list state (get-plan-cost state)))
                (successors plan)) )))
-

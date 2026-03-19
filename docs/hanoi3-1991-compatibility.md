@@ -24,7 +24,8 @@ most relevant to the published and archived Hanoi runs:
 - `msp-mode` = `nil`, `weak`, or `strong`
 - `msp-weak-mode` = `nec` or `pos`
 - `crit-depth-mode`
-- no tree goal-ordering surface yet in the active 1993 baseline
+- `determine-mode` = `stack` or `tree`, restored as an optional 1991-era
+  compatibility control rather than a 1993 default
 
 ## Current Result
 
@@ -49,6 +50,7 @@ Current representative results:
 | `ibsm` | `nil` | `nec` | `t` | `828 / 1471` | `828 / 1471` |
 | `ismb` | `nil` | `nec` | `t` | `963 / 1771` | `963 / 1771` |
 | `isbm` | `strong` | `nec` | `nil` | `1083 / 1433` | no isolated archived row yet |
+| `isbm`, `tree` | `weak` | `nec` | `nil` | `2630 / 3779` | no isolated archived row yet |
 
 Those cases now match the archived 1991 results exactly at the expanded /
 generated level across both weak-`NEC` and a broader weak-`POS` slice.
@@ -83,7 +85,8 @@ extending the same compatibility surface to `hanoi-4`.
 One boundary is clearer now too:
 
 - the older Hanoi experiment line also used tree-style goal ordering
-- the active 1993 baseline still exposes the parameter name, but not the
-  underlying operator-tree machinery
-- so `strong` MSP is now restored, while tree goal ordering remains a separate
-  blocked historical-control recovery task
+- that control is now runnable again in the working compatibility layer
+- on the representative `isbm` weak-`NEC` case, `stack` still beats `tree`
+  (`1083 / 1433` versus `2630 / 3779`)
+- so tree ordering is now best treated as a recovered historical comparison
+  mode, not as a candidate default replacement for the restored 1993 baseline

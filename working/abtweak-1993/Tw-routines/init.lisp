@@ -14,6 +14,9 @@
 (load "Tw-routines/successors")
 (load "Tw-routines/tw-heuristic")
 
+; load tree routines for historical tree goal ordering.
+(load "Tw-routines/tree")
+
 ; tweak/Succ/
 ;
 (load "Tw-routines/Succ/find-new-ests")
@@ -41,4 +44,3 @@
 ;
 (load "Tw-routines/tweak-planner-interface")
 (load "Tw-routines/tw-heuristic")
-

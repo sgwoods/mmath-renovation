@@ -71,7 +71,7 @@ The current restored code base supports these `hanoi-4` control families:
 | weak MSP `pos` | yes | via 1991 compatibility wrapper |
 | crit-depth mode | yes | via 1991 compatibility wrapper |
 | strong MSP | yes | restored in the compatibility layer; representative Hanoi checks now run |
-| alternate goal-ordering families | blocked | thesis references survive, but active 1993 plan structs no longer preserve tree data |
+| alternate goal-ordering families | partial | `stack` and `tree` now run through the compatibility layer, but `tree` is not presently a better four-disk path |
 
 The currently active four-disk hierarchy families are:
 
@@ -115,9 +115,10 @@ The stronger remaining possibilities are:
    naming match rather than a proved publication-equivalent hierarchy.
 2. The thesis figures appear to involve explicit goal-ordering variants such as
    stack and tree goal ordering.
-   Those labels are visible in the extracted thesis text, but the active 1993
-   plan struct no longer stores the operator tree, so tree ordering is not yet
-   recoverable as a simple wrapper option.
+   Those controls are now runnable again through the compatibility layer, but
+   on the representative recovered `isbm` cases tree ordering is currently
+   worse than stack ordering, so it does not yet explain the missing good
+   four-disk path.
 
 So the most plausible missing ingredients are not domain-specific hacks. They
 are historically motivated control details that were present in the experiment
@@ -134,9 +135,10 @@ The best current hypothesis is:
   gross modern regression in the base planner
 - the next historically defensible things to recover are:
   - cleaner mapping from publication hierarchy labels to four-disk code
-  - any goal-ordering controls that materially affected the thesis runs
-  - a historically faithful tree-ordering surface, if plan-tree support can be
-    restored without disturbing the 1993 baseline defaults
+  - any goal-ordering controls that materially affected the thesis runs,
+    especially where tree ordering might matter on a different hierarchy family
+  - tighter mapping from the publication figure labels onto the recovered
+    four-disk hierarchy names now that tree ordering itself is runnable again
 
 Until that reconstruction is done, the strongest current `hanoi-4` result
 should be treated as "historically plausible but not yet publication-equivalent"

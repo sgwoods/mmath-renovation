@@ -169,7 +169,9 @@ The new successful-combination note narrows that list:
 - P-WMP and especially Left-Wedge are the main reported successful controls
 - the current compatibility layer still does not expose:
   - a clean publication-to-code mapping for the good four-disk hierarchy family
-  - explicit tree goal-ordering controls from the thesis figure labels
+  - a clear publication-side explanation of where tree goal ordering was meant
+    to help, now that the control itself is restored but not yet outperforming
+    `stack` on representative recovered cases
 
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
@@ -207,8 +209,8 @@ first. It is:
 
 1. tighten the publication-to-code mapping for the historically good four-disk
    hierarchy families
-2. determine whether thesis-era tree goal ordering can be reconstructed cleanly
-   as a historical control
+2. determine whether thesis-era tree goal ordering matters on a different
+   hierarchy/control family than the current representative `isbm` runs
 3. only then return to deeper `hanoi-4` runtime pushes inside that recovered
    control surface
 

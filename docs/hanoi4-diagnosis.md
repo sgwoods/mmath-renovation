@@ -224,12 +224,19 @@ The newest historical-combination review narrows the remaining uncertainty:
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family
-- the most credible missing historical details are now:
+- the most credible remaining historical detail gaps are now:
   - exact mapping from publication hierarchy labels onto the recovered
     four-disk hierarchy variants
-  - explicit tree goal-ordering controls referenced in the thesis figures
+  - whether the thesis-era tree goal-ordering effect depended on a different
+    hierarchy family than the current representative `isbm` path
   - clean publication-side evidence tying the best figure rows to the
     recovered four-disk hierarchy names
+- tree goal ordering itself is now restored as an optional compatibility
+  control, but it is currently worse than stack ordering on representative
+  recovered cases:
+  - `hanoi-3`, `isbm`, weak-`NEC`: `stack 1083 / 1433`, `tree 2630 / 3779`
+  - `hanoi-4`, `isbm`, weak-`POS`, Left-Wedge:
+    `stack 20001 / 23272`, `tree 20001 / 27373`
 
 ## Important Limitation
 

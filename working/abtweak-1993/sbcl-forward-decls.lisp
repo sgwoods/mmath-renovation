@@ -10,6 +10,7 @@
         var-p
         all_preconds_hold-p
         get-opids-from-plan
+        get_tree
         this_opid_ok-p
         get-preconditions-of-opid
         preconds_hold-p
@@ -27,12 +28,14 @@
         invalid-p
         precond-to-index
         determine-first-user-and-precond
+        determine-tree-user-and-precond
         determine-random-user-and-precond
         unsat-user-precond-pairs
         tw-heuristic-function-1
         user-heuristic
         num-of-unsat-goals
         find-new-plan
+        add-nec-to-tree-plan
         get-operator-opid
         select-ops
         add-cost-to-plan
@@ -126,6 +129,7 @@
         successors&costs
         which-heuristic-function
         get-priority
+        record-score-trace-node
         find-initial-k-val
         ab-mtc
         ab-successors
@@ -138,6 +142,7 @@
         update-abs-ref-counts
         update-abs-succ-counts
         ab-determine-first-u-and-p
+        ab-determine-tree-u-and-p
         ab-determine-random-u-and-p
         adjust-pre-list
         ab-unsat-up-pairs
@@ -170,6 +175,11 @@
         sublist
         update-op-count
         total-ops
+        insert-tree
+        get-root
+        get-children
+        replace-subtree
+        pre-order
         left-wedge-function
         add-cr-to-successors
         find-one-mr-conflict

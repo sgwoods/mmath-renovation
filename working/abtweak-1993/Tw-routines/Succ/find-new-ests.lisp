@@ -60,16 +60,17 @@
          (opplan   (add-operator-to-plan est copy-plan))
          (opid      (get-operator-opid est))
           ; add ordering of opid before user to plan
-         (ord-plan  (add-order-to-plan opid u opplan)) )
+         (ord-plan  (add-order-to-plan opid u opplan))
+         (tree-plan (add-nec-to-tree-plan opid u ord-plan)) )
 
     (declare
         (type plan copy-plan)
         (type plan opplan)
         (type atom opid)
-        (type plan ord-plan) )
+        (type plan ord-plan)
+        (type plan tree-plan) )
     (add-cost-to-plan (get-operator-cost est)
-		      (apply-mapping-to-plan mapping ord-plan))
+		      (apply-mapping-to-plan mapping tree-plan))
     ))
 
 	 
-

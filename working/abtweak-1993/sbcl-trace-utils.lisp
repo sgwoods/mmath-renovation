@@ -578,9 +578,10 @@
   "Return a replay-safe copy of PLAN for diagnostic restarts."
   (declare (type plan plan))
   (remove-constant-nonco
-   (make-plan
+  (make-plan
     :id        (create-planid)
     :a         (make-copy-of-op-list (plan-a plan))
+    :tree      (copy-tree (plan-tree plan))
     :b         (copy-tree (plan-b plan))
     :nc        (copy-tree (plan-nc plan))
     :cr        (copy-tree (plan-cr plan))

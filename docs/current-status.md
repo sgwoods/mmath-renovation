@@ -193,7 +193,11 @@ Verified smoke results:
       - `critical-list-2` is best read as a positive/negative criticality-label experiment rather than a simple permutation like `IBMS`
   - the historical-control recovery picture is now more specific:
       - `strong` MSP has been restored in the compatibility layer and produces sane representative Hanoi results
-      - thesis-era tree goal ordering is still blocked because the active 1993 plan struct no longer stores the operator tree
+      - thesis-era tree goal ordering is now restored as an optional compatibility control
+      - on representative recovered cases it is currently worse than stack ordering:
+        `hanoi-3` `isbm` weak-`NEC` goes from `1083 / 1433` under `stack` to `2630 / 3779` under `tree`
+      - the same pattern currently holds on `hanoi-4` `isbm` weak-`POS` with Left-Wedge:
+        `23272` generated under `stack` versus `27373` under `tree`
   - the working-vs-historical review now shows that the `hanoi-4` domain and default abstraction hierarchy are unchanged from the archival code, and that the main precedence rewrite in the working tree preserves the historical reachability relation on randomized checks
   - a dedicated trace runner now exists for larger `hanoi-4` diagnosis:
     - it writes planner output, summary stats, open-frontier snapshots, and DRP-stack snapshots into timestamped directories under [analysis/hanoi4-traces](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)

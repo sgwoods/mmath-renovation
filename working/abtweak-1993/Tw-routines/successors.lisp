@@ -100,6 +100,8 @@
           (cond 
 	   ((equal *subgoal-determine-mode* 'random)            ; random user and precond
 	    (determine-random-user-and-precond plan))
+           ((equal *subgoal-determine-mode* 'tree)
+            (determine-tree-user-and-precond plan))
 	   (t            ; first user and precond
 	    (determine-first-user-and-precond  plan))))   ; first from a list (stack)
         )
@@ -107,6 +109,19 @@
      user-and-precond))
 
 ; Stack Mode, the first user and precond in the operator list is selected.
+
+(defun determine-tree-user-and-precond (plan)
+  "Tweak/successors.lsp
+   returns the first unsatisfied (user precond) in preorder tree traversal."
+  (declare
+     (type plan plan))
+
+  (let ((result nil))
+    (dolist (opid (pre-order (get_tree plan)) result)
+      (dolist (precondition (get-preconditions-of-opid opid plan))
+        (when (not (hold-p plan opid precondition))
+          (return (setq result (list opid precondition)))))
+      (if result (return result)))))
 
 
 ; ---  determine-first-user-and-precond (plan) ---

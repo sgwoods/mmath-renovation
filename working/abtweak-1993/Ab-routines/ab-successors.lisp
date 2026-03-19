@@ -150,8 +150,27 @@
   (cond ((equal *subgoal-determine-mode* 'random)
 					; random u and p
 	 (ab-determine-random-u-and-p plan))
+        ((equal *subgoal-determine-mode* 'tree)
+         (ab-determine-tree-u-and-p plan))
 	((equal *subgoal-determine-mode* 'stack) 
 	 (ab-determine-first-u-and-p  plan))))
+
+
+(defun ab-determine-tree-u-and-p (plan)
+  "abtweak/ab-successors.lsp
+   returns the first unsatisfied (u p) in preorder tree traversal at this kval."
+  (declare
+     (type plan plan))
+
+  (let ((result nil))
+    (dolist (opid (pre-order (get_tree plan)) result)
+      (dolist (precondition
+               (adjust-pre-list opid
+                                (get-preconditions-of-opid opid plan)
+                                (plan-kval plan)))
+        (when (not (hold-p plan opid precondition))
+          (return (setq result (list opid precondition)))))
+      (if result (return result)))))
 
 
 (defun ab-determine-first-u-and-p (plan)
