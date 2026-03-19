@@ -50,8 +50,7 @@
   "Map the older 1991 MSP selector onto the 1993 boolean MP flag."
   (cond ((null msp-mode) nil)
 	((eq msp-mode 'weak) t)
-	((eq msp-mode 'strong)
-	 (error "Historical MSP mode STRONG is not implemented in the 1993 compatibility layer."))
+	((eq msp-mode 'strong) 'strong)
 	(t
 	 (error "Unknown historical MSP mode ~S" msp-mode))))
 

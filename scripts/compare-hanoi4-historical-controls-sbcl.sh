@@ -46,6 +46,7 @@ run_case() {
       (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
       (format t "NUM-GENERATED: ~S~%" *num-generated*)
       (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+      (format t "STRONG-MP-PRUNED: ~S~%" *strong-mp-pruned*)
       (when (typep *solution* (quote plan))
         (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
         (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
@@ -77,6 +78,7 @@ print_row() {
   expanded=$(extract_value "NUM-EXPANDED" "$log_file")
   generated=$(extract_value "NUM-GENERATED" "$log_file")
   mp_pruned=$(extract_value "MP-PRUNED" "$log_file")
+  strong_mp_pruned=$(extract_value "STRONG-MP-PRUNED" "$log_file")
 
   if [ "$solution_type" = "PLAN" ]; then
     outcome="solves"
@@ -84,7 +86,7 @@ print_row() {
     outcome=${solution_value:-unknown}
   fi
 
-  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s |\n' \
+  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s | %s |\n' \
     "$hierarchy" \
     "$msp_mode" \
     "$weak_mode" \
@@ -92,7 +94,8 @@ print_row() {
     "$outcome" \
     "${expanded:-"-"}" \
     "${generated:-"-"}" \
-    "${mp_pruned:-"-"}"
+    "${mp_pruned:-"-"}" \
+    "${strong_mp_pruned:-"-"}"
 }
 
 cat <<EOF
@@ -108,8 +111,8 @@ Bounds used:
 - open bound: $OPEN_BOUND
 - CPU seconds: $CPU_SEC_LIMIT
 
-| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned | Strong MP Pruned |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 EOF
 
 log_file=$(run_case legacy-1991-default nil nec nil legacy-default-no-msp)
@@ -141,3 +144,6 @@ print_row isbm weak pos nil "$log_file"
 
 log_file=$(run_case isbm nil nec t isbm-crit-depth)
 print_row isbm nil nec t "$log_file"
+
+log_file=$(run_case isbm strong nec nil isbm-strong)
+print_row isbm strong nec nil "$log_file"

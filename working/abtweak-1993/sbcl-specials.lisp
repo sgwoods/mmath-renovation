@@ -7,6 +7,7 @@
 (defvar *continue-p* nil)
 (defvar *control-strategy* 'bfs)
 (defvar *mp-weak-mode* 'nec)
+(defvar *strong-mp-pruned* 0)
 (defvar *abstract-goal-mode* nil)
 (defvar *heuristic-mode* nil)
 (defvar *subgoal-determine-mode* nil)

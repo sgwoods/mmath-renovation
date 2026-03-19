@@ -46,6 +46,7 @@ run_case() {
       (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
       (format t "NUM-GENERATED: ~S~%" *num-generated*)
       (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+      (format t "STRONG-MP-PRUNED: ~S~%" *strong-mp-pruned*)
       (when (typep *solution* (quote plan))
         (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
         (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
@@ -80,6 +81,7 @@ print_row() {
   expanded=$(extract_value "NUM-EXPANDED" "$log_file")
   generated=$(extract_value "NUM-GENERATED" "$log_file")
   mp_pruned=$(extract_value "MP-PRUNED" "$log_file")
+  strong_mp_pruned=$(extract_value "STRONG-MP-PRUNED" "$log_file")
 
   if [ "$solution_type" = "PLAN" ]; then
     outcome="solves"
@@ -87,7 +89,7 @@ print_row() {
     outcome=${solution_value:-unknown}
   fi
 
-  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s | `%s` | `%s` |\n' \
+  printf '| `%s` | `%s` | `%s` | `%s` | %s | %s | %s | %s | %s | `%s` | `%s` |\n' \
     "$hierarchy" \
     "$msp_mode" \
     "$weak_mode" \
@@ -96,6 +98,7 @@ print_row() {
     "${expanded:-"-"}" \
     "${generated:-"-"}" \
     "${mp_pruned:-"-"}" \
+    "${strong_mp_pruned:-"-"}" \
     "$historical_expanded / $historical_generated" \
     "$historical_file"
 }
@@ -113,8 +116,8 @@ Bounds used:
 - open bound: $OPEN_BOUND
 - CPU seconds: $CPU_SEC_LIMIT
 
-| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned | Historical | Source |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Hierarchy | MSP | Weak Mode | Crit-Depth | Outcome | Expanded | Generated | MP Pruned | Strong MP Pruned | Historical | Source |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 EOF
 
 log_file=$(run_case isbm weak nec nil isbm-weak-nec)
@@ -152,3 +155,6 @@ print_row ibsm nil nec t "ibsmK-raw.out" 828 1471 "$log_file"
 
 log_file=$(run_case ismb nil nec t ismb-crit-depth)
 print_row ismb nil nec t "ismbK-raw.out" 963 1771 "$log_file"
+
+log_file=$(run_case isbm strong nec nil isbm-strong)
+print_row isbm strong nec nil "no direct archived row isolated yet" "-" "-" "$log_file"

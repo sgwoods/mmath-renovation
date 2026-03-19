@@ -151,8 +151,11 @@
         find-this-a-pre
         equal-pre
         violates-mp-weak
+        violates-mp-strong
         exists-mp-violation-p
+        exists-strong-mp-violation-p
         this-one-violated
+        strong-this-one-violated
         asserts-negative
         asserts-positive
         adjust-pre-list-others

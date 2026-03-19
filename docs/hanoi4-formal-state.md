@@ -195,8 +195,9 @@ If work resumes here later, the best immediate next experiment is:
 - continue from the same `isbm + weak-POS + left-wedge` source run
 - tighten the publication-to-code mapping for the good four-disk hierarchy
   families
-- inspect whether goal-ordering and `strong` MSP are recoverable as historical
-  controls before considering any new strategy extension
+- treat `strong` MSP as restored and usable in the compatibility surface
+- inspect whether tree-style goal ordering can be recovered as a historical
+  control before considering any new strategy extension
 
 That is a better next step than another generic bound increase or a new
 non-historical heuristic.

@@ -18,7 +18,8 @@
 (defvar *max-succ-count*            0    "maximum node successors")
 (defvar *max-confl-count*      0    "maximum u p conflicts")
 (defvar *abs-node-count*         0    "number abstract nodes generated")
-(defvar *mp-pruned*     0    "number nodes pruned via monotonic property.")
+(defvar *mp-pruned*     0    "number nodes pruned via weak monotonic property.")
+(defvar *strong-mp-pruned* 0 "number nodes pruned via strong monotonic property.")
 
 ; Planner Choice Variables.
 
@@ -70,6 +71,7 @@ abstract plan can have.")
   (setq *confl-count* 0)    ; remember maximum conflicts for any u p
   (setq *abs-node-count* 0)      ; count of abtweak k level change nodes
   (setq *mp-pruned* 0)  ; count weak msp violation nodes discarded
+  (setq *strong-mp-pruned* 0) ; count strong msp violation nodes discarded
   (setq *existing-only* existing-only)
   (setq *output-stream* 
 	(cond ((or (eq output-file t) (null output-file)) 

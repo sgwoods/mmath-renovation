@@ -63,6 +63,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Hanoi-4 formal state](./docs/hanoi4-formal-state.md): formal handoff note capturing the current four-disk diagnosis, strongest runtime path, and recommended re-entry point
 - [Hanoi-4 strategy crosswalk](./docs/hanoi4-strategy-crosswalk.md): consolidated table of publication claims, historical/current code support, and measured strategy performance
 - [Hanoi-4 successful combination hypothesis](./docs/hanoi4-successful-combination-hypothesis.md): current best read on which publication-era Hanoi hierarchy/control combinations were meant to work, which ones are reconstructed, and which historical controls may still be missing
+- [Hanoi-4 1991 compatibility start](./docs/hanoi4-1991-compatibility.md): current four-disk historical-control surface, including restored `strong` MSP and the current tree-goal-ordering gap
 - [Hanoi-4 frontier replay](./docs/hanoi4-frontier-replay.md): frozen-frontier replay experiment showing that sampled `tweak` frontier nodes remain live under neutral replay while most sampled `abtweak` frontier nodes do not
 - [Hanoi-4 score sensitivity](./docs/hanoi4-score-sensitivity.md): diagnostic report showing that the clean closure-oriented `hanoi-4` node jumps from actual rank `1149` to rank `1` when left-wedge pressure is removed
 - [Hanoi-4 insertion score trace](./docs/hanoi4-insertion-score-trace.md): insertion-time trace showing that the `hanoi-4` ranking bias is already present at node creation, but becomes much worse after repeated refinement

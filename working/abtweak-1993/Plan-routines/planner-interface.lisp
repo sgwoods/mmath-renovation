@@ -63,9 +63,10 @@
 		 "Monotonic Property Used: ~A ~&~&" *mp-mode*)
 	 (if *mp-mode* 
 	     (format *output-stream* 
-		     "Monotonic Property Weak Mode: ~A ~&~&Monotonic Property Pruned: ~A ~&~&"
+		     "Monotonic Property Weak Mode: ~A ~&~&Monotonic Property Pruned: ~A ~&~&Strong Monotonic Property Pruned: ~A ~&~&"
 		     *mp-weak-mode*
-		     *mp-pruned*))
+		     *mp-pruned*
+		     *strong-mp-pruned*))
 	 (format *output-stream* 
 		 "Left-Wedge-mode: ~A ~&~&" *left-wedge-mode*)
 	 (format *output-stream*

@@ -169,8 +169,7 @@ The new successful-combination note narrows that list:
 - P-WMP and especially Left-Wedge are the main reported successful controls
 - the current compatibility layer still does not expose:
   - a clean publication-to-code mapping for the good four-disk hierarchy family
-  - explicit goal-ordering controls from the thesis figure labels
-  - `strong` MSP from the 1991 control surface
+  - explicit tree goal-ordering controls from the thesis figure labels
 
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
@@ -208,8 +207,8 @@ first. It is:
 
 1. tighten the publication-to-code mapping for the historically good four-disk
    hierarchy families
-2. determine whether thesis-era goal ordering and `strong` MSP can be
-   reconstructed cleanly as historical controls
+2. determine whether thesis-era tree goal ordering can be reconstructed cleanly
+   as a historical control
 3. only then return to deeper `hanoi-4` runtime pushes inside that recovered
    control surface
 

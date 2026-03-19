@@ -227,8 +227,9 @@ The newest historical-combination review narrows the remaining uncertainty:
 - the most credible missing historical details are now:
   - exact mapping from publication hierarchy labels onto the recovered
     four-disk hierarchy variants
-  - explicit goal-ordering controls referenced in the thesis figures
-  - `strong` MSP from the 1991 control vocabulary
+  - explicit tree goal-ordering controls referenced in the thesis figures
+  - clean publication-side evidence tying the best figure rows to the
+    recovered four-disk hierarchy names
 
 ## Important Limitation
 

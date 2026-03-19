@@ -10,10 +10,12 @@
     check plan for mp protection violation as indicated for this run"
   (declare (type plan plan))
 
-   (if (null *mp-mode*)
-       nil                    
-					;return nil - no violation
-     (violates-mp-weak plan)))
+   (cond ((null *mp-mode*)
+          nil)
+         ((eq *mp-mode* 'strong)
+          (violates-mp-strong plan))
+         (t
+          (violates-mp-weak plan))))
 
 
 ;***************************************************************************
@@ -82,4 +84,36 @@
                (nece-before-p est operator plan)
                (nece-before-p operator user plan)
                (mp-violates-condition-p operator condition plan))
+      (return t))))
+
+
+;***************************************************************************
+;  strong monotonic property implementation
+;***************************************************************************
+
+(defun violates-mp-strong (plan)
+  "t if there is strong monotonic violation.
+   Any necessarily clobbered establisher is enough to prune the plan."
+  (declare (type plan plan))
+  (let ((causal-relations (get-cr-in-plan plan))
+        (result nil))
+    (dolist (relation causal-relations result)
+      (when (exists-strong-mp-violation-p relation plan)
+        (setq *strong-mp-pruned* (1+ *strong-mp-pruned*))
+        (return (setq result t))))))
+
+(defun exists-strong-mp-violation-p (relation plan)
+  "t iff any one establisher of RELATION is necessarily clobbered."
+  (let ((establishers (get-producer-list-in-cr relation))
+        (condition (get-condition-in-cr relation))
+        (user (get-user-in-cr relation)))
+    (dolist (est establishers nil)
+      (when (strong-this-one-violated est condition user plan)
+        (return t)))))
+
+(defun strong-this-one-violated (est condition user plan)
+  "t iff a necessarily-between operator necessarily reasserts or negates CONDITION."
+  (dolist (operator (all-nece-between est user plan) nil)
+    (when (or (nece-est-p operator (negate condition) plan)
+              (nece-est-p operator condition plan))
       (return t))))
