@@ -112,6 +112,17 @@ despite `ismb` still pruning more aggressively.
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
+The new optimal-versus-lineage comparison narrows the immediate `hanoi-4`
+question again:
+
+- the hierarchy itself still looks sensible under the retained optimal
+  four-disk reference projection
+- the unhealthy behavior appears when the current best `isbm` AbTweak run is
+  rewarded for dropping below the natural early-progress `k2` band too soon
+- so the best next question is now to inspect the exact goal/obligation picture
+  at those `add-a-level` reinsertion points, not to keep broadening the search
+  settings first
+
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
 

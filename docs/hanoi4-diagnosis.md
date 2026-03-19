@@ -16,6 +16,7 @@ It complements:
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
+- [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -166,6 +167,16 @@ The new optimal projection report sharpens the hierarchy story too:
 That makes `isbm` look structurally less prone to "early apparent progress"
 than `ismb` on the optimal path itself, which is at least directionally
 consistent with the cleaner `isbm` frontier we now see in the restored runs.
+
+The new optimal-versus-lineage comparison sharpens that further:
+
+- the healthy traced `isbm` branch stays in the same early `k2` band where the
+  optimal reference path still has legitimate visible progress
+- the dirty traced `isbm` priority branch is rewarded for dropping to `k1`
+  and then `k0` much earlier than the optimal projection would make natural
+- that does not yet prove a historical bug, but it strengthens the case that
+  the remaining gap is a control-quality problem around level-drop
+  reintroduction rather than a malformed `isbm` hierarchy
 
 ## Important Limitation
 

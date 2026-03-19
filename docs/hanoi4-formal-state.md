@@ -13,6 +13,7 @@ It complements:
 - [Hanoi-4 insertion score trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-insertion-score-trace.md)
 - [Hanoi-4 lineage trace](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md)
 - [Hanoi-4 lineage divergence](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-divergence.md)
+- [Hanoi-4 optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
 - [Hanoi-4 optimal projection report](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/hanoi4-optimal-projection.md)
@@ -86,6 +87,11 @@ The main chain of evidence now is:
   goal slice much earlier than `isbm`, while `isbm` keeps a harder visible
   `k1` target until the final step; that gives us a clean external picture of
   why `isbm` may resist premature apparent progress better
+- [optimal versus traced lineages](/Users/stevenwoods/mmath-renovation/docs/hanoi4-optimal-lineage-comparison.md):
+  on the current best `isbm` AbTweak trace, the healthy branch stays in the
+  same early `k2` band where the optimal projection still makes sense, while
+  the dirty priority branch is rewarded for dropping to `k1` and `k0` much
+  earlier than the reference path would make natural
 
 That makes the current best diagnosis:
 
