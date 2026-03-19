@@ -16,7 +16,7 @@ status. It complements the detailed matrix in
 | Robot with user heuristic | reproduced | both robot benchmarks show the historically important AbTweak plus left-wedge advantage over the comparable bounded runs | keep as application benchmark and left-wedge validation case |
 | Registers and tiny regressions | reproduced | `registers` solves in both modes and the tiny sanity cases are usable as quick regressions | preserve as fast smoke checks |
 | Macro-Hanoi variants | reproduced | `macro-hanoi` and `macro-hanoi4` solve in both modes | keep as compact later-1993 success cases |
-| Shipped operator-style sample domains | reproduced | `computer`, `biology`, `fly`, and multiple `database` queries now run correctly under the restored planner path | continue widening where it improves validation coverage |
+| Shipped operator-style sample domains | reproduced | `computer`, `biology`, `fly`, `stylistics`, and multiple `database` queries now run correctly under the restored planner path | continue widening where it improves validation coverage |
 | 1991 Hanoi MSP compatibility | reproduced | weak-`NEC`, weak-`POS`, and critical-depth representative runs now match archived `hanoi-3` outputs exactly | decide how far to extend this beyond Hanoi |
 | Alternate `reset-domain` framework | open | `driving`, `newd`, and parts of `scheduling` still sit outside the restored operator-style experiment path | treat as separate phase-2 restoration track |
 

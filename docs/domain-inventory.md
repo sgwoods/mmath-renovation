@@ -49,7 +49,7 @@ These are the domains that fit the main `plan` / `tweak` / `abtweak` path.
 | `computer` | `1993` | Simple computer hardware domain in the final line. | Explicit `*critical-list*` and `*left-wedge-list*`. | `goal` is present in the file and current smoke coverage solves it in both `tweak` and `abtweak`; primary effects are relevant. | Explicitly listed in the 1993 users manual. | The file exposes the goal clearly, but does not present a large menu of named alternative tasks; more historical output files would be useful if they exist elsewhere. |
 | `biology` | `1993` | Simple biology domain in the final line. | Explicit `*critical-list*` and `*left-wedge-list*`. | Concrete `initial`, `goal1`, `goal2`, `goal3`, and default `goal` are present; several shipped goals now solve under SBCL. | Explicitly listed in the 1993 users manual. | No obvious missing data beyond more archived output tables. |
 | `database` | `1993` | SQL-world query optimization domain in the final line. | No AbTweak abstraction lists in the file; header explicitly says to use `tweak`, not `abtweak`. | The file contains `goal0` through `goal5`; current working tree can run several of them in `tweak`, and some also happen to work in `abtweak` despite the warning. | Explicitly listed in the 1993 users manual. | The historically intended mode is `tweak`, so missing abstraction data appears intentional rather than accidental. |
-| `stylistics` | `1993` | Natural-language style generation domain in the final line. | Explicit `*critical-list*` and `*left-wedge-list*`. | The domain operators and abstraction data are present, but the obvious sample `initial` and `goal` forms are commented out rather than live definitions. | Explicitly listed in the 1993 users manual as a shipped sample domain. | This is the strongest current “inferred missing test data” case in the main operator-style line: the domain exists, but the runnable sample state/goal pair appears to be absent or only preserved in commented form. |
+| `stylistics` | `1993` | Natural-language style generation domain in the final line. | Explicit `*critical-list*` and `*left-wedge-list*`. | The domain operators and abstraction data are present, and the preserved commented sample `initial` / `goal` pair is now restored as a runnable smoke case in both `tweak` and `abtweak`. | Explicitly listed in the 1993 users manual as a shipped sample domain. | The main remaining rough edge is loader presentation, not planner data: the working copy needed the preserved mail header commented so SBCL could read the file directly. |
 
 ## Alternate Framework and Mixed Cases
 
@@ -81,9 +81,9 @@ The inventory currently suggests four practical conclusions:
 
 1. The operator-style AbTweak line is broad and mostly well preserved.
    The main manual domains are all present in the recovered `1993` tree.
-2. The strongest missing runnable sample in that main line is
-   `stylistics`, where the abstraction data survives but the visible sample
-   `initial` / `goal` pair does not.
+2. The strongest formerly missing runnable sample in that main line,
+   `stylistics`, is now back in the smoke suite through its preserved
+   commented sample task.
 3. The richest historical variation surface is in the early Hanoi and robot
    material from `1990-12`, `1990-12b`, and `1991-08`.
 4. `driving`, `scheduling`, and much of `newd` should still be treated as a

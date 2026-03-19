@@ -100,6 +100,8 @@ print_row "Nilsson blocks" "tweak" "nils-blocks-tweak" "manual blocksworld varia
 print_row "Nilsson blocks" "abtweak" "nils-blocks-abtweak" "same plan, MP enabled"
 print_row "computer" "tweak" "computer-tweak" "operator domain with primary effects"
 print_row "computer" "abtweak" "computer-abtweak" "same result under abstraction"
+print_row "stylistics" "tweak" "stylistics-tweak" "restored historical sample task from commented domain example"
+print_row "stylistics" "abtweak" "stylistics-abtweak" "same restored sample task under abstraction"
 print_row "fly / Washington DC" "tweak" "fly-dc-tweak" "primary-effects flight problem"
 print_row "fly / Washington DC" "abtweak" "fly-dc-abtweak" "same 2-flight solution under abstraction"
 print_row "fly / San Francisco" "tweak" "fly-sf-tweak" "longer flight chain"
@@ -122,7 +124,6 @@ cat <<'EOF'
 | `Domains/driving.lisp` | excluded | uses `reset-domain` / `defstep`, which appear to belong to a different planner framework than the restored AbTweak `plan` path |
 | `Domains/scheduling.lisp` | excluded | same alternate `reset-domain` / `defstep` style, not yet wired into the current SBCL AbTweak entry point |
 | `Domains/newd.lisp` | excluded | mixed experimental/planner-alternative file, not a direct AbTweak operator-domain smoke target |
-| `Domains/stylistics.lisp` | excluded | domain file lacks an active checked-in sample `initial` / `goal` pair to benchmark directly |
 | `Domains/simple-robot.lisp` | deferred | the repo already covers the clearer `simple-robot-1` and `simple-robot-2` variants instead |
 | `Domains/check-primary-effects.lisp` | helper only | support file, not a standalone planning domain |
 | `Domains/robot-heuristic.lisp` | helper only | support file, not a standalone planning domain |

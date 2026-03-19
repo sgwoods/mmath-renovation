@@ -699,6 +699,57 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  stylistics-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/stylistics.lisp")
+      (setq initial (quote ((initial-pos a) (final-pos b)
+                            (excessive-pp a) (excessive-postmod a))))
+      (setq goal (quote ((clarity1 c))))
+      (let ((result (plan initial goal
+                          :planner-mode (quote tweak)
+                          :output-file (quote no-output)
+                          :expand-bound 500
+                          :generate-bound 2000
+                          :open-bound 2000
+                          :cpu-sec-limit 15)))
+        (format t "CASE: stylistics-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  stylistics-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/stylistics.lisp")
+      (setq initial (quote ((initial-pos a) (final-pos b)
+                            (excessive-pp a) (excessive-postmod a))))
+      (setq goal (quote ((clarity1 c))))
+      (let ((result (plan initial goal
+                          :planner-mode (quote abtweak)
+                          :output-file (quote no-output)
+                          :expand-bound 500
+                          :generate-bound 2000
+                          :open-bound 2000
+                          :cpu-sec-limit 15)))
+        (format t "CASE: stylistics-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   biology-goal1-abtweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -1065,7 +1116,7 @@ case "$CASE_NAME" in
     ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, registers-abtweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-interchange-tweak, blocks-interchange-abtweak, blocks-flatten-tweak, blocks-flatten-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, macro-hanoi4-tweak, macro-hanoi4-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw, computer-tweak, computer-abtweak, biology-goal1-tweak, biology-goal1-abtweak, biology-goal2-abtweak, biology-goal3-abtweak, biology-full-abtweak, fly-sf-tweak, fly-sf-abtweak, fly-dc-tweak, fly-dc-abtweak, database-goal0-tweak, database-goal1-tweak, database-goal1-abtweak, database-goal2-tweak, database-goal2-abtweak, database-goal3-tweak, database-goal3-abtweak, database-goal4-tweak, database-goal4-abtweak" >&2
+    echo "Known cases: load, loop-tweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, registers-abtweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-interchange-tweak, blocks-interchange-abtweak, blocks-flatten-tweak, blocks-flatten-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, macro-hanoi4-tweak, macro-hanoi4-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw, computer-tweak, computer-abtweak, stylistics-tweak, stylistics-abtweak, biology-goal1-tweak, biology-goal1-abtweak, biology-goal2-abtweak, biology-goal3-abtweak, biology-full-abtweak, fly-sf-tweak, fly-sf-abtweak, fly-dc-tweak, fly-dc-abtweak, database-goal0-tweak, database-goal1-tweak, database-goal1-abtweak, database-goal2-tweak, database-goal2-abtweak, database-goal3-tweak, database-goal3-abtweak, database-goal4-tweak, database-goal4-abtweak" >&2
     exit 2
     ;;
 esac

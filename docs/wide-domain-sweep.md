@@ -16,6 +16,7 @@ The wider sweep strengthens the restoration story considerably:
 - additional `blocks` variants now solve in both `tweak` and `abtweak`
 - `registers` solves in both modes
 - the `fly` domain solves in both modes for both shipped goals tested
+- the preserved `stylistics` sample task now solves in both modes
 - `biology` goal 1 solves in both modes, and the full checked-in `biology`
   goal solves in `abtweak`
 - `database` query 1 and query 3 solve in both modes after a small SBCL
@@ -32,8 +33,8 @@ The sweep also clarified the current project boundary:
   it uses the direct operator representation, but its checked-in entry point
   depends on `scheduling-world-domain`, which only appears in the alternate
   `newd.lisp` framework
-- `stylistics.lisp` does not currently ship an active benchmark pair to run
-  directly
+- `stylistics.lisp` is now back inside the operator-style benchmark surface
+  through the preserved commented sample task in the domain file
 
 ## Key Compatibility Finding
 
@@ -58,6 +59,8 @@ candidate variable names. After that:
 
 The latest sample expansion also found:
 
+- `stylistics-tweak` and `stylistics-abtweak` both solve with cost `4`,
+  length `6`, `kval 0`
 - `biology-goal2-abtweak` solves with cost `1`, length `3`, `kval 0`
 - `biology-goal3-abtweak` solves with cost `2`, length `4`, `kval 0`
 - `database-goal2-tweak` and `database-goal2-abtweak` both solve with cost `3`,

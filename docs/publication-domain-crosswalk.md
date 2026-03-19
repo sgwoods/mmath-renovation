@@ -39,7 +39,7 @@ Rerun labels:
 | `computer` | 1993 manual only | [working/abtweak-1993/Domains/computer.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/computer.lisp#L1) | `run computer-tweak`, `run computer-abtweak` | Regenerated and verified: both modes solve with cost `6`, length `8`, `kval 0`. | `Manual-only` |
 | `biology` | 1993 manual only | [working/abtweak-1993/Domains/biology.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/biology.lisp#L1) | `run biology-goal1-abtweak`, `run biology-goal2-abtweak`, `run biology-goal3-abtweak` | Regenerated and verified: multiple shipped goals solve under AbTweak; this is now part of the formal smoke set. | `Manual-only` |
 | `database` | 1993 manual only | [working/abtweak-1993/Domains/database.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/database.lisp#L1) | `run database-goal0-tweak`, `run database-goal2-tweak`, `run database-goal2-abtweak`, `run database-goal4-tweak`, `run database-goal4-abtweak` | Regenerated and verified: several shipped SQL goals solve; the file itself still notes that the intended historical mode is `tweak`. | `Manual-only` |
-| `stylistics` | 1993 manual only | [working/abtweak-1993/Domains/stylistics.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/stylistics.lisp#L1) | No current harness entry | Verified surviving data: operators, `*critical-list*`, and `*left-wedge-list*`; no active runnable sample task is currently defined. | `Missing` |
+| `stylistics` | 1993 manual only | [working/abtweak-1993/Domains/stylistics.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/stylistics.lisp#L1) | `run stylistics-tweak`, `run stylistics-abtweak` | Regenerated and verified: the commented historical sample task now runs in both modes with cost `4`, length `6`, `kval 0`; the working copy also now strips the preserved mail header so SBCL can load the file. | `Manual-only` |
 | `driving` | not tied to the main published AbTweak result set | [working/abtweak-1993/Domains/driving.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/driving.lisp#L1) | No current harness entry | Verified surviving data: alternate `reset-domain` style definitions only. | `Missing` |
 | `scheduling` / `newd` | not tied to the main published AbTweak result set | [working/abtweak-1993/Domains/scheduling.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/scheduling.lisp#L1), [working/abtweak-1993/Domains/newd.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/newd.lisp#L1) | No current harness entry | Verified surviving data: mixed alternate-framework workspace, including `scheduling-world-domain`, but not a restored standalone rerun path. | `Missing` |
 
@@ -53,8 +53,8 @@ The repo is strongest where the historical record is strongest:
 3. `hanoi-4` is the main remaining published benchmark gap.
 4. `fly`, `computer`, `biology`, and `database` are best treated as
    1993-manual validation domains rather than as paper-table replications.
-5. `stylistics` is the clearest shipped-domain case where the surviving
-   abstraction structures outlive the obvious runnable sample task.
+5. `stylistics` has now moved into the rerunnable 1993-manual set, while the
+   alternate-framework files remain the clearest missing domain surface.
 
 ## Update Rule
 

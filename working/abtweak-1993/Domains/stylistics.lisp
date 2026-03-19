@@ -1,15 +1,15 @@
-From nbenhass Wed Mar 18 17:56:07 1992
-Received: by logos.waterloo.edu id <168719>; Wed, 18 Mar 1992 17:56:01 -0500
-From: Nadia BenHassine <nbenhass>
-To: qyang
-Subject: stylistics domain
-Return-Receipt-To: nbenhass
-Message-Id: <92Mar18.175601est.168719@logos.waterloo.edu>
-Date: Wed, 18 Mar 1992 17:55:55 -0500
-Status: RO
-
-
-***************************************************************************
+; Mail header preserved from the historical 1992 source snapshot.
+; From nbenhass Wed Mar 18 17:56:07 1992
+; Received: by logos.waterloo.edu id <168719>; Wed, 18 Mar 1992 17:56:01 -0500
+; From: Nadia BenHassine <nbenhass>
+; To: qyang
+; Subject: stylistics domain
+; Return-Receipt-To: nbenhass
+; Message-Id: <92Mar18.175601est.168719@logos.waterloo.edu>
+; Date: Wed, 18 Mar 1992 17:55:55 -0500
+; Status: RO
+;
+;***************************************************************************
 ; stylistics domain definition
 ;***************************************************************************
 (setq *domain* 'stylistics)
@@ -437,7 +437,7 @@ Status: RO
                    g28 g29 g30 g31
                    a b c d e f g h i j k l m n o))
 
-; initial state
+; historical sample task
 ;
 ;(setq initial '((initial-pos a) (final-pos b)
 ;                (excessive-pp a) (excessive-postmod a) ))
@@ -494,4 +494,3 @@ Status: RO
 (setq *critical-loaded* 'style-default)
 
 (setq *left-wedge-list* '(0 1 5))
-

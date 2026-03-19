@@ -35,6 +35,8 @@ See [historical/Abtweak/Abtweak-1993/Doc/users-manual.tex](/Users/stevenwoods/mm
 | `robot2-abtweak` | [working/abtweak-1993/Domains/simple-robot-2.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/simple-robot-2.lisp#L1) | `abtweak` | Solves | Cost `12`, length `14`, `kval 0`, user heuristic plus primary effects |
 | `computer-tweak` | [working/abtweak-1993/Domains/computer.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/computer.lisp#L1) | `tweak` | Solves | Cost `6`, length `8`, `kval 0`, with primary effects enabled |
 | `computer-abtweak` | [working/abtweak-1993/Domains/computer.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/computer.lisp#L1) | `abtweak` | Solves | Cost `6`, length `8`, `kval 0`, with primary effects enabled |
+| `stylistics-tweak` | [working/abtweak-1993/Domains/stylistics.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/stylistics.lisp#L1) | `tweak` | Solves | Restored from the commented historical sample task; cost `4`, length `6`, `kval 0` |
+| `stylistics-abtweak` | [working/abtweak-1993/Domains/stylistics.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/stylistics.lisp#L1) | `abtweak` | Solves | Same restored sample task; cost `4`, length `6`, `kval 0` |
 | `biology-goal1-abtweak` | [working/abtweak-1993/Domains/biology.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/biology.lisp#L1) | `abtweak` | Solves | Cost `8`, length `10`, `kval 0` on the first shipped biology goal |
 | `biology-goal2-abtweak` | [working/abtweak-1993/Domains/biology.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/biology.lisp#L1) | `abtweak` | Solves | Cost `1`, length `3`, `kval 0` on the second shipped biology goal |
 | `biology-goal3-abtweak` | [working/abtweak-1993/Domains/biology.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/biology.lisp#L1) | `abtweak` | Solves | Cost `2`, length `4`, `kval 0` on the third shipped biology goal |
@@ -55,13 +57,15 @@ The most useful near-term mix is:
 
 1. small core baselines: `blocks`, `registers`, `hanoi-3`
 2. abstraction and control comparisons: `Nilsson blocks`, `robot1`, `robot2`
-3. broader shipped-domain coverage: `computer`, `biology`, `fly`, `database`, `macro-hanoi`
+3. broader shipped-domain coverage: `computer`, `stylistics`, `biology`, `fly`, `database`, `macro-hanoi`
 
 ## Reproducible Commands
 
 ```sh
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh computer-tweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh computer-abtweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh stylistics-tweak
+/Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh stylistics-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh biology-goal1-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh biology-goal2-abtweak
 /Users/stevenwoods/mmath-renovation/scripts/smoke-abtweak-1993-sbcl.sh biology-goal3-abtweak

@@ -58,7 +58,7 @@ For deeper technical detail, see:
 
 - Runtime restoration: first milestone substantially achieved
 - Historical validation: in progress, and the validation matrix is now explicitly labeled against the published expectations
-- Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage
+- Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage, though `stylistics` has now moved out of the missing-sample bucket
 - Top-level recommendation: converge the repo toward one unified restored
   experimental environment, then keep `hanoi-4` as the highest-priority open
   benchmark inside that structure
@@ -120,6 +120,8 @@ Verified smoke results:
 | `macro-hanoi4-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
 | `computer-tweak` | `tweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
 | `computer-abtweak` | `abtweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
+| `stylistics-tweak` | `tweak` | Solves | Restored historical sample task, cost `4`, plan length `6`, `kval 0` |
+| `stylistics-abtweak` | `abtweak` | Solves | Same sample task, cost `4`, plan length `6`, `kval 0` |
 | `biology-goal1-abtweak` | `abtweak` | Solves | Cost `8`, plan length `10`, `kval 0` |
 | `biology-goal2-abtweak` | `abtweak` | Solves | Cost `1`, plan length `3`, `kval 0` |
 | `biology-goal3-abtweak` | `abtweak` | Solves | Cost `2`, plan length `4`, `kval 0` |
@@ -148,6 +150,7 @@ Verified smoke results:
   - `robot1-abtweak-no-lw` also fails, which makes it a second robot-domain left-wedge comparison rather than a duplicate of `simple-robot-2`
 - Several additional historically shipped sample domains are now verified under SBCL:
   - `computer` solves in both `tweak` and `abtweak`
+  - `stylistics` now solves in both `tweak` and `abtweak` using the preserved commented sample task in the domain file
   - `biology` goals 1, 2, and 3 solve in `abtweak`
   - `fly` to Washington DC solves in `abtweak`
   - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
