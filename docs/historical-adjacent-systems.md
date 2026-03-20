@@ -45,6 +45,7 @@ The local wrapper files suggest this copy was used as working material in April 
 The dedicated comparison note is:
 
 - [mini-tweak-lineage.md](/Users/stevenwoods/mmath-renovation/docs/mini-tweak-lineage.md#L1)
+- [mini-tweak-side-experiment.md](/Users/stevenwoods/mmath-renovation/docs/mini-tweak-side-experiment.md#L1)
 
 ### `KautzPR`
 
