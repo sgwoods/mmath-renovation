@@ -140,6 +140,7 @@ emit_status_json() {
 {
   "kind": "status",
   "families": [
+    {"family":"hanoi-2-lineage","status":"reproduced"},
     {"family":"blocks-baseline","status":"reproduced"},
     {"family":"hanoi-3","status":"reproduced"},
     {"family":"hanoi-4","status":"partially-reproduced"},
@@ -179,6 +180,7 @@ list_reports() {
 benchmark-status
 compare-core
 hanoi-search-baselines
+hanoi2-historical
 wide-domain-sweep
 hanoi3-hierarchies
 hanoi3-historical
@@ -213,6 +215,9 @@ run_report() {
       ;;
     hanoi-search-baselines)
       sh "$SCRIPT_DIR/run-hanoi-search-baselines.sh"
+      ;;
+    hanoi2-historical)
+      sh "$SCRIPT_DIR/compare-hanoi2-historical-controls-sbcl.sh"
       ;;
     wide-domain-sweep)
       sh "$SCRIPT_DIR/wide-domain-sweep-sbcl.sh"

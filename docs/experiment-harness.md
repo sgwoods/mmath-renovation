@@ -93,6 +93,7 @@ The current named reports are:
 - `benchmark-status`
 - `compare-core`
 - `hanoi-search-baselines`
+- `hanoi2-historical`
 - `wide-domain-sweep`
 - `hanoi3-hierarchies`
 - `hanoi3-historical`
@@ -118,6 +119,7 @@ body as one machine-readable object.
 The historical Hanoi report families should now be treated as harness-native
 entry points:
 
+- `report hanoi2-historical`
 - `report hanoi3-historical`
 - `report hanoi4-historical`
 - `report hanoi4-frontier-replay`

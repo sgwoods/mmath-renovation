@@ -10,6 +10,7 @@ status. It complements the detailed matrix in
 
 | Family | Status | Main evidence | Next step |
 | --- | --- | --- | --- |
+| Hanoi-2 lineage | reproduced | the restored six-hierarchy family now matches the archived 1990 two-disk batch outputs exactly, and both default `tweak` and `abtweak` smoke cases solve | keep as a fast historical regression for the Hanoi compatibility surface |
 | Blocks baseline | reproduced | `blocks-sussman` solves in `tweak` and `abtweak`; Nilsson blocks also solves in both modes | keep as stable regression baseline |
 | Hanoi-3 | reproduced | `hanoi-3` solves in both modes and the 1991 compatibility layer now reproduces a broad historical control slice exactly | widen historical comparison only when useful |
 | Hanoi-4 | partially reproduced | hierarchy sensitivity, MP effects, historical-control vocabulary, and frontier traces are all restored enough to explain much of the behavior, but a full solve is still missing | keep `ismb` and `isbm` as the main open comparison path |

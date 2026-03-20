@@ -25,7 +25,7 @@ This repository is now past the initial documentation bootstrap. The current foc
 
 Current milestone:
 
-- the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, solves `hanoi-3` and `macro-hanoi` in both `tweak` and `abtweak`, shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`, runs `hanoi-4` to a bounded search outcome in both modes under the restored BFS path, and can execute the historical DFS path again under SBCL
+- the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, restores the early `hanoi-2` family exactly against archived outputs, solves `hanoi-3` and `macro-hanoi` in both `tweak` and `abtweak`, shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`, runs `hanoi-4` to a bounded search outcome in both modes under the restored BFS path, and can execute the historical DFS path again under SBCL
 
 Current pre-release version:
 
@@ -62,6 +62,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Hanoi-4 formal state](./docs/hanoi4-formal-state.md): formal handoff note capturing the current four-disk diagnosis, strongest runtime path, and recommended re-entry point
 - [Hanoi publication alignment](./docs/hanoi-publication-alignment.md): exact row-level comparison between the original thesis Hanoi figure and the restored `hanoi-3` experiment family, clarifying that `hanoi-4` is a later extension
+- [Hanoi-2 1990 compatibility layer](./docs/hanoi2-1990-compatibility.md): exact archived-family rerun of the recovered two-disk Hanoi hierarchy surface, including all six early hierarchy rows
 - [Hanoi-4 strategy crosswalk](./docs/hanoi4-strategy-crosswalk.md): consolidated table of publication claims, historical/current code support, and measured strategy performance
 - [Hanoi-4 successful combination hypothesis](./docs/hanoi4-successful-combination-hypothesis.md): current best read on which publication-era Hanoi hierarchy/control combinations were meant to work, which ones are reconstructed, and which historical controls may still be missing
 - [Hanoi-4 1991 compatibility start](./docs/hanoi4-1991-compatibility.md): current four-disk historical-control surface, including restored `strong` MSP and optional restored tree goal ordering
@@ -103,11 +104,11 @@ Direct links and brief notes for each item are collected in [docs/references.md]
 
 ## Immediate Next Steps
 
-1. converge the current runners, historical-control wrappers, and trace workflows into one coherent restored experiment environment
-2. keep `hanoi-4` as the highest-value open benchmark inside that unified structure
-3. widen historically grounded operator-style coverage where it improves the validation story
-4. continue tightening the claim-by-claim reproduction matrix against the checked-in publications
-5. decide whether the alternate `reset-domain` / `defstep` framework belongs in the same restoration milestone or in a later dedicated phase
+1. keep `hanoi-4` as the highest-value open benchmark now that `hanoi-2` and `hanoi-3` are both historically aligned in the restored surface
+2. widen historically grounded operator-style coverage where it still improves the validation story
+3. continue tightening the claim-by-claim reproduction matrix against the checked-in publications
+4. decide whether the alternate `reset-domain` / `defstep` framework belongs in the same restoration milestone or in a later dedicated phase
+5. keep trimming residual SBCL noise where it helps debugging without changing planner semantics
 
 ## Historical Code
 

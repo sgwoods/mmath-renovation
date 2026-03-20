@@ -4,6 +4,72 @@
 ; small compatibility surface for the published/archived Hanoi experiments on
 ; top of the preserved 1993 baseline.
 
+(defun historical-hanoi2-hierarchy-symbol (hierarchy)
+  (case hierarchy
+    ((ibs) '*ibs*)
+    ((sib) '*sib*)
+    ((bsi) '*bsi*)
+    ((bis) '*bis*)
+    ((sbi) '*sbi*)
+    ((isb) '*isb*)
+    (t
+     (error "Unknown hanoi-2 hierarchy ~S" hierarchy))))
+
+(defun historical-hanoi2-left-wedge-list (hierarchy)
+  (case hierarchy
+    ((ibs) *ibs-k-list*)
+    ((sib) *sib-k-list*)
+    ((bsi) *bsi-k-list*)
+    ((bis) *bis-k-list*)
+    ((sbi) *sbi-k-list*)
+    ((isb) *isb-k-list*)
+    (t
+     (error "Unknown hanoi-2 hierarchy ~S" hierarchy))))
+
+(defun configure-historical-hanoi2 (hierarchy)
+  "Select the requested historical hanoi-2 hierarchy and its k-list analogue."
+  (let ((hierarchy-symbol (historical-hanoi2-hierarchy-symbol hierarchy)))
+    (setq *critical-list* (symbol-value hierarchy-symbol))
+    (setq *critical-loaded* hierarchy)
+    (setq *left-wedge-list* (historical-hanoi2-left-wedge-list hierarchy))
+    hierarchy-symbol))
+
+(defun historical-msp->mp-mode (msp-mode)
+  "Map the older 1991 MSP selector onto the 1993 boolean MP flag."
+  (cond ((null msp-mode) nil)
+	((eq msp-mode 'weak) t)
+	((eq msp-mode 'strong) 'strong)
+	(t
+	 (error "Unknown historical MSP mode ~S" msp-mode))))
+
+(defun historical-hanoi2-plan
+    (initial goal &key
+		   (hierarchy 'ibs)
+		   (planner-mode 'abtweak)
+		   (msp-mode nil)
+		   (msp-weak-mode 'nec)
+		   (crit-depth-mode nil)
+		   (determine-mode 'stack)
+		   (left-wedge-mode nil)
+		   (output-file 'no-output)
+		   (expand-bound 2000)
+		   (generate-bound 8000)
+		   (open-bound 8000)
+		   (cpu-sec-limit 15))
+  "Run a hanoi-2 plan using the archived 1990 experiment-style controls."
+  (configure-historical-hanoi2 hierarchy)
+  (plan initial goal
+	:planner-mode planner-mode
+	:mp-mode (historical-msp->mp-mode msp-mode)
+	:mp-weak-mode msp-weak-mode
+	:subgoal-determine-mode determine-mode
+	:left-wedge-mode (or left-wedge-mode crit-depth-mode)
+	:output-file output-file
+	:expand-bound expand-bound
+	:generate-bound generate-bound
+	:open-bound open-bound
+	:cpu-sec-limit cpu-sec-limit))
+
 (defun historical-hanoi3-hierarchy-symbol (hierarchy)
   (case hierarchy
     ((critical-list-1) '*critical-list-1*)
@@ -46,14 +112,6 @@
     (setq *critical-loaded* hierarchy)
     (setq *left-wedge-list* (historical-hanoi3-left-wedge-list hierarchy))
     hierarchy-symbol))
-
-(defun historical-msp->mp-mode (msp-mode)
-  "Map the older 1991 MSP selector onto the 1993 boolean MP flag."
-  (cond ((null msp-mode) nil)
-	((eq msp-mode 'weak) t)
-	((eq msp-mode 'strong) 'strong)
-	(t
-	 (error "Unknown historical MSP mode ~S" msp-mode))))
 
 (defun historical-hanoi3-plan
     (initial goal &key

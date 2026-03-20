@@ -46,6 +46,7 @@ What is done:
 
 - the core papers, reports, and archive page are checked into the repo
 - the validation matrix exists and is source-backed
+- the early `hanoi-2` family is now restored as an exact archived-family rerun
 - `hanoi-4` hierarchy behavior is no longer a black box
 - the current code has been checked against the archival algorithm structure, and no major algorithm drift has been found
 
@@ -60,7 +61,7 @@ Status: good baseline, but not yet broad enough to declare restoration finished
 
 What is done:
 
-- core blocks, Nilsson blocks, registers, Hanoi-3, macro-Hanoi, and robot examples run
+- core blocks, Nilsson blocks, registers, Hanoi-2, Hanoi-3, macro-Hanoi, and robot examples run
 - several shipped sample domains now run under SBCL
 
 What is still open:
@@ -106,7 +107,7 @@ Focus on:
 
 Reason:
 
-This is the highest-value remaining runtime question. We now know hierarchy choice matters and we know which hierarchy families look promising. The next step is to see whether better bounds, tuned settings, or a still-missing fidelity detail can turn that into a real `hanoi-4` solve.
+This is the highest-value remaining runtime question. We now have a cleaner historical Hanoi ladder, with exact `hanoi-2` and exact `hanoi-3` below it, so `hanoi-4` is now more clearly the main open larger extension benchmark. The next step is to see whether better bounds, tuned settings, or a still-missing fidelity detail can turn that into a real `hanoi-4` solve.
 
 Relevant issue:
 
@@ -122,9 +123,10 @@ Focus on:
 
 Reason:
 
-The matrix is now labeled, and the direct operator-style sweep is healthy
-enough that broader historically grounded coverage is the best next confidence
-builder after `hanoi-4`.
+The matrix is now labeled, `stylistics` is restored, and the direct
+operator-style sweep is healthy enough that broader historically grounded
+coverage is now a secondary confidence-builder after `hanoi-4`, not a primary
+gap.
 
 Relevant issue:
 
@@ -170,11 +172,10 @@ Relevant issue:
 
 Order:
 
-1. unify the experiment infrastructure
-2. `#14`
-3. `#13`
-4. `#16`
-5. `#12`
+1. `#14`
+2. `#13`
+3. `#16`
+4. `#12`
 
 Why choose it:
 
@@ -182,7 +183,8 @@ This is the best option if the main goal is to get the planner closer to a fully
 
 Tradeoff:
 
-Historical labeling stays a little behind while we keep working the hard benchmark.
+Broader non-Hanoi validation grows a little more slowly while we keep working
+the hard larger-Hanoi benchmark.
 
 ### Option B: Validation-First
 
@@ -222,19 +224,17 @@ It risks deferring the hardest and most informative restoration question.
 
 Recommended order:
 
-1. unify the experiment infrastructure
-2. `#14`
-3. `#13`
-4. `#16`
-5. `#12`
+1. `#14`
+2. `#13`
+3. `#16`
+4. `#12`
 
 Why this order makes the most sense:
 
-- the project is now strong enough that the highest-value top-level move is to
-  consolidate it into one restored experiment environment rather than keep
-  growing ad hoc runners
 - `hanoi-4` is still the clearest remaining benchmark boundary between “strong
   partial restoration” and “historically convincing restoration”
+- the repo now has a cleaner historical Hanoi ladder below it, with exact
+  `hanoi-2` and exact `hanoi-3` compatibility surfaces already in place
 - the publications and hierarchy mapping work mean we now have enough context to investigate `hanoi-4` intelligently
 - once that line is pushed as far as practical, broader sample coverage is the
   highest-value way to widen confidence in the restoration

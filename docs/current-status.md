@@ -23,6 +23,7 @@ For deeper technical detail, see:
 - [Hanoi-4 trace workflow](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 - [Hanoi-4 formal state](/Users/stevenwoods/mmath-renovation/docs/hanoi4-formal-state.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+- [Hanoi-2 1990 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi2-1990-compatibility.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
@@ -110,6 +111,8 @@ Verified smoke results:
 | `nils-blocks-tweak` | `tweak` | Solves | Cost `6`, plan length `8`, `kval 0` |
 | `nils-blocks-abtweak` | `abtweak` | Solves | Cost `6`, plan length `8`, `kval 0`, with `*mp-pruned* = 1` |
 | `registers-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `hanoi2-tweak` | `tweak` | Solves | Cost `3`, plan length `5`, `kval 0` |
+| `hanoi2-abtweak` | `abtweak` | Solves | Cost `3`, plan length `5`, `kval 0`; default `ibs` hierarchy also matches archived `11 / 19` counts exactly |
 | `hanoi3-tweak` | `tweak` | Solves | Cost `7`, plan length `9`, `kval 0` |
 | `hanoi3-abtweak` | `abtweak` | Solves | Cost `7`, plan length `9`, `kval 0` |
 | `hanoi4-tweak` | `tweak` | Bounded failure | `EXPAND-LIMIT-EXCEEDED` at the current exploratory larger-Hanoi bounds |
@@ -154,6 +157,10 @@ Verified smoke results:
   - `biology` goals 1, 2, and 3 solve in `abtweak`
   - `fly` to Washington DC solves in `abtweak`
   - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
+- The early `hanoi-2` lineage is now restored into the active harness too:
+  - `hanoi2-tweak` and `hanoi2-abtweak` both solve with cost `3`, plan length `5`, `kval 0`
+  - the recovered six-hierarchy family now matches the archived 1990 batch outputs exactly at the expanded/generated level
+  - that gives the repo a cleaner historical Hanoi ladder: exact `hanoi-2`, exact `hanoi-3`, and open `hanoi-4`
 - The first broader cross-domain sweep now extends that coverage:
   - `registers` solves in both `tweak` and `abtweak`
   - `blocks` / `interchange` and `blocks` / `flatten` solve in both modes
@@ -308,7 +315,7 @@ Verified smoke results:
 
 - The archival source trees are preserved as historical artifacts, including old compiled Lisp outputs.
 - Most remaining risk is semantic validation, not basic SBCL compatibility.
-- The largest open gaps are now pushing the best `hanoi-4` configuration toward a full solve, widening historically grounded sample coverage, and deciding how much of the alternate `reset-domain` framework to restore after the main AbTweak path.
+- The largest open gaps are now pushing the best `hanoi-4` configuration toward a full solve, deciding how much more operator-style coverage still adds value after the restored `hanoi-2` and `stylistics` checkpoints, and determining how much of the alternate `reset-domain` framework to restore after the main AbTweak path.
 
 ## Reproducible Commands
 
