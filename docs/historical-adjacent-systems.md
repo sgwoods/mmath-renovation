@@ -42,6 +42,10 @@ The preserved source in [historical/Mini-Tweak/Original/minitweak.lsp](/Users/st
 
 The local wrapper files suggest this copy was used as working material in April 1990. It is not the same planner as the AbTweak line, but it is clearly relevant to the TWEAK background.
 
+The dedicated comparison note is:
+
+- [mini-tweak-lineage.md](/Users/stevenwoods/mmath-renovation/docs/mini-tweak-lineage.md#L1)
+
 ### `KautzPR`
 
 The preserved demo and implementation files identify this as Henry Kautz's plan-recognition system. It has:

@@ -59,6 +59,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`
+- [Mini-Tweak lineage note](./docs/mini-tweak-lineage.md): focused note on the recovered simplified TWEAK workspace and how it differs from the main AbTweak code line
 - [Publication domain crosswalk](./docs/publication-domain-crosswalk.md): concise mapping from each domain family to the papers/manual and whether we can rerun it exactly, strongly, partially, or not yet
 - [Algorithm strategy policy](./docs/algorithm-strategy-policy.md): rule for keeping the restored `Abtweak-1993` baseline historically aligned while clearly naming any later non-domain-specific strategy extensions
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
