@@ -57,6 +57,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
+- [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Publication domain crosswalk](./docs/publication-domain-crosswalk.md): concise mapping from each domain family to the papers/manual and whether we can rerun it exactly, strongly, partially, or not yet
 - [Algorithm strategy policy](./docs/algorithm-strategy-policy.md): rule for keeping the restored `Abtweak-1993` baseline historically aligned while clearly naming any later non-domain-specific strategy extensions
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs

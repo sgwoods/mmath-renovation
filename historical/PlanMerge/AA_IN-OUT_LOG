@@ -1,0 +1,4 @@
+FILE		Date			Date		Comments
+		Last IN (Unix)		Last OUT (PC)
+merge.lsp	04/02/90 14:43p		04/05/90 1:00p  Up to fix
+		04/05/90 17:13p	   			Fixed, some bugs left

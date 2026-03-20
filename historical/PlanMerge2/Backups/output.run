@@ -1,0 +1,52 @@
+2>[51]% kcl
+KCl (Kyoto Common Lisp)  June 3, 1987
+
+>(load "merge.l")
+Loading merge.l
+Finished loading merge.l
+T
+
+>plans
+((A B C F G A) (A E F G A E R) (A B C D E F Z))
+
+>(count_list plans)
+T
+
+>(pivot)
+5
+A
+
+>(get 'a 'count)
+5
+
+>(get 'b 'count)
+2
+
+>(get 'c 'count)
+2
+
+>(get 'd 'count)
+1
+
+>(get 'e 'count)
+3
+
+>(get 'f 'count)
+3
+
+>(get 'g 'count)
+2
+
+>(get 'z 'count)
+1
+
+>(plan_set plans)
+((A B C F G A) (A E F G A E R) (A B C D E F Z))
+
+>plans
+((A B C F G A) (A E F G A E R) (A B C D E F Z))
+
+>(plan_set '(A A A))
+(A)
+
+>

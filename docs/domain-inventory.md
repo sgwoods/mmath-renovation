@@ -74,6 +74,7 @@ historical experiment surface.
 | `nils/crit*` and `crit*-out` | `1990-12`, `1990-12b`, `1991-08` | Alternate Nilsson criticality definitions and some recorded outputs. | Useful for future MP and hierarchy-comparison restoration. |
 | `Save/AbTweak-results.runs`, `Save/Tweak-results.runs`, `robot.output`, `robot.plans`, `robot.work` | early trees | Saved experiment outputs and workspace artifacts. | Important provenance for matching historical runs, even when the exact input script is not obvious. |
 | `jens-hanoi.lsp`, `jens-ab-succ.lsp`, `hanoi-3a.lsp`, `hanoi-2a.lsp` | early trees | Variant successor logic or alternate Hanoi formulations. | Potentially valuable if the main restored line still misses some historically reported behavior. |
+| `PlanMerge`, `PlanMerge2` | adjacent historical import | Small April 1990 Lisp workspace centered on `merge.good.lsp`, with backups, a KCL-era `output.run`, and an in/out transfer log. | Not part of the main AbTweak planner line, but likely relevant adjacent research code worth preserving and provenance-tracking. `PlanMerge2` currently appears to be a duplicate copy of `PlanMerge` apart from `.DS_Store`. |
 
 ## Current Inventory Interpretation
 
