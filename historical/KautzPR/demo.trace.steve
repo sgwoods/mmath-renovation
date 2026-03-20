@@ -1,0 +1,889 @@
+Kautz Demo - Page 1
+
+Allegro CL 4.0.1 [Sun4] (2/8/91)
+Copyright (C) 1985-1991, Franz Inc., Berkeley, CA, USA
+<cl>  (load "demo/demo")
+
+; Loading /u/sgwoods/Kautz/demo/demo.lisp.
+
+T
+<cl>
+
+<cl>  (demo  "demo/load-recognizer.lisp")
+
+;; You are running the demo program.  Hit <space> or y after each command
+;; is printed to execute that command.  Hit n to skip that command, q
+;; to quit, and e to enter an immediate expression for evaluation.
+
+;;;; *imp-dir* is set to the directory containing the implementation.
+
+Command: (SETQ *IMP-DIR* (TRANSLATE-PATHNAME "/u/sgwoods/Kautz/imp/low-level"))y
+
+  #p"/u/sgwoods/Kautz/imp/low-level"
+;; *test-dir* is set to the directory containing the hierarchies.
+
+Command: (SETQ *TEST-DIR* (TRANSLATE-PATHNAME "/u/sgwoods/Kautz/test/cook-test1"))y
+
+  #p"/u/sgwoods/Kautz/test/cook-test1"
+
+;;;; Load the implementation.
+
+Command: (LOAD (MERGE-PATHNAMES "low-level" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/low-level.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "database" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/database.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "upward-infer" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/upward-infer.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "eq-constraints" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/eq-constraints.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "time-constraints" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/time-constraints.lisp.
+
+  T
+
+
+Command: (LOAD (MERGE-PATHNAMES "matcher" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/matcher.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "update" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/update.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "list-matcher" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/list-matcher.lisp.
+
+  T
+
+Command: (LOAD (MERGE-PATHNAMES "parse-sentence" *IMP-DIR*))y
+
+; Loading /u/sgwoods/Kautz/imp/parse-sentence.lisp.
+
+  T
+
+
+NIL
+<cl> (demo "demo/english-showoff.lisp")
+
+;;; -*- Syntax: Common-lisp; Package: USER -*-
+;;; Copyright 1987 by Henry A. Kautz
+;;; No warranty as to the correctness or usefulness of this software
+;;; is given or implied.
+;;;
+;;; The author may be contacted at the following addresses:
+;;; :uucp:      allegra!kautz
+;;; :arpa: or :csnet:   kautz@research.att.com
+;;; :old style csnet:   kautz%allegra@btl.csnet
+;;; :mail:      AT&T Bell Laboratories
+;;;             Room 2C-407
+;;;             600 Mountain Ave.
+;;;             Murray Hill, N.J. 07974
+
+;; Trace the inference process.
+;; Turn this off by skipping this command (hit "n"), or later by entering
+;; the immediate command (ee "Don't trace.").
+
+Command: (EE "Don't Trace.")y
+  Translation: (SETQ *NOISY* NIL)
+  NIL
+
+
+Command: (EE "Clear the database.")y
+  Translation: (CLEAR-ALL-MAPPINGS)
+  EQUALP
+
+;****************************************************
+;* Hunt-rob-test                                    *
+;*    demonstrates upward inference and matching,   *
+;*    without parameters.                           *
+;****************************************************
+
+Command: (EE "Load file hunt-rob-test.")y
+  Translation: (LOAD (MERGE-PATHNAMES hunt-rob-test *TEST-DIR*))
+; Loading /u/sgwoods/Kautz/test/hunt-rob-test.lisp.
+
+  T
+;;
+;; Multiple-Grouping Example.  Incremental algorithm finds one
+;; solution, but the non-dichronic algorithm will find two.
+;;
+;;  INCREMENTAL version
+;;
+
+Command: (EE "Perform incremental updates.")y
+  Translation: (SETQ *UPDATE-TYPE* 'INCREMENTAL)
+  INCREMENTAL
+
+
+Command: (EE "Initialize the hypothesis set.")y
+  Translation: (INIT-HYPOTHS)
+  (NIL)
+
+
+Command: (EE "Joe gets a gun.")y
+  Translation: (UPDATE '(GET-GUN (AGENT JOE)))
+  NIL
+
+Command: (EE "Show the hypothesis set in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG826)
+|  where
+
+======================================
+
+graph EG826
+END861 ((AGENT JOE))
+      ?= HUNT877 ((AGENT JOE))
+           S1 -> GET-GUN830 ((AGENT JOE))
+      ?= ROB-BANK840 ((AGENT JOE))
+           S1 -> GET-GUN830 ((AGENT JOE))  ^
+  NIL
+
+Command: (EE "Someone goes to the bank.")y
+  Translation: (UPDATE '(GO-TO-BANK))
+  NIL
+
+Command: (EE "Show the hypothesis set in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG826+EG923)
+|  where
+
+======================================
+
+graph EG826+EG923
+END1000 ((AGENT JOE))
+      ?= ROB-BANK1020 ((AGENT JOE))
+           S2 -> GO-TO-BANK1051 NIL
+           S1 -> GET-GUN1036 ((AGENT JOE))
+  NIL
+
+Command: (EE "Someone goes to the woods.")y
+  Translation: (UPDATE '(GO-TO-WOODS))
+  NIL
+
+Command: (EE "Show all in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG1073 EG826+EG923)
+|  where
+
+======================================
+
+graph EG1073
+END1098 NIL
+      ?= HUNT1084 NIL
+           S2 -> GO-TO-WOODS1077 NIL
+
+======================================
+
+graph EG826+EG923
+END1000 ((AGENT JOE))
+      ?= ROB-BANK1020 ((AGENT JOE))
+           S2 -> GO-TO-BANK1051 NIL
+           S1 -> GET-GUN1036 ((AGENT JOE))
+  NIL
+
+;;
+;;  NON-DICHRONIC version
+;;
+
+Command: (EE "Perform non-dichronic updates.")y
+  Translation: (SETQ *UPDATE-TYPE* 'NON-DICHRONIC)
+  NON-DICHRONIC
+
+Command: (EE "Initialize the hypothesis set.")y
+  Translation: (INIT-HYPOTHS)
+  (NIL)
+
+
+Command: (EE "Joe gets a gun.")y
+  Translation: (UPDATE '(GET-GUN (AGENT JOE)))
+  NIL
+
+Command: (EE "Show the hypothesis set in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG1152)
+|  where
+
+======================================
+
+graph EG1152
+END1187 ((AGENT JOE))
+      ?= HUNT1203 ((AGENT JOE))
+           S1 -> GET-GUN1156 ((AGENT JOE))
+      ?= ROB-BANK1166 ((AGENT JOE))
+           S1 -> GET-GUN1156 ((AGENT JOE))  ^
+  NIL
+
+Command: (EE "Someone goes to the bank.")y
+  Translation: (UPDATE '(GO-TO-BANK))
+  NIL
+
+Command: (EE "Show the hypothesis set in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG1152+EG1249)
+|  where
+
+======================================
+
+graph EG1152+EG1249
+END1326 ((AGENT JOE))
+      ?= ROB-BANK1346 ((AGENT JOE))
+           S2 -> GO-TO-BANK1377 NIL
+           S1 -> GET-GUN1362 ((AGENT JOE))
+  NIL
+
+Command: (EE "Someone goes to the woods.")y
+  Translation: (UPDATE '(GO-TO-WOODS))
+  NIL
+
+Command: (EE "Show all in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 2 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG1152+EG1399 EG1249)
+|  where
+
+======================================
+
+graph EG1152+EG1399
+END1504 ((AGENT JOE))
+      ?= HUNT1524 ((AGENT JOE))
+           S2 -> GO-TO-WOODS1555 NIL
+           S1 -> GET-GUN1540 ((AGENT JOE))
+
+======================================
+
+
+graph EG1249
+END1274 NIL
+      ?= ROB-BANK1287 NIL
+           S2 -> GO-TO-BANK1253 NIL
+      ?= CASH-CHECK1260 NIL
+           S1 -> GO-TO-BANK1253 NIL  ^
+********************************************************
+
+|  Hypthosis set 2 is (EG1399 EG1152+EG1249)
+|  where
+
+======================================
+
+graph EG1399
+END1424 NIL
+      ?= HUNT1410 NIL
+           S2 -> GO-TO-WOODS1403 NIL
+
+======================================
+
+graph EG1152+EG1249
+END1326 ((AGENT JOE))
+      ?= ROB-BANK1346 ((AGENT JOE))
+           S2 -> GO-TO-BANK1377 NIL
+           S1 -> GET-GUN1362 ((AGENT JOE))
+  NIL
+
+
+
+;******************************************************
+;* Cooking hierarchy tests                            *
+;*   Demonstrates multi-level hierarchy & constraints *
+;*   This section also demonstrates explicit control  *
+;*   of the matching process.                         *
+;******************************************************
+
+
+Command: (EE "Clear.")y
+  Translation: (CLEAR-ALL-MAPPINGS)
+  EQUALP
+
+Command: (EE "Load file cook-hierarchy-test.")y
+  Translation: (LOAD (MERGE-PATHNAMES cook-hierarchy-test *TEST-DIR*))
+; Loading /u/sgwoods/Kautz/test/cook-hierarchy-test.lisp.
+
+  T
+
+;; Notice that the hierarchy has the constraint that the agent of make-pasta-dish
+;; must be Italian.  Let's assume that a person is only Italian if we know he is.
+
+Command: (NEGATION-BY-FAILURE 'ITALIAN)y
+
+  T
+;;
+;; First observation is make-sauce(obs-sauce), with agent Joe, during
+;; time interval beginning between 4 and 5, and ending before 7.
+;; Note that times are represented by VECTORS with 'time as first element.
+;; The parameters of the observation are specified by a list of (role value) pairs.
+;; The first use of the symbol "time" below refers to the role Time, while the second
+;; merely identifies the vector value as a time.
+
+
+Command: (EE "Let g1 explain why Joe makes sauce, starting between times 4 and 5 and ending
+ before 7.")y
+
+  Translation: (EXPLAIN-OBSERVATION '(MAKE-SAUCE (AGENT JOE) (TIME #(TIME 4 5 4 7))) 'G1)
+  T
+  MAKE-SAUCE2129
+
+
+Command: (EE "Show graph g1 in detail.")y
+  Translation: (DRAW-GRAPH T 'G1)
+graph G1
+END2294 NIL
+      ?= PREPARE-MEAL2281 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+           ?= MAKE-MEAT-DISH2268 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+                ?= MAKE-CHICKEN-MARINARA2244 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+                     S5 -> MAKE-MARINARA2231 ((AGENT JOE) (TIME #(TIME 4 5 4 7)))
+  (MAKE-MARINARA2231 MAKE-CHICKEN-MARINARA2244 MAKE-MEAT-DISH2268 PREPARE-MEAL2281 END2294)
+
+;; Notice that we eliminated the possibility of make-pasta-dish.
+;; Therefore the observation had to be of make-marinara.
+
+;; Now lets add the fact that Joe is Italian.  This fact does not take a temporal index.
+
+Command: (ADD-FACT '(ITALIAN JOE))y
+
+  T
+
+;; Try the observation of make-sauce again.  Use a different graph and
+;; starting node name to avoid conflicts.
+
+
+Command: (EE "Let g2 explain that from 4 5 to before 7 Joe cooks sauce.")y
+  Translation: (EXPLAIN-OBSERVATION '(MAKE-SAUCE (AGENT JOE) (TIME #(TIME 4 5 4 7))) 'G2)
+  T
+  MAKE-SAUCE2331
+
+
+Command: (EE "Show g2 in detail.")y
+  Translation: (DRAW-GRAPH T 'G2)
+graph G2
+END2405 NIL
+      ?= PREPARE-MEAL2392 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+           ?= MAKE-MEAT-DISH2620 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+                ?= MAKE-CHICKEN-MARINARA2596 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+                     S5 -> MAKE-MARINARA2583 ((AGENT JOE) (TIME #(TIME 4 5 4 7)))
+           ?= MAKE-PASTA-DISH2344 ((AGENT JOE) (TIME #(TIME -INF 5 4 +INF)))
+                S2 -> MAKE-SAUCE2331 ((AGENT JOE) (TIME #(TIME 4 5 4 7)))
+  (MAKE-SAUCE2331 MAKE-PASTA-DISH2344 MAKE-MARINARA2583 MAKE-CHICKEN-MARINARA2596 MAKE-MEAT
+-DISH2620 PREPARE-MEAL2392 END2405)
+
+;; This time make-pasta-dish WAS considered.
+
+;; The second observation is making noodles.
+
+
+
+Command: (EE "Let g3 explain why Joe makes noodles from 6 to between 7 and 9.")y
+  Translation: (EXPLAIN-OBSERVATION '(MAKE-NOODLES (AGENT JOE) (TIME #(TIME 6 6 7 9))) 'G3)
+
+  T
+  MAKE-NOODLES2649
+
+Command: (EE "show g3 in detail.")y
+  Translation: (DRAW-GRAPH T 'G3)
+graph G3
+END2723 NIL
+      ?= PREPARE-MEAL2710 ((AGENT JOE) (TIME #(TIME -INF 6 7 +INF)))
+           ?= MAKE-PASTA-DISH2662 ((AGENT JOE) (TIME #(TIME -INF 6 7 +INF)))
+                S1 -> MAKE-NOODLES2649 ((AGENT JOE) (TIME #(TIME 6 6 7 9)))
+  (MAKE-NOODLES2649 MAKE-PASTA-DISH2662 PREPARE-MEAL2710 END2723)
+
+;; We can merge g2 and g3 together: they can be steps of the same
+;; action, a make-pasta-dish.
+
+
+Command: (EE "Match g2 and g3.")y
+  Translation: (MATCH-GRAPHS 'G2 'G3 'G2+G3)
+  END2903
+
+
+Command: (EE "Show the result in detail.")y
+  Translation: (DRAW-GRAPH T)
+graph G2+G3
+END2903 NIL
+      ?= PREPARE-MEAL2912 ((AGENT JOE) (TIME #(TIME -INF 5 7 +INF)))
+           ?= MAKE-PASTA-DISH2927 ((AGENT JOE) (TIME #(TIME -INF 5 7 +INF)))
+                S1 -> MAKE-NOODLES2976 ((AGENT JOE) (TIME #(TIME 6 6 7 9)))
+                S2 -> MAKE-SAUCE2958 ((AGENT JOE) (TIME #(TIME 4 5 4 7)))
+  (MAKE-SAUCE2958 MAKE-NOODLES2976 MAKE-PASTA-DISH2927 PREPARE-MEAL2912 END2903)
+
+;; Now consider an observation of make-noodles with a different agent.
+;; Constants like agent are considered unique names, and all all
+;; unequal.
+
+
+Command: (ADD-FACT '(ITALIAN SALLY))y
+
+  T
+
+
+Command: (EE "Let g4 explain why Sally makes noodles from 7 to 9.")y
+  Translation: (EXPLAIN-OBSERVATION '(MAKE-NOODLES (AGENT SALLY) (TIME #(TIME 7 7 9 9))) 'G
+4)
+  T
+  MAKE-NOODLES3035
+
+;; Try to match this with the original make-sauce.  It will fail,
+;; because agent roles differ.
+
+
+Command: (EE "Match g2 and g4.")y
+  Translation: (MATCH-GRAPHS 'G2 'G4 'G2+G4)
+  NIL
+
+
+Command: (EE "Show the result.")y
+  Translation: (DRAW-GRAPH NIL)
+graph G2+G4
+END3289
+  (END3289)
+
+;; Lets check out the temporal constraints, now.  We'll observe a
+;; boiling event, but the time we be BEFORE the make-noodles event.
+;; This conflict will prevent a match.
+
+
+Command: (EE "Let g5 explain why somebody boils noodles from time 1 to time 2.")y
+  Translation: (EXPLAIN-OBSERVATION '(BOIL (TIME #(TIME 1 1 2 2))) 'G5)
+  T
+  BOIL3326
+
+
+Command: (EE "Show the result in detail.")y
+  Translation: (DRAW-GRAPH T)
+graph G5
+END3391 NIL
+      ?= PREPARE-MEAL3381 ((TIME #(TIME -INF 1 2 +INF)))
+           ?= MAKE-PASTA-DISH3336 ((TIME #(TIME -INF 1 2 +INF)))
+                S3 -> BOIL3326 ((TIME #(TIME 1 1 2 2)))
+  (BOIL3326 MAKE-PASTA-DISH3336 PREPARE-MEAL3381 END3391)
+
+;; Try to match this with g2 and g3
+
+
+Command: (EE "Match g2+g3 and g5 giving g2+g3+g5.")y
+  Translation: (MATCH-GRAPHS 'G2+G3 'G5 'G2+G3+G5)
+  NIL
+
+
+Command: (EE "Show graph g2+g3+g5.")y
+  Translation: (DRAW-GRAPH NIL 'G2+G3+G5)
+graph G2+G3+G5
+END3527
+  (END3527)
+
+;; Now lets find a LATER boiling event.  It should match okay.
+
+
+Command: (EE "Let g6 explain why from 10 to 12 somebody boils noodles.")y
+  Translation: (EXPLAIN-OBSERVATION '(BOIL (TIME #(TIME 10 10 12 12))) 'G6)
+  T
+  BOIL3656
+
+
+Command: (EE "Match graphs g2+g3 and g6.")y
+  Translation: (MATCH-GRAPHS 'G2+G3 'G6 'G2+G3+G6)
+  END3857
+
+
+Command: (EE "Show result in detail.")y
+  Translation: (DRAW-GRAPH T)
+graph G2+G3+G6
+END3857 NIL
+      ?= PREPARE-MEAL3866 ((AGENT JOE) (TIME #(TIME -INF 5 12 +INF)))
+           ?= MAKE-PASTA-DISH3881 ((AGENT JOE) (TIME #(TIME -INF 5 12 +INF)))
+                S1 -> MAKE-NOODLES3945 ((AGENT JOE) (TIME #(TIME 6 6 7 9)))
+                S2 -> MAKE-SAUCE3927 ((AGENT JOE) (TIME #(TIME 4 5 4 7)))
+                S3 -> BOIL3912 ((TIME #(TIME 10 10 12 12)))
+  (BOIL3912 MAKE-SAUCE3927 MAKE-NOODLES3945 MAKE-PASTA-DISH3881 PREPARE-MEAL3866 END3857)
+
+;; End of cooking examples
+
+;;; File System Example:  demonstrates multiple simultaneous plans.
+
+
+Command: (EE "Clear.")y
+  Translation: (CLEAR-ALL-MAPPINGS)
+  EQUALP
+
+Command: (EE "Load file-system-test.")y
+  Translation: (LOAD (MERGE-PATHNAMES file-system-test *TEST-DIR*))
+; Loading /u/sgwoods/Kautz/test/file-system-test.lisp.
+
+  T
+
+Command: (EE "Initialize.")y
+  Translation: (INIT-HYPOTHS)
+  (NIL)
+
+Command: (EE "Incremental update.")y
+  Translation: (SETQ *UPDATE-TYPE* 'INCREMENTAL)
+  INCREMENTAL
+
+Command: (EE "user copies file foo to file bar")y
+  Translation: (UPDATE '(COPY (OLD FOO) (NEW BAR)))
+  NIL
+;; Could be part of rename by copy, or of modify file
+
+Command: (EE "Show last graph in detail.")y
+  Translation: (DRAW-GRAPH T)
+graph EG4339
+END4413 NIL
+      ?= RENAME4466 ((OLD FOO) (NEW BAR))
+           ?= RENAME-BY-COPY4426 ((OLD FOO) (NEW BAR))
+                COPY-ORIG-STEP -> COPY4343 ((OLD FOO) (NEW BAR))
+      ?= MODIFY4356 ((FILE FOO))
+           BACKUP-STEP -> COPY4343 ((OLD FOO) (NEW BAR))  ^
+  (MODIFY4356 COPY4343 RENAME-BY-COPY4426 RENAME4466 END4413)
+
+Command: (EE "cp jack sprat")y
+  Translation: (UPDATE '(COPY (OLD JACK) (NEW SPRAT)))
+  NIL
+
+Command: (EE "Show hypotheses in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG4507 EG4339)
+|  where
+
+======================================
+
+graph EG4507
+END4581 NIL
+      ?= RENAME4634 ((OLD JACK) (NEW SPRAT))
+           ?= RENAME-BY-COPY4594 ((OLD JACK) (NEW SPRAT))
+                COPY-ORIG-STEP -> COPY4511 ((OLD JACK) (NEW SPRAT))
+      ?= MODIFY4524 ((FILE JACK))
+           BACKUP-STEP -> COPY4511 ((OLD JACK) (NEW SPRAT))  ^
+
+======================================
+
+graph EG4339
+END4413 NIL
+      ?= RENAME4466 ((OLD FOO) (NEW BAR))
+           ?= RENAME-BY-COPY4426 ((OLD FOO) (NEW BAR))
+                COPY-ORIG-STEP -> COPY4343 ((OLD FOO) (NEW BAR))
+      ?= MODIFY4356 ((FILE FOO))
+           BACKUP-STEP -> COPY4343 ((OLD FOO) (NEW BAR))  ^
+  NIL
+;; So, there must be two different plans going on.
+
+Command: (EE "User deletes foo.")y
+  Translation: (UPDATE '(DELETE (FILE FOO)))
+  NIL
+;; This delete can unify with command 1, but not command 2
+
+
+Command: (EE "Show hypotheses in detail.")y
+  Translation: (DISPLAY-HYPOTHS T)
+********************************************************
+|  There are 1 ways of grouping the observations
+********************************************************
+
+|  Hypthosis set 1 is (EG4339+EG4729 EG4507)
+|  where
+
+======================================
+
+graph EG4339+EG4729
+END4977 NIL
+      ?= RENAME4986 ((OLD FOO) (NEW BAR))
+           ?= RENAME-BY-COPY5001 ((OLD FOO) (NEW BAR))
+                COPY-ORIG-STEP -> COPY5043 ((OLD FOO) (NEW BAR))
+                DELETE-ORIG-STEP -> DELETE5028 ((FILE FOO))
+
+======================================
+
+graph EG4507
+END4581 NIL
+      ?= RENAME4634 ((OLD JACK) (NEW SPRAT))
+           ?= RENAME-BY-COPY4594 ((OLD JACK) (NEW SPRAT))
+                COPY-ORIG-STEP -> COPY4511 ((OLD JACK) (NEW SPRAT))
+      ?= MODIFY4524 ((FILE JACK))
+           BACKUP-STEP -> COPY4511 ((OLD JACK) (NEW SPRAT))  ^
+  NIL
+
+;; End of file system tests
+
+
+;******************************************************
+;* Language Test                                      *
+;*    Demonstrates inference up 2 levels of step      *
+;*    hierarchy before alternatives are eliminated,   *
+;*    and the use of temporally-dependent constraints.*
+;******************************************************
+;;
+;; The parser is not powerful enough to handle embedded sentences such
+;; as "Joe said to Sally, 'Can you give me the salt?'", so the
+;; routines which take the logical form as input are called directly.
+;;
+
+
+Command: (CLEAR-ALL-MAPPINGS)y
+
+  EQUALP
+
+Command: (LOAD (MERGE-PATHNAMES "language-test" *TEST-DIR*))y
+
+; Loading /u/sgwoods/Kautz/test/language-test.lisp.
+
+  T
+
+;;  Look at the source for the hierarchy here.  Note that we constrain
+;; the speaker and hearer of two-agent acts to be different, using the
+;; predicate "not-same".  The function call
+;;            (to-disprove 'not-same 'equalp)
+;; says that we can disprove two things are NOT the same by
+;; proving they are equalp.  The function "disprove-never" is a way to
+;; disprove a constraint of the form
+;;            (never time1 predicate arg1 arg2 ...)
+;; It does so by finding a time2 such that (predicate time2
+;; arg1 arg2 ...) and time1 and t2 must intersect.  Then we assign
+;; disprove-never to the predicate never.
+
+;; Also note the use of the "^" escape function is the hierarchy.
+;; This is used to call lisp functions to construct data structures
+;; representing beliefs.
+
+;; Joe says to Sally:  Can you give me the salt?
+
+
+Command: (EXPLAIN-OBSERVATION '(SURFACE-QUESTION (SPEAKER JOE) (HEARER SALLY) (TIME #(TIME
+4 4 5 5)) (CONTENT (CAN SALLY (GAVE SALLY JOE SALT)))) 'UTTER1)y
+
+  T
+  SURFACE-QUESTION5587
+;; The statement is ambiguous, as we see:
+
+Command: (DRAW-GRAPH)y
+
+graph UTTER1
+END5780
+      ?= FINDOUT5974
+           ?= FINDOUT-BY-ASKING5920
+                S1 -> REQUEST5901
+                     ?= DIRECT-REQUEST5855
+                          S -> SURFACE-QUESTION5587
+      ?= OBTAIN5759
+           ?= OBTAIN-BY-ASKING5705
+                S1 -> REQUEST5656
+                     ?= INDIRECT-REQUEST5606
+                          S -> SURFACE-QUESTION5587   ^
+  (INDIRECT-REQUEST5606 REQUEST5656 OBTAIN-BY-ASKING5705 OBTAIN5759 SURFACE-QUESTION5587 DI
+RECT-REQUEST5855 REQUEST5901 FINDOUT-BY-ASKING5920 FINDOUT5974 END5780)
+;; The more detailed version of the previous graph:
+
+
+Command: (DRAW-GRAPH T)y
+
+graph UTTER1
+END5780 NIL
+      ?= FINDOUT5974 ((AGENT JOE) (INFO (CAN SALLY (GAVE SALLY JOE SALT))) (TIME #(TIME -IN
+F 4 5 +INF)) (PRETIME #(TIME -INF 4 -INF +INF)))
+           ?= FINDOUT-BY-ASKING5920 ((AGENT JOE) (INFO (CAN SALLY (GAVE SALLY JOE SALT))) (
+TIME #(TIME -INF 4 5 +INF)) (PRETIME #(TIME -INF 4 -INF +INF)))
+                S1 -> REQUEST5901 ((SPEAKER JOE) (HEARER SALLY) (REQGOAL (INFORMEDIF SALLY
+JOE (CAN SALLY (GAVE SALLY JOE SALT)))) (TIME #(TIME 4 4 5 5)))
+                     ?= DIRECT-REQUEST5855 ((SPEAKER JOE) (HEARER SALLY) (REQGOAL (INFORMED
+IF SALLY JOE (CAN SALLY (GAVE SALLY JOE SALT)))) (TIME #(TIME 4 4 5 5)))
+                          S -> SURFACE-QUESTION5587 ((SPEAKER JOE) (HEARER SALLY) (CONTENT
+(CAN SALLY (GAVE SALLY JOE SALT))) (TIME #(TIME 4 4 5 5)))
+      ?= OBTAIN5759 ((AGENT JOE) (OBJECT SALT) (TIME #(TIME -INF 4 5 +INF)) (PRETIME #(TIME
+ -INF 4 -INF +INF)))
+           ?= OBTAIN-BY-ASKING5705 ((AGENT JOE) (OBJECT SALT) (TIME #(TIME -INF 4 5 +INF))
+(PRETIME #(TIME -INF 4 -INF +INF)))
+                S1 -> REQUEST5656 ((SPEAKER JOE) (HEARER SALLY) (REQGOAL (GAVE SALLY JOE SA
+LT)) (TIME #(TIME 4 4 5 5)))
+                     ?= INDIRECT-REQUEST5606 ((SPEAKER JOE) (HEARER SALLY) (REQGOAL (GAVE S
+ALLY JOE SALT)) (TIME #(TIME 4 4 5 5)))
+                          S -> SURFACE-QUESTION5587 ((SPEAKER JOE) (HEARER SALLY) (CONTENT
+(CAN SALLY (GAVE SALLY JOE SALT))) (TIME #(TIME 4 4 5 5)))  ^
+  (INDIRECT-REQUEST5606 REQUEST5656 OBTAIN-BY-ASKING5705 OBTAIN5759 SURFACE-QUESTION5587 DI
+RECT-REQUEST5855 REQUEST5901 FINDOUT-BY-ASKING5920 FINDOUT5974 END5780)
+
+;; There are 2 (of 4) alternatives not eliminated: an attempt to find
+;; out if Sally can give Joe the salt, or an attempt to obtain the
+;; salt.
+
+;; Now lets add the fact that at all times, Joe knows if  Sally can give him the salt.
+
+
+Command: (ADD-FACT '(KNOWIF #(TIME :-INF :-INF :+INF :+INF) JOE (CAN SALLY (GAVE SALLY JOE
+SALT))))y
+
+  T
+;; Try again, Joe says to Sally: Can you give me the salt?
+
+Command: (EXPLAIN-OBSERVATION '(SURFACE-QUESTION (SPEAKER JOE) (HEARER SALLY) (TIME #(TIME
+4 4 5 5)) (CONTENT (CAN SALLY (GAVE SALLY JOE SALT)))) 'UTTER2)y
+
+  T
+  SURFACE-QUESTION6095
+;; The only interpretation is the indirect request.
+
+
+Command: (DRAW-GRAPH)y
+
+graph UTTER2
+END6288
+      ?= OBTAIN6267
+           ?= OBTAIN-BY-ASKING6213
+                S1 -> REQUEST6164
+                     ?= INDIRECT-REQUEST6114
+                          S -> SURFACE-QUESTION6095
+  (SURFACE-QUESTION6095 INDIRECT-REQUEST6114 REQUEST6164 OBTAIN-BY-ASKING6213 OBTAIN6267 EN
+D6288)
+;; The more detailed version of the previous graph:
+
+Command: (DRAW-GRAPH T)y
+
+graph UTTER2
+END6288 NIL
+      ?= OBTAIN6267 ((AGENT JOE) (OBJECT SALT) (TIME #(TIME -INF 4 5 +INF)) (PRETIME #(TIME
+ -INF 4 -INF +INF)))
+           ?= OBTAIN-BY-ASKING6213 ((AGENT JOE) (OBJECT SALT) (TIME #(TIME -INF 4 5 +INF))
+(PRETIME #(TIME -INF 4 -INF +INF)))
+                S1 -> REQUEST6164 ((SPEAKER JOE) (HEARER SALLY) (REQGOAL (GAVE SALLY JOE SA
+LT)) (TIME #(TIME 4 4 5 5)))
+                     ?= INDIRECT-REQUEST6114 ((SPEAKER JOE) (HEARER SALLY) (REQGOAL (GAVE S
+ALLY JOE SALT)) (TIME #(TIME 4 4 5 5)))
+                          S -> SURFACE-QUESTION6095 ((SPEAKER JOE) (HEARER SALLY) (CONTENT
+(CAN SALLY (GAVE SALLY JOE SALT))) (TIME #(TIME 4 4 5 5)))
+  (SURFACE-QUESTION6095 INDIRECT-REQUEST6114 REQUEST6164 OBTAIN-BY-ASKING6213 OBTAIN6267 EN
+D6288)
+;; You can try the other combinations!
+;; End of language test.
+
+
+;*******************************************************
+;* Merge test: Demonstrates "collapsing" of search     *
+;*    graph, during matching.  To understand this test,*
+;*    try drawing the graphs. You will see a double    *
+;*    diamond.  We can retain uncertainty in the top   *
+;*    of the graph, even as lower level steps are      *
+;*    disambiguated.                                   *
+;*******************************************************
+
+
+Command: (CLEAR-ALL-MAPPINGS)y
+
+  EQUALP
+
+Command: (LOAD (MERGE-PATHNAMES "merge-test" *TEST-DIR*))y
+
+; Loading /u/sgwoods/Kautz/test/merge-test.lisp.
+
+  T
+
+Command: (EXPLAIN-OBSERVATION '(H) 'G1)y
+
+  T
+  H6849
+
+Command: (DRAW-GRAPH T)y
+
+graph G1
+END6890 NIL
+      ?= A6883 NIL
+           ?= B6909 NIL
+                S1 -> D6866 NIL
+                     ?= E6948 NIL
+                          S1 -> H6849 NIL
+                     ?= F6856 NIL
+                          S1 -> H6849 NIL  ^
+           ?= C6873 NIL
+                S1 -> D6866 NIL  ^
+  (C6873 F6856 H6849 E6948 D6866 B6909 A6883 END6890)
+;; Note the little ^ signs in the graph.  They indicate a reference to graph structure
+;; which has been printed on a previous line.
+
+
+Command: (EXPLAIN-OBSERVATION '(K) 'G2)y
+
+  T
+  K6975
+
+Command: (DRAW-GRAPH T)y
+
+graph G2
+END7016 NIL
+      ?= A7009 NIL
+           ?= B7035 NIL
+                S1 -> D6992 NIL
+                     ?= F7074 NIL
+                          S2 -> K6975 NIL
+                     ?= G6982 NIL
+                          S2 -> K6975 NIL  ^
+           ?= C6999 NIL
+                S1 -> D6992 NIL  ^
+  (C6999 G6982 K6975 F7074 D6992 B7035 A7009 END7016)
+;; Now matching g1 and g2 yields decision on F, but retains ambiguity between B and C
+
+Command: (MATCH-GRAPHS 'G1 'G2 'G1+G2)y
+
+  END7100
+
+
+Command: (DRAW-GRAPH T)y
+
+graph G1+G2
+END7100 NIL
+      ?= A7109 NIL
+           ?= C7184 NIL
+                S1 -> D7127 NIL
+                     ?= F7136 NIL
+                          S1 -> H7157 NIL
+                          S2 -> K7145 NIL
+           ?= B7118 NIL
+                S1 -> D7127 NIL  ^
+  (B7118 K7145 H7157 F7136 D7127 C7184 A7109 END7100)
+;; end of merge test
+
+
+NIL

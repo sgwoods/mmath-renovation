@@ -1,0 +1,19 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(a)					;a and a -> -b
+(<= (not (b)) (a))
+
+(<= (i ?x) (l (k ?x)) (l (j ?x)))	;slightly more complicated; 
+					;you know (l j(x)) /\ (l k(x)) -> i(x)
+(<= (j ?x) (r ?x))			;r(x) -> j(x)
+(<= (k ?x) (s ?x))			;s(x) -> k(x)
+(r a)					;r(a) and r(b)
+(r b)
+(s b)					;s(b) only
+
+(f a)					;quantification example
+(<= (g ?x) (h ?x))
+(h a)
+
+;; initial query is (forall ?x (<= (g ?x) (l (f ?x)))).  Then put in (f b)
+;; and try it again, then (h b) and try it yet again.

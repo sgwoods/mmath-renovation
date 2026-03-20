@@ -1,0 +1,28 @@
+From qyang  Mon May  7 10:11:20 1990
+Received: by watdragon.waterloo.edu
+	id <AA14056>; Mon, 7 May 90 10:11:20 EDT
+From: Qiang Yang <qyang>
+To: sgwoods
+Subject: graphsearch
+Status: RO
+
+Steve:
+I finished reconstructing the graphseasrch rountines.  get the files from
+my AI-programs/A-star directory.  A main purpose for me to do this 
+is to show you how to do programming "right."
+
+Note the differet layers of data abstraction:  the graphsearch part does
+not assume any rep for list or node, neither state.  Likewise, node-access
+part does not know how states are represented.  More importantly, 
+if you first read graphsearch-info, you should know how to write it for a
+different domain by only implementing a few functions.  Note I implemented
+both 8puzzle and tower-of-honoi domains.  The domain dependent parts are 
+in 8puzzle and tower.lisp, respectively.  Try to run them.
+
+Please try to write a domain representation for blocks world domain, and 
+think about how to change the program to IDA* search.
+
+Have fun.
+
+Qiang
+

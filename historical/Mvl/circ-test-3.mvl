@@ -1,0 +1,9 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+:empty
+
+:value true					;a is a block or b is;
+(<= (block a) (not (block b)))			;minimize block
+
+:value nil
+(not (block ?x))

@@ -1,0 +1,14 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\t)			;temporal logic
+**
+
+(mvl-load "actions")
+**
+
+(mvl-load "shooting")
+**
+
+(mapcar #'car (dag-fn-list (answer-value (bc '(idn (holds alive))
+					     :cutoffs *always-succeeds*))))
+(0 1 52 55)

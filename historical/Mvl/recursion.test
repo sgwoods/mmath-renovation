@@ -1,0 +1,40 @@
+;;; -*- Syntax: Common-Lisp; Base: 10; Mode: LISP; Package: MVL -*-
+
+(load-logic #\f)
+**
+
+(mvl-load "recursion")
+**
+
+(bc '(or (p) (not (p))))			; simple aux-db test
+#.(make-answer)
+
+(bc '(p1 a))
+#.(make-answer)
+
+(get-bdg '? (answer-binding (bc '(p1 ?))))
+a
+
+(bc '(g2))
+#.(make-answer)
+
+(get-bdg '?z (answer-binding (bc '(g3 ?z))))
+(f a)
+
+(get-bdg '?z (answer-binding (bc '(g4 ?z))))
+a
+
+(get-bdg '?z (answer-binding (bc '(g5 ?z))))
+a
+
+(bc '(g6 ?z))
+#.(make-answer)
+
+(bc '(g7))
+NIL
+
+(bc '(g8))
+#.(make-answer)
+
+;(length (bcs '(conn a ?x)))			;should return 5 answers
+;5

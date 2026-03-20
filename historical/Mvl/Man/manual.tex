@@ -1,0 +1,3832 @@
+\documentstyle{article}
+
+\setlength{\topmargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\headheight}{0pt}
+
+%here are some mathematical symbols
+\def\emptyset{{\hbox{\rm \O}}}
+\def\set#1{\{#1\}}
+\newcommand{\type}[1]{\mbox{\tt #1}}
+\newcommand{\str}{?$*$}
+\def\R{\rlap{\rm I}\,{\rm R}}
+\def\powset{{\cal P}}
+\def\glb{{\mbox{\rm glb}}}\def\lub{{\mbox{\rm lub}}}
+
+\newcommand{\nm}{non\-mon\-o\-ton\-ic}
+\newcommand{\Nm}{Non\-mon\-o\-ton\-ic}
+
+\newcommand{\prolog}{{\sc prolog}}\newcommand{\Prolog}{{\sc Prolog}}
+\newcommand{\atms}{{\sc atms}}\newcommand{\Atms}{{\sc Atms}}
+
+%this is where the title page begins
+
+\def\draftline{}
+
+\def\authors{Matthew L. Ginsberg}
+
+\newcommand{\nodblspace}{\baselineskip=\normalbaselineskip}
+\def\group{\nodblspace Department of Computer Science\\
+Stanford University\\
+Stanford, California 94305\\
+\bigskip
+Updated \today
+}
+
+\def\titlebottom{\vspace{1.55in}
+{\large \authors}\\
+\vspace{1.55in}
+\group
+\end{center}
+\clearpage}
+
+\def\xtitletop{\vspace*{1.35in}\begin{center}}
+\def\xtitl#1#2{\xtitletop
+{\Large\bf #2}\\
+\titlebottom}
+
+\newcommand{\xtitle}[2]
+{\def\tphrase{#2}\begin{titlepage}\draftline\xtitl{#1}{#2}\end{titlepage}}
+
+\newcommand{\mvl}{{\sc mvl}}
+\newcommand{\Mvl}{{\sc Mvl}}
+\newcommand{\lisp}{{\sc lisp}}
+\newcommand{\Lisp}{{\sc Lisp}}
+\newcommand{\dg}{{\sc dag}}
+\newcommand{\Dg}{{\sc Dag}}
+\newcommand{\T}{\type{T}}
+\newcommand{\NIL}{\type{NIL}}
+\newcommand{\apa}{{\tt allow-\-procedural-\-attachment}}
+\newcommand{\at}{{\tt *anytime-\-trace*}}
+\newcommand{\mi}{{\tt mvl-\-invocation}}
+\newcommand{\wbli}{{\tt *warn-\-on-\-bad-\-lisp-\-invocations*}}
+\newcommand{\somo}{{\tt succeed-\-on-\-modal-\-ops}}
+\newcommand{\et}{{\tt *equivalence-\-translation*}}
+\newcommand{\itype}[1]{\type{#1}\index{#1 **}}
+
+\makeindex
+%\renewcommand{\index}[1]{}
+
+\begin{document}
+\xtitle{}{User's Guide to the MVL System}
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+\subsection{What you got}
+
+The \mvl\ system is currently distributed via anonymous ftp from
+t.stanford.edu.  A .DVI version of this file, the \mvl\ manual,
+can be found in the \type{papers} directory on this machine.
+
+The \type{mvl} directory contains the source code for the \mvl\ system
+itself, which is written in standard Common Lisp.  It should be
+possible to port the system to any Common Lisp without substantial
+difficulty.  In addition, the \type{papers} directory contains .DVI
+versions of the following papers that relate to the functioning of the
+system:
+ \begin{enumerate}
+ \item ``Multivalued logics: A uniform approach to inference in
+artificial intelligence.''  This paper gives a formal description of
+multivalued logics and the \mvl\ system.
+ \item ``Bilattices and modal operators.''  This paper describes the
+formal connection between the \mvl\ system and modal operators.
+ \end{enumerate}
+
+The \mvl\ sources are public domain.  You are free to use, modify, and
+distribute them as you see fit, provided that such use or distribution
+is not for commercial purposes.  No warranties are made with regard to
+the performance of the system, however, and no commitment of support
+has been made.
+
+\subsection{Overview}
+
+This user's guide has been written to help you install and use the \mvl\
+system.  It describes the basic structure of the system, and shows you
+how to take advantage of the flexibility of multivalued inference.
+
+Essentially, \mvl\ is just like any other logic programming system.
+There is a database consisting of those sentences about which the
+system knows something, and there are facilities for determining
+whether or not some query follows from the information the database
+contains.  Viewed in this fashion, the \mvl\ system is not much
+different from a conventional logic programming language such as
+\prolog.
+
+What makes \mvl\ unique is that each sentence in the database is
+labelled with a {\em truth value\/}\index{truth value}.  Thus,
+instead of simply assuming a statement to be true and dumping it into
+the database, we will {\em label\/} the statement as true when we
+insert it.  Of course, we can use other labels as well: true by
+default, true by virtue of some assumption, or even false or false by
+default.  \Mvl\ considers these truth values when determining how to
+respond to a \prolog-like query.
+
+This manual is divided into two parts.  In the first part (Sections
+\ref{s.fol1} -- \ref{s.support}), we describe the use of the system
+where the truth values assigned to sentences are simply ``true'' or
+``false.''  Used in this fashion, \mvl\ is not much different from
+\prolog.
+
+The second part of the manual shows you how to use logics involving
+more complex truth values.  We examine the logics that have been
+predefined as part of the \mvl\ system, and describe the various ways
+in which you can define your own logics.  Several tools for this
+purpose have been included as part of the \mvl\ system.  In addition,
+we describe \mvl's facilities for handling modal operators, which
+are operators that accept logical sentences as arguments.
+
+\subsection{Why MVL is unique}
+
+As mentioned in the previous section, what distinguishes \mvl\ from
+other declarative programming languages is its support for multiple
+truth values.  There are other differences, however, and these will
+be discussed in detail in subsequent sections.  Here's a quick summary:
+ \begin{enumerate}
+ \item As mentioned, the principal feature offered by \mvl\ is its
+support of multiple truth values.
+ \item The basic theorem prover used by the system includes facilities
+to detect loops and control recursion encountered in proof search.
+The first-order theorem prover is discussed in Section \ref{s.fo},
+although we will have nothing further to say about recursion control.
+ \item The system can handle negative subgoals containing free variables
+as discussed in Section \ref{s.effort}.
+ \item The \mvl\ unifier includes an occurcheck and full support for
+sequence variables.  This is discussed in Section \ref{s.rep}.
+ \end{enumerate}
+
+\section{Installation and testing}
+
+The \mvl\ system is currently developed and maintained on a
+Sparcstation running Allegro Common Lisp and is tested only
+infrequently on other platforms.  Although the system has been written
+in standard Common Lisp to maximize ease of portability and no
+problems have been encountered when moving the system to a variety of
+platforms, performance on other systems is not guaranteed.
+
+\Mvl\ currently supports both ANSI Common Lisp and Common Lisp as
+described in Steele's 1984 book.  In order to determine whether or not
+the ANSI standard is conformed to, the system checks to see if
+\type{in-package} is a macro or a function.  If the former, it is
+assumed that the entire ANSI standard is supported; if the latter, it
+is assumed that the language is as in Steele and various extensions
+are defined.  It is expected that some future release of \mvl\ will
+support the ANSI standard only.
+
+\subsection{Sun-4}
+
+In order to load the system on a Sparcstation running Allegro Common
+Lisp, do the following:
+ \begin{enumerate}
+
+ \item (ANSI) Set up a logical pathname translation so that logical
+pathnames beginning with \type{MVL} point to the direction where \mvl\
+is kept.  (non-ANSI) Edit the file \type{mvldcl.lisp} so that the
+\type{:default-pathname} field in the \mvl\ system definition points
+to the directory where \mvl\ will be kept.  This directory should also
+contain the following files:
+ \begin{enumerate}\setlength{\itemsep}{0pt}\raggedright
+ \item {\tt f1.mvl, recursion.mvl, def-test.mvl, circ-test-1.mvl,
+circ-test-2.mvl, circ-test-3.mvl, circ-test-4.mvl, completed-db-1.mvl,
+completed-db-2.mvl, modal-test.mvl, actions.mvl, shooting.mvl}
+ \item {\tt mvl.test, bc.test, recursion.test, atms.test,
+defaults.test, circumscription.test, completed-db.test, modal.test,
+fc.test, temporal.test}
+ \end{enumerate}
+ \item Compile and load the file \type{mvldcl.lisp}.
+ \item Execute the function
+\type{(mvl:compile-mvl)}\index{compile-mvl} to compile and load the
+\mvl\ system.  Using this function in the future will only compile 
+those files that have been changed since last compiled.
+ \item Invoke the function \type{(use-package 'mvl)} to access the
+functions and symbols of the \mvl\ system (which is kept in its own
+package; see Section \ref{s.package}).
+ \end{enumerate}
+
+Now invoke the function {\tt (test-mvl)}, which should return 0
+(i.e., 0 errors encountered).  If it doesn't, the problem is probably
+that \mvl\ is unable to locate the files mentioned in (1) above.
+
+\subsection{Symbolics 3600 series}
+
+The \mvl\ system will run on Symbolics Genera 7.2 or later.  It is
+possible to run the system using Genera 7.0 or 7.1, although a bug in
+the implementation of the Common Lisp \type{\&allow-other-keys}
+keyword may cause the system to dump to the cold load stream if
+certain predicates are procedurally attached.  (See Section
+\ref{s.attach}.)
+
+You should begin by editing the file \type{mvldcl.lisp} so that the
+default pathname in the \mvl\ system declaration points to the
+directory in which the files are actually kept.  You can then load
+the \mvl\ system using either the Load System command or the Lisp
+function \type{(mvl:load-mvl)}\index{load-mvl} that is defined in the
+file \type{mvldcl.lisp}.  Now access the \mvl\ package using
+\type{(use-package 'mvl)} and execute the function \itype{test-mvl}.
+This function should return 0 (i.e., 0 errors encountered).  If it
+doesn't, the problem is probably that \mvl\ is unable to find the
+directory its test files are on (they're included in the distribution
+tape).
+
+\subsection{Other machines}
+
+The \mvl\ system has also been run and tested on a wide variety of
+other machines.  In order to load the system, follow the instructions
+provided for Sun-4's.
+
+\section{The MVL database}
+\label{s.fol1}
+\subsection{Representation}
+\subsubsection{Structure of the database}
+\label{s.rep}
+
+As already remarked, the \mvl\ database consists of sentences labelled
+with truth values.  In this section, we will describe the form of the
+sentences themselves; in the next section, we comment briefly on the
+truth values used to label them.
+
+Sentences in the database are represented as \lisp\ s-expressions
+using the prenex normal form \index{prenex normal form} of the
+standard logical connectives \type{NOT}, \type{OR} and \type{AND}.
+Thus the statement that Fred is tall and Harry is not would be
+written as:
+ \[\type{(AND (TALL FRED) (NOT (TALL HARRY)))}\]
+
+Any \lisp\ atom can be used as a constant term, with the exception of
+variables (see below) and the following reserved connectives:
+ \[\type{NOT AND OR => <= <=> IF IFF}\]
+The connective \type{<=} is used in backward-chaining rules;
+ \[\type{(<= CONCLUSION PREMISE-1 ... PREMISE-N)}\]
+is logically equivalent to
+ \[\type{(IF (AND PREMISE-1 ... PREMISE-N) CONCLUSION)}\]
+as is the forward-chaining version
+ \[\type{(=> PREMISE-1 ... PREMISE-N CONCLUSION)}\]
+ Although logically equivalent, these expressions behave differently
+in practice.  The version
+ \[\type{(IF (AND PREMISE-1 ... PREMISE-N) CONCLUSION)}\]
+ in which the connective \type{IF} is used represents a pair of
+rules, depending on the value of the parameter \itype{*if-translation*}.
+If the value is \type{bc} (the default), then two backward-chaining
+rules are produced, so that
+ \[\type{(IF (A) (B))}\]
+is equivalent to
+ \[\type{(AND (<= (B) (A)) (<= (NOT (A)) (NOT (B))))}\]
+ the conjunction of the original rule and its contraposition.
+If the value of \type{*if-translation*} is \type{fc}, then
+forward-chaining rules are produced and the translation is to
+ \[\type{(AND (=> (A) (B)) (=> (NOT (B)) (NOT (A))))}\]
+ Finally, if \type{*if-translation*} has the value \type{mix}, the
+pair of noncontraposed rules
+ \[\type{(AND (<= (B) (A)) (=> (A) (B)))}\]
+ is produced.
+
+Equivalences are represented using either \type{IFF} or \type{<=>}.
+Thus
+ \[\type{(IFF (FOO FRED) (GOO FRED))}\]
+is equivalent to
+ \[\type{(AND (IF (FOO FRED) (GOO FRED)) (IF (GOO FRED) (FOO FRED)))}\]
+ Translations involving \type{<=>} depend on the value of the
+parameter \et\index{*equivalence-translation*}.  As above, if the
+value is \type{bc} (the default), then two backward-chaining rules
+are produced, so that
+ \[\type{(<=> (FOO FRED) (GOO FRED))}\]
+translates to
+ \[\type{(AND (<= (FOO FRED) (GOO FRED)) (<= (GOO FRED) (FOO FRED)))}\]
+ If \et\ has the value \type{fc}, two forward-chaining rules are produced
+so that the translation is to
+ \[\type{(AND (=> (FOO FRED) (GOO FRED)) (=> (GOO FRED) (FOO FRED)))}\]
+ Finally, if the value is \type{mix}, one forward-chaining rule and
+one backward-chaining rule are produced:
+ \[\type{(AND (=> (FOO FRED) (GOO FRED)) (<= (FOO FRED) (GOO FRED)))}\]
+
+Variables \index{variables} are represented using \lisp\ atoms
+beginning with the character \type{?} and are handled as in \prolog,
+so that free variables in database statements are implicitly
+universally quantified.  Again as in \prolog, existential
+quantification is handled via Skolemization; thus the
+backward-chaining sentence ``Every rich person is happy'' and the
+sentence ``There is a rich person'' would be written as
+ \begin{equation}
+\type{(<= (HAPPY ?P) (PERSON ?P) (RICH ?P))}
+\label{e.if}
+\end{equation}
+and
+ \[\type{(AND (PERSON P0017) (RICH P0017))}\]
+respectively.
+
+The variables in database sentences are standardized apart from the
+other variables used by the system.  This is done by using uninterned
+variables in the actual representation of a database fact, so that
+the internal representation of (\ref{e.if}) would be
+ \[\type{(<= (HAPPY \#:?P) (PERSON \#:?P) (RICH \#:?P))}\]
+ The original variables are generally reinstated when \mvl\ is asked
+to display a database proposition.
+
+\subsubsection{Sequence variables}
+
+In addition to the simple variables discussed in the previous
+section, \mvl\ supports the use of ``sequence
+variables.''\index{sequence variables} These variables begin with the
+characters \type{\str}, and will match not a single atom, but an
+arbitrary (possibly empty) sequence of atoms.
+
+Thus, for example,
+ \[\type{(FOO A B)}\]
+ will unify with
+ \[\type{(FOO \str X)},\]
+ returning the binding list
+ \[\type{((\str X . (A B)))}\]
+ in which \type{?*X} has been bound to the list \type{(A B)}.  This
+binding list will presumably be displayed as
+ \[\type{((\str X A B))}.\]
+ Similarly, the most general unifier of $\type{(FOO)}$ and
+$\type{(FOO \str X)}$ is given by $\type{((\str X))}$.
+
+The presence of sequence variables may cause the most general unifier
+of two patterns to be nonunique.  For example, the result of unifying
+ \[\type{(FOO A B)}\]
+ with
+ \[\type{(FOO \str A \str B)}\]
+ can be any one of the three answers
+ \begin{eqnarray*}
+& \type{((\str A A B) (\str B))} & \\
+& \type{((\str A A) (\str B B))} & \\
+& \type{((\str A) (\str B A B))} &
+ \end{eqnarray*}
+
+For this reason, the unification functions return not a single answer,
+but a {\em list\/} of possible unifiers.
+
+\subsubsection{Functions to manipulate database sentences}
+\label{s.manipulate}
+
+The following functions and global parameters are used to manipulate
+sentences in the database:
+ \begin{description}
+ \item [\itype{varp(x)}] Returns \T\ if $x$ is a variable, and
+\NIL\ otherwise.
+ \item [\type{varp?(x)}]\index{varp-query} Returns \T\ if $x$ is a
+standard (i.e., non-sequence) variable, and \NIL\ otherwise.
+ \item [\type{varp$*$(x)}]\index{varp-star} Returns \T\ if $x$ is a
+sequence variable, and \NIL\ otherwise.
+ \item [\itype{vartype(x)}] Returns ? if $x$ is a standard variable,
+$*$ if $x$ is a sequence variable, and \NIL\ is $x$ is not a
+variable.
+ \item [\type{new-?var()}]\index{new-query-var} Returns a new
+temporary variable.
+ \item [\type{new-$*$var()}]\index{new-star-var} Returns a new
+temporary sequence variable.
+ \item [\itype{normal-form(p)}] Returns an equivalent form of $p$
+suitable for insertion into the database (i.e., with the connectives
+\type{IFF}, \type{IF} and \type{<=>} reduced to \type{<=} and \type{=>}).
+ \item [\itype{*if-translation*}] Controls the fashion in which
+\type{normal-form} deals with the connective \type{if}.
+ \item [\itype{*equivalence-translation*}] Controls the fashion in which
+\type{normal-form} deals with the connective \type{<=>}.
+ \item [\itype{negate(p)}] Returns the negation of $p$.
+ \item [\itype{standardize-operators(p)}] Returns an equivalent form
+of $p$ with the connectives \type{<=>}, \type{IF} and \type{IFF}
+removed.  (Note: This function does not use the control variables
+\type{*if-translation*} and \et, since it is used when proving
+sentences, not when inserting them into the database.)
+ \item [\itype{cnf(p)}] Returns $p$ in conjunctive normal form, as a
+list of conjuncts, where each conjunct is a list of disjuncts.  Thus
+ \[\type{(CNF '(AND A B))}\]
+returns
+ \[\type{((A) (B))}\]
+\item [\itype{dnf(p)}] Returns $p$ in disjunctive normal form, as a list
+of disjuncts, where each disjunct is a list of conjuncts.  Thus
+ \[\type{(DNF '(AND A B))}\]
+returns
+ \[\type{((A B))}\]
+\end{description}
+
+\subsection{Truth values}
+
+The truth values used to label the sentences in the \mvl\ database
+are elements of a bilattice that can be selected by the user with
+the function \type{load-logic}.  We will defer a discussion of these
+truth values to the second portion of this manual, which discusses
+the use of bilattices that label sentences as other than simply true
+or false.  At this point, we merely remark that if it is our intention
+to assert the sentence \type{(not (foo))}, this is actually accomplished
+by asserting that the negated sentence \type{(foo)} has truth value
+\type{false}.
+
+\subsection{Database form and internals}
+\label{s.database}
+
+The database is maintained using a discrimination net, as suggested
+by Charniak et.~al in their book on {\sc lisp} programming.  Any
+particular sentence in the database, say \type{(tall tom)}, is
+associated with a \lisp\ atom such as \type{P27} that is its
+``proposition number.''  The propositions are numbered consecutively,
+beginning with \type{P1}.  At any given point in time, the function
+\type{(props)} can be invoked to return a list of all of the
+propositions in the database.
+
+Very few of the functions that are used to manipulate the internal form
+of the database are likely to be needed by a user of the \mvl\ system.  The
+following are the most useful:
+ \begin{description}
+ \item [\itype{props()}] This function returns a list of all
+propositions about which any information has been recorded.
+ \item [\itype{denotes(a)}] Returns the proposition associated with a
+particular \lisp\ atom.
+ \item [\itype{truth-value(a)}] Returns the truth value associated
+with a particular \lisp\ atom.  Thus, if the result of asserting
+\type{(not (short tom))} into the database was the atom \type{P38},
+\type{(denotes 'p38)} would evaluate to \type{(short tom)}, and
+\type{(truth-value 'p38)} would evaluate to \type{false}. 
+ \item [\itype{index(p)}] Updates the discrimination net as
+needed to insert the proposition $p$ into the database.
+ \item [\itype{unindex(p)}] Removes from the discrimination net
+information relating to the proposition $p$.
+ \end{description}
+
+\section{Quantification}
+
+As we have remarked, quantification is treated in \mvl\ in a fashion
+similar to that used by \prolog\ systems:  Free variables appearing
+in the database are assumed to be universally quantified; free variables
+appearing in queries are existentially quantified.  Skolemization is
+used to handle existential quantification in database statements or
+universal quantification in queries.
+
+The use of this approach means that the answer to an existentially
+quantified query will often be of a form that indicates how the
+variables should be bound in the result.  In \mvl\, these binding
+lists \index{binding lists} are represented as expressions of the
+form
+ \[\type{((var-1 . bdg-1) ... (var-n . bdg-n))}\]
+ where \type{var-1} through \type{var-n} are variables and
+\type{bdg-1} through \type{bdg-n} are their respective bindings.
+If no variable is bound to a value, the empty binding list \NIL\
+is used.
+
+As an example, suppose that the database contains the single sentence
+ \[\type{(LIKES COCO ?X)}\]
+ indicating that Coco likes everything.  Now the query
+ \[\type{(LIKES ?Y MATT)}\]
+ will be interpreted as, ``Find something that likes Matt.''  The answer
+returned will be
+ \[\type{((?Y . COCO))}\]
+since Coco likes Matt.  Since the queries
+ \[\type{(LIKES COCO MATT)}\]
+and
+ \[\type{(LIKES COCO ?Z)}\]
+ both succeed without binding a variable, the answer \NIL\ will be
+returned for each.\footnote{In order to distinguish the empty binding
+list \NIL\ from a failed database query, all queries return a binding
+list as well as a truth value.  This is discussed in Section
+\ref{s.answer}.}
+
+\subsection{Functions used to manipulate binding lists}
+
+A variety of functions within \mvl\ are used to construct and manipulate
+binding lists.  Here are some of the more useful ones:
+ \begin{description}
+ \item [\itype{groundp(p)}] Returns \T\ if the proposition $p$ is
+ground (i.e., contains no variables) and \NIL\ otherwise.
+ \item [\itype{vars-in(p)}] Returns a list of the variables
+appearing in $p$.
+ \item [\itype{get-bdg(var bdg-list)}] Returns the value assigned to
+the variable \type{var} by the binding list \type{bdg-list}.  If the
+variable does not appear in the binding list, \NIL\ is returned.
+ \item [\itype{delete-bdg(var bdg-list)}] Destructively modifies
+\type{bdg-list}, removing any binding for the variable \type{var}.
+ \item [\itype{plug(p bdg-list)}] Returns the result of instantiating
+the proposition $p$ using the given binding list.  This function is
+nondestructive.
+ \item [\itype{samep(p1 p2)}] Returns \T\ if the propositions $p_1$
+and $p_2$ are identical (up to variable renaming), and \NIL\
+otherwise.  If the optional \type{return-answer?} argument is
+supplied and the propositions are the same, a binding list is
+returned instead of \T.
+ \item [\itype{unifyp(p1 p2)}] Returns a list of the most general
+unifiers of $p_1$ and $p_2$, or \NIL\ if the propositions fail to
+unify.
+ \item [\itype{instp(p1 p2)}] If $p_2$ is an instance of $p_1$,
+return a list of their most general unifiers; only variables in
+$p_1$ are bound.  Returns \NIL\ if $p_2$ is not an instance of $p_1$.
+ \item [\itype{matchp(pattern atom)}] Returns a list of elements of
+the form \type{(b . d)} where $b$ is a most general binding list such
+that \type{(plug pattern b)} is an instance of the proposition
+labelled with \type{atom} and $d$ is a binding list for the variables
+in the database proposition.  \NIL\ is returned if no such binding
+list exists.  Thus if \type{P1} is \type{(TALL \#:?2)}, and \type{P2}
+is \type{(TALL TOM)}, then
+ \[\type{(matchp (TALL TOM) P1)}\]
+returns a list consisting of the single entry 
+ \[\type{(NIL . ((\#:?2 . TOM)))}\]
+ The \type{car} of this entry is \NIL, indicating that no variables
+in the query need to be bound to match \type{P1}; the \type{cdr} is
+\type{((\#:?2 . TOM))} since the variable \type{\#:?2} in \type{P1}
+needs to be bound to \type{TOM} to match the query.
+ \[\type{(matchp (TALL ?X) P2)}\]
+returns \type{((((?X . TOM)) . NIL))}.
+ \end{description}
+
+Additional functions are described in Section \ref{s.binding-dag}.
+
+\subsection{Negative subgoals containing free variables}
+\label{s.effort}
+
+Consider the following \prolog\ fragment:
+\begin{verbatim}
+     f(x) :- not(g(x)).
+     g(A).
+\end{verbatim}
+ The interpretation we will assign to the implication
+\type{f(x) :- not(g(x))} will be that it is universally quantified
+over $x$, and therefore corresponds to the implication
+ \[\forall x.[\neg g(x) \supset f(x)]\]
+ Given this interpretation, what should the response be if we provide
+the system with the query \type{f(x)}?
+
+In light of the negation as failure rule of \prolog\ (which has analogs
+in the \mvl\ system), we would expect the query to succeed for all values
+of $x$ {\em except\/} $x=A$.
+
+Most \prolog\ systems cannot respond to queries such as this one, since
+a nonground negative subgoal is encountered during the proof process.
+One approach to these queries, suggested by David Chan, is to do just
+what we have suggested in the previous paragraph, computing those binding
+lists for which the query fails.
+
+Unfortunately, there are many queries that succeed in general, but
+for which it is impractical to compute all of the bindings for which
+the query fails.  This may be because there are infinitely many such
+failures, or because the time needed to compute them explicitly is
+prohibitive.  Situations such as this arise frequently in
+applications of declarative programming techniques to planning
+problems; here, we would like simply to return an indication that the
+query ``succeeds in general.''  In the above example, we might
+report that the query had succeeded without binding the variable $x$;
+even though $x=A$ is an exception, the report of success is true in
+general.
+
+Both approaches are supported by \mvl, and the global variable
+\type{*completed-database*} is used to distinguish between them.  If
+this variable has the value \T, all exceptions are computed; if it
+has the value \NIL, the other approach is taken.  The default value
+is \NIL:
+ \begin{description}
+ \item [\itype{*completed-database*}] If \T, find all exceptions
+to default proofs.  If \NIL\ (the default), accept defaults proofs
+with possible exceptions as complete.
+ \end{description}
+
+\section{Modifying the MVL database}
+
+\subsection{Keyboard input}
+
+The simplest functions to modify the \mvl\ database simply accept
+propositions from the user and either add or remove them from the
+knowledge base.  The primitive function for adding to the database is
+\itype{stash}; the function \itype{unstash} is used for removal.
+
+The function \type{stash} accepts a proposition and up to three
+keywords:
+ \begin{description}
+ \item [\itype{value}]  This keyword is used to supply a specific truth
+value to be assigned to the proposition.  If no value is supplied, the
+default value is used (this value is supplied when the logic is chosen;
+see Section \ref{s.bilattice}).
+ \item [\itype{increment-p}] If the proposition in question already
+appears in the database, the user has a choice: The given truth value
+can be used to replace the one currently appearing in the database,
+or it can be combined with the existing value using the combination
+function supplied with the logic being used.  The truth value is
+replaced if \type{increment-p} is \NIL, and is updated if it is \T\
+(the default).
+ \item [\apa\index{allow-procedural-attachment}] This keyword,
+which defaults to \T, controls whether or not it is possible to
+procedurally attach the action of stashing the supplied proposition.
+See Section \ref{s.attach}.
+ \end{description}
+
+Somewhat more useful than \type{stash} is the function \itype{state}.
+This function is identical to \type{stash}, except it translates the
+supplied sentence into a form suitable for inference by using the
+function \itype{normal-form} described in Section \ref{s.manipulate}.
+In addition, \type{state} cannot be procedurally attached, so the
+keyword \apa\ is not allowed.
+
+For removing sentences from the database, the functions \type{unstash}
+and \itype{unstate} are used.
+
+The function \type{unstash} accepts a proposition to be removed from
+the database, and up to three keywords: \type{value},
+\itype{decrement-p} and \apa.  The last of these is treated as for
+\type{stash}.  In general, if no keywords are used, the effect is to
+remove the proposition from the database.
+
+If \type{decrement-p} is \NIL, then \type{unstash} behaves like
+\type{stash}, except the default value used for unstashing is not
+necessarily the same as the default value used for stashing.
+
+If \type{decrement-p} is \T, then the new truth value assigned to
+the proposition is given by
+ \begin{equation}
+o \cdot \neg v
+\label{e.dot-star}
+\end{equation}
+ where $o$ is the old value and $v$ is the value supplied via the
+\type{value} keyword.  The $\cdot$ and $\neg$ operations are as
+described in Section \ref{s.bilattice}.
+
+There is one additional function for removing sentences from the
+database, \itype{empty}.  This function accepts no arguments, but
+does take a single keyword, \type{value}.  The function calls
+\type{unstash} for every sentence in the database.
+
+All of the functions described in this section work by calling the
+primitive function \itype{new-val}.  This function accepts as
+arguments a proposition name and a truth value, and sets the truth
+value of the proposition to the given value.  If the truth value is
+\type{unknown}, indicating that nothing is known about the
+proposition, it is removed from the database and the discrimination
+net.
+
+\subsection{Input from files}
+
+It is also possible to enter a database from a disk file.  These files
+should in general have the extension \type{.MVL}, and should be
+located either on the currently active disk area or on the \mvl\
+directory.  The files should consist simply of the sentences to be
+added to the database.
+
+In addition to consisting of such sentences, the files may contain the
+keyword \type{:value}, followed by the value to be assigned to each
+sentence, or the keyword \type{:function}, followed by a function to
+be applied to each sentence in order to {\em compute\/} the value to
+be assigned to it.  The keyword \type{:empty} empties the database
+before loading the file.  Examples of these constructs can be found in
+the various \type{.MVL} files included on the distribution tape.
+
+The sentences are loaded with \itype{mvl-load}, which accepts a file
+name and an optional keyword \type{empty}.  If the keyword is
+supplied, the database is emptied before the file is read; in any
+event, \type{state} is then applied to each sentence in the given
+file.  The sentences in the file can be removed from the database
+with the function \itype{mvl-unload}, which accepts a file name as its
+argument.  These functions each call \type{mvl-file}, which accepts
+a string and returns a path to the \type{.MVL} file associated to it.
+
+Related to \type{mvl-load} is \itype{mvl-save}, which also accepts a
+file name as an argument, but instead of loading a declarative
+database from the file, writes the current database {\em to\/} the
+file.
+
+\subsection{The editor interface} \index{editor interface}
+\subsubsection{Sun EMACS editor}
+
+In addition to the file commands \type{mvl-load} and
+\type{mvl-unload}, there is an interface to the {\sc emacs} editor on
+Sparcstations.  For a file of mode \mvl, certain keys are bound as
+follows (each of these commands also recognizes the
+\type{:value} and \type{:function} keywords):
+
+ \begin{description}
+ \item [\type{meta-S}] Applies \type{state} to each s-expression in the
+current region.
+ \item [\type{meta-U}] Applies \type{unstate} to each s-expression in the
+current region.
+ \item [\itype{meta-s}] Applies \type{state} to each s-expression in the
+current defun (i.e., s-expression beginning in column 1).
+ \item [\itype{meta-u}] Applies \type{unstate} to each s-expression in the
+current defun.
+ \end{description}
+
+In order to use these commands, certain modifications will need to be made
+to your \type{.emacs} file.  The file \type{dot.emacs} is an example of
+what to do.
+
+\subsubsection{Symbolics ZMACS editor}
+
+In addition to the file commands \type{mvl-load} and
+\type{mvl-unload}, there is an interface to the {\sc zmacs} editor on
+Symbolics 3600 series machines.  For a file of mode \mvl, certain
+keys are bound as follows (each of these commands also recognizes the
+\type{:value} and \type{:function} keywords):
+
+ \begin{description}
+ \item [\itype{super-s}] Applies \type{state} to each s-expression in the
+current region.
+ \item [\itype{super-u}] Applies \type{unstate} to each s-expression in the
+current region.
+ \item [\itype{super-f}] Applies \type{fc} to each s-expression in the
+current region.  See Section \ref{s.fc}.
+ \item [\itype{super-e}] Applies \type{erase} to each s-expression in the
+current region.  See Section \ref{s.fc}.
+ \end{description}
+
+\subsection{Summary of database modification functions}
+
+\begin{description}
+ \item [\itype{stash(p)}] Inserts $p$ into the database.  Allowed
+keywords: \type{value}, \type{increment-p} and \apa.
+ \item [\itype{state(p)}] Inserts $p$ into the database after
+converting it to normal form.  Keywords: \type{value},
+\type{increment-p}.
+ \item [\itype{unstash(p)}] Removes $p$ from the database.  Keywords:
+\type{value}, \type{decrement-p}, \apa.
+ \item [\itype{unstate(p)}] Removes $p$ from the database after
+converting it to normal form.  Keywords: \type{value},
+\type{decrement-p}.
+ \item [\itype{empty}] Unstashes every sentence in the database.  Keyword:
+\type{value}.
+ \item [\itype{new-val(a v)}] Sets the truth value of the sentence
+associated with the atom $a$ to $v$.  If $v$ is the truth value
+\type{unknown}, the sentence is removed from the database.
+ \item [\itype{mvl-file(string)}] Returns the path for the \mvl\ file
+associated with the given name.  The file name may include an
+extension, one may be supplied as an optional argument, or
+\type{.MVL} will be used by default.  There is an optional keyword
+\type{no-error} indicating that even if the file cannot be found, the
+path should be returned.
+ \item [\itype{mvl-load(file)}] Loads the sentences in the given file into
+the \mvl\ database.
+ \item [\itype{mvl-unload(file)}] Removes the sentences in the
+given file from the \mvl\ database.
+ \item [\itype{mvl-save(file)}] Writes the \mvl\ database out to the
+given file.  This function also accepts the keywords \type{cutoffs}
+and \type{props}, which are treated as for \type{contents} (see
+Section \ref{s.contents}).  Finally, the keyword \type{if-exists} is
+passed to the \type{with-open-file} macro.
+ \end{description}
+
+\section{Querying the MVL database}
+
+\subsection{MVL responses to queries}
+\label{s.answer}
+
+Because of the fact that a particular fact may be stored in the
+database with any of a variety of truth values, \mvl\ responds to a
+query by returning not simply a binding list (as most \prolog\
+interpreters do, for example), but by returning a binding list {\em
+and a truth value}. 
+
+In actuality, what is returned is an instance of the \type{answer}
+structure\index{answer structure}.  This structure contains the
+following fields:
+ \begin{description}
+ \item[\type{binding}] Bindings for some of the variables in the query.
+ \item[\type{value}] A truth value.  The bound version of the query has
+this truth value.
+ \end{description}
+
+The definition of this structure leads Common Lisp to define the
+access functions \type{answer-binding} and \type{answer-value};
+in addition, a function \type{equal-answer} is defined by \mvl\ to
+test two answers for equality:
+ \begin{description}
+ \item[\itype{answer-binding(a)}] Returns the binding field of the
+answer \type a.
+ \item[\itype{answer-value(a)}] Returns the value field of the answer
+\type a.
+ \item[\itype{equal-answer(a1 a2)}] Returns \T\ if the two answers
+\type{a1} and \type{a2} are equal, and \NIL\ otherwise.  The
+functions used are \type{binding-equal} and \type{mvl-eq}, the
+functions normally used to test binding lists and truth values for
+equality.
+ \end{description}
+
+Thus, in response to the query
+ \[\type{(flies ?x)}\]
+ the response of an answer with binding \type{((?x . Tweety))} and
+truth value \type{dt} would indicate that
+ \[\type{(flies Tweety)}\] 
+ has truth value \type{dt}.  In other words, Tweety's flying is a
+conclusion that is true by default.  (See Section \ref{s.j} for a
+description of default truth values in the \mvl\ system.)
+
+As a side effect, this allows the user to distinguish a response of
+\NIL\ (indicating that the query has failed) from a response in which
+the binding is \NIL\ (indicating that the query has succeeded without
+binding any variables).
+
+\subsection{Searching for specific sentences}
+
+There are two functions that are most commonly used to retrieve facts
+that have been stored in the database, \itype{lookup} and
+\itype{lookups}.  Each of these functions accepts as arguments a
+proposition to search for and up to four keywords, and returns two
+values.
+
+The keywords and their meanings are as follows:
+ \begin{description}
+ \item [\itype{cutoffs}] This keyword is used to give conditions on
+the sentences being considered as possible matches to the query.  Any
+sentence that is considered as a match must have an associated truth
+value \type{v} such that \type{(test v cutoffs)} evaluates to \T\ (see
+Section \ref{s.cutoffs}).  The default value of this keyword is defined
+by the bilattice in use (see Section \ref{s.bilattice}).
+ \item [\itype{inv}] This keyword defaults to \NIL.  If it is \T,
+however, any truth values found should be negated before they are
+returned.
+ \item [\apa] This is similar to the keyword for \type{stash}.
+ \item [\itype{succeed-on-modal-ops}] If \T, then any attempt to look
+up a proposition involving a modal operator will immediately succeed;
+if \NIL\ (the default), then the result returned will be the result
+of applying the modal operator to the truth values of the
+propositions that are its arguments.  See Section \ref{s.modal}.
+ \end{description}
+
+The two functions \type{lookup} and \type{lookups} are identical
+except that \type{lookup} looks for only a single match for the
+supplied proposition, while \type{lookups} searches for all such
+matches.  Thus while \type{lookup} returns two values, \type{lookups}
+returns two {\em lists\/} of values.  Each entry on each of these
+lists is analogous to the corresponding value returned by
+\type{lookup}.  The values returned by \type{(lookup q)} are as
+follows:
+ \begin{enumerate}
+ \item First, an \type{answer} is returned.  If this answer contains
+the binding list \type b and the truth value \type v, then applying
+the binding list to the query produces a result with the given truth
+value.  In other words, \type{(plug q b)} is an instantiation of a
+sentence appearing explicitly in the database with truth value \type
+v.
+ \item Second, one of the following three values is returned:
+ \begin{enumerate}
+ \item If the sentence was found by procedural attachment, the atom
+\type{attach} is returned.
+ \item If the sentence was found by applying a modal operator, the
+atom \type{modal} is returned.
+ \item Under other conditions, the instantiated version of the
+proposition that resulted in the match is returned.
+ \end{enumerate}
+ \end{enumerate}
+
+As already mentioned, \type{lookups} returns two lists of values.
+
+Here are summaries of \type{lookup} and \type{lookups}:
+
+ \begin{description}
+ \item [\itype{lookup(q)}] Searches the database for a sentence
+matching the query $q$.  Allowed keywords: \type{cutoffs}, \type{inv},
+\apa, \somo.  Returns two values: an answer and the source of the
+match.  Returns \NIL\ if the query cannot be found in the database.
+ \item [\itype{lookups(q)}] Similar to \type{lookup}, but looks
+for {\em all\/} sentences matching the query.  Returns two lists of
+values.
+ \end{description}
+
+\subsection{Searching the entire database}
+\label{s.contents}
+
+In addition to searching for a particular sentence, it is also
+possible to display large portions of the entire \mvl\ database.  The
+basic functions for doing this are \type{contents}, which displays
+the entire database, and \type{prfacts}, which accepts a \lisp\ atom
+as an argument and displays all of those facts concerning that atom.
+
+Each of these two functions also accepts a variety of keywords:
+ \begin{description}
+ \item [\itype{cutoffs}] As for \type{lookup}, it is possible to
+supply a test that must be passed by the truth value of any database
+sentence before that sentence is displayed.
+ \end{description}
+ In addition, \type{contents} accepts a keyword \type{props}, which
+defaults to \type{(props)} (see Section \ref{s.database}) and is a
+list of the sentences to be displayed.
+
+Related to \type{prfacts} is \itype{unstash-facts-with-atom}, which
+accepts an atom as an argument and removes from the database any
+fact concerning that atom.  \type{Unstash-facts-with-atom} accepts
+the same keywords as \type{unstash} does.
+
+Here, then, are the functions described in this section:
+
+\begin{description}
+ \item [\itype{contents}] Displays the contents of the database.  Keywords:
+\type{cutoffs}, \type{props}.
+ \item [\itype{prfacts(atom)}] Displays the database facts concerning the
+given atom.  Keyword: \type{cutoffs}.
+ \item [\itype{unstash-facts-with-atom(atom)}] Unstashes from the
+database any facts concerning the given atom.  Keywords:
+\type{value}, \type{decrement-p}, \apa.
+ \end{description}
+
+\subsubsection{Command line interface}
+
+\paragraph{Sun}
+In addition to the above functions, on Sparcstations, the key
+$\langle$meta$\rangle$-* may be typed to the command line processor
+running from the editor.  The result is that any information in the \mvl\
+database concerning the currently open predicate will be displayed to the
+user.
+
+\paragraph{Symbolics}
+On Symbolics systems, the key $\langle$super-shift$\rangle$-A may be typed
+to the command line processor.  The result is that any information in the
+\mvl\ database concerning the currently open predicate will be displayed
+to the user.  This feature is the \mvl\ analog to the
+$\langle$ctrl-shift$\rangle$-A key, which displays information about the
+arguments to the currently open function.
+
+\section{The first-order prover}
+\label{s.fo}
+
+As discussed in the technical papers distributed with \mvl, inference
+in \mvl\ proceeds using a conventional first-order theorem prover; in
+this section, we will describe this prover and the interface to it.
+Be warned that the information in this section is unlikely to be used
+by other than the most sophisticated users of \mvl; most readers will
+want to proceed directly to Section \ref{s.inf}.
+
+In general, there will be a variety of invocations to the first-order
+prover active at any particular time.  Each such invocation is
+associated with a task that the multivalued prover needs to complete,
+and each such task is a \lisp\ object that is an instance of the
+\type{consider} structure.\footnote{In fact, each task is an instance
+of a structure that {\em includes\/} the \type{consider} structure.
+See the file \type{bc.lisp} for further details.}
+
+The multiple invocations of the first-order prover are run in
+parallel by \mvl.  To each such invocation is associated an instance
+of the structure \type{proof} that is used to record temporary
+information about the progress of the proof effort.  We will discuss
+first the first-order prover itself, then the construction and
+termination of the invocations of it, and finally the structure of
+the multivalued proving tasks.
+
+\subsection{Nature}
+\label{s.simple}
+
+The prover itself is a simple natural-deduction style complete
+theorem prover.  Only inferences against the initial clauses of
+database statements are allowed; the result of this is that after
+applying \type{state} to a sentence of the form
+ \[\type{(<= CONCLUSION PREMISE-1 ... PREMISE-N)}\]
+ \type{PREMISE-1} will always be tried first when the prover attempts
+to prove \type{CONCLUSION}.  In a similar way, stating the
+forward-chaining rule
+ \[\type{(=> PREMISE-1 ... PREMISE-N CONCLUSION)}\]
+ will result in a situation where only \type{PREMISE-1} will trigger
+forward chaining.
+
+Control of the proof search is handled by a function that evaluates
+the ``merit'' of each of the ongoing proof attempts, and then
+attempts to select the best one.  The evaluation function is stored
+in the value of the global constant \itype{*node-evaluation-fn*},
+which defaults to \itype{best-first-fn}, a function that attempts to
+determine the value of a proof by looking at the truth value being
+accumulated.  An alternative to \type{best-first-fn} is the function
+\itype{depth-fn}, which evaluates a node simply by its depth in the
+proof tree.
+
+Three global parameters are used to control the proof search:
+ \begin{description}
+ \item [\itype{*final-limit*}] is the limit point beyond which the
+search is abandoned, so that any node that evaluates to a value worse
+than this will be pruned.  The default value of this parameter is
+\NIL, indicating that no nodes are to be pruned.
+ \item [\itype{*initial-limit*}] is used to indicate the type of search.
+If \NIL\ (the default), then the values assigned to the nodes are not
+used to order the search, and depth-first search is used.
+ \item [\itype{*limit-delta*}] is used if \type{*initial-limit*} is
+non-\NIL.  In this case, the nodes are ordered by increasing
+ \[\frac{\type{value(node)}-\type{*initial-limit*}}{\type{*limit-delta*}}\]
+ A typical value for *initial-limit* is 0, and for *limit-delta* is
+1.  The value of this parameter is irrelevant if
+\type{*initial-limit*} is \NIL.
+ \end{description}
+
+These three parameters may be reset by the user:
+ \begin{description}
+ \item [\itype{set-search-parameters}] This function is the primitive
+used to modify the parameters used to control the first-order theorem
+prover's search.  It accepts as keywords \type{initial-limit},
+\type{limit-delta}, and \type{final-limit}.
+ \item [\itype{activate-breadth-first}] Activate breadth-first search
+by setting \type{*node-evaluation-fn*} to \type{depth-fn}.  Allowed
+keywords: \type{initial-limit}, \type{limit-delta}, and
+\type{final-limit}.
+ \item [\itype{activate-depth-first}] Activate depth-first search by
+setting \type{*initial-limit*} to \NIL.  Allowed keyword:
+\type{final-limit}.
+ \item [\itype{activate-best-first}] Activate best-first search by
+setting \type{*node-evaluation-fn*} to \type{best-first-fn}.  Allowed
+keywords: \type{initial-limit}, \type{limit-delta}, and
+\type{final-limit}.
+ \end{description}
+
+\subsection{Invoking the prover}
+
+The prover is invoked using the function \type{init-prover}.  This
+function accepts as arguments a proposition and a pointer to the task
+responsible for this proof attempt.
+
+When \type{init-prover} is invoked, an instance of \itype{proof}
+is created and returned that contains auxiliary information about the
+proof attempt.  Here are the fields in the structure:
+ \begin{description}
+ \item [\itype{active-nodes}] A list of the nodes that are still
+under active consideration.
+ \item [\itype{answers}] A list of answers that have been found.
+ \item [\itype{indexp} and \itype{indexn}] These entries are used to
+index the various subtasks generated by the prover.
+ \item [\itype{initial-limit}, \itype{final-limit}, \itype{limit-delta}
+and \itype{evaluation-fn}] These entries are the values of the search
+control parameters used in this proof attempt.
+ \item [\itype{task}] A pointer back to the task responsible
+for this invocation of the first-order prover.
+ \item [\itype{vars}] The variables that appear in the proposition
+being proven.
+ \end{description}
+
+Each node is an instance of the structure \itype{goal}, which is
+described in the file \type{first-order.lisp}.
+
+To continue a proof process, the function \type{cont-prover} is used.
+This function accepts as an argument an instance of \type{proof} that
+contains the auxiliary information for the proof process being
+resumed.  The value returned by \type{cont-prover} is a structure
+describing the results of the proof process itself;
+\type{cont-prover} returns as soon as the prover finds a single
+solution to its query.  The value returned is an instance of the
+\type{bcanswer} structure\index{\type{bcanswer} structure}; the
+fields in this structure are as follows:
+ \begin{description}
+ \item[\type{answer}] This field contains a binding list and truth
+value that the system has determined can be assigned to the given
+instantiation of the original query.
+ \item[\type{just}] This field contains a list of those database
+sentences that were used in the proof.
+ \end{description}
+
+If the proof attempt fails, \NIL\ is returned.
+
+Here is a summary of the functions described in this section:
+
+\begin{description}
+ \item [\itype{init-prover(p effort)}] This function
+initializes and returns an instance of \type{proof} containing
+auxiliary information about the proof process.
+ \item [\itype{cont-prover(proof)}] Resume the task associated to the
+auxiliary information in the given instance of the \type{proof}
+structure.  This function returns an instance of \type{bcanswer}
+corresponding to the result obtained by the prover, and returns as
+soon as a solution to the original query is found.
+ \end{description}
+
+\subsection{The multivalued proof tasks}
+\label{s.consider}
+
+The individual proof attempts generated by a multivalued query are
+instances of structures that include the structure
+\type{consider}\index{consider structure}.  The exact details of this
+and related structures are unlikely to be of much interest to a user
+of the \mvl\ system, but we include them here in the interests of
+completeness.  These are the fields in the
+\type{consider} structure:
+ \begin{description}
+ \item [\itype{prop}] The proposition being investigated by this task.
+ \item [\itype{parent}] The task for which the current task is a
+child.
+ \item [\itype{children}] Children of the current task.
+ \item [\itype{truth-value}] The current best estimate of the truth value
+that should be assigned to the proposition being considered.
+ \item [\itype{relevant}] A list of answers that, if returned by this
+task, are known to be relevant to the original query.
+ \item [\itype{irrelevant}] A list of answers know {\em not\/} to be
+relevant to the original query.
+ \item [\itype{paths}] The \mvl\ system goes to a great deal of effort
+to ensure that it does not consider proofs that will not affect the
+eventual response to a user's query; intermediate information used in
+this computation is stored in this field.  Further details can be found
+in the file \type{bc.lisp} and the files to which it points.
+ \end{description}
+
+When the prover must select a task to work on next, it does so via the
+following function:
+ \begin{description}
+ \item [\itype{choose-task}] Selects a task to work on next.  The
+current implementation of \mvl\ simply selects any active task (see
+Section \ref{s.bc}).
+ \end{description}
+
+\section{Inference}
+\label{s.inf}
+
+\subsection{Backward chaining}
+\label{s.bc}
+
+The information in Section \ref{s.fo} is more technical than most users
+of \mvl\ are likely to need.  What is of much greater interest are those
+database query tools that are like \type{lookup} and \type{lookups} but,
+instead of simply looking for a fact in the database, attempt to derive
+it as a consequence of other database information.  These functions use
+those of the previous section as described in the accompanying technical
+papers.
+
+The functions accept three sorts of cutoff information, instead of the
+simple information provided to \type{lookup} and \type{lookups}.  The
+first, provided via the \type{cutoffs} keyword, is used to construct a
+test to decide whether an answer computed by the prover is good enough
+to be returned when the proof effort is complete.  The second,
+provided via the \type{succeeds} keyword, indicates that an answer
+should be returned as soon as it can be shown that the final answer
+will pass the given test.  The final cutoff, supplied via the
+\type{terminate} keyword, indicates that the answer should be returned
+as soon as there is any indication that the final answer {\em might\/}
+pass the given test.
+
+As an example, suppose that we were trying to find a plan to achieve some
+goal.  We might well be prepared to terminate our search as soon as we found
+a plan that was {\em guaranteed\/} to achieve the goal; if we completed our
+search {\em without\/} finding such a plan, we might then want to return
+all plans that we {\em expected\/} would achieve the goal.  It is to
+facilitate such possibilities that the backward-chaining functions expect
+three sets of cutoff information.  The default value for \type{cutoffs}
+is the standard one associated to the active bilattice (see Section
+\ref{s.bilattice}); the default choice for \type{succeeds} corresponds
+to complete information for the singular versions of the queries and
+guarantees failure for the plural versions (since an answer might be
+about to be discovered for a different instantiation of the query).
+The default value for \type{terminate} always fails.
+
+Here, then are the various backward-chaining functions.  They all
+return two values: an answer (or list of answers for the plural
+versions \type{bcs} and \type{consider}) and an instance of the
+\type{analysis} structure describing tasks remaining to be considered
+by the prover.  In addition, they all accept an optional
+\itype{analysis} keyword that, if supplied, should be an instance of
+the \type{analysis} structure that is to be continued instead of a
+new one being created.  This is to allow the user to continue proof
+efforts that have returned for some reason.
+ \begin{description}
+ \item [\itype{bc(q)}] Attempts to prove the query $q$ from information
+in the database, looking only for a single answer.
+ \item [\itype{bcs(q)}] Attempts to prove the query $q$ from information
+in the database, looking for all possible answers.
+ \end{description}
+
+All of these functions work by maintaining an instance of the
+\type{analysis} structure\index{\type{analysis} structure} that
+includes a variety of information about the status of the current
+proof attempt.  Here are the fields in this structure:
+ \begin{description}
+ \item [\type{prop}] The proposition being considered by the prover.
+ \item [\type{cutoffs}] The cutoff information that must be satisfied
+by any result before it is to be returned.
+ \item [\type{succeeds}] The cutoff information that will allow the
+prover to terminate early if an answer is guaranteed to pass the test.
+ \item [\type{terminate}] The cutoff information that will allow the
+prover to terminate early if an answer might pass the test.
+ \item [\type{active-tasks}] A list of the proof tasks (see Section
+\ref{s.consider}) that still need to be investigated.
+ \item [\type{main-task}] The task that was created upon the 
+original invocation of the prover.
+ \item [\type{returned-answers}] A list of answers that have already
+been returned to the user; this is to keep \mvl\ from compulsively
+re-returning these answers if the \type{analysis} is reinvoked.
+ \end{description}
+
+The top-level functions using this structure are as follows:
+ \begin{description}
+ \item [\itype{init-analysis(prop)}] The \mvl\ primitive upon which
+the proving functions are based, this function accepts a proposition
+and creates and returns an instance of the \type{analysis} structure.
+ \item [\itype{cont-analysis(analysis)}] This function continues the
+investigation of a specific analysis, and can be used to resume a
+proof effort that has been curtailed for some reason.  It returns two
+values: an instance of the \type{answer} structure giving the results
+of the proof attempts, and a modified version of the \type{analysis}
+structure that can be used to continue the proof process if desired.
+ \end{description}
+
+The functions \type{init-analysis} and the user functions such as
+\type{bc} all accept the following keywords:
+ \begin{description}
+ \item [\type{cutoffs}] Cutoff test as described above.
+ \item [\type{succeeds}] Success test as described above.
+ \item [\type{terminate}] Termination test as described above.
+ \item [\type{initial-value}] The truth value assigned to the query in
+the absence of database information.
+ \item [\type{analysis}]  If supplied, use this analysis instead of
+creating a new one.
+ \end{description}
+
+\subsection{Forward chaining}
+\label{s.fc}
+
+Forward chaining in \mvl\ is not as simple as it is in many other
+logic programming languages because of the \nm\ nature of multivalued
+inference.  It follows from this that inserting a new sentence into
+the database may cause a previous conclusion to be retracted, and
+this may in turn cause other sentences to become unsupported.
+
+There are two functions that use this information to modify the
+database.  The more common is called \itype{fc} and accepts as an
+argument a proposition to be added to the database.  The proposition
+is added and provided that it was not already in the database when the
+forward chainer was invoked, its consequences are also added to the
+database and forward chained upon.  The \type{fc} function accepts
+the following keywords:
+ \begin{description}
+ \item [\itype{value}] This keyword is similar to that used by
+\type{stash} and \type{state}.
+ \item [\itype{increment-p}] This keyword is also similar to that used
+by \type{stash} and \type{state}.  The default value is \NIL.
+ \item [\itype{fc-increment-p}] When the information content of some
+sentence in the database has {\em fallen}, should this drop be
+propagated to other sentences that appear to depend on the sentence
+in question?  The default value is \T.
+ \item [\itype{cutoffs}] Only forward chain if the sentence being
+inserted into the database has a truth value that passes the test
+corresponding to \type{cutoffs}.  (See Section \ref{s.cutoffs}.)  The
+default value used is the one associated with the active bilattice.
+ \item [\itype{include-modal}] If \T\ (the default), then the forward
+chainer also looks for rules that fire when the truth value of a
+modal expression involving $p$ changes (where $p$ is the sentence
+being forward chained upon).  See Section \ref{s.modal}.  The reason
+this keyword is included is that searching for rules of this form is
+computationally expensive.
+ \end{description}
+
+Slightly less common is \itype{erase}, the function used to remove a
+proposition from the database.  This function accepts a database
+sentence as an argument, and also the keywords \itype{value},
+\itype{decrement-p} and \itype{cutoffs}, which are similar to the
+corresponding keywords for \type{fc}.
+
+Summarizing:
+ \begin{description}
+ \item [\itype{fc(p)}] Inserts the sentence $p$ into the database and
+forward chains.  Allowed keywords: \type{value}, \type{increment-p},
+\type{fc-increment-p}, \type{cutoffs} and \type{include-modal}.
+ \item [\itype{erase(p)}] Removes $p$ from the database and forward
+chains.  Allowed keywords: \type{value}, \type{decrement-p} and
+\type{cutoffs}.
+ \end{description}
+
+\subsection{Debugging tools}
+
+Debugging facilities are limited in \mvl.  The facilities that exist
+describe the prover's activities during backward-chaining,
+forward-chaining, or while the first-order theorem prover is looking
+for a conventional proof of some proposition.
+
+\subsubsection{Backward chaining}
+
+Diagnostics are displayed during backward chaining using the two
+global variables \itype{*bc-trace*} and \at\index{*anytime-trace*}.
+
+Whenever a task is encountered that involves a proposition that is an
+instance of some element of \type{*bc-trace*}, information concerning
+the task will be displayed to the user.  The variable \at\ is
+similar, but only reports when an {\em inference\/} task is
+encountered.  An inference task is one that is trying to prove
+something, as opposed to one analyzing a modal operator; this
+distinction is described in greater detail in the file {\type
+bc.lisp}.  In practice, the distinction between \type{*bc-trace*} and
+\at\ is that the former should be used for debugging purposes, while
+the latter should be used if you are interested in watching the
+prover approximate and then refine its eventual answer to some
+declarative query.
+
+Although the user can manipulate \type{*bc-trace*} and \at\ directly,
+there are four functions written to help do so:
+ \begin{description}
+ \item [\itype{bc-trace(pat)}] Include \type{pat} on
+\type{*bc-trace*}, so that any instance of \type{pat} will be
+traced.
+ \item [\itype{bc-untrace(pat)}] Remove any instance of \type{pat}
+from \type{*bc-trace*}.
+ \item [\itype{anytime-trace(pat)}] Include \type{pat} on \at, so
+that any instance of \type{pat} will be traced.
+ \item [\itype{anytime-untrace(pat)}] Remove any instance of
+\type{pat} from \at.
+ \end{description}
+ For all of these functions, the argument is optional.  If omitted,
+\type{(?*)} (of which everything is an instance) is used.
+
+\subsubsection{Forward chaining}
+
+Tracing the activity of the forward chainer is essentially identical
+to tracing the behavior of the backward chainer; the global variable
+\type{*fc-trace*} is used and is manipulated using the functions:
+ \begin{description}
+ \item [\itype{fc-trace(pat)}] Include \type{pat} on
+\type{*fc-trace*}, so that any instance of \type{pat} will be
+traced.
+ \item [\itype{fc-untrace(pat)}] Remove any instance of \type{pat}
+from \type{*fc-trace*}.
+ \end{description}
+ Once again, the argument is optional.
+
+\subsubsection{The first-order prover}
+
+Tracing the activity of the first-order theorem prover itself is
+somewhat different.  The facility for doing this is similar to the
+Common Lisp \type{trace} facility, but instead of reporting when a
+function is invoked, it reports when an attempt is made to prove an
+instance of a particular predicate, and also when such an instance is
+found successfully in the database.
+
+The functions used to control this are \itype{bc-watch} and
+\itype{bc-unwatch}.  They are similar to \type{trace} and
+\type{untrace}:
+
+ \begin{description}
+ \item [\itype{bc-watch(preds)}] Accepts as arguments any number of
+predicates that should be watched as the prover proceeds.  Each
+predicate can also be a list of the form \type{(predicate depth)}
+where \type{depth} is the number of successive ancestors to be
+displayed when the prover encounters an instance of the predicate.
+(This can be used to understand {\em why\/} a particular clause is
+relevant to the proof being attempted.)  \type{bc-watch} returns a
+list of the predicates currently being {\sc watch}ed.
+ \item [\itype{bc-unwatch(preds)}] Removes the given predicates from
+the list of {\sc watch}ed predicates.  If no arguments are supplied,
+all predicates are un{\sc watch}ed.
+ \end{description}
+
+There are two additional features involved in tracing the activities
+of the first-order prover.  The first is used whenever the global
+parameter \itype{*save-nodes*} is \T\ (which it is by default).  When
+the first-order prover displays information regarding a particular
+proof node, the node is labelled with a number.  Subsequent nodes
+will then use this label if they need to refer to the node in
+question (e.g., as a parent).
+
+If \type{*save-nodes*} is \T, then \type{*break-node*} can be set
+to an integer; when a node is displayed that is labelled with this
+integer, a \type{(break)} will be executed.  This is to allow the
+user to interrupt the first-order prover if he needs to examine the
+proof stack or some other \mvl\ internal.
+
+ \begin{description}
+ \item [\itype{*save-nodes*}] If \T\ (the default), nodes are
+labelled with consecutive integers when they are displayed by the
+first-order prover.
+ \item [\itype{*break-node*}] The number of a node at which the
+proof process should be interrupted.
+ \end{description}
+
+\section{Procedural attachment}
+\label{s.attach}
+
+In some cases, it may be desirable to store a fact in the database
+{\em without\/} using the functions supplied in \mvl.  Suppose, for
+example, that we have an $n+1$-ary relation $R$ that corresponds to
+an $n$-ary function $f$, so that $R(x_1,\dots,x_n,y)$ holds just in
+case $f(x_1,\dots,x_n)=y$.  Now, if we assert $R(c_1,\dots,c_n,d)$
+into the database, where $d$ and the $c_i$ are constants, we should
+probably also {\em remove\/} any sentences of the form
+$R(c_1,\dots,c_n,d')$, where $d'\neq d$.  This sort of a situation
+might arise if we were monitoring the temperature in a room, and
+represented the observed temperature using a database sentence such
+as
+ \begin{equation}
+\type{(TEMPERATURE ROOM 72)}
+\label{e.temp}
+\end{equation}
+
+We handle this by informing \mvl\ that to stash a sentence of the
+form \type{(TEMPERATURE ...)}, it should use not the usual function
+\type{stash}, but some other user-defined function, say
+\type{unique-stash}.  This new function would first \type{unstash}
+any sentence that agreed with the given one except for the value of
+the final term, and would then invoke \type{stash} on the original
+sentence, but with \apa\ set to \NIL\ so that \type{unique-stash} was
+not invoked a second time.
+
+To modify the function used by \mvl\ to stash sentences such as this,
+the user should simply place the desired function (in this case,
+\type{unique-stash}) on the \type{stash} property of the relation in
+question (in this case, \type{TEMPERATURE}).\footnote{As described in
+Section \ref{s.invocation}, the \type{stash} property of a relation
+can also be an association list, if multiple invocations of the
+system are running in parallel.} The system will then automatically
+invoke \type{unique-stash} instead of \type{stash} when a fact such
+as (\ref{e.temp}) is asserted.
+
+The functions within \mvl\ that can be modified in this fashion are
+\type{stash}, \type{unstash}, \type{lookup} and \type{lookups}.  In
+addition, the procedural attachments for \type{lookup} and
+\type{lookups} are linked, so that if \type{lookup} has a procedural
+attachment and \type{lookups} does not, a call to \type{lookups} will
+invoke the procedural attachment for \type{lookup} and then pluralize
+the result.  Similar remarks hold if \type{lookups} and not
+\type{lookup} has a procedural attachment.
+
+The procedural attachment is effected using the following functions:
+ \begin{description}
+ \item [\itype{invoke(fn p)}] This function invokes \type{fn} on the
+sentence $p$.  In addition, any keyword arguments are passed to
+\type{fn}, but with \type{\&allow-other-keys} so that the keywords
+will be ignored if \type{fn} is not expecting them.
+ \item [\itype{lookup-call(fn p)}] This function is similar to
+\type{invoke}, but modifies the values returned to make them agree
+with those expected to be returned by \type{lookup}.  Unless the
+function \type{fn} supplies them, the truth value is assumed to be
+\type{true}.  The second value is \type{attach}.
+ \item [\itype{lookups-call(fn p)}] The plural version of
+\type{lookup-call}.
+ \end{description}
+
+\subsection{Facilities to create procedural attachments}
+
+Some facilities exist to create procedural attachments within the
+\mvl\ system.  The following two macros are used for this purpose:
+ \begin{description}
+ \item [\itype{lisp-predicate(pred)}] This macro is used to indicate
+that the given predicate can be evaluated by a \lisp\ call.  It will
+also cause \mvl\ to signal an error if an attempt is made to stash
+or unstash an instance of the function.
+ \item [\itype{lisp-defined(fn)}] This macro is used to indicate that
+the given function can be evaluated by a \lisp\ call.  It will also
+cause \mvl\ to signal an error if an attempt is made to stash or
+unstash an instance of the function.  \type{Lisp-defined} also
+accepts an optional argument, which is an inverter function.  The
+overall result of attempting to lookup an instance of the function
+can be described as follows:
+ \begin{enumerate}
+ \item If none of the arguments to the function (i.e., all but the
+last of the arguments of the relation) is a variable, then the function
+is called and the result is unified with the final argument of the
+relation.
+ \item If the inverter function has been supplied and is equal to \T,
+then the function is called and the result is unified with the final
+argument of the relation even if some of the arguments are variables.
+ \item If some of the arguments are variables but the result is not a
+variable, then the inverter function is invoked if one has been
+supplied.  The arguments passed to the inverter function are the
+result (i.e., the last argument of the relation), and a list of all
+of the arguments (i.e., all but the last argument of the relation).
+If there is no inverter function, then \NIL\ is returned.  In
+addition, if \wbli\ \index{*warn-on-bad-lisp-invocations*} is not
+\NIL, the user is warned.  (The parameter \wbli\ defaults to \NIL.)
+ \item If both some of the arguments and the result are variables, then
+\NIL\ is returned.  In addition, if \wbli\ is not \NIL, the user is
+warned.
+ \end{enumerate}
+ \end{description}
+
+The current version of \mvl\ invokes \type{lisp-predicate} on the
+following \lisp\ predicates: \type{numberp}, $<$, $>$, \type{equal},
+\type{null}, \type{atom}, \type{listp}, \type{varp}, \type{varp?},
+\type{varp$*$}, \type{groundp}, and $=$.  The procedural attachment
+to $=$ attempts to unify its arguments.
+
+The macro \type{lisp-defined} is invoked on the following:
+\type{car}, \type{cdr}, \type{cadr}, \type{cons}, \type{list},
+\type{list*}, \type{revappend}, \type{append}, \type{reverse},
+\type{length}, \type{assoc}, \type{delete}, \type{+}, \type{*},
+\type{-}, \type{/}, \type{floor}, \type{ceiling}, \type{truncate},
+\type{round}, \type{float}, \type{mod}, \type{rem}, \type{max},
+\type{min}, \type{sin}, \type{cos}, \type{atan}, \type{sqrt}, 
+and \type{eval}.
+
+\subsection{Other procedurally attached relations}
+
+In addition to the \lisp\ functions and predicates described in the
+previous section, the following relations have been defined and
+are procedurally attached to suitable \lisp\ functions:
+ \begin{description}
+ \item [\itype{(bagof}\type{ ?x ?p ?b)}] This relation holds for $x$,
+$p$ and $b$ if and only if $b$ is a list of all $x$ satisfying $p$.
+ \item [\itype{(done exp-1 ... exp-n)}] This predicate, which is
+useful for stashing only, causes \lisp\ to evaluate each of the subsequent
+expressions.
+ \item [\itype{(value symbol val)}] Stashing this predicate sets the
+given symbol to the value \type{val}.  Unstashing it makes the symbol
+unbound if its current value unifies with \type{val}.
+ \item [\itype{(property symbol value indicator)}] Stashing this
+predicate sets the symbol's \type{indicator} property to \type{value}
+for the current invocation of \mvl.  Unstashing it removes the
+\type{indicator} property for the current invocation of \mvl\ if the
+previous value of this property unifies with \type{value}.  (See the
+definitions of \type{get-mvl} and \type{rem-mvl} in Section
+\ref{s.invocation}.)
+ \item [\itype{(known p)}]  Stashing this predicate simply stashes $p$;
+unstashing it causes an error.  Looking it up looks up $p$.
+ \item [\itype{(unknown p)}]  Stashing this predicate unstashes $p$;
+unstashing it causes an error.  Looking it up fails if $p$
+can be found in the database, and succeeds otherwise.
+ \item [\itype{(member item list)}] Tries to unify \type{item} with
+the various elements in \type{list}.
+ \end{description}
+
+\section{Testing the MVL system}
+\label{s.foln}
+
+\subsection{As a diagnostic tool}
+
+There are two functions available to help you to test both \mvl\ and
+any applications you write using it.  The first, \type{test-mvl}, is
+one you should already have run; if \mvl\ has been installed successfully,
+it should return 0.
+
+\type{Test-mvl} works by invoking the generic testing function
+\type{mvl-test-file} on the file \type{mvl.test} in the \mvl\
+directory.\footnote{\type{Test-mvl} works in its own invocation of
+\mvl, so that the existing database is not modified.  This is not true
+of \type{mvl-test-file}, however.} This file also contains
+documentation regarding the details of the various tests being
+executed.
+
+In general, \type{mvl-test-file} accepts as input a file name, and
+looks for a file with an extension \type{.TEST} on either the \mvl\
+or the current directory.  It then works through the file by
+evaluating the first s-expression it contains, and comparing the
+value returned to the second s-expression.  If these two
+s-expressions match, the next s-expression is evaluated, and so on.
+If there is a mismatch, \type{mvl-test-file} reports the error;
+eventually, it returns the total number of errors found in the entire
+file.  When doing the comparison, \type{**} acts as a wildcard.
+Thus, if the second s-expression is simply \type{**}, it will always
+match; if it is \type{(** ** **)}, it will match whenever the first
+expression returns a list of three values, and so on.
+
+\begin{description}
+ \item [\itype{test-mvl}] Tests the \mvl\ system by invoking the function
+\type{mvl-test-file} on the file \type{MVL.TEST}.
+ \item [\itype{mvl-test-file(string)}] Can be used to evaluate
+various forms by the \mvl\ system and compare the results to
+predefined values.  Both the forms and the expected answers are in
+the \type{.TEST} file whose name is supplied to the function.
+Returns the number of errors found.
+ \end{description}
+
+\subsection{As a tutorial}
+
+The information used by the function \type{test-mvl} can also be used
+as a tutorial in the \mvl\ system.  Take a look at the file
+\type{mvl.test} that this function uses; you will see that the first
+two lines are
+ \begin{verbatim}
+     (notime (mvl-test-file "bc" "backward chainer")
+     0
+\end{verbatim}
+ This means that the function \type{mvl-test-file} will be invoked on
+the file \type{bc.test}, and that this function should return 0
+(i.e., 0 errors).  So let's have a look at \type{bc.test}:
+ \begin{verbatim}
+     (load-logic #\f)                    ;first-order logic
+     **
+\end{verbatim}
+ Here, the system loads the bilattice corresponding to first-order
+logic and is not interested in the value returned by the loading
+operation.  Next, a declarative database corresponding to a full
+adder is loaded (with the timer turned off).  The sentences in this
+database can be found in the file \type{f1.mvl} and are also
+described in Section 15 and Appendix B.2 of the paper ``Multivalued
+logics: A uniform approach to inference in artificial intelligence.''
+
+Next, we see in \type{mvl.test} the two lines
+ \begin{verbatim}
+     (get-bdg '?x (answer-binding (bc '(val (out 1 f1) 1 ?x))))
+     OFF                   ;the first output (the sum line) should be off
+\end{verbatim}
+ We invoke the backward chainer on the sentence
+ \[\type{(val (out 1 f1) 1 ?x))}\]
+ to see if we can prove that the first output of the full adder takes
+some value \type{?x}.  Then we get the binding of this variable to
+see what the value actually is -- \type{OFF}, in this case.  The
+remainder of the various test files can be analyzed similarly; many
+of the examples in these files can also be found in the various
+technical papers included in the \mvl\ distribution package.
+
+\section{System support}
+\label{s.support}
+
+\subsection{Functions that compile and load the MVL system}
+
+The following three functions can be used to manipulate the \mvl\
+system as a whole:
+ \begin{description}
+ \item [\itype{load-mvl}] Loads the \mvl\ system.
+ \item [\itype{compile-mvl}] Compiles and loads the \mvl\ system.  On
+an Allegro system, the keyword \type{recompile} forces a recompile of
+all of the files and the keyword \type{reload} is ignored (since the
+files will all be reloaded anyway).  On a Symbolics system, the
+keyword \type{reload} forces all of the files to be reloaded and the
+keyword \type{recompile} forces them all to be recompiled.
+ \item [\itype{release-mvl}] (Symbolics only)  Compiles and loads the
+\mvl\ system, and declares the new version to be \type{released}.  The
+keyword \type{no-recompile} can be used to skip the compilation step.
+ \end{description}
+
+\subsection{The MVL package}
+\label{s.package}
+
+In order to avoid name conflicts with existing code, the \mvl\ system
+resides in its own package, \type{MVL}\index{MVL package}.  All
+of the symbols and functions appearing in the appendix are exported
+from this package and can therefore be accessed by invoking the
+function \type{use-package(mvl)}.  When a new bilattice is loaded,
+the modal operators it defines are also exported. 
+
+To use the \mvl\ system, invoke the function \type{(use-package 'mvl)}
+to make these symbols accessible.\footnote{As an alternative,
+\type{(in-package 'mvl)} wil put you in the MVL package itself.}
+
+\subsection{Running several copies of MVL in parallel}
+\label{s.invocation}
+
+Some users may wish to run several copies of the \mvl\ system
+simultaneously, perhaps associating them with distinct {\sc lisp}
+processes or with individual agents.  (The use of multiple copies of
+\mvl\ to represent distinct components of a single agent's knowledge
+goes against the grain of the multivalued approach and is not
+recommended.)  In order to support this facility, the following
+functions and macros have been defined:
+ \begin{description}
+ \item [\itype{existing-mvl-invocation}] This function returns a
+single value that is an instance of the structure \mi.  It is useful
+primarily for saving the current copy of \mvl\ so that it can be
+restored later.
+ \item [\itype{create-mvl-invocation}] This function sets up a new
+copy of \mvl.  It accepts an optional argument that is an instance of
+\mi; this can be used to reset the state of \mvl\ to a previous one.
+If the optional argument is omitted, default values are used.  The
+value returned is the \mvl\ invocation that was active before the
+function was called, so that another call to
+\type{create-mvl-invocation} can be used to restore the original
+environment.
+ \item [\itype{with-mvl-invocation}] This is a macro similar to the
+Common Lisp macro \type{with-open-file}.  It accepts an optional
+argument that is an instance of \mi\ and is followed by a body of
+forms (presumably including a \type{load-logic}) that are evaluated
+in a locally-bound copy of \mvl.
+ \end{description}
+
+These functions work by locally or globally rebinding the values of
+the various parameters used by the \mvl\ system
+(\type{*active-bilattice*}, \type{true} and so on).  The only
+difficulty with this is that procedural attachments for a relation
+$R$ use the property list of $R$, and this cannot be rebound.
+
+In order to cater to this difficulty, there is an additional global
+variable \itype{*mvl-invocation*} that labels the currently active
+copy of \mvl.  To determine what procedure is attached to the
+\type{stash} operation for $R$, the \type{stash} property of $R$ is
+examined.  There are now the following possibilities:
+ \begin{enumerate}
+ \item If the value is \NIL, \type{stash} is not procedurally attached,
+so the usual \mvl\ function is called.
+ \item If the value is an atom, then it is assumed that this atom is
+the name of a function that is the procedural attachment for \type{stash}
+independent of the copy of \mvl\ that is currently active.
+ \item If the value is a list, it is treated as an association list
+and a cons whose car is \type{*mvl-invocation*} is searched
+for.
+ \begin{enumerate}
+ \item If such a cons is found, its cdr is used as the procedural
+attachment to \type{stash}. 
+ \item If no such cons is found, but there is a cons whose car is \T,
+then the cdr of that cons is used.
+ \item If no cons has either \type{*mvl-invocation*} or \T\ as its
+car, then \type{stash} is assumed to be unattached.
+ \end{enumerate}
+ \end{enumerate}
+ The other functions described in Section \ref{s.attach} are handled
+similarly.
+
+The association lists described above are manipulated using the following
+functions:
+ \begin{description}
+ \item [\itype{get-mvl (symbol indicator)}]  Like the Common Lisp
+\type{get}, but if the value is a list, treats it as an a-list and
+searches for an item whose car matches \type{*mvl-invocation*}.
+The value taken can be changed with \type{setf}.
+ \item [\itype{rem-mvl (symbol indicator)}] Like the Common Lisp
+\type{remprop}, but if the value is a list, treats it as an a-list
+and removes the item whose car matches \type{*mvl-invocation*}.
+ \end{description}
+
+\section{Selecting a bilattice}
+\label{s.bilattice}
+
+\subsection{Bilattice structure}
+
+Of course, most of the power of the \mvl\ system comes not from the
+features that were described in Sections \ref{s.fol1}--\ref{s.support}
+of this manual, but from the fact that the user can change
+representation language conveniently within the system.  He does this
+by changing the {\em bilattice\/} that he is using.
+
+A bilattice is the mathematical structure from which the truth values
+used by the system are selected, and the formal ideas underlying this
+approach are discussed at length in the accompanying technical
+papers.  In the \mvl\ system, a bilattice is described as an instance
+of the \type{bilattice} structure.  This structure has 27 fields; of
+these, 17 are used to provide the formal information required by the
+system, and the others are used to simplify the user interface.  Here
+are 13 of the fields used to describe the bilattice itself:
+
+\begin{description}
+ \item [\itype{true}] A \lisp\ object that is the truth value assigned
+to a sentence that is unconditionally true, such as the tautology
+\type{(OR (P) (NOT (P)))}.
+ \item [\itype{false}] A \lisp\ object that is the truth value assigned
+to a sentence that is unconditionally false, such as the negation of a
+tautology.
+ \item [\itype{unknown}] A \lisp\ object that is the truth value assigned
+to a sentence about which nothing is known.
+ \item [\itype{bottom}] A \lisp\ object that is the truth value assigned
+to a sentence that is both true and false.  If any sentence is assigned
+this truth value (or can be shown to have it), it indicates the presence
+of a contradiction in the database.
+ \item [\itype{eq}] A \lisp\ function that takes two truth values as
+arguments and returns \T\ if they are equal and \NIL\ if they are
+not.  This function is needed because it may be possible to represent
+a single element of the bilattice as a \lisp\ object in a variety of
+fashions.
+ \item [\itype{and}] A \lisp\ function that takes two truth values as
+arguments and returns the truth value corresponding to their
+conjunction.  If the two sentences $p$ and $q$ are labelled with
+truth values $v_1$ and $v_2$ respectively, then the conjunction of
+the truth values is the truth value that can be assigned to $p\wedge q$.
+ \item [\itype{or}] A \lisp\ function that takes two truth values as
+arguments and returns the truth value corresponding to their
+disjunction.
+ \item [\itype{not}] A \lisp\ function that takes a truth value as its
+argument and returns the truth value corresponding to its negation.
+ \item [\itype{plus}] A \lisp\ function that takes two truth values as
+arguments and returns the truth value corresponding to their ``sum.''
+If there is reason to believe that a sentence $p$ should be labelled
+with truth value $v_1$, and independent reason to believe that it
+should be labelled with truth value $v_2$, then the actual label is
+given by the sum $v_1+v_2$.  This operation therefore corresponds to
+combination of evidence.
+ \item [\itype{dot}] A \lisp\ function that is the dual of the
+\type{plus} operation.  It takes two truth values $v_1$ and $v_2$ as
+arguments and returns the greatest truth value that could
+subsequently be strengthened to a conclusion of either $v_1$ or
+$v_2$.  This is a ``consensus'' operation.
+ \item [\itype{kle}] A \lisp\ function that takes two truth values $x$
+and $y$ and determines whether $x+y=y$.  Although this can also
+be done using the bilattice $+$ and $=$ operations, this field can be
+provided to give a more efficient implementation of this operation.
+This field is optional.
+ \item [\itype{tle}] A \lisp\ function that takes two truth values $x$
+and $y$ and determines whether $x\vee y=y$.  This field is also
+optional.
+ \item [\itype{modal-ops}] A list of the modal operators associated
+with the given bilattice.  See Section \ref{s.modal}.
+ \end{description}
+
+Three of the remaining formal slots are concerned with the incorporation
+of binding information into truth values.  In some cases, when a
+proposition is retrieved from the database, it is only an instance of
+the database proposition that is used, and the truth value may have to
+be modified to reflect that:
+ \begin{description}
+ \item [\itype{plug}]  This \lisp\ function accepts as arguments
+a truth value and a binding list, and returns a potentially modified
+truth value.  The default value is a function that leaves the truth
+value unchanged.
+ \end{description}
+
+There is also a function that accepts a truth value and returns the
+variables appearing within it:
+ \begin{description}
+ \item [\itype{vars}]  This \lisp\ function accepts a truth value
+as its argument and returns a list of the variables appearing in it.
+The default value is a function that returns \NIL\ independent of its
+argument.
+ \end{description}
+
+The function \itype{absorb} is needed for subtle technical reasons
+when working with bilattices with non-\NIL\ plugging functions;
+further information on this can be found in the file \type{load.lisp}.
+All three of these functions are \NIL\ if there is no interaction
+between the bilattice truth values and the variables that they
+contain.
+
+The final formal field has to do with search control:
+ \begin{description}
+ \item [\itype{simplicity}] This \lisp\ function accepts a truth
+value (which will frequently be the value obtained by conjoining the
+premises in a particular proof attempt) and returns a figure
+indicating the ``merit'' that should be assigned to the proof attempt
+in question.  The value returned should be a nonempty list of
+integers and is viewed lexicographically, with high values being
+preferred to low ones.  The default value is a function that returns
+the list \type{(0)} independent of the truth value supplied.
+ \end{description}
+
+The remaining ten fields in the \type{bilattice} structure are as
+follows:
+ \begin{description}
+ \item [\itype{dws}] This \lisp\ function, ``dot with star,'' accepts
+as arguments two truth values, $v_1$ and $v_2$.  The truth value returned
+is $v_1$, modified so as to remove any contribution that could be
+attributed to a sentence with truth value $v_2$.
+ \item [\itype{stash-val}] A function that, given a sentence $p$,
+returns the default truth value to be passed to \type{stash}.
+ \item [\itype{unstash-val}] A function that, given a sentence $p$,
+returns the default truth value to be passed to \type{unstash}.
+ \item [\itype{cutoff-val}] The default cutoff point that must be
+exceeded by any sentence if it is to be returned by \type{lookup}.
+See Section \ref{s.cutoffs}.
+ \item [\itype{print-fn}] This function is used to pretty-print
+truth values in the associated bilattice.  Its three arguments
+are a truth value, the bilattice in question, and a stream.
+ \item [\itype{long-desc}] A long description of the bilattice, used
+for input and output only.
+ \item [\itype{short-desc}] A short description of the bilattice, also
+used for input and output only.
+ \item [\itype{char}] A one-character identifier for the bilattice.
+This character can be used to change the bilattice using the function
+\type{load-logic} described in Section \ref{s.change}.
+ \item [\itype{type}] An overall description of the mathematical form
+of the bilattice.  Perhaps it is a product of two other bilattices,
+or formed from them in some other fashion.  This defaults to \type{basic}
+if no other value is supplied; various methods for constructing new
+bilattices from old ones are described in Section \ref{s.construct}. 
+ \item [\itype{components}]  A list of the components used to construct
+a bilattice whose \type{type} is not \type{basic}.
+ \end{description}
+
+\subsection{The active bilattice}
+
+At any particular point in time, there will be a single bilattice
+that has been selected by the user to be used in the application he
+is developing.  This bilattice is stored as the value of
+\type{*active-bilattice*}; in addition, many of the slots of the
+active bilattice are directly available to the user.  Here they
+are:
+
+\begin{description}
+ \item [\itype{*active-bilattice*}] The currently active bilattice.
+ \item [\itype{true}] The truth value \type{true} in the active bilattice.
+ \item [\itype{false}] The truth value \type{false} in the active bilattice.
+ \item [\itype{unknown}] The truth value \type{unknown} in the active
+bilattice.
+ \item [\itype{bottom}] The truth value \type{bottom} in the active bilattice.
+ \item [\itype{std-cutoffs}] Cutoff information constructed from the
+value of \type{cutoff-val} in the active bilattice.  See Section
+\ref{s.cutoffs}.
+ \item [\itype{stash-value}] The function \type{stash-val} in the
+active bilattice.
+ \item [\itype{unstash-value}] The function \type{unstash-val} in the
+active bilattice.
+ \item [\itype{mvl-plus}] The function \type{plus} in the active bilattice.
+ \item [\itype{mvl-dot}] The function \type{dot} in the active bilattice.
+ \item [\itype{mvl-and}] The function \type{and} in the active bilattice.
+ \item [\itype{mvl-or}] The function \type{or} in the active bilattice.
+ \item [\itype{mvl-not}] The function \type{not} in the active bilattice.
+ \item [\itype{mvl-eq}] The function \type{eq} in the active bilattice.
+ \item [\itype{mvl-simplicity}] The function \type{simplicity} in the active
+bilattice.
+ \item [\itype{dot-with-star}] The function \type{dws} in the active 
+bilattice.
+ \item [\itype{mvl-vars}] The function \type{vars} in the active bilattice.
+ \item [\itype{mvl-plug}] The function \type{plug} in the active bilattice.
+ \item [\itype{mvl-print}] This function accepts a single argument, a truth
+value, and modifies it in a way that will cause it to be pretty-printed.
+The value returned by mvl-print should not be used for any purpose other
+than printing.
+ \end{description}
+
+All of the functions above accept an optional argument that can be
+used to evaluate their result using some bilattice other than the
+active one.
+
+\subsubsection{Functions derived from the active bilattice}
+
+There are a variety of functions associated with the functions that
+are defined when a new bilattice is made active.  In order to
+simplify the description of these functions, we will denote
+\type{mvl-and} by $\wedge$, \type{mvl-or} by $\vee$, \type{mvl-not}
+by $\neg$, \type{mvl-plus} by $+$, and \type{mvl-dot} by $\cdot$.
+The first auxiliary function defined is \type{dot-with-not}:
+ \begin{description}
+ \item [\itype{dot-with-not(x)}] Computes $x\cdot \neg x$.
+ \end{description}
+
+The other functions are constructed from the partial orders defined
+using the bilattice operations.  We will write $x\leq_t y$ just in
+case $x\wedge y = x$, for example, and $x\leq_k y$ just in case
+$x\cdot y = x$.  (All of this notation follows that in the paper,
+``Multivalued logics: A uniform approach to inference in artificial
+intelligence''.)
+
+Given these definitions, the following \lisp\ functions are defined:
+ \begin{description}
+ \item [\itype{k-le(x y)}] Returns \T\ if $x \leq_k y$, and \NIL\ otherwise.
+ \item [\itype{k-ge(x y)}] Returns \T\ if $x \geq_k y$, and \NIL\ otherwise.
+ \item [\itype{t-le(x y)}] Returns \T\ if $x \leq_t y$, and \NIL\ otherwise.
+ \item [\itype{t-ge(x y)}] Returns \T\ if $x \geq_t y$, and \NIL\ otherwise.
+ \item [\itype{k-lt(x y)}] Returns \T\ if $x <_k y$, and \NIL\ otherwise.
+ \item [\itype{k-gt(x y)}] Returns \T\ if $x >_k y$, and \NIL\ otherwise.
+ \item [\itype{t-lt(x y)}] Returns \T\ if $x <_t y$, and \NIL\ otherwise.
+ \item [\itype{t-gt(x y)}] Returns \T\ if $x >_t y$, and \NIL\ otherwise.
+ \item [\itype{k-not-le(x y)}] Returns \T\ if $x \not\leq_k y$, and
+\NIL\ otherwise.
+ \item [\itype{k-not-ge(x y)}] Returns \T\ if $x \not\geq_k y$, and
+\NIL\ otherwise.
+ \item [\itype{t-not-le(x y)}] Returns \T\ if $x \not\leq_t y$, and
+\NIL\ otherwise.
+ \item [\itype{t-not-ge(x y)}] Returns \T\ if $x \not\geq_t y$, and
+\NIL\ otherwise.
+ \item [\itype{k-not-lt(x y)}] Returns \T\ if $x \not<_k y$, and \NIL\
+otherwise.
+ \item [\itype{k-not-gt(x y)}] Returns \T\ if $x \not>_k y$, and \NIL\
+otherwise.
+ \item [\itype{t-not-lt(x y)}] Returns \T\ if $x \not<_t y$, and \NIL\
+otherwise.
+ \item [\itype{t-not-gt(x y)}] Returns \T\ if $x \not>_t y$, and \NIL\
+otherwise.
+ \end{description}
+
+All of these functions accept an optional argument that is the
+bilattice to be used in the comparison.  This argument defaults to
+the currently active bilattice.
+
+\subsubsection{Cutoff information}
+\label{s.cutoffs}
+
+We will refer to each of the 16 functions defined at the end of the
+previous section (e.g., excluding \type{dot-with-not}) as a {\em tag}
+\index{tag}.  Thus \type{k-le} is a tag, and so on.
+
+We will now define a {\em simple test} to be a dotted pair
+ \[\type{(v . tag)}\]
+ where \type{v} is a truth value and \type{tag} is a tag.  We will
+say that a truth value \type{x} {\em satisfies\/} the simple test
+if and only if the function \type{tag}, when applied to the arguments
+$x$ and $v$ (in that order), returns \T.
+
+As an example, consider the simple test
+ \[\type{(true . t-ge)}\]
+ This test will be satisfied by any truth value that is $\geq_t
+\type{true}$.  Since \type{true} itself is the only truth value
+satisfying this test, the test will be satisfied for \type{true} and
+no other truth values.  This is the test that is frequently used to
+decide to terminate a proof effort.\footnote{Tests in the \mvl\ system
+are in fact \lisp\ structures with \type{value} and \type{tag} fields;
+we are using dotted lists in this manual only to make the presentation
+clearer.}
+
+Alternatively, the test used to determine whether or not to return
+an answer after the theorem prover runs to completion is often given
+by
+ \[\type{(unknown . k-gt)}\]
+ This test will succeed for any truth value about which more is known
+that \type{unknown} -- in other words, for any truth value other than
+\type{unknown} itself.
+
+In general, the simple tests are combined into {\em cutoffs}.  A cutoff
+is simply a list of lists of simple tests, and is interpreted as being
+in conjunctive normal form.  Thus the cutoff corresponding to the simple
+test $s$ is given simply by
+ \[\type{((s))}\]
+
+A cutoff corresponding to the conjunction of tests $s_1,\dots,s_n$ is given
+by
+ \[\type{((s-1) ... (s-n))}\]
+ while that corresponding to their {\em disjunction\/} is given by
+ \[\type{((s-1 ... s-n))}\]
+
+In general, we can build up conjunctions of disjunctions of simple
+tests in as complex a manner as we wish.  The cutoff \NIL\
+corresponds to the empty conjunction and therefore always succeeds;
+the cutoff \type{(NIL)} contains an empty disjunction and therefore
+always fails.  For convenience, these two cutoffs are stored in the
+global constants \itype{*always-succeeds*} and
+\itype{*never-succeeds*} respectively.
+
+Given a truth value $x$ and a cutoff $c$, the expression \type{(test x c)}
+evaluates to \T\ if $x$ passes the test, and to \NIL\ if it fails it.
+There is also a function that negates cutoffs:
+ \begin{description}
+ \item [\itype{test(value cutoffs \&optional bilattice)}] Returns \T\
+if the truth value passes the test associated to \type{cutoffs}, and
+\NIL\ otherwise.  The test is performed for the supplied bilattice,
+or for the currently active one if the optional argument is omitted.
+ \item [\itype{cutoffs-not(cutoffs \&optional bilattice)}] Returns a
+new cutoffs $c$ such that
+ \[\type{(test x c)} = \type{(test (mvl-not x) cutoffs)}\]
+ for all truth values $x$.  In other words, $x$ passes $c$ if and
+only if $\neg x$ passed the cutoffs supplied originally.
+ \end{description}
+
+\subsection{Selecting a new bilattice}
+\label{s.change}
+
+To change the bilattice being used, simply invoke the function
+\type{load-logic}.  There are three ways to specify the new bilattice:
+ \begin{enumerate}
+ \item Do nothing.  You will then be asked to select the bilattice
+from the list of bilattices known to the system.
+ \item Supply the one-character identifier of the new bilattice as an
+argument to \type{load-logic}.  The new bilattice must already be
+known to the system.
+ \item Supply the new bilattice itself as an argument to
+\type{load-logic}.
+ \end{enumerate}
+ \type{Load-logic} empties the database before the bilattice is
+changed.
+
+The bilattices known to the system are kept in the global variable
+\type{*bilattices*}.  To add a new bilattice to \type{*bilattices*},
+invoke the function \type{bilattice} with the bilattice as an
+argument.  This function will warn you if you are overwriting another
+bilattice that has the same one-character designator.
+
+Summarizing:
+ \begin{description}
+ \item [\itype{*bilattices*}] A list of the bilattices known to the system.
+ \item [\itype{bilattice(b)}] Add the bilattice $b$ to \type{*bilattices*}.
+ \item [\itype{load-logic}] Empty the database and make a new bilattice
+active.  Accepts as an optional argument either a character designating
+a bilattice, or the new bilattice itself.  If no argument is supplied,
+the user is prompted for the new bilattice.
+ \end{description}
+
+\section{Bilattices available in the MVL system}
+
+Here are the bilattices available in the \mvl\ system as distributed.
+Each is discussed more fully in a subsequent section:
+ \begin{description}
+ \item [\itype{*first-order-bilattice*}] The bilattice corresponding to
+first-order logic.
+ \item [\itype{*atms-bilattice*}] The bilattice corresponding to an \atms,
+where the justification information is maintained in disjunctive normal
+form as suggested by de Kleer.
+ \item [\itype{*cnf-atms-bilattice*}] An alternative version of the \atms\
+bilattice where the justification information is maintained in conjunctive
+normal form.
+ \item [\itype{*default-bilattice*}] A bilattice that can be used for simple
+default reasoning.
+ \item [\itype{*hierarchy-bilattice*}] A bilattice similar to the
+default bilattice but where the defaults are labelled with
+integer-valued strengths.
+ \item [\itype{*first-order-atms-bilattice*}] This bilattice corresponds
+to a fully first-order \atms, as opposed to the more conventional one
+dealing only with propositional logic.
+ \item [\itype{*circumscription-bilattice*}] The bilattice used to compute
+the results of the circumscription axiom.
+ \item [\itype{*probability-bilattice*}] An extended version of the \atms\
+bilattice that maintains probabilistic information as well.
+ \item [\itype{*time-bilattice*}] A compound bilattice that can be used
+for reasoning about events occurring against a temporal background.
+ \end{description}
+
+\subsection{First-order logic} \index{first-order logic}
+
+The simplest bilattice is that corresponding to first-order logic, and
+contains only the four truth values \type{true} (displayed as \type
+T), \type{false} (displayed as \type F), \type{unknown} (\type U) and
+\type{bottom} (\type{T/F}).  This bilattice is identified using the
+character {\bf f}, and is active when \mvl\ is first loaded.
+
+\subsection{Assumption-based truth maintenance}
+\index{assumption-based truth maintenance}
+
+Except for the \nm\ and probabilistic \atms\ bilattices, all of the
+bilattices corresponding to \atms's have truth values that are dotted
+pairs \type{(j . k)}, where $j$ is a justification for the sentence
+being labelled, and $k$ is a justification for its negation.  The
+bilattices differ in that the justifications are represented
+differently.
+
+\subsubsection{The ATMS bilattice}
+
+For the simplest \atms\ bilattice, the justifications are simply
+disjunctive normal form expressions.  Thus the justification
+ \begin{equation}
+\type{((P23 P37) (P1))}
+\label{e.just}
+\end{equation}
+ is interpreted to mean that the sentence in question is a
+consequence either of \type{P1}, or of \type{P23} and \type{P37} in
+conjunction.
+
+This bilattice is identified by the character {\bf a}.
+
+\subsubsection{ATMS's in conjunctive normal form}
+
+Alternatively, we can represent the justifications in conjunctive
+normal form, as opposed to disjunctive normal form.  This representation
+is useful, for example, in diagnosing multiple faults, since we want to
+be able to explain an observed failure {\em either\/} in terms of the
+collective failures of one set of components, or the collective failures
+of another set, and so on.
+
+This bilattice is identified by the character {\bf b}.
+
+\subsubsection{First-order ATMS's}
+\label{s.fo-atms}
+
+It is also possible to extend these ideas slightly to obtain a fully
+first-order \atms.  In order to do this, we need simply modify
+justifications such as that appearing in (\ref{e.just}) so that the
+primitive elements of the justification are not atoms referring to
+propositions, but pairs
+ \[\type{(atom . binding-list)}\]
+ where the atom refers to a proposition and the binding list
+indicates precisely what instantiation of that proposition is
+actually needed to justify the sentence in question.
+
+As an example, suppose that an assumption in our database is \type{P1},
+given by
+ \begin{equation}
+\type{(FRIENDLY ?X)}
+\label{e.assume}
+\end{equation}
+ and indicating that everything is friendly.  If we also have the rule
+of inference
+ \[\type{(<= (HAPPY ?X) (FRIENDLY ?X))}\]
+ indicating that anything friendly is happy, and this rule is unconditionally
+true (i.e., not an assumption), then the truth value assigned to the
+query \type{(HAPPY HARRY)} will be
+ \[\type{((((P1 . ((?X . HARRY))))))}\]
+ indicating that Harry is happy by virtue of (\ref{e.assume}) applied
+to $x=\mbox{Harry}$, and that there is no justification for the
+conclusion that Harry is not happy.  (Recall that all of the \atms\
+bilattices combine justification for and against each sentence into a
+single truth value.)
+
+This bilattice is identified by the character {\bf o}.
+
+\subsubsection{Probabilistic ATMS's}
+\label{s.prob}
+
+Truth values in the probabilistic \atms\ bilattice consist of dotted
+pairs, where the \type{car} of a truth value is simply an element of
+the \atms\ bilattice and the \type{cdr} is the probability that the
+given assumption is valid.
+
+When entering an assumption, the user will be queried for the
+probability in question; the probabilities of compound sentences are
+then computed automatically by the system.  The algorithm used is
+that described in Grnarov, Kleinrock and Gerla in the 1979
+Proceedings of the Computer Networking Symposium.
+
+The probabilistic \atms\ bilattice is identified by the character
+{\bf p}.
+  
+\subsection{Default reasoning} \index{default reasoning}
+\label{s.j}
+
+The default bilattice consists of seven truth values.  In addition to
+the usual elements \type{true}, \type{false}, \type{unknown} and
+\type{bottom}, there are elements \type{dt}, \type{df} and \type{*}.
+
+The truth value \type{dt} labels a conclusion that is true by default
+(such as Tweety flying in the canonical example), while \type{df} labels
+a conclusion that is {\em false\/} by default.  The final value,
+\type{*}, labels conclusions that are both true {\em and\/} false
+by default, as in the well-known Nixon-Republican-Quaker example.
+
+This bilattice is identified by the character {\bf d}.
+
+\subsubsection{Prioritized default reasoning}
+
+Another version of the default bilattice allows for priorities among
+the defaults.  In this bilattice, truth values are of the form
+ \[\type{(n . x)}\]
+ where $n$ is a nonnegative integer and $x$ is an element of the
+first-order bilattice.  Truth values with $n=0$ are displayed as for
+the first-order bilattice; with $n=1$ as for the default bilattice.
+For $n>1$, we might see \type{D(3)T} or something like it.  This
+particular truth value is the same as
+ \[\type{(3 . true)}\]
+ Truth values with small $n$ override those with larger $n$.
+\type{Unknown} in this bilattice is given by the truth value \NIL.
+The one-character identifier for the hierarchical default bilattice is
+{\bf h}.
+
+\subsection{Circumscription} \index{circumscription}
+\label{s.circ}
+
+The default bilattices are not able to deal with all of the
+situations in which multiple extensions arise because single truth
+values such as \type{*} label sentences that are true in some
+extensions and false in others without providing any information
+about precisely which extensions are which.  In order to handle this
+difficulty, we need to work with a more complex bilattice.
+
+One way to view the default bilattice is as a copy of the first-order
+bilattice in which the point \type{unknown} is interpreted as, ``not
+known with certainty,'' and is in fact replaced with another copy of
+the first-order bilattice that is used to record uncertain
+information (i.e., default truth, default falsity, or the presence of
+a default contradiction).
+
+The circumscriptive bilattice is formed similarly, except that
+instead of simply recording default truth, falsity, and so on, we
+record a {\em justification\/} for default conclusions.  This is done
+by replacing the point \type{unknown} of the first-order bilattice
+not with another copy of the first-order bilattice, but with a copy
+of the first-order \atms\ bilattice.  (This idea is in fact a general
+way to construct new bilattices from old ones, and is called a {\em
+surgery}.  It is discussed in Section \ref{s.surgery}.)  The
+designator for the circumscriptive bilattice is {\bf c}.
+\type{Circum} and \type{circums} use this bilattice to accept a
+sentence as an argument and attempt to prove it from the
+circumscription axiom; they resemble \type{bc} and \type{bcs}.
+
+The truth values in the circumscription bilattice corresponding to
+certain information are of the form \type{(T . x)}, where $x$ is an
+element of the first-order bilattice.  Those corresponding to uncertain
+information are of the form \type{(NIL . y)}, where $y$ is an element
+of the first-order \atms\ bilattice.
+
+Finally, the circumscriptive theorem prover will output diagnostics
+concerning its progress if the global variable \type{*circum-trace*}
+has a non-\NIL\ value.
+
+Here is a summary of the circumscriptive facilities:
+ \begin{description} 
+ \item [\itype{*circum-trace*}] If not \NIL, the circumscriptive proof
+functions will output diagnostics describing their progress.
+ \item [\itype{circum(p)}] Like \type{bc}, but looks for instances of
+$p$ that follow from the circumscription axiom.  Allowed keywords:
+\type{cutoffs} and \type{succeeds}.
+ \item [\itype{circums(p)}] Like \type{bcs}, but looks for instances of
+$p$ that follow from the circumscription axiom.  Allowed keywords:
+\type{cutoffs} and \type{succeeds}.
+ \end{description}
+
+\subsection{Temporal reasoning}\index{temporal reasoning}
+
+\type{*Time-bilattice*} is a bilattice of the truth values that might
+be assigned to propositions that have a time-dependent nature, such as
+whether or not a particular switch is on.  The truth values represent
+the entire histories of the propositions, so that a single truth value
+is a complete function from a set of time points (taken to be the
+integers) into a set of ``base'' truth values (take to be elements of
+the nonmonotonic {\sc atms} bilattice). This bilattice is discussed at
+greater length in the paper, ``Computational considerations in
+reasoning about action,'' and a sample use of this bilattice can be
+found by examining the file \type{temporal.test} that is included with
+\mvl.
+
+\section{Facilities to create new bilattices}
+\label{s.construct}
+
+There are a variety of ways in which it is possible to construct
+new bilattices from old ones, or from old ones in conjunction
+with instances of some other structure.  In this section, we
+describe the extent to which these facilities exist within the
+\mvl\ system.
+
+\subsection{Products}
+\label{s.product}
+
+Perhaps the simplest way in which a new bilattice can be constructed
+is as the product of two existing bilattices.  If $A$ and $B$ are
+bilattices, then a truth value in the product bilattice $A\times B$
+will simply be a pair of truth values \type{(x . y)}, where $x$ is a
+truth value in $A$ and $y$ is one in $B$.  All of the bilattice
+operations on the product bilattice are computed pointwise using the
+corresponding operations on the component bilattices $A$ and $B$.
+
+The product construction is performed using the following function:
+ \begin{description}
+ \item [\itype{product-bilattice(b1 b2)}] Returns the bilattice
+that is the product of the bilattices $b_1$ and $b_2$.
+ \end{description}
+
+\subsection{Functional attachments}
+
+Another way in which to construct a bilattice is to start with a
+bilattice $B$ and a function $f$ that maps $B$ into a fixed set $S$.
+The elements of the new bilattice are simply pairs of the form
+ \[\type{(x .~(f x))}\]
+ where $x$ is an element of $B$.  The function $f$ here is simply
+tagging along for the ride, and has no impact on the bilattice
+operations.  It can be used to provide additional information about
+the truth values, and is used to compute probabilistic information in
+the bilattice {\bf p} described in Section \ref{s.prob}.
+
+The relevant function is the following one:
+ \begin{description}
+ \item [\itype{append-bilattice(b f)}] Returns the bilattice obtained
+by appending the result of applying the function $f$ to the points of
+the original bilattice $b$.
+ \end{description}
+
+\subsection{Surgeries}
+\label{s.surgery}
+
+A somewhat more interesting construction is the one we described in
+Section \ref{s.circ} as a {\em surgery}.  Here, we take one bilattice
+$b_1$ and replace the point corresponding to \type{unknown} in this
+bilattice with another bilattice $b_2$.  The truth values in the
+resulting bilattice are either of the form \type{(T . x)} for a point
+$x$ in the ``upper'' bilattice $b_1$, or \type{(NIL . y)} for a point
+$y$ in the lower bilattice.  Truth values from $b_1$ take priority over
+values from $b_2$.
+
+To perform this construction generally, we have: 
+ \begin{description}
+ \item [\itype{splice-bilattice(upper lower)}] Returns the bilattice
+obtained by replacing the point \type{unknown} in the bilattice
+\type{upper} with a copy of the bilattice \type{lower}.
+ \end{description}
+
+As an example, the default bilattice {\bf d} of Section \ref{s.j} is
+given by
+ \[\type{(splice-bilattice *first-order-bilattice* *first-order-bilattice*)}\]
+ The circumscriptive bilattice of Section \ref{s.circ} is given by
+ \[\type{(splice-bilattice *first-order-bilattice*
+*first-order-atms-bilattice*)}\]
+
+\subsection{Hierarchies}
+
+It is possible to iterate the surgery construction of the previous
+section, producing a bilattice that is an infinite descending
+``chain'' of copies of a basic bilattice $b$.  This is done by
+the function \type{hierarchy-bilattice}:
+ \begin{description}
+ \item [\itype{hierarchy-bilattice(b)}] Returns the bilattice constructed
+as an infinite descending chain of copies of $b$.
+ \end{description}
+
+Truth values in this bilattice have the form \type{(n . x)}, where
+$x$ is an element of $b$, and $n$ is an integer giving the hierarchy
+level.  The top hierarchy level of the bilattice has $n=0$; the
+second level is $n=1$, and so on.  The point \type{unknown} is given
+by \NIL.
+
+This function is used to construct the hierarchical version of the
+default bilattice.
+
+\subsection{Lattices}
+
+Bilattices can also be constructed from lattices.  A lattice is a set
+equipped with a {\em single\/} partial order and greatest lower bound
+and least upper bound operations, which we denote by $+$ and $\cdot$
+respectively.
+
+An element of the associated bilattice is a {\em pair\/} of elements
+of the lattice, and the bilattice operations are given by:
+ \begin{eqnarray*}
+\neg(a,b) & = & (b,a) \\
+(a,b) + (c,d) & = & (a+c,b+d) \\
+(a,b) \cdot (c,d) & = & (a\cdot c,b\cdot d) \\
+(a,b) \vee (c,d) & = & (a+c, b\cdot d) \\
+(a,b) \wedge (c,d) & = & (a\cdot c,b+d)
+ \end{eqnarray*}
+
+Roughly speaking, the first component of the bilattice element labels
+the ``truth'' of the sentence, and the second labels its falsity.  This
+is how the \atms\ bilattices are constructed.
+
+The function used is \type{lattice-to-bilattice}:
+
+ \begin{description}
+ \item [\itype{lattice-to-bilattice(l)}] Returns the bilattice constructed
+from the lattice $l$.
+ \end{description}
+
+A lattice is a structure rather like a bilattice, but with fewer slots
+(because it only has a single partial order).  The fields in an instance
+of the \itype{lattice} structure are:
+
+\begin{description}
+ \item [\type{max}] A \lisp\ object that is the maximal element of
+the lattice.
+ \item [\type{min}] A \lisp\ object that is the minimal element of
+the lattice.
+ \item [\type{eq}] A \lisp\ function that takes two lattice elements
+as arguments and returns \T\ if they are equal and \NIL\ if they are
+not.
+ \item [\type{and}] A \lisp\ function that takes two lattice elements
+as arguments and returns their greatest lower bound.
+ \item [\type{or}] A \lisp\ function that takes two lattice elements
+as arguments and returns their least upper bound.
+ \item [\type{le}] This optional field is a \lisp\ function that
+accepts two arguments $x$ and $y$ and determines whether or not
+$x\leq y$ under the partial order corresponding to the lattice.
+ \item [\type{vars}] This \lisp\ function accepts a lattice element
+as an argument and returns a list of the variables that it contains.
+The default value returns \NIL\ independent of its argument.
+ \item [\type{plug}] This \lisp\ function accepts as arguments a
+lattice value and a binding list, and returns a potentially modified
+lattice value.  The default value is a function that leaves the lattice
+value unchanged.
+ \item [\type{simplicity}] The lattice analog of the bilattice
+\type{simplicity} slot.  When constructing a bilattice from a
+lattice, the \type{simplicity} of a truth value $(a,b)$ is the result
+of applying the simplicity function from the lattice to the lattice
+element $a$.  The value $b$ is ignored in the simplicity computation.
+ \item [\type{dws}] This \lisp\ function, ``dot with star,'' accepts
+as arguments two lattice values, $v_1$ and $v_2$.  The lattice
+element returned is $v_1$, modified so as to remove any contribution
+that could be attributed to the lattice element $v_2$.
+ \item [\type{stash-val}] The lattice element entering into
+the bilattice function \type{stash-val}.
+ \item [\type{long-desc}] A long description of the lattice, used
+for input and output only.
+ \item [\type{short-desc}] A short description of the lattice, also
+used for input and output only.
+ \item [\type{char}] A one-character identifier for the lattice.
+ \end{description}
+
+\subsection{Directed acyclic graphs}
+\label{s.dag}
+
+The final fashion in which \mvl\ supports the construction of new
+bilattices is an extension of the product construction of Section
+\ref{s.product}.  There, we formed the product of two bilattices
+$A\times B$.  If the bilattices were identical, we would have formed
+the product bilattice $B\times B$, or $B^2$.  Another way to view
+this bilattice is as the collection of functions from the two point
+set $\set{1,2}$ into the original bilattice $B$.  Since such a
+function $f$ can be described as the pair $(f(1),f(2))$, there is no
+difference between this description and the previous one.
+
+Given this analogy, it is not hard to see that we can extend the
+construction to the bilattice $B^S$ for an arbitrary set $S$, where
+elements of this bilattice are functions from the set $S$ into $B$,
+and all of the bilattice functions ($\wedge$, $\cdot$ and so on) are
+once again computed pointwise.
+
+The difficulty with this idea is that for large sets $S$, it is not
+clear how we can represent a function from $S$ into $B$ in a
+convenient way.  It turns out, however, that if $S$ has the structure
+of a directed acyclic graph, or \dg, this problem can be overcome.
+
+\subsubsection{Defining the DAG}
+
+As a preliminary, we need some way to define the \dg\ itself.  In
+\mvl, a \dg\ \index{dag} is an instance of the \type{dag} structure;
+this structure has the following fields:
+ \begin{description}
+ \item [\itype{root}] The root of the \dg.
+ \item [\itype{eq}] A function that accepts two elements of the \dg\
+and returns \T\ if they are the same element and \NIL\ otherwise.
+ \item [\itype{leq}] A function that accepts two elements of the \dg\
+and returns \T\ if the first is farther from the root of the \dg\
+than the second.  If not supplied by the user, this function can by
+computed from the \type{dot} operation on the \dg.
+ \item [\itype{dot}] A function that accepts two elements of the \dg\
+and returns a list of their first common descendants, or \NIL\ if no
+such descendant exists.
+ \item [\itype{long}] A long description of the \dg.
+ \item [\itype{short}] A short description of the \dg.
+ \item [\itype{inherit}] A function describing the fashion in which
+truth values are inherited within the \dg.  This function $f$ should take
+four arguments: a bilattice $b$, two elements of the \dg\ $x$ and $y$,
+and an element $z$ of the bilattice.  If $z$ is the element of the
+bilattice associated to the \dg\ element $x$, then $f(b,x,y,z)$ will
+be the value associated to the \dg\ element $y$ in the absence of
+information to the contrary.  By default, this function ignores
+its first three arguments and assigns $y$ the same value as $x$ has.
+ \item [\type{vars}] This \lisp\ function accepts a \dg\ element
+as an argument and returns a list of the variables that it contains.
+The default value returns \NIL\ independent of its argument.
+ \item [\type{plug}] This \lisp\ function accepts as arguments a
+\dg\ value and a binding list, and returns a potentially modified
+\dg\ value.  The default value is a function that leaves the \dg\
+value unchanged.
+ \item [\type{select}] In some applications (none of which is distributed
+with \mvl), it appears that truth values should be inherited from only
+{\em some\/} of the elements of the \dg\ which might potentially
+impact the value of the function at some specific point.  The
+selection function is given a point where the truth value is being
+computed and a list of points that apparently contribute; it returns a
+list of points that {\em actually\/} contribute.  By default, all
+points contribute; most users of \mvl\ are very unlikely to need this
+facility.
+ \end{description}
+
+\subsubsection{Constructing the bilattice}
+
+Having selected a \dg\ $D$ and a bilattice $B$, we can now construct
+the bilattice $B^D$.  Specific functions from $D$ to $B$ are described
+as structures with the following slots:
+ \begin{description}
+ \item [\type{dag}] The domain of the function, $D$.
+ \item [\type{bilattice}] The range of the function, $B$.
+ \item [\type{list}] A list of elements of the form \type{(p . v)},
+where \type p is a point where the value changes in a fashion {\em
+other\/} than the one predicted by the inheritance function associated
+with $D$ and \type v is the value taken there.
+ \end{description}
+ We will refer to these functions as {\em \dg-functions}.
+
+There are a variety of functions available to manipulate \dg-functions,
+and these are used to construct the bilattice $B^D$.  In some cases,
+however, the user may want to access these functions directly.  Here
+are some of them:
+ \begin{description}
+ \item [\itype{get-val(d f)}] Returns the value of the
+function $f$ at the point $d$ of the \dg.
+ \item [\itype{make-tv(dag bilattice d b)}] Returns a \dg-function that
+takes the value $b$ at the point $d$.  If $d$ is not the root of the
+\dg, the value at the root of the \dg\ is generally the point
+\type{unknown} in the bilattice, but the user may supply the keyword
+\type{root-fn} if he wishes, in which case the value at the root of
+the \dg\ is the result of applying \type{root-fn} to the bilattice.
+ \item [\itype{make-root(dag bilattice b)}] Returns a \dg-function that
+takes the value $b$ at the root of the \dg.
+ \item [\itype{dag-change-tv(f b-f)}] The argument
+\type{b-f} should be a function from the bilattice to itself; a
+modified version of the original \dg-function $f$ is returned in which
+every point in the \dg-function has had the function \type{b-f}
+applied to it.  There is an optional keyword \type{simplify}; if
+supplied, the computed function is simplified before being returned.
+(See \type{simplify}.)
+ \item [\itype{dag-change-dag(f d-f)}] The argument
+\type{d-f} should be a function from the \dg\ to itself; a modified
+version of the original \dg-function $f$ is returned in which every
+point at which the \dg-function takes a new value has had the function
+\type{d-f} applied to it.  The bilattice argument is expected to be
+the bilattice of functional truth values as opposed to the bilattice
+that is the target of the functions.  There is an optional keyword
+\type{simplify}; if supplied, the computed function is simplified
+before being returned.  (See \type{simplify}.)
+ \item [\itype{dag-list-of-answers(f)}] Given a \dg-function $f$, assumed
+to be from the \dg\ of binding lists into the currently active bilattice, this
+function constructs a list of answers corresponding to the points where
+the \dg-function takes values.
+ \item [\itype{dag-accumulate-fn(dag bilattice list)}] Given a \dg, a
+bilattice, and a list of elements of the form
+ \[\type{(dag-elt . bilattice-elt)}\]
+a \dg-function is constructed that takes the given values at the
+given elements of the \dg.
+
+A keyword to \type{dag-accumulate-fn} is \type{modifier}.  This
+function is used if the \type{d-list} contains the same \dg\ element
+more than once, in which case the modifier function is called with
+the new and old values (in that order) and the result is used as the
+value of the \dg-function at that particular point.  The default
+action is to simply overwrite the old value with the new one.  (In
+other words, the default modifier function simply returns its first
+argument while ignoring the second.)
+ \item [\itype{dag-prune(f pred)}] Given a \dg-function
+$f$ and a predicate on the bilattice, this function prunes from $f$
+all points $d$ where $f(d)$ fails to satisfy the predicate.  There is
+an optional keyword \type{modify-fn} that, if supplied, should be a
+function $m$ from the bilattice to itself.  In this case, the points
+where $m(f(d))$ fails to satisfy the predicate are pruned.
+ \item [\itype{combine-fns(f1 f2 fn comp)}]
+This function takes the two \dg-functions $f_1$ and $f_2$ and
+combines them using the function \type{fn}, which should be a
+function that takes two elements of the bilattice and returns a
+single one.  The comparison function \type{comp} is used to determine
+if one of the two functions can be returned directly; if, for example
+\type{(comp f1 f2)} holds, than  we simply return $f_1$, and similarly
+for $f_2$.  As an example, if the combining function is the bilattice
+operation $\cdot$, the comparison function is \type{k-le}.
+ \item [\itype{combine-1(f params f1 ... fn)}] This is an
+$n$-ary version of \type{combine-fns}, where $f$ is an $n$-ary
+bilattice function and there are $n$ \dg-functions supplied as well.
+The additional argument \type{params} indicates which of the $n$ arguments
+to this function are not necessarily \dg-functions, but are instead parameters
+expected by the overall function $f$.  This additional argument is a list
+of \T\ (if the $n$th argument is a parameter) or \NIL\ (if it isn't).
+If the parameter list ends early, all of the remaining entries are
+assumed to be \NIL.
+ \item [\itype{add-dag(d b f)}] Given the \dg-function
+$f$, add the value $b$ at the point $d$.  This function works by side
+effect only.  There is a keyword \type{modifier} that, if supplied,
+should be a function that takes two elements of the bilattice and
+returns a single one.  Given such a function $m$, the \dg-function is
+changed so that the new value at $d$ is $m(b,f(d))$, where $f(d)$ is
+the old value.  (This is similar to the same keyword in
+\type{dag-accumulate-fn}.)  The keyword \type{simplify} is also available.
+ \item [\itype{simplify(f)}] In some cases,
+manipulating the \dg-function $f$ may cause it to contain
+redundancies, where the value at some point is presented explicitly
+even though this value is in fact the one that would normally be
+inherited from its parents.  This function returns a modification of
+$f$ where these irrelevant entries have been removed.
+ \item [\itype{fn-and(f1 f2)}] This function conjoins
+the values of $f_1$ and $f_2$ using the bilattice $\wedge$ operation.
+The new \dg-function is returned.
+ \item [\itype{fn-or(f1 f2)}] This function disjoins
+the values of $f_1$ and $f_2$ using the bilattice $\vee$ operation.
+The new \dg-function is returned.
+ \item [\itype{fn-plus(f1 f2)}] This function adds
+the values of $f_1$ and $f_2$ using the bilattice $+$ operation.
+The new \dg-function is returned.
+ \item [\itype{fn-dot(f1 f2)}] This function combines
+the values of $f_1$ and $f_2$ using the bilattice $\cdot$ operation.
+The new \dg-function is returned.
+ \item [\itype{fn-dws(f1 f2)}] This function combines
+the values of $f_1$ and $f_2$ using the bilattice operation
+\type{dot-with-star}.  The new \dg-function is returned.
+ \item [\itype{fn-not(f1)}] This function negates the
+values of $f_1$ using the bilattice $\neg$ operation.  The new
+\dg-function is returned.
+ \item [\itype{fn-eq(f1 f2)}] This function compares
+the values of $f_1$ and $f_2$ using the bilattice comparison operation.
+Either \T\ or \NIL\ is returned.
+ \item [\itype{fn-comp(f1 f2 fn)}] This functions compares
+the values of $f_1$ and $f_2$ using the bilattice comparison function
+\type{fn}.  Either \T\ or \NIL\ is returned.
+ \end{description}
+
+Of course, the point of all of this is to enable us to define the
+following function:
+ \begin{description}
+ \item [\itype{dag-bilattice(dag bilattice)}] Given a bilattice $B$
+and a dag $D$, returns the bilattice $B^D$.
+ \end{description}
+
+The following functions are also available:
+ \begin{description}
+ \item [\itype{lattice-to-dag(lattice)}] Construct a \dg\ from the
+given lattice.
+ \item [\itype{lattice-to-dag-to-bilattice(lattice bilattice)}]  First
+construct a \dg\ $D$ from the given lattice.  Then use the bilattice
+$B$ to construct the bilattice $B^D$.
+ \end{description}
+
+\subsubsection{The DAG of theories}
+\label{s.theory}
+
+Two specific \dg s are provided for use in the \mvl\ system.  The first
+uses a \dg\ corresponding to the existence of multiple theories within
+a single database; the second uses a \dg\ to handle binding information.
+
+The theory \dg\ consists of a hierarchy of theories.  In a single
+database, for example, we might want to have rules that applied to
+celestial bodies, rules applying to stars, rules applying only to red
+giants or only to our sun, and so on.  The truth value of a rule
+applicable to all celestial bodies should be inherited if we are
+considering our sun (but it should be possible to overwrite it with
+a different truth value if we wish), but a rule applicable to red
+giants should not be inherited in this fashion.  So we see that our
+\dg\ construction is well-suited for this sort of an application.
+
+To activate the theory mechanism, simply invoke the \lisp\ function
+\type{activate-theory-mechanism}.  This function replaces the active
+bilattice, say $B$, with the bilattice constructed of functions from
+the theory \dg\ into $B$.  The original bilattice can still be
+accessed, since it is the second \type{component} of the newly formed
+bilattice.  The function \type{theory-active-p} can be used to
+determine whether or not the theory mechanism has been activated.
+
+The \dg\ of theories is the value of the global variable
+\type{theory-dag}, and has as its root the theory whose name is the
+value of the constant \type{*global*}.  To indicate that a theory
+\type{big} includes another theory \type{little} as a subtheory,
+invoke the function 
+ \[\type{(includes big little)}\]
+ Thus, for example, one would introduce a new theory called
+\type{theory} by writing
+ \[\type{(includes *global* 'theory)}\]
+ The effects of \type{includes} can be reversed by invoking the
+function \type{unincludes}.
+
+Note that since the theory \dg\ is used by the functions that
+manipulate the bilattice $B^D$, it is important that this \dg\ be
+maintained as new theories are introduced.  If \type{includes} is not
+used to ``locate'' these new theories in the overall theory \dg\
+itself, the theories will be inaccessible to many of the \mvl\
+functions.
+
+At any point in time, any new fact will be inserted into the database
+as true in a particular theory; the theory into which it is inserted
+is the value of \type{*active-theory*}.  The value of this variable
+should not be changed directly, but should instead be modified by
+invoking the function \type{activate} on the theory into which
+subsequent facts should be written.  The variable
+\type{true-in-theory} contains the truth value of a sentence that is
+true in the currently active writing theory.
+
+The theory \type{*active-theory*} is also the theory that is active
+for reading at any point in time.  Of course, any parents of the
+active theory are also active by virtue of the structure of the theory
+\dg\ itself; if it is desired to read from multiple theories
+simultaneously, a new theory should be created that is a child of all
+of them.
+
+Here is a summary of the functions described so far:
+ \begin{description}
+ \item [\itype{activate-theory-mechanism}] Activates the theory
+mechanism.  Accepts as an optional argument either a one-character
+bilattice descriptor, or a bilattice.
+ \item [\itype{theory-active-p}] Returns \T\ or \NIL\ depending on
+whether or not the theory mechanism has been activated.
+ \item [\itype{theory-dag}] The \dg\ of theories.
+ \item [\itype{*global*}] The root of the \dg\ of theories.
+ \item [\itype{includes(big little)}] This function is used to state that
+the theory \type{little} is a subtheory of the theory \type{big}, and
+should inherit from it.
+ \item [\itype{unincludes(big little)}] This function is used to state
+that the theory \type{little} is no longer a subtheory of the theory
+\type{big}, and should not inherit from it.
+ \item [\itype{*active-theory*}] The theory that is currently active
+for reading and writing.
+ \item [\itype{activate(th)}] Activate the theory \type{th} for reading
+and writing.
+ \item [\itype{true-in-theory}]  The truth value of a sentence that is
+true in the currently-active writing theory.
+ \end{description}
+
+Finally, five functions have been added to simplify the user
+interface somewhat.  The function {\tt theory-\-contents} displays
+the contents of a given theory, and \type{empty-theory} removes all
+of the propositions in this theory.  To modify the contents of a
+specific theory, the following functions can be used:
+ \begin{description}
+ \item [\itype{state-in-theory(p)}] Adds the proposition $p$ to the
+currently active theory.  Allowed keywords: \type{theory} can
+be used to specify a different theory to which $p$ should be added;
+\type{value} and \type{increment-p} have the same meaning as for
+\type{state}.  (See Section \ref{s.database}; if these keywords are
+not used, the function \type{state} can be used equally well, since
+the default stash value with the theory mechanism activated also
+inserts the proposition into the currently active theory.)
+ \item [\itype{unstate-from-theory(p)}] Removes the proposition $p$
+from the currently active theory.  Allowed keywords:
+\type{theory} can be used to specify a different theory from which
+$p$ should be removed; \type{value} and \type{decrement-p} have the
+same meaning as for \type{unstate}.  (See Section \ref{s.database}.)
+ \item [\itype{erase-from-theory(p)}] Removes the proposition $p$
+from the currently active theory, and forward chains on the result.
+Allowed keywords: \type{theory} can be used to specify the theory from
+which $p$ should be removed; \type{value}, \type{decrement-p} and
+\type{cutoffs} have the same meaning as for \type{erase}.  (See
+Section \ref{s.fc}.)
+ \item [\itype{theory-contents()}] Displays the contents of the
+currently active theory, which can be changed using the
+keyword \type{theory}.  The keywords \type{cutoffs} and \type{props}
+are allowed and are treated as for \type{contents}.  (See Section
+\ref{s.contents}.)  There is an additional keyword,
+\itype{this-theory-only}, which defaults to \T\ and, if supplied,
+indicates that only sentences whose truth values {\em change\/} in the
+given theory are to be displayed.  (This avoids displaying all
+sentences in the global theory, for example.)
+ \item [\itype{empty-theory()}] Empties the currently active
+theory, although this theory may be changed using the keyword
+\type{theory}.  The keyword \type{value} has a meaning similar to its
+meaning as a keyword to \type{erase}.
+ \end{description}
+
+\subsubsection{The DAG of binding lists}
+\label{s.binding-dag}
+
+The other \dg\ supplied with the \mvl\ system is used for binding
+lists since these, too, admit a natural inheritance structure.  The
+root of the \dg\ is the empty binding list \NIL, and inheritance in
+the \dg\ is determined by subsumption.  The bilattice constructed as
+functions from this \dg\ into \type{*active-bilattice*} is used
+extensively by the prover, and is available to the user as
+\type{bdg-to-truth-val}.
+
+The binding \dg\ itself is known as \type{binding-dag}, and is constructed
+using the following functions:
+ \begin{description}
+ \item [\itype{equal-binding(b1 b2)}] Checks to see if two binding
+lists are effectively the same.
+ \item [\itype{append-binding-lists(b1 b2)}] Computes the least
+specific binding list that is more specific than both $b_1$ and $b_2$
+or returns \NIL\ if no such binding list exists ($b_1$ and $b_2$ may
+bind the same variable to different constants, for example).
+ \item [\itype{binding-le(b1 b2)}] Returns \NIL\ unless $b_1$ is a more
+specific binding that $b_2$, in which case a list of relative binding
+lists is returned.
+ \end{description}
+
+The following global variables are also used:
+ \begin{description}
+ \item [\itype{binding-dag}] The \dg\ of binding lists.
+ \item [\itype{bdg-to-truth-val}] The bilattice of functions from
+the \dg\ of binding lists into \type{*active-bilattice*}.
+ \end{description}
+
+\section{Modal operators}
+\label{s.modal}
+
+An additional feature that makes the \mvl\ system unique is its
+ability to handle {\em modal operators}.  The approach taken by \mvl\
+to modal operators is that they are functions from the bilattice of
+truth values to itself.  Thus, for example, the modal operator that
+takes a sentence $p$ into the sentence, ``I know that $p$,''
+corresponds to the bilattice function (on the first-order bilattice)
+that takes $t$ and $\bot$ into $t$ (since we know $p$ if we know it
+to be true or know it to be true and false both), and takes $f$ and
+$u$ into $f$ (since we do {\em not\/} know $p$ if we either know it
+to be false or do not know if it is true or false).  Further details
+can be found in the paper, ``Bilattices and modal operators.''
+
+A modal expression in \mvl\ is any sentence of the form 
+ \[\type{(op p-1 \dots\ p-n)}\]
+ where \type{op} is recognizable as a modal operator because it has a
+non-\NIL\ value for its \type{modal-op} property in the currently
+active invocation of \mvl.  In this case, the value of the
+\type{modal-op} property should be an instance of the structure
+\itype{modal-operator}.  This structure has the following fields:
+ \begin{description}
+ \item [\itype{name}] The name of the modal operator.  This is used
+to identify modal operators in different bilattices that have the
+same commonsense meaning (and can therefore be usefully combined when
+the bilattices are combined as in the previous section).
+ \item [\itype{function}] A function that accepts as arguments the
+truth values of the sentences under the scope of the modal operator
+and returns the truth value of the modal expression itself.
+ \item [\itype{parameters}] If the modal operator accepts $n$
+arguments, this should be a list of $n$ entries indicating whether
+each argument is a truth value or a parameter that should be passed
+directly to the modal operator function.  (An entry of \T\ indicates
+that the associated argument is parametric; an entry of \NIL\
+indicates that it isn't.)  Suppose, for example, that we are working
+with a bilattice where the truth values are functions describing the
+behaviors of various fluents over the course of time, and have a modal
+operator \type{delay}, where the truth value assigned to
+ \[\type{(delay t p)}\]
+ is expected to be the same as the truth value assigned to $p$ but
+delayed by an amount of time $t$.  Here, the first argument ($t$) is
+a parameter and the second argument ($p$) is not.
+
+If there are fewer than $n$ entries on the parameter list, then all of
+the missing entries are assumed to be \NIL\ (so that the associated
+arguments to the modal function are not parameters).  Note: All
+parametric arguments should be bound when attempting to derive a modal
+expression.  This is similar to the requirement that arguments to a
+procedurally-attached predicate be bound when the procedure is called.
+ \end{description}
+
+\subsection{Modal operators supplied with the MVL bilattices}
+
+All bilattices in \mvl\ are equipped with a modal operator \itype{idn}
+that does not change the truth value of its argument at all; this
+modal operator can be used to semantically mark points where it may be
+desirable to interrupt the inference process.  In addition, if the
+prover is invoked on \type{(idn p)} instead of on \type p, attempts
+will be made to prove both $p$ and its negation $\neg p$.
+
+The bilattices supplied as part of the \mvl\ system are equipped with
+the following modal operators:
+
+ \begin{description}
+ \item [\type{*first-order-bilattice*}] This bilattice has two
+modal operators: $L$, which maps $p$ into, ``necessarily $p$,'' or,
+``I know that $p$,'' and $M$, which maps $p$ into ``possibly $p$.''
+ \item [\type{*atms-bilattice*}]  No modal operators are supplied with
+this or any of the other \atms-type bilattices.
+ \item [\type{*default-bilattice*}] This bilattice and the hierarchical
+default bilattice both inherit the modal operators $L$ and $M$ from the
+first-order bilattice.
+ \item [\type{*circumscription-bilattice*}] This bilattice does not
+come equipped with any modal operators.
+ \item [\type{*time-bilattice*}] This bilattice inherits the modal
+operators $L$ and $M$ from the bilattice of basic values.  The
+following three additional modal operators are also defined:
+ \begin{enumerate}
+ \item \itype{delay(t p)} This is a modal operator that pushes the
+truth value of $p$ into the future by an amount of time $t$.  Thus if
+$p$ is true at time 2, $\type{delay}(p,2)$ will be true at time 4.
+ \item \itype{propagate} is a modal operator that corresponds to the frame
+axiom.  If $p$ is true at time 2, unknown between times 3 and 20, and false
+at time 21, then $\type{propagate}(p)$ will be true from times 2 until 20
+and false subsequently.
+ \item \itype{at(t p)} is a modal operator that returns the value taken
+by the truth value $p$ at the time $t$.  (In actuality, a function has
+to be returned; the function is the one that takes value $p(t)$ at all
+times instead of just at $t$.)
+ \end{enumerate}
+ \end{description}
+
+\subsection{Quantification and modal operators}
+
+In addition to \type{idn}, there are two other modal operators that
+are available for use with any bilattice, \itype{exists} and
+\itype{forall}.  Although not really modal operators on the bilattice
+being used, these {\em are\/} legitimate modal operators on the bilattice
+\type{bdg-to-truth-val} that was described in Section \ref{s.binding-dag}.
+
+The functions associated to these modal operators mimic the usual behaviors
+given to the quantifiers.  Thus an expression such as
+ \begin{equation}
+\type{(exists ?x (foo ?x))}
+\label{e.exists}
+\end{equation}
+ is evaluated by first computing the truth value that could be assigned
+to \type{(foo ?x)} as an element of \type{bdg-to-truth-val}, so that
+a truth value is obtained for every binding of \type{?x}.  This truth
+value is then manipulated so that the values for any particular binding
+of \type{?x} are disjoined (the usual interpretation of the existential
+quantifier), and the result is returned as the truth value assigned to
+\ref{e.exists}.  The modal operator \type{forall} is handled similarly
+and corresponds to universal quantification.  The first (parametric)
+argument to these operators can also be a list of variables, in which
+case all of the variables are quantified over.
+
+\subsection{Modal operators created automatically}
+
+Finally, many of the functions that construct new bilattices are able
+to construct modal operators on these bilattice in terms of the modal
+operators on the bilattices they are using in the construction.  More
+specifically:
+
+\begin{enumerate}
+ \item A product bilattice $A \times B$ will inherit a modal operator
+from $A$ and $B$ if these component bilattices have modal operators
+with the same name.
+ \item A bilattice constructed using \type{append-bilattice} will have
+modal operators corresponding to whatever modal operators were available
+on the bilattice used in the construction.
+ \item A bilattice constructed by splicing two bilattices $A$ and $B$
+together will inherit the modal operators from the ``upper'' bilattice.
+ \item A bilattice constructed using \type{hierarchy-bilattice} will
+have modal operators corresponding to whatever modal operators were
+available on the bilattice used in the construction.
+ \item A bilattice constructed from a lattice will not normally have
+any modal operators associated to it.
+ \item The bilattice $B^D$ will inherit whatever modal operators the
+bilattice $B$ has.
+ \end{enumerate}
+
+\section*{Acknowledgement}
+
+Support for the development of \mvl\ has been provided by the Air
+Force Office of Scientific Research, the Defense Advance Research
+Projects Agency, General Dynamics, the National Science Foundation,
+Rockwell International, and Rome Labs.
+
+\clearpage
+
+\appendix
+
+\section{Summary of MVL functions and constants}
+
+\begin{list}{}{\setlength{\labelwidth}{1.5in}\setlength{\labelsep}{.25in}
+\setlength{\leftmargin}{1.75in}}
+
+% *A*
+
+\item [\itype{activate(th)}] Activate the theory \type{th} for reading
+and writing.
+
+\item [\itype{activate-best-first}] Activate best-first search by
+setting \type{*node-evaluation-fn*} to \type{best-first-fn}.  Allowed
+keywords: \type{initial-limit}, \type{limit-delta}, and
+\type{final-limit}.
+
+\item [\itype{activate-breadth-first}] Activate breadth-first search
+by setting \type{*node-evaluation-fn*} to \type{depth-fn}.  Allowed
+keywords: \type{initial-limit}, \type{limit-delta}, and
+\type{final-limit}.
+
+\item [\itype{activate-depth-first}] Activate depth-first search by
+setting \type{*initial-limit*} to \NIL.  Allowed keyword:
+\type{final-limit}.
+
+\item [\itype{activate-theory-mechanism}] Activates the theory
+mechanism.  Accepts as an optional argument either a one-character
+bilattice descriptor, or a bilattice.
+
+\item [\itype{*active-bilattice*}] The currently active bilattice.
+
+\item [\itype{*active-theory*}] The theory that is currently active
+for reading and writing.
+
+\item [\itype{add-dag(d b f)}] Given the \dg-function $f$, add the
+value $b$ at the point $d$.  This function works by side effect only.
+There is a keyword \type{modifier} that, if supplied, should be a
+function that takes two elements of the bilattice and returns a single
+one.  Given such a function $m$, the \dg-function is changed so that
+the new value at $d$ is $m(b,f(d))$, where $f(d)$ is the old value.
+(This is similar to the same keyword in \type{dag-accumulate-fn}.)
+The keyword \type{simplify} is also available.
+
+\item[\itype{answer-binding(a)}] Returns the binding field of the
+answer \type a.
+
+\item[\itype{answer-value(a)}] Returns the value field of the answer
+\type a.
+
+\item [\itype{anytime-trace(pat)}] Include \type{pat} on \at, so that
+any instance of \type{pat} will be traced.  The argument is optional;
+if omitted, \type{(?*)} (of which everything is an instance) will be
+used.
+
+\item [\itype{anytime-untrace(pat)}] Remove any instance of
+\type{pat} from \at.  The argument is optional; if omitted,
+\type{(?*)} (of which everything is an instance) will be used.
+
+\item [\itype{append-bilattice(b f)}] Returns the bilattice obtained
+by appending the result of applying the function $f$ to the points of
+the original bilattice $b$.
+
+\item [\itype{append-binding-lists(b1 b2)}] Computes the least
+specific binding list that is more specific than both $b_1$ and $b_2$
+or returns \NIL\ if no such binding list exists ($b_1$ and $b_2$ may
+bind the same variable to different constants, for example).
+
+\item [\itype{*atms-bilattice*}] The bilattice corresponding to an \atms,
+where the justification information is maintained in disjunctive normal
+form as suggested by de Kleer.
+
+% *B*
+
+\item [\itype{(bagof}\type{ ?x ?p ?b)}] This relation holds for
+$x$, $p$ and $b$ if and only if $b$ is a list of all $x$ satisfying
+$p$.
+
+\item [\itype{bc(q)}] Attempts to prove the query $q$ from information
+in the database, looking only for a single answer.
+
+\item [\itype{bc-trace(pat)}] Include \type{pat} on
+\type{*bc-trace*}, so that any instance of \type{pat} will be
+traced.  The argument is optional; if omitted, \type{(?*)} (of which
+everything is an instance) will be used.
+
+\item [\itype{bc-untrace(pat)}] Remove any instance of \type{pat}
+from \type{*bc-trace*}.  The argument is optional; if omitted,
+\type{(?*)} (of which everything is an instance) will be used.
+
+\item [\itype{bc-unwatch(preds)}] Removes the given predicates from
+the list of {\sc WATCH}ed predicates.  If no arguments are supplied,
+all predicates are un{\sc watch}ed.
+
+\item [\itype{bc-watch(preds)}] Accepts as arguments any number of
+predicates that should be watched as the prover proceeds.  Each
+predicate can also be a list of the form \type{(predicate depth)}
+where \type{depth} is the number of successive ancestors to be
+displayed when the prover encounters an instance of the predicate.
+Returns a list of the predicates currently being {\sc WATCH}ed.
+
+\item [\itype{bcs(q)}] Attempts to prove the query $q$ from information
+in the database, looking for all possible answers.
+
+\item [\itype{bdg-to-truth-val}] The bilattice of functions from
+the \dg\ of binding lists into \type{*active-bilattice*}.
+
+\item [\itype{bilattice(b)}] Add the bilattice $b$ to \type{*bilattices*}.
+
+\item [\itype{*bilattices*}] A list of the bilattices known to the system.
+
+\item [\itype{binding-dag}] The \dg\ of binding lists.
+
+\item [\itype{binding-le(b1 b2)}] Returns \NIL\ unless $b_1$ is a more
+specific binding that $b_2$, in which case a list of relative binding
+lists is returned.
+
+\item [\itype{bottom}] The truth value \type{bottom} in the active bilattice.
+
+\item [\itype{*break-node*}] The number of a node at which the
+proof process should be interrupted.
+
+% *C*
+
+\item [\itype{choose-task}]  Selects a task to work on next.  The 
+current implementation of \mvl\ simply selects any task that might
+have some impact on the final answer being computed.
+
+\item [\itype{circum(p)}] Like \type{bc}, but looks for instances of
+$p$ that follow from the circumscription axiom.  Allowed keywords:
+\type{cutoffs} and \type{succeeds}.
+
+\item [\itype{*circum-trace*}] If not \NIL, the circumscriptive proof
+functions will output diagnostics describing their progress.
+
+\item [\itype{circums(p)}] Like \type{bcs}, but looks for instances of
+$p$ that follow from the circumscription axiom.  Allowed keywords:
+\type{cutoffs} and \type{succeeds}.
+
+\item [\itype{*circumscription-bilattice*}] The bilattice used to compute
+the results of the circumscription axiom.
+
+\item [\itype{cnf(p)}] Returns $p$ in conjunctive normal form, as a list
+of conjuncts, where each conjunct is a list of disjuncts.  Thus
+ \[\type{(CNF '(AND A B))}\]
+returns
+ \[\type{((A) (B))}\]
+
+\item [\itype{*cnf-atms-bilattice*}] An alternative version of the \atms\
+bilattice where the justification information is maintained in conjunctive
+normal form.
+
+\item [\itype{combine-1(f params f1 ... fn)}] This is an $n$-ary
+version of \type{combine-fns}, where $f$ is an $n$-ary bilattice
+function and there are $n$ \dg-functions supplied as well.  The
+additional argument \type{params} indicates which of the $n$ arguments
+to this function are not necessarily \dg-functions, but are instead
+parameters expected by the overall function $f$.  This additional
+argument is a list of \T\ (if the $n$th argument is a parameter) or
+\NIL\ (if it isn't).  If the parameter list ends early, all of the
+remaining entries are assumed to be \NIL.
+
+\item [\itype{combine-fns(f1 f2 fn comp)}] This function takes the two
+\dg-functions $f_1$ and $f_2$ and combines them using the function
+\type{fn}, which should be a function that takes two elements of the
+bilattice and returns a single one.  The comparison function
+\type{comp} is used to determine if one of the two functions can be
+returned directly; if, for example \type{(comp f1 f2)} holds, than we
+simply return $f_1$, and similarly for $f_2$.  As an example, if the
+combining function is the bilattice operation $\cdot$, the comparison
+function is \type{k-le}.
+
+\item [\itype{compile-mvl}] Compiles and loads the \mvl\ system.
+On a Symbolics system, the keyword \type{reload} forces all of the
+files to be reloaded and the keyword \type{recompile} forces them all
+to be recompiled.
+
+\item [\itype{*completed-database*}] If \T, find all exceptions
+to default proofs.  If \NIL\ (the default), accept defaults proofs
+with possible exceptions as complete.
+
+\item [\itype{cont-analysis(analysis)}] This function continues the
+investigation of a specific analysis, and can be used to resume a
+proof effort that has been curtailed for some reason.  It returns two
+values: an instance of the \type{answer} structure giving the results
+of the proof attempts, and a modified version of the \type{analysis}
+structure that can be used to continue the proof process if desired.
+
+\item [\itype{cont-prover(proof)}] Resume the task associated to the
+auxiliary information in the given instance of the \type{proof}
+structure.  This function returns an instance of \type{bcanswer}
+corresponding to the result obtained by the prover, and returns as
+soon as a solution to the original query is found.
+
+\item [\itype{contents}] Displays the contents of the database.  Keywords:
+\type{cutoffs}, \type{props}.
+
+\item [\itype{create-mvl-invocation}] This function sets up a new
+copy of \mvl.  It accepts an optional argument that is an instance of
+\mi; this can be used to reset the state of \mvl\ to a previous one.
+If the optional argument is omitted, default values are used.  The
+value returned is the \mvl\ invocation that was active before the
+function was called, so that another call to
+\type{create-mvl-invocation} can be used to restore the original
+environment.
+
+\item [\itype{cutoffs-not(cutoffs \&optional bilattice)}] Returns a
+new cutoffs $c$ such that
+ \[\type{(test x c)} = \type{(test (mvl-not x) cutoffs)}\]
+ for all truth values $x$.  In other words, $x$ passes $c$ if and
+only if $\neg x$ passed the cutoffs supplied originally.
+
+% *D*
+
+\item [\itype{dag-accumulate-fn(dag bilattice list)}] Given a \dg, a
+bilattice, and a list of elements of the form
+ \[\type{(dag-elt . bilattice-elt)}\]
+a \dg-function is constructed that takes the given values at the
+given elements of the \dg.
+
+A keyword to \type{dag-accumulate-fn} is \type{modifier}.  This
+function is used if the \type{d-list} contains the same \dg\ element
+more than once, in which case the modifier function is called with
+the new and old values (in that order) and the result is used as the
+value of the \dg-function at that particular point.  The default
+action is to simply overwrite the old value with the new one.  (In
+other words, the default modifier function simply returns its first
+argument while ignoring the second.)
+
+\item [\itype{dag-bilattice(dag bilattice)}] Given a bilattice $B$
+and a dag $D$, returns the bilattice $B^D$.
+
+\item [\itype{dag-change-dag(f d-f)}] The argument \type{d-f} should
+be a function from the \dg\ to itself; a modified version of the
+original \dg-function $f$ is returned in which every point at which
+the \dg-function takes a new value has had the function \type{d-f}
+applied to it.  The bilattice argument is expected to be the bilattice
+of functional truth values as opposed to the bilattice that is the
+target of the functions.  There is an optional keyword
+\type{simplify}; if supplied, the computed function is simplified
+before being returned.  (See \type{simplify}.)
+
+\item [\itype{dag-change-tv(f b-f)}] The argument \type{b-f} should be
+a function from the bilattice to itself; a modified version of the
+original \dg-function $f$ is returned in which every point in the
+\dg-function has had the function \type{b-f} applied to it.  There is
+an optional keyword \type{simplify}; if supplied, the computed
+function is simplified before being returned.  (See \type{simplify}.)
+
+\item [\itype{dag-list-of-answers(f)}] Given a \dg-function $f$, assumed
+to be from the \dg\ of binding lists into the currently active bilattice, this
+function constructs a list of answers corresponding to the points where
+the \dg-function takes values.
+
+\item [\itype{dag-prune(f pred)}] Given a \dg-function $f$ and a
+predicate on the bilattice, this function prunes from $f$ all points
+$d$ where $f(d)$ fails to satisfy the predicate.  There is an optional
+keyword \type{modify-fn} that, if supplied, should be a function $m$
+from the bilattice to itself.  In this case, the points where
+$m(f(d))$ fails to satisfy the predicate are pruned.
+
+\item [\itype{*default-bilattice*}] A bilattice that can be used for simple
+default reasoning.
+
+\item [\itype{delete-bdg(var bdg-list)}] Destructively modifies
+\type{bdg-list}, removing any binding for the variable \type{var}.
+
+\item [\itype{denotes(a)}] Returns the proposition associated with a
+particular \lisp\ atom.
+
+\item [\itype{dnf(p)}] Returns $p$ in disjunctive normal form, as a list
+of disjuncts, where each disjunct is a list of conjuncts.  Thus
+ \[\type{(DNF '(AND A B))}\]
+returns
+ \[\type{((A B))}\]
+
+\item [\itype{(done exp-1 ... exp-n)}] This predicate, which is
+useful for stashing only, causes \lisp\ to evaluate each of the subsequent
+expressions.
+
+\item [\itype{dot-with-not(x)}] Computes $x\cdot \neg x$.
+
+\item [\itype{dot-with-star}] The function \type{dws} in the active bilattice.
+
+% *E*
+
+\item [\itype{empty}] Unstashes every sentence in the database.  Keyword:
+\type{value}.
+
+\item [\itype{empty-theory()}] Empties the currently active theory,
+although this theory may be changed using the optional theory
+argument.  The keyword \type{value} has a meaning similar to its
+meaning as a keyword to \type{erase}.
+
+\item[\itype{equal-answer(a1 a2)}] Returns \T\ if the two answers
+\type{a1} and \type{a2} are equal, and \NIL\ otherwise.  The
+functions used are \type{binding-equal} and \type{mvl-eq}, the
+functions normally used to test binding lists and truth values for
+equality.
+
+\item [\itype{equal-binding(b1 b2)}] Checks to see if two binding lists are
+effectively the same.
+
+\item [\itype{*equivalence-translation*}] Controls the fashion in which
+\type{normal-form} deals with the connective \type{<=>}.
+
+\item [\itype{erase(p)}] Removes $p$ from the database and forward
+chains.  Allowed keywords: \type{value}, \type{decrement-p} and
+\type{cutoffs}.
+
+\item [\itype{erase-from-theory(p)}] Removes the proposition $p$ from
+the currently active theory, and forward chains on the result.
+Allowed keywords: \type{theory} can be used to specify the theory from
+which $p$ should be removed; \type{value}, \type{decrement-p} and
+\type{cutoffs} have the same meaning as for \type{erase}.  (See
+Section \ref{s.fc}.)
+
+\item [\itype{existing-mvl-invocation}] This function returns a
+single value that is an instance of the structure \mi.  It is useful
+primarily for saving the current copy of \mvl\ so that it can be
+restored later.
+
+% *F*
+
+\item [\itype{false}] The truth value \type{false} in the active bilattice.
+
+\item [\itype{fc(p)}] Inserts the sentence $p$ into the database and
+forward chains.  Allowed keywords: \type{value}, \type{increment-p},
+\type{fc-increment-p}, \type{cutoffs} and \type{include-modal}.
+
+\item [\itype{fc-trace(pat)}] Include \type{pat} on
+\type{*fc-trace*}, so that any instance of \type{pat} will be
+traced.  The argument is optional; if omitted, \type{(?*)} (of which
+everything is an instance) will be used.
+
+\item [\itype{fc-untrace(pat)}] Remove any instance of \type{pat}
+from \type{*fc-trace*}.  The argument is optional; if omitted,
+\type{(?*)} (of which everything is an instance) will be used.
+
+\item [\itype{*final-limit*}] is the limit point beyond which the
+search is abandoned, so that any node that evaluates to a value worse
+than this will be pruned.  The default value of this parameter is
+\NIL, indicating that no nodes are to be pruned.
+
+\item [\itype{*first-order-atms-bilattice*}] This bilattice corresponds
+to a fully first-order \atms, as opposed to the more conventional one
+dealing only with propositional logic.
+
+\item [\itype{*first-order-bilattice*}] The bilattice corresponding to
+first-order logic.
+
+\item [\itype{fn-and(f1 f2)}] This function conjoins the values of
+$f_1$ and $f_2$ using the bilattice $\wedge$ operation.  The new
+\dg-function is returned.
+
+\item [\itype{fn-comp(f1 f2 fn)}] This functions compares the values
+of $f_1$ and $f_2$ using the bilattice comparison function \type{fn}.
+Either \T\ or \NIL\ is returned.
+
+\item [\itype{fn-dot(f1 f2)}] This function combines the values of
+$f_1$ and $f_2$ using the bilattice $\cdot$ operation.  The new
+\dg-function is returned.
+
+\item [\itype{fn-dws(f1 f2)}] This function combines the values of
+$f_1$ and $f_2$ using the bilattice operation \type{dot-with-star}.
+The new \dg-function is returned.
+
+\item [\itype{fn-eq(f1 f2)}] This function compares the values of
+$f_1$ and $f_2$ using the bilattice comparison operation.  Either \T\
+or \NIL\ is returned.
+
+\item [\itype{fn-not(f1)}] This function negates the values of $f_1$
+using the bilattice $\neg$ operation.  The new \dg-function is
+returned.
+
+\item [\itype{fn-or(f1 f2)}] This function disjoins the values of
+$f_1$ and $f_2$ using the bilattice $\vee$ operation.  The new
+\dg-function is returned.
+
+\item [\itype{fn-plus(f1 f2)}] This function adds the values of $f_1$
+and $f_2$ using the bilattice $+$ operation.  The new \dg-function is
+returned.
+
+% *G*
+
+\item [\itype{get-bdg(var bdg-list)}] Returns the value assigned to
+the variable \type{var} by the binding list \type{bdg-list}.  If the
+variable does not appear in the binding list, \NIL\ is returned.
+
+\item [\itype{get-mvl (symbol indicator)}]  Like the Common Lisp
+\type{get}, but if the value is a list, treats it as an a-list and
+searches for an item whose car matches \type{*mvl-invocation*}.
+The value taken can be changed with \type{setf}.
+
+\item [\itype{get-val(d f)}] Returns the value of the function $f$ at
+the point $d$ of the \dg.
+
+\item [\itype{*global*}] The root of the \dg\ of theories.
+
+\item [\itype{groundp(p)}] Returns \T\ if the proposition $p$ is
+ground (i.e., contains no variables) and \NIL\ otherwise.
+
+% *H*
+
+\item [\itype{hierarchy-bilattice(b)}] Returns the bilattice constructed
+as an infinite descending chain of copies of $b$.
+
+\item [\itype{*hierarchy-bilattice*}] A bilattice similar to the
+default bilattice but where the defaults are labelled with
+integer-valued strengths.
+
+% *I*
+
+\item [\itype{*if-translation*}] Controls the fashion in which
+\type{normal-form} deals with the connective \type{if}.
+
+\item [\itype{includes(big little)}] This function is used to state that
+the theory \type{little} is a subtheory of the theory \type{big}, and
+should inherit from it.
+
+\item [\itype{index(p)}] Updates the discrimination net as needed
+to insert the proposition $p$ into the database.
+
+\item [\itype{init-analysis(prop)}] The \mvl\ primitive upon which
+the proving functions are based, this function accepts a proposition
+and creates and returns an instance of the \type{analysis} structure.
+
+\item [\itype{init-prover(p effort)}] This function initializes and
+returns an instance of \type{proof} containing auxiliary information
+about the proof process.
+
+\item [\itype{*initial-limit*}] is used to indicate the type of search.
+If \NIL\ (the default), then the values assigned to the nodes are not
+used to order the search, and depth-first search is used.  If not
+\NIL, \type{*initial-limit*} is typically 0.
+
+\item [\itype{instp(p1 p2)}] If $p_2$ is an instance of $p_1$,
+return a list of their most general unifiers; only variables in $p_1$
+are bound.  Returns \NIL\ if $p_2$ is not an instance of $p_1$.
+
+\item [\itype{invoke(fn p)}] This function invokes \type{fn} on the
+sentence $p$.  In addition, any keyword arguments are passed to
+\type{fn}, but with \type{\&allow-other-keys} so that the keywords
+will be ignored if \type{fn} is not expecting them.
+
+% *J*
+
+% *K*
+
+\item [\itype{k-ge(x y)}] Returns \T\ if $x \geq_k y$, and \NIL\ otherwise.
+
+\item [\itype{k-gt(x y)}] Returns \T\ if $x >_k y$, and \NIL\ otherwise.
+
+\item [\itype{k-le(x y)}] Returns \T\ if $x \leq_k y$, and \NIL\ otherwise.
+
+\item [\itype{k-lt(x y)}] Returns \T\ if $x <_k y$, and \NIL\ otherwise.
+
+\item [\itype{k-not-ge(x y)}] Returns \T\ if $x \not\geq_k y$, and
+\NIL\ otherwise.
+
+\item [\itype{k-not-gt(x y)}] Returns \T\ if $x \not>_k y$, and \NIL\
+otherwise.
+
+\item [\itype{k-not-le(x y)}] Returns \T\ if $x \not\leq_k y$, and
+\NIL\ otherwise.
+
+\item [\itype{k-not-lt(x y)}] Returns \T\ if $x \not<_k y$, and \NIL\
+otherwise.
+
+\item [\itype{(known p)}] Stashing this predicate simply stashes $p$;
+unstashing it causes an error.  Looking it up looks up $p$.
+
+% *L*
+
+\item [\itype{lattice-to-bilattice(l)}] Returns the bilattice constructed
+from the lattice $l$.
+
+\item [\itype{lattice-to-dag(lattice)}] Construct a \dg\ from the
+given lattice.
+
+\item [\itype{lattice-to-dag-to-bilattice(lattice bilattice)}]  First
+construct a \dg\ $D$ from the given lattice.  Then use the bilattice
+$B$ to construct the bilattice $B^D$.
+
+\item [\itype{*limit-delta*}] is used if \type{*initial-limit*} is
+non-\NIL.  In this case, the nodes are ordered by increasing
+ \[\frac{\type{value(node)}-\type{*initial-limit*}}{\type{*limit-delta*}}\]
+ A typical value for *initial-limit* is 0, and for *limit-delta* is
+1.  The value of this parameter is irrelevant if
+\type{*initial-limit*} is \NIL.
+
+\item [\itype{lisp-defined(fn)}] This macro is used to indicate that
+the given function can be evaluated by a \lisp\ call.  It is also
+used to cause \mvl\ to signal an error if an attempt is made to stash
+or unstash an instance of the function.  \type{Lisp-defined} also
+accepts an optional argument, which is an inverter function.  The
+overall result of attempting to lookup an instance of the function
+can be described as follows:
+ \begin{enumerate}
+ \item If none of the arguments to the function (i.e., all but the
+last of the arguments of the relation) is a variable, then the function
+is called and the result is unified with the final argument of the
+relation.
+ \item If the inverter function has been supplied and is equal to \T,
+then the function is called and the result is unified with the final
+argument of the relation even if some of the arguments are variables.
+ \item If some of the arguments are variables but the result is not a
+variable, then the inverter function is invoked if one has been
+supplied.  The arguments passed to the inverter function are the
+result (i.e., the last argument of the relation), and a list of all
+of the arguments (i.e., all but the last argument of the relation).
+If there is no inverter function, then \NIL\ is returned.  In
+addition, if \wbli\ \index{*warn-on-bad-lisp-invocations*} is not
+\NIL, the user is warned.
+ \item If both some of the arguments and the result are variables, then
+\NIL\ is returned.  In addition, if \wbli\ is not \NIL, the user is
+warned.
+ \end{enumerate}
+
+\item [\itype{lisp-predicate(pred)}] This macro is used to indicate
+that the given predicate can be evaluated by a \lisp\ call.  It is
+also used to cause \mvl\ to signal an error if an attempt is made to
+stash or unstash an instance of the function.
+
+\item [\itype{load-logic}] Empty the database and make a new bilattice
+active.  Accepts as an optional argument either a character designating
+a bilattice, or the new bilattice itself.  If no argument is supplied,
+the user is prompted for the new bilattice.
+
+\item [\itype{load-mvl}] Loads the \mvl\ system.
+
+\item [\itype{lookup(q)}] Searches the database for a sentence
+matching the query $q$.  Allowed keywords: \type{cutoffs}, \type{inv},
+\apa, \somo.  Returns two values: an answer and the source of the
+match.  Returns \NIL\ if the query cannot be found in the database.
+
+\item [\itype{lookup-call(fn p)}] This function is similar to
+\type{invoke}, but modifies the values returned to make them agree
+with those expected to be returned by \type{lookup}.  Unless the
+function \type{fn} supplies them, the truth value is assumed to be
+\type{true}.  The second value is \type{attach}.
+
+\item [\itype{lookups(q)}] Similar to \type{lookup}, but looks
+for {\em all\/} sentences matching the query.  Returns two lists of
+values.
+
+\item [\itype{lookups-call(fn p)}] The plural version of
+\type{lookup-call}.
+
+% *M*
+
+\item [\itype{make-root(dag bilattice b)}] Returns a \dg-function that
+takes the value $b$ at the root of the \dg.
+
+\item [\itype{make-tv(dag bilattice d b)}] Returns a \dg-function that
+takes the value $b$ at the point $d$.  If $d$ is not the root of the
+\dg, the value at the root of the \dg\ is generally the point
+\type{unknown} in the bilattice, but the user may supply the keyword
+\type{root-fn} if he wishes, in which case the value at the root of
+the \dg\ is the result of applying \type{root-fn} to the bilattice.
+
+\item [\itype{matchp(pattern atom)}] Returns a list of elements of
+the form \type{(b . d)} where $b$ is a most general binding list such
+that \type{(plug pattern b)} is an instance of the proposition
+labelled with \type{atom} and $d$ is a binding list for the variables
+in the database proposition.  \NIL\ is returned if no such binding
+list exists.  Thus if \type{P1} is \type{(TALL \#:?2)}, and \type{P2}
+is \type{(TALL TOM)}, then
+ \[\type{(matchp (TALL TOM) P1)}\]
+returns a list consisting of the single entry 
+ \[\type{(NIL . ((\#:?2 . TOM)))}\]
+ The \type{car} of this entry is \NIL, indicating that no variables
+in the query need to be bound to match \type{P1}; the \type{cdr} is
+\type{((\#:?2 . TOM))} since the variable \type{\#:?2} in \type{P1}
+needs to be bound to \type{TOM} to match the query.
+ \[\type{(matchp (TALL ?X) P2)}\]
+returns \type{((((?X . TOM)) . NIL))}.
+
+\item [\itype{mvl-and}] The function \type{and} in the active bilattice.
+
+\item [\itype{mvl-dot}] The function \type{dot} in the active bilattice.
+
+\item [\itype{mvl-eq}] The function \type{eq} in the active bilattice.
+
+\item [\itype{mvl-file(string)}] Returns the path for the \mvl\ file
+associated with the given name.  The file name may include an
+extension, one may be supplied as an optional argument, or
+\type{.MVL} will be used by default.  There is an optional keyword
+\type{no-error} indicating that even if the file cannot be found, the
+path should be returned.
+
+\item [\itype{*mvl-invocation*}] A global variable containing a unique
+identifier for the currently active copy of \mvl.
+
+\item [\itype{mvl-load(file)}] Loads the sentences in the given file into
+the \mvl\ database.
+
+\item [\itype{mvl-not}] The function \type{not} in the active bilattice.
+
+\item [\itype{mvl-or}] The function \type{or} in the active bilattice.
+
+\item [\itype{mvl-plug}] The function \type{plug} in the active bilattice.
+
+\item [\itype{mvl-plus}] The function \type{plus} in the active bilattice.
+
+\item [\itype{mvl-print}] This function accepts a single argument, a
+truth value, and modifies it in a way that will cause it to be
+pretty-printed.  The value returned by mvl-print should not be used
+for any purpose other than printing.
+
+\item [\itype{mvl-save(file)}] Writes the \mvl\ database out to the
+given file.  This function also accepts the keywords \type{cutoffs}
+and \type{props}, which are treated as for \type{contents} (see
+Section \ref{s.contents}).  Finally, the keyword \type{if-exists} is
+passed to the \type{with-open-file} macro.
+
+\item [\itype{mvl-simplicity}] The function \type{simplicity} in the active
+bilattice.
+
+\item [\itype{mvl-test-file(string)}] Can be used to evaluate
+various forms by the \mvl\ system and compare the results to
+predefined values.  Both the forms and the expected answers are in
+the \type{.TEST} file whose name is supplied to the function.
+Returns the number of errors found.
+
+\item [\itype{mvl-unload(file)}] Removes the sentences in the given file from
+the \mvl\ database.
+
+\item [\itype{mvl-vars}] The function \type{vars} in the active bilattice.
+
+% *N*
+
+\item [\itype{negate(p)}] Returns the negation of $p$.
+
+\item [\type{new-$*$var()}]\index{new-star-var} Returns a new
+temporary sequence variable.
+
+\item [\type{new-?var()}]\index{new-query-var} Returns a new
+temporary variable.
+
+\item [\itype{new-val(a v)}] Sets the truth value of the sentence
+associated with the atom $a$ to $v$.  If $v$ is the truth value
+\type{unknown}, the sentence is removed from the database.
+
+\item [\itype{normal-form(p)}] Returns an equivalent form of $p$
+suitable for insertion into the database (i.e., with the connectives
+\type{IFF}, \type{IF} and \type{<=>} reduced to \type{<=} and \type{=>}).
+
+% *O*
+
+% *P*
+
+\item [\itype{plug(p bdg-list)}] Returns the result of instantiating
+the proposition $p$ using the given binding list.  This function is
+nondestructive.
+
+\item [\itype{prfacts(atom)}] Displays the database facts concerning the
+given atom.  Keyword: \type{cutoffs}.
+
+\item [\itype{*probability-bilattice*}] An extended version of the \atms\
+bilattice that maintains probabilistic information as well.
+
+\item [\itype{product-bilattice(b1 b2)}] Returns the bilattice
+that is the product of the bilattices $b_1$ and $b_2$.
+
+\item [\itype{(property symbol value indicator)}] Stashing this
+predicate sets the symbol's \type{indicator} property to \type{value}
+for the current invocation of \mvl.  Unstashing it removes the
+\type{indicator} property for the current invocation of \mvl\ if the
+previous value of this property unifies with \type{value}.  (See the
+definitions of \type{get-mvl} and \type{rem-mvl}.)
+
+\item [\itype{props()}] Returns a list of all propositions about
+which any information has been recorded.
+
+% *Q*
+
+% *R*
+
+\item [\itype{release-mvl}] (Symbolics only)  Compiles and loads the
+\mvl\ system, and declares the new version to be \type{released}.  The
+keyword \type{no-recompile} can be used to skip the compilation step.
+
+\item [\itype{rem-mvl (symbol indicator)}] Like the Common Lisp
+\type{remprop}, but if the value is a list, treats it as an a-list
+and removes the item whose car matches \type{*mvl-invocation*}.
+
+% *S*
+
+\item [\itype{samep(p1 p2)}] Returns \T\ if the propositions $p_1$ and
+$p_2$ are identical (up to variable renaming), and \NIL\ otherwise.
+If the optional \type{return-answer?} argument is supplied and the
+propositions are the same, a binding list is returned instead of \T.
+
+\item [\itype{*save-nodes*}] If \T\ (the default), nodes are
+labelled with consecutive integers when they are displayed by the
+first-order prover.
+
+\item [\itype{set-search-parameters}] This function is the primitive
+used to modify the parameters used to control the first-order theorem
+prover's search.  It accepts as keywords \type{initial-limit},
+\type{limit-delta}, and \type{final-limit}.
+
+\item [\itype{simplify(f)}] In some cases, manipulating the
+\dg-function $f$ may have cause it to contain redundancies, where the
+value at some point is presented explicitly even though this value is
+in fact the one that would normally be inherited from its parents.
+This function returns a modification of $f$ where these irrelevant
+entries have been removed.
+
+\item [\itype{splice-bilattice(upper lower)}] Returns the bilattice
+obtained by replacing the point \type{unknown} in the bilattice
+\type{upper} with a copy of the bilattice \type{lower}.
+
+\item [\itype{standardize-operators(p)}] Returns an equivalent form of $p$
+with the connectives \type{<=>}, \type{IF} and \type{IFF} removed.
+This function does not use the control variables
+\type{*if-translation*} and \et, since it is used when proving
+sentences, not when inserting them into the database.
+
+\item [\itype{stash(p)}] Inserts $p$ into the database.  The allowed
+keywords are \type{value}, \type{increment-p} and \apa.
+
+\item [\itype{stash-value}] The function \type{stash-val} in the
+active bilattice.
+
+\item [\itype{state(p)}] Inserts $p$ into the database after
+converting it to normal form.  Keywords: \type{value},
+\type{increment-p}.
+
+\item [\itype{state-in-theory(p)}] Adds the proposition $p$ to
+the currently active theory.  Allowed keywords: \type{theory} can be
+used to specify a different theory to which $p$ should be added;
+\type{value} and \type{increment-p} have the same meaning as for
+\type{state}.  (See Section \ref{s.database}; if these keywords are
+not used, the function \type{state} can be used equally well, since
+the default stash value with the theory mechanism activated also
+inserts the proposition into the currently active theory.)
+
+\item [\itype{std-cutoffs}] Cutoff information constructed from the
+value of \type{cutoff-val} in the active bilattice.  See Section
+\ref{s.cutoffs}.
+
+% *T*
+
+\item [\itype{t-ge(x y)}] Returns \T\ if $x \geq_t y$, and \NIL\ otherwise.
+
+\item [\itype{t-gt(x y)}] Returns \T\ if $x >_t y$, and \NIL\ otherwise.
+
+\item [\itype{t-le(x y)}] Returns \T\ if $x \leq_t y$, and \NIL\ otherwise.
+
+\item [\itype{t-lt(x y)}] Returns \T\ if $x <_t y$, and \NIL\ otherwise.
+
+\item [\itype{t-not-ge(x y)}] Returns \T\ if $x \not\geq_t y$, and
+\NIL\ otherwise.
+
+\item [\itype{t-not-gt(x y)}] Returns \T\ if $x \not>_t y$, and \NIL\
+otherwise.
+
+\item [\itype{t-not-le(x y)}] Returns \T\ if $x \not\leq_t y$, and
+\NIL\ otherwise.
+
+\item [\itype{t-not-lt(x y)}] Returns \T\ if $x \not<_t y$, and \NIL\
+otherwise.
+
+\item [\itype{test(value cutoffs \&optional bilattice)}] Returns \T\
+if the truth value passes the test associated to \type{cutoffs}, and
+\NIL\ otherwise.  The test is performed for the supplied bilattice,
+or for the currently active one is the optional argument is omitted.
+
+\item [\itype{test-mvl}] Tests the \mvl\ system by invoking the function
+\type{mvl-test-file} on the file \type{MVL.TEST}.
+
+\item [\itype{theory-active-p}] Returns \T\ or \NIL\ depending on
+whether or not the theory mechanism has been activated.
+
+\item [\itype{theory-contents()}] Displays the contents of the
+currently active theory, which can be changed using the
+keyword \type{theory}.  The keywords \type{cutoffs} and \type{props}
+are allowed and are treated as for \type{contents}.  (See Section
+\ref{s.contents}.)  There is an additional keyword,
+\itype{this-theory-only}, which defaults to \T\ and, if supplied,
+indicates that only sentences whose truth values {\em change\/} in the
+given theory are to be displayed.
+
+\item [\itype{theory-dag}] The \dg\ of theories.
+
+\item [\itype{*time-bilattice*}] A compound bilattice that can be used
+for reasoning about events occurring against a temporal background.
+
+\item [\itype{true}] The truth value \type{true} in the active bilattice.
+
+\item [\itype{true-in-theory}]  The truth value of a sentence that is
+true in the currently-active theory.
+
+\item [\itype{truth-value(a)}] Returns the truth value associated with
+a particular \lisp\ atom.  Thus, if the result of asserting
+\type{(not (short tom))} into the database was the atom \type{P38},
+\type{(denotes 'p38)} would evaluate to \type{(short tom)}, and
+\type{(truth-value 'p38)} would evaluate to \type{false}. 
+
+% *U*
+
+\item [\itype{unifyp(p1 p2)}] Returns a list of the most general
+unifiers of $p_1$ and $p_2$, or \NIL\ if the propositions fail to
+unify.
+
+\item [\itype{unincludes(big little)}] This function is used to state
+that the theory \type{little} is no longer a subtheory of the theory
+\type{big}, and should not inherit from it.
+
+\item [\itype{unindex(p)}] Removes from the discrimination net 
+information relating to the proposition $p$.
+
+\item [\itype{unknown}] The truth value \type{unknown} in the active
+bilattice.
+
+\item [\itype{(unknown p)}]  Stashing this predicate unstashes $p$;
+unstashing it causes an error.  Looking it up fails if $p$
+can be found in the database, and succeeds otherwise.
+
+\item [\itype{unstash(p)}] Removes $p$ from the database.  Allowed
+keywords: \type{value}, \type{decrement-p} and \apa.
+
+\item [\itype{unstash-facts-with-atom(atom)}] Unstashes from the
+database any facts concerning the given atom.  Keywords:
+\type{value}, \type{decrement-p}, \apa.
+
+\item [\itype{unstash-value}] The function \type{unstash-val} in the
+active bilattice.
+
+\item [\itype{unstate(p)}] Removes $p$ from the database after
+converting it to normal form.  Keywords: \type{value},
+\type{decrement-p}.
+
+\item [\itype{unstate-from-theory(p)}] Removes the proposition $p$
+from the currently active theory.  Allowed keywords:
+\type{theory} can be used to specify a different theory from which
+$p$ should be removed; \type{value} and \type{decrement-p} have the
+same meaning as for \type{unstate}.  (See Section \ref{s.database}.)
+
+% *V*
+
+\item [\itype{(value symbol val)}] Stashing this predicate sets the
+given symbol to the value \type{val}.  Unstashing it makes the symbol
+unbound if its current value unifies with \type{val}.
+
+\item [\itype{varp(x)}] Returns \type{T} if $x$ is a variable, and \NIL\
+otherwise.
+
+\item [\type{varp$*$(x)}]\index{varp-star} Returns \T\ if $x$ is a
+sequence variable, and \NIL\ otherwise.
+
+\item [\type{varp?(x)}]\index{varp-query} Returns \T\ if $x$ is a
+standard (i.e., non-sequence) variable, and \NIL\ otherwise.
+
+\item [\itype{vars-in(p)}] Returns a list of the variables appearing in $p$.
+
+\item [\itype{vartype(x)}] Returns ? if $x$ is a standard variable,
+$*$ if $x$ is a sequence variable, and \NIL\ is $x$ is not a
+variable.
+
+% *W*
+
+\item [\itype{with-mvl-invocation}] This is a macro similar to the
+Common Lisp macro \type{with-open-file}.  It accepts an optional
+argument that is an instance of \mi\ and is followed by a body of
+forms (presumably including a \type{load-logic}) that are evaluated
+in a locally-bound copy of \mvl.
+
+% *X*
+
+% *Y*
+
+% *Z*
+
+\end{list}
+
+\input{manual.ind}
+
+\end{document}

@@ -1,0 +1,34 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\f)				;first-order logic
+**
+
+(state '(=> (l (a ?x)) (b ?x) (c ?x)))		;test forward chainer
+**
+
+(fc '(a tom))					;assert a without b
+**
+
+(lookup '(c ?x))				;shouldn't cause c
+NIL
+
+(fc '(b fred))
+**
+
+(fc '(a fred))					;assert a with c
+**
+
+(lookup '(c ?x))				;now you get c
+#.(make-answer :binding '((?X . FRED)))
+
+(fc '(a tom) :value false)			;still get c
+**
+
+(lookup '(c ?x))
+#.(make-answer :binding '((?X . FRED)))
+
+(fc '(a fred) :value false)
+**
+
+(lookup '(c ?x))				;now you don't any more
+NIL

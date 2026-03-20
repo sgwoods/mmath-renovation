@@ -1,0 +1,653 @@
+A PLAN RECOGNITION SYSTEM
+
+;;; Copyright 1987 by Henry A. Kautz.
+;;; 
+;;; This software may be freely distributed in original or modified
+;;; form, under the condition that this copyright notice is included.
+;;; No warranty as to the correctness or usefulness of this software
+;;; is given or implied.
+;;;
+;;; This software was produced while the author was a student
+;;; at the University of Rochester.
+;;; The author may be contacted at the following addresses:
+;;; :uucp:	allegra!kautz		
+;;; :arpa: or :csnet:	kautz@research.att.com
+;;; :old style csnet: 	kautz%allegra@btl.csnet
+;;; :mail:	AT&T Bell Laboratories	
+;;;		Room 2C-407
+;;;		600 Mountain Ave.	
+;;;		Murray Hill, N.J. 07974	
+;;; This software was not produced while the author was employee of 
+;;; AT&T Bell Laboratories, and that organization has no legal 
+;;; claim or responsibility for this software.
+
+
+1. GETTING STARTED
+
+Make a recursive copy of the directory
+	/usr/kautz/lisp/phd
+to your target destination.  The subdirectories of phd/ are:
+	imp/	the implementation itself
+	test/	plan hierarchies
+	demo/	programs to load system and run a demo
+
+To run the demo,
+
+(1) EDIT the file demo/load-recognizer.lisp, changing
+	"/usr/kautz/lisp" to the target directory.
+(2) LOAD the file demo/demo
+(3) Enter the command
+	(demo "demo/load-recognizer.lisp")
+(4) Enter the command
+      (demo "demo/english-showoff.lisp")
+
+The demo program loads it's argument file line by line.  As each line
+is printed out, the user may either hit <return> to continue,
+n<return> to skip the line, or q<return> to quit.
+
+The standard reference for this work is H. Kautz, "A Formal Theory of
+Plan Recognition", TR 215, University of Rochester, 1987.  Chapter 2
+defines event hierarchies.  The semantics of explanation graphs is
+given in Chapter 7.  Appendix D describes the temporal constraint
+logic.
+
+
+
+2.  HIGH LEVEL INTERFACE
+
+The following functions provide the highest-level interface to the
+system.  See section 4.4 for a description of the system's
+propositional reasoning functions.
+
+-------------------------------------------------------------
+(setq *noisy* t)
+Setting *noisy* to non-nil causes inference process to be traced.
+
+
+(clear-all-mappings)
+Clears the plan database.  Always do this before loading a new 
+plan hierarchy.
+
+
+(load (merge-pathnames "plan-hierarchy" *test-dir*))
+Loads the database from the file "plan-hierarchy".  The showoff.lisp
+file initializes *test-dir* to be the "demo" directory.
+
+-------------------------------------------------------------
+
+(explain-observation 
+	'(event-type (role1 val1) (role2 val2) ...)
+	'graph-name)
+
+Builds the explanation graph for a single input.  
+Parameters:
+	event-type: the kind of event observed
+	(role val): role value pair
+	graph-name: identifies the graph that stores the
+		explanation; an arbitrary atom.
+Returns: (multiple values)
+	success:  t if some explanation found, nil otherwise
+	obs-node:  name of (one of the) node(s) created to 
+		represent the observation.
+Calling this function roughly corresponds to making the logical assertion
+	exists x. event-type(x) & role1(x)=val1 & role2(x)=val2 & ...
+(For roles which are temporal roles (see below), the = sign should be
+replaced by a "set membership" sign.)
+
+A "node" in an explanation graph corresponds to a logical constant
+which is a (non-unique) designator for an event instance.
+Note that more than one node may be created to represent the observed
+event, but only one such node is returned.
+
+A value may be either:
+
+(1) an atomic symbol (or more generally, a sexpr) which serves as a 
+unique name for some individual.  For example, in
+	(explain-observation '(throw (agent joe) ... ) ...)
+JOE is taken to be unique name for the agent of the observed event.
+
+(2) a fuzzy time interval.  Fuzzy times are represented by VECTORS with
+'time as the first element, followed by four numbers.  Such a vector 
+is of the form
+	#(time earliest-start-time latest-start-time
+		earliest-end-time latest-end-time)
+For example, the form
+	(explain-observation '(throw ... (time #(time 4 5 6 7))...)...)
+asserts that the "time" role of the observed throwing event began
+between moments 4 and 5 inclusive, and ended between 6 and 7
+inclusive.
+
+A value may NOT be the name of a node in the explain-observation form.
+Values for step roles may not be specified.
+
+
+-------------------------------------------------------------
+
+(draw-graph (&optional long (g *default-graph*))
+
+Print out an explanation graph.  
+Parameters:
+	long: if t, then print non-step parameters of each node
+	g: the graph to print; by default, the last one created.
+The explanation graph represents particular instances of events,
+unlike the plan hierarchy, which only represents event types.
+For example,
+
+
+(display-graph (&optional all (g *default-graph*))
+Prints out a graph in a linear, more detailed format.  
+Parameters:
+	all: if t, include nodes which were created during the
+		inference process, but are not part of the final
+		graph (i.e., they cannot be reached from an END node).
+	g: the graph to print; by default, the last one created.
+	
+
+------------------------------------------------------------
+
+(match-graphs 'g1 'g2 'g3)
+Parameters:
+	g1, g1: explanation graphs to be combined
+	g3: name of a new explanation graph to hold the result
+Returns:
+	The END node of g3 if the match succeeds, otherwise nil
+G1 and g2 are matched top-down, started with the END nodes of each,
+and the resulting graph is stored in g3.  
+
+
+------------------------------------------------------------
+
+(add-fact fact)
+See section 4.4 below.
+
+------------------------------------------------------------
+
+
+3.  EVENT HIERARCHIES
+
+The function "frame" is used to describe event types.  See the files
+in the test/ directory for examples of event hierarchies.  The
+hierarchies are written down in an abbreviated logical form.  When you
+see
+
+(frame '(toss
+	   (direct-abstr transfer-possession)
+	   (params agent object recipient)
+	   (times time pretime)
+	   (steps (throw s1) (travel s2) (catch s3))
+	   (eq-constraints
+	      (agent (s1 agent))
+	      (recepient (s2 destination))
+	      )
+	   (time-constraints
+	      (time contains (s1 time))
+	      (preTime beforeMeet time)
+	      )
+	   (fact-constraints
+	      (animate agent)
+	      (possess pretime agent object)
+	      )
+	   ))
+
+you should be thinking:
+
+all x. toss(x) => transfer-possession(x)
+
+all x. toss(x) => 
+    throw(s1(x)) &
+    travel(s2(x)) &
+    catch(s3(x)) &
+    agent(x) = agent(s1(x)) &
+    recipient(x) = destination(s2(x)) &
+    time(x) contains time(s1(x)) &
+    preTime(x) beforeMeet time(x) &
+    animate(agent(x)) &
+    possess(pretime(x),agent(x),object(x))
+
+Note that time indices simply appear as the second argument of facts; I
+do not use the "holds" predicate.  Also note that functions are written left
+to right rather than right to left.
+
+The general form of the frame function is
+	(frame event-type frame-descriptor*)
+where each frame-descriptor is one of the following:
+	(direct-abstr super-event-type)
+	(params role1 role2 ...)
+	(times trole1 trole2 ...)
+	(steps (step-type1 step-name1) (step-type2 step-name2) ...)
+	(eq-constraints (ref1 ref2) ...)
+	(time-constraints (ref1 temporal-relation ref2) ...)
+	(fact-constraints (predicate ref1 ref2 ...) ...)
+
+These are described in detail in the following sections.
+
+3.1  ROLE DESCRIPTORS
+
+	(direct-abstr super-event-type)
+where super-event-type is immediately above event-type in the
+abstraction hierarchy.  The system currently assumes the abstraction
+hierarchy is a tree (no multiple inheritance).  Events inherit the
+roles of their parents, but this is done statically, as each frame is
+read.  Therefore the super-event-type should be defined before the
+event-type itself is defined.
+
+	(params role1 role2 ...)
+where the roles represent the (non-step, non-temporal) functions which can
+apply to an instance of event-type.  The values of these role
+functions are assumed to be "rigid" designators, represented by
+arbitrary atoms or sexprs.  The Plan Recognizer does NOT try to do
+"abductive matching" of role values.
+
+	(times trole1 trole2 ...)
+where the troles represent the temporal functions which apply to an 
+instance of event type.
+
+	(steps (step-type1 step-name1) (step-type2 step-name2) ...)
+specifies (some of) the step roles of event-type.  The order and
+the names of the step roles has no significance.  In particular, it is
+NOT assumed that a step named "s1" must precede one named "s2"; all
+the temporal orderings between steps are specified in the
+time-constraints, as described below.
+
+3.2  REFERENCES
+
+The remaining role-descriptors all make uses of "references", a method
+for designating individuals.  There are three kinds of references:
+role-chains, immediate, and lisp-escapes.  The value of a role-chain
+may be turn out to be undefined when the system tests a constraint.
+If so, the system attempts to assign a value to the role-chain, using
+constraint propagation.  Until all the references in a constraint are
+assigned values, the system will not be able to disprove that
+constraint.  The current implementation only propagates the values of
+references "up" the hierarchy, from less to more abstract nodes, and
+from steps to their parents.
+
+
+3.2.1  Role Chains
+
+A role-chain is a list of role names, which are applied (left to
+right) to the implicit variable in the frame definition.  A single
+atom may also be used to represent a unary role-chain; (role-name) and
+role-name are equivalent.  In the example above, the role-chain
+	(s1 time)
+corresponds to the logical term
+	time(s1(x))
+
+
+3.2.2  Immediate
+
+A quoted reference designates itself.  For example, the reference
+	'JOE
+evaluates to the symbol JOE.  Such symbols are taken to be rigid
+designators, which stand in one-to-one correspondence to real world
+entities.  Immediate refences may also be used to specify fuzzy
+temporal intervals, such as
+	'#(time 3 4 5 6)
+
+3.2.3  Lisp Escape
+
+References of the form
+	(^ lisp-function arg1 arg2 ... )
+are computed by evaluating the arguments as references, and then
+applying the specified lisp-function to the result.  An example of
+such a reference is
+	(^ list 'gave (s1 hearer) agent object)
+which evaluates to list of four elements, beginning with the symbol GAVE.
+
+3.3  EQUALITY CONSTRAINTS
+
+	(eq-constraints (ref1 ref2) ...)
+asserts that ref1 and ref2 must take on the same value.  If one of the
+refs has a known value and the other does not, the value is
+propagated.  If both are known and not identical, the constraint is
+violated.
+
+
+3.4  TEMPORAL CONSTRAINTS
+
+	(time-constraints (ref1 temporal-relation ref2) ...)
+asserts that ref1 must stand in the designated temporal relation to
+ref2.  The refs must be temporal role-chains or immediate fuzzy intervals,
+and propagation can tighten the bounds on either reference.
+The current implementation includes the following temporal relations:
+	beforeMeet
+	afterMeet
+	during
+	contains
+	equals
+	overlaps
+	overlapped-by
+
+3.5  FACTUAL CONSTRAINTS
+
+	(fact-constraints (predicate ref1 ref2 ...) ...)
+
+When a fact constraint is evaluated, the system tries to prove that
+the proposition does NOT hold.  Section 4.4 describes the system's
+general facilities for propositional reasoning.  As noted below,
+temporally-varying facts are including by making the first argument be
+a temporal reference.  The following pre-defined predicates are
+useful:
+
+	(not-same ref1 ref2)
+is violated if ref1 and ref2 evaluate to the same rigid designator.
+
+	(never time-ref 'predicate ref1 ref2 ... )
+is violated if the system can retrieve any fact of the form
+	(predicate pred-time val1 val2 ... )
+where each val is the value of each ref, and the value of time-ref
+MUST intersect pred-time.  For example, the following fuzzy intervals
+must intersect:
+	#(time 2 5 3 7)   #(time 1 2 6 9)
+But the following do not necessarily intersect:
+	#(time 2 5 3 7)   #(time 1 3 8 9)
+(The first time could end at 3, and the second could not begin until
+3.)  Note that in the never form, the predicate is normally quoted to
+indicate that it is an immediate reference, and not a role-chain.
+
+
+	
+
+
+------------------------------------------------------------
+
+4.  LOW LEVEL INTERFACE
+
+The following functions will be useful when integrating the recognizer
+with other programs.  The optional "g" parameters default to the last
+graph referred to.  Every node belongs to exactly one graph; when
+graphs are merged, new nodes are always created.  (But it would be
+best not to rely on this fact; it can be easily changed.)  Do not try
+to assign the same node different properties in different graphs
+(unless, of course, you clear the database first).
+
+-------------------------------------------------------------
+
+4.1  General Database Functions
+
+(dump-database)
+Dump the entire current database; useful for debugging.
+
+(set-mapping parameter relation value)
+Set the (single valued) relation slot of parameter to value.
+
+(get-mapping parameter relation)
+Retrieve the value of the relation slot of parameter.
+
+-------------------------------------------------------------
+
+4.2  Explanation Graph Functions
+
+Explanation graphs describe individual instances of events, whereas
+event hierarchies represent general constraints on event types.  See
+sections 7.1-7.2 of [Kautz 87] for an exact specification of the
+translation of explanation graphs to first-order logic.
+
+
+(use-graph g)
+Sets the default graph to g.
+
+
+(defun active-nodes (&optional (g *default-graph*))
+Returns: a list of all the nodes in the graph (not including those
+created during the inference process but later eliminated).
+
+
+(add-roleval node role value &optional (g *default-graph*))
+Set the role of node to value; logically,
+	role(node)=value
+All roles are single-valued.  If you need multiple values, then
+set the value to a list of values.
+
+
+(roleval node role &optional (g *default-graph*))
+Returns: the value of the role of the node; logically, the value of
+	role(node)
+
+
+(end-node-of (&optional (g *default-graph*))
+Returns:  the unique node of type END of g, or if none, nil.
+
+
+(kind-of node)
+Returns:  the type of the node.
+
+
+(failed? node (&optional (g *default-graph*)))
+Returns:  t iff node was created in g at one point, but later
+eliminated because of a constraint violation.
+
+
+(alternatives-for (node &optional (g *default-graph*))
+Returns:  a list of nodes.  
+Node must be equal (not identical) to one element of this list.  
+E.g., (alternatives-for n) = (a b c) means that
+	n=a V n=b V n=c
+
+
+(known-rolevals (node kind &optional (g *default-graph*))
+Returns: list of role/value pairs for node, limited to the 
+	roles that are defined for kind.  Roles which do not have
+	a known value are not included in the list.
+
+Restricted versions of known-rolevals are:
+(known-param-rolevals (node kind &optional (g *default-graph*))
+(known-time-rolevals (node kind &optional (g *default-graph*))
+(known-step-rolevals (node kind &optional (g *default-graph*))
+
+-------------------------------------------------------------
+
+4.3  Hierarchy Functions
+
+The following functions retrieve aspects of the current plan
+hierarchy.
+
+
+(all-kinds)
+Returns a list of all the event types currently defined.
+
+
+(direct-abstr-of base-kind)
+Parameter:
+	base-kind: an event type
+Returns: the event type directly above base-kind in the abstraction
+hierarchy, if any; if none, the nil.
+
+
+(abstracts* base-kind abstr-kind)
+Returns t if base-kind is the same or a specialization of abstr-kind.
+
+
+(lower-bound-kind n1-kind n2-kind)
+Returns the most general kind abstracted* by n1-kind and n2-kind; if
+none, then nil.  The implementation assumes the abstraction hierarchy
+is a tree, so the result must be one of n1-kind, n2-kind, or nil.
+
+
+(eq-constraints kind)
+Returns a list of the equality constraints associated with the kind,
+including inherited constraints.
+
+
+(time-constraints kind)
+Returns a list of the temporal constraints associated with the kind,
+including inherited constraints.
+
+
+(fact-constraints kind)
+Returns a list of the factual constraints associated with the kind,
+including inherited constraints.
+
+
+(steps-of kind)
+Returns a list of the roles of kind which are steps.  The list does
+not include the types of the steps, but only the step names.
+
+
+(params-of kind)
+Returns  list of roles of kind which are parameters.
+
+
+(times-of kind)
+Returns list of roles of kind which are times.
+
+-------------------------------------------------------------
+
+
+4.4  Propositional Functions
+
+The system maintains a simple database of facts.  It does not include
+facilities for general forward or backward chaining (modus ponens)
+inference.  The system does NOT automatically assert facts which must
+hold, because they are implied by the constraints of all alternative
+explanations for the observations.
+
+
+(add-fact fact)
+Adds fact to the database.  Facts are not associated with a particular
+graph, but are true universally.  Facts are of the form
+	(predicate {time} arg1 arg2 ... )  
+where time is optional, depending on the particular predicate.
+All facts are added to the fact list, retrieved by 
+	(roleval 'facts 'known)
+Facts are also indexed under the predicate.  The form
+	(roleval 'pred 'holds) 
+yields a list of elements of the form
+       ({time} arg1 ... ) 
+Finally, all facts are hashed in toto for fast checking.  The form
+	(roleval fact 'truth)
+yields t or nil, where nil means unknown.  Currently there is no way
+to explicitly assert that a fact is false.  All facts are deleted by
+clear-all-mappings; there is no simple function to delete a particular
+fact.
+
+
+
+(negation-by-failure predicate)
+Asserts that the system may assume that any fact beginning with the
+predicate is false if it cannot retrieve the fact.  That is, it allows
+the system to conclude "false" from "unknown".
+
+
+(to-disprove predicate method)
+Predicate is the name of a predicate, and method is the name of an
+arbitrary lisp function.    When a constraint mentioning the predicate
+is checked, the system applies the lisp function to the list of arguments of
+the predicates.  If the function returns non-nil, then the proposition
+is assumed to be false.
+
+
+(provably-false? fact)
+Try to disprove fact.  If neither negation-by-failure nor a
+to-disprove function have been assigned to the predicate of the fact,
+then this function always returns nil.
+
+-------------------------------------------------------------
+
+5.  Automatic Matching
+
+In June 1988 the system was extended to implement the automatic
+grouping and matching functions described in the TR.  
+
+5.1  Global Variables
+
+*update-type*
+determines the kind of updating performed.  Values are
+	i or incremental
+	n or non-dichronic
+	s or sticky
+
+*hypoths*
+The hypothesis set, a disjunction of conjunctions of e-graphs.
+
+
+5.1  Functions
+
+(init-hypoths)
+Clears out the current hypotheses set.
+
+(update obs)
+obs is a list of the form
+	(event-type role-val1 role-val2 ...)
+Generates a graph name, builds the explanation graph, performs
+appropriate matching and updates hypotheses.
+
+(minimum-hypoths )
+Returns current set of minimum size hypotheses.
+
+(display-hypoths (&optional long))
+Display current set of minimum sized hypotheses, optionally including parameters.
+
+
+
+6.  Pseudo English Interface
+
+This keyword-based, pseudo-natural language interface simplifies
+demonstrations.
+
+6.1.  Functions
+
+(ee string)
+Parse english string and execute the result.
+
+(english-toplevel )
+Read and execute English until the command "exit" is read.
+
+(parse-english string)
+Parse but do not execute the string.
+
+
+6.2  Example Sentences
+
+Equivalent sentences are grouped together.
+
+exit 
+bye
+
+clear
+clear the database
+
+initialize
+initialize hypotheses
+
+load file foobar.lisp
+load foobar.lisp
+
+trace
+set *noisy* to t
+
+don't trace
+set *noisy* to nil
+
+perform incremental updates
+i updates
+
+show graph g4
+show g4
+show result 
+	(where g4 was the last graph created)
+
+show graph g4 in detail 
+	(includes parameters)
+
+show all 
+show hypotheses
+
+show hypotheses in detail
+
+let graph g3 explain why john makes fettucini from time 4 to 9
+let g3 explain from 4 4 to 9 9 john makes fettucini
+
+joe makes marinara starting before time 4 and ending between 8 and 9
+observe that joe makes marinara from :-inf 4 to 8 9
+
+match g1 and g2
+	(automatically names the result g1+g2)
+match g1 and g2 into g1+g2
+
+match g1 and g2 giving newg
+let newg match g1 and g2
+
+
+
+END OF INSTRUCTIONS

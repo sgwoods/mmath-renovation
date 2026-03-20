@@ -1,0 +1,38 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+;; test the various features in MVL.  The timing is done by the
+;; individual test files, so we have "notime" set for all of these
+;; forms, and never reset the timer.  The last form reports on the
+;; amount of time actually taken.  Each earlier form should return 0
+;; (i.e., no errors encountered while testing that file).
+
+(mvl-test-file "bc" :description "backward chainer")
+0
+
+(mvl-test-file "recursion" :description "control of recursive inference")
+0
+
+(mvl-test-file "atms" :description "ATMS")
+0
+
+(mvl-test-file "defaults" :description "default logic")
+0
+
+(mvl-test-file "circumscription" 
+	       :description "circumscriptive theorem prover")
+0
+
+(mvl-test-file "completed-db" 
+	       :description "negative subgoals with free variables")
+0
+
+(mvl-test-file "modal" :description "modal operators")
+0
+
+(mvl-test-file "fc" :description "forward chainer")
+0
+
+(mvl-test-file "temporal"
+	       :description "temporal reasoning (and most everything else)")
+0
+

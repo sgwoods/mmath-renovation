@@ -1,0 +1,16 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\a)		;atms (used for diagnosis)
+**
+
+(mvl-load "f1")			;get the full adder back
+**
+
+(answer-value (bc '(val (out 1 f1) 1 ?x)))
+				;what's the output of the sum line?
+(((** **)))			;you should have used two assumptions to
+				;derive it (the assumptions that the two
+				;XOR gates are ok)
+
+(get-bdg '?x (answer-binding (bc '(val (out 1 f1) 1 ?x))))
+OFF				;and, incidentally, it should still be off

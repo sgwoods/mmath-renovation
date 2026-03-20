@@ -1,0 +1,86 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {subsection}{\numberline {1.1}What you got}{3}
+\contentsline {subsection}{\numberline {1.2}Overview}{3}
+\contentsline {subsection}{\numberline {1.3}Why MVL is unique}{3}
+\contentsline {section}{\numberline {2}Installation and testing}{4}
+\contentsline {subsection}{\numberline {2.1}Sun-4}{4}
+\contentsline {subsection}{\numberline {2.2}Symbolics 3600 series}{4}
+\contentsline {subsection}{\numberline {2.3}Other machines}{5}
+\contentsline {section}{\numberline {3}The MVL database}{5}
+\contentsline {subsection}{\numberline {3.1}Representation}{5}
+\contentsline {subsubsection}{\numberline {3.1.1}Structure of the database}{5}
+\contentsline {subsubsection}{\numberline {3.1.2}Sequence variables}{6}
+\contentsline {subsubsection}{\numberline {3.1.3}Functions to manipulate database sentences}{7}
+\contentsline {subsection}{\numberline {3.2}Truth values}{8}
+\contentsline {subsection}{\numberline {3.3}Database form and internals}{8}
+\contentsline {section}{\numberline {4}Quantification}{8}
+\contentsline {subsection}{\numberline {4.1}Functions used to manipulate binding lists}{9}
+\contentsline {subsection}{\numberline {4.2}Negative subgoals containing free variables}{10}
+\contentsline {section}{\numberline {5}Modifying the MVL database}{10}
+\contentsline {subsection}{\numberline {5.1}Keyboard input}{10}
+\contentsline {subsection}{\numberline {5.2}Input from files}{11}
+\contentsline {subsection}{\numberline {5.3}The editor interface}{12}
+\contentsline {subsubsection}{\numberline {5.3.1}Sun EMACS editor}{12}
+\contentsline {subsubsection}{\numberline {5.3.2}Symbolics ZMACS editor}{12}
+\contentsline {subsection}{\numberline {5.4}Summary of database modification functions}{12}
+\contentsline {section}{\numberline {6}Querying the MVL database}{13}
+\contentsline {subsection}{\numberline {6.1}MVL responses to queries}{13}
+\contentsline {subsection}{\numberline {6.2}Searching for specific sentences}{13}
+\contentsline {subsection}{\numberline {6.3}Searching the entire database}{14}
+\contentsline {subsubsection}{\numberline {6.3.1}Command line interface}{14}
+\contentsline {paragraph}{Sun}{14}
+\contentsline {paragraph}{Symbolics}{15}
+\contentsline {section}{\numberline {7}The first-order prover}{15}
+\contentsline {subsection}{\numberline {7.1}Nature}{15}
+\contentsline {subsection}{\numberline {7.2}Invoking the prover}{16}
+\contentsline {subsection}{\numberline {7.3}The multivalued proof tasks}{17}
+\contentsline {section}{\numberline {8}Inference}{17}
+\contentsline {subsection}{\numberline {8.1}Backward chaining}{17}
+\contentsline {subsection}{\numberline {8.2}Forward chaining}{18}
+\contentsline {subsection}{\numberline {8.3}Debugging tools}{19}
+\contentsline {subsubsection}{\numberline {8.3.1}Backward chaining}{19}
+\contentsline {subsubsection}{\numberline {8.3.2}Forward chaining}{20}
+\contentsline {subsubsection}{\numberline {8.3.3}The first-order prover}{20}
+\contentsline {section}{\numberline {9}Procedural attachment}{20}
+\contentsline {subsection}{\numberline {9.1}Facilities to create procedural attachments}{21}
+\contentsline {subsection}{\numberline {9.2}Other procedurally attached relations}{22}
+\contentsline {section}{\numberline {10}Testing the MVL system}{22}
+\contentsline {subsection}{\numberline {10.1}As a diagnostic tool}{22}
+\contentsline {subsection}{\numberline {10.2}As a tutorial}{23}
+\contentsline {section}{\numberline {11}System support}{23}
+\contentsline {subsection}{\numberline {11.1}Functions that compile and load the MVL system}{23}
+\contentsline {subsection}{\numberline {11.2}The MVL package}{24}
+\contentsline {subsection}{\numberline {11.3}Running several copies of MVL in parallel}{24}
+\contentsline {section}{\numberline {12}Selecting a bilattice}{25}
+\contentsline {subsection}{\numberline {12.1}Bilattice structure}{25}
+\contentsline {subsection}{\numberline {12.2}The active bilattice}{27}
+\contentsline {subsubsection}{\numberline {12.2.1}Functions derived from the active bilattice}{28}
+\contentsline {subsubsection}{\numberline {12.2.2}Cutoff information}{28}
+\contentsline {subsection}{\numberline {12.3}Selecting a new bilattice}{29}
+\contentsline {section}{\numberline {13}Bilattices available in the MVL system}{30}
+\contentsline {subsection}{\numberline {13.1}First-order logic}{30}
+\contentsline {subsection}{\numberline {13.2}Assumption-based truth maintenance}{30}
+\contentsline {subsubsection}{\numberline {13.2.1}The ATMS bilattice}{31}
+\contentsline {subsubsection}{\numberline {13.2.2}ATMS's in conjunctive normal form}{31}
+\contentsline {subsubsection}{\numberline {13.2.3}First-order ATMS's}{31}
+\contentsline {subsubsection}{\numberline {13.2.4}Probabilistic ATMS's}{31}
+\contentsline {subsection}{\numberline {13.3}Default reasoning}{32}
+\contentsline {subsubsection}{\numberline {13.3.1}Prioritized default reasoning}{32}
+\contentsline {subsection}{\numberline {13.4}Circumscription}{32}
+\contentsline {subsection}{\numberline {13.5}Temporal reasoning}{33}
+\contentsline {section}{\numberline {14}Facilities to create new bilattices}{33}
+\contentsline {subsection}{\numberline {14.1}Products}{33}
+\contentsline {subsection}{\numberline {14.2}Functional attachments}{33}
+\contentsline {subsection}{\numberline {14.3}Surgeries}{33}
+\contentsline {subsection}{\numberline {14.4}Hierarchies}{34}
+\contentsline {subsection}{\numberline {14.5}Lattices}{34}
+\contentsline {subsection}{\numberline {14.6}Directed acyclic graphs}{35}
+\contentsline {subsubsection}{\numberline {14.6.1}Defining the DAG}{35}
+\contentsline {subsubsection}{\numberline {14.6.2}Constructing the bilattice}{36}
+\contentsline {subsubsection}{\numberline {14.6.3}The DAG of theories}{38}
+\contentsline {subsubsection}{\numberline {14.6.4}The DAG of binding lists}{40}
+\contentsline {section}{\numberline {15}Modal operators}{40}
+\contentsline {subsection}{\numberline {15.1}Modal operators supplied with the MVL bilattices}{41}
+\contentsline {subsection}{\numberline {15.2}Quantification and modal operators}{41}
+\contentsline {subsection}{\numberline {15.3}Modal operators created automatically}{42}
+\contentsline {section}{\numberline {A}Summary of MVL functions and constants}{43}

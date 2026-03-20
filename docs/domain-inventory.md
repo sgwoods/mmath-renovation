@@ -74,6 +74,7 @@ historical experiment surface.
 | `nils/crit*` and `crit*-out` | `1990-12`, `1990-12b`, `1991-08` | Alternate Nilsson criticality definitions and some recorded outputs. | Useful for future MP and hierarchy-comparison restoration. |
 | `Save/AbTweak-results.runs`, `Save/Tweak-results.runs`, `robot.output`, `robot.plans`, `robot.work` | early trees | Saved experiment outputs and workspace artifacts. | Important provenance for matching historical runs, even when the exact input script is not obvious. |
 | `jens-hanoi.lsp`, `jens-ab-succ.lsp`, `hanoi-3a.lsp`, `hanoi-2a.lsp` | early trees | Variant successor logic or alternate Hanoi formulations. | Potentially valuable if the main restored line still misses some historically reported behavior. |
+| `A-star`, `Mini-Tweak`, `KautzPR`, `Mvl` | adjacent historical imports | Preserved side systems including graph search, simplified TWEAK, plan recognition, and theorem proving. | Not part of the main AbTweak planner line, but important surrounding research context; see [historical-adjacent-systems.md](/Users/stevenwoods/mmath-renovation/docs/historical-adjacent-systems.md#L1). |
 | `PlanMerge`, `PlanMerge2` | adjacent historical import | Small April 1990 Lisp workspace centered on `merge.good.lsp`, with backups, a KCL-era `output.run`, and an in/out transfer log. | Not part of the main AbTweak planner line, but likely relevant adjacent research code worth preserving and provenance-tracking. `PlanMerge2` currently appears to be a duplicate copy of `PlanMerge` apart from `.DS_Store`. |
 
 ## Current Inventory Interpretation
@@ -90,6 +91,10 @@ The inventory currently suggests four practical conclusions:
    commented sample task.
 4. The richest historical variation surface is in the early Hanoi and robot
    material from `1990-12`, `1990-12b`, and `1991-08`.
-5. `driving`, `scheduling`, and much of `newd` should still be treated as a
+5. The newly preserved adjacent systems (`A-star`, `Mini-Tweak`, `KautzPR`,
+   `Mvl`, `PlanMerge`) broaden the historical context, but should still be
+   kept distinct from the main AbTweak snapshot line unless we open dedicated
+   side restoration tracks.
+6. `driving`, `scheduling`, and much of `newd` should still be treated as a
    separate framework-restoration track rather than as failures of the main
    AbTweak port.

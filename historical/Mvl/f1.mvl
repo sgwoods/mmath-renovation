@@ -1,0 +1,58 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10; -*-
+
+:value true					;inputs to full adder
+(val (in 1 f1) 1 on)
+(val (in 2 f1) 1 off)
+(val (in 3 f1) 1 on)
+
+:value nil					;subcomponent types
+(type x1 xorg)
+(type x2 xorg)
+(type a1 andg)
+(type a2 andg)
+(type o1 org)
+
+:value true					;connection information
+(conn (in 1 f1) (in 1 x1))
+(conn (in 1 f1) (in 1 a1))
+(conn (in 2 f1) (in 2 x1))
+(conn (in 2 f1) (in 2 a1))
+(conn (in 3 f1) (in 2 x2))
+(conn (in 3 f1) (in 1 a2))
+(conn (out 1 x1) (in 1 x2))
+(conn (out 1 x1) (in 2 a2))
+(conn (out 1 a2) (in 1 o1))
+(conn (out 1 a1) (in 2 o1))
+(conn (out 1 x2) (out 1 f1))
+(conn (out 1 o1) (out 2 f1))
+
+(<= (val ?y ?t ?z)				;what a connection does
+    (and (conn ?x ?y) (val ?x ?t ?z)))
+
+;; description of and gates
+
+(<= (val (out 1 ?x) ?t on)
+    (and (type ?x andg) (val (in 1 ?x) ?t on) (val (in 2 ?x) ?t on))) 
+(<= (val (out 1 ?x) ?t off)
+    (and (type ?x andg) (val (in ?n ?x) ?t off)))
+
+;; description of or gates
+
+(<= (val (out 1 ?x) ?t off)
+    (and (type ?x org) (val (in 1 ?x) ?t off) (val (in 2 ?x) ?t off)))
+(<= (val (out 1 ?x) ?t on)
+    (and (type ?x org) (val (in ?n ?x) ?t on)))
+
+;; description of xor gates
+
+(<= (val (out 1 ?x) ?t off)
+    (and (type ?x xorg) (val (in 1 ?x) ?t ?z) (val (in 2 ?x) ?t ?z)))
+(<= (val (out 1 ?x) ?t on)
+    (and (type ?x xorg) (val (in 1 ?x) ?t on) (val (in 2 ?x) ?t off)))
+(<= (val (out 1 ?x) ?t on)
+    (and (type ?x xorg) (val (in 1 ?x) ?t off) (val (in 2 ?x) ?t on)))
+
+;; a gate can't be both on and off at the same time
+
+(<= (not (val ?p ?t on)) (val ?p ?t off))
+(<= (not (val ?p ?t off)) (val ?p ?t on))

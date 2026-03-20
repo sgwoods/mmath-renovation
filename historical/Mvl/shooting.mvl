@@ -1,0 +1,64 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+;; in the initial situation, Fred is alive, the gun is loaded, and both
+;; of these facts are persisting into the future.  Load and unload have
+;; the desired effects with no preconditions, and each of the fluents
+;; "loaded" and "unloaded" causes the negation of the other.
+
+;; Shooting causes Fred to be dead forever; the gun's being loaded is a
+;; precondition.  Alive and dead are negations of one another.
+
+;; The "real" actions are as follows:
+;;   time	action
+;;   ----	------
+;;     1	gun unloaded
+;;     2	shooting attempted, gun loaded  (shooting should fail)
+;;     50	shooting attempted again (should succeed by default)
+;;     52	gun loaded again
+;;     53	shooting attempted again (should succeed for sure this time)
+
+:value true
+
+(fluent alive)
+(fluent dead)
+(fluent loaded)
+(fluent unloaded)
+
+(causes-persistently init alive)
+(causes-persistently init loaded)
+
+(causes-persistently load loaded)
+(causes-persistently unload unloaded)
+(duration load 1)
+(duration unload 1)
+
+(causes-not loaded unloaded)
+(causes-not unloaded loaded)
+
+(causes-forever shoot dead)
+(prec shoot loaded)
+(duration shoot 2)
+
+(causes-not alive dead)
+(causes-not dead alive)
+
+:value (true-at 1)
+
+(occurs unload)
+
+:value (true-at 2)
+
+(occurs shoot)
+(occurs load)
+
+:value (true-at 50)
+
+(occurs shoot)
+
+:value (true-at 52)
+
+(occurs load)
+
+:value (true-at 53)
+
+(occurs shoot)

@@ -1,0 +1,21 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+;; awful example.  f unless g, g unless h and j.  h(a), so that means
+;; the only chance for -g is at (a,y).  But j(b), so that only
+;; possibility for -g is at (a,b).  Thus f(a,b) and nothing else.
+
+:empty
+
+:value true
+(<= (f ?x ?y) (not (g ?x ?y)))
+(<= (g ?x ?y) (not (h ?x)))
+(h a)
+(<= (g a ?y) (not (j ?y)))
+(j b)
+
+:value '(2 . true)
+(not (g ?x ?y))
+
+:value '(1 . true)
+(not (h ?x))
+(not (j ?x))

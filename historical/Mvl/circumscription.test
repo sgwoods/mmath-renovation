@@ -1,0 +1,40 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\c)			;circumscriptive theorem prover
+**
+
+(mvl-load "circ-test-1")		;birds flying again
+**
+
+(circum '(flies ?x))			;circumscriptively, who flies?
+#.(make-answer :binding '((?X . TWEETY)))	;Tweety flies
+
+(mvl-load "circ-test-2")		;nonseparable example.  Of theoretical
+					;interest only.
+**
+
+(circum '(p a))
+#.(make-answer)
+
+(circum '(p b))
+NIL
+
+(circum '(not (p b)))
+#.(make-answer)
+
+(mvl-load "circ-test-3")		;disjunctive example -- a is a block
+					;or b is, and circumscribe BLOCK
+**
+
+(circum '(not (and (block a) (block b))))  ;can you show that they aren't
+					   ;both blocks?
+#.(make-answer)				;yes
+
+(mvl-load "circ-test-4")		;Yale shooting problem
+**
+
+(circum '(holds alive (shoot wait)))	;is Fred alive after wait & shoot?
+NIL					;can't tell
+
+(circum '(not (holds alive (shoot wait))))	;is he dead?
+NIL						;can't tell that, either

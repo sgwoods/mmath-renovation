@@ -1,0 +1,11 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\f)		;first-order logic
+**
+
+(mvl-load "f1")			;description of a full adder with two inputs
+				;on and one input off
+**
+
+(get-bdg '?x (answer-binding (bc '(val (out 1 f1) 1 ?x))))
+OFF				;the first output (the sum line) should be off

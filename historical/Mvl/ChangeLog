@@ -1,0 +1,90 @@
+8/28/91
+
+Changed dag-fns to structures that *include* lists.  Args to many
+functions simplified.
+
+8/4/91
+
+Changed dag-fns to lists.  Lookup functions return two values only.
+First-order theorem prover checks relevance at beginning and end only.
+
+7/31/91
+
+Changed relevance mechanism to do more incremental caching.
+
+7/26/91
+
+Included :test #'equal in do-goal-goal as needed for completeness.
+
+6/21/91
+
+Changed combine-1 to use get-val so that get-val can include selection
+function; added such selection function.  Changed dag-accumulate-fn so
+that it simplifies at the end only.
+
+6/3/91
+
+Fixed unification bug that sometimes returns database variables second,
+confusing matcher.
+
+5/23/91
+
+Incorporated stuff to simplify truth values as they are developed by the
+prover.  Needed in planning so that you don't keep track of *everything*
+as you develop an answer.
+
+5/9/91
+
+Removed path mechanism; now recompute it every time the prover is
+invoked.  This appears to actually be more efficient on the test
+files.
+
+5/6/91
+
+Restored nfind?var.  Continued to struggle with tasks with multiple
+children and paths therefrom.  Current solution not satisfactory.
+
+4/18/91
+
+Many changes; inserted path-hooks between paths and nodes, fixed bizarre
+bug involving multiple bilattices being interested in binding lists
+by putting a hack in bc.lisp.  This will presumably break in an odd
+way at some point in the future, but should not affect any of the
+bilattices that are part of the released code.
+
+3/29/91
+
+Changed compute-slave-truth-value in bc.lisp to use mvl-plug instead
+of doing it by hand.  (This fixes a bug as well.)
+
+3/14/91
+
+Fixed subtle bug in stash-adjust-value.  Replaced display-value with
+more sensible mvl-print and debugged pretty printer interface.
+
+3/8/91
+
+Removed completed-database code because relevance.lisp actually
+subsumes it.  2nd level of prover (proof efforts) eliminated.
+mvl-sublis and all associated functions eliminated because gensym
+binding lists no longer occur.
+
+3/1/91
+
+1.  Conform to ANSI standard Common Lisp as well as CLtLI.  Checks
+to see whether in-package is a macro or a function to tell which to
+support.
+
+2.  Unifier changed to avoid loops in some difficult instances
+such as (?*1 ?*2) unifying with (?*2 ?*1).  Partial answers are
+returned in these cases.
+
+3.  use-mvl deleted since CLtL specifies that the operating system
+should take care of it.
+
+4.  query modified to accept input ending in #\Return only; unix-based
+systems require this and it seemed reasonable to simplify the code
+in this way.
+
+5.  additional keyword "terminate" added to prover.  Documented in
+manual.tex.

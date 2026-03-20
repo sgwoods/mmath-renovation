@@ -1,0 +1,528 @@
+\indexentry{truth value}{3}
+\indexentry{compile-mvl}{4}
+\indexentry{load-mvl}{4}
+\indexentry{test-mvl **}{4}
+\indexentry{prenex normal form}{5}
+\indexentry{*if-translation* **}{5}
+\indexentry{*equivalence-translation*}{6}
+\indexentry{variables}{6}
+\indexentry{sequence variables}{6}
+\indexentry{varp(x) **}{7}
+\indexentry{varp-query}{7}
+\indexentry{varp-star}{7}
+\indexentry{vartype(x) **}{7}
+\indexentry{new-query-var}{7}
+\indexentry{new-star-var}{7}
+\indexentry{normal-form(p) **}{7}
+\indexentry{*if-translation* **}{7}
+\indexentry{*equivalence-translation* **}{7}
+\indexentry{negate(p) **}{7}
+\indexentry{standardize-operators(p) **}{7}
+\indexentry{cnf(p) **}{7}
+\indexentry{dnf(p) **}{8}
+\indexentry{props() **}{8}
+\indexentry{denotes(a) **}{8}
+\indexentry{truth-value(a) **}{8}
+\indexentry{index(p) **}{8}
+\indexentry{unindex(p) **}{8}
+\indexentry{binding lists}{8}
+\indexentry{groundp(p) **}{9}
+\indexentry{vars-in(p) **}{9}
+\indexentry{get-bdg(var bdg-list) **}{9}
+\indexentry{delete-bdg(var bdg-list) **}{9}
+\indexentry{plug(p bdg-list) **}{9}
+\indexentry{samep(p1 p2) **}{9}
+\indexentry{unifyp(p1 p2) **}{9}
+\indexentry{instp(p1 p2) **}{9}
+\indexentry{matchp(pattern atom) **}{9}
+\indexentry{*completed-database* **}{10}
+\indexentry{stash **}{10}
+\indexentry{unstash **}{10}
+\indexentry{value **}{10}
+\indexentry{increment-p **}{11}
+\indexentry{allow-procedural-attachment}{11}
+\indexentry{state **}{11}
+\indexentry{normal-form **}{11}
+\indexentry{unstate **}{11}
+\indexentry{decrement-p **}{11}
+\indexentry{empty **}{11}
+\indexentry{new-val **}{11}
+\indexentry{mvl-load **}{11}
+\indexentry{mvl-unload **}{11}
+\indexentry{mvl-save **}{11}
+\indexentry{editor interface}{12}
+\indexentry{meta-s **}{12}
+\indexentry{meta-u **}{12}
+\indexentry{super-s **}{12}
+\indexentry{super-u **}{12}
+\indexentry{super-f **}{12}
+\indexentry{super-e **}{12}
+\indexentry{stash(p) **}{12}
+\indexentry{state(p) **}{12}
+\indexentry{unstash(p) **}{12}
+\indexentry{unstate(p) **}{12}
+\indexentry{empty **}{12}
+\indexentry{new-val(a v) **}{12}
+\indexentry{mvl-file(string) **}{12}
+\indexentry{mvl-load(file) **}{12}
+\indexentry{mvl-unload(file) **}{12}
+\indexentry{mvl-save(file) **}{12}
+\indexentry{answer structure}{13}
+\indexentry{answer-binding(a) **}{13}
+\indexentry{answer-value(a) **}{13}
+\indexentry{equal-answer(a1 a2) **}{13}
+\indexentry{lookup **}{13}
+\indexentry{lookups **}{13}
+\indexentry{cutoffs **}{13}
+\indexentry{inv **}{13}
+\indexentry{succeed-on-modal-ops **}{13}
+\indexentry{lookup(q) **}{14}
+\indexentry{lookups(q) **}{14}
+\indexentry{cutoffs **}{14}
+\indexentry{unstash-facts-with-atom **}{14}
+\indexentry{contents **}{14}
+\indexentry{prfacts(atom) **}{14}
+\indexentry{unstash-facts-with-atom(atom) **}{14}
+\indexentry{*node-evaluation-fn* **}{15}
+\indexentry{best-first-fn **}{15}
+\indexentry{depth-fn **}{15}
+\indexentry{*final-limit* **}{15}
+\indexentry{*initial-limit* **}{15}
+\indexentry{*limit-delta* **}{15}
+\indexentry{set-search-parameters **}{16}
+\indexentry{activate-breadth-first **}{16}
+\indexentry{activate-depth-first **}{16}
+\indexentry{activate-best-first **}{16}
+\indexentry{proof **}{16}
+\indexentry{active-nodes **}{16}
+\indexentry{answers **}{16}
+\indexentry{indexp **}{16}
+\indexentry{indexn **}{16}
+\indexentry{initial-limit **}{16}
+\indexentry{final-limit **}{16}
+\indexentry{limit-delta **}{16}
+\indexentry{evaluation-fn **}{16}
+\indexentry{task **}{16}
+\indexentry{vars **}{16}
+\indexentry{goal **}{16}
+\indexentry{\type{bcanswer} structure}{16}
+\indexentry{init-prover(p effort) **}{16}
+\indexentry{cont-prover(proof) **}{16}
+\indexentry{consider structure}{17}
+\indexentry{prop **}{17}
+\indexentry{parent **}{17}
+\indexentry{children **}{17}
+\indexentry{truth-value **}{17}
+\indexentry{relevant **}{17}
+\indexentry{irrelevant **}{17}
+\indexentry{paths **}{17}
+\indexentry{choose-task **}{17}
+\indexentry{analysis **}{18}
+\indexentry{bc(q) **}{18}
+\indexentry{bcs(q) **}{18}
+\indexentry{\type{analysis} structure}{18}
+\indexentry{init-analysis(prop) **}{18}
+\indexentry{cont-analysis(analysis) **}{18}
+\indexentry{fc **}{18}
+\indexentry{value **}{19}
+\indexentry{increment-p **}{19}
+\indexentry{fc-increment-p **}{19}
+\indexentry{cutoffs **}{19}
+\indexentry{include-modal **}{19}
+\indexentry{erase **}{19}
+\indexentry{value **}{19}
+\indexentry{decrement-p **}{19}
+\indexentry{cutoffs **}{19}
+\indexentry{fc(p) **}{19}
+\indexentry{erase(p) **}{19}
+\indexentry{*bc-trace* **}{19}
+\indexentry{*anytime-trace*}{19}
+\indexentry{bc-trace(pat) **}{19}
+\indexentry{bc-untrace(pat) **}{19}
+\indexentry{anytime-trace(pat) **}{19}
+\indexentry{anytime-untrace(pat) **}{19}
+\indexentry{fc-trace(pat) **}{20}
+\indexentry{fc-untrace(pat) **}{20}
+\indexentry{bc-watch **}{20}
+\indexentry{bc-unwatch **}{20}
+\indexentry{bc-watch(preds) **}{20}
+\indexentry{bc-unwatch(preds) **}{20}
+\indexentry{*save-nodes* **}{20}
+\indexentry{*save-nodes* **}{20}
+\indexentry{*break-node* **}{20}
+\indexentry{invoke(fn p) **}{21}
+\indexentry{lookup-call(fn p) **}{21}
+\indexentry{lookups-call(fn p) **}{21}
+\indexentry{lisp-predicate(pred) **}{21}
+\indexentry{lisp-defined(fn) **}{21}
+\indexentry{*warn-on-bad-lisp-invocations*}{21}
+\indexentry{(bagof **}{22}
+\indexentry{(done exp-1 ... exp-n) **}{22}
+\indexentry{(value symbol val) **}{22}
+\indexentry{(property symbol value indicator) **}{22}
+\indexentry{(known p) **}{22}
+\indexentry{(unknown p) **}{22}
+\indexentry{(member item list) **}{22}
+\indexentry{test-mvl **}{22}
+\indexentry{mvl-test-file(string) **}{23}
+\indexentry{load-mvl **}{23}
+\indexentry{compile-mvl **}{23}
+\indexentry{release-mvl **}{23}
+\indexentry{MVL package}{24}
+\indexentry{existing-mvl-invocation **}{24}
+\indexentry{create-mvl-invocation **}{24}
+\indexentry{with-mvl-invocation **}{24}
+\indexentry{*mvl-invocation* **}{24}
+\indexentry{get-mvl (symbol indicator) **}{24}
+\indexentry{rem-mvl (symbol indicator) **}{25}
+\indexentry{true **}{25}
+\indexentry{false **}{25}
+\indexentry{unknown **}{25}
+\indexentry{bottom **}{25}
+\indexentry{eq **}{25}
+\indexentry{and **}{25}
+\indexentry{or **}{25}
+\indexentry{not **}{25}
+\indexentry{plus **}{25}
+\indexentry{dot **}{25}
+\indexentry{kle **}{25}
+\indexentry{tle **}{26}
+\indexentry{modal-ops **}{26}
+\indexentry{plug **}{26}
+\indexentry{vars **}{26}
+\indexentry{absorb **}{26}
+\indexentry{simplicity **}{26}
+\indexentry{dws **}{26}
+\indexentry{stash-val **}{26}
+\indexentry{unstash-val **}{26}
+\indexentry{cutoff-val **}{26}
+\indexentry{print-fn **}{26}
+\indexentry{long-desc **}{26}
+\indexentry{short-desc **}{26}
+\indexentry{char **}{26}
+\indexentry{type **}{26}
+\indexentry{components **}{26}
+\indexentry{*active-bilattice* **}{27}
+\indexentry{true **}{27}
+\indexentry{false **}{27}
+\indexentry{unknown **}{27}
+\indexentry{bottom **}{27}
+\indexentry{std-cutoffs **}{27}
+\indexentry{stash-value **}{27}
+\indexentry{unstash-value **}{27}
+\indexentry{mvl-plus **}{27}
+\indexentry{mvl-dot **}{27}
+\indexentry{mvl-and **}{27}
+\indexentry{mvl-or **}{27}
+\indexentry{mvl-not **}{27}
+\indexentry{mvl-eq **}{27}
+\indexentry{mvl-simplicity **}{27}
+\indexentry{dot-with-star **}{27}
+\indexentry{mvl-vars **}{27}
+\indexentry{mvl-plug **}{27}
+\indexentry{mvl-print **}{27}
+\indexentry{dot-with-not(x) **}{28}
+\indexentry{k-le(x y) **}{28}
+\indexentry{k-ge(x y) **}{28}
+\indexentry{t-le(x y) **}{28}
+\indexentry{t-ge(x y) **}{28}
+\indexentry{k-lt(x y) **}{28}
+\indexentry{k-gt(x y) **}{28}
+\indexentry{t-lt(x y) **}{28}
+\indexentry{t-gt(x y) **}{28}
+\indexentry{k-not-le(x y) **}{28}
+\indexentry{k-not-ge(x y) **}{28}
+\indexentry{t-not-le(x y) **}{28}
+\indexentry{t-not-ge(x y) **}{28}
+\indexentry{k-not-lt(x y) **}{28}
+\indexentry{k-not-gt(x y) **}{28}
+\indexentry{t-not-lt(x y) **}{28}
+\indexentry{t-not-gt(x y) **}{28}
+\indexentry{tag}{28}
+\indexentry{*always-succeeds* **}{29}
+\indexentry{*never-succeeds* **}{29}
+\indexentry{test(value cutoffs \&optional bilattice) **}{29}
+\indexentry{cutoffs-not(cutoffs \&optional bilattice) **}{29}
+\indexentry{*bilattices* **}{30}
+\indexentry{bilattice(b) **}{30}
+\indexentry{load-logic **}{30}
+\indexentry{*first-order-bilattice* **}{30}
+\indexentry{*atms-bilattice* **}{30}
+\indexentry{*cnf-atms-bilattice* **}{30}
+\indexentry{*default-bilattice* **}{30}
+\indexentry{*hierarchy-bilattice* **}{30}
+\indexentry{*first-order-atms-bilattice* **}{30}
+\indexentry{*circumscription-bilattice* **}{30}
+\indexentry{*probability-bilattice* **}{30}
+\indexentry{*time-bilattice* **}{30}
+\indexentry{first-order logic}{30}
+\indexentry{assumption-based truth maintenance}{30}
+\indexentry{default reasoning}{32}
+\indexentry{circumscription}{32}
+\indexentry{*circum-trace* **}{32}
+\indexentry{circum(p) **}{32}
+\indexentry{circums(p) **}{33}
+\indexentry{temporal reasoning}{33}
+\indexentry{product-bilattice(b1 b2) **}{33}
+\indexentry{append-bilattice(b f) **}{33}
+\indexentry{splice-bilattice(upper lower) **}{34}
+\indexentry{hierarchy-bilattice(b) **}{34}
+\indexentry{lattice-to-bilattice(l) **}{34}
+\indexentry{lattice **}{34}
+\indexentry{dag}{35}
+\indexentry{root **}{35}
+\indexentry{eq **}{35}
+\indexentry{leq **}{35}
+\indexentry{dot **}{35}
+\indexentry{long **}{36}
+\indexentry{short **}{36}
+\indexentry{inherit **}{36}
+\indexentry{get-val(d f) **}{36}
+\indexentry{make-tv(dag bilattice d b) **}{36}
+\indexentry{make-root(dag bilattice b) **}{36}
+\indexentry{dag-change-tv(f b-f) **}{36}
+\indexentry{dag-change-dag(f d-f) **}{36}
+\indexentry{dag-list-of-answers(f) **}{37}
+\indexentry{dag-accumulate-fn(dag bilattice list) **}{37}
+\indexentry{dag-prune(f pred) **}{37}
+\indexentry{combine-fns(f1 f2 fn comp) **}{37}
+\indexentry{combine-1(f params f1 ... fn) **}{37}
+\indexentry{add-dag(d b f) **}{37}
+\indexentry{simplify(f) **}{37}
+\indexentry{fn-and(f1 f2) **}{37}
+\indexentry{fn-or(f1 f2) **}{37}
+\indexentry{fn-plus(f1 f2) **}{38}
+\indexentry{fn-dot(f1 f2) **}{38}
+\indexentry{fn-dws(f1 f2) **}{38}
+\indexentry{fn-not(f1) **}{38}
+\indexentry{fn-eq(f1 f2) **}{38}
+\indexentry{fn-comp(f1 f2 fn) **}{38}
+\indexentry{dag-bilattice(dag bilattice) **}{38}
+\indexentry{lattice-to-dag(lattice) **}{38}
+\indexentry{lattice-to-dag-to-bilattice(lattice bilattice) **}{38}
+\indexentry{activate-theory-mechanism **}{39}
+\indexentry{theory-active-p **}{39}
+\indexentry{theory-dag **}{39}
+\indexentry{*global* **}{39}
+\indexentry{includes(big little) **}{39}
+\indexentry{unincludes(big little) **}{39}
+\indexentry{*active-theory* **}{39}
+\indexentry{activate(th) **}{39}
+\indexentry{true-in-theory **}{39}
+\indexentry{state-in-theory(p) **}{39}
+\indexentry{unstate-from-theory(p) **}{39}
+\indexentry{erase-from-theory(p) **}{39}
+\indexentry{theory-contents() **}{39}
+\indexentry{this-theory-only **}{39}
+\indexentry{empty-theory() **}{39}
+\indexentry{equal-binding(b1 b2) **}{40}
+\indexentry{append-binding-lists(b1 b2) **}{40}
+\indexentry{binding-le(b1 b2) **}{40}
+\indexentry{binding-dag **}{40}
+\indexentry{bdg-to-truth-val **}{40}
+\indexentry{modal-operator **}{40}
+\indexentry{name **}{40}
+\indexentry{function **}{40}
+\indexentry{parameters **}{40}
+\indexentry{idn **}{41}
+\indexentry{delay(t p) **}{41}
+\indexentry{propagate **}{41}
+\indexentry{at(t p) **}{41}
+\indexentry{exists **}{41}
+\indexentry{forall **}{41}
+\indexentry{activate(th) **}{43}
+\indexentry{activate-best-first **}{43}
+\indexentry{activate-breadth-first **}{43}
+\indexentry{activate-depth-first **}{43}
+\indexentry{activate-theory-mechanism **}{43}
+\indexentry{*active-bilattice* **}{43}
+\indexentry{*active-theory* **}{43}
+\indexentry{add-dag(d b f) **}{43}
+\indexentry{answer-binding(a) **}{43}
+\indexentry{answer-value(a) **}{43}
+\indexentry{anytime-trace(pat) **}{43}
+\indexentry{anytime-untrace(pat) **}{43}
+\indexentry{append-bilattice(b f) **}{43}
+\indexentry{append-binding-lists(b1 b2) **}{43}
+\indexentry{*atms-bilattice* **}{43}
+\indexentry{(bagof **}{43}
+\indexentry{bc(q) **}{43}
+\indexentry{bc-trace(pat) **}{43}
+\indexentry{bc-untrace(pat) **}{44}
+\indexentry{bc-unwatch(preds) **}{44}
+\indexentry{bc-watch(preds) **}{44}
+\indexentry{bcs(q) **}{44}
+\indexentry{bdg-to-truth-val **}{44}
+\indexentry{bilattice(b) **}{44}
+\indexentry{*bilattices* **}{44}
+\indexentry{binding-dag **}{44}
+\indexentry{binding-le(b1 b2) **}{44}
+\indexentry{bottom **}{44}
+\indexentry{*break-node* **}{44}
+\indexentry{choose-task **}{44}
+\indexentry{circum(p) **}{44}
+\indexentry{*circum-trace* **}{44}
+\indexentry{circums(p) **}{44}
+\indexentry{*circumscription-bilattice* **}{44}
+\indexentry{cnf(p) **}{44}
+\indexentry{*cnf-atms-bilattice* **}{44}
+\indexentry{combine-1(f params f1 ... fn) **}{45}
+\indexentry{combine-fns(f1 f2 fn comp) **}{45}
+\indexentry{compile-mvl **}{45}
+\indexentry{*completed-database* **}{45}
+\indexentry{cont-analysis(analysis) **}{45}
+\indexentry{cont-prover(proof) **}{45}
+\indexentry{contents **}{45}
+\indexentry{create-mvl-invocation **}{45}
+\indexentry{cutoffs-not(cutoffs \&optional bilattice) **}{45}
+\indexentry{dag-accumulate-fn(dag bilattice list) **}{45}
+\indexentry{dag-bilattice(dag bilattice) **}{46}
+\indexentry{dag-change-dag(f d-f) **}{46}
+\indexentry{dag-change-tv(f b-f) **}{46}
+\indexentry{dag-list-of-answers(f) **}{46}
+\indexentry{dag-prune(f pred) **}{46}
+\indexentry{*default-bilattice* **}{46}
+\indexentry{delete-bdg(var bdg-list) **}{46}
+\indexentry{denotes(a) **}{46}
+\indexentry{dnf(p) **}{46}
+\indexentry{(done exp-1 ... exp-n) **}{46}
+\indexentry{dot-with-not(x) **}{46}
+\indexentry{dot-with-star **}{46}
+\indexentry{empty **}{47}
+\indexentry{empty-theory() **}{47}
+\indexentry{equal-answer(a1 a2) **}{47}
+\indexentry{equal-binding(b1 b2) **}{47}
+\indexentry{*equivalence-translation* **}{47}
+\indexentry{erase(p) **}{47}
+\indexentry{erase-from-theory(p) **}{47}
+\indexentry{existing-mvl-invocation **}{47}
+\indexentry{false **}{47}
+\indexentry{fc(p) **}{47}
+\indexentry{fc-trace(pat) **}{47}
+\indexentry{fc-untrace(pat) **}{47}
+\indexentry{*final-limit* **}{47}
+\indexentry{*first-order-atms-bilattice* **}{47}
+\indexentry{*first-order-bilattice* **}{47}
+\indexentry{fn-and(f1 f2) **}{47}
+\indexentry{fn-comp(f1 f2 fn) **}{47}
+\indexentry{fn-dot(f1 f2) **}{47}
+\indexentry{fn-dws(f1 f2) **}{47}
+\indexentry{fn-eq(f1 f2) **}{48}
+\indexentry{fn-not(f1) **}{48}
+\indexentry{fn-or(f1 f2) **}{48}
+\indexentry{fn-plus(f1 f2) **}{48}
+\indexentry{get-bdg(var bdg-list) **}{48}
+\indexentry{get-mvl (symbol indicator) **}{48}
+\indexentry{get-val(d f) **}{48}
+\indexentry{*global* **}{48}
+\indexentry{groundp(p) **}{48}
+\indexentry{hierarchy-bilattice(b) **}{48}
+\indexentry{*hierarchy-bilattice* **}{48}
+\indexentry{*if-translation* **}{48}
+\indexentry{includes(big little) **}{48}
+\indexentry{index(p) **}{48}
+\indexentry{init-analysis(prop) **}{48}
+\indexentry{init-prover(p effort) **}{48}
+\indexentry{*initial-limit* **}{48}
+\indexentry{instp(p1 p2) **}{48}
+\indexentry{invoke(fn p) **}{48}
+\indexentry{k-ge(x y) **}{49}
+\indexentry{k-gt(x y) **}{49}
+\indexentry{k-le(x y) **}{49}
+\indexentry{k-lt(x y) **}{49}
+\indexentry{k-not-ge(x y) **}{49}
+\indexentry{k-not-gt(x y) **}{49}
+\indexentry{k-not-le(x y) **}{49}
+\indexentry{k-not-lt(x y) **}{49}
+\indexentry{(known p) **}{49}
+\indexentry{lattice-to-bilattice(l) **}{49}
+\indexentry{lattice-to-dag(lattice) **}{49}
+\indexentry{lattice-to-dag-to-bilattice(lattice bilattice) **}{49}
+\indexentry{*limit-delta* **}{49}
+\indexentry{lisp-defined(fn) **}{49}
+\indexentry{*warn-on-bad-lisp-invocations*}{49}
+\indexentry{lisp-predicate(pred) **}{50}
+\indexentry{load-logic **}{50}
+\indexentry{load-mvl **}{50}
+\indexentry{lookup(q) **}{50}
+\indexentry{lookup-call(fn p) **}{50}
+\indexentry{lookups(q) **}{50}
+\indexentry{lookups-call(fn p) **}{50}
+\indexentry{make-root(dag bilattice b) **}{50}
+\indexentry{make-tv(dag bilattice d b) **}{50}
+\indexentry{matchp(pattern atom) **}{50}
+\indexentry{mvl-and **}{50}
+\indexentry{mvl-dot **}{50}
+\indexentry{mvl-eq **}{50}
+\indexentry{mvl-file(string) **}{51}
+\indexentry{*mvl-invocation* **}{51}
+\indexentry{mvl-load(file) **}{51}
+\indexentry{mvl-not **}{51}
+\indexentry{mvl-or **}{51}
+\indexentry{mvl-plug **}{51}
+\indexentry{mvl-plus **}{51}
+\indexentry{mvl-print **}{51}
+\indexentry{mvl-save(file) **}{51}
+\indexentry{mvl-simplicity **}{51}
+\indexentry{mvl-test-file(string) **}{51}
+\indexentry{mvl-unload(file) **}{51}
+\indexentry{mvl-vars **}{51}
+\indexentry{negate(p) **}{51}
+\indexentry{new-star-var}{51}
+\indexentry{new-query-var}{51}
+\indexentry{new-val(a v) **}{51}
+\indexentry{normal-form(p) **}{51}
+\indexentry{plug(p bdg-list) **}{51}
+\indexentry{prfacts(atom) **}{51}
+\indexentry{*probability-bilattice* **}{51}
+\indexentry{product-bilattice(b1 b2) **}{51}
+\indexentry{(property symbol value indicator) **}{52}
+\indexentry{props() **}{52}
+\indexentry{release-mvl **}{52}
+\indexentry{rem-mvl (symbol indicator) **}{52}
+\indexentry{samep(p1 p2) **}{52}
+\indexentry{*save-nodes* **}{52}
+\indexentry{set-search-parameters **}{52}
+\indexentry{simplify(f) **}{52}
+\indexentry{splice-bilattice(upper lower) **}{52}
+\indexentry{standardize-operators(p) **}{52}
+\indexentry{stash(p) **}{52}
+\indexentry{stash-value **}{52}
+\indexentry{state(p) **}{52}
+\indexentry{state-in-theory(p) **}{52}
+\indexentry{std-cutoffs **}{52}
+\indexentry{t-ge(x y) **}{53}
+\indexentry{t-gt(x y) **}{53}
+\indexentry{t-le(x y) **}{53}
+\indexentry{t-lt(x y) **}{53}
+\indexentry{t-not-ge(x y) **}{53}
+\indexentry{t-not-gt(x y) **}{53}
+\indexentry{t-not-le(x y) **}{53}
+\indexentry{t-not-lt(x y) **}{53}
+\indexentry{test(value cutoffs \&optional bilattice) **}{53}
+\indexentry{test-mvl **}{53}
+\indexentry{theory-active-p **}{53}
+\indexentry{theory-contents() **}{53}
+\indexentry{this-theory-only **}{53}
+\indexentry{theory-dag **}{53}
+\indexentry{*time-bilattice* **}{53}
+\indexentry{true **}{53}
+\indexentry{true-in-theory **}{53}
+\indexentry{truth-value(a) **}{53}
+\indexentry{unifyp(p1 p2) **}{53}
+\indexentry{unincludes(big little) **}{53}
+\indexentry{unindex(p) **}{53}
+\indexentry{unknown **}{53}
+\indexentry{(unknown p) **}{53}
+\indexentry{unstash(p) **}{54}
+\indexentry{unstash-facts-with-atom(atom) **}{54}
+\indexentry{unstash-value **}{54}
+\indexentry{unstate(p) **}{54}
+\indexentry{unstate-from-theory(p) **}{54}
+\indexentry{(value symbol val) **}{54}
+\indexentry{varp(x) **}{54}
+\indexentry{varp-star}{54}
+\indexentry{varp-query}{54}
+\indexentry{vars-in(p) **}{54}
+\indexentry{vartype(x) **}{54}
+\indexentry{with-mvl-invocation **}{54}

@@ -1,0 +1,10 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+:empty
+
+:value true
+(p a)						;non-separable example
+(<= (p (f ?x)) (p ?x))				;p(x) -> p(f(x)) and p(a)
+
+:value nil					;minimize p
+(not (p ?x))

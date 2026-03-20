@@ -1,0 +1,13 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\d)		;default logic
+**
+
+(mvl-load "def-test")		;birds fly but ostriches don't.  Flying
+				;things are not afraid of heights.  Tweety
+				;is a bird, and Fred is an ostrich.
+**
+
+(bcs '(not (acrophobic ?x)))	;who is not afraid of heights?
+(#.(make-answer :binding '((?X . TWEETY)) :value '(NIL . TRUE)))
+				;Tweety (by default); nothing known about Fred

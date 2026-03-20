@@ -1,0 +1,14 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+:empty
+
+:value true					;usual birds example
+(bird tweety)
+(ostrich fred)
+(<= (flies ?x) (bird ?x) (not (ab ?x)))
+(<= (ab ?x) (bird ?x) (not (flies ?x)))
+(<= (not (flies ?x)) (ostrich ?x))
+(<= (bird ?x) (ostrich ?x))
+
+:value nil					;default assumption -- nothing
+(not (ab ?x))					;is abnormal

@@ -1,0 +1,19 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\h)
+**
+
+(mvl-load "completed-db-1")		;simple-ish examples
+**
+
+(bc '(f ?x))
+#.(make-answer :binding '((?X . A)) :value '(2 . TRUE))
+
+(bc '(f))
+#.(make-answer :value '(2 . TRUE))
+
+(mvl-load "completed-db-2")		;horrible nested example
+**
+
+(bcs '(f ?x ?y))
+(#.(make-answer :binding '((?Y . B) (?X . A)) :value '(2 . TRUE)))

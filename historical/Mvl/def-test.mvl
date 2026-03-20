@@ -1,0 +1,12 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+:value (mvl-or unknown (mvl-dot true false))	;i.e., dt (birds fly)
+(<= (flies ?x) (bird ?x))
+
+:value true
+(<= (not (flies ?x)) (ostrich ?x))		;ostriches don't fly
+(<= (bird ?x) (ostrich ?x))			;ostriches are birds
+(<= (not (acrophobic ?x)) (flies ?x))		;flying things not acrophobic
+
+(ostrich fred)					;fred is an ostrich
+(bird tweety)					;tweety is a bird

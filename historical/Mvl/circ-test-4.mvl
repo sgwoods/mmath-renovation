@@ -1,0 +1,23 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+:empty
+
+;; Yale shooting problem.  Axioms are:
+;;  1.  If the gun is loaded in s, fred is dead in (shoot s)
+;;  2.  Contrapositive of (1).
+;;  3.  Frame axiom
+;;  4.  Contrapositive of (3).
+;;  5.  The gun is initially loaded, and
+;;  6.  Fred is initially alive.
+;;  7.  Nothing is abnormal.
+
+:value true					
+(<= (not (holds alive (shoot ?*s))) (holds loaded (?*s)))
+(<= (not (holds loaded (?*s))) (holds alive (shoot ?*s)))
+(<= (holds ?p (?a ?*s)) (holds ?p (?*s)) (not (ab ?a ?p (?*s))))
+(<= (ab ?a ?p (?*s)) (holds ?p (?*s)) (not (holds ?p (?a ?*s))))
+(holds loaded ())
+(holds alive ())
+
+:value nil
+(not (ab ?a ?p ?s))

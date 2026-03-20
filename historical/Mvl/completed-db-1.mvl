@@ -1,0 +1,17 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+;; simple example; query will be f or f(x).  f unless g; g unless h and
+;; h(a).  So g except at a and f(a).
+
+:value true
+(<= (f) (not (g ?x)))
+(<= (f ?x) (not (g ?x)))
+(<= (g ?x) (not (h ?x)))
+(<= (h a) (j))
+(j)
+
+:value '(2 . true)
+(not (g ?x))
+
+:value '(1 . true)
+(not (h ?x))

@@ -1,0 +1,407 @@
+\clearpage
+\begin{theindex}
+
+% *A*
+
+\item {\tt absorb}, 26
+\item {\tt activate}, 39, {\em 43}
+\item {\tt activate-best-first}, 16, {\em 43}
+\item {\tt activate-breadth-first}, 16, {\em 43}
+\item {\tt activate-depth-first}, 16, {\em 43}
+\item {\tt activate-theory-mechanism}, 39, {\em 43}
+\item {\tt *active-bilattice*}, 27, {\em 43}
+\item {\tt active-nodes}, 16
+\item {\tt *active-theory*}, 39, {\em 43}
+\item {\tt add-dag}, 37, {\em 43}
+\item {\tt allow-procedural-attachment}, 11
+\item {\tt *always-succeeds*}, 29
+\item {\tt analysis}, 18
+\item {\tt analysis} structure, 18
+\item {\tt and}, 25
+\item answer structure, 13
+\item {\tt answer-binding}, 13, {\em 43}
+\item {\tt answer-value}, 13, {\em 43}
+\item {\tt answers}, 16
+\item {\tt *anytime-trace*}, 19
+\item {\tt anytime-trace}, 19, {\em 43}
+\item {\tt anytime-untrace}, 19, {\em 43}
+\item {\tt append-bilattice}, 33, {\em 43}
+\item {\tt append-binding-lists}, 40, {\em 43}
+\item assumption-based truth maintenance, 30
+\item {\tt at}, 41
+\item {\tt *atms-bilattice*}, 30, {\em 43}
+
+% *B*
+
+\indexspace
+
+\item {\tt bagof} predicate, 22, {\em 43}
+\item {\tt bc}, 18, {\em 43}
+\item {\tt *bc-trace*}, 19
+\item {\tt bc-trace}, 19, {\em 43}
+\item {\tt bc-untrace}, 19, {\em 44}
+\item {\tt bc-unwatch}, 20, {\em 44}
+\item {\tt bc-watch}, 20, {\em 44}
+\item {\tt bcanswer} structure, 16
+\item {\tt bcs}, 18, {\em 44}
+\item {\tt bdg-to-truth-val}, 40, {\em 44}
+\item {\tt best-first-fn}, 15
+\item {\tt bilattice}, 30, {\em 44}
+\item {\tt *bilattices*}, 30, {\em 44}
+\item binding lists, 8
+\item {\tt binding-dag}, 40, {\em 44}
+\item {\tt binding-le}, 40, {\em 44}
+\item {\tt bottom}, 25, 27, {\em 44}
+\item {\tt *break-node*}, 20, {\em 44}
+
+% *C*
+
+\indexspace
+
+\item {\tt char}, 26
+\item {\tt children}, 17
+\item {\tt choose-task}, 17, {\em 44}
+\item {\tt circum}, 32, {\em 44}
+\item {\tt *circum-trace*}, 32, {\em 44}
+\item {\tt circums}, 33, {\em 44}
+\item circumscription, 32
+\item {\tt *circumscription-bilattice*}, 30, {\em 44}
+\item {\tt cnf}, 7, {\em 44}
+\item {\tt *cnf-atms-bilattice*}, 30, {\em 44}
+\item {\tt combine-1}, 37, {\em 45}
+\item {\tt combine-fns}, 37, {\em 45}
+\item {\tt compile-mvl}, 4, 23, {\em 45}
+\item {\tt *completed-database*}, 10, {\em 45}
+\item {\tt components}, 26
+\item consider structure, 17
+\item {\tt cont-analysis}, 18, {\em 45}
+\item {\tt cont-prover}, 16, {\em 45}
+\item {\tt contents}, 14, {\em 45}
+\item {\tt create-mvl-invocation}, 24, {\em 45}
+\item {\tt cutoff-val}, 26
+\item {\tt cutoffs}, 13, 14, 19
+\item {\tt cutoffs-not}, 29, {\em 45}
+
+% *D*
+
+\indexspace
+
+\item {\tt dag-accumulate-fn}, 37, {\em 46}
+\item {\tt dag-bilattice}, 38, {\em 46}
+\item {\tt dag-change-dag}, 36, {\em 46}
+\item {\tt dag-change-tv}, 36, {\em 46}
+\item {\tt dag-list-of-answers}, 37, {\em 46}
+\item {\tt dag-prune}, 37, {\em 46}
+\item dag, 35
+\item {\tt decrement-p}, 11, 19
+\item default reasoning, 32
+\item {\tt *default-bilattice*}, 30, {\em 46}
+\item {\tt delay}, 41
+\item {\tt delete-bdg}, 9, {\em 46}
+\item {\tt denotes}, 8, {\em 46}
+\item {\tt depth-fn}, 15
+\item {\tt dnf}, 8, {\em 46}
+\item {\tt done} predicate, 22, {\em 46}
+\item {\tt dot}, 25, 35
+\item {\tt dot-with-not}, 28, {\em 46}
+\item {\tt dot-with-star}, 27, {\em 46}
+\item {\tt dws}, 27
+
+% *E*
+
+\indexspace
+
+\item editor interface, 12
+\subitem {\tt meta-s}, 12
+\subitem {\tt meta-u}, 12 
+\subitem {\tt super-e}, 12
+\subitem {\tt super-f}, 12
+\subitem {\tt super-s}, 12
+\subitem {\tt super-u}, 12
+\item {\tt empty}, 11, 12, {\em 47}
+\item {\tt empty-theory}, 39, {\em 47}
+\item {\tt eq}, 25, 35
+\item {\tt equal-answer}, 13, {\em 47}
+\item {\tt equal-binding}, 40, {\em 47}
+\item {\tt *equivalence-translation*}, 6, 7, {\em 47}
+\item {\tt erase}, 19, {\em 47}
+\item {\tt erase-from-theory}, 39, {\em 47}
+\item {\tt evaluation-fn}, 16
+\item {\tt existing-mvl-invocation}, 24, {\em 47}
+\item {\tt exists}, 41
+
+% *F*
+
+\indexspace
+
+\item {\tt false}, 25, 27, {\em 47}
+\item {\tt fc}, 18, 19, {\em 47}
+\item {\tt fc-increment-p}, 19
+\item {\tt fc-trace}, 20, {\em 47}
+\item {\tt fc-untrace}, 20, {\em 47}
+\item {\tt *final-limit*}, 15, 16, {\em 47}
+\item first-order logic, 30
+\item {\tt *first-order-atms-bilattice*}, 30, {\em 47}
+\item {\tt *first-order-bilattice*}, 30, {\em 47}
+\item {\tt fn-and}, 37, {\em 47}
+\item {\tt fn-comp}, 38, {\em 47}
+\item {\tt fn-dot}, 38, {\em 47}
+\item {\tt fn-dws}, 38, {\em 47}
+\item {\tt fn-eq}, 38, {\em 48}
+\item {\tt fn-not}, 38, {\em 48}
+\item {\tt fn-or}, 37, {\em 48}
+\item {\tt fn-plus}, 38, {\em 48}
+\item {\tt forall}, 41
+\item {\tt function}, 40
+
+% *G*
+
+\indexspace
+
+\item {\tt get-bdg}, 9, {\em 48}
+\item {\tt get-mvl}, 24, {\em 48}
+\item {\tt get-val}, 36, {\em 48}
+\item {\tt *global*}, 39, {\em 48}
+\item {\tt goal}, 16
+\item {\tt groundp}, 9, {\em 48}
+
+% *H*
+
+\indexspace
+
+\item {\tt hierarchy-bilattice}, 34, {\em 48}
+\item {\tt *hierarchy-bilattice*}, 30, {\em 48}
+
+% *I*
+
+\indexspace
+
+\item {\tt idn}, 41
+\item {\tt *if-translation*}, 5, 7, {\em 48}
+\item {\tt include-modal}, 19
+\item {\tt includes}, 39, {\em 48}
+\item {\tt increment-p}, 11, 19
+\item {\tt index}, 8, {\em 48}
+\item {\tt indexn}, 16
+\item {\tt indexp}, 16
+\item {\tt inherit}, 36
+\item {\tt init-analysis}, 18, {\em 48}
+\item {\tt init-prover}, 17, {\em 48}
+\item {\tt *initial-limit*}, 15, 16, {\em 48}
+\item {\tt instp}, 9, {\em 48}
+\item {\tt inv}, 13
+\item {\tt invoke}, 21, {\em 48}
+\item {\tt irrelevant}, 17
+
+% *J*
+
+\indexspace
+
+% *K*
+
+\indexspace
+
+\item {\tt k-ge}, 28, {\em 49}
+\item {\tt k-gt}, 28, {\em 49}
+\item {\tt k-le}, 28, {\em 49}
+\item {\tt k-lt}, 28, {\em 49}
+\item {\tt k-not-ge}, 28, {\em 49}
+\item {\tt k-not-gt}, 28, {\em 49}
+\item {\tt k-not-le}, 28, {\em 49}
+\item {\tt k-not-lt}, 28, {\em 49}
+\item {\tt kle}, 25
+\item {\tt known} predicate, 22, {\em 49}
+
+% *L*
+
+\indexspace
+
+\item {\tt lattice}, 34
+\item {\tt lattice-to-bilattice}, 34, {\em 49}
+\item {\tt lattice-to-dag}, 38, {\em 49}
+\item {\tt lattice-to-dag-to-bilattice}, 38, {\em 49}
+\item {\tt leq}, 35
+\item {\tt *limit-delta*}, 15, 16, {\em 49}
+\item {\tt lisp-defined}, 21, {\em 49}
+\item {\tt lisp-predicate}, 21, {\em 50}
+\item {\tt load-logic}, 30, {\em 50}
+\item {\tt load-mvl}, 4, 23, {\em 50}
+\item {\tt (mvl:load-mvl)}, 4
+\item {\tt long}, 36
+\item {\tt long-desc}, 26
+\item {\tt lookup}, 13, 14, {\em 50}
+\item {\tt lookup-call}, 21, {\em 50}
+\item {\tt lookups}, 13, 14, {\em 50}
+\item {\tt lookups-call}, 21, {\em 50}
+
+% *M*
+
+\indexspace
+
+\item {\tt make-root}, 36, {\em 50}
+\item {\tt make-tv}, 36, {\em 50}
+\item {\tt matchp}, 9, {\em 50}
+\item {\tt member} predicate, 22
+\item {\tt modal-operator}, 40
+\item {\tt modal-ops}, 26
+\item {\sc mvl} package, 24
+\item {\tt mvl-and}, 27, {\em 50}
+\item {\tt mvl-dot}, 27, {\em 50}
+\item {\tt mvl-eq}, 27, {\em 50}
+\item {\tt mvl-file}, 12, {\em 51}
+\item {\tt *mvl-invocation*}, 24, {\em 51}
+\item {\tt mvl-load}, 11, 12, {\em 51}
+\item {\tt mvl-not}, 27, {\em 51}
+\item {\tt mvl-or}, 27, {\em 51}
+\item {\tt mvl-plug}, 27, {\em 51}
+\item {\tt mvl-plus}, 27, {\em 51}
+\item {\tt mvl-print}, 27, {\em 51}
+\item {\tt mvl-save}, 11, 12, {\em 51}
+\item {\tt mvl-simplicity}, 27, {\em 51}
+\item {\tt mvl-test-file}, 23, {\em 51}
+\item {\tt mvl-unload}, 11, 12, {\em 51}
+\item {\tt mvl-vars}, 27, {\em 51}
+
+% *N*
+
+\indexspace
+
+\item {\tt name}, 40
+\item {\tt negate}, 7, {\em 51}
+\item {\tt *never-succeeds*}, 29
+\item {\tt new-$*$var}, 7, {\em 51}
+\item {\tt new-?var}, 7, {\em 51}
+\item {\tt new-val}, 11, 12, {\em 51}
+\item {\tt *node-evaluation-fn*}, 15
+\item {\tt normal-form}, 7, 11, {\em 51}
+\item {\tt not}, 25
+
+% *O*
+
+\indexspace
+
+\item {\tt or}, 25
+
+% *P*
+
+\indexspace
+
+\item {\tt parameters}, 40
+\item {\tt parent}, 17
+\item {\tt paths}, 17
+\item {\tt plug}, 9, 26, {\em 51}
+\item {\tt plus}, 25
+\item prenex normal form, 5
+\item {\tt prfacts}, 14, {\em 51}
+\item {\tt print-fn}, 26
+\item {\tt *probability-bilattice*}, 30, {\em 51}
+\item {\tt product-bilattice}, 33, {\em 51}
+\item {\tt proof}, 16
+\item {\tt prop}, 17
+\item {\tt propagate}, 41
+\item {\tt property} predicate, 22, {\em 52}
+\item {\tt props}, 8, {\em 52}
+
+% *Q*
+
+\indexspace
+
+% *R*
+
+\indexspace
+
+\item {\tt release-mvl}, 23, {\em 52}
+\item {\tt relevant}, 17
+\item {\tt rem-mvl}, 25, {\em 52}
+\item {\tt root}, 35
+
+% *S*
+
+\indexspace
+
+\item {\tt samep}, 9, {\em 52}
+\item {\tt *save-nodes*}, 20, {\em 52}
+\item sequence variables, 6
+\item {\tt set-search-parameters}, 16, {\em 52}
+\item {\tt short}, 36
+\item {\tt short-desc}, 26
+\item {\tt simplicity}, 26
+\item {\tt simplify}, 37, {\em 52}
+\item {\tt splice-bilattice}, 34, {\em 52}
+\item {\tt standardize-operators}, 7, {\em 52}
+\item {\tt stash}, 10, 12, {\em 52}
+\item {\tt stash-val}, 26
+\item {\tt stash-value}, 27, {\em 52}
+\item {\tt state}, 11, 12, {\em 52}
+\item {\tt state-in-theory}, 39, {\em 52}
+\item {\tt std-cutoffs}, 27, {\em 52}
+\item {\tt succeed-on-modal-ops}, 13
+
+% *T*
+
+\indexspace
+
+\item {\tt t-ge}, 28, {\em 53}
+\item {\tt t-gt}, 28, {\em 53}
+\item {\tt t-le}, 28, {\em 53}
+\item {\tt t-lt}, 28, {\em 53}
+\item {\tt t-not-ge}, 28, {\em 53}
+\item {\tt t-not-gt}, 28, {\em 53}
+\item {\tt t-not-le}, 28, {\em 53}
+\item {\tt t-not-lt}, 28, {\em 53}
+\item tag, 29
+\item {\tt task}, 16
+\item temporal reasoning, 33
+\item {\tt test}, 29, {\em 53}
+\item {\tt test-mvl}, 4, 22, {\em 53}
+\item {\tt theory-active-p}, 39, {\em 53}
+\item {\tt theory-contents}, 39, {\em 53}
+\item {\tt theory-dag}, 39, {\em 53}
+\item {\tt this-theory-only}, 39, 53
+\item {\tt *time-bilattice*}, 30, 53
+\item {\tt tle}, 26
+\item {\tt true}, 25, 27, {\em 53}
+\item {\tt true-in-theory}, 39, {\em 53}
+\item truth value, 3
+\item {\tt truth-value}, 8, 17, {\em 53}
+\item {\tt type}, 26
+
+% *U*
+
+\indexspace
+
+\item {\tt unifyp}, 9, {\em 53}
+\item {\tt unincludes}, 39, {\em 53}
+\item {\tt unindex}, 8, {\em 53}
+\item {\tt unknown}, 25, 27, {\em 53}
+\item {\tt unknown} predicate, 22, {\em 53}
+\item {\tt unstash}, 10, 12, {\em 54}
+\item {\tt unstash-facts-with-atom}, 14, {\em 54}
+\item {\tt unstash-val}, 26
+\item {\tt unstash-value}, 27, {\em 54}
+\item {\tt unstate}, 11, 12, {\em 54}
+\item {\tt unstate-from-theory}, 39, {\em 54}
+
+% *V*
+
+\indexspace
+
+\item {\tt value}, 10, 19
+\item {\tt value} predicate, 22, {\em 54}
+\item variables, 6
+\subitem sequence variables, 6
+\item {\tt varp}, 7, {\em 54}
+\item {\tt varp$*$} 7, {\em 54}
+\item {\tt varp?} 7, {\em 54}
+\item {\tt vars}, 16, 26
+\item {\tt vars-in}, 9, {\em 54}
+\item {\tt vartype}, 7, {\em 54}
+
+% *W*
+
+\indexspace
+
+\item {\tt *warn-on-bad-lisp-invocations*} 21, 49
+\item {\tt with-mvl-invocation}, 24, {\em 54}
+
+\end{theindex}

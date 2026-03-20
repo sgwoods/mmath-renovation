@@ -1,0 +1,55 @@
+2>[51]% kcl
+KCl (Kyoto Common Lisp)  June 3, 1987
+
+>(load "blocks.load")
+Loading blocks.load
+Loading graphsearch.lisp
+Finished loading graphsearch.lisp
+Loading list-access.lisp
+Finished loading list-access.lisp
+Loading node-access.lisp
+Finished loading node-access.lisp
+Loading interface.lisp
+Finished loading interface.lisp
+Loading state-expansion.lisp
+Finished loading state-expansion.lisp
+Loading blocks.lisp
+Warning: DELETE is being redefined.
+Finished loading blocks.lisp
+Finished loading blocks.load
+T
+
+>tst1
+((B C) ((A B)) (A C))
+
+>goal1
+((C) ((A B) (B C)) (A))
+
+>(graphsearch tst1)
+
+Priority: 5  Cost: 3
+
+Ontables: (B C)
+Stacks  : ((A B))
+Clear   : (A C)
+
+
+Ontables: (A B C)
+Stacks  : NIL
+Clear   : (B A C)
+
+
+Ontables: (A C)
+Stacks  : ((B C))
+Clear   : (B A)
+
+
+Ontables: (C)
+Stacks  : ((A B) (B C))
+Clear   : (A)
+
+number of nodes expanded: 15
+number of nodes generated: 48
+T
+
+>

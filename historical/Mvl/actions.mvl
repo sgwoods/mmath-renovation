@@ -1,0 +1,74 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+;; stuff to reason about actions and their consequences.  Basically,
+;; there are four types of causal predicates: causes,
+;; causes-persistently, causes-forever and causes-not.  The reason we
+;; need them all is because we may need to express causal rules of a
+;; variety of sorts.
+
+;; (causes action result) means that the action causes the result, but
+;; the result should *not* be propagated into the future at all.
+
+;; (causes-persistently action result) means that the action causes the
+;; result, and that the result should be propagated into the future by
+;; default.
+
+;; (causes-forever action result) means that the action causes the
+;; result, and the result should be propagated with certainty into the
+;; future.
+
+;; (causes-not fluent1 fluent2) means that if fluent1 holds, fluent2
+;; doesn't hold and also that any propagation of fluent2 should be
+;; turned off.  An example is unloading a gun -- you have to cause
+;; "loaded" to be false, and also have to stop any propagation of the
+;; loaded fluent.
+
+;; The way this is implemented is via a "holds" predicate and a
+;; "triggers" predicate.  (triggers ?f) is turned into (holds ?f) by a
+;; rule saying the (propagate triggers) implies (holds), where propagate
+;; basically pushes any truth values of triggers across any points where
+;; it is unknown.  Propagate is a modal operator; in order to avoid
+;; quantifying into it (which is computationally expensive but nothing
+;; else), we introduce the "fluent" predicate, which is intended to do
+;; nothing more than bound its argument.
+
+;; we also use the following auxilliary predicates:
+;;  (succeeds ?action) means that the action occurred and that all of
+;;    its preconditions were satisfied.
+;;  (prec-holds ?precondition-set) means that every element of
+;;    ?precondition-set holds.
+
+:value true
+
+(<= (holds ?p) (causes ?a ?p) (duration ?a ?t) (delay ?t (succeeds ?a)))
+(<= (succeeds ?a) (occurs ?a)
+    (forall ?p (if (l (prec ?a ?p)) (and (prec ?a ?p) (holds ?p)))))
+
+(<= (causes ?a ?p) (causes-persistently ?a ?p))
+
+(<= (triggers ?p)
+    (causes-persistently ?a ?p) (duration ?a ?t) (delay ?t (succeeds ?a))
+    (def ?a ?p))
+
+:value nil
+(def ?a ?p)
+
+:value true
+
+(<= (holds ?p) (fluent ?p) (propagate (triggers ?p)))
+
+(<= (not (holds ?p)) (causes-not ?q ?p) (holds ?q))
+(<= (not (triggers ?p)) (causes-not ?q ?p) (triggers ?q))
+
+(<= (triggers ?p) (causes-forever ?a ?p) (duration ?a ?t)
+    (delay ?t (succeeds ?a)))
+
+(duration init 0)
+
+;; finally, there is a dummy action "init" that takes place at time -1
+;; and can be used to construct the initial situation (by saying what it
+;; causes).  This action has no preconditions, of course ...
+
+:value (true-at 0)
+
+(succeeds init)

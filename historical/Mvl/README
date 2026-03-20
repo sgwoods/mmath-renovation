@@ -1,0 +1,43 @@
+This directory contains the source files for the theorem-proving
+system MVL, together with a variety of examples and documentation.
+Instructions on loading and using MVL are contained in the MVL
+documentation file manual.tex, which can be processed by LaTeX.
+
+A .DVI file that can be read directly is in a directory that is a
+sibling of the one where this file resides, so that if you found this
+file in /ftp/mvl, then the manual is /ftp/papers/manual.dvi.
+
+There are two ways to recover the files:
+
+1.  On Unix systems, with uncompress and tar available:
+
+	a.  FTP to t.stanford.edu (36.8.0.123)
+	b.  login as anonymous (use any password you want)
+	c.  cd mvl
+	d.  binary
+	e.  get mvl.tar.Z
+	f.  quit (out of ftp)
+	g.  uncompress mvl.tar.Z
+	h.  tar xf mvl.tar
+
+This will put the mvl files in a subdirectory called "mvl".
+
+2.  On systems without uncompress and tar:
+
+	a.  FTP to t.stanford.edu (36.8.0.123)
+	b.  login as anonymous (use any password you want)
+	c.  cd mvl
+	d.  mget *
+
+If possible, do not retrieve the file mvl.tar.Z.  This will put the
+files in the current directory.
+
+
+IF YOU RETRIEVE THE SYSTEM, PLEASE SEND A MESSAGE TO
+
+   GINSBERG@T.STANFORD.EDU
+
+TO LET ME KNOW THAT YOU HAVE DONE SO.  I'M NOT ASSEMBLING A MAILING
+LIST, JUST TRYING TO FIND OUT HOW MANY PEOPLE ARE USING MVL.  IF YOU
+DO END UP USING IT, I WOULD ALSO BE INTERESTED IN ANY COMMENTS OR
+SUGGESTIONS YOU HAVE.  THANKS!

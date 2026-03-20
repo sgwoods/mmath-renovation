@@ -1,0 +1,43 @@
+;;; -*- Mode: LISP; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+(load-logic #\f)		;first-order logic, loaded to test modal stuff
+**
+
+(mvl-load "modal-test")
+**
+
+(bc '(l (b)))					;you don't know b
+NIL
+
+(bc '(l (not (b))))				;you do know not b
+#.(make-answer)
+
+(bc '(not (l (b))))				;you don't know b
+#.(make-answer)
+
+(bc '(not (l (not (b)))))			;you do know not b
+NIL
+
+(bc '(not (l (not (b)))) :terminate *success-test*) ;but you don't realize
+#.(make-answer)					;it initially
+
+(bc '(m (b)))
+NIL
+
+(bcs '(i ?x))					;i should be true at b only
+(#.(make-answer :binding '((?x . b))))
+
+(bc '(forall ?x (<= (g ?x) (l (f ?x)))))
+#.(make-answer)
+
+(state '(f b))
+**
+
+(bc '(forall ?x (<= (g ?x) (l (f ?x)))))
+nil
+
+(state '(h b))
+**
+
+(bc '(forall ?x (<= (g ?x) (l (f ?x)))))
+#.(make-answer)

@@ -1,0 +1,72 @@
+;;; -*- Mode: MVL; Syntax: Common-lisp; Package: MVL; Base: 10 -*-
+
+;; Simple check of recursive negation testing.  Queries are (p1 a)
+;; [answer true] and (p1 ?) [answer binds ? to a]
+
+(<= (p1 a) (not (p1 a)))
+
+;; query (g2) returns true
+
+(<= (g2) (h2 p))
+(<= (g2) (not (a2 p)))
+(<= (g2) (h2 ?) (b2))
+(<= (h2 ?) (a2 ?))
+
+;; This tests to see that variable bindings are passed properly in
+;; bc-auxcheck Query is (g3 ?z) returns z bound to (f a)
+
+(<= (g3 (f ?)) (h3 (f ?)))
+(<= (h3 ?) (or (q3 ?) (p3 ?)))
+(<= (q3 ?) (not (p3 (f a))))
+
+;; This example shows that auxcheck must do freepaths even if there is a
+;; variable conflict along the path to the common ancestor.  query is (g4
+;; ?z) and returns z bound to a
+
+(<= (q4 b) (p4 a))
+(<= (g4 a) (not (p4 a)))
+(<= (g4 a) (q4 b))
+(<= (g4 ?) (q4 ?))
+
+;; Same problem only worse.  Shows that auxcheck must do a freepaths
+;; even if the two goals have a unification variable conflict.  query is
+;; (g5 ?z) and returns z bound to a
+
+(<= (g5 a) (q5 (f a)))
+(<= (g5 ?) (not (p5 (f ?))))
+(<= (g5 ?) (q5 ?)) 
+(<= (q5 ?) (p5 ?))
+
+;; this shows problem when master and slave share variables query is (g6
+;; ?z) and returns true
+
+(<= (g6 ?) (p6 (f ?)))
+(<= (g6 ?) (p6 ?) (q6 ?))
+(p6 ?)
+
+;; this makes sure we prefer subsuming a goal to slaving it; (g7) should fail
+
+(<= (g7) (p7) (q7))
+(<= (p7) (not (g7)) (p7))
+(not (g7))
+(q7)
+
+;; this makes sure we can do goal-goal resolutions with slaved nodes.
+;; (g8) should succeed
+
+(<= (g8) (p8))
+(<= (g8) (q8))
+(<= (p8) (not (r8)))
+(<= (p8) (r8) (s8))
+(<= (q8) (r8) (t8))
+(s8)
+
+;; actual recursion check!  (conn a ?y) should return 5 answers
+
+(conn a b)
+(conn b c)
+(conn c d)
+(conn d e)
+
+(<= (conn ?1 ?2) (conn ?2 ?1))
+(<= (conn ?1 ?3) (conn ?1 ?2) (conn ?2 ?3))
