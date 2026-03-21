@@ -9,6 +9,7 @@ capabilities, controls, and experimental results.
 
 It complements:
 
+- [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Restoration roadmap](/Users/stevenwoods/mmath-renovation/docs/restoration-roadmap.md)

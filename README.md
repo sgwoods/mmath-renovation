@@ -49,6 +49,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Snapshot inventory](./docs/snapshot-inventory.md): comparison of the recovered AbTweak trees and recommended porting baseline
 - [Abtweak-1993 baseline](./docs/abtweak-1993-baseline.md): current working baseline, SBCL load status, and next porting steps
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results
+- [Project goal and roadmap](./docs/project-goal-roadmap.md): central statement of the overall project goal, current roadmap, where we stand against it, and the recommended next steps
 - [Release process](./docs/release-process.md): versioning, release cadence, snapshot contents, tag policy, and Pages update rules
 - [Changelog](./CHANGELOG.md): numbered restoration checkpoints
 - [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
@@ -109,9 +110,9 @@ Direct links and brief notes for each item are collected in [docs/references.md]
 ## Immediate Next Steps
 
 1. keep `hanoi-4` as the highest-value open benchmark now that `hanoi-2` and `hanoi-3` are both historically aligned in the restored surface
-2. widen historically grounded operator-style coverage where it still improves the validation story
-3. continue tightening the claim-by-claim reproduction matrix against the checked-in publications
-4. decide whether the alternate `reset-domain` / `defstep` framework belongs in the same restoration milestone or in a later dedicated phase
+2. keep the formal validation story current as the `hanoi-4` historical-control picture sharpens
+3. widen historically grounded operator-style coverage only where it materially improves the validation story
+4. keep the alternate `reset-domain` / `defstep` framework as a separate later phase unless priorities change
 5. keep trimming residual SBCL noise where it helps debugging without changing planner semantics
 
 ## Historical Code

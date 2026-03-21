@@ -11,6 +11,9 @@ It is the best place to answer two questions:
 1. where are we now?
 2. what should we do next?
 
+For the shortest current top-level answer to those questions, see
+[Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md).
+
 For the newer top-level framing around one unified restored experimental
 environment, see [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md).
 

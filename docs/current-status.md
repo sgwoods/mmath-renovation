@@ -8,6 +8,7 @@ Current named release checkpoint:
 
 For deeper technical detail, see:
 
+- [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Historical sample cases](/Users/stevenwoods/mmath-renovation/docs/historical-sample-cases.md)
@@ -56,6 +57,9 @@ For deeper technical detail, see:
 - Historical snapshots remain frozen reference material and are not edited during porting.
 
 ## Plan State
+
+The clearest current top-level summary now lives in
+[Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md).
 
 - Runtime restoration: first milestone substantially achieved
 - Historical validation: in progress, and the validation matrix is now explicitly labeled against the published expectations
