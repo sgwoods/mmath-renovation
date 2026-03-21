@@ -173,6 +173,17 @@ The new successful-combination note narrows that list:
     to help, now that the control itself is restored but not yet outperforming
     `stack` on representative recovered cases
 
+The newer wider determine-mode sweep now sharpens that tree question:
+
+- tree is not uniformly worse on `hanoi-4`
+- under weak-`POS` plus Left-Wedge at the 20k bound, it helps
+  `legacy-1991-default` and `critical-list-2`
+- it hurts `critical-list-1`, `ismb`, `isbm`, `ibsm`, and `imbs`
+- the `critical-list-2` advantage survives the first deeper follow-up at 50k
+
+So the immediate question is no longer just "does tree help?" It is:
+which hierarchy family was tree goal ordering historically meant to help?
+
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
 
@@ -209,8 +220,10 @@ first. It is:
 
 1. tighten the publication-to-code mapping for the historically good four-disk
    hierarchy families
-2. determine whether thesis-era tree goal ordering matters on a different
-   hierarchy/control family than the current representative `isbm` runs
+2. determine whether thesis-era tree goal ordering matters on an older/default
+   hierarchy/control family such as `critical-list-2` or
+   `legacy-1991-default`, rather than on the current representative `isbm`
+   runs
 3. only then return to deeper `hanoi-4` runtime pushes inside that recovered
    control surface
 

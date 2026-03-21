@@ -158,3 +158,56 @@ print_row isbm strong nec nil stack nil "$log_file"
 
 log_file=$(run_case isbm weak pos nil tree t isbm-weak-pos-tree-lw)
 print_row isbm weak pos nil tree t "$log_file"
+
+cat <<EOF
+
+## Determine-Mode Family Sweep
+
+This second table holds the historically plausible weak-\`POS\` plus
+Left-Wedge comparison across the recovered four-disk hierarchy families.
+
+| Hierarchy | MSP | Weak Mode | Crit-Depth | Determine | Left-Wedge | Outcome | Expanded | Generated | MP Pruned | Strong MP Pruned |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+EOF
+
+log_file=$(run_case legacy-1991-default weak pos nil stack t legacy-default-weak-pos-stack-lw)
+print_row legacy-1991-default weak pos nil stack t "$log_file"
+
+log_file=$(run_case legacy-1991-default weak pos nil tree t legacy-default-weak-pos-tree-lw)
+print_row legacy-1991-default weak pos nil tree t "$log_file"
+
+log_file=$(run_case critical-list-1 weak pos nil stack t critical-list-1-weak-pos-stack-lw)
+print_row critical-list-1 weak pos nil stack t "$log_file"
+
+log_file=$(run_case critical-list-1 weak pos nil tree t critical-list-1-weak-pos-tree-lw)
+print_row critical-list-1 weak pos nil tree t "$log_file"
+
+log_file=$(run_case critical-list-2 weak pos nil stack t critical-list-2-weak-pos-stack-lw)
+print_row critical-list-2 weak pos nil stack t "$log_file"
+
+log_file=$(run_case critical-list-2 weak pos nil tree t critical-list-2-weak-pos-tree-lw)
+print_row critical-list-2 weak pos nil tree t "$log_file"
+
+log_file=$(run_case ismb weak pos nil stack t ismb-weak-pos-stack-lw)
+print_row ismb weak pos nil stack t "$log_file"
+
+log_file=$(run_case ismb weak pos nil tree t ismb-weak-pos-tree-lw)
+print_row ismb weak pos nil tree t "$log_file"
+
+log_file=$(run_case isbm weak pos nil stack t isbm-weak-pos-stack-lw)
+print_row isbm weak pos nil stack t "$log_file"
+
+log_file=$(run_case isbm weak pos nil tree t isbm-weak-pos-tree-lw-sweep)
+print_row isbm weak pos nil tree t "$log_file"
+
+log_file=$(run_case ibsm weak pos nil stack t ibsm-weak-pos-stack-lw)
+print_row ibsm weak pos nil stack t "$log_file"
+
+log_file=$(run_case ibsm weak pos nil tree t ibsm-weak-pos-tree-lw)
+print_row ibsm weak pos nil tree t "$log_file"
+
+log_file=$(run_case imbs weak pos nil stack t imbs-weak-pos-stack-lw)
+print_row imbs weak pos nil stack t "$log_file"
+
+log_file=$(run_case imbs weak pos nil tree t imbs-weak-pos-tree-lw)
+print_row imbs weak pos nil tree t "$log_file"

@@ -238,6 +238,18 @@ The newest historical-combination review narrows the remaining uncertainty:
   - `hanoi-3`, `isbm`, weak-`NEC`: `stack 1083 / 1433`, `tree 2630 / 3779`
   - `hanoi-4`, `isbm`, weak-`POS`, Left-Wedge:
     `stack 20001 / 23272`, `tree 20001 / 27373`
+- the wider determine-mode family sweep now refines that:
+  - on `hanoi-4`, tree ordering is not uniformly worse
+  - under weak-`POS` plus Left-Wedge at the standard 20k bound, tree is
+    slightly better on `legacy-1991-default` (`36727` vs `37046`) and
+    materially better on `critical-list-2` (`29744` vs `31080`)
+  - tree is still clearly worse on `critical-list-1`, `ismb`, `isbm`, `ibsm`,
+    and `imbs`
+  - a deeper `critical-list-2` follow-up preserves the same direction at 50k:
+    `77587` generated under `tree` versus `77708` under `stack`
+  - so the restored tree effect now looks hierarchy-family-sensitive and more
+    plausibly tied to older/default-style four-disk hierarchies than to the
+    later permutation-style runtime winners
 
 ## Important Limitation
 

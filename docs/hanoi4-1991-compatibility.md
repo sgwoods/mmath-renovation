@@ -95,6 +95,43 @@ comparison:
 - `isbm`, weak-`POS`, `tree`, `left-wedge t`:
   `20001 / 27373`, `EXPAND-LIMIT-EXCEEDED`
 
+## Wider Determine-Mode Family Sweep
+
+The historical-control report now also includes a broader weak-`POS` plus
+Left-Wedge determine-mode sweep across the recovered four-disk hierarchy
+families.
+
+At the standard 20k bound:
+
+| Hierarchy | Stack | Tree | Better at 20k |
+| --- | --- | --- | --- |
+| `legacy-1991-default` | `20001 / 37046` | `20001 / 36727` | `tree` |
+| `critical-list-1` | `20001 / 35175` | `20001 / 36274` | `stack` |
+| `critical-list-2` | `20001 / 31080` | `20001 / 29744` | `tree` |
+| `ismb` | `20001 / 23623` | `20001 / 27013` | `stack` |
+| `isbm` | `20001 / 23272` | `20001 / 27373` | `stack` |
+| `ibsm` | `20001 / 27277` | `20001 / 29709` | `stack` |
+| `imbs` | `20001 / 34067` | `20001 / 36002` | `stack` |
+
+That changes the earlier reading of tree goal ordering in an important way.
+The restored tree path is not uniformly worse on `hanoi-4`. It appears to help
+the older/default-style hierarchy families, especially `legacy-1991-default`
+and `critical-list-2`, while clearly hurting the later permutation-style
+families such as `ismb`, `isbm`, `ibsm`, and `imbs`.
+
+An immediate deeper follow-up on the most interesting case preserved the same
+direction at a 50k bound:
+
+| Hierarchy | Determine | Expanded | Generated | MP Pruned | Outcome |
+| --- | --- | --- | --- | --- | --- |
+| `critical-list-2` | `stack` | `50001` | `77708` | `25536` | `EXPAND-LIMIT-EXCEEDED` |
+| `critical-list-2` | `tree` | `50001` | `77587` | `17109` | `EXPAND-LIMIT-EXCEEDED` |
+
+So tree ordering is now better understood as a hierarchy-sensitive historical
+control rather than a globally inferior one. The most plausible remaining
+question is no longer "does tree help `isbm`?" but "which publication-era
+hierarchy families were actually meant to benefit from tree ordering?"
+
 ## Deeper Weak-POS Follow-Up
 
 The new harness-native trace presets make it easier to compare the two most
@@ -191,3 +228,6 @@ main immediate value is:
    `ismb` still prunes more aggressively, but `isbm` weak-`POS` now scales
    better overall at the deeper tested bounds, and adding Left-Wedge improves
    that stronger path further
+5. showing that restored tree ordering is hierarchy-family-sensitive on
+   `hanoi-4`, helping some older/default-style families while hurting the
+   later permutation-style ones

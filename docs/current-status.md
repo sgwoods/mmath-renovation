@@ -213,6 +213,11 @@ Verified smoke results:
         `hanoi-3` `isbm` weak-`NEC` goes from `1083 / 1433` under `stack` to `2630 / 3779` under `tree`
       - the same pattern currently holds on `hanoi-4` `isbm` weak-`POS` with Left-Wedge:
         `23272` generated under `stack` versus `27373` under `tree`
+      - but the wider weak-`POS` plus Left-Wedge family sweep now shows tree is
+        hierarchy-sensitive rather than uniformly bad on `hanoi-4`:
+        it helps `legacy-1991-default` (`36727` vs `37046`) and
+        `critical-list-2` (`29744` vs `31080`) at the 20k bound, and the
+        `critical-list-2` advantage survives the first 50k follow-up
   - the working-vs-historical review now shows that the `hanoi-4` domain and default abstraction hierarchy are unchanged from the archival code, and that the main precedence rewrite in the working tree preserves the historical reachability relation on randomized checks
   - a dedicated trace runner now exists for larger `hanoi-4` diagnosis:
     - it writes planner output, summary stats, open-frontier snapshots, and DRP-stack snapshots into timestamped directories under [analysis/hanoi4-traces](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
