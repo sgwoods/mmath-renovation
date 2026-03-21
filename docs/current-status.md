@@ -127,7 +127,11 @@ shows `imbs-h1` is likely a pruning/search-shape improvement more than a
 cleaner-top-bucket ranking improvement over `isbm`. The first explicitly
 recursive non-historical extension hierarchy, `recursive-clearance`, has also
 been tried and fails cleanly with roughly `33730` generated nodes and almost
-no MP pruning, so that specific coupling idea is not the answer.
+no MP pruning, so that specific coupling idea is not the answer. The deeper
+Left-Wedge follow-up now settles the next question too: `imbs-h1` still does
+not solve, still trails `isbm` at `50000` and `100000`, and at `200000`
+needs a larger SBCL heap just to reach a clean bounded failure. So it should
+be treated as a diagnostic hierarchy, not as the new main `hanoi-4` target.
 
 Verified smoke results:
 

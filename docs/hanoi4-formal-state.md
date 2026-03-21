@@ -263,6 +263,17 @@ The first three explicit-`H` analogue probes are now implemented and measured:
   - with Left-Wedge: `23810` generated versus `34067` for plain `imbs`
   - it also beats `isbm` on the no-Left-Wedge weak-`POS` line, though it
     still trails `isbm + weak-POS + Left-Wedge`
+- the deeper Left-Wedge follow-up now answers the more important benchmark
+  question:
+  - at `50000`, `imbs-h1` still fails and trails `isbm`
+    (`60971` versus `58817` generated)
+  - at `100000`, it still trails `isbm`
+    (`121223` versus `116646` generated)
+  - at `200000`, it exhausts the default 1 GiB SBCL heap in MP checking
+  - with a 2 GiB SBCL heap, it still only reaches
+    `EXPAND-LIMIT-EXCEEDED` at `241472` generated
+  - so `imbs-h1` is not currently a better `hanoi-4` solving path under the
+    stronger historical controls
 - `imbs-hb` now runs too, but it is much weaker than `imbs-h1`:
   - no Left-Wedge: `26598` generated versus `24132` for `imbs-h1`
   - with Left-Wedge: `33415` generated versus `23810` for `imbs-h1`
@@ -272,9 +283,9 @@ The first three explicit-`H` analogue probes are now implemented and measured:
   - but its top displayed priority leaders are still much dirtier than
     `isbm`'s, while its best closure-oriented node is buried inside a huge
     top bucket
-- so the next hierarchy follow-up should now ask whether `imbs-h1` is simply
-  a better bounded no-Left-Wedge path, or whether that advantage survives once
-  Left-Wedge returns without losing too much frontier quality
+- so the hierarchy question is now narrower again:
+  `imbs-h1` is a useful diagnostic family, but `isbm + weak-POS + Left-Wedge`
+  remains the main historical-control runtime target
 
 ## Recommended Re-entry Point
 

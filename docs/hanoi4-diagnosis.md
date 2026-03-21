@@ -257,6 +257,17 @@ The newest historical-combination review narrows the remaining uncertainty:
     `imbs`
   - it is also slightly better than `isbm` on the no-Left-Wedge weak-`POS`
     line, while still slightly behind `isbm + weak-POS + Left-Wedge`
+- the deeper Left-Wedge follow-up now answers the more important benchmark
+  question:
+  - at `50000`, `imbs-h1` still fails and trails `isbm`
+    (`60971` versus `58817` generated)
+  - at `100000`, it still trails `isbm`
+    (`121223` versus `116646` generated)
+  - at `200000`, it exhausts the default 1 GiB SBCL heap in the MP path
+  - rerun with a 2 GiB SBCL heap, it still only reaches
+    `EXPAND-LIMIT-EXCEEDED` at `241472` generated
+  - so `imbs-h1` remains a useful diagnostic hierarchy, not a better
+    `hanoi-4` solution path
 - the grouped `IMBS` follow-up, `imbs-hb`, is informative because it shows
   the gain is not just "add `H`":
   - weak-`POS`, stack, no Left-Wedge: `26598` generated versus `24132` for
@@ -271,7 +282,8 @@ The newest historical-combination review narrows the remaining uncertainty:
     (`24132` generated versus `24748`, with heavier MP pruning too)
   - but its top displayed priority leaders are still dirtier than `isbm`'s
   - so `imbs-h1` currently looks more like a pruning/search-shape win than a
-    clear frontier-ranking win
+    clear frontier-ranking win, and the deeper Left-Wedge runs confirm that
+    this does not turn into a stronger solving line
 - the first non-historical extension hierarchy aimed directly at recursive
   "move the next largest disk with its clearance conditions" behavior,
   `recursive-clearance`, is now also tested:

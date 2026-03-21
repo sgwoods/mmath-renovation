@@ -154,6 +154,18 @@ The explicit-`H` analogue results are useful too:
   - with Left-Wedge: `23810` versus `34067` for plain `imbs`
   - it also slightly beats `isbm` on the no-Left-Wedge weak-`POS` line, while
     still trailing `isbm + weak-POS + Left-Wedge`
+- the deeper Left-Wedge follow-up now answers the live question about whether
+  `imbs-h1` becomes the better solver candidate once the stronger historical
+  control path returns:
+  - at `50000`, `imbs-h1` still fails and trails `isbm`
+    (`60971` versus `58817` generated)
+  - at `100000`, it still trails `isbm`
+    (`121223` versus `116646` generated)
+  - at `200000`, it exhausts the default 1 GiB SBCL heap in MP checking
+  - rerun with `--dynamic-space-size 2048`, it still reaches only
+    `EXPAND-LIMIT-EXCEEDED` at `241472` generated
+  - so `imbs-h1` is useful diagnostically, but it is not the new main
+    `hanoi-4` solving path
 - `imbs-hb` confirms that this is not just "add `H` anywhere" on the `IMBS`
   side:
   - no Left-Wedge: `26598` versus `24132` for `imbs-h1`

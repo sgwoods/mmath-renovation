@@ -191,6 +191,13 @@ Initial result:
 - it also beats the current `isbm` path on the no-Left-Wedge weak-`POS` line
   (`24132` versus `24748`), though it still trails `isbm + weak-POS +
   Left-Wedge` (`23810` versus `23272`)
+- deeper Left-Wedge follow-up:
+  - `50000`: `60971` generated versus `58817` for `isbm`
+  - `100000`: `121223` generated versus `116646` for `isbm`
+  - `200000`: default 1 GiB SBCL heap exhaustion in MP checking; with a 2 GiB
+    heap, still `EXPAND-LIMIT-EXCEEDED` at `241472` generated
+- so `imbs-h1` remains diagnostically interesting, but it is not a better
+  `hanoi-4` solving path under the stronger historical controls
 
 ### A4. `imbs-hb`
 
@@ -386,17 +393,23 @@ That direct `imbs-h1` versus `isbm` frontier comparison is now done:
 - `imbs-h1` wins on raw no-Left-Wedge bounded counts and pruning
 - `isbm` still looks cleaner at the very top of the frontier
 
-So the best next hierarchy experiment is now:
+So the best next hierarchy experiment is now no longer "does `imbs-h1`
+survive Left-Wedge?" That answer is now no.
 
-- check whether the `imbs-h1` advantage survives once Left-Wedge returns
-- or move to a conservative default-family follow-up rather than another
-  grouped-`H` variant
+The best next hierarchy experiment is now:
+
+- keep `isbm + weak-POS + Left-Wedge` as the main historical-control runtime
+  target
+- treat `imbs-h1` as a useful diagnostic comparison family, not as the new
+  benchmark leader
+- move to a conservative default-family follow-up rather than another grouped
+  or explicit-`H` `IMBS` variant right away
 
 That is now the cleanest follow-up to the current working hypothesis:
 
 - the `ISBM`-side explicit-`H` variants did not help
 - the first `IMBS`-side explicit-`H` variant did help a lot
 - the grouped `IMBS` follow-up did not preserve that gain
-- so the next question is whether `imbs-h1` mainly improves raw bounded counts
-  without fixing the deeper frontier-quality problem once Left-Wedge returns,
-  or whether it really is the first better analogue family
+- and the deeper Left-Wedge runs now answer the next question too:
+  `imbs-h1` mainly improves bounded no-Left-Wedge behavior without becoming a
+  better solving family once the stronger historical control path returns

@@ -59,14 +59,17 @@ It complements:
    `imbs-h1`, is now the first explicit-`H` analogue that materially helps its
    parent family and even beats `isbm` on the no-Left-Wedge weak-`POS` line,
    but the grouped follow-up `imbs-hb` gives away most of that gain,
-   especially with Left-Wedge on. So the next candidate should now be a
-   check on whether the `imbs-h1` advantage survives when Left-Wedge returns,
-   or a more conservative default-family analogue rather than another
-   grouped-`H` variant. The direct frontier-quality comparison is now done and
-   suggests `imbs-h1` helps pruning more than top-of-frontier cleanliness. The
-   first direct recursive-coupling extension hierarchy also failed quickly, so
-   the next hierarchy ideas should be more selective than simply grouping the
-   active disk-goal with all of its clearance predicates.
+   especially with Left-Wedge on. The direct frontier-quality comparison is
+   now done and suggests `imbs-h1` helps pruning more than top-of-frontier
+   cleanliness. The deeper Left-Wedge follow-up is now also done:
+   `imbs-h1` still fails, still trails `isbm` at `50000` and `100000`, and at
+   `200000` needs a larger SBCL heap just to reach a clean bounded failure.
+   So `isbm + weak-POS + Left-Wedge` remains the main runtime target, while
+   `imbs-h1` should now be treated as a diagnostic comparison family rather
+   than the next benchmark leader. The first direct recursive-coupling
+   extension hierarchy also failed quickly, so the next hierarchy ideas should
+   be more selective than simply grouping the active disk-goal with all of its
+   clearance predicates.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle
