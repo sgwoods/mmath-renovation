@@ -66,6 +66,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Algorithm strategy policy](./docs/algorithm-strategy-policy.md): rule for keeping the restored `Abtweak-1993` baseline historically aligned while clearly naming any later non-domain-specific strategy extensions
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Hanoi-4 formal state](./docs/hanoi4-formal-state.md): formal handoff note capturing the current four-disk diagnosis, strongest runtime path, and recommended re-entry point
+- [Hanoi-4 five-peg sanity check](./docs/hanoi4-five-peg-sanity-check.md): retained quality reminder showing that the planner handles four-disk Hanoi comfortably once two extra pegs are available
 - [Hanoi-4 headway assessment](./docs/hanoi4-headway-assessment.md): concise assessment of how much progress has been made on the four-disk issue, what has been ruled out, and what is still open
 - [Hanoi publication alignment](./docs/hanoi-publication-alignment.md): exact row-level comparison between the original thesis Hanoi figure and the restored `hanoi-3` experiment family, clarifying that `hanoi-4` is a later extension
 - [Hanoi-4 publication to code mapping](./docs/hanoi4-publication-to-code-mapping.md): explicit map from exact three-disk publication hierarchy labels to the closest four-disk code families, clarifying which `hanoi-4` names are analogues rather than exact row matches

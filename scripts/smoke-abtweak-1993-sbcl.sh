@@ -153,6 +153,96 @@ case "$CASE_NAME" in
           (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
           (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
     ;;
+  hanoi4-5peg-tweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/hanoi-4.lisp")
+      (let* ((initial5 (append initial
+                               (quote ((ispeg peg4) (ispeg peg5)
+                                       (not onh peg4) (not onh peg5)
+                                       (not onb peg4) (not onb peg5)
+                                       (not onm peg4) (not onm peg5)
+                                       (not ons peg4) (not ons peg5)))))
+             (result (plan initial5 goal
+                           :planner-mode (quote tweak)
+                           :output-file (quote no-output)
+                           :expand-bound 5000
+                           :generate-bound 20000
+                           :open-bound 20000
+                           :cpu-sec-limit 30)))
+        (format t "CASE: hanoi4-5peg-tweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  hanoi4-5peg-abtweak)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/hanoi-4.lisp")
+      (let* ((initial5 (append initial
+                               (quote ((ispeg peg4) (ispeg peg5)
+                                       (not onh peg4) (not onh peg5)
+                                       (not onb peg4) (not onb peg5)
+                                       (not onm peg4) (not onm peg5)
+                                       (not ons peg4) (not ons peg5)))))
+             (result (plan initial5 goal
+                           :planner-mode (quote abtweak)
+                           :output-file (quote no-output)
+                           :expand-bound 5000
+                           :generate-bound 20000
+                           :open-bound 20000
+                           :cpu-sec-limit 30)))
+        (format t "CASE: hanoi4-5peg-abtweak~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
+  hanoi4-5peg-isbm-weak-pos-lw)
+    EVAL='(progn
+      (load "init-sbcl.lisp")
+      (load "Domains/hanoi-4.lisp")
+      (let* ((initial5 (append initial
+                               (quote ((ispeg peg4) (ispeg peg5)
+                                       (not onh peg4) (not onh peg5)
+                                       (not onb peg4) (not onb peg5)
+                                       (not onm peg4) (not onm peg5)
+                                       (not ons peg4) (not ons peg5)))))
+             (result (historical-hanoi4-plan initial5 goal
+                                             :hierarchy (quote isbm)
+                                             :msp-mode (quote weak)
+                                             :msp-weak-mode (quote pos)
+                                             :determine-mode (quote stack)
+                                             :left-wedge-mode t
+                                             :output-file (quote no-output)
+                                             :expand-bound 5000
+                                             :generate-bound 20000
+                                             :open-bound 20000
+                                             :cpu-sec-limit 30)))
+        (format t "CASE: hanoi4-5peg-isbm-weak-pos-lw~%")
+        (format t "PLAN-RESULT: ~S~%" result)
+        (format t "SOLUTION-VALUE: ~S~%" *solution*)
+        (format t "SOLUTION-TYPE: ~S~%" (type-of *solution*))
+        (format t "NUM-EXPANDED: ~S~%" *num-expanded*)
+        (format t "NUM-GENERATED: ~S~%" *num-generated*)
+        (format t "MP-PRUNED: ~S~%" *mp-pruned*)
+        (when (typep *solution* (quote plan))
+          (format t "SOLUTION-LEN: ~S~%" (length (plan-a *solution*)))
+          (format t "SOLUTION-COST: ~S~%" (plan-cost *solution*))
+          (format t "SOLUTION-KVAL: ~S~%" (plan-kval *solution*)))) )'
+    ;;
   registers-tweak)
     EVAL='(progn
       (load "init-sbcl.lisp")
@@ -1162,7 +1252,7 @@ case "$CASE_NAME" in
     ;;
   *)
     echo "Unknown smoke test case: $CASE_NAME" >&2
-    echo "Known cases: load, loop-tweak, hanoi2-tweak, hanoi2-abtweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, registers-tweak, registers-abtweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-interchange-tweak, blocks-interchange-abtweak, blocks-flatten-tweak, blocks-flatten-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, macro-hanoi4-tweak, macro-hanoi4-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw, computer-tweak, computer-abtweak, stylistics-tweak, stylistics-abtweak, biology-goal1-tweak, biology-goal1-abtweak, biology-goal2-abtweak, biology-goal3-abtweak, biology-full-abtweak, fly-sf-tweak, fly-sf-abtweak, fly-dc-tweak, fly-dc-abtweak, database-goal0-tweak, database-goal1-tweak, database-goal1-abtweak, database-goal2-tweak, database-goal2-abtweak, database-goal3-tweak, database-goal3-abtweak, database-goal4-tweak, database-goal4-abtweak" >&2
+    echo "Known cases: load, loop-tweak, hanoi2-tweak, hanoi2-abtweak, hanoi3-tweak, hanoi3-abtweak, hanoi4-tweak, hanoi4-abtweak, hanoi4-5peg-tweak, hanoi4-5peg-abtweak, hanoi4-5peg-isbm-weak-pos-lw, registers-tweak, registers-abtweak, blocks-sussman-tweak, blocks-sussman-abtweak, blocks-interchange-tweak, blocks-interchange-abtweak, blocks-flatten-tweak, blocks-flatten-abtweak, blocks-sussman-tweak-dfs, blocks-sussman-abtweak-dfs, blocks-sussman-generate-bound, blocks-sussman-open-bound, nils-blocks-tweak, nils-blocks-abtweak, nils-blocks-abtweak-no-mp, macro-hanoi-tweak, macro-hanoi-abtweak, macro-hanoi4-tweak, macro-hanoi4-abtweak, robot1-tweak, robot1-abtweak, robot1-abtweak-no-lw, robot2-tweak, robot2-abtweak, robot2-abtweak-no-lw, computer-tweak, computer-abtweak, stylistics-tweak, stylistics-abtweak, biology-goal1-tweak, biology-goal1-abtweak, biology-goal2-abtweak, biology-goal3-abtweak, biology-full-abtweak, fly-sf-tweak, fly-sf-abtweak, fly-dc-tweak, fly-dc-abtweak, database-goal0-tweak, database-goal1-tweak, database-goal1-abtweak, database-goal2-tweak, database-goal2-abtweak, database-goal3-tweak, database-goal3-abtweak, database-goal4-tweak, database-goal4-abtweak" >&2
     exit 2
     ;;
 esac

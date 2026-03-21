@@ -21,6 +21,7 @@ It complements:
 - [Hanoi-4 reinsertion obligation picture](/Users/stevenwoods/mmath-renovation/docs/hanoi4-reinsertion-obligations.md)
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
+- [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -159,6 +160,16 @@ explained by the four-disk transfer problem being intrinsically difficult in a
 generic search sense. The remaining gap is much more likely to be about the
 planner's search/control behavior than about the existence of a reachable
 solution.
+
+The retained five-peg planner-side sanity check sharpens that same point:
+
+- `hanoi4-5peg-tweak` solves in `1528` expanded / `2816` generated
+- plain `hanoi4-5peg-abtweak` solves in only `36` expanded / `66` generated
+- `hanoi4-5peg-isbm-weak-pos-lw` also solves cleanly in `3086` expanded /
+  `4526` generated
+
+So the live open problem is not "the restored planner cannot solve four-disk
+Hanoi." It is specifically the classic three-peg `hanoi-4` geometry.
 
 The new optimal projection report sharpens the hierarchy story too:
 

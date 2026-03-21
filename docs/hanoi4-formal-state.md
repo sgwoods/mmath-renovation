@@ -21,6 +21,7 @@ It complements:
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
+- [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -38,6 +39,9 @@ not solve the shipped `hanoi-4` benchmark under SBCL, even though:
   analogue-only on `hanoi-4`
 - the broader operator-style restoration is strong across many other domains
 - plain state-space Hanoi solvers solve the same four-disk transfer easily
+- the same planner also solves a retained five-peg four-disk Hanoi variant
+  comfortably in `tweak`, plain `abtweak`, and the current best
+  `isbm + weak-POS + left-wedge` historical-control path
 
 ## Best Current Runtime Path
 

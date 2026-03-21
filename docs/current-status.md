@@ -27,6 +27,7 @@ For deeper technical detail, see:
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
+- [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-2 1990 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi2-1990-compatibility.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
@@ -178,6 +179,12 @@ Verified smoke results:
   - `biology` goals 1, 2, and 3 solve in `abtweak`
   - `fly` to Washington DC solves in `abtweak`
   - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
+- A retained five-peg `hanoi-4` sanity variant now also solves comfortably:
+  - `hanoi4-5peg-tweak` solves in `1528` expanded / `2816` generated
+  - plain `hanoi4-5peg-abtweak` solves in `36` expanded / `66` generated
+  - `hanoi4-5peg-isbm-weak-pos-lw` solves in `3086` expanded / `4526` generated
+  - this is now kept as a quality reminder that the open `hanoi-4` issue is
+    about the classic three-peg control problem, not about four disks in general
 - The early `hanoi-2` lineage is now restored into the active harness too:
   - `hanoi2-tweak` and `hanoi2-abtweak` both solve with cost `3`, plan length `5`, `kval 0`
   - the recovered six-hierarchy family now matches the archived 1990 batch outputs exactly at the expanded/generated level

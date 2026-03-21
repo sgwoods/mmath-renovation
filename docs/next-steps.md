@@ -122,6 +122,11 @@ despite `ismb` still pruning more aggressively.
 
 The new trace tooling in [analysis/hanoi4-traces/README.md](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md#L1) should be part of that investigation whenever a run terminates without a solution.
 
+The retained five-peg sanity check in
+[docs/hanoi4-five-peg-sanity-check.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md#L1)
+should now stay in the quick regression set whenever the three-peg `hanoi-4`
+investigation changes materially.
+
 The new optimal-versus-lineage comparison narrows the immediate `hanoi-4`
 question again:
 
