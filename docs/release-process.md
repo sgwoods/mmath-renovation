@@ -13,6 +13,7 @@ repeatable, numbered restoration checkpoints that:
 
 It complements:
 
+- [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
@@ -120,6 +121,31 @@ For now, use this default rule:
 - cut a new `beta` when the benchmark-family status, publication crosswalk, or
   formal `hanoi-4` state changes materially
 
+## Compendium Refresh Rule
+
+The project compendium is now a first-class release-facing artifact.
+
+Refresh
+[docs/project-compendium.md](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
+whenever any of the following changes materially:
+
+1. a milestone meaningfully moves
+2. a current blocker changes
+3. the experiment harness changes in a way a human reader should notice
+4. the active release focus changes
+
+In practice, that means the compendium should be updated when any of these
+shift in a way that would change how a careful reader describes the project:
+
+- the main open benchmark
+- the strongest current candidate path
+- the scope of the validated benchmark surface
+- the boundary between restored baseline and side experiments
+- the structure of the release/public-status surfaces
+
+This is a documentation maintenance rule, not a requirement to rewrite the
+compendium for every small commit.
+
 ## Release Procedure
 
 1. Confirm the repo is in a coherent state.
@@ -130,6 +156,13 @@ For now, use this default rule:
    - [docs/current-status.md](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
    - [docs/next-steps.md](/Users/stevenwoods/mmath-renovation/docs/next-steps.md)
    - any benchmark-specific formal checkpoint that materially changed
+
+   At minimum, refresh the compendium if:
+
+   - a milestone moved
+   - a blocker changed
+   - the harness materially changed
+   - the active release focus changed
 5. Generate a release snapshot:
 
 ```sh
