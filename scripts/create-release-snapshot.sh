@@ -9,6 +9,7 @@ CHANGELOG_FILE="$REPO_ROOT/CHANGELOG.md"
 CURRENT_STATUS_FILE="$REPO_ROOT/docs/current-status.md"
 RELEASES_DIR="$REPO_ROOT/releases"
 HARNESS_SCRIPT="$REPO_ROOT/scripts/abtweak-experiments.sh"
+SYNC_PUBLIC_PAGES_SCRIPT="$REPO_ROOT/scripts/sync-public-release-pages.sh"
 
 if [ ! -f "$VERSION_FILE" ]; then
   echo "Missing VERSION file: $VERSION_FILE" >&2
@@ -80,5 +81,9 @@ cat >"$manifest_file" <<EOF
   ]
 }
 EOF
+
+if [ -f "$SYNC_PUBLIC_PAGES_SCRIPT" ]; then
+  sh "$SYNC_PUBLIC_PAGES_SCRIPT"
+fi
 
 echo "Release snapshot generated: $release_dir"

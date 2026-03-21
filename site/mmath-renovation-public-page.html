@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masters of Mathematics Renovation: AbTweak</title>
+    <style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 840px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+            background: #faf8f2;
+        }
+        h1 {
+            margin-bottom: 0.4em;
+            color: #1f2b1f;
+        }
+        h2 {
+            margin-top: 36px;
+            margin-bottom: 12px;
+            border-left: 5px solid #ccc;
+            padding-left: 12px;
+            color: #111;
+        }
+        p {
+            margin-bottom: 1.1em;
+        }
+        ul,
+        ol {
+            padding-left: 1.4rem;
+        }
+        li {
+            margin-bottom: 0.8rem;
+        }
+        a {
+            color: #0056b3;
+        }
+        .note {
+            padding: 14px 16px;
+            background: #f1eee5;
+            border-left: 4px solid #b0a58c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Masters of Mathematics Renovation: AbTweak</h1>
+
+    <p>
+        This project is the starting point for reviving the code and research artifacts associated with Steven Woods' Masters of Mathematics thesis work on AbTweak, a hierarchical nonlinear planner developed at the University of Waterloo.
+    </p>
+
+    <p>
+        The repository has moved beyond the initial bootstrap stage and is now focused on validating a runnable SBCL baseline, comparing restored planning modes, and documenting where the recovered code aligns with or diverges from the thesis and papers.
+    </p>
+
+    <div class="note">
+        Public project note: active restoration work is underway. As of March 21, 2026, the repository is at `0.10.0-beta.1`, with exact lower-Hanoi reproduction, broad operator-style benchmark coverage, and a dedicated release dashboard tracking the road to `1.0.0`. Hanoi-4 remains the main open extension benchmark.
+    </div>
+
+    <h2>Repository Snapshot</h2>
+    <ul>
+        <li>
+            Repository: <a href="https://github.com/sgwoods/mmath-renovation">sgwoods/mmath-renovation</a>
+        </li>
+        <li>
+            Last repository update: March 21, 2026
+        </li>
+        <li>
+            Latest recorded commit: <em>Add imbs-h1 hanoi4 hierarchy analogue</em>
+        </li>
+        <li>
+            Formal checkpoint version: <code>0.10.0-beta.1</code>
+        </li>
+        <li>
+            Present state: the repo now has a named pre-release process, exact `hanoi-2` and `hanoi-3` historical alignment, broad retained benchmark coverage, and a live release dashboard for the remaining path to `1.0.0`.
+        </li>
+    </ul>
+
+    <h2>Current State</h2>
+    <ul>
+        <li>The working copy solves `blocks` / `sussman` in both `tweak` and `abtweak`.</li>
+        <li>The restored baseline solves `registers` in `tweak` and runs `hanoi-3` plus `macro-hanoi` in both modes.</li>
+        <li>`simple-robot-2` shows the expected left-wedge effect in `abtweak`.</li>
+        <li>`hanoi-4` now has a tighter formal diagnosis, retained five-peg sanity checks, and active hierarchy analogue experiments like `imbs-h1`.</li>
+        <li>The repository includes historical snapshots, a current SBCL working tree, and focused documentation for baseline selection, algorithm correspondence, and benchmark interpretation.</li>
+    </ul>
+
+    <h2>Release Tracking</h2>
+    <ul>
+        <li><a href="mmath-renovation-release-dashboard.html">Release dashboard</a></li>
+        <li>The dashboard highlights completed restoration milestones, the live `hanoi-4` gate, and the current beta-to-`1.0.0` path at a glance.</li>
+    </ul>
+
+    <h2>Core References</h2>
+    <ul>
+        <li>
+            Josh D. Tenenberg and Qiang Yang, <a href="https://cdn.aaai.org/AAAI/1990/AAAI90-031.pdf">"ABTWEAK: Abstracting a Nonlinear, Least Commitment Planner"</a>, AAAI-90.
+        </li>
+        <li>
+            Qiang Yang, Josh D. Tenenberg, and Steve Woods, <a href="https://cs.uwaterloo.ca/research/tr/1991/65/final.pdf">"Abstraction in Nonlinear Planning"</a>, University of Waterloo Technical Report CS-91-65, December 1991.
+        </li>
+        <li>
+            Steven G. Woods, <a href="https://cs.uwaterloo.ca/research/tr/1991/17/report.pdf">"An Implementation and Evaluation of a Hierarchical Nonlinear Planner"</a>, University of Waterloo Technical Report CS-91-17, March 1991.
+        </li>
+        <li>
+            CMU AI Repository package page for <a href="https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/areas/planning/systems/abtweak/0.html">`abtweak`</a>.
+        </li>
+    </ul>
+
+    <h2>Renovation Priorities</h2>
+    <ol>
+        <li>Keep tightening the runnable SBCL baseline against the historical papers, thesis, and recovered snapshots.</li>
+        <li>Document how benchmark behavior changes across hierarchy and control choices, especially on larger Hanoi cases.</li>
+        <li>Preserve clear provenance between archival code, working copies, and interpretive modernization steps.</li>
+        <li>Use the repository documentation as the public working log for restoration decisions and benchmark evidence.</li>
+    </ol>
+
+    <h2>Related Pages</h2>
+    <ul>
+        <li><a href="https://github.com/sgwoods/mmath-renovation">MMath renovation repository</a></li>
+        <li><a href="mmath-renovation-release-dashboard.html">MMath release dashboard</a></li>
+        <li><a href="phd-renovation.html">PhD renovation project</a></li>
+        <li><a href="patents-publications.html">Patents and publications</a></li>
+        <li><a href="index.html">Steven Woods Public Pages</a></li>
+    </ul>
+</body>
+</html>
