@@ -148,6 +148,7 @@
     ((critical-list-2) '*critical-list-2*)
     ((ismb) '*ismb*)
     ((imbs) '*imbs*)
+    ((imbs-h1) '*imbs-h1*)
     ((ibsm) '*ibsm*)
     ((isbm) '*isbm*)
     ((isbm-h1) '*isbm-h1*)

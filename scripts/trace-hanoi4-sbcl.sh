@@ -48,6 +48,10 @@ case "$HIERARCHY" in
     CRIT_EXPR='*imbs*'
     LW_EXPR="'(0 1 3 7)"
     ;;
+  imbs-h1)
+    CRIT_EXPR='*imbs-h1*'
+    LW_EXPR='*k-list-1*'
+    ;;
   ibsm)
     CRIT_EXPR='*ibsm*'
     LW_EXPR="'(0 1 3 7)"

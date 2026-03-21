@@ -134,6 +134,19 @@ Rationale:
 - useful because the publication-side “good” discussion is centered on
   `ILMS` / `IMLS`, not only on the `ISBM`-style family
 
+Initial result:
+
+- implemented in the working tree and tested at the standard 20k bound
+- weak-`POS`, stack, no Left-Wedge: `24132` generated versus `33992` for
+  plain `imbs`
+- weak-`POS`, stack, Left-Wedge: `23810` generated versus `34067` for plain
+  `imbs`
+- this is the first explicit-`H` analogue that materially improves its parent
+  family
+- it also beats the current `isbm` path on the no-Left-Wedge weak-`POS` line
+  (`24132` versus `24748`), though it still trails `isbm + weak-POS +
+  Left-Wedge` (`23810` versus `23272`)
+
 ### A4. `imbs-hb`
 
 Idea:
@@ -273,13 +286,15 @@ The first two hierarchy experiments are now complete:
 - `isbm-hb` also runs correctly after the grouped-level bookkeeping fix, but
   is still weaker than `isbm`
 
-So the best next hierarchy experiment is now:
+So the best next hierarchy experiment is now one of:
 
-- implement and compare `imbs-h1` next
+- implement and compare `imbs-hb` next
+- or trace `imbs-h1` directly against `isbm`
 
-That is now the cleanest follow-up test of the current working hypothesis:
+That is now the cleanest follow-up to the current working hypothesis:
 
-- move from the `ISBM` analogue family to the `IMBS` analogue family
-- keep explicit `H` structure before `k0`
-- test whether the publication-good `IMLS`/`IMBS` side gives a better
-  four-disk shape than the healthier-but-still-open `isbm` line.
+- the `ISBM`-side explicit-`H` variants did not help
+- the first `IMBS`-side explicit-`H` variant did help a lot
+- so the next question is whether the `IMBS` family can be pushed further, or
+  whether `imbs-h1` mainly improves raw bounded counts without fixing the
+  deeper frontier-quality problem

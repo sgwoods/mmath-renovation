@@ -55,8 +55,11 @@ It complements:
    `isbm-h1`, is now implemented and runs cleanly, but it is weaker than the
    current `isbm` path at the standard 20k bound. The grouped-`H` follow-up
    `isbm-hb` is now also runnable after a small grouped-level bookkeeping fix,
-   but it is still weaker than `isbm`, so the next candidate should move to
-   `imbs-h1`.
+   but it is still weaker than `isbm`. The first `imbs`-side probe,
+   `imbs-h1`, is now the first explicit-`H` analogue that materially helps its
+   parent family and even beats `isbm` on the no-Left-Wedge weak-`POS` line,
+   so the next candidate should now be `imbs-hb` or a direct frontier-quality
+   comparison between `imbs-h1` and `isbm`.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

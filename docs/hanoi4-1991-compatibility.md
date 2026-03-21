@@ -70,6 +70,7 @@ comparison looks like this:
 | `isbm` | `weak` | `pos` | `nil` | `20001 / 24748`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm-h1` | `weak` | `pos` | `nil` | `20001 / 26535`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm-hb` | `weak` | `pos` | `nil` | `20001 / 26479`, `EXPAND-LIMIT-EXCEEDED` |
+| `imbs-h1` | `weak` | `pos` | `nil` | `20001 / 24132`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `nil` | `nec` | `t` | `20001 / 36898`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `strong` | `nec` | `nil` | `20001 / 26264`, `EXPAND-LIMIT-EXCEEDED` |
 
@@ -85,16 +86,21 @@ The more specific takeaway is:
 2. weak-`POS` helps `isbm` materially more than it helps `ismb`:
    `26264` down to `24748` generated for `isbm`, versus essentially no change
    for `ismb` (`24565` to `24568`).
-3. the first explicit-`H` analogue, `isbm-h1`, now runs correctly but is not
+3. the first explicit-`H` analogue on the `ISBM` side, `isbm-h1`, now runs correctly but is not
    an improvement at the same bound:
    `26535` generated under weak-`POS` versus `24748` for `isbm`.
 4. the grouped-`H` follow-up, `isbm-hb`, is also runnable after a small
    grouped-level bookkeeping fix, but it also underperforms `isbm`:
    `26479` generated under weak-`POS` versus `24748` for `isbm`.
-5. `strong` MSP is now restored and, on representative `isbm`, currently
+5. the first explicit-`H` analogue on the `IMBS` side, `imbs-h1`, is much
+   stronger:
+   `24132` generated under weak-`POS` versus `33992` for plain `imbs`, and
+   slightly better than `isbm` on the same no-Left-Wedge weak-`POS` line
+   (`24132` versus `24748`).
+6. `strong` MSP is now restored and, on representative `isbm`, currently
    matches the weak-`NEC` expanded/generated counts while shifting the pruning
    attribution from `mp-pruned` to `strong-mp-pruned`.
-6. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
+7. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
 
 The report script now also exposes `Determine` and `Left-Wedge` columns, so it
 can include representative non-default rows such as the restored tree-ordering
@@ -120,6 +126,7 @@ At the standard 20k bound:
 | `isbm` | `20001 / 23272` | `20001 / 27373` | `stack` |
 | `isbm-h1` | `20001 / 25259` | `-` | `stack` |
 | `isbm-hb` | `20001 / 24745` | `-` | `stack` |
+| `imbs-h1` | `20001 / 23810` | `-` | `stack` |
 | `ibsm` | `20001 / 27277` | `20001 / 29709` | `stack` |
 | `imbs` | `20001 / 34067` | `20001 / 36002` | `stack` |
 
@@ -129,13 +136,19 @@ The restored tree path is not uniformly worse on `hanoi-4`. At the standard
 hurting the later permutation-style families such as `ismb`, `isbm`, `ibsm`,
 and `imbs`.
 
-The first two explicit-`H` analogue results are useful too:
+The explicit-`H` analogue results are useful too:
 
 - `isbm-h1` is runnable and historically plausible, but weaker than `isbm`
   with and without Left-Wedge
 - `isbm-hb` becomes runnable once grouped-level hierarchies are sized by max
   criticality rather than by raw critical-list length, but it is still weaker
   than `isbm` with and without Left-Wedge
+- `imbs-h1` is the first explicit-`H` analogue that materially improves its
+  parent family:
+  - no Left-Wedge: `24132` versus `33992` for plain `imbs`
+  - with Left-Wedge: `23810` versus `34067` for plain `imbs`
+  - it also slightly beats `isbm` on the no-Left-Wedge weak-`POS` line, while
+    still trailing `isbm + weak-POS + Left-Wedge`
 
 The first deeper follow-ups make that result more specific rather than more
 general:

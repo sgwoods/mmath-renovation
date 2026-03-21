@@ -241,15 +241,20 @@ which splits historically grounded analogue hierarchies from later named
 strategy extensions and recommends `isbm-h1` as the first new four-disk
 hierarchy candidate to test.
 
-That first candidate is now implemented and measured:
+The first three explicit-`H` analogue probes are now implemented and measured:
 
 - `isbm-h1` runs correctly through the historical-control wrapper
 - at the standard 20k bound it is weaker than the current `isbm` path both
   with and without Left-Wedge
 - the grouped-`H` follow-up `isbm-hb` also now runs after a small grouped-level
   bookkeeping fix, but it is still weaker than `isbm`
-- so the next hierarchy follow-up should now move to `imbs-h1`, not keep
-  pushing the `isbm`-side explicit-`H` variants as leading candidates
+- `imbs-h1` is the first explicit-`H` analogue that materially helps:
+  - no Left-Wedge: `24132` generated versus `33992` for plain `imbs`
+  - with Left-Wedge: `23810` generated versus `34067` for plain `imbs`
+  - it also beats `isbm` on the no-Left-Wedge weak-`POS` line, though it
+    still trails `isbm + weak-POS + Left-Wedge`
+- so the next hierarchy follow-up should now either move to `imbs-hb` or
+  compare `imbs-h1` frontier quality directly against `isbm`
 
 ## Recommended Re-entry Point
 

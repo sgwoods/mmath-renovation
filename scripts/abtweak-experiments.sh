@@ -197,6 +197,7 @@ list_traces() {
 hanoi3
 hanoi4
 hanoi4-ismb-weak-pos
+hanoi4-imbs-h1-weak-pos
 hanoi4-isbm-hb-weak-pos
 hanoi4-isbm-weak-pos
 hanoi4-isbm-h1-weak-pos
@@ -267,6 +268,9 @@ run_trace() {
       ;;
     hanoi4-ismb-weak-pos)
       HIERARCHY=ismb sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
+      ;;
+    hanoi4-imbs-h1-weak-pos)
+      HIERARCHY=imbs-h1 sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
       ;;
     hanoi4-isbm-weak-pos)
       HIERARCHY=isbm sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"

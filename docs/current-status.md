@@ -115,14 +115,12 @@ exact three-disk publication labels from the closest four-disk code analogues.
 The next hierarchy-design step for that open four-disk benchmark is now also
 formalized, with a baseline-safe analogue bucket and a separate named-extension
 bucket.
-The first analogue probe, `isbm-h1`, is now implemented and measured; it runs
-correctly, but it is weaker than the current `isbm` path at the standard 20k
-bound, so it narrows the hierarchy-design search rather than replacing the
-current best path.
-The grouped-`H` follow-up, `isbm-hb`, is now also runnable after a small
-grouped-level bookkeeping fix, but it too is weaker than the current `isbm`
-path, which pushes the next hierarchy experiment toward the `imbs` side rather
-than more `isbm`-family variations.
+The first two `isbm`-side analogue probes, `isbm-h1` and `isbm-hb`, are now
+implemented and measured; both run correctly, but both are weaker than the
+current `isbm` path at the standard 20k bound. The first `imbs`-side probe,
+`imbs-h1`, is more promising: it materially improves plain `imbs`, beats
+`isbm` on the no-Left-Wedge weak-`POS` line, and comes close to the current
+`isbm + weak-POS + Left-Wedge` best path.
 
 Verified smoke results:
 
