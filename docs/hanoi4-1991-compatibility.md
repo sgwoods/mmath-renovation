@@ -68,6 +68,7 @@ comparison looks like this:
 | `ismb` | `nil` | `nec` | `t` | `20001 / 38142`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `weak` | `nec` | `nil` | `20001 / 26264`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `weak` | `pos` | `nil` | `20001 / 24748`, `EXPAND-LIMIT-EXCEEDED` |
+| `isbm-h1` | `weak` | `pos` | `nil` | `20001 / 26535`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `nil` | `nec` | `t` | `20001 / 36898`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `strong` | `nec` | `nil` | `20001 / 26264`, `EXPAND-LIMIT-EXCEEDED` |
 
@@ -83,10 +84,13 @@ The more specific takeaway is:
 2. weak-`POS` helps `isbm` materially more than it helps `ismb`:
    `26264` down to `24748` generated for `isbm`, versus essentially no change
    for `ismb` (`24565` to `24568`).
-3. `strong` MSP is now restored and, on representative `isbm`, currently
+3. the first explicit-`H` analogue, `isbm-h1`, now runs correctly but is not
+   an improvement at the same bound:
+   `26535` generated under weak-`POS` versus `24748` for `isbm`.
+4. `strong` MSP is now restored and, on representative `isbm`, currently
    matches the weak-`NEC` expanded/generated counts while shifting the pruning
    attribution from `mp-pruned` to `strong-mp-pruned`.
-4. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
+5. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
 
 The report script now also exposes `Determine` and `Left-Wedge` columns, so it
 can include representative non-default rows such as the restored tree-ordering
@@ -110,6 +114,7 @@ At the standard 20k bound:
 | `critical-list-2` | `20001 / 31080` | `20001 / 29744` | `tree` |
 | `ismb` | `20001 / 23623` | `20001 / 27013` | `stack` |
 | `isbm` | `20001 / 23272` | `20001 / 27373` | `stack` |
+| `isbm-h1` | `20001 / 25259` | `-` | `stack` |
 | `ibsm` | `20001 / 27277` | `20001 / 29709` | `stack` |
 | `imbs` | `20001 / 34067` | `20001 / 36002` | `stack` |
 
@@ -118,6 +123,10 @@ The restored tree path is not uniformly worse on `hanoi-4`. At the standard
 20k bound it helps `legacy-1991-default` and `critical-list-2`, while clearly
 hurting the later permutation-style families such as `ismb`, `isbm`, `ibsm`,
 and `imbs`.
+
+The first explicit-`H` analogue result is useful too: `isbm-h1` is runnable
+and historically plausible, but at the same 20k bound it is weaker than
+`isbm` with and without Left-Wedge.
 
 The first deeper follow-ups make that result more specific rather than more
 general:

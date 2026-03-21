@@ -227,6 +227,11 @@ The newest historical-combination review narrows the remaining uncertainty:
   - `imbs`, `ibsm`, `isbm`, and `ismb` are the closest local permutation-style
     analogues to the exact three-disk publication rows
   - `critical-list-2` is a separate positive/negative criticality family
+- the first explicit-`H` analogue probe, `isbm-h1`, is now implemented and
+  runnable under the historical controls, but it is weaker than `isbm` at the
+  standard 20k bound:
+  - weak-`POS`, stack, no Left-Wedge: `26535` generated versus `24748`
+  - weak-`POS`, stack, Left-Wedge: `25259` generated versus `23272`
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

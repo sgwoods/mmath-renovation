@@ -79,13 +79,22 @@ Idea:
 - start from `isbm`
 - keep `S` above `B`
 - keep `B` above `M`
-- introduce `H` explicitly at level `1`
+- introduce `H` explicitly on its own non-concrete level between `S` and `B`
 
 Rationale:
 
 - preserves the cleaner frontier behavior of `isbm`
 - avoids leaving all `H` work at `k0`
 - still looks like a plausible four-disk extension of the `ISBM` family
+
+Initial result:
+
+- implemented in the working tree and tested at the standard 20k bound
+- weak-`POS`, stack, no Left-Wedge: `26535` generated versus `24748` for
+  `isbm`
+- weak-`POS`, stack, Left-Wedge: `25259` generated versus `23272` for `isbm`
+- so the first explicit-`H` insertion is historically interesting, but not a
+  performance improvement over the current `isbm` baseline
 
 ### A2. `isbm-hb`
 
@@ -246,14 +255,19 @@ of these:
 
 ## Current Recommendation
 
-The best next hierarchy experiment is:
+The first hierarchy experiment is now complete:
 
-- implement and compare `isbm-h1` first
+- `isbm-h1` runs correctly but is weaker than the current `isbm` path at the
+  standard 20k bound, both with and without Left-Wedge
 
-It is the cleanest test of the current working hypothesis:
+So the best next hierarchy experiment is now:
+
+- implement and compare `isbm-hb` next
+
+That is now the cleanest follow-up test of the current working hypothesis:
 
 - keep the `isbm` ordering that seems to produce healthier frontier behavior
-- add explicit `H` structure before `k0`
-- see whether that reduces the current “all remaining large-disk burden falls
-  to the concrete level” problem without abandoning the historically grounded
-  hierarchy family logic.
+- keep `H` visible before `k0`
+- but test whether grouping `H` with `B`, rather than inserting a separate
+  intermediate `H` band, gives weak-`POS` and Left-Wedge a better shaped
+  abstraction surface.

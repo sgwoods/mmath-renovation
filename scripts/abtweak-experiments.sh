@@ -198,6 +198,7 @@ hanoi3
 hanoi4
 hanoi4-ismb-weak-pos
 hanoi4-isbm-weak-pos
+hanoi4-isbm-h1-weak-pos
 hanoi4-isbm-weak-pos-lw
 hanoi4-legacy-1991
 EOF
@@ -268,6 +269,9 @@ run_trace() {
       ;;
     hanoi4-isbm-weak-pos)
       HIERARCHY=isbm sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
+      ;;
+    hanoi4-isbm-h1-weak-pos)
+      HIERARCHY=isbm-h1 sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
       ;;
     hanoi4-isbm-weak-pos-lw)
       HIERARCHY=isbm LEFT_WEDGE_MODE=t sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"

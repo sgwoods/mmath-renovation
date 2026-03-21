@@ -51,7 +51,10 @@ It complements:
    and re-enabling Left-Wedge improves that stronger `isbm` line again.
    The next disciplined sub-step is now a hierarchy-design pass with clear
    restoration boundaries, starting with historically grounded analogue
-   variants such as `isbm-h1` before any named non-historical strategy work.
+   variants before any named non-historical strategy work. The first probe,
+   `isbm-h1`, is now implemented and runs cleanly, but it is weaker than the
+   current `isbm` path at the standard 20k bound, so the next candidate should
+   move to `isbm-hb`.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

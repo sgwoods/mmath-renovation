@@ -114,6 +114,10 @@ exact three-disk publication labels from the closest four-disk code analogues.
 The next hierarchy-design step for that open four-disk benchmark is now also
 formalized, with a baseline-safe analogue bucket and a separate named-extension
 bucket.
+The first analogue probe, `isbm-h1`, is now implemented and measured; it runs
+correctly, but it is weaker than the current `isbm` path at the standard 20k
+bound, so it narrows the hierarchy-design search rather than replacing the
+current best path.
 
 Verified smoke results:
 

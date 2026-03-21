@@ -237,6 +237,14 @@ which splits historically grounded analogue hierarchies from later named
 strategy extensions and recommends `isbm-h1` as the first new four-disk
 hierarchy candidate to test.
 
+That first candidate is now implemented and measured:
+
+- `isbm-h1` runs correctly through the historical-control wrapper
+- at the standard 20k bound it is weaker than the current `isbm` path both
+  with and without Left-Wedge
+- so the next hierarchy follow-up should now move to `isbm-hb`, not keep
+  pushing `isbm-h1` as the leading candidate
+
 ## Recommended Re-entry Point
 
 If work resumes here later, the best immediate next experiment is:

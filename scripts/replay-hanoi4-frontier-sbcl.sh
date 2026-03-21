@@ -72,6 +72,10 @@ case "$HIERARCHY" in
     CRIT_EXPR='*isbm*'
     LW_EXPR="'(0 1 3 7)"
     ;;
+  isbm-h1)
+    CRIT_EXPR='*isbm-h1*'
+    LW_EXPR='*k-list-1*'
+    ;;
   *)
     echo "Unknown hierarchy: $HIERARCHY" >&2
     exit 2
