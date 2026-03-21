@@ -160,6 +160,17 @@ Rationale:
 - lets us compare whether explicit `H` helps more on a medium-first or
   small-first hierarchy
 
+Initial result:
+
+- implemented in the working tree and tested at the standard 20k bound
+- weak-`POS`, stack, no Left-Wedge: `26598` generated versus `33992` for
+  plain `imbs`
+- weak-`POS`, stack, Left-Wedge: `33415` generated versus `34067` for plain
+  `imbs`
+- so `imbs-hb` still improves plain `imbs`, but far less than `imbs-h1`
+- grouping `H` with `B` on the `IMBS` side appears to give up most of the
+  benefit that made `imbs-h1` look promising
+
 ### A5. `critical-list-1h-lite`
 
 Idea:
@@ -259,7 +270,7 @@ Recommended sequence:
 1. `isbm-h1`
 2. `isbm-hb`
 3. `imbs-h1`
-4. `imbs-hb`
+4. direct `imbs-h1` versus `isbm` frontier-quality comparison
 5. one conservative default-family follow-up:
    - `critical-list-1h-lite` or a `legacy-1991-default` variant
 6. only after that, decide whether Bucket B is justified
@@ -285,16 +296,23 @@ The first two hierarchy experiments are now complete:
   standard 20k bound, both with and without Left-Wedge
 - `isbm-hb` also runs correctly after the grouped-level bookkeeping fix, but
   is still weaker than `isbm`
+- `imbs-h1` is the first explicit-`H` analogue that materially helps its
+  parent family and comes close to the current best `isbm + weak-POS +
+  Left-Wedge` path
+- `imbs-hb` still improves plain `imbs`, but is much weaker than `imbs-h1`,
+  especially once Left-Wedge is re-enabled
 
-So the best next hierarchy experiment is now one of:
+So the best next hierarchy experiment is now:
 
-- implement and compare `imbs-hb` next
-- or trace `imbs-h1` directly against `isbm`
+- trace `imbs-h1` directly against `isbm`
+- or move to a conservative default-family follow-up rather than another
+  grouped-`H` variant
 
 That is now the cleanest follow-up to the current working hypothesis:
 
 - the `ISBM`-side explicit-`H` variants did not help
 - the first `IMBS`-side explicit-`H` variant did help a lot
-- so the next question is whether the `IMBS` family can be pushed further, or
-  whether `imbs-h1` mainly improves raw bounded counts without fixing the
-  deeper frontier-quality problem
+- the grouped `IMBS` follow-up did not preserve that gain
+- so the next question is whether `imbs-h1` mainly improves raw bounded counts
+  without fixing the deeper frontier-quality problem, or whether it really is
+  the first better analogue family

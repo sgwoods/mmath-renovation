@@ -120,7 +120,9 @@ implemented and measured; both run correctly, but both are weaker than the
 current `isbm` path at the standard 20k bound. The first `imbs`-side probe,
 `imbs-h1`, is more promising: it materially improves plain `imbs`, beats
 `isbm` on the no-Left-Wedge weak-`POS` line, and comes close to the current
-`isbm + weak-POS + Left-Wedge` best path.
+`isbm + weak-POS + Left-Wedge` best path. The grouped follow-up `imbs-hb`
+still improves plain `imbs`, but it is much weaker than `imbs-h1`,
+especially once Left-Wedge is re-enabled.
 
 Verified smoke results:
 

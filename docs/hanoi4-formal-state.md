@@ -253,8 +253,12 @@ The first three explicit-`H` analogue probes are now implemented and measured:
   - with Left-Wedge: `23810` generated versus `34067` for plain `imbs`
   - it also beats `isbm` on the no-Left-Wedge weak-`POS` line, though it
     still trails `isbm + weak-POS + Left-Wedge`
-- so the next hierarchy follow-up should now either move to `imbs-hb` or
-  compare `imbs-h1` frontier quality directly against `isbm`
+- `imbs-hb` now runs too, but it is much weaker than `imbs-h1`:
+  - no Left-Wedge: `26598` generated versus `24132` for `imbs-h1`
+  - with Left-Wedge: `33415` generated versus `23810` for `imbs-h1`
+- so the next hierarchy follow-up should now compare `imbs-h1` frontier
+  quality directly against `isbm`, or move to a conservative default-family
+  analogue rather than another grouped-`H` variant
 
 ## Recommended Re-entry Point
 

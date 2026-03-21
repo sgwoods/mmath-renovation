@@ -71,6 +71,7 @@ comparison looks like this:
 | `isbm-h1` | `weak` | `pos` | `nil` | `20001 / 26535`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm-hb` | `weak` | `pos` | `nil` | `20001 / 26479`, `EXPAND-LIMIT-EXCEEDED` |
 | `imbs-h1` | `weak` | `pos` | `nil` | `20001 / 24132`, `EXPAND-LIMIT-EXCEEDED` |
+| `imbs-hb` | `weak` | `pos` | `nil` | `20001 / 26598`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `nil` | `nec` | `t` | `20001 / 36898`, `EXPAND-LIMIT-EXCEEDED` |
 | `isbm` | `strong` | `nec` | `nil` | `20001 / 26264`, `EXPAND-LIMIT-EXCEEDED` |
 
@@ -97,10 +98,13 @@ The more specific takeaway is:
    `24132` generated under weak-`POS` versus `33992` for plain `imbs`, and
    slightly better than `isbm` on the same no-Left-Wedge weak-`POS` line
    (`24132` versus `24748`).
-6. `strong` MSP is now restored and, on representative `isbm`, currently
+6. the grouped `IMBS` follow-up, `imbs-hb`, still improves plain `imbs`, but
+   loses most of the gain that `imbs-h1` found:
+   `26598` generated under weak-`POS` versus `33992` for plain `imbs`.
+7. `strong` MSP is now restored and, on representative `isbm`, currently
    matches the weak-`NEC` expanded/generated counts while shifting the pruning
    attribution from `mp-pruned` to `strong-mp-pruned`.
-7. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
+8. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
 
 The report script now also exposes `Determine` and `Left-Wedge` columns, so it
 can include representative non-default rows such as the restored tree-ordering
@@ -127,6 +131,7 @@ At the standard 20k bound:
 | `isbm-h1` | `20001 / 25259` | `-` | `stack` |
 | `isbm-hb` | `20001 / 24745` | `-` | `stack` |
 | `imbs-h1` | `20001 / 23810` | `-` | `stack` |
+| `imbs-hb` | `20001 / 33415` | `-` | `stack` |
 | `ibsm` | `20001 / 27277` | `20001 / 29709` | `stack` |
 | `imbs` | `20001 / 34067` | `20001 / 36002` | `stack` |
 
@@ -149,6 +154,11 @@ The explicit-`H` analogue results are useful too:
   - with Left-Wedge: `23810` versus `34067` for plain `imbs`
   - it also slightly beats `isbm` on the no-Left-Wedge weak-`POS` line, while
     still trailing `isbm + weak-POS + Left-Wedge`
+- `imbs-hb` confirms that this is not just "add `H` anywhere" on the `IMBS`
+  side:
+  - no Left-Wedge: `26598` versus `24132` for `imbs-h1`
+  - with Left-Wedge: `33415` versus `23810` for `imbs-h1`
+  - so grouping `H` with `B` largely gives away the `imbs-h1` advantage
 
 The first deeper follow-ups make that result more specific rather than more
 general:

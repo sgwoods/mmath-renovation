@@ -257,6 +257,14 @@ The newest historical-combination review narrows the remaining uncertainty:
     `imbs`
   - it is also slightly better than `isbm` on the no-Left-Wedge weak-`POS`
     line, while still slightly behind `isbm + weak-POS + Left-Wedge`
+- the grouped `IMBS` follow-up, `imbs-hb`, is informative because it shows
+  the gain is not just "add `H`":
+  - weak-`POS`, stack, no Left-Wedge: `26598` generated versus `24132` for
+    `imbs-h1`
+  - weak-`POS`, stack, Left-Wedge: `33415` generated versus `23810` for
+    `imbs-h1`
+  - it still improves plain `imbs`, but it gives away most of the benefit
+    that made `imbs-h1` promising
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

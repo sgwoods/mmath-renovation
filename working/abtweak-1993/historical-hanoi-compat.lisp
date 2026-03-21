@@ -149,6 +149,7 @@
     ((ismb) '*ismb*)
     ((imbs) '*imbs*)
     ((imbs-h1) '*imbs-h1*)
+    ((imbs-hb) '*imbs-hb*)
     ((ibsm) '*ibsm*)
     ((isbm) '*isbm*)
     ((isbm-h1) '*isbm-h1*)
