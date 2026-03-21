@@ -58,6 +58,8 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
+- [Repository coverage matrix](./docs/repository-coverage-matrix.md): first-class table of what is integrated, tested, publication-validated, primary, separate, or still open across the repository
+- [Repository structure review](./docs/repository-structure-review.md): review of how the repo is organized, what counts as primary system artifacts versus generated outputs and historical references, and where the naming is still a little ambiguous
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`
 - [Mini-Tweak lineage note](./docs/mini-tweak-lineage.md): focused note on the recovered simplified TWEAK workspace and how it differs from the main AbTweak code line
