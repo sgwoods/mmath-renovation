@@ -299,6 +299,14 @@ The newest historical-combination review narrows the remaining uncertainty:
   - MP pruning remains `0` in both runs
   - so softening the pure `H > B > M > S` drop by grouping `H` with `B`
     does not improve the default-family line either
+- the first grouped-top legacy-family follow-up, `legacy-1991-isbm`, is now
+  also tested:
+  - weak-`POS`, stack, no Left-Wedge: `32845` generated
+  - weak-`POS`, stack, Left-Wedge: `26215` generated
+  - weak-`POS`, tree, Left-Wedge: `28349` generated
+  - weak-`POS`, stack, Left-Wedge, `50000` bound: `66327` generated
+  - so this is a real improvement over `legacy-1991-default`, but it still
+    trails the current `isbm + weak-POS + Left-Wedge` line and does not solve
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

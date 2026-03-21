@@ -109,6 +109,12 @@ The more specific takeaway is:
    now tested and is not an improvement:
    `35217` generated under weak-`POS` without Left-Wedge,
    `36982` with Left-Wedge, and `0` MP prunes in both runs.
+10. the first grouped-top legacy-family follow-up `legacy-1991-isbm` is now
+    also tested and is a genuine improvement over `legacy-1991-default`, but
+    not over `isbm`:
+    `32845` generated under weak-`POS` without Left-Wedge,
+    `26215` with Left-Wedge, `28349` under tree plus Left-Wedge at 20k, and
+    `66327` at the 50k stack plus Left-Wedge bound.
 
 The report script now also exposes `Determine` and `Left-Wedge` columns, so it
 can include representative non-default rows such as the restored tree-ordering

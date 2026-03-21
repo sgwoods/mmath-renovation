@@ -259,6 +259,23 @@ Rationale:
 - especially relevant if we find stronger publication evidence for grouped-top
   four-disk runs later
 
+First result:
+
+- `legacy-1991-isbm` is now implemented as the first grouped-top follow-up:
+  - top level keeps `I + H`
+  - lower levels use the healthier `S > B > M` ordering
+- standard 20k weak-`POS`, stack:
+  - no Left-Wedge: `32845` generated
+  - with Left-Wedge: `26215` generated
+- 20k weak-`POS`, tree, Left-Wedge:
+  - `28349` generated
+- deeper 50k weak-`POS`, stack, Left-Wedge:
+  - `66327` generated
+- interpretation:
+  - this is much stronger than `legacy-1991-default`
+  - but it still trails the current `isbm + weak-POS + Left-Wedge` line
+  - and `tree` makes it worse at the standard 20k bound
+
 ## Candidate Bucket-B Variants
 
 These should not be attempted until Bucket A has been explored first.
@@ -412,8 +429,11 @@ The best next hierarchy experiment is now:
 - treat `imbs-h1` as a useful diagnostic comparison family, not as the new
   benchmark leader
 - treat `critical-list-1h-lite` as a completed negative result
+- treat `legacy-1991-isbm` as the first positive grouped-top follow-up, but
+  not as the new benchmark leader
 - if the next hierarchy move stays in the historical-analogue bucket, prefer a
-  `legacy-1991-default` follow-up over another `critical-list-1` softening
+  second grouped-top lower-ordering follow-up over more `critical-list-1`
+  softening
 
 That is now the cleanest follow-up to the current working hypothesis:
 

@@ -135,6 +135,10 @@ be treated as a diagnostic hierarchy, not as the new main `hanoi-4` target.
 The conservative default-family follow-up `critical-list-1h-lite` is now also
 tested and is clearly not the answer either: `35217` generated without
 Left-Wedge, `36982` with Left-Wedge, and no MP pruning in either run.
+The first grouped-top legacy-family follow-up, `legacy-1991-isbm`, is more
+interesting: it materially improves on `legacy-1991-default`, especially with
+Left-Wedge (`26215` at 20k, `66327` at 50k), but it still trails
+`isbm + weak-POS + Left-Wedge` and still does not solve.
 
 Verified smoke results:
 

@@ -281,6 +281,14 @@ The first three explicit-`H` analogue probes are now implemented and measured:
   - MP pruning stays `0`
   - so softening the `critical-list-1` top-down `H` transition by grouping
     `H` with `B` does not improve the default-family path
+- the first grouped-top legacy-family follow-up, `legacy-1991-isbm`, is now
+  also implemented and tested:
+  - no Left-Wedge: `32845` generated
+  - with Left-Wedge: `26215` generated
+  - tree + Left-Wedge at 20k: `28349` generated
+  - stack + Left-Wedge at 50k: `66327` generated
+  - so it is a real grouped-top improvement over `legacy-1991-default`, but
+    it still trails `isbm + weak-POS + Left-Wedge` and still does not solve
 - `imbs-hb` now runs too, but it is much weaker than `imbs-h1`:
   - no Left-Wedge: `26598` generated versus `24132` for `imbs-h1`
   - with Left-Wedge: `33415` generated versus `23810` for `imbs-h1`

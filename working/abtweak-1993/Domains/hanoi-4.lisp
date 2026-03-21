@@ -206,6 +206,16 @@
    (0  (not ons $) (ons $) )
 ))
 
+; grouped-top follow-up family.
+; This keeps the older I+H top abstraction level, but uses the healthier
+; lower-family ordering suggested by the current isbm line: S > B > M.
+(setq *legacy-1991-isbm* '(
+   (3  (ispeg $) (not onh $) (onh $) )
+   (2  (not ons $) (ons $) )
+   (1  (not onb $) (onb $) )
+   (0  (not onm $) (onm $) )
+))
+
 
 (setq *critical-loaded* '*critical-list-1*)
 

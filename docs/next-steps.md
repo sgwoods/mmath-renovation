@@ -72,7 +72,11 @@ It complements:
    clearance predicates. The conservative default-family follow-up
    `critical-list-1h-lite` is now also a negative result: it fails with
    `35217` generated without Left-Wedge and `36982` with Left-Wedge, with no
-   MP pruning in either run.
+   MP pruning in either run. The first grouped-top legacy-family follow-up
+   `legacy-1991-isbm` is more promising: it is much better than
+   `legacy-1991-default`, but still trails `isbm + weak-POS + Left-Wedge` and
+   still does not solve, so it belongs in the “historically interesting,
+   diagnostically useful” bucket rather than the benchmark-progress bucket.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

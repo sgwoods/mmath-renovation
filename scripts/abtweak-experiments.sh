@@ -196,6 +196,7 @@ list_traces() {
   cat <<'EOF'
 hanoi3
 hanoi4
+hanoi4-legacy-1991-isbm-weak-pos
 hanoi4-ismb-weak-pos
 hanoi4-critical-list-1h-lite-weak-pos
 hanoi4-imbs-hb-weak-pos
@@ -268,6 +269,9 @@ run_trace() {
       ;;
     hanoi4)
       sh "$SCRIPT_DIR/trace-hanoi4-sbcl.sh"
+      ;;
+    hanoi4-legacy-1991-isbm-weak-pos)
+      HIERARCHY=legacy-1991-isbm sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
       ;;
     hanoi4-ismb-weak-pos)
       HIERARCHY=ismb sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"

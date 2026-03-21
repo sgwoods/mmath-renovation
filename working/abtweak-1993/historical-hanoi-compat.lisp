@@ -144,6 +144,7 @@
 (defun historical-hanoi4-hierarchy-symbol (hierarchy)
   (case hierarchy
     ((legacy-1991-default) '*legacy-1991-default*)
+    ((legacy-1991-isbm) '*legacy-1991-isbm*)
     ((critical-list-1) '*critical-list-1*)
     ((critical-list-1h-lite) '*critical-list-1h-lite*)
     ((critical-list-2) '*critical-list-2*)
