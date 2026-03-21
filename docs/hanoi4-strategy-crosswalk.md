@@ -26,6 +26,8 @@ It complements:
 Maintained data file:
 
 - [analysis/hanoi4-strategy-performance.csv](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-strategy-performance.csv)
+- [analysis/hanoi4-scaling-strategies.svg](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-scaling-strategies.svg)
+- [analysis/hanoi4-scaling-strategies.png](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-scaling-strategies.png)
 
 ## Reading Guide
 
@@ -125,6 +127,12 @@ three-peg four-disk transfer problem.
 | Reference A* | `158` | yes | `15` |
 
 ## D. Performance Graphs
+
+Checked-in graphic:
+
+- [Hanoi-4 scaling graphic note](/Users/stevenwoods/mmath-renovation/docs/hanoi4-scaling-graphic.md)
+- [analysis/hanoi4-scaling-strategies.svg](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-scaling-strategies.svg)
+- [analysis/hanoi4-scaling-strategies.png](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-scaling-strategies.png)
 
 These are shown as simple horizontal bar graphs so they stay readable in plain
 Markdown and terminal views.

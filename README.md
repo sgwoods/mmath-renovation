@@ -64,6 +64,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`
 - [Hanoi-4 solve candidate comparison](./docs/hanoi4-solve-candidate-comparison.md): narrow solve-first view of the two strongest current `hanoi-4` historical candidates
+- [Hanoi-4 scaling graphic](./docs/hanoi4-scaling-graphic.md): checked-in visual comparison of how the strongest current `hanoi-4` strategy lines scale across bounds
 - [Mini-Tweak lineage note](./docs/mini-tweak-lineage.md): focused note on the recovered simplified TWEAK workspace and how it differs from the main AbTweak code line
 - [Mini-Tweak side experiment](./docs/mini-tweak-side-experiment.md): first retained SBCL probe of the recovered `Mini-Tweak` workspace and the current non-invasive blockers
 - [Publication domain crosswalk](./docs/publication-domain-crosswalk.md): concise mapping from each domain family to the papers/manual and whether we can rerun it exactly, strongly, partially, or not yet

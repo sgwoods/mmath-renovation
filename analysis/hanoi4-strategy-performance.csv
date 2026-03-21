@@ -13,13 +13,17 @@ ismb-weak-pos-20k,ISMB family + weak-POS,current-restoration,1991-compat-current
 isbm-weak-nec-20k,ISBM family + weak-NEC,current-restoration,1991-compat-current,partial-plan-generated,20000,generated,26264,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
 isbm-weak-pos-20k,ISBM family + weak-POS,current-restoration,1991-compat-current,partial-plan-generated,20000,generated,24748,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
 isbm-weak-pos-lw-20k,ISBM family + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,20000,generated,23272,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
+legacy1991-isbm-weak-pos-lw-20k,Legacy 1991 ISBM + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,20000,generated,26215,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-solve-candidate-comparison.md
 isbm-weak-pos-50k,ISBM family + weak-POS,current-restoration,1991-compat-current,partial-plan-generated,50000,generated,61605,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
 isbm-weak-pos-lw-50k,ISBM family + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,50000,generated,58817,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
 ismb-weak-pos-50k,ISMB family + weak-POS,current-restoration,1991-compat-current,partial-plan-generated,50000,generated,61943,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
+legacy1991-isbm-weak-pos-lw-50k,Legacy 1991 ISBM + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,50000,generated,66327,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-solve-candidate-comparison.md
 isbm-weak-pos-100k,ISBM family + weak-POS,current-restoration,1991-compat-current,partial-plan-generated,100000,generated,123240,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
 isbm-weak-pos-lw-100k,ISBM family + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,100000,generated,116646,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
 ismb-weak-pos-100k,ISMB family + weak-POS,current-restoration,1991-compat-current,partial-plan-generated,100000,generated,125029,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
+legacy1991-isbm-weak-pos-lw-100k,Legacy 1991 ISBM + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,100000,generated,132286,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-solve-candidate-comparison.md
 isbm-weak-pos-lw-200k,ISBM family + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,200000,generated,234872,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-1991-compatibility.md
+legacy1991-isbm-weak-pos-lw-200k,Legacy 1991 ISBM + weak-POS + Left-Wedge,current-restoration,1991-compat-current,partial-plan-generated,200000,generated,265691,EXPAND-LIMIT-EXCEEDED,docs/hanoi4-solve-candidate-comparison.md
 reference-bfs-h4,Reference BFS,state-space-reference,modern-reference,state-space-generated,15,generated,209,SOLVED,analysis/hanoi-baselines/standard-transfer.md
 reference-dfs-h4,Reference DFS,state-space-reference,modern-reference,state-space-generated,27,generated,199,SOLVED,analysis/hanoi-baselines/standard-transfer.md
 reference-astar-h4,Reference A*,state-space-reference,modern-reference,state-space-generated,15,generated,158,SOLVED,analysis/hanoi-baselines/standard-transfer.md
