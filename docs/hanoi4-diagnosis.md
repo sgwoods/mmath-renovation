@@ -222,6 +222,11 @@ The newest historical-combination review narrows the remaining uncertainty:
   successful controls
 - the archived early four-disk default is therefore best treated as a baseline,
   not as the missing strong configuration
+- the new mapping note now makes the four-disk vocabulary more precise:
+  - `critical-list-1` and `legacy-1991-default` are default-family extensions
+  - `imbs`, `ibsm`, `isbm`, and `ismb` are the closest local permutation-style
+    analogues to the exact three-disk publication rows
+  - `critical-list-2` is a separate positive/negative criticality family
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

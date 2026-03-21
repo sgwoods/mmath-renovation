@@ -19,6 +19,7 @@ It complements:
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
+- [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -32,6 +33,8 @@ not solve the shipped `hanoi-4` benchmark under SBCL, even though:
 - `hanoi-3` is working well
 - the original published Hanoi figure rows now reproduce directly on the
   restored `hanoi-3` family
+- the publication-to-code mapping is now explicit: exact on `hanoi-3`,
+  analogue-only on `hanoi-4`
 - the broader operator-style restoration is strong across many other domains
 - plain state-space Hanoi solvers solve the same four-disk transfer easily
 
@@ -68,6 +71,10 @@ control path we have restored, but it still terminates with
 - the same score/accounting split now also appears to be historically faithful,
   which makes the remaining gap look more like incomplete recovery of the best
   historical four-disk control combination than like a modern porting defect
+- the best current four-disk hierarchy vocabulary is now better classified:
+  `critical-list-1` and `legacy-1991-default` are default-family extensions,
+  `imbs` / `ibsm` / `isbm` / `ismb` are permutation-style extensions, and
+  `critical-list-2` is a separate positive/negative criticality family
 
 ### 3. The frontier evidence points at abstraction-side ranking, not at generic search hardness
 

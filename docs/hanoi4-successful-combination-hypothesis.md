@@ -8,6 +8,7 @@ details may still be missing from the restored comparison surface.
 It complements:
 
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+- [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi tree-ordering evidence](/Users/stevenwoods/mmath-renovation/docs/hanoi-tree-ordering-evidence.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
@@ -66,6 +67,15 @@ The checked-in thesis/report now support a more precise reading:
   strong or very weak depending on hierarchy
 - the shipped four-disk `hanoi-4` benchmark should therefore inherit the
   publication claim directionally, not numerically
+
+The exact-to-analogue mapping is now documented separately in
+[Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md):
+
+- publication `ILMS` maps exactly to code `IBMS` on `hanoi-3`
+- four-disk families such as `critical-list-1`, `legacy-1991-default`,
+  `imbs`, `ibsm`, `isbm`, and `ismb` are best treated as closest local
+  extensions of those three-disk publication families
+- `critical-list-2` is not a direct permutation-family row analogue
 
 The directional result is much clearer than any one four-disk extrapolation:
 
@@ -126,9 +136,9 @@ The stronger remaining possibilities are:
 
 1. The publication hierarchy labels are not yet mapped cleanly enough onto the
    exact four-disk hierarchy variants recovered in the code.
-   The report's `ILMS` and `IMLS` families are clearly important, but the best
-   current reconstructed four-disk path is `isbm`, which is only a partial
-   naming match rather than a proved publication-equivalent hierarchy.
+   The report's `ILMS` and `IMLS` families are clearly important, and the
+   new mapping note now narrows the best local analogues substantially, but the
+   four-disk line is still not a publication-exact row surface.
 2. The thesis figures appear to involve explicit goal-ordering variants such as
    stack and tree goal ordering.
    Those controls are now runnable again through the compatibility layer, but

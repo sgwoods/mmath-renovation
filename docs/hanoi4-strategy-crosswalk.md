@@ -15,6 +15,7 @@ It is meant to be maintained as the project evolves.
 It complements:
 
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+- [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
 - [Hanoi-4 hierarchy comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-comparison.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
@@ -39,6 +40,8 @@ Important scope note:
   extension rather than as a direct figure-for-figure publication rerun
 - see [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
   for the exact reproduction surface
+- see [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
+  for the exact three-disk to four-disk analogue map
 
 This crosswalk uses three evidence labels:
 
@@ -57,7 +60,7 @@ This crosswalk uses three evidence labels:
 | Breadth-first `abtweak` without monotonic pruning | `Specific` | The publication story explicitly includes abstract planning without the stronger pruning/control help, and warns that abstraction is not always superior to Tweak. | Supported historically and currently. Current poor/default hierarchy runs match the “can be worse than Tweak” story qualitatively. |
 | `abtweak` with monotonic-property pruning on good hierarchies | `Specific` | The papers and thesis present MP/P-WMP as the main way AbTweak becomes stronger on good hierarchies. | Supported historically and currently. Current `critical-list-2` and `ismb` runs now show the expected direction of improvement. |
 | `abtweak` with Left-Wedge on good hierarchies | `Specific` | Left-Wedge is explicitly described as a completeness-preserving control strategy that can dramatically improve search on good hierarchies and can hurt on poor ones. | Supported historically and currently. Current `hanoi-4` traces show the intended refinement pressure, but the full problem still does not close. |
-| Good versus bad hierarchy families | `Specific` | The publication set treats hierarchy quality as central. The report/thesis discussion clearly distinguishes good Hanoi hierarchy families from poor ones and says the outcome can reverse depending on that choice. | Partially mapped. The repo now has working local correspondences such as `critical-list-1`, `critical-list-2`, `ismb`, and `isbm`, but the exact publication table digits are not yet fully transcribed into local docs. |
+| Good versus bad hierarchy families | `Specific` | The publication set treats hierarchy quality as central. The report/thesis discussion clearly distinguishes good Hanoi hierarchy families from poor ones and says the outcome can reverse depending on that choice. | Partially mapped. The exact three-disk publication rows are aligned, and the new four-disk mapping note now distinguishes exact row matches from closest local analogues such as `critical-list-1`, `legacy-1991-default`, `ismb`, and `isbm`. |
 | Weak MSP variants such as weak-`NEC` and weak-`POS` | `Code-only` for `hanoi-4` | These are part of the 1991 experiment vocabulary we recovered, but we do not yet have them tied to a clearly isolated publication-side `hanoi-4` table in the checked-in docs. | Supported through the 1991 compatibility layer and now central to the strongest current `hanoi-4` path. |
 | `crit-depth` mode | `Code-only` for `hanoi-4` | Recovered from the 1991 experimental framework. Historically meaningful, but not yet isolated as a publication-side `hanoi-4` claim in the checked-in notes. | Supported through the compatibility layer. Current `hanoi-4` results make it look weaker than weak MSP. |
 
