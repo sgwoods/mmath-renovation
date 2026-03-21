@@ -8,6 +8,7 @@ Current named release checkpoint:
 
 For deeper technical detail, see:
 
+- [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
 - [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
@@ -34,6 +35,7 @@ For deeper technical detail, see:
 - [Hanoi-2 1990 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi2-1990-compatibility.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
+- [Hanoi-4 scaling graphic](/Users/stevenwoods/mmath-renovation/docs/hanoi4-scaling-graphic.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi tree-ordering evidence](/Users/stevenwoods/mmath-renovation/docs/hanoi-tree-ordering-evidence.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
