@@ -139,6 +139,9 @@ The first grouped-top legacy-family follow-up, `legacy-1991-isbm`, is more
 interesting: it materially improves on `legacy-1991-default`, especially with
 Left-Wedge (`26215` at 20k, `66327` at 50k), but it still trails
 `isbm + weak-POS + Left-Wedge` and still does not solve.
+The sibling grouped-top follow-up `legacy-1991-imbs` is weaker (`29863` with
+Left-Wedge at 20k), which makes the grouped-top family preference clearer:
+`legacy-1991-isbm` is the stronger grouped-top descendant.
 
 Verified smoke results:
 

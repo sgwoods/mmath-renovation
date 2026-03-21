@@ -52,6 +52,10 @@ case "$HIERARCHY" in
     CRIT_EXPR='*legacy-1991-isbm*'
     LW_EXPR='*legacy-1991-k-list*'
     ;;
+  legacy-1991-imbs)
+    CRIT_EXPR='*legacy-1991-imbs*'
+    LW_EXPR='*legacy-1991-k-list*'
+    ;;
   critical-list-1)
     CRIT_EXPR='*critical-list-1*'
     LW_EXPR='*k-list-1*'

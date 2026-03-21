@@ -275,6 +275,14 @@ First result:
   - this is much stronger than `legacy-1991-default`
   - but it still trails the current `isbm + weak-POS + Left-Wedge` line
   - and `tree` makes it worse at the standard 20k bound
+- `legacy-1991-imbs` is now implemented as the sibling grouped-top follow-up:
+  - top level still keeps `I + H`
+  - lower levels use `M > B > S`
+  - standard 20k weak-`POS`, stack:
+    - no Left-Wedge: `32881` generated
+    - with Left-Wedge: `29863` generated
+  - so within the grouped-top family, the `S > B > M` lower ordering is
+    clearly stronger than `M > B > S`
 
 ## Candidate Bucket-B Variants
 
@@ -431,9 +439,11 @@ The best next hierarchy experiment is now:
 - treat `critical-list-1h-lite` as a completed negative result
 - treat `legacy-1991-isbm` as the first positive grouped-top follow-up, but
   not as the new benchmark leader
+- treat `legacy-1991-imbs` as a useful family comparison that confirms the
+  grouped-top line prefers the `isbm`-style lower ordering
 - if the next hierarchy move stays in the historical-analogue bucket, prefer a
-  second grouped-top lower-ordering follow-up over more `critical-list-1`
-  softening
+  more targeted grouped-top refinement around the `legacy-1991-isbm` line over
+  more `critical-list-1` softening or a broader grouped-top permutation sweep
 
 That is now the cleanest follow-up to the current working hypothesis:
 

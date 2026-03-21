@@ -307,6 +307,12 @@ The newest historical-combination review narrows the remaining uncertainty:
   - weak-`POS`, stack, Left-Wedge, `50000` bound: `66327` generated
   - so this is a real improvement over `legacy-1991-default`, but it still
     trails the current `isbm + weak-POS + Left-Wedge` line and does not solve
+- the sibling grouped-top follow-up, `legacy-1991-imbs`, is now also tested:
+  - weak-`POS`, stack, no Left-Wedge: `32881` generated
+  - weak-`POS`, stack, Left-Wedge: `29863` generated
+  - so the grouped-top family now appears to prefer the `S > B > M` lower
+    ordering of `legacy-1991-isbm` over the `M > B > S` ordering of
+    `legacy-1991-imbs`
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

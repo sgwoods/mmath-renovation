@@ -289,6 +289,12 @@ The first three explicit-`H` analogue probes are now implemented and measured:
   - stack + Left-Wedge at 50k: `66327` generated
   - so it is a real grouped-top improvement over `legacy-1991-default`, but
     it still trails `isbm + weak-POS + Left-Wedge` and still does not solve
+- the sibling grouped-top follow-up, `legacy-1991-imbs`, is now also tested:
+  - no Left-Wedge: `32881` generated
+  - with Left-Wedge: `29863` generated
+  - so the grouped-top family now looks directionally clearer:
+    `legacy-1991-isbm` is the stronger grouped-top descendant, not
+    `legacy-1991-imbs`
 - `imbs-hb` now runs too, but it is much weaker than `imbs-h1`:
   - no Left-Wedge: `26598` generated versus `24132` for `imbs-h1`
   - with Left-Wedge: `33415` generated versus `23810` for `imbs-h1`

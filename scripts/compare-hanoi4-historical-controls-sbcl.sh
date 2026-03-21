@@ -135,6 +135,9 @@ print_row legacy-1991-default weak pos nil stack nil "$log_file"
 log_file=$(run_case legacy-1991-isbm weak pos nil stack nil legacy-1991-isbm-weak-pos)
 print_row legacy-1991-isbm weak pos nil stack nil "$log_file"
 
+log_file=$(run_case legacy-1991-imbs weak pos nil stack nil legacy-1991-imbs-weak-pos)
+print_row legacy-1991-imbs weak pos nil stack nil "$log_file"
+
 log_file=$(run_case legacy-1991-default nil nec t stack nil legacy-default-crit-depth)
 print_row legacy-1991-default nil nec t stack nil "$log_file"
 
@@ -190,6 +193,9 @@ print_row legacy-1991-default weak pos nil stack t "$log_file"
 
 log_file=$(run_case legacy-1991-isbm weak pos nil stack t legacy-1991-isbm-weak-pos-stack-lw)
 print_row legacy-1991-isbm weak pos nil stack t "$log_file"
+
+log_file=$(run_case legacy-1991-imbs weak pos nil stack t legacy-1991-imbs-weak-pos-stack-lw)
+print_row legacy-1991-imbs weak pos nil stack t "$log_file"
 
 log_file=$(run_case legacy-1991-default weak pos nil tree t legacy-default-weak-pos-tree-lw)
 print_row legacy-1991-default weak pos nil tree t "$log_file"

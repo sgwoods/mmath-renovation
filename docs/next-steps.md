@@ -77,6 +77,8 @@ It complements:
    `legacy-1991-default`, but still trails `isbm + weak-POS + Left-Wedge` and
    still does not solve, so it belongs in the “historically interesting,
    diagnostically useful” bucket rather than the benchmark-progress bucket.
+   The sibling `legacy-1991-imbs` result is weaker, so the grouped-top family
+   now appears to prefer the `legacy-1991-isbm` lower ordering.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

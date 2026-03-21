@@ -115,6 +115,10 @@ The more specific takeaway is:
     `32845` generated under weak-`POS` without Left-Wedge,
     `26215` with Left-Wedge, `28349` under tree plus Left-Wedge at 20k, and
     `66327` at the 50k stack plus Left-Wedge bound.
+11. the sibling grouped-top follow-up `legacy-1991-imbs` is also now tested:
+    `32881` generated under weak-`POS` without Left-Wedge and `29863` with
+    Left-Wedge, so the grouped-top family now appears to prefer the
+    `legacy-1991-isbm` lower ordering.
 
 The report script now also exposes `Determine` and `Left-Wedge` columns, so it
 can include representative non-default rows such as the restored tree-ordering

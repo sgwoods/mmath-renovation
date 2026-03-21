@@ -216,6 +216,17 @@
    (0  (not onm $) (onm $) )
 ))
 
+; second grouped-top follow-up family.
+; This keeps the older I+H top abstraction level, but uses the alternative
+; lower-family ordering M > B > S so we can compare grouped-top descendants of
+; the publication-side IMBS line against the isbm-style grouped-top follow-up.
+(setq *legacy-1991-imbs* '(
+   (3  (ispeg $) (not onh $) (onh $) )
+   (2  (not onm $) (onm $) )
+   (1  (not onb $) (onb $) )
+   (0  (not ons $) (ons $) )
+))
+
 
 (setq *critical-loaded* '*critical-list-1*)
 
