@@ -232,6 +232,12 @@ The newest historical-combination review narrows the remaining uncertainty:
   standard 20k bound:
   - weak-`POS`, stack, no Left-Wedge: `26535` generated versus `24748`
   - weak-`POS`, stack, Left-Wedge: `25259` generated versus `23272`
+- the grouped-`H` follow-up, `isbm-hb`, is now also runnable after fixing
+  grouped-level abstraction bookkeeping to size arrays by max criticality plus
+  one rather than by raw critical-list length, but it is still weaker than
+  `isbm`:
+  - weak-`POS`, stack, no Left-Wedge: `26479` generated versus `24748`
+  - weak-`POS`, stack, Left-Wedge: `24745` generated versus `23272`
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

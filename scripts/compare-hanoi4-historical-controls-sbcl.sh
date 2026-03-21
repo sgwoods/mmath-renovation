@@ -153,6 +153,9 @@ print_row isbm weak pos nil stack nil "$log_file"
 log_file=$(run_case isbm-h1 weak pos nil stack nil isbm-h1-weak-pos)
 print_row isbm-h1 weak pos nil stack nil "$log_file"
 
+log_file=$(run_case isbm-hb weak pos nil stack nil isbm-hb-weak-pos)
+print_row isbm-hb weak pos nil stack nil "$log_file"
+
 log_file=$(run_case isbm nil nec t stack nil isbm-crit-depth)
 print_row isbm nil nec t stack nil "$log_file"
 
@@ -202,6 +205,9 @@ print_row isbm weak pos nil stack t "$log_file"
 
 log_file=$(run_case isbm-h1 weak pos nil stack t isbm-h1-weak-pos-stack-lw)
 print_row isbm-h1 weak pos nil stack t "$log_file"
+
+log_file=$(run_case isbm-hb weak pos nil stack t isbm-hb-weak-pos-stack-lw)
+print_row isbm-hb weak pos nil stack t "$log_file"
 
 log_file=$(run_case isbm weak pos nil tree t isbm-weak-pos-tree-lw-sweep)
 print_row isbm weak pos nil tree t "$log_file"

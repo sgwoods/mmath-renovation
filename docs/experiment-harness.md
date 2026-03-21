@@ -134,6 +134,7 @@ The current named trace workflows are:
 - `hanoi3`
 - `hanoi4`
 - `hanoi4-ismb-weak-pos`
+- `hanoi4-isbm-hb-weak-pos`
 - `hanoi4-isbm-h1-weak-pos`
 - `hanoi4-isbm-weak-pos`
 - `hanoi4-isbm-weak-pos-lw`

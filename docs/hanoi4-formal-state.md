@@ -242,8 +242,10 @@ That first candidate is now implemented and measured:
 - `isbm-h1` runs correctly through the historical-control wrapper
 - at the standard 20k bound it is weaker than the current `isbm` path both
   with and without Left-Wedge
-- so the next hierarchy follow-up should now move to `isbm-hb`, not keep
-  pushing `isbm-h1` as the leading candidate
+- the grouped-`H` follow-up `isbm-hb` also now runs after a small grouped-level
+  bookkeeping fix, but it is still weaker than `isbm`
+- so the next hierarchy follow-up should now move to `imbs-h1`, not keep
+  pushing the `isbm`-side explicit-`H` variants as leading candidates
 
 ## Recommended Re-entry Point
 

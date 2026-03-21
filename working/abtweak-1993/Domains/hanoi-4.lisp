@@ -139,6 +139,16 @@
    (0  (not onm $) (onm $) )
 ))
 
+; second explicit-H analogue of the healthy isbm ordering.
+; This keeps the cleaner S > B > M shape, but groups onh with onb so that
+; large-disk commitments become visible alongside the big-disk family.
+(setq *isbm-hb* '(
+   (4 (ispeg $))
+   (3  (not ons $) (ons $) )
+   (2  (not onh $) (onh $) (not onb $) (onb $) )
+   (1  (not onm $) (onm $) )
+))
+
 ; historical 1991 four-disk default hierarchy where peg identity and onh share
 ; the top abstraction level. This is kept separate from the later 1993 default
 ; so we can compare the two control surfaces directly.

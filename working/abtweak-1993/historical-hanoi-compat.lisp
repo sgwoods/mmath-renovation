@@ -151,6 +151,7 @@
     ((ibsm) '*ibsm*)
     ((isbm) '*isbm*)
     ((isbm-h1) '*isbm-h1*)
+    ((isbm-hb) '*isbm-hb*)
     (t
      (error "Unknown hanoi-4 hierarchy ~S" hierarchy))))
 

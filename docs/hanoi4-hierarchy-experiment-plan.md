@@ -109,6 +109,17 @@ Rationale:
 - may give weak pruning more leverage earlier
 - still keeps the `S > B > M` shape that looks healthiest in the current traces
 
+Initial result:
+
+- required a small baseline bookkeeping fix so grouped-level hierarchies are
+  sized by max criticality plus one, not just by the number of critical-list
+  entries
+- weak-`POS`, stack, no Left-Wedge: `26479` generated versus `24748` for
+  `isbm`
+- weak-`POS`, stack, Left-Wedge: `24745` generated versus `23272` for `isbm`
+- so grouping `H` with `B` is cleaner than the first `isbm-h1` insertion, but
+  it is still not an improvement over the current `isbm` baseline
+
 ### A3. `imbs-h1`
 
 Idea:
@@ -255,19 +266,20 @@ of these:
 
 ## Current Recommendation
 
-The first hierarchy experiment is now complete:
+The first two hierarchy experiments are now complete:
 
 - `isbm-h1` runs correctly but is weaker than the current `isbm` path at the
   standard 20k bound, both with and without Left-Wedge
+- `isbm-hb` also runs correctly after the grouped-level bookkeeping fix, but
+  is still weaker than `isbm`
 
 So the best next hierarchy experiment is now:
 
-- implement and compare `isbm-hb` next
+- implement and compare `imbs-h1` next
 
 That is now the cleanest follow-up test of the current working hypothesis:
 
-- keep the `isbm` ordering that seems to produce healthier frontier behavior
-- keep `H` visible before `k0`
-- but test whether grouping `H` with `B`, rather than inserting a separate
-  intermediate `H` band, gives weak-`POS` and Left-Wedge a better shaped
-  abstraction surface.
+- move from the `ISBM` analogue family to the `IMBS` analogue family
+- keep explicit `H` structure before `k0`
+- test whether the publication-good `IMLS`/`IMBS` side gives a better
+  four-disk shape than the healthier-but-still-open `isbm` line.

@@ -53,8 +53,10 @@ It complements:
    restoration boundaries, starting with historically grounded analogue
    variants before any named non-historical strategy work. The first probe,
    `isbm-h1`, is now implemented and runs cleanly, but it is weaker than the
-   current `isbm` path at the standard 20k bound, so the next candidate should
-   move to `isbm-hb`.
+   current `isbm` path at the standard 20k bound. The grouped-`H` follow-up
+   `isbm-hb` is now also runnable after a small grouped-level bookkeeping fix,
+   but it is still weaker than `isbm`, so the next candidate should move to
+   `imbs-h1`.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

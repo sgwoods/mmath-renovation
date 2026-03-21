@@ -118,6 +118,10 @@ The first analogue probe, `isbm-h1`, is now implemented and measured; it runs
 correctly, but it is weaker than the current `isbm` path at the standard 20k
 bound, so it narrows the hierarchy-design search rather than replacing the
 current best path.
+The grouped-`H` follow-up, `isbm-hb`, is now also runnable after a small
+grouped-level bookkeeping fix, but it too is weaker than the current `isbm`
+path, which pushes the next hierarchy experiment toward the `imbs` side rather
+than more `isbm`-family variations.
 
 Verified smoke results:
 

@@ -4,6 +4,12 @@
 ;;; The file also records the total number of consequtive failures in 
 ;;  refinement, which can be used to estimate the refinment probability.
 
+(defun abstraction-level-count ()
+  "Number of addressable abstraction levels for the current hierarchy.
+   This is max criticality plus one, not merely the number of critical-list
+   entries, because grouped hierarchies can skip numeric levels."
+  (1+ (find-initial-k-val)))
+
 (defun dump-drp-stack-till (level)
   "*drp-stack* holds plans at different levels.  Dumps
    all plans on top of the stack till a plan at level 
@@ -49,7 +55,7 @@
 (defun initialize-abs-branching-counts ()
   "initialize an array of N levels of abstraction.
    For keeping track of abstract branching factors."
-  (let ((total-levels (length *critical-list*)))
+  (let ((total-levels (abstraction-level-count)))
     (setq *abs-branching-counts*
 	  (make-array total-levels :initial-element 0))))
 
@@ -59,7 +65,7 @@
 (defun initialize-abs-ref-counts ()
   "initialize an array of N levels of abstraction.
    For keeping track of abstract refimenments at level i."
-  (let ((total-levels (length *critical-list*)))
+  (let ((total-levels (abstraction-level-count)))
     (setq *abs-ref-counts*
 	  (make-array total-levels :initial-element 0))
     (setq *new-refinement-p*
@@ -77,7 +83,7 @@
    (aref *abs-success-counts* i)=n, if at level
    i, n successful refinements are made."
 
-  (let ((total-levels (length *critical-list*)))
+  (let ((total-levels (abstraction-level-count)))
     (setq *abs-success-counts*
 	  (make-array total-levels :initial-element 0))))
 
@@ -92,7 +98,7 @@
 
   (if 
       (and
-       (< i (length *critical-list*))
+       (< i (abstraction-level-count))
        (aref *new-refinement-p* i))
 
       (let ()
