@@ -21,6 +21,7 @@ It complements:
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
+- [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
 - [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
@@ -67,6 +68,18 @@ The strongest current `hanoi-4` path is:
 At larger bounds, this is currently the best-performing four-disk historical
 control path we have restored, but it still terminates with
 `EXPAND-LIMIT-EXCEEDED`.
+
+The strongest current grouped-top analogue is:
+
+- planner mode: `abtweak`
+- hierarchy: `legacy-1991-isbm`
+- historical-control vocabulary:
+  - `msp-mode weak`
+  - `msp-weak-mode pos`
+  - `left-wedge-mode t`
+
+It is historically interesting and stronger than `legacy-1991-default`, but it
+is still clearly behind `isbm` on the binary benchmark.
 
 ## Strongest Current Findings
 
@@ -214,6 +227,26 @@ When we return to `hanoi-4`, the most useful questions are now:
    historically defensible controls, rather than inventing a new heuristic?
 6. If not, is there still a semantic mismatch in the abstraction-side successor
    ranking or pruning path?
+
+## Current Solve-First Candidate Ladder
+
+The current solve-first candidate ladder should now stay narrow:
+
+1. `isbm + weak-POS + stack + Left-Wedge`
+2. `legacy-1991-isbm + weak-POS + stack + Left-Wedge`
+
+Current bounded comparison:
+
+- `20000`: `isbm 23272` generated vs `legacy-1991-isbm 26215`
+- `50000`: `isbm 58817` vs `legacy-1991-isbm 66327`
+- `100000`: `isbm 116646` vs `legacy-1991-isbm 132286`
+- `200000`: `isbm 234872` vs `legacy-1991-isbm 265691`
+
+At every one of those checkpoints, both are still unsolved, so the only current
+benchmark conclusion is:
+
+- `isbm` remains the stronger live candidate
+- `legacy-1991-isbm` remains the strongest grouped-top analogue
 
 The new determine-mode family sweep sharpens question 4:
 

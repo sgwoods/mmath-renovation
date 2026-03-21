@@ -27,6 +27,7 @@ It complements:
 | [working/abtweak-1993/Domains](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains) | domain definitions and domain-side support files | Medium-high | Clear overall, though domain files and domain-specific helpers are mixed together. |
 | [scripts](/Users/stevenwoods/mmath-renovation/scripts) | run, compare, trace, release, and sync entry points | High | This is a clear command surface. |
 | [analysis](/Users/stevenwoods/mmath-renovation/analysis) | generated outputs, trace captures, replay logs, numeric datasets | Medium-high | Clear in intent, but raw traces and curated result datasets share the same top-level area. |
+| [intake](/Users/stevenwoods/mmath-renovation/intake) | staging area for newly found relevant material pending review | High | Clear and useful as the single first stop for future imports. |
 | [experiments](/Users/stevenwoods/mmath-renovation/experiments) | non-baseline experimental code used to generate side comparisons | High | Small and clearly scoped today. |
 | [docs](/Users/stevenwoods/mmath-renovation/docs) | formal interpretation, status, plans, crosswalks, validation notes | High | This is the strongest-organized area of the repo. |
 | [publications](/Users/stevenwoods/mmath-renovation/publications) | checked-in papers and primary reference artifacts | High | Clear and well-named. |
@@ -42,6 +43,7 @@ The current structure already does a good job separating the major concerns:
 - `historical/` means archival reference material
 - `scripts/` means executable entry points
 - `analysis/` means generated outputs and result artifacts
+- `intake/` means newly found relevant material waiting to be reviewed and assigned
 - `docs/` means interpretation, planning, and validation
 - `site/` means public-facing assets
 
@@ -147,6 +149,7 @@ This is the intended mental model of the repo.
 | Primary restored system artifacts | [working/abtweak-1993](/Users/stevenwoods/mmath-renovation/working/abtweak-1993) | planner code, domain files, compatibility layer |
 | Domain definitions | [working/abtweak-1993/Domains](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains) | blocks, Hanoi, robot, manual sample domains |
 | Example runners and generators | [scripts](/Users/stevenwoods/mmath-renovation/scripts), [experiments](/Users/stevenwoods/mmath-renovation/experiments) | smoke runs, historical comparisons, baselines |
+| New material pending review | [intake](/Users/stevenwoods/mmath-renovation/intake) | newly found source trees, publications, notes, or data dumps waiting to be categorized |
 | Raw output results | [analysis](/Users/stevenwoods/mmath-renovation/analysis) | trace directories, replay outputs, generated markdown summaries |
 | Output graphs and graph inputs | [analysis](/Users/stevenwoods/mmath-renovation/analysis) for data, [docs](/Users/stevenwoods/mmath-renovation/docs) for interpretive graph displays, [site](/Users/stevenwoods/mmath-renovation/site) for public infographics | CSVs, markdown bar graphs, release dashboard |
 | Formal interpretation and validation | [docs](/Users/stevenwoods/mmath-renovation/docs) | status, plans, crosswalks, structure reviews |
@@ -186,12 +189,14 @@ To keep the repo readable, new additions should follow these conventions:
 1. primary-system code stays under `working/abtweak-1993`
 2. historical imports stay under `historical/` and should not be silently mixed
    into `working/`
-3. generated raw runs should go under `analysis/<family>-traces`,
+3. newly found material should land in `intake/` first, not directly in
+   `working/`, `historical/`, `publications/`, or `analysis/`
+4. generated raw runs should go under `analysis/<family>-traces`,
    `analysis/<family>-replays`, or similarly explicit output directories
-4. curated numeric result tables should go under `analysis/` with descriptive
+5. curated numeric result tables should go under `analysis/` with descriptive
    filenames
-5. interpretive summaries should go in `docs/`
-6. public-facing HTML assets should go in `site/`
+6. interpretive summaries should go in `docs/`
+7. public-facing HTML assets should go in `site/`
 
 ## Update Rule
 

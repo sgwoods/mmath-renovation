@@ -188,6 +188,7 @@ hanoi4-controls
 hanoi4-frontier-replay
 hanoi4-hierarchies
 hanoi4-historical
+hanoi4-solve-candidates
 hanoi4-score-sensitivity
 EOF
 }
@@ -247,6 +248,9 @@ run_report() {
       ;;
     hanoi4-historical)
       sh "$SCRIPT_DIR/compare-hanoi4-historical-controls-sbcl.sh"
+      ;;
+    hanoi4-solve-candidates)
+      sh "$SCRIPT_DIR/compare-hanoi4-solve-candidates-sbcl.sh"
       ;;
     hanoi4-score-sensitivity)
       sh "$SCRIPT_DIR/compare-hanoi4-score-sensitivity-sbcl.sh"

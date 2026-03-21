@@ -60,8 +60,10 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
 - [Repository coverage matrix](./docs/repository-coverage-matrix.md): first-class table of what is integrated, tested, publication-validated, primary, separate, or still open across the repository
 - [Repository structure review](./docs/repository-structure-review.md): review of how the repo is organized, what counts as primary system artifacts versus generated outputs and historical references, and where the naming is still a little ambiguous
+- [Intake area](./intake/README.md): single landing zone for newly found relevant material before it is reviewed and moved into `working`, `historical`, `publications`, or `analysis`
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`
+- [Hanoi-4 solve candidate comparison](./docs/hanoi4-solve-candidate-comparison.md): narrow solve-first view of the two strongest current `hanoi-4` historical candidates
 - [Mini-Tweak lineage note](./docs/mini-tweak-lineage.md): focused note on the recovered simplified TWEAK workspace and how it differs from the main AbTweak code line
 - [Mini-Tweak side experiment](./docs/mini-tweak-side-experiment.md): first retained SBCL probe of the recovered `Mini-Tweak` workspace and the current non-invasive blockers
 - [Publication domain crosswalk](./docs/publication-domain-crosswalk.md): concise mapping from each domain family to the papers/manual and whether we can rerun it exactly, strongly, partially, or not yet

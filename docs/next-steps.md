@@ -28,6 +28,7 @@ It complements:
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
+- [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -42,7 +43,7 @@ It complements:
    harness vocabulary and result shape. The new benchmark-family `status`
    surface and the named weak-`POS` Hanoi trace presets are the latest step in
    that direction.
-2. Push the promising `hanoi-4` path further, but keep the focus on search quality rather than broad parameter churn:
+2. Push the promising `hanoi-4` path further, but keep the focus on the narrow solve-first candidate set rather than broad parameter churn:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.
    The newest harness-native deeper weak-`POS` runs now sharpen that further:
@@ -78,7 +79,10 @@ It complements:
    still does not solve, so it belongs in the “historically interesting,
    diagnostically useful” bucket rather than the benchmark-progress bucket.
    The sibling `legacy-1991-imbs` result is weaker, so the grouped-top family
-   now appears to prefer the `legacy-1991-isbm` lower ordering.
+   now appears to prefer the `legacy-1991-isbm` lower ordering. The new
+   solve-first candidate comparison now narrows the live ladder further:
+   across `20000`, `50000`, `100000`, and `200000`, neither `isbm` nor
+   `legacy-1991-isbm` solves, but `isbm` stays clearly ahead at every bound.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle
@@ -91,7 +95,7 @@ Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
 1. which current `hanoi-4` hierarchy/control combinations best match the historically good-versus-bad Hanoi hierarchy story in the thesis?
 2. can the improved `isbm` weak-`POS` plus Left-Wedge path be pushed past the current `200000`-expansion bounded failure into a full solve?
-3. should `isbm` now replace `ismb` as the main historical-control `hanoi-4` target, not just the main alternate comparison hierarchy?
+3. is `legacy-1991-isbm` worth any further direct solve-oriented work, or should it now remain only as the strongest grouped-top comparison line behind `isbm`?
 4. why does plain state-space BFS solve `hanoi-4` immediately while the restored planner still fails cleanly at much higher bounds?
 5. can we combine what now looks like the two winning properties:
    `ismb`-style pruning and `isbm`-style frontier ranking?

@@ -46,6 +46,7 @@ It complements:
 | `hanoi-4` family | [working/abtweak-1993/Domains/hanoi-4.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/hanoi-4.lisp#L1) | Yes | Yes | Partial | `Open` | Best-diagnosed remaining benchmark gap. |
 | Baseline side experiments for explicit state-space Hanoi | [experiments/hanoi-baselines](/Users/stevenwoods/mmath-renovation/experiments/hanoi-baselines) | Yes | Yes | N/A | `Primary` | Sanity baseline, not part of historical AbTweak behavior. |
 | Generated analysis outputs and raw trace/replay artifacts | [analysis](/Users/stevenwoods/mmath-renovation/analysis) | Yes | Yes | Supports validation | `Primary` | Holds generated reports, trace directories, replay logs, and numeric datasets. |
+| Intake lane for newly found relevant material | [intake](/Users/stevenwoods/mmath-renovation/intake) | Yes | N/A | N/A | `Primary` | Single staging area for new finds before they are reviewed and moved into their long-term homes. |
 | Publications corpus | [publications](/Users/stevenwoods/mmath-renovation/publications/README.md) | N/A | N/A | Source basis | `Reference` | Checked-in papers, reports, and archival package references. |
 | Release snapshots and changelog | [releases](/Users/stevenwoods/mmath-renovation/releases/README.md), [CHANGELOG.md](/Users/stevenwoods/mmath-renovation/CHANGELOG.md#L1) | Yes | Yes | N/A | `Primary` | Numbered restoration checkpoints. |
 | Public-facing site sources | [site](/Users/stevenwoods/mmath-renovation/site) | Yes | Yes | N/A | `Primary` | Project page and release dashboard sources. |

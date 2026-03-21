@@ -30,6 +30,8 @@ That means the project should finish with:
 - one explicit historical compatibility surface for important older controls
 - one experiment harness for smoke runs, historical-control runs, reports, and traces
 - one formal validation story against the papers, thesis, and shipped examples
+- one explicit intake lane for newly found relevant material before it is
+  merged into the main repo structure
 - one explicit boundary between the restored historical baseline and any later
   non-domain-specific strategy extensions
 
@@ -143,6 +145,10 @@ The project is in a late pre-release restoration state.
   original three-disk family
 - the project has a clear historical-baseline policy in
   [docs/algorithm-strategy-policy.md](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md)
+- the repo now has a clear intake lane through
+  [intake/README.md](/Users/stevenwoods/mmath-renovation/intake/README.md),
+  so new finds can be reviewed before they are assigned to `working/`,
+  `historical/`, `publications/`, or `analysis/`
 
 ### Strong But Still Open
 

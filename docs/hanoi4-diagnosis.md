@@ -22,6 +22,7 @@ It complements:
 - [Hanoi-4 goal and obligation accounting rules](/Users/stevenwoods/mmath-renovation/docs/hanoi4-accounting-rules.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
 - [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
+- [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Algorithm correspondence review](/Users/stevenwoods/mmath-renovation/docs/algorithm-correspondence.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -225,6 +226,26 @@ The new historical-fidelity note strengthens the interpretation again:
 
 So this split now looks much more like inherited AbTweak behavior than a
 modern restoration defect.
+
+## Solve-First Candidate Status
+
+The focused `hanoi-4` candidate set is now intentionally narrow:
+
+- `isbm + weak-POS + stack + Left-Wedge`
+- `legacy-1991-isbm + weak-POS + stack + Left-Wedge`
+
+At `20000`, `50000`, `100000`, and `200000` expansions, both still fail with
+`EXPAND-LIMIT-EXCEEDED`, and `isbm` remains ahead at every checkpoint:
+
+- `23272` vs `26215`
+- `58817` vs `66327`
+- `116646` vs `132286`
+- `234872` vs `265691`
+
+So the benchmark read should now stay binary and conservative:
+
+- `isbm` is the strongest live runtime candidate
+- `legacy-1991-isbm` is still diagnostically useful, but remains secondary
 
 The newest historical-combination review narrows the remaining uncertainty:
 

@@ -19,6 +19,7 @@ For deeper technical detail, see:
 - [Domain inventory](/Users/stevenwoods/mmath-renovation/docs/domain-inventory.md)
 - [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
+- [Intake area](/Users/stevenwoods/mmath-renovation/intake/README.md)
 - [Publication domain crosswalk](/Users/stevenwoods/mmath-renovation/docs/publication-domain-crosswalk.md)
 - [Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -32,6 +33,7 @@ For deeper technical detail, see:
 - [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-2 1990 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi2-1990-compatibility.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
+- [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi tree-ordering evidence](/Users/stevenwoods/mmath-renovation/docs/hanoi-tree-ordering-evidence.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
@@ -144,6 +146,12 @@ Left-Wedge (`26215` at 20k, `66327` at 50k), but it still trails
 The sibling grouped-top follow-up `legacy-1991-imbs` is weaker (`29863` with
 Left-Wedge at 20k), which makes the grouped-top family preference clearer:
 `legacy-1991-isbm` is the stronger grouped-top descendant.
+The new narrow solve-candidate comparison now sharpens the main runtime choice:
+at `20000`, `50000`, `100000`, and `200000`, both `isbm + weak-POS + stack +
+Left-Wedge` and `legacy-1991-isbm + weak-POS + stack + Left-Wedge` still fail
+cleanly with `EXPAND-LIMIT-EXCEEDED`, but `isbm` remains clearly ahead at
+every bound (`23272` vs `26215`, `58817` vs `66327`, `116646` vs `132286`, and
+`234872` vs `265691` generated).
 
 Verified smoke results:
 
@@ -188,6 +196,11 @@ Verified smoke results:
 ## Key Technical Findings
 
 - The port is beyond loader repair and into planner-validation work.
+- The repo now also has an explicit intake lane for newly found material:
+  - anything newly recovered should land in
+    [intake/](/Users/stevenwoods/mmath-renovation/intake/README.md) first
+  - only after review should it move into `working/`, `historical/`,
+    `publications/`, or `analysis/`
 - `plan` still appears to return `NIL` on success, with the actual solution recorded in `*solution*`; this looks like historical behavior rather than a current regression.
 - `simple-robot-2` is the first benchmark using the manual-style user-defined heuristic path and primary effects setup.
 - `simple-robot-1` now adds distinct coverage instead of duplicating `simple-robot-2`:
