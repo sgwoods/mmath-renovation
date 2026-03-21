@@ -9,6 +9,7 @@ This note is the clearest current statement of:
 
 It complements:
 
+- [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)

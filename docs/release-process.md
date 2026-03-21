@@ -126,6 +126,7 @@ For now, use this default rule:
 2. Update [VERSION](/Users/stevenwoods/mmath-renovation/VERSION).
 3. Add a matching entry to [CHANGELOG.md](/Users/stevenwoods/mmath-renovation/CHANGELOG.md).
 4. Refresh key docs:
+   - [docs/project-compendium.md](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
    - [docs/current-status.md](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
    - [docs/next-steps.md](/Users/stevenwoods/mmath-renovation/docs/next-steps.md)
    - any benchmark-specific formal checkpoint that materially changed

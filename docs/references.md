@@ -45,7 +45,7 @@ This is the historical package landing page for the implementation archive. It i
 - Author: Steven G. Woods
 - Institution: University of Waterloo, Cheriton School of Computer Science
 - Date: March 1991
-- Local copy: [publications/1991-uwaterloo-tr-17-thesis-report.pdf](/Users/stevenwoods/mmath-renovation/publications/1991-uwaterloo-tr-17-thesis-report.pdf)
+- Local copy: [publications/1991 mmath thesis final.pdf](/Users/stevenwoods/mmath-renovation/publications/1991%20mmath%20thesis%20final.pdf)
 - URL: <https://cs.uwaterloo.ca/research/tr/1991/17/report.pdf>
 
 Why it matters:

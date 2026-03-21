@@ -53,6 +53,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Release process](./docs/release-process.md): versioning, release cadence, snapshot contents, tag policy, and Pages update rules
 - [Changelog](./CHANGELOG.md): numbered restoration checkpoints
 - [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
+- [Project compendium](./docs/project-compendium.md): the most complete readable overview of the repo, benchmark state, publication alignment, structure, and release surfaces
 - [Refreshed plan](./docs/refreshed-plan.md): current plan state, recommended issue order, and the main sensible alternatives from here
 - [Unified restoration plan](./docs/unified-restoration-plan.md): top-level plan for converging the repo into one restored experimental environment that can stand in for the historical AbTweak code lines
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows

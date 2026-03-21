@@ -14,7 +14,7 @@ Important scope note:
 Publication source for the numeric rows:
 
 - checked-in thesis PDF:
-  [1991-uwaterloo-tr-17-thesis-report.pdf](/Users/stevenwoods/mmath-renovation/publications/1991-uwaterloo-tr-17-thesis-report.pdf)
+  [1991 mmath thesis final.pdf](/Users/stevenwoods/mmath-renovation/publications/1991%20mmath%20thesis%20final.pdf)
 - locally extracted from the thesis figure block labelled
   `BF Expansions: IBMS IMBS IBSM IMSB ISBM ISMB`
 
