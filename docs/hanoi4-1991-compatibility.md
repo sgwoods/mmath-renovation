@@ -114,23 +114,31 @@ At the standard 20k bound:
 | `imbs` | `20001 / 34067` | `20001 / 36002` | `stack` |
 
 That changes the earlier reading of tree goal ordering in an important way.
-The restored tree path is not uniformly worse on `hanoi-4`. It appears to help
-the older/default-style hierarchy families, especially `legacy-1991-default`
-and `critical-list-2`, while clearly hurting the later permutation-style
-families such as `ismb`, `isbm`, `ibsm`, and `imbs`.
+The restored tree path is not uniformly worse on `hanoi-4`. At the standard
+20k bound it helps `legacy-1991-default` and `critical-list-2`, while clearly
+hurting the later permutation-style families such as `ismb`, `isbm`, `ibsm`,
+and `imbs`.
 
-An immediate deeper follow-up on the most interesting case preserved the same
-direction at a 50k bound:
+The first deeper follow-ups make that result more specific rather than more
+general:
 
-| Hierarchy | Determine | Expanded | Generated | MP Pruned | Outcome |
-| --- | --- | --- | --- | --- | --- |
-| `critical-list-2` | `stack` | `50001` | `77708` | `25536` | `EXPAND-LIMIT-EXCEEDED` |
-| `critical-list-2` | `tree` | `50001` | `77587` | `17109` | `EXPAND-LIMIT-EXCEEDED` |
+| Hierarchy | MSP | Determine | Expanded | Generated | MP Pruned | Outcome |
+| --- | --- | --- | --- | --- | --- | --- |
+| `legacy-1991-default` | weak-`NEC` | `stack` | `50001` | `91819` | `0` | `EXPAND-LIMIT-EXCEEDED` |
+| `legacy-1991-default` | weak-`NEC` | `tree` | `50001` | `93361` | `0` | `EXPAND-LIMIT-EXCEEDED` |
+| `legacy-1991-default` | weak-`POS` | `stack` | `50001` | `91819` | `0` | `EXPAND-LIMIT-EXCEEDED` |
+| `legacy-1991-default` | weak-`POS` | `tree` | `50001` | `93361` | `0` | `EXPAND-LIMIT-EXCEEDED` |
+| `critical-list-2` | weak-`NEC` | `stack` | `50001` | `82501` | `20721` | `EXPAND-LIMIT-EXCEEDED` |
+| `critical-list-2` | weak-`NEC` | `tree` | `50001` | `82569` | `21789` | `EXPAND-LIMIT-EXCEEDED` |
+| `critical-list-2` | weak-`POS` | `stack` | `50001` | `77708` | `25536` | `EXPAND-LIMIT-EXCEEDED` |
+| `critical-list-2` | weak-`POS` | `tree` | `50001` | `77587` | `17109` | `EXPAND-LIMIT-EXCEEDED` |
 
-So tree ordering is now better understood as a hierarchy-sensitive historical
-control rather than a globally inferior one. The most plausible remaining
-question is no longer "does tree help `isbm`?" but "which publication-era
-hierarchy families were actually meant to benefit from tree ordering?"
+So tree ordering is now better understood as a hierarchy-and-control-sensitive
+historical option rather than a globally inferior one. The more precise live
+question is no longer "does tree help `isbm`?" or even "does tree help old
+hierarchies?" It is whether tree was historically meant to pair with a
+specific control family like `critical-list-2` plus weak-`POS`, rather than
+with the default legacy hierarchy or the later permutation-style families.
 
 ## Deeper Weak-POS Follow-Up
 

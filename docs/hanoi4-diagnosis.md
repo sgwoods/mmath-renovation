@@ -245,11 +245,16 @@ The newest historical-combination review narrows the remaining uncertainty:
     materially better on `critical-list-2` (`29744` vs `31080`)
   - tree is still clearly worse on `critical-list-1`, `ismb`, `isbm`, `ibsm`,
     and `imbs`
-  - a deeper `critical-list-2` follow-up preserves the same direction at 50k:
-    `77587` generated under `tree` versus `77708` under `stack`
-  - so the restored tree effect now looks hierarchy-family-sensitive and more
-    plausibly tied to older/default-style four-disk hierarchies than to the
-    later permutation-style runtime winners
+  - the deeper follow-up now shows the effect is also control-sensitive:
+    - on `legacy-1991-default`, the small 20k tree edge flips by 50k, with
+      `91819` generated under `stack` versus `93361` under `tree`
+    - on `critical-list-2`, weak-`NEC` slightly favors `stack`
+      (`82501` vs `82569`), while weak-`POS` still slightly favors `tree`
+      (`77587` vs `77708`)
+  - so the restored tree effect now looks both hierarchy-family-sensitive and
+    control-sensitive, with the strongest current evidence centered on
+    `critical-list-2` plus weak-`POS`, not on the later permutation-style
+    runtime winners
 
 ## Important Limitation
 

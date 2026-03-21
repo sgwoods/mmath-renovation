@@ -131,9 +131,10 @@ The stronger remaining possibilities are:
 2. The thesis figures appear to involve explicit goal-ordering variants such as
    stack and tree goal ordering.
    Those controls are now runnable again through the compatibility layer, but
-   on the representative recovered `isbm` cases tree ordering is currently
-   worse than stack ordering, so it does not yet explain the missing good
-   four-disk path.
+   the newer four-disk checks now suggest that tree is not a generic win:
+   it is worse on the representative recovered `isbm` cases, flips against the
+   `legacy-1991-default` hierarchy at deeper bounds, and currently looks most
+   plausible only on `critical-list-2` under weak-`POS`.
 
 So the most plausible missing ingredients are not domain-specific hacks. They
 are historically motivated control details that were present in the experiment

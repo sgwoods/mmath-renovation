@@ -200,12 +200,15 @@ The new determine-mode family sweep sharpens question 4:
   (`29744` vs `31080`)
 - it hurts the later permutation-style families, including `ismb`, `isbm`,
   `ibsm`, and `imbs`
-- a deeper `critical-list-2` follow-up keeps the same direction at 50k:
-  `77587` generated under `tree` versus `77708` under `stack`
+- the deeper follow-up makes that more specific:
+  - on `legacy-1991-default`, the 20k tree edge flips sign by 50k
+  - on `critical-list-2`, weak-`NEC` slightly favors `stack`, but weak-`POS`
+    still slightly favors `tree`
 
 So the live historical-control question is no longer whether tree ordering is
 globally useful. It is whether the publication-era goal-ordering effects were
-meant to pair with an older/default-style hierarchy family rather than the
+meant to pair with a specific hierarchy-and-control family, most plausibly
+something closer to `critical-list-2` plus weak-`POS`, rather than with the
 current best `isbm` runtime path.
 
 ## Recommended Re-entry Point
@@ -217,8 +220,8 @@ If work resumes here later, the best immediate next experiment is:
   families
 - treat `strong` MSP and `tree` goal-ordering as restored historical controls
 - keep `stack` as the current representative winner on the main `isbm`
-  four-disk path, but treat `critical-list-2` and `legacy-1991-default` as
-  the first families where restored tree ordering may matter historically
+  four-disk path, but treat `critical-list-2` weak-`POS` as the first
+  historically interesting family where restored tree ordering may matter
 - inspect whether any other historically plausible hierarchy/control pairing
   makes better use of the restored tree mode before considering any new
   strategy extension
