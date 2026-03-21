@@ -60,9 +60,10 @@ It complements:
    parent family and even beats `isbm` on the no-Left-Wedge weak-`POS` line,
    but the grouped follow-up `imbs-hb` gives away most of that gain,
    especially with Left-Wedge on. So the next candidate should now be a
-   direct frontier-quality comparison between `imbs-h1` and `isbm`, or a more
-   conservative default-family analogue rather than another grouped-`H`
-   variant.
+   check on whether the `imbs-h1` advantage survives when Left-Wedge returns,
+   or a more conservative default-family analogue rather than another
+   grouped-`H` variant. The direct frontier-quality comparison is now done and
+   suggests `imbs-h1` helps pruning more than top-of-frontier cleanliness.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

@@ -122,7 +122,9 @@ current `isbm` path at the standard 20k bound. The first `imbs`-side probe,
 `isbm` on the no-Left-Wedge weak-`POS` line, and comes close to the current
 `isbm + weak-POS + Left-Wedge` best path. The grouped follow-up `imbs-hb`
 still improves plain `imbs`, but it is much weaker than `imbs-h1`,
-especially once Left-Wedge is re-enabled.
+especially once Left-Wedge is re-enabled. A direct frontier comparison now
+shows `imbs-h1` is likely a pruning/search-shape improvement more than a
+cleaner-top-bucket ranking improvement over `isbm`.
 
 Verified smoke results:
 

@@ -265,6 +265,13 @@ The newest historical-combination review narrows the remaining uncertainty:
     `imbs-h1`
   - it still improves plain `imbs`, but it gives away most of the benefit
     that made `imbs-h1` promising
+- the direct `imbs-h1` versus `isbm` frontier comparison then sharpens the
+  story again:
+  - `imbs-h1` is better on raw no-Left-Wedge bounded counts
+    (`24132` generated versus `24748`, with heavier MP pruning too)
+  - but its top displayed priority leaders are still dirtier than `isbm`'s
+  - so `imbs-h1` currently looks more like a pruning/search-shape win than a
+    clear frontier-ranking win
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

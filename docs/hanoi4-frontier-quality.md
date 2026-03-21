@@ -301,3 +301,71 @@ That is the strongest current explanation for the observed split:
 - `ismb` still wins on raw pruning because its hierarchy collapses the overall
   search better, but weak-`POS` does not have the same opportunity to improve
   frontier quality there
+
+## `imbs-h1` Versus `isbm`
+
+The next follow-up compared the most promising explicit-`H` analogue,
+`imbs-h1`, directly against `isbm` under the same historical weak-`POS`
+control surface, again with Left-Wedge disabled so the hierarchy effect is
+easier to isolate.
+
+New traces:
+
+- [hanoi4-abtweak-imbs-h1-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260321-114932](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/hanoi4-abtweak-imbs-h1-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260321-114932)
+- [hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260321-114932](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-nil-drp-nil-20260321-114932)
+
+The bounded result still favors `imbs-h1`:
+
+| Hierarchy | Generated | MP Pruned | Open length | Current level | Top bucket(s) |
+| --- | --- | --- | --- | --- | --- |
+| `imbs-h1` | `24132` | `26528` | `4131` | `1` | `18: 3623`, `19: 508` |
+| `isbm` | `24748` | `21293` | `4747` | `0` | `14: 1680`, `15: 2963`, `16: 104` |
+
+So `imbs-h1` is still the better no-Left-Wedge path on raw generated nodes,
+and it also prunes more heavily than `isbm`.
+
+But the frontier-quality picture is more mixed than the raw counts alone:
+
+- for `imbs-h1`, the top displayed priority leaders are still quite dirty:
+  - priority `18`
+  - plan cost `17`
+  - `kval 1`
+  - plan length `19`
+  - unsatisfied-pair counts mostly around `10` to `16`
+- its best closure-oriented node is excellent, but buried inside that same very
+  large top bucket:
+  - priority `18`
+  - plan cost `15`
+  - `kval 3`
+  - plan length `17`
+  - unsatisfied-pair count `2`
+
+- for `isbm`, the top displayed priority leaders remain cleaner:
+  - priority `14`
+  - plan cost `12`
+  - mostly `kval 1`
+  - plan length `14`
+  - unsatisfied-pair counts mostly around `3` to `6`
+- its best closure-oriented node is also in the top bucket:
+  - priority `14`
+  - plan cost `11`
+  - `kval 2`
+  - plan length `13`
+  - unsatisfied-pair count `2`
+
+So the current interpretation is:
+
+1. `imbs-h1` helps bounded performance and pruning.
+2. `imbs-h1` does not obviously improve the very top-of-frontier ranking over
+   `isbm`.
+3. the main `imbs-h1` advantage may therefore be pruning and search-shape,
+   rather than cleaner prioritization of closure-oriented states.
+4. `isbm` still looks better if the question is which hierarchy keeps the most
+   actionable frontier at the very top.
+
+That makes the next `hanoi-4` question narrower again:
+
+- is `imbs-h1` simply a better no-Left-Wedge bounded hierarchy?
+- or can its pruning advantage survive once Left-Wedge returns without
+  surrendering the cleaner frontier picture that still makes `isbm` easier to
+  interpret?

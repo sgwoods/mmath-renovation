@@ -302,9 +302,14 @@ The first two hierarchy experiments are now complete:
 - `imbs-hb` still improves plain `imbs`, but is much weaker than `imbs-h1`,
   especially once Left-Wedge is re-enabled
 
+That direct `imbs-h1` versus `isbm` frontier comparison is now done:
+
+- `imbs-h1` wins on raw no-Left-Wedge bounded counts and pruning
+- `isbm` still looks cleaner at the very top of the frontier
+
 So the best next hierarchy experiment is now:
 
-- trace `imbs-h1` directly against `isbm`
+- check whether the `imbs-h1` advantage survives once Left-Wedge returns
 - or move to a conservative default-family follow-up rather than another
   grouped-`H` variant
 
@@ -314,5 +319,5 @@ That is now the cleanest follow-up to the current working hypothesis:
 - the first `IMBS`-side explicit-`H` variant did help a lot
 - the grouped `IMBS` follow-up did not preserve that gain
 - so the next question is whether `imbs-h1` mainly improves raw bounded counts
-  without fixing the deeper frontier-quality problem, or whether it really is
-  the first better analogue family
+  without fixing the deeper frontier-quality problem once Left-Wedge returns,
+  or whether it really is the first better analogue family

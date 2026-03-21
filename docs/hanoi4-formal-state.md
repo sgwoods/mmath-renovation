@@ -256,9 +256,15 @@ The first three explicit-`H` analogue probes are now implemented and measured:
 - `imbs-hb` now runs too, but it is much weaker than `imbs-h1`:
   - no Left-Wedge: `26598` generated versus `24132` for `imbs-h1`
   - with Left-Wedge: `33415` generated versus `23810` for `imbs-h1`
-- so the next hierarchy follow-up should now compare `imbs-h1` frontier
-  quality directly against `isbm`, or move to a conservative default-family
-  analogue rather than another grouped-`H` variant
+- the direct frontier-quality comparison is now also done:
+  - `imbs-h1` is better than `isbm` on raw no-Left-Wedge generated nodes and
+    pruning (`24132` / `26528` versus `24748` / `21293`)
+  - but its top displayed priority leaders are still much dirtier than
+    `isbm`'s, while its best closure-oriented node is buried inside a huge
+    top bucket
+- so the next hierarchy follow-up should now ask whether `imbs-h1` is simply
+  a better bounded no-Left-Wedge path, or whether that advantage survives once
+  Left-Wedge returns without losing too much frontier quality
 
 ## Recommended Re-entry Point
 
