@@ -5,126 +5,247 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masters of Mathematics Renovation: AbTweak</title>
     <style>
+        :root {
+            --bg: #07140f;
+            --bg2: #13281f;
+            --card: rgba(7, 20, 15, 0.72);
+            --line: rgba(174, 223, 191, 0.24);
+            --text: #f2fbf5;
+            --muted: #a8cdb4;
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 840px;
-            margin: 40px auto;
-            padding: 0 20px 60px;
-            background: #faf8f2;
+            margin: 0;
+            color: var(--text);
+            font-family: "Avenir Next", "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(226, 204, 122, 0.16), transparent 26%),
+                radial-gradient(circle at top right, rgba(128, 208, 163, 0.18), transparent 32%),
+                linear-gradient(160deg, var(--bg), var(--bg2));
+            min-height: 100vh;
         }
-        h1 {
-            margin-bottom: 0.4em;
-            color: #1f2b1f;
-        }
-        h2 {
-            margin-top: 36px;
-            margin-bottom: 12px;
-            border-left: 5px solid #ccc;
-            padding-left: 12px;
-            color: #111;
-        }
-        p {
-            margin-bottom: 1.1em;
-        }
-        ul,
-        ol {
-            padding-left: 1.4rem;
-        }
-        li {
-            margin-bottom: 0.8rem;
-        }
+
         a {
-            color: #0056b3;
+            color: #e4fff0;
         }
-        .note {
-            padding: 14px 16px;
-            background: #f1eee5;
-            border-left: 4px solid #b0a58c;
+
+        .shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 72px;
+        }
+
+        .hero,
+        .panel {
+            border: 1px solid rgba(205, 235, 216, 0.16);
+            border-radius: 28px;
+            background:
+                linear-gradient(160deg, rgba(14, 37, 28, 0.88), rgba(7, 20, 15, 0.74)),
+                radial-gradient(circle at 20% 0%, rgba(226, 204, 122, 0.12), transparent 32%);
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 36px 34px 32px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #def6e6;
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 18px 0 10px;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: .95;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p,
+        .panel p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .hero p {
+            max-width: 780px;
+            font-size: 18px;
+        }
+
+        .meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .metaCard,
+        .card {
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .metaLabel {
+            display: block;
+            color: #9fc2aa;
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .metaValue {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .metaNote {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .panel {
+            margin-top: 22px;
+            padding: 28px;
+            background: rgba(7, 20, 15, 0.68);
+        }
+
+        .panel h2 {
+            margin: 0 0 12px;
+            font-size: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 16px;
+            border-radius: 999px;
+            background: rgba(226, 204, 122, 0.18);
+            border: 1px solid rgba(226, 204, 122, 0.28);
+            color: #f2fbf5;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+        }
+
+        .footer {
+            margin-top: 18px;
+            color: #9fc2aa;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 720px) {
+            .shell {
+                padding: 20px 14px 54px;
+            }
+
+            .hero,
+            .panel {
+                padding: 24px 22px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Masters of Mathematics Renovation: AbTweak</h1>
+    <main class="shell">
+        <section class="hero">
+            <span class="eyebrow">Public Project Page</span>
+            <h1>Masters of Mathematics Renovation</h1>
+            <p>A living restoration of Steven Woods' Masters of Mathematics AbTweak research code, rebuilt around a modern SBCL baseline while preserving the thesis, paper, and historical benchmark story as faithfully as possible.</p>
+            <div class="meta">
+                <div class="metaCard">
+                    <span class="metaLabel">Current Track</span>
+                    <span class="metaValue">0.10.x</span>
+                    <div class="metaNote">Late beta with strong historical reproduction on the core operator-style baseline.</div>
+                </div>
+                <div class="metaCard">
+                    <span class="metaLabel">Build Line</span>
+                    <span class="metaValue">0.10.0-beta.1</span>
+                    <div class="metaNote">Named pre-release checkpoint with unified harness, release dashboard, and formal validation set.</div>
+                </div>
+                <div class="metaCard">
+                    <span class="metaLabel">Current Focus</span>
+                    <span class="metaValue">Hanoi-4 extension case</span>
+                    <div class="metaNote">Lower Hanoi families are aligned; the main open benchmark is the historically grounded four-disk extension.</div>
+                </div>
+                <div class="metaCard">
+                    <span class="metaLabel">Updated</span>
+                    <span class="metaValue">March 21, 2026</span>
+                    <div class="metaNote">Public page now synced from the main repository release process.</div>
+                </div>
+            </div>
+            <div class="links">
+                <a class="button" href="mmath-renovation-release-dashboard.html">Open release dashboard</a>
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation">Open repository</a>
+            </div>
+        </section>
 
-    <p>
-        This project is the starting point for reviving the code and research artifacts associated with Steven Woods' Masters of Mathematics thesis work on AbTweak, a hierarchical nonlinear planner developed at the University of Waterloo.
-    </p>
+        <section class="panel">
+            <h2>Current state</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Primary goal</h3>
+                    <p>Maintain one restored AbTweak environment that can reproduce the documented planning capabilities, historical controls, and benchmark behavior described in the thesis, papers, and shipped code.</p>
+                </article>
+                <article class="card">
+                    <h3>What is already solid</h3>
+                    <p>The unified SBCL baseline is stable, the release and experiment harnesses are in place, and broad operator-style domains including blocks, Nilsson blocks, robot, registers, database, biology, fly, and stylistics are reproducible.</p>
+                </article>
+                <article class="card">
+                    <h3>Why the project matters</h3>
+                    <p>The repository now serves as both a working restoration and a public research log, with exact historical alignment on hanoi-2 and hanoi-3 and a carefully documented path toward understanding the remaining hanoi-4 benchmark gap.</p>
+                </article>
+            </div>
+        </section>
 
-    <p>
-        The repository has moved beyond the initial bootstrap stage and is now focused on validating a runnable SBCL baseline, comparing restored planning modes, and documenting where the recovered code aligns with or diverges from the thesis and papers.
-    </p>
-
-    <div class="note">
-        Public project note: active restoration work is underway. As of March 21, 2026, the repository is at `0.10.0-beta.1`, with exact lower-Hanoi reproduction, broad operator-style benchmark coverage, and a dedicated release dashboard tracking the road to `1.0.0`. Hanoi-4 remains the main open extension benchmark.
-    </div>
-
-    <h2>Repository Snapshot</h2>
-    <ul>
-        <li>
-            Repository: <a href="https://github.com/sgwoods/mmath-renovation">sgwoods/mmath-renovation</a>
-        </li>
-        <li>
-            Last repository update: March 21, 2026
-        </li>
-        <li>
-            Latest recorded commit: <em>Add imbs-h1 hanoi4 hierarchy analogue</em>
-        </li>
-        <li>
-            Formal checkpoint version: <code>0.10.0-beta.1</code>
-        </li>
-        <li>
-            Present state: the repo now has a named pre-release process, exact `hanoi-2` and `hanoi-3` historical alignment, broad retained benchmark coverage, and a live release dashboard for the remaining path to `1.0.0`.
-        </li>
-    </ul>
-
-    <h2>Current State</h2>
-    <ul>
-        <li>The working copy solves `blocks` / `sussman` in both `tweak` and `abtweak`.</li>
-        <li>The restored baseline solves `registers` in `tweak` and runs `hanoi-3` plus `macro-hanoi` in both modes.</li>
-        <li>`simple-robot-2` shows the expected left-wedge effect in `abtweak`.</li>
-        <li>`hanoi-4` now has a tighter formal diagnosis, retained five-peg sanity checks, and active hierarchy analogue experiments like `imbs-h1`.</li>
-        <li>The repository includes historical snapshots, a current SBCL working tree, and focused documentation for baseline selection, algorithm correspondence, and benchmark interpretation.</li>
-    </ul>
-
-    <h2>Release Tracking</h2>
-    <ul>
-        <li><a href="mmath-renovation-release-dashboard.html">Release dashboard</a></li>
-        <li>The dashboard highlights completed restoration milestones, the live `hanoi-4` gate, and the current beta-to-`1.0.0` path at a glance.</li>
-    </ul>
-
-    <h2>Core References</h2>
-    <ul>
-        <li>
-            Josh D. Tenenberg and Qiang Yang, <a href="https://cdn.aaai.org/AAAI/1990/AAAI90-031.pdf">"ABTWEAK: Abstracting a Nonlinear, Least Commitment Planner"</a>, AAAI-90.
-        </li>
-        <li>
-            Qiang Yang, Josh D. Tenenberg, and Steve Woods, <a href="https://cs.uwaterloo.ca/research/tr/1991/65/final.pdf">"Abstraction in Nonlinear Planning"</a>, University of Waterloo Technical Report CS-91-65, December 1991.
-        </li>
-        <li>
-            Steven G. Woods, <a href="https://cs.uwaterloo.ca/research/tr/1991/17/report.pdf">"An Implementation and Evaluation of a Hierarchical Nonlinear Planner"</a>, University of Waterloo Technical Report CS-91-17, March 1991.
-        </li>
-        <li>
-            CMU AI Repository package page for <a href="https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/areas/planning/systems/abtweak/0.html">`abtweak`</a>.
-        </li>
-    </ul>
-
-    <h2>Renovation Priorities</h2>
-    <ol>
-        <li>Keep tightening the runnable SBCL baseline against the historical papers, thesis, and recovered snapshots.</li>
-        <li>Document how benchmark behavior changes across hierarchy and control choices, especially on larger Hanoi cases.</li>
-        <li>Preserve clear provenance between archival code, working copies, and interpretive modernization steps.</li>
-        <li>Use the repository documentation as the public working log for restoration decisions and benchmark evidence.</li>
-    </ol>
-
-    <h2>Related Pages</h2>
-    <ul>
-        <li><a href="https://github.com/sgwoods/mmath-renovation">MMath renovation repository</a></li>
-        <li><a href="mmath-renovation-release-dashboard.html">MMath release dashboard</a></li>
-        <li><a href="phd-renovation.html">PhD renovation project</a></li>
-        <li><a href="patents-publications.html">Patents and publications</a></li>
-        <li><a href="index.html">Steven Woods Public Pages</a></li>
-    </ul>
+        <section class="panel">
+            <h2>Where to look</h2>
+            <div class="links">
+                <a class="button" href="mmath-renovation-release-dashboard.html">Open release dashboard</a>
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation">Open repository</a>
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation/blob/main/docs/project-goal-roadmap.md">Roadmap</a>
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation/blob/main/docs/publication-domain-crosswalk.md">Validation crosswalk</a>
+            </div>
+            <p class="footer">Public summary synced to the repository status on March 21, 2026.</p>
+        </section>
+    </main>
 </body>
 </html>
