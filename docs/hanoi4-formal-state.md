@@ -43,6 +43,13 @@ not solve the shipped `hanoi-4` benchmark under SBCL, even though:
   comfortably in `tweak`, plain `abtweak`, and the current best
   `isbm + weak-POS + left-wedge` historical-control path
 
+One benchmark rule should now stay explicit in this handoff:
+
+- for classic three-peg `hanoi-4`, success is binary
+- the tower reaches the goal peg, or it does not
+- lower generated/expanded counts on a failed run are therefore diagnostic
+  evidence, not benchmark progress by themselves
+
 ## Best Current Runtime Path
 
 The strongest current `hanoi-4` path is:

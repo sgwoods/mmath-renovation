@@ -172,6 +172,44 @@ The best current hypothesis is:
   - tighter mapping from the publication figure labels onto the recovered
     four-disk hierarchy names now that tree ordering itself is runnable again
 
+There is also a clearer behavioral target now for what a good four-disk
+hierarchy should induce.
+
+The natural Hanoi strategy is recursive:
+
+1. get the next-largest remaining disk onto the destination peg
+2. then recurse on the smaller remaining tower
+
+So a historically plausible four-disk hierarchy that really behaves well
+should do more than rank disk families from large to small. It should make the
+active problem at each level look like:
+
+- disk-goal for the next-largest remaining disk
+- paired support obligations that clear source and destination for that disk
+- only after that, the recursive subproblem for the smaller disks
+
+In other words, the hierarchy should make the planner see:
+
+- "move `H` to `peg3`, with the needed clearance conditions"
+- then "move `B` to `peg3`, with the needed clearance conditions"
+- and so on
+
+rather than simply:
+
+- "reward lower `kval` concreteness and hope the right recursive behavior
+  emerges"
+
+That gives us a more rational target for future hierarchy work:
+
+- not just better failed-run counts
+- but a hierarchy definition that structurally encourages the same recursive
+  decomposition that an ordinary Hanoi solver follows
+
+This matters because a bounded failure with slightly lower generated-node
+counts is still a benchmark failure. It may be diagnostically useful, but it
+is not an improvement in the strict Hanoi sense unless it actually reaches the
+goal configuration.
+
 Until that reconstruction is done, the strongest current `hanoi-4` result
 should be treated as "historically plausible but not yet publication-equivalent"
 rather than as the final verdict on AbTweak's four-disk capability.

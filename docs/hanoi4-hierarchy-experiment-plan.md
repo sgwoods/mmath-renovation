@@ -27,6 +27,14 @@ boundary:
 - first by testing historically plausible four-disk analogue hierarchies
 - only later, if needed, by testing clearly named non-historical extensions
 
+One evaluation rule should now be explicit:
+
+- a bounded failure is still a failure
+- lower generated or expanded counts on an unsolved run are diagnostic evidence,
+  not benchmark progress
+- for `hanoi-4`, a hierarchy is only a real benchmark improvement if it
+  actually produces a full solve
+
 ## Design Principles
 
 The current `hanoi-4` evidence suggests that a better hierarchy should do at
@@ -41,6 +49,43 @@ least some of the following:
    - especially by leaving all `onh` structure until the concrete level
 4. remain understandable in terms of the historical publication family
    - so we can still explain the result against the thesis and report
+
+## Behavioral Target
+
+The behavioral target should be the natural recursive Hanoi strategy:
+
+1. move the largest remaining disk to the destination peg
+2. then recurse on the smaller remaining tower
+
+In the current predicate language, that means a useful hierarchy should not
+merely reward "more concrete plans." It should encourage the planner to treat
+the next-largest remaining disk and the conditions for moving it as the active
+problem.
+
+For the largest disk family, that means a rational abstraction should make it
+look something like:
+
+- primary commitment:
+  - `(onh peg3)`
+- support obligations for that commitment:
+  - source and destination must be clear of smaller disks
+  - but those support obligations should be seen as enabling conditions for the
+    `onh` commitment, not as independent low-level churn opportunities
+
+Then, once `H` is placed, the same pattern should recur for `B`, then `M`,
+then `S`.
+
+So the hierarchy shape we want is not just:
+
+- "largest disk high, smallest disk low"
+
+It is closer to:
+
+- "at each level, the active disk-goal and the clearance obligations required
+  to move that disk are coupled tightly enough that the planner behaves
+  recursively"
+
+That is the practical meaning of a "rational" four-disk hierarchy here.
 
 ## Two Experiment Buckets
 
@@ -281,12 +326,18 @@ A hierarchy experiment should be considered promising if it does at least one
 of these:
 
 1. reaches a full `hanoi-4` solve under historically plausible controls
-2. materially improves bounded performance over the current `isbm + weak-POS +
-   Left-Wedge` path
+2. gives a clearer explanation of why a historically plausible family should
+   solve, even if the current run still fails
 3. keeps cleaner frontier states in the top bucket while scaling at least as
    well as the current best path
 4. gives a clearer publication-facing explanation of which four-disk family is
    the best analogue of the good Hanoi hierarchy families
+
+Important caution:
+
+- item 2 or 3 does not make an unsolved run a better benchmark result
+- those are diagnostic criteria only
+- for benchmark progress in the strict sense, item 1 is the real target
 
 ## Current Recommendation
 
