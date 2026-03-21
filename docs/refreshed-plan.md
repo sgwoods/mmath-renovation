@@ -104,9 +104,11 @@ single working equivalent of the historical experimental infrastructure.
 
 Focus on:
 
-- `ismb` with MP enabled
-- `critical-list-2` with MP enabled
-- `isbm` weak-`POS` as the best current frontier-quality comparison
+- `isbm` weak-`POS` plus Left-Wedge as the strongest current historical-control
+  runtime path
+- `legacy-1991-isbm` as the first positive grouped-top analogue family
+- `critical-list-2` weak-`POS` tree behavior as a smaller historically
+  interesting niche
 
 Reason:
 

@@ -177,8 +177,9 @@ Recommended order from here:
 1. Continue the `hanoi-4` historical-control investigation.
    Focus on tightening publication-to-code mapping and on the specific
    hierarchy-and-control surfaces that still look historically plausible,
-   especially the current `critical-list-2` plus weak-`POS` tree niche and the
-   stronger `isbm` weak-`POS` plus Left-Wedge runtime path.
+   especially the stronger `isbm` weak-`POS` plus Left-Wedge runtime path,
+   the now-positive grouped-top `legacy-1991-isbm` follow-up family, and the
+   smaller `critical-list-2` plus weak-`POS` tree niche.
 
 2. Keep the formal validation documents current as the `hanoi-4` picture sharpens.
    This keeps the repo aligned with the actual restoration evidence rather than
@@ -202,5 +203,7 @@ The project is already succeeding on most of its core restoration goals.
 What remains is not “make AbTweak work at all.” It is:
 
 - finish tightening the historical validation story
-- resolve or convincingly explain the `hanoi-4` extension benchmark
+- resolve or convincingly explain the `hanoi-4` extension benchmark,
+  where `isbm + weak-POS + Left-Wedge` remains the main runtime target and
+  `legacy-1991-isbm` is now the strongest grouped-top analogue
 - keep the restored baseline cleanly separated from any later strategy experiments

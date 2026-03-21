@@ -185,7 +185,8 @@ Goal:
 
 What this means:
 
-- continue the current `ismb` / `isbm` investigation
+- continue the current `isbm`-centered investigation
+- keep `legacy-1991-isbm` as the strongest grouped-top analogue line
 - focus on scoring, frontier quality, and pruning behavior
 - aim either for:
   - a full solve, or
