@@ -17,6 +17,9 @@ For deeper technical detail, see:
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [Domain inventory](/Users/stevenwoods/mmath-renovation/docs/domain-inventory.md)
+- [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
+- [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
+- [Intake area](/Users/stevenwoods/mmath-renovation/intake/README.md)
 - [Publication domain crosswalk](/Users/stevenwoods/mmath-renovation/docs/publication-domain-crosswalk.md)
 - [Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -26,8 +29,11 @@ For deeper technical detail, see:
 - [Hanoi-4 headway assessment](/Users/stevenwoods/mmath-renovation/docs/hanoi4-headway-assessment.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
+- [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
+- [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-2 1990 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi2-1990-compatibility.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
+- [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi tree-ordering evidence](/Users/stevenwoods/mmath-renovation/docs/hanoi-tree-ordering-evidence.md)
 - [Tweak vs AbTweak comparison](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md)
@@ -110,6 +116,42 @@ restored `hanoi-3` family, with exact row-level reproduction across the main
 thesis hierarchy table and qualitative agreement on the thesis `>6000` rows.
 The later `hanoi-4` family now has an explicit mapping note that separates
 exact three-disk publication labels from the closest four-disk code analogues.
+The next hierarchy-design step for that open four-disk benchmark is now also
+formalized, with a baseline-safe analogue bucket and a separate named-extension
+bucket.
+The first two `isbm`-side analogue probes, `isbm-h1` and `isbm-hb`, are now
+implemented and measured; both run correctly, but both are weaker than the
+current `isbm` path at the standard 20k bound. The first `imbs`-side probe,
+`imbs-h1`, is more promising: it materially improves plain `imbs`, beats
+`isbm` on the no-Left-Wedge weak-`POS` line, and comes close to the current
+`isbm + weak-POS + Left-Wedge` best path. The grouped follow-up `imbs-hb`
+still improves plain `imbs`, but it is much weaker than `imbs-h1`,
+especially once Left-Wedge is re-enabled. A direct frontier comparison now
+shows `imbs-h1` is likely a pruning/search-shape improvement more than a
+cleaner-top-bucket ranking improvement over `isbm`. The first explicitly
+recursive non-historical extension hierarchy, `recursive-clearance`, has also
+been tried and fails cleanly with roughly `33730` generated nodes and almost
+no MP pruning, so that specific coupling idea is not the answer. The deeper
+Left-Wedge follow-up now settles the next question too: `imbs-h1` still does
+not solve, still trails `isbm` at `50000` and `100000`, and at `200000`
+needs a larger SBCL heap just to reach a clean bounded failure. So it should
+be treated as a diagnostic hierarchy, not as the new main `hanoi-4` target.
+The conservative default-family follow-up `critical-list-1h-lite` is now also
+tested and is clearly not the answer either: `35217` generated without
+Left-Wedge, `36982` with Left-Wedge, and no MP pruning in either run.
+The first grouped-top legacy-family follow-up, `legacy-1991-isbm`, is more
+interesting: it materially improves on `legacy-1991-default`, especially with
+Left-Wedge (`26215` at 20k, `66327` at 50k), but it still trails
+`isbm + weak-POS + Left-Wedge` and still does not solve.
+The sibling grouped-top follow-up `legacy-1991-imbs` is weaker (`29863` with
+Left-Wedge at 20k), which makes the grouped-top family preference clearer:
+`legacy-1991-isbm` is the stronger grouped-top descendant.
+The new narrow solve-candidate comparison now sharpens the main runtime choice:
+at `20000`, `50000`, `100000`, and `200000`, both `isbm + weak-POS + stack +
+Left-Wedge` and `legacy-1991-isbm + weak-POS + stack + Left-Wedge` still fail
+cleanly with `EXPAND-LIMIT-EXCEEDED`, but `isbm` remains clearly ahead at
+every bound (`23272` vs `26215`, `58817` vs `66327`, `116646` vs `132286`, and
+`234872` vs `265691` generated).
 
 Verified smoke results:
 
@@ -154,6 +196,11 @@ Verified smoke results:
 ## Key Technical Findings
 
 - The port is beyond loader repair and into planner-validation work.
+- The repo now also has an explicit intake lane for newly found material:
+  - anything newly recovered should land in
+    [intake/](/Users/stevenwoods/mmath-renovation/intake/README.md) first
+  - only after review should it move into `working/`, `historical/`,
+    `publications/`, or `analysis/`
 - `plan` still appears to return `NIL` on success, with the actual solution recorded in `*solution*`; this looks like historical behavior rather than a current regression.
 - `simple-robot-2` is the first benchmark using the manual-style user-defined heuristic path and primary effects setup.
 - `simple-robot-1` now adds distinct coverage instead of duplicating `simple-robot-2`:
@@ -166,6 +213,12 @@ Verified smoke results:
   - `biology` goals 1, 2, and 3 solve in `abtweak`
   - `fly` to Washington DC solves in `abtweak`
   - `database` query 0 solves in `tweak`, matching the domain file note that SQL world is not an AbTweak example
+- A retained five-peg `hanoi-4` sanity variant now also solves comfortably:
+  - `hanoi4-5peg-tweak` solves in `1528` expanded / `2816` generated
+  - plain `hanoi4-5peg-abtweak` solves in `36` expanded / `66` generated
+  - `hanoi4-5peg-isbm-weak-pos-lw` solves in `3086` expanded / `4526` generated
+  - this is now kept as a quality reminder that the open `hanoi-4` issue is
+    about the classic three-peg control problem, not about four disks in general
 - The early `hanoi-2` lineage is now restored into the active harness too:
   - `hanoi2-tweak` and `hanoi2-abtweak` both solve with cost `3`, plan length `5`, `kval 0`
   - the recovered six-hierarchy family now matches the archived 1990 batch outputs exactly at the expanded/generated level
