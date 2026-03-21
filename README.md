@@ -66,6 +66,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Algorithm strategy policy](./docs/algorithm-strategy-policy.md): rule for keeping the restored `Abtweak-1993` baseline historically aligned while clearly naming any later non-domain-specific strategy extensions
 - [Hanoi-4 trace workflow](./analysis/hanoi4-traces/README.md): reproducible logging and frontier snapshot tooling for diagnosing larger Hanoi runs
 - [Hanoi-4 formal state](./docs/hanoi4-formal-state.md): formal handoff note capturing the current four-disk diagnosis, strongest runtime path, and recommended re-entry point
+- [Hanoi-4 headway assessment](./docs/hanoi4-headway-assessment.md): concise assessment of how much progress has been made on the four-disk issue, what has been ruled out, and what is still open
 - [Hanoi publication alignment](./docs/hanoi-publication-alignment.md): exact row-level comparison between the original thesis Hanoi figure and the restored `hanoi-3` experiment family, clarifying that `hanoi-4` is a later extension
 - [Hanoi-2 1990 compatibility layer](./docs/hanoi2-1990-compatibility.md): exact archived-family rerun of the recovered two-disk Hanoi hierarchy surface, including all six early hierarchy rows
 - [Hanoi-4 strategy crosswalk](./docs/hanoi4-strategy-crosswalk.md): consolidated table of publication claims, historical/current code support, and measured strategy performance
