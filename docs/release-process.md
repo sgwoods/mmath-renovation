@@ -29,7 +29,7 @@ The current project stage is best treated as:
 
 That is why the current checkpoint is versioned as:
 
-- `0.9.0-beta.1`
+- `0.10.0-beta.1`
 
 This says:
 
@@ -70,7 +70,7 @@ Use semantic-style versioning with explicit pre-release labels.
 Every named release checkpoint should include:
 
 - a git commit
-- an annotated git tag such as `v0.9.0-beta.1`
+- an annotated git tag such as `v0.10.0-beta.1`
 - the checked-in [VERSION](/Users/stevenwoods/mmath-renovation/VERSION) file
 - a changelog entry
 - a release snapshot under `releases/<version>/`
@@ -131,8 +131,8 @@ sh /Users/stevenwoods/mmath-renovation/scripts/create-release-snapshot.sh
 7. Create and push an annotated git tag from the release-prep commit:
 
 ```sh
-git -C /Users/stevenwoods/mmath-renovation tag -a v0.9.0-beta.1 -m "AbTweak restoration 0.9.0-beta.1"
-git -C /Users/stevenwoods/mmath-renovation push origin v0.9.0-beta.1
+git -C /Users/stevenwoods/mmath-renovation tag -a v0.10.0-beta.1 -m "AbTweak restoration 0.10.0-beta.1"
+git -C /Users/stevenwoods/mmath-renovation push origin v0.10.0-beta.1
 ```
 
 ## Revert and Recovery Rule
@@ -167,7 +167,7 @@ changed materially:
 
 Recommended public wording for the current release stage:
 
-- `0.9.0-beta.1: restored operator-style baseline with strong domain coverage; hanoi-4 remains the main open benchmark`
+- `0.10.0-beta.1: publication-aligned lower Hanoi families, broad operator-style coverage, and a much sharper hanoi-4 extension diagnosis`
 
 ## Naming Rule For New Generic Strategies
 

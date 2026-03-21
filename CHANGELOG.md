@@ -31,3 +31,26 @@ Known gaps at this checkpoint:
 - the alternate `reset-domain` / `defstep` framework is still a separate
   follow-on track
 - this is a source-and-harness release, not a packaged binary release
+
+## 0.10.0-beta.1 - 2026-03-21
+
+This checkpoint marks the stronger publication-alignment phase of the
+restoration effort.
+
+Highlights:
+
+- exact archived-family `hanoi-2` reproduction added to the active harness
+- exact publication-surface `hanoi-3` alignment documented and retained
+- broader restored operator-style benchmark surface, including `stylistics`
+- formal publication-to-code mapping for the four-disk Hanoi extension
+- much sharper `hanoi-4` diagnostic story, including historical-control,
+  replay, score, lineage, and hierarchy-mapping evidence
+- expanded historical cataloging for adjacent systems and newly added archive
+  material
+
+Known gaps at this checkpoint:
+
+- `hanoi-4` remains the main open extension benchmark
+- the alternate `reset-domain` / `defstep` framework is still intentionally a
+  separate later phase
+- this remains a research-grade restored source release, not a packaged binary

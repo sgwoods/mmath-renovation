@@ -29,7 +29,7 @@ Current milestone:
 
 Current pre-release version:
 
-- `0.9.0-beta.1`
+- `0.10.0-beta.1`
 
 ## What AbTweak Is
 
