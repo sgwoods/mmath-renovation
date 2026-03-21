@@ -268,6 +268,34 @@ Possible strategy name:
 
 - `AbTweak-1993/frontier-balanced-hanoi`
 
+### B3. Recursive-clearance hierarchy
+
+Idea:
+
+- make the largest-disk goal and all of its clearance predicates visible
+  together at the top abstraction level
+- then expose the smaller disk-goals below that
+
+Working hierarchy:
+
+- `recursive-clearance`
+
+Current result:
+
+- this extension is now implemented as a named non-historical hierarchy
+- weak-`POS`, stack, no Left-Wedge: `33730` generated
+- weak-`POS`, stack, Left-Wedge: `33727` generated
+- both runs still fail with `EXPAND-LIMIT-EXCEEDED`
+- MP pruning is almost absent (`6` and `39`)
+
+Interpretation:
+
+- coupling all large-disk clearance predicates at the top does not create the
+  desired recursive behavior in the current planner
+- instead, it appears to make the hierarchy too coarse and too weakly prunable
+- so this specific "couple everything needed for `H`" idea is not the right
+  abstraction shape
+
 ## Evaluation Matrix
 
 Every candidate hierarchy should be checked at least against:

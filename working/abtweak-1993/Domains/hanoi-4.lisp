@@ -171,6 +171,21 @@
    (1  (not ons $) (ons $) )
 ))
 
+; named extension hierarchy, not a historical analogue row.
+; This tries to make the recursive Hanoi strategy more explicit by coupling the
+; largest-disk goal with all source/destination clearance predicates needed to
+; move it, while leaving the smaller disk-goals to lower levels.
+(setq *recursive-clearance* '(
+   (5 (ispeg $))
+   (4  (not onh $) (onh $)
+       (not onb $)
+       (not onm $)
+       (not ons $) )
+   (3  (onb $) )
+   (2  (onm $) )
+   (1  (ons $) )
+))
+
 ; historical 1991 four-disk default hierarchy where peg identity and onh share
 ; the top abstraction level. This is kept separate from the later 1993 default
 ; so we can compare the two control surfaces directly.
@@ -195,6 +210,7 @@
 (setq *k-list-1* '(0 1 3 7 9))
 (setq *k-list-2* '(0 1 3 5 7 9))
 (setq *legacy-1991-k-list* '(0 1 3 7))
+(setq *recursive-clearance-k-list* '(0 1 3 5 7 9))
 
 (setq *critical-list* *critical-list-1* )
 (setq *left-wedge-list* *k-list-1*)

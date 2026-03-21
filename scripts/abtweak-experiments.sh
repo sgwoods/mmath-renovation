@@ -199,6 +199,7 @@ hanoi4
 hanoi4-ismb-weak-pos
 hanoi4-imbs-hb-weak-pos
 hanoi4-imbs-h1-weak-pos
+hanoi4-recursive-clearance-weak-pos
 hanoi4-isbm-hb-weak-pos
 hanoi4-isbm-weak-pos
 hanoi4-isbm-h1-weak-pos
@@ -275,6 +276,9 @@ run_trace() {
       ;;
     hanoi4-imbs-hb-weak-pos)
       HIERARCHY=imbs-hb sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
+      ;;
+    hanoi4-recursive-clearance-weak-pos)
+      HIERARCHY=recursive-clearance sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"
       ;;
     hanoi4-isbm-weak-pos)
       HIERARCHY=isbm sh "$SCRIPT_DIR/trace-hanoi4-weak-pos-sbcl.sh"

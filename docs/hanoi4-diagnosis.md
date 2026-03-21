@@ -272,6 +272,14 @@ The newest historical-combination review narrows the remaining uncertainty:
   - but its top displayed priority leaders are still dirtier than `isbm`'s
   - so `imbs-h1` currently looks more like a pruning/search-shape win than a
     clear frontier-ranking win
+- the first non-historical extension hierarchy aimed directly at recursive
+  "move the next largest disk with its clearance conditions" behavior,
+  `recursive-clearance`, is now also tested:
+  - weak-`POS`, stack, no Left-Wedge: `33730` generated
+  - weak-`POS`, stack, Left-Wedge: `33727` generated
+  - both runs still fail, with almost no MP pruning
+  - so coupling all `H`-move clearance predicates together at the top level is
+    not enough, and may actually wash out the useful hierarchy signal
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

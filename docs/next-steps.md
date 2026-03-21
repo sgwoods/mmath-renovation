@@ -63,7 +63,10 @@ It complements:
    check on whether the `imbs-h1` advantage survives when Left-Wedge returns,
    or a more conservative default-family analogue rather than another
    grouped-`H` variant. The direct frontier-quality comparison is now done and
-   suggests `imbs-h1` helps pruning more than top-of-frontier cleanliness.
+   suggests `imbs-h1` helps pruning more than top-of-frontier cleanliness. The
+   first direct recursive-coupling extension hierarchy also failed quickly, so
+   the next hierarchy ideas should be more selective than simply grouping the
+   active disk-goal with all of its clearance predicates.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle

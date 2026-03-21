@@ -124,7 +124,10 @@ current `isbm` path at the standard 20k bound. The first `imbs`-side probe,
 still improves plain `imbs`, but it is much weaker than `imbs-h1`,
 especially once Left-Wedge is re-enabled. A direct frontier comparison now
 shows `imbs-h1` is likely a pruning/search-shape improvement more than a
-cleaner-top-bucket ranking improvement over `isbm`.
+cleaner-top-bucket ranking improvement over `isbm`. The first explicitly
+recursive non-historical extension hierarchy, `recursive-clearance`, has also
+been tried and fails cleanly with roughly `33730` generated nodes and almost
+no MP pruning, so that specific coupling idea is not the answer.
 
 Verified smoke results:
 

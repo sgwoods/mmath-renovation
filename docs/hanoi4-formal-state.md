@@ -49,6 +49,9 @@ One benchmark rule should now stay explicit in this handoff:
 - the tower reaches the goal peg, or it does not
 - lower generated/expanded counts on a failed run are therefore diagnostic
   evidence, not benchmark progress by themselves
+- the first direct non-historical "recursive-clearance" hierarchy probe has
+  now been tried and also failed at the standard 20k bound, so that concrete
+  extension idea is recorded as explanatory rather than promising
 
 ## Best Current Runtime Path
 

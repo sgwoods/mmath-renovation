@@ -150,6 +150,7 @@
     ((imbs) '*imbs*)
     ((imbs-h1) '*imbs-h1*)
     ((imbs-hb) '*imbs-hb*)
+    ((recursive-clearance) '*recursive-clearance*)
     ((ibsm) '*ibsm*)
     ((isbm) '*isbm*)
     ((isbm-h1) '*isbm-h1*)
@@ -161,6 +162,7 @@
   (case hierarchy
     ((legacy-1991-default) *legacy-1991-k-list*)
     ((critical-list-2) *k-list-2*)
+    ((recursive-clearance) *recursive-clearance-k-list*)
     (t *k-list-1*)))
 
 (defun configure-historical-hanoi4 (hierarchy)

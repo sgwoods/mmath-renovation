@@ -56,6 +56,10 @@ case "$HIERARCHY" in
     CRIT_EXPR='*imbs-hb*'
     LW_EXPR='*k-list-1*'
     ;;
+  recursive-clearance)
+    CRIT_EXPR='*recursive-clearance*'
+    LW_EXPR='*recursive-clearance-k-list*'
+    ;;
   ibsm)
     CRIT_EXPR='*ibsm*'
     LW_EXPR="'(0 1 3 7)"
