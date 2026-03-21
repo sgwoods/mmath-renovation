@@ -8,6 +8,7 @@ details may still be missing from the restored comparison surface.
 It complements:
 
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
+- [Hanoi tree-ordering evidence](/Users/stevenwoods/mmath-renovation/docs/hanoi-tree-ordering-evidence.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
@@ -135,6 +136,11 @@ The stronger remaining possibilities are:
    it is worse on the representative recovered `isbm` cases, flips against the
    `legacy-1991-default` hierarchy at deeper bounds, and currently looks most
    plausible only on `critical-list-2` under weak-`POS`.
+   The preserved local batch corpus also now points the same way:
+   the recovered Hanoi experiment drivers and result logs appear to inherit the
+   default stack/`FIRST` selection mode unless explicitly changed, and we do
+   not currently have a matching preserved `hanoi-4` batcher corpus showing
+   tree as a dominant setting.
 
 So the most plausible missing ingredients are not domain-specific hacks. They
 are historically motivated control details that were present in the experiment

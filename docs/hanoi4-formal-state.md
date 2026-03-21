@@ -7,6 +7,7 @@ scratch.
 It complements:
 
 - [Hanoi-4 diagnosis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-diagnosis.md)
+- [Hanoi tree-ordering evidence](/Users/stevenwoods/mmath-renovation/docs/hanoi-tree-ordering-evidence.md)
 - [Hanoi-4 frontier quality](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-quality.md)
 - [Hanoi-4 frontier replay](/Users/stevenwoods/mmath-renovation/docs/hanoi4-frontier-replay.md)
 - [Hanoi-4 score sensitivity](/Users/stevenwoods/mmath-renovation/docs/hanoi4-score-sensitivity.md)
@@ -210,6 +211,17 @@ globally useful. It is whether the publication-era goal-ordering effects were
 meant to pair with a specific hierarchy-and-control family, most plausibly
 something closer to `critical-list-2` plus weak-`POS`, rather than with the
 current best `isbm` runtime path.
+
+The new archive-side note sharpens that question further:
+
+- tree mode is definitely real historical functionality
+- but the preserved Hanoi batch scripts and logs now look mostly stack-first
+  by default
+- and the local archive does not currently contain an analogous `hanoi-4`
+  batcher corpus showing tree as a dominant four-disk setting
+
+So tree ordering should still be treated as a valid historical comparison
+surface, but not as the leading missing ingredient in the four-disk story.
 
 ## Recommended Re-entry Point
 

@@ -188,6 +188,17 @@ So the immediate question is no longer just "does tree help?" It is:
 which hierarchy-and-control family was tree goal ordering historically meant
 to help?
 
+The newest archive-side evidence now constrains that further:
+
+- tree is definitely part of the historical control surface
+- but the preserved Hanoi batch scripts and result logs we have inspected are
+  mostly stack/`FIRST` by default
+- and there is no comparable preserved `hanoi-4` batcher corpus yet
+
+So tree should remain a live comparison mode, but not the main working
+hypothesis for the missing four-disk success unless stronger publication-side
+evidence turns up.
+
 The new frozen-frontier replay experiment now sharpens the immediate
 `hanoi-4` hypothesis further:
 
@@ -224,9 +235,10 @@ first. It is:
 
 1. tighten the publication-to-code mapping for the historically good four-disk
    hierarchy families
-2. determine whether thesis-era tree goal ordering matters specifically on a
-   `critical-list-2`-like weak-`POS` control family, rather than on either the
-   legacy default or the current representative `isbm` runs
+2. determine whether the publication-side tree-ordering discussion points to a
+   specific `critical-list-2`-like weak-`POS` family strongly enough to
+   outweigh the archive-side evidence that the preserved Hanoi runs were mostly
+   stack-first
 3. only then return to deeper `hanoi-4` runtime pushes inside that recovered
    control surface
 
