@@ -52,7 +52,7 @@ It complements:
 | Historical AbTweak snapshots | [historical/Abtweak](/Users/stevenwoods/mmath-renovation/historical/Abtweak) | No | Partially mined | Yes, as provenance/comparison | `Reference` | Frozen source basis for lineage and comparison, not integrated as parallel runnable trees. |
 | Alternate `reset-domain` / `defstep` framework | [working/abtweak-1993/Domains/driving.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/driving.lisp#L1), [working/abtweak-1993/Domains/newd.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/newd.lisp#L1), [working/abtweak-1993/Domains/scheduling.lisp](/Users/stevenwoods/mmath-renovation/working/abtweak-1993/Domains/scheduling.lisp#L1) | No | Limited | No | `Separate` | Deliberately outside the main operator-style restoration path. |
 | Adjacent historical systems | [historical/Mini-Tweak](/Users/stevenwoods/mmath-renovation/historical/Mini-Tweak), [historical/PlanMerge](/Users/stevenwoods/mmath-renovation/historical/PlanMerge), [historical/A-star](/Users/stevenwoods/mmath-renovation/historical/A-star), [historical/KautzPR](/Users/stevenwoods/mmath-renovation/historical/KautzPR), [historical/Mvl](/Users/stevenwoods/mmath-renovation/historical/Mvl) | No | Minimal/probe only | No | `Separate` | Cataloged context, not integrated into the main restored system. |
-| Historical import noise / duplicate archival material | [historical/__MACOSX](/Users/stevenwoods/mmath-renovation/historical/__MACOSX), [historical/PlanMerge2](/Users/stevenwoods/mmath-renovation/historical/PlanMerge2) | No | No | No | `Reference` | Preserved for provenance; not part of the active restoration story. |
+| Historical import noise / duplicate archival material | [historical/__MACOSX](/Users/stevenwoods/mmath-renovation/historical/__MACOSX), [historical/PlanMerge2](/Users/stevenwoods/mmath-renovation/historical/PlanMerge2) | No | No | No | `Reference` | Explicitly redundant or packaging-only archival material; preserved for provenance, not for go-forward restoration value. |
 
 ## Current Read
 
@@ -68,6 +68,12 @@ The repo is not yet complete in the broader historical sense:
 - the alternate framework is still separate
 - adjacent systems are cataloged rather than integrated
 - some archival imports are preserved as provenance rather than active assets
+
+The current archival split should be read as:
+
+- `PlanMerge2` and `__MACOSX`: redundant/provenance-only
+- `PlanMerge`, `Mini-Tweak`, `A-star`, `KautzPR`, `Mvl`: separate, but still
+  potentially valuable historical material
 
 ## Update Rule
 

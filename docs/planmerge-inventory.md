@@ -49,6 +49,19 @@ At the moment, the safest interpretation is:
 - Do not mix this code into the active AbTweak restoration path without a
   separate review.
 
+## Redundancy Status
+
+At the current state of the repository:
+
+- [historical/PlanMerge](/Users/stevenwoods/mmath-renovation/historical/PlanMerge)
+  should be treated as the potentially valuable archival copy
+- [historical/PlanMerge2](/Users/stevenwoods/mmath-renovation/historical/PlanMerge2)
+  should be treated as a redundant duplicate preserved only for provenance
+
+So `PlanMerge2` is no longer just "possibly duplicate" in the practical repo
+sense. It is now explicitly labeled as the redundant copy unless later evidence
+changes that interpretation.
+
 ## Open Questions
 
 1. whether `PlanMerge` was used with AbTweak outputs, or is a separate planning

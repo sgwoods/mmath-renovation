@@ -126,6 +126,18 @@ Current recommendation:
 - continue to label them explicitly as non-primary
 - avoid treating them as active restoration material
 
+More specifically:
+
+- [historical/PlanMerge2](/Users/stevenwoods/mmath-renovation/historical/PlanMerge2)
+  and [historical/__MACOSX](/Users/stevenwoods/mmath-renovation/historical/__MACOSX)
+  should now be read as redundant or packaging-only archival material
+- [historical/PlanMerge](/Users/stevenwoods/mmath-renovation/historical/PlanMerge),
+  [historical/Mini-Tweak](/Users/stevenwoods/mmath-renovation/historical/Mini-Tweak),
+  [historical/A-star](/Users/stevenwoods/mmath-renovation/historical/A-star),
+  [historical/KautzPR](/Users/stevenwoods/mmath-renovation/historical/KautzPR),
+  and [historical/Mvl](/Users/stevenwoods/mmath-renovation/historical/Mvl)
+  remain separate but potentially useful historical systems
+
 ## Recommended Semantic Map
 
 This is the intended mental model of the repo.
@@ -140,6 +152,13 @@ This is the intended mental model of the repo.
 | Formal interpretation and validation | [docs](/Users/stevenwoods/mmath-renovation/docs) | status, plans, crosswalks, structure reviews |
 | Non-tested or non-integrated systems | [historical](/Users/stevenwoods/mmath-renovation/historical) | Mini-Tweak, PlanMerge, A-star, alternate framework inputs |
 | Publication/reference basis | [publications](/Users/stevenwoods/mmath-renovation/publications) | papers, thesis, archival package page |
+
+Within `historical/`, the practical distinction should be:
+
+- potentially useful separate systems: `Mini-Tweak`, `PlanMerge`, `A-star`,
+  `KautzPR`, `Mvl`, and the `Abtweak/*` snapshots
+- redundant or packaging-only material: `PlanMerge2`, `__MACOSX`, Finder
+  metadata artifacts
 
 ## Current Structure Assessment
 

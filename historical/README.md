@@ -26,4 +26,24 @@ This directory contains the unpacked AbTweak snapshots imported from the uploade
 - `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl` are preserved as adjacent historical research/code workspaces, not as part of the main AbTweak snapshot line.
 - `PlanMerge` and `PlanMerge2` are preserved as adjacent historical Lisp workspaces, not as part of the main AbTweak snapshot line. They currently appear identical except for Finder metadata and should be treated as archival reference material until their exact provenance is clearer.
 
+## Redundant vs. Potentially Valuable Archival Material
+
+The following directories are currently treated as redundant archival imports:
+
+- `PlanMerge2`: duplicate archival copy of `PlanMerge` unless contrary provenance appears later
+- `__MACOSX`: macOS packaging artifact directory from the recovered archive, not source material
+
+These are preserved for provenance only and should not be used as primary
+reference trees.
+
+The following directories still have potential go-forward archival value even
+though they are not part of the active restored baseline:
+
+- `historical/Abtweak/*`: primary provenance basis for the AbTweak code line
+- `A-star`
+- `Mini-Tweak`
+- `KautzPR`
+- `Mvl`
+- `PlanMerge`
+
 For the comparative review and recommended starting points, see [docs/snapshot-inventory.md](../docs/snapshot-inventory.md). For the broader archival side systems now preserved alongside AbTweak, see [docs/historical-adjacent-systems.md](../docs/historical-adjacent-systems.md).

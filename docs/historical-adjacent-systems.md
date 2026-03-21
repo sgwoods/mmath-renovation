@@ -19,6 +19,23 @@ a dedicated restoration track for them.
 | [historical/PlanMerge](/Users/stevenwoods/mmath-renovation/historical/PlanMerge) | Small April 1990 plan-merge workspace | [merge.good.lsp](/Users/stevenwoods/mmath-renovation/historical/PlanMerge/merge.good.lsp#L1), [AA_IN-OUT_LOG](/Users/stevenwoods/mmath-renovation/historical/PlanMerge/AA_IN-OUT_LOG#L1), and KCL-era [Backups/output.run](/Users/stevenwoods/mmath-renovation/historical/PlanMerge/Backups/output.run#L1) survive | Adjacent planning experiment code; provenance still open |
 | [historical/PlanMerge2](/Users/stevenwoods/mmath-renovation/historical/PlanMerge2) | Duplicate archival copy of `PlanMerge` pending contrary evidence | File comparison currently shows no content differences beyond `.DS_Store` | Preserve, but treat `PlanMerge` as canonical for reading |
 
+## Explicit Redundancy Status
+
+Some historical imports are still worth preserving as separate archival trees
+even though they are not integrated:
+
+- `historical/A-star`
+- `historical/Mini-Tweak`
+- `historical/KautzPR`
+- `historical/Mvl`
+- `historical/PlanMerge`
+
+By contrast, the following are currently treated as redundant archival material
+that should remain preserved but not treated as active go-forward source bases:
+
+- [historical/PlanMerge2](/Users/stevenwoods/mmath-renovation/historical/PlanMerge2)
+- [historical/__MACOSX](/Users/stevenwoods/mmath-renovation/historical/__MACOSX)
+
 ## Notes By System
 
 ### `A-star`
