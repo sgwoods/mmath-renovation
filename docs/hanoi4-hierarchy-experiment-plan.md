@@ -237,6 +237,15 @@ Rationale:
 - tests whether the main problem in the default family is not “top-down” per
   se, but the sharpness of the `H` transition
 
+Initial result:
+
+- implemented in the working tree and tested at the standard 20k bound
+- weak-`POS`, stack, no Left-Wedge: `35217` generated
+- weak-`POS`, stack, Left-Wedge: `36982` generated
+- MP pruning remains absent in both runs
+- so this conservative grouped-top default-family follow-up does not improve
+  on `critical-list-1`, and Left-Wedge makes it clearly worse
+
 ### A6. `legacy-1991-default` follow-up family
 
 Idea:
@@ -402,8 +411,9 @@ The best next hierarchy experiment is now:
   target
 - treat `imbs-h1` as a useful diagnostic comparison family, not as the new
   benchmark leader
-- move to a conservative default-family follow-up rather than another grouped
-  or explicit-`H` `IMBS` variant right away
+- treat `critical-list-1h-lite` as a completed negative result
+- if the next hierarchy move stays in the historical-analogue bucket, prefer a
+  `legacy-1991-default` follow-up over another `critical-list-1` softening
 
 That is now the cleanest follow-up to the current working hypothesis:
 

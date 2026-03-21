@@ -274,6 +274,13 @@ The first three explicit-`H` analogue probes are now implemented and measured:
     `EXPAND-LIMIT-EXCEEDED` at `241472` generated
   - so `imbs-h1` is not currently a better `hanoi-4` solving path under the
     stronger historical controls
+- the conservative default-family follow-up `critical-list-1h-lite` is now
+  also implemented and tested:
+  - no Left-Wedge: `35217` generated
+  - with Left-Wedge: `36982` generated
+  - MP pruning stays `0`
+  - so softening the `critical-list-1` top-down `H` transition by grouping
+    `H` with `B` does not improve the default-family path
 - `imbs-hb` now runs too, but it is much weaker than `imbs-h1`:
   - no Left-Wedge: `26598` generated versus `24132` for `imbs-h1`
   - with Left-Wedge: `33415` generated versus `23810` for `imbs-h1`

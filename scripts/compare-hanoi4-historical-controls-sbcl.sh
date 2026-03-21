@@ -194,6 +194,12 @@ print_row critical-list-1 weak pos nil stack t "$log_file"
 log_file=$(run_case critical-list-1 weak pos nil tree t critical-list-1-weak-pos-tree-lw)
 print_row critical-list-1 weak pos nil tree t "$log_file"
 
+log_file=$(run_case critical-list-1h-lite weak pos nil stack nil critical-list-1h-lite-weak-pos-stack)
+print_row critical-list-1h-lite weak pos nil stack nil "$log_file"
+
+log_file=$(run_case critical-list-1h-lite weak pos nil stack t critical-list-1h-lite-weak-pos-stack-lw)
+print_row critical-list-1h-lite weak pos nil stack t "$log_file"
+
 log_file=$(run_case critical-list-2 weak pos nil stack t critical-list-2-weak-pos-stack-lw)
 print_row critical-list-2 weak pos nil stack t "$log_file"
 

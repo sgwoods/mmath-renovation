@@ -105,6 +105,10 @@ The more specific takeaway is:
    matches the weak-`NEC` expanded/generated counts while shifting the pruning
    attribution from `mp-pruned` to `strong-mp-pruned`.
 8. crit-depth remains clearly worse than weak MSP for both `ismb` and `isbm`.
+9. the conservative default-family follow-up `critical-list-1h-lite` is also
+   now tested and is not an improvement:
+   `35217` generated under weak-`POS` without Left-Wedge,
+   `36982` with Left-Wedge, and `0` MP prunes in both runs.
 
 The report script now also exposes `Determine` and `Left-Wedge` columns, so it
 can include representative non-default rows such as the restored tree-ordering

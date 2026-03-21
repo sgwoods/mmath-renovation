@@ -292,6 +292,13 @@ The newest historical-combination review narrows the remaining uncertainty:
   - both runs still fail, with almost no MP pruning
   - so coupling all `H`-move clearance predicates together at the top level is
     not enough, and may actually wash out the useful hierarchy signal
+- the conservative default-family follow-up `critical-list-1h-lite` is now
+  also tested:
+  - weak-`POS`, stack, no Left-Wedge: `35217` generated
+  - weak-`POS`, stack, Left-Wedge: `36982` generated
+  - MP pruning remains `0` in both runs
+  - so softening the pure `H > B > M > S` drop by grouping `H` with `B`
+    does not improve the default-family line either
 - the strongest current reconstructed four-disk path, `isbm + weak-POS +
   Left-Wedge`, is historically plausible but not yet proven to be the same as
   the publication's best hierarchy family

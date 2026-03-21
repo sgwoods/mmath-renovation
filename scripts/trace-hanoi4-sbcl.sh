@@ -36,6 +36,10 @@ case "$HIERARCHY" in
     CRIT_EXPR='*critical-list-1*'
     LW_EXPR='*k-list-1*'
     ;;
+  critical-list-1h-lite)
+    CRIT_EXPR='*critical-list-1h-lite*'
+    LW_EXPR='*k-list-1*'
+    ;;
   critical-list-2)
     CRIT_EXPR='*critical-list-2*'
     LW_EXPR='*k-list-2*'

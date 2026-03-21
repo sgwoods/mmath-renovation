@@ -97,6 +97,16 @@
    (0  (not ons $) (ons $) )
 ))
 
+; conservative default-family follow-up.
+; This keeps the overall top-down shape of critical-list-1, but softens the
+; pure H > B > M > S drop by grouping H with B.
+(setq *critical-list-1h-lite* '(
+   (4 (ispeg $))
+   (3  (not onh $) (onh $) (not onb $) (onb $) )
+   (2  (not onm $) (onm $) )
+   (1  (not ons $) (ons $) )
+))
+
 (setq *ismb* '(
    (3 (ispeg $))			
    (2  (not ons $) (ons $) )

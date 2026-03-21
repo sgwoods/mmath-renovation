@@ -132,6 +132,9 @@ Left-Wedge follow-up now settles the next question too: `imbs-h1` still does
 not solve, still trails `isbm` at `50000` and `100000`, and at `200000`
 needs a larger SBCL heap just to reach a clean bounded failure. So it should
 be treated as a diagnostic hierarchy, not as the new main `hanoi-4` target.
+The conservative default-family follow-up `critical-list-1h-lite` is now also
+tested and is clearly not the answer either: `35217` generated without
+Left-Wedge, `36982` with Left-Wedge, and no MP pruning in either run.
 
 Verified smoke results:
 

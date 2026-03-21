@@ -69,7 +69,10 @@ It complements:
    than the next benchmark leader. The first direct recursive-coupling
    extension hierarchy also failed quickly, so the next hierarchy ideas should
    be more selective than simply grouping the active disk-goal with all of its
-   clearance predicates.
+   clearance predicates. The conservative default-family follow-up
+   `critical-list-1h-lite` is now also a negative result: it fails with
+   `35217` generated without Left-Wedge and `36982` with Left-Wedge, with no
+   MP pruning in either run.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle
