@@ -12,6 +12,45 @@ PUBLIC_DASHBOARD="$PUBLIC_PAGES_DIR/mmath-renovation-release-dashboard.html"
 PUBLIC_PROJECT_PAGE="$PUBLIC_PAGES_DIR/mmath-renovation.html"
 PUBLIC_STATUS_DIR="$PUBLIC_PAGES_DIR/data/projects"
 PUBLIC_STATUS_FILE="$PUBLIC_STATUS_DIR/mmath-renovation.json"
+TMP_DIR=""
+
+cleanup() {
+  if [ -n "$TMP_DIR" ] && [ -d "$TMP_DIR" ]; then
+    rm -rf "$TMP_DIR"
+  fi
+}
+
+capture_status_paths() {
+  output_file=$1
+  git -C "$PUBLIC_PAGES_DIR" status --porcelain --untracked-files=all \
+    | sed 's/^...//' \
+    | sort -u >"$output_file"
+}
+
+check_newly_dirty_paths() {
+  before_file=$1
+  after_file=$2
+
+  awk '
+    NR == FNR { before[$0] = 1; next }
+    !before[$0] { print $0 }
+  ' "$before_file" "$after_file" >"$TMP_DIR/newly-dirty.txt"
+
+  if [ ! -s "$TMP_DIR/newly-dirty.txt" ]; then
+    return 0
+  fi
+
+  while IFS= read -r path; do
+    case "$path" in
+      mmath-renovation-release-dashboard.html|mmath-renovation.html|data/projects/mmath-renovation.json)
+        ;;
+      *)
+        echo "Refusing to continue: sync introduced a newly dirty non-MMath path: $path" >&2
+        exit 1
+        ;;
+    esac
+  done <"$TMP_DIR/newly-dirty.txt"
+}
 
 if [ ! -d "$PUBLIC_PAGES_DIR" ]; then
   echo "Public Pages directory not found, skipping sync: $PUBLIC_PAGES_DIR"
@@ -27,8 +66,14 @@ version=$(tr -d ' \n\r' <"$VERSION_FILE")
 today=$(date +"%B %d, %Y")
 repo_pushed_at=$(TZ=UTC git -C "$REPO_ROOT" log -1 --date=format-local:%Y-%m-%dT%H:%M:%SZ --format=%cd)
 status_generated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/mmath-public-sync.XXXXXX")
+trap cleanup EXIT INT TERM
 
 mkdir -p "$PUBLIC_STATUS_DIR"
+
+if git -C "$PUBLIC_PAGES_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  capture_status_paths "$TMP_DIR/status-before.txt"
+fi
 
 cp "$DASHBOARD_SOURCE" "$PUBLIC_DASHBOARD"
 cp "$PROJECT_PAGE_SOURCE" "$PUBLIC_PROJECT_PAGE"
@@ -53,5 +98,10 @@ cat >"$PUBLIC_STATUS_FILE" <<EOF
   "focus_value": "Hanoi-4 extension benchmark"
 }
 EOF
+
+if git -C "$PUBLIC_PAGES_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  capture_status_paths "$TMP_DIR/status-after.txt"
+  check_newly_dirty_paths "$TMP_DIR/status-before.txt" "$TMP_DIR/status-after.txt"
+fi
 
 echo "Synced public release pages to: $PUBLIC_PAGES_DIR"

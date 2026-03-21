@@ -1,8 +1,8 @@
 # Release Summary: 0.10.0-beta.1
 
-- Timestamp (UTC): `2026-03-21T20:04:34Z`
+- Timestamp (UTC): `2026-03-21T20:11:48Z`
 - Git branch: `main`
-- Source git commit captured by snapshot: `fc40926e74fe6a7e48c3c59b03ef3c6c41d6ba9a`
+- Source git commit captured by snapshot: `e27a4a59afe090c049829bcc4bfce5da34db3955`
 - Version: `0.10.0-beta.1`
 
 This release snapshot captures the checked-in documentation and benchmark

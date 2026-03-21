@@ -100,6 +100,8 @@ The same release step now also calls
 when the local Pages checkout is present, so the public dashboard and linked
 MMath project page stay synchronized with the numbered checkpoint, and the
 MMath public-status manifest is refreshed for the shared homepage renderer.
+That sync step now also includes a scope guard: it refuses to continue if it
+would newly dirty any non-MMath path in the shared Pages checkout.
 
 ## Suggested Release Cadence
 
@@ -142,6 +144,7 @@ That step now also:
 - writes the MMath status manifest at
   [data/projects/mmath-renovation.json](/Users/stevenwoods/GitPages/public/data/projects/mmath-renovation.json)
   for the shared homepage renderer
+- checks that the sync did not newly dirty any non-MMath Pages file
 
 6. Commit the release prep.
 7. Create and push an annotated git tag from the release-prep commit:
