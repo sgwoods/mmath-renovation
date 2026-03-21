@@ -20,6 +20,7 @@ It complements:
 - [Hanoi-4 historical fidelity of the accounting split](/Users/stevenwoods/mmath-renovation/docs/hanoi4-historical-fidelity-of-accounting.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
+- [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi search baselines](/Users/stevenwoods/mmath-renovation/analysis/hanoi-baselines/README.md)
@@ -229,6 +230,12 @@ The new archive-side note sharpens that question further:
 
 So tree ordering should still be treated as a valid historical comparison
 surface, but not as the leading missing ingredient in the four-disk story.
+
+The next disciplined hierarchy-design step is now captured separately in
+[Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md),
+which splits historically grounded analogue hierarchies from later named
+strategy extensions and recommends `isbm-h1` as the first new four-disk
+hierarchy candidate to test.
 
 ## Recommended Re-entry Point
 

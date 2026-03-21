@@ -26,6 +26,7 @@ For deeper technical detail, see:
 - [Hanoi-4 headway assessment](/Users/stevenwoods/mmath-renovation/docs/hanoi4-headway-assessment.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
+- [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
 - [Hanoi-2 1990 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi2-1990-compatibility.md)
 - [Hanoi-4 strategy crosswalk](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
@@ -110,6 +111,9 @@ restored `hanoi-3` family, with exact row-level reproduction across the main
 thesis hierarchy table and qualitative agreement on the thesis `>6000` rows.
 The later `hanoi-4` family now has an explicit mapping note that separates
 exact three-disk publication labels from the closest four-disk code analogues.
+The next hierarchy-design step for that open four-disk benchmark is now also
+formalized, with a baseline-safe analogue bucket and a separate named-extension
+bucket.
 
 Verified smoke results:
 

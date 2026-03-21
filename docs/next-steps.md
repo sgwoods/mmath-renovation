@@ -27,6 +27,7 @@ It complements:
 - [Hanoi-3 1991 compatibility layer](/Users/stevenwoods/mmath-renovation/docs/hanoi3-1991-compatibility.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
+- [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -48,6 +49,9 @@ It complements:
    `isbm` is no longer just the cleaner-frontier comparison case; by `50000`
    and `100000` it is also slightly ahead of `ismb` on raw generated nodes,
    and re-enabling Left-Wedge improves that stronger `isbm` line again.
+   The next disciplined sub-step is now a hierarchy-design pass with clear
+   restoration boundaries, starting with historically grounded analogue
+   variants such as `isbm-h1` before any named non-historical strategy work.
    The new external Hanoi BFS/DFS/A* baseline also now solves standard
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle
