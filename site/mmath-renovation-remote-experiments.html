@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMath Remote Experiments</title>
+    <style>
+        :root {
+            --bg: #07131f;
+            --bg2: #10253b;
+            --card: rgba(7, 19, 31, 0.72);
+            --line: rgba(135, 197, 255, 0.24);
+            --text: #eff7ff;
+            --muted: #9cc4df;
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+            --accent: #79b8ff;
+            --good: #67e6a8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: "Avenir Next", "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(103, 230, 168, 0.18), transparent 26%),
+                radial-gradient(circle at top right, rgba(121, 184, 255, 0.22), transparent 32%),
+                linear-gradient(160deg, var(--bg), var(--bg2));
+            min-height: 100vh;
+        }
+
+        a { color: #d9f7ff; }
+
+        .shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 72px;
+        }
+
+        .topbarWrap {
+            border-top: 1px solid rgba(177, 222, 255, 0.18);
+            border-bottom: 1px solid rgba(177, 222, 255, 0.18);
+            background: rgba(7, 19, 31, 0.16);
+            margin-bottom: 26px;
+        }
+
+        .topbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 26px 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .hero,
+        .panel {
+            border: 1px solid rgba(177, 222, 255, 0.18);
+            border-radius: 28px;
+            background:
+                linear-gradient(160deg, rgba(12, 34, 54, 0.88), rgba(7, 19, 31, 0.72)),
+                radial-gradient(circle at 20% 0%, rgba(103, 230, 168, 0.14), transparent 32%);
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 36px 34px 32px;
+        }
+
+        .siteHomeLink,
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: rgba(121, 184, 255, 0.18);
+            border: 1px solid rgba(121, 184, 255, 0.28);
+            color: #eff7ff;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+        }
+
+        .siteHomeLink {
+            padding: 16px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(177, 222, 255, 0.18);
+            color: #d7ecff;
+            font-size: 13px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #d7ecff;
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 18px 0 10px;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: .95;
+            letter-spacing: -0.04em;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p, .panel p, li {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .hero p {
+            max-width: 780px;
+            font-size: 18px;
+        }
+
+        .meta, .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .meta {
+            margin-top: 28px;
+        }
+
+        .metaCard, .card {
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .metaLabel {
+            display: block;
+            color: #8fb3cc;
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .metaValue {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .metaNote {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .panel {
+            margin-top: 22px;
+            padding: 28px;
+            background: rgba(7, 19, 31, 0.68);
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .code {
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: rgba(5, 12, 18, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-family: "SFMono-Regular", "Menlo", monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            color: #d8f0ff;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(103, 230, 168, 0.14);
+            border: 1px solid rgba(103, 230, 168, 0.22);
+            color: #dfffee;
+            font-size: 13px;
+            letter-spacing: .03em;
+        }
+
+        .footer {
+            margin-top: 18px;
+            color: #8db0c8;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 720px) {
+            .shell { padding: 0 14px 54px; }
+            .topbar {
+                padding: 18px 14px 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero, .panel { padding: 24px 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbarWrap">
+        <div class="topbar">
+            <span class="eyebrow">Remote Experiments</span>
+            <a class="siteHomeLink" href="https://sgwoods.github.io/public">Steven Woods</a>
+        </div>
+    </div>
+    <main class="shell">
+        <section class="hero">
+            <h1>Run MMath Experiments Remotely</h1>
+            <p>This page is the lightweight browser guide for the GitHub Actions runner behind the AbTweak restoration. It uses the same curated experiment vocabulary as the local harness, so you can trigger safe runs, reports, and trace workflows remotely and download the results as artifacts.</p>
+            <div class="meta">
+                <div class="metaCard">
+                    <span class="metaLabel">Backend</span>
+                    <span class="metaValue">GitHub Actions</span>
+                    <div class="metaNote">Free remote trigger, hosted SBCL execution, logs, and artifacts.</div>
+                </div>
+                <div class="metaCard">
+                    <span class="metaLabel">Scope</span>
+                    <span class="metaValue">Curated only</span>
+                    <div class="metaNote">Named `run`, `report`, `trace`, and preset experiment sets only.</div>
+                </div>
+                <div class="metaCard">
+                    <span class="metaLabel">Current focus</span>
+                    <span class="metaValue">Hanoi-4 support</span>
+                    <div class="metaNote">The strongest solve-oriented line remains `isbm + weak-POS + stack + Left-Wedge`.</div>
+                </div>
+                <div class="metaCard">
+                    <span class="metaLabel">Updated</span>
+                    <span class="metaValue">March 22, 2026</span>
+                    <div class="metaNote">This guide is build-synced from the main repository.</div>
+                </div>
+            </div>
+            <div class="links">
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation/actions/workflows/remote-experiment.yml">Run single experiment</a>
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation/actions/workflows/remote-experiment-set.yml">Run experiment set</a>
+                <a class="button" href="https://github.com/sgwoods/mmath-renovation/blob/main/docs/github-actions-remote-experiments.md">Open repo guide</a>
+                <a class="button" href="mmath-renovation.html">Back to project page</a>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>How It Works</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>1. Pick a workflow</h3>
+                    <p>Choose either the single-experiment workflow or a preset experiment-set workflow in GitHub Actions.</p>
+                </article>
+                <article class="card">
+                    <h3>2. Select a curated name</h3>
+                    <p>Use only the predefined harness names listed below. No arbitrary shell or Lisp input is accepted.</p>
+                </article>
+                <article class="card">
+                    <h3>3. Download artifacts</h3>
+                    <p>Each run publishes a compact summary plus plain output, JSON output where available, and trace artifacts for trace workflows.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Single Experiment Inputs</h2>
+            <p>Use the <code>Remote experiment</code> workflow with:</p>
+            <div class="code">kind = status | run | report | trace
+name = curated harness name, or "-" for status</div>
+            <h3>Curated `run` cases</h3>
+            <p>
+                <span class="tag">blocks-sussman-abtweak</span>
+                <span class="tag">blocks-sussman-tweak</span>
+                <span class="tag">hanoi2-abtweak</span>
+                <span class="tag">hanoi3-abtweak</span>
+                <span class="tag">hanoi4-5peg-isbm-weak-pos-lw</span>
+                <span class="tag">robot2-abtweak</span>
+                <span class="tag">stylistics-abtweak</span>
+            </p>
+            <h3>Curated `report` names</h3>
+            <p>
+                <span class="tag">benchmark-status</span>
+                <span class="tag">hanoi2-historical</span>
+                <span class="tag">hanoi3-historical</span>
+                <span class="tag">hanoi4-historical</span>
+                <span class="tag">hanoi4-solve-candidates</span>
+                <span class="tag">hanoi4-score-sensitivity</span>
+                <span class="tag">wide-domain-sweep</span>
+            </p>
+            <h3>Curated `trace` names</h3>
+            <p>
+                <span class="tag">hanoi3</span>
+                <span class="tag">hanoi4</span>
+                <span class="tag">hanoi4-isbm-weak-pos-lw</span>
+                <span class="tag">hanoi4-legacy-1991</span>
+            </p>
+        </section>
+
+        <section class="panel">
+            <h2>Preset Experiment Sets</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>`status-snapshot`</h3>
+                    <p>Runs the short status summary plus the benchmark-status report. Best for a quick “where are we now?” check.</p>
+                </article>
+                <article class="card">
+                    <h3>`hanoi4-focused`</h3>
+                    <p>Runs the current narrow `hanoi-4` comparison set: solve candidates, historical-control report, and score-sensitivity report.</p>
+                </article>
+                <article class="card">
+                    <h3>`publication-surface`</h3>
+                    <p>Runs the lower-Hanoi publication-facing reports and the benchmark-status report.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>What You Get Back</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Job summary</h3>
+                    <p>A short markdown summary appears directly in the GitHub Actions run view.</p>
+                </article>
+                <article class="card">
+                    <h3>Machine-readable output</h3>
+                    <p>When the underlying harness supports it, the artifact bundle includes JSON alongside the plain run or report output.</p>
+                </article>
+                <article class="card">
+                    <h3>Trace artifacts</h3>
+                    <p>Trace workflows include the copied trace directory so you can inspect frontier, score, and lineage outputs offline.</p>
+                </article>
+            </div>
+            <p class="footer">This remote surface is intentionally conservative. A later phase can add a richer domain-definition UI, but the current goal is simply: select, run, and inspect results.</p>
+        </section>
+    </main>
+</body>
+</html>

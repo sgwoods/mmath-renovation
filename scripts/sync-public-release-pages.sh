@@ -8,8 +8,10 @@ PUBLIC_PAGES_DIR=${PUBLIC_PAGES_DIR:-/Users/stevenwoods/GitPages/public}
 VERSION_FILE="$REPO_ROOT/VERSION"
 DASHBOARD_SOURCE="$REPO_ROOT/site/mmath-renovation-release-dashboard.html"
 PROJECT_PAGE_SOURCE="$REPO_ROOT/site/mmath-renovation-public-page.html"
+REMOTE_GUIDE_SOURCE="$REPO_ROOT/site/mmath-renovation-remote-experiments.html"
 PUBLIC_DASHBOARD="$PUBLIC_PAGES_DIR/mmath-renovation-release-dashboard.html"
 PUBLIC_PROJECT_PAGE="$PUBLIC_PAGES_DIR/mmath-renovation.html"
+PUBLIC_REMOTE_GUIDE="$PUBLIC_PAGES_DIR/mmath-renovation-remote-experiments.html"
 PUBLIC_STATUS_DIR="$PUBLIC_PAGES_DIR/data/projects"
 PUBLIC_STATUS_FILE="$PUBLIC_STATUS_DIR/mmath-renovation.json"
 TMP_DIR=""
@@ -42,7 +44,7 @@ check_newly_dirty_paths() {
 
   while IFS= read -r path; do
     case "$path" in
-      mmath-renovation-release-dashboard.html|mmath-renovation.html|data/projects/mmath-renovation.json)
+      mmath-renovation-release-dashboard.html|mmath-renovation.html|mmath-renovation-remote-experiments.html|data/projects/mmath-renovation.json)
         ;;
       *)
         echo "Refusing to continue: sync introduced a newly dirty non-MMath path: $path" >&2
@@ -77,6 +79,7 @@ fi
 
 cp "$DASHBOARD_SOURCE" "$PUBLIC_DASHBOARD"
 cp "$PROJECT_PAGE_SOURCE" "$PUBLIC_PROJECT_PAGE"
+cp "$REMOTE_GUIDE_SOURCE" "$PUBLIC_REMOTE_GUIDE"
 
 perl -0pi -e 's/Public project note: active restoration work is underway\..*?Hanoi-4 remains the main open extension benchmark\./Public project note: active restoration work is underway. As of '"$today"', the repository is at `'"$version"'`, with exact lower-Hanoi reproduction, broad operator-style benchmark coverage, and a dedicated release dashboard tracking the road to `1.0.0`. Hanoi-4 remains the main open extension benchmark./s' "$PUBLIC_PROJECT_PAGE"
 
@@ -89,7 +92,7 @@ cat >"$PUBLIC_STATUS_FILE" <<EOF
   "project_page_path": "mmath-renovation.html",
   "repo_url": "https://github.com/sgwoods/mmath-renovation",
   "dashboard_url": "https://sgwoods.github.io/public/mmath-renovation-release-dashboard.html",
-  "experience_url": null,
+  "experience_url": "https://sgwoods.github.io/public/mmath-renovation-remote-experiments.html",
   "repo_pushed_at": "$repo_pushed_at",
   "status_generated_at": "$status_generated_at",
   "status_label": "Current release",
