@@ -45,7 +45,7 @@ It should not finish as:
 
 ## Current Roadmap
 
-The roadmap is now best understood as five tracks.
+The roadmap is now best understood as six tracks.
 
 ### Track 1: Core Restored Planner
 
@@ -127,6 +127,27 @@ Main remaining gap:
 
 - decide when or whether to open that phase relative to the main AbTweak restoration goal
 
+### Track 6: Public And Remote Interaction Surface
+
+Target:
+
+- one maintained public-facing status/dashboard/project surface
+- one safe remote experiment surface that exposes curated AbTweak choices
+  without exposing raw GitHub workflow details to the user
+
+Current state:
+
+- strong
+- the public project page, release dashboard, remote experiments guide, and
+  browser-facing remote UI now exist and are tied into the normal build/update
+  flow
+
+Main remaining gap:
+
+- improve domain/task/result readability in the remote UI, especially around
+  domain grouping, starting-state/goal explanation, and readable result
+  previews and history
+
 ## Where We Are Against The Goal
 
 The project is in a late pre-release restoration state.
@@ -152,6 +173,11 @@ The project is in a late pre-release restoration state.
   `historical/`, `publications/`, or `analysis/`
 - the thesis-gallery milestone is effectively complete, and the gallery is now
   a maintained publication-validation asset instead of an active project phase
+- the public-facing interaction layer is now real:
+  - project page
+  - release dashboard
+  - remote experiments guide
+  - hosted remote experiment UI backed by GitHub Actions
 
 ### Strong But Still Open
 
@@ -199,16 +225,21 @@ Recommended order from here:
    preserved as a validation asset, not expanded further unless a new
    publication-mapping need appears.
 
-4. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
+4. Keep the remote/public interaction surface maintained as a supporting track, not a replacement for the core benchmark work.
+   The browser-triggered remote UI is now a real project asset and should stay
+   aligned with the curated harness vocabulary and project status surfaces, but
+   it should support the restoration effort rather than become the main effort.
+
+5. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
    This is now secondary because the repo already has a strong baseline across
    blocks, Nilsson blocks, registers, robot, multiple sample domains, and the
    lower Hanoi families.
 
-5. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
+6. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
    That work is real, but it is a framework-restoration branch rather than a
    direct continuation of the main operator-style AbTweak baseline.
 
-6. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
+7. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
 
 ## Short Version
 

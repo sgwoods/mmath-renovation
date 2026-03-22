@@ -57,6 +57,7 @@ The project is no longer in a fragile bootstrap phase. It now has:
   historical artifacts
 - one explicit intake path for newly discovered material
 - one public release/dashboard/status surface
+- one hosted remote experiment UI layered on top of the same curated harness vocabulary
 
 The thesis-gallery milestone is now effectively complete. The gallery and
 inventory remain first-class validation artifacts, but they are no longer the
@@ -214,6 +215,8 @@ Useful caution:
 - the problem is binary: either the rings end up on the goal peg or they do not
 - lower node count on an unsolved run is diagnostic only unless it leads to a
   real solution or a much tighter causal explanation
+- the newest convergence check supports a conservative reading of the strongest
+  `isbm` line: it scales, but it is not yet clearly converging toward a solve
 
 ## Repository Structure
 
@@ -314,6 +317,7 @@ Main public surfaces:
 - public project page
 - release dashboard
 - public status manifest for the shared homepage renderer
+- hosted remote experiment UI
 
 The repo source and process for those are documented in:
 
@@ -331,6 +335,13 @@ The release snapshot build now refreshes:
 - the public MMath page
 - the public release dashboard
 - the MMath public status manifest
+
+The interaction split is now:
+
+- GitHub Actions remains the execution backend
+- the hosted UI exposes only curated AbTweak options
+- the public guide and project page explain how those remote runs fit into the
+  main restoration story
 
 ## Intake Workflow
 

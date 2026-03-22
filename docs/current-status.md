@@ -11,6 +11,7 @@ Current phase summary:
 - the thesis-gallery milestone is complete and now treated as a maintained release-facing validation asset
 - the active technical focus has returned to the narrow `hanoi-4` solve-oriented path
 - cheaper unsolved `hanoi-4` runs are treated as diagnostic only unless they materially tighten the explanation
+- the public and remote interaction layer is now a maintained supporting surface, including the hosted experiment UI
 
 For deeper technical detail, see:
 
@@ -26,6 +27,7 @@ For deeper technical detail, see:
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
+- [Hanoi-4 convergence check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-convergence-check.md)
 - [Domain inventory](/Users/stevenwoods/mmath-renovation/docs/domain-inventory.md)
 - [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
@@ -93,6 +95,9 @@ The clearest current top-level summary now lives in
   `run`, `status`, `report`, and `trace`
 - The same curated harness surface is now exposed remotely through GitHub
   Actions for browser-triggered runs and experiment-set presets
+- The project now also has a dedicated hosted remote UI for those curated
+  experiments, so public interaction is no longer limited to direct GitHub
+  workflow pages
 - A retained side-experiment comparison framework now exists for plain
   state-space Hanoi BFS/DFS/A* baselines
 - A new frozen-frontier replay report now exists for `hanoi-4`, exposed
@@ -109,7 +114,20 @@ The clearest current top-level summary now lives in
   `kval 2` branch and a concretized `kval 1` branch have nearly the same
   closure quality, but the concretized branch immediately wins on Left-Wedge
   score and stays favored as it drops to `kval 0`
-- Recommended next track: keep the release/build and validation surfaces current, push the strongest remaining `hanoi-4` path, then widen historically grounded coverage, then decide how much of the alternate `reset-domain` framework to revive
+- The newest `hanoi-4` convergence check now sharpens the current judgment:
+  - the strongest `isbm + weak-POS + stack + Left-Wedge` line still scales
+    better than the other live candidates
+  - but between `100000` and `200000`, the top frontier remains dominated by
+    dirty `kval 0` move skeletons
+  - the visible top-of-frontier progress is still mainly the same `ONS PEG3` /
+    `ONB PEG3` slice, just at larger scale
+  - so the current evidence supports explained bounded failure, not clear
+    convergence toward a solve
+- Recommended next track: keep the release/build, remote UI, and validation
+  surfaces current, push the strongest remaining `hanoi-4` path only when it
+  serves the binary solve question or materially tightens the explanation, then
+  widen historically grounded coverage, then decide how much of the alternate
+  `reset-domain` framework to revive
 
 ## Current Restoration Milestone
 

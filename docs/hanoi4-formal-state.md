@@ -22,6 +22,7 @@ It complements:
 - [Hanoi-4 publication to code mapping](/Users/stevenwoods/mmath-renovation/docs/hanoi4-publication-to-code-mapping.md)
 - [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
 - [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
+- [Hanoi-4 convergence check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-convergence-check.md)
 - [Hanoi-4 five-peg sanity check](/Users/stevenwoods/mmath-renovation/docs/hanoi4-five-peg-sanity-check.md)
 - [Hanoi-4 1991 compatibility start](/Users/stevenwoods/mmath-renovation/docs/hanoi4-1991-compatibility.md)
 - [Hanoi publication alignment](/Users/stevenwoods/mmath-renovation/docs/hanoi-publication-alignment.md)
@@ -80,6 +81,37 @@ The strongest current grouped-top analogue is:
 
 It is historically interesting and stronger than `legacy-1991-default`, but it
 is still clearly behind `isbm` on the binary benchmark.
+
+## Current Convergence Judgment
+
+The strongest live line is still the right one to keep testing, but the newest
+comparison between the `100000` and `200000` traces now supports a more
+conservative reading:
+
+- the line is scaling
+- it is not yet clearly converging
+
+At `100000`, the top frontier is still dominated by:
+
+- `kval 0`
+- cost `16`
+- length `18`
+- partial support centered on `ONS PEG3` and `ONB PEG3`
+
+At `200000`, the top frontier is still dominated by:
+
+- `kval 0`
+- cost `18`
+- length `20`
+- the same broad `ONS PEG3` / `ONB PEG3` visible-goal slice
+
+So the current best interpretation is:
+
+- the planner is reproducing the same ranking pathology at larger scale
+- the strongest live line still matters because it is the best current
+  candidate
+- but the benchmark state remains explained bounded failure, not obvious
+  near-solve convergence
 
 ## Strongest Current Findings
 

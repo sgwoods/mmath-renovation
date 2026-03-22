@@ -82,9 +82,14 @@ It complements:
    the common front door at
    [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
    is now good enough to treat as standard. The thesis gallery is feature-complete for the thesis figure set and should be regenerated through the normal release snapshot path rather than treated as a separate active milestone.
-3. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
-4. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
-5. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+3. Keep the public and remote interaction layer aligned with the same curated harness surface:
+   the project page, release dashboard, remote experiments guide, and hosted
+   UI now form a real supporting track. They should stay synchronized with the
+   actual harness vocabulary and current benchmark story, but they remain
+   supporting infrastructure rather than the main technical target.
+4. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
+5. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
+6. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 
@@ -135,6 +140,16 @@ The latest answer is:
 - the hierarchy itself is a big part of the cleaner `isbm` shape
 - weak-`POS` is what materially cuts away many dirty concretized `isbm` states
 - that improvement happens without changing the abstraction branching counts
+
+The newest convergence check narrows the interpretation again:
+
+- between `100000` and `200000`, the strongest `isbm` line keeps scaling in
+  raw search terms
+- but the top frontier is still led by dirty `kval 0` move skeletons
+- the dominant visible top-of-frontier progress is still mostly the same
+  `ONS PEG3` / `ONB PEG3` slice, just with longer and more expensive plans
+- so the current best judgment is still "best explained bounded failure,"
+  not "clear near-solve convergence"
 
 So the next recommended `hanoi-4` step is no longer another broad comparison.
 It is to inspect whether the current scorer can be nudged, instrumented, or

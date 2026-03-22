@@ -403,6 +403,15 @@ The best current classification for `hanoi-4` is:
 - best revisited next as a hierarchy-quality, heuristic-quality, and historical-validation problem rather than a fatal-runtime bug
 - current strongest historical-control path: `isbm` with weak-`POS` and Left-Wedge, because it improves further over the no-left-wedge `isbm` weak-`POS` line at `20000`, `50000`, and `100000`
 - even that strongest current path still reaches `EXPAND-LIMIT-EXCEEDED` at `200000`, with `234872` generated and `224678` MP prunes
+- the newest convergence check sharpens that further:
+  - at `100000`, the top frontier is still dominated by dirty `kval 0`,
+    cost-`16`, length-`18` move skeletons
+  - at `200000`, the top frontier is still dominated by dirty `kval 0`,
+    cost-`18`, length-`20` move skeletons
+  - the visible top-of-frontier progress is still mainly the same
+    `ONS PEG3` / `ONB PEG3` slice
+  - so the strongest current line is scaling, but not yet clearly converging
+    toward a full solve
 - plain `tweak` still does not solve `hanoi-4` in the restored code on the practical modes tested so far:
   - BFS still fails at the higher exploratory bounds
   - DFS with `:solution-limit 20` also fails at `50001` expanded / `50020` generated
