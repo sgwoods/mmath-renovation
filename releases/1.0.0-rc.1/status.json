@@ -1,0 +1,15 @@
+{
+  "kind": "status",
+  "families": [
+    {"family":"hanoi-2-lineage","status":"reproduced"},
+    {"family":"blocks-baseline","status":"reproduced"},
+    {"family":"hanoi-3","status":"reproduced"},
+    {"family":"hanoi-4","status":"partially-reproduced"},
+    {"family":"robot-with-user-heuristic","status":"reproduced"},
+    {"family":"registers-and-tiny-regressions","status":"reproduced"},
+    {"family":"macro-hanoi-variants","status":"reproduced"},
+    {"family":"shipped-operator-style-sample-domains","status":"reproduced"},
+    {"family":"1991-hanoi-msp-compatibility","status":"reproduced"},
+    {"family":"alternate-reset-domain-framework","status":"open"}
+  ]
+}
