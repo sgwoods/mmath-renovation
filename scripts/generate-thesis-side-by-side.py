@@ -22,6 +22,8 @@ THESIS_PDF = REPO_ROOT / "publications/1991 mmath thesis final.pdf"
 THESIS_RENDER_DIR = OUT_DIR / "_thesis-pages"
 
 PAGE_MAP = {
+    "figure-01": 3,
+    "figure-02": 3,
     "figure-03": 19,
     "figure-04": 20,
     "figure-05": 20,
@@ -34,6 +36,8 @@ PAGE_MAP = {
 }
 
 CROP_BOXES = {
+    "figure-01": (150, 170, 980, 850),
+    "figure-02": (150, 830, 980, 1500),
     "figure-03": (180, 430, 1010, 1260),
     "figure-04": (140, 220, 1010, 990),
     "figure-05": (140, 930, 1010, 1520),
@@ -270,6 +274,71 @@ def make_fig03_chart(path: Path) -> None:
     draw.text((112, 330), "Independent establisher", fill="#9cc4df", font=small_font)
     draw.text((756, 336), "Additional operator makes\njustification possible", fill="#86efac", font=small_font)
     draw.text((372, 608), "The White Knight protects the justification path\nwithout directly achieving the final goal.", fill="#d7e9f7", font=small_font)
+    canvas.save(path)
+
+
+def make_fig01_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current disjoint-commitment sketch", fill="#eff7ff", font=title_font)
+    draw.text((42, 82), "Modern explanatory counterpart to thesis Figure 1.", fill="#9cc4df", font=body_font)
+    panel = (60, 150, 1120, 760)
+    draw.rounded_rectangle(panel, radius=20, fill="#0f2538", outline="#32526a", width=2)
+
+    draw.rounded_rectangle((170, 255, 510, 575), radius=18, fill="#edf3f8", outline="#406780", width=3)
+    draw.rounded_rectangle((250, 225, 315, 255), radius=10, fill="#111827", outline="#111827")
+    draw.text((261, 230), "A NAIL", fill="#edf3f8", font=small_font)
+    draw.rectangle((295, 255, 315, 450), fill="#d7dee6", outline="#173042", width=2)
+    for y in range(260, 450, 12):
+        draw.line((295, y, 315, y + 10), fill="#8b9bab", width=1)
+        draw.line((315, y, 295, y + 10), fill="#8b9bab", width=1)
+    draw.rectangle((360, 350, 515, 375), fill="#f4efe4", outline="#173042", width=2)
+    draw.text((532, 350), "A HOLE", fill="#d7e9f7", font=small_font)
+
+    draw.rounded_rectangle((680, 240, 1060, 590), radius=18, fill="#14344d", outline="#507692", width=2)
+    draw.text((712, 270), "Planning consequence", fill="#eff7ff", font=body_font)
+    draw.rounded_rectangle((720, 330, 1018, 400), radius=14, fill="#1f4c6b", outline="#77a7c7", width=2)
+    draw.text((744, 353), "No causal interaction", fill="#eff7ff", font=body_font)
+    draw.rounded_rectangle((720, 430, 1018, 500), radius=14, fill="#1f4c6b", outline="#77a7c7", width=2)
+    draw.text((744, 453), "No ordering commitment needed", fill="#eff7ff", font=small_font)
+    draw.text((720, 548), "The planner can choose either action first\nwithout risking later backtracking.", fill="#9cc4df", font=small_font)
+    canvas.save(path)
+
+
+def make_fig02_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current interacting-commitment sketch", fill="#eff7ff", font=title_font)
+    draw.text((42, 82), "Modern explanatory counterpart to thesis Figure 2.", fill="#9cc4df", font=body_font)
+    panel = (60, 150, 1120, 760)
+    draw.rounded_rectangle(panel, radius=20, fill="#0f2538", outline="#32526a", width=2)
+
+    draw.rounded_rectangle((170, 255, 510, 575), radius=18, fill="#edf3f8", outline="#406780", width=3)
+    draw.rounded_rectangle((300, 225, 365, 255), radius=10, fill="#111827", outline="#111827")
+    draw.text((311, 230), "A NAIL", fill="#edf3f8", font=small_font)
+    draw.rectangle((345, 255, 365, 455), fill="#d7dee6", outline="#173042", width=2)
+    for y in range(260, 455, 12):
+        draw.line((345, y, 365, y + 10), fill="#8b9bab", width=1)
+        draw.line((365, y, 345, y + 10), fill="#8b9bab", width=1)
+    draw.rectangle((310, 350, 520, 375), fill="#f4efe4", outline="#173042", width=2)
+    draw.text((537, 350), "A HOLE", fill="#d7e9f7", font=small_font)
+
+    draw.rounded_rectangle((680, 240, 1060, 615), radius=18, fill="#14344d", outline="#507692", width=2)
+    draw.text((712, 270), "Planning consequence", fill="#eff7ff", font=body_font)
+    draw.rounded_rectangle((720, 330, 1018, 400), radius=14, fill="#6d1f1f", outline="#ef4444", width=2)
+    draw.text((760, 353), "Actions interact", fill="#fee2e2", font=body_font)
+    draw.rounded_rectangle((720, 430, 1018, 500), radius=14, fill="#7c2d12", outline="#fb923c", width=2)
+    draw.text((756, 453), "Ordering choice matters", fill="#ffedd5", font=small_font)
+    draw.rounded_rectangle((720, 530, 1018, 590), radius=14, fill="#1f4c6b", outline="#77a7c7", width=2)
+    draw.text((748, 552), "Least-commitment planning delays this choice", fill="#eff7ff", font=small_font)
     canvas.save(path)
 
 
@@ -531,6 +600,8 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     MPL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     render_thesis_pages()
+    chart01 = OUT_DIR / "figure-01-current-chart.png"
+    chart02 = OUT_DIR / "figure-02-current-chart.png"
     chart03 = OUT_DIR / "figure-03-current-chart.png"
     chart04 = OUT_DIR / "figure-04-current-chart.png"
     chart05 = OUT_DIR / "figure-05-current-chart.png"
@@ -540,6 +611,8 @@ def main() -> None:
     chart09 = OUT_DIR / "figure-09-current-chart.png"
     chart10 = OUT_DIR / "figure-10-current-chart.png"
     chart11 = OUT_DIR / "figure-11-current-chart.png"
+    make_fig01_chart(chart01)
+    make_fig02_chart(chart02)
     make_fig03_chart(chart03)
     make_fig04_chart(chart04)
     make_fig05_chart(chart05)
@@ -549,6 +622,8 @@ def main() -> None:
     make_fig09_chart(chart09)
     make_fig10_chart(chart10)
     make_fig11_chart(chart11)
+    final01 = OUT_DIR / "figure-01-side-by-side.png"
+    final02 = OUT_DIR / "figure-02-side-by-side.png"
     final03 = OUT_DIR / "figure-03-side-by-side.png"
     final04 = OUT_DIR / "figure-04-side-by-side.png"
     final05 = OUT_DIR / "figure-05-side-by-side.png"
@@ -558,6 +633,20 @@ def main() -> None:
     final09 = OUT_DIR / "figure-09-side-by-side.png"
     final10 = OUT_DIR / "figure-10-side-by-side.png"
     final11 = OUT_DIR / "figure-11-side-by-side.png"
+    combine_side_by_side(
+        "Figure 1: Thesis disjoint nail-and-hole vs current sketch",
+        crop_thesis_figure("figure-01"),
+        chart01,
+        final01,
+        "The right panel summarizes the planning meaning of a spatially disjoint case: no forced ordering commitment.",
+    )
+    combine_side_by_side(
+        "Figure 2: Thesis interacting nail-and-hole vs current sketch",
+        crop_thesis_figure("figure-02"),
+        chart02,
+        final02,
+        "The right panel summarizes the interacting case: the actions do interfere, so ordering becomes important.",
+    )
     combine_side_by_side(
         "Figure 3: Thesis White-Knight justification vs current sketch",
         crop_thesis_figure("figure-03"),
@@ -621,7 +710,7 @@ def main() -> None:
         final11,
         "The right panel shows the currently reproduced robot-domain claim: only the manual-style AbTweak path solves the representative cases.",
     )
-    make_contact_sheet([final03, final04, final05, final06, final07, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
+    make_contact_sheet([final01, final02, final03, final04, final05, final06, final07, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
 
 
 if __name__ == "__main__":

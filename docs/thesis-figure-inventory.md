@@ -22,8 +22,8 @@ Current mapped gallery:
 
 | Figure | Thesis caption | PDF page | Current status | Current evidence or gap |
 | --- | --- | ---: | --- | --- |
-| `1` | Spatially disjoint nail and hole | `2` | `Open` | Introductory illustrative figure. No maintained modern counterpart yet. |
-| `2` | Interacting nail and hole | `2` | `Open` | Introductory illustrative figure. No maintained modern counterpart yet. |
+| `1` | Spatially disjoint nail and hole | `3` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-01-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-01-side-by-side.png), with a modern explanatory sketch emphasizing the no-interaction case. |
+| `2` | Interacting nail and hole | `3` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-02-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-02-side-by-side.png), with a modern explanatory sketch emphasizing why ordering matters when actions interact. |
 | `3` | White Knight Justification | `19` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-03-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-03-side-by-side.png), with a modern explanatory sketch of the White-Knight justification idea. |
 | `4` | Separation Justification | `20` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-04-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-04-side-by-side.png), with a modern separation-justification sketch. |
 | `5` | Promotion Justification | `20` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-05-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-05-side-by-side.png), with a modern promotion-justification sketch. |
@@ -36,15 +36,14 @@ Current mapped gallery:
 
 ## Suggested Next Additions
 
-The next strongest candidates for extension are:
+The thesis figure set is now fully mapped into the maintained gallery.
 
-1. Figure `1` and Figure `2`, if we want the introduction sequence to be
-   complete for public readability.
-2. Figure `6` and Figure `7` are now the best template for adding other
-   non-numeric thesis figures: thesis source on the left, modern validated
-   explanatory counterpart on the right.
-3. A next deeper step would be to attach each maintained explanatory figure to
-   a more explicit theory note or code-path reference.
+Possible refinement work from here:
+
+1. attach each explanatory figure to a more explicit theory note or code-path
+   reference
+2. add a compact legend or navigation index to the gallery page
+3. reuse the same pattern for other publication or manual figures in the repo
 
 ## Maintenance Rule
 
