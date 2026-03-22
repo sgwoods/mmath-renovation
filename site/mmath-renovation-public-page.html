@@ -37,7 +37,24 @@
         .shell {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px 72px;
+            padding: 0 20px 72px;
+        }
+
+        .topbarWrap {
+            border-top: 1px solid rgba(177, 222, 255, 0.18);
+            border-bottom: 1px solid rgba(177, 222, 255, 0.18);
+            background: rgba(7, 19, 31, 0.16);
+            margin-bottom: 26px;
+        }
+
+        .topbar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 26px 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
         }
 
         .hero,
@@ -51,18 +68,14 @@
         }
 
         .hero {
-            position: relative;
             padding: 36px 34px 32px;
         }
 
         .siteHomeLink {
-            position: absolute;
-            top: 28px;
-            right: 30px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 16px;
+            padding: 16px 28px;
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(177, 222, 255, 0.18);
@@ -204,26 +217,31 @@
 
         @media (max-width: 720px) {
             .shell {
-                padding: 20px 14px 54px;
+                padding: 0 14px 54px;
+            }
+
+            .topbar {
+                padding: 18px 14px 22px;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .hero,
             .panel {
                 padding: 24px 22px;
             }
-
-            .siteHomeLink {
-                position: static;
-                margin-bottom: 18px;
-            }
         }
     </style>
 </head>
 <body>
+    <div class="topbarWrap">
+        <div class="topbar">
+            <span class="eyebrow">Public Project Page</span>
+            <a class="siteHomeLink" href="https://sgwoods.github.io/public">Steven Woods</a>
+        </div>
+    </div>
     <main class="shell">
         <section class="hero">
-            <a class="siteHomeLink" href="https://sgwoods.github.io/public">Steven Woods</a>
-            <span class="eyebrow">Public Project Page</span>
             <h1>Masters of Mathematics Renovation</h1>
             <p>A living restoration of Steven Woods' Masters of Mathematics AbTweak research code, rebuilt around a modern SBCL baseline while preserving the thesis, paper, and historical benchmark story as faithfully as possible.</p>
             <div class="meta">

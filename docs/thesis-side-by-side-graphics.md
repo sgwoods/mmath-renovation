@@ -14,6 +14,9 @@ For each item:
 
 Current gallery outputs:
 
+- [Figure 3 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-03-side-by-side.png)
+- [Figure 4 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-04-side-by-side.png)
+- [Figure 5 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-05-side-by-side.png)
 - [Figure 6 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-06-side-by-side.png)
 - [Figure 7 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-07-side-by-side.png)
 - [Figure 8 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-08-side-by-side.png)
@@ -31,6 +34,8 @@ Source basis:
 
 Interpretation:
 
+- Figures 3 to 5 use maintained modern explanatory sketches for the White-Knight,
+  separation, and promotion justification ideas.
 - Figure 6 uses a maintained modern refinement-ladder diagram that reflects the
   current restored abstraction and lineage diagnosis.
 - Figure 7 uses a maintained modern robot-domain map and validation-status
@@ -39,7 +44,7 @@ Interpretation:
 - Figures 8 and 9 currently use the nearest regenerated Hanoi publication-alignment surfaces.
 - Figure 10 uses the exact-or-qualitative publication-match matrix for the original three-disk Hanoi rows.
 - Figure 11 uses the current reproduced robot-domain claim surface.
-- Figures 1 to 5 are inventoried but not yet all mapped into maintained
+- Figures 1 and 2 are inventoried but not yet mapped into maintained
   side-by-side panels.
 
 These are intended to be maintained artifacts, not one-off exports.

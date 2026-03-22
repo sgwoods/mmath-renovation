@@ -22,6 +22,9 @@ THESIS_PDF = REPO_ROOT / "publications/1991 mmath thesis final.pdf"
 THESIS_RENDER_DIR = OUT_DIR / "_thesis-pages"
 
 PAGE_MAP = {
+    "figure-03": 19,
+    "figure-04": 20,
+    "figure-05": 20,
     "figure-06": 24,
     "figure-07": 27,
     "figure-08": 33,
@@ -31,6 +34,9 @@ PAGE_MAP = {
 }
 
 CROP_BOXES = {
+    "figure-03": (180, 430, 1010, 1260),
+    "figure-04": (140, 220, 1010, 990),
+    "figure-05": (140, 930, 1010, 1520),
     "figure-06": (120, 220, 1115, 1410),
     "figure-07": (110, 250, 1100, 1400),
     "figure-08": (150, 320, 1040, 1205),
@@ -207,6 +213,114 @@ def make_fig06_chart(path: Path) -> None:
         font=small_font,
     )
 
+    canvas.save(path)
+
+
+def draw_labeled_box(draw, box, title, lines, fill="#f4efe4", outline="#173042", title_fill="#173042", body_fill="#173042"):
+    x1, y1, x2, y2 = box
+    draw.rounded_rectangle(box, radius=12, fill=fill, outline=outline, width=3)
+    draw.text((x1 + 14, y1 + 12), title, fill=title_fill, font=font(18))
+    y = y1 + 40
+    for line in lines:
+        draw.text((x1 + 14, y), line, fill=body_fill, font=font(16))
+        y += 22
+
+
+def draw_arrow(draw, start, end, fill="#d7e9f7", width=4):
+    draw.line((start, end), fill=fill, width=width)
+    ex, ey = end
+    sx, sy = start
+    dx = ex - sx
+    dy = ey - sy
+    if dx == 0 and dy == 0:
+        return
+    import math
+    ang = math.atan2(dy, dx)
+    a1 = ang + math.pi * 0.88
+    a2 = ang - math.pi * 0.88
+    l = 14
+    p1 = (ex + l * math.cos(a1), ey + l * math.sin(a1))
+    p2 = (ex + l * math.cos(a2), ey + l * math.sin(a2))
+    draw.polygon([end, p1, p2], fill=fill)
+
+
+def make_fig03_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current White-Knight justification sketch", fill="#eff7ff", font=title_font)
+    draw.text((42, 82), "Modern explanatory counterpart to thesis Figure 3.", fill="#9cc4df", font=body_font)
+    panel = (60, 150, 1120, 760)
+    draw.rounded_rectangle(panel, radius=20, fill="#0f2538", outline="#32526a", width=2)
+
+    draw_labeled_box(draw, (160, 220, 330, 300), "Establisher: a", ["Effect: u"])
+    draw_labeled_box(draw, (820, 220, 1000, 300), "Clobberer: c", ["Effects: q, g2"])
+    draw_labeled_box(draw, (515, 330, 695, 410), "White Knight: w", ["Effect: r"], fill="#d8f5ea", outline="#1f6f55")
+    draw_labeled_box(draw, (470, 470, 740, 580), "Action: b", ["Precondition: p", "Effect: g1"], fill="#fef3c7", outline="#9a6700")
+    draw_labeled_box(draw, (470, 650, 740, 730), "Goals: g1 and g2", [], fill="#e0ecff", outline="#355c87")
+
+    draw_arrow(draw, (245, 300), (560, 470))
+    draw_arrow(draw, (910, 300), (645, 330), fill="#86efac")
+    draw_arrow(draw, (605, 410), (605, 470), fill="#86efac")
+    draw_arrow(draw, (605, 580), (605, 650))
+
+    draw.text((112, 330), "Independent establisher", fill="#9cc4df", font=small_font)
+    draw.text((756, 336), "Additional operator makes\njustification possible", fill="#86efac", font=small_font)
+    draw.text((372, 608), "The White Knight protects the justification path\nwithout directly achieving the final goal.", fill="#d7e9f7", font=small_font)
+    canvas.save(path)
+
+
+def make_fig04_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current separation-justification sketch", fill="#eff7ff", font=title_font)
+    draw.text((42, 82), "Modern explanatory counterpart to thesis Figure 4.", fill="#9cc4df", font=body_font)
+    panel = (60, 150, 1120, 760)
+    draw.rounded_rectangle(panel, radius=20, fill="#0f2538", outline="#32526a", width=2)
+
+    draw_labeled_box(draw, (190, 240, 360, 320), "Establisher: a", ["Effect: u"])
+    draw_labeled_box(draw, (760, 240, 940, 320), "Clobberer: c", ["Effects: q, g2"])
+    draw_labeled_box(draw, (485, 390, 755, 500), "Action: b", ["Precondition: p", "Effect: g1"], fill="#fef3c7", outline="#9a6700")
+    draw_labeled_box(draw, (485, 620, 755, 700), "Goals: g1 and g2", [], fill="#e0ecff", outline="#355c87")
+
+    draw_arrow(draw, (275, 320), (560, 390))
+    draw_arrow(draw, (850, 320), (675, 390))
+    draw_arrow(draw, (620, 500), (620, 620))
+
+    draw.rounded_rectangle((160, 545, 950, 590), radius=12, fill="#173042", outline="#406780", width=2)
+    draw.text((184, 560), "Separation justification: preserve the needed support by keeping the clobberer separated from the vulnerable step.", fill="#9cc4df", font=small_font)
+    canvas.save(path)
+
+
+def make_fig05_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current promotion-justification sketch", fill="#eff7ff", font=title_font)
+    draw.text((42, 82), "Modern explanatory counterpart to thesis Figure 5.", fill="#9cc4df", font=body_font)
+    panel = (60, 150, 1120, 760)
+    draw.rounded_rectangle(panel, radius=20, fill="#0f2538", outline="#32526a", width=2)
+
+    draw_labeled_box(draw, (170, 360, 380, 500), "Action: b", ["Precondition: p", "Effect: g1"], fill="#fef3c7", outline="#9a6700")
+    draw_labeled_box(draw, (485, 360, 700, 500), "Action: c", ["Effects: q, g2"], fill="#fde68a", outline="#92400e")
+    draw_labeled_box(draw, (810, 380, 1010, 480), "Goals: g1 and g2", [], fill="#e0ecff", outline="#355c87")
+    draw_arrow(draw, (380, 430), (485, 430))
+    draw_arrow(draw, (700, 430), (810, 430))
+
+    draw.rounded_rectangle((180, 585, 1000, 655), radius=12, fill="#173042", outline="#406780", width=2)
+    draw.text((204, 602), "Promotion justification: add an ordering constraint so the threatening step must come later.", fill="#9cc4df", font=small_font)
+    draw.rounded_rectangle((408, 250, 766, 315), radius=12, fill="#224562", outline="#7fb3d5", width=2)
+    draw.text((432, 270), "Key move: promote c after the protected support for b.", fill="#eff7ff", font=small_font)
     canvas.save(path)
 
 
@@ -417,24 +531,54 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     MPL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     render_thesis_pages()
+    chart03 = OUT_DIR / "figure-03-current-chart.png"
+    chart04 = OUT_DIR / "figure-04-current-chart.png"
+    chart05 = OUT_DIR / "figure-05-current-chart.png"
     chart06 = OUT_DIR / "figure-06-current-chart.png"
     chart07 = OUT_DIR / "figure-07-current-chart.png"
     chart08 = OUT_DIR / "figure-08-current-chart.png"
     chart09 = OUT_DIR / "figure-09-current-chart.png"
     chart10 = OUT_DIR / "figure-10-current-chart.png"
     chart11 = OUT_DIR / "figure-11-current-chart.png"
+    make_fig03_chart(chart03)
+    make_fig04_chart(chart04)
+    make_fig05_chart(chart05)
     make_fig06_chart(chart06)
     make_fig07_chart(chart07)
     make_fig08_chart(chart08)
     make_fig09_chart(chart09)
     make_fig10_chart(chart10)
     make_fig11_chart(chart11)
+    final03 = OUT_DIR / "figure-03-side-by-side.png"
+    final04 = OUT_DIR / "figure-04-side-by-side.png"
+    final05 = OUT_DIR / "figure-05-side-by-side.png"
     final06 = OUT_DIR / "figure-06-side-by-side.png"
     final07 = OUT_DIR / "figure-07-side-by-side.png"
     final08 = OUT_DIR / "figure-08-side-by-side.png"
     final09 = OUT_DIR / "figure-09-side-by-side.png"
     final10 = OUT_DIR / "figure-10-side-by-side.png"
     final11 = OUT_DIR / "figure-11-side-by-side.png"
+    combine_side_by_side(
+        "Figure 3: Thesis White-Knight justification vs current sketch",
+        crop_thesis_figure("figure-03"),
+        chart03,
+        final03,
+        "The right panel restates the White-Knight justification idea in a modern explanatory diagram.",
+    )
+    combine_side_by_side(
+        "Figure 4: Thesis separation justification vs current sketch",
+        crop_thesis_figure("figure-04"),
+        chart04,
+        final04,
+        "The right panel shows the same separation-justification idea using the restored project’s current visual language.",
+    )
+    combine_side_by_side(
+        "Figure 5: Thesis promotion justification vs current sketch",
+        crop_thesis_figure("figure-05"),
+        chart05,
+        final05,
+        "The right panel shows the promotion-justification idea as an explicit ordering decision.",
+    )
     combine_side_by_side(
         "Figure 6: Thesis abstract solution space vs current refinement ladder",
         crop_thesis_figure("figure-06"),
@@ -477,7 +621,7 @@ def main() -> None:
         final11,
         "The right panel shows the currently reproduced robot-domain claim: only the manual-style AbTweak path solves the representative cases.",
     )
-    make_contact_sheet([final06, final07, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
+    make_contact_sheet([final03, final04, final05, final06, final07, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
 
 
 if __name__ == "__main__":

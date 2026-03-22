@@ -24,9 +24,9 @@ Current mapped gallery:
 | --- | --- | ---: | --- | --- |
 | `1` | Spatially disjoint nail and hole | `2` | `Open` | Introductory illustrative figure. No maintained modern counterpart yet. |
 | `2` | Interacting nail and hole | `2` | `Open` | Introductory illustrative figure. No maintained modern counterpart yet. |
-| `3` | White Knight Justification | `18` | `Open` | The justification concept is discussed in the code lineage and theory text, but there is no maintained recreated figure yet. |
-| `4` | Separation Justification | `19` | `Open` | Same status as Figure 3: understood theoretically, not yet recreated as a maintained modern graphic. |
-| `5` | Promotion Justification | `19` | `Open` | Same status as Figures 3 and 4. |
+| `3` | White Knight Justification | `19` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-03-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-03-side-by-side.png), with a modern explanatory sketch of the White-Knight justification idea. |
+| `4` | Separation Justification | `20` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-04-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-04-side-by-side.png), with a modern separation-justification sketch. |
+| `5` | Promotion Justification | `20` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-05-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-05-side-by-side.png), with a modern promotion-justification sketch. |
 | `6` | Representing the abstract solution space | `24` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-06-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-06-side-by-side.png), using a modern refinement-ladder diagram grounded in the current abstraction and lineage diagnosis. |
 | `7` | Robot Task Planning Domain | `27` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-07-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-07-side-by-side.png), combining the thesis domain map with a modern redraw and current robot-domain outcome summary. |
 | `8` | Violations versus CPU time, including regression fit curve; breadth-first with MP | `33` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-08-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-08-side-by-side.png). |
@@ -38,13 +38,13 @@ Current mapped gallery:
 
 The next strongest candidates for extension are:
 
-1. Figures `3` to `5`, if we decide to recreate the theoretical justification
-   diagrams as maintained explanatory artifacts.
-2. Figure `1` and Figure `2`, if we want the introduction sequence to be
+1. Figure `1` and Figure `2`, if we want the introduction sequence to be
    complete for public readability.
-3. Figure `6` and Figure `7` are now the best template for adding other
+2. Figure `6` and Figure `7` are now the best template for adding other
    non-numeric thesis figures: thesis source on the left, modern validated
    explanatory counterpart on the right.
+3. A next deeper step would be to attach each maintained explanatory figure to
+   a more explicit theory note or code-path reference.
 
 ## Maintenance Rule
 
