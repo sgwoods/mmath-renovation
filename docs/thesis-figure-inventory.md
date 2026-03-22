@@ -27,7 +27,7 @@ Current mapped gallery:
 | `3` | White Knight Justification | `18` | `Open` | The justification concept is discussed in the code lineage and theory text, but there is no maintained recreated figure yet. |
 | `4` | Separation Justification | `19` | `Open` | Same status as Figure 3: understood theoretically, not yet recreated as a maintained modern graphic. |
 | `5` | Promotion Justification | `19` | `Open` | Same status as Figures 3 and 4. |
-| `6` | Representing the abstract solution space | `24` | `Partial` | Closely related to current abstraction-level diagnostics and lineage traces such as [docs/hanoi4-lineage-trace.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-lineage-trace.md), but no maintained side-by-side figure exists yet. |
+| `6` | Representing the abstract solution space | `24` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-06-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-06-side-by-side.png), using a modern refinement-ladder diagram grounded in the current abstraction and lineage diagnosis. |
 | `7` | Robot Task Planning Domain | `27` | `Partial` | Strong current robot-domain validation exists in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md) and [docs/historical-validation-matrix.md](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md), but the domain map itself is not yet recreated. |
 | `8` | Violations versus CPU time, including regression fit curve; breadth-first with MP | `33` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-08-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-08-side-by-side.png). |
 | `9` | Violations versus CPU time, including regression fit curve; left-wedge with MP | `34` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-09-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-09-side-by-side.png). |
@@ -38,12 +38,12 @@ Current mapped gallery:
 
 The next strongest candidates for extension are:
 
-1. Figure `6`, because the repo now has rich abstraction and lineage material
-   that could support a clean modern counterpart.
-2. Figure `7`, because the robot-domain validation story is already strong and
+1. Figure `7`, because the robot-domain validation story is already strong and
    only lacks the domain-structure panel.
-3. Figures `3` to `5`, if we decide to recreate the theoretical justification
+2. Figures `3` to `5`, if we decide to recreate the theoretical justification
    diagrams as maintained explanatory artifacts.
+3. Figure `1` and Figure `2`, if we want the introduction sequence to be
+   complete for public readability.
 
 ## Maintenance Rule
 

@@ -22,6 +22,7 @@ THESIS_PDF = REPO_ROOT / "publications/1991 mmath thesis final.pdf"
 THESIS_RENDER_DIR = OUT_DIR / "_thesis-pages"
 
 PAGE_MAP = {
+    "figure-06": 24,
     "figure-08": 33,
     "figure-09": 34,
     "figure-10": 36,
@@ -29,6 +30,7 @@ PAGE_MAP = {
 }
 
 CROP_BOXES = {
+    "figure-06": (120, 220, 1115, 1410),
     "figure-08": (150, 320, 1040, 1205),
     "figure-09": (150, 500, 1040, 1230),
     "figure-10": (140, 360, 1040, 1275),
@@ -115,6 +117,95 @@ def chart_style(fig: plt.Figure, ax: plt.Axes, title: str, subtitle: str) -> Non
     ax.grid(color="#27465c", alpha=0.4, linestyle="-", linewidth=0.8, axis="y")
     ax.set_title(title, loc="left", color="#eff7ff", fontsize=18, fontweight="bold", pad=12)
     ax.text(0.0, 1.02, subtitle, transform=ax.transAxes, color="#9cc4df", fontsize=10, va="bottom")
+
+
+def make_fig06_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current abstraction / refinement ladder", fill="#eff7ff", font=title_font)
+    draw.text(
+        (42, 82),
+        "Modern counterpart to thesis Figure 6 using the strongest live Hanoi-4 control line.",
+        fill="#9cc4df",
+        font=body_font,
+    )
+
+    bands = [
+        ("k=3 abstract root", 150, "#163149"),
+        ("k=2 abstract frontier", 295, "#14344d"),
+        ("k=1 refinement frontier", 455, "#123852"),
+        ("k=0 concrete frontier", 625, "#113b55"),
+    ]
+    for label, y, color in bands:
+        draw.rounded_rectangle((40, y, 1140, y + 94), radius=18, fill=color, outline="#2e566f", width=2)
+        draw.text((58, y + 32), label, fill="#d7e9f7", font=body_font)
+
+    def node(x: int, y: int, label: str, fill: str) -> None:
+        draw.ellipse((x - 34, y - 34, x + 34, y + 34), fill=fill, outline="#dce7f0", width=2)
+        bbox = draw.textbbox((0, 0), label, font=small_font)
+        draw.text((x - (bbox[2] - bbox[0]) / 2, y - 9), label, fill="#071826", font=small_font)
+
+    def edge(x1: int, y1: int, x2: int, y2: int, color: str = "#8ecae6", width: int = 3) -> None:
+        draw.line((x1, y1, x2, y2), fill=color, width=width)
+
+    root = (590, 198)
+    k2_a = (360, 342)
+    k2_b = (830, 342)
+    k1_a1 = (250, 502)
+    k1_a2 = (470, 502)
+    k1_b1 = (710, 502)
+    k1_b2 = (930, 502)
+    k0_a = (210, 672)
+    k0_b = (420, 672)
+    k0_c = (690, 672)
+    k0_d = (960, 672)
+
+    for child in (k2_a, k2_b):
+        edge(root[0], root[1] + 34, child[0], child[1] - 34)
+    for child in (k1_a1, k1_a2):
+        edge(k2_a[0], k2_a[1] + 34, child[0], child[1] - 34)
+    for child in (k1_b1, k1_b2):
+        edge(k2_b[0], k2_b[1] + 34, child[0], child[1] - 34, color="#93c5fd")
+    for parent, child in ((k1_a1, k0_a), (k1_a2, k0_b), (k1_b1, k0_c), (k1_b2, k0_d)):
+        edge(parent[0], parent[1] + 34, child[0], child[1] - 34, color="#bfdbfe")
+
+    node(*root, "R", "#f6c85f")
+    for coords, label, fill in [
+        (k2_a, "A", "#34d399"),
+        (k2_b, "B", "#7dd3fc"),
+        (k1_a1, "A1", "#4ade80"),
+        (k1_a2, "A2", "#4ade80"),
+        (k1_b1, "B1", "#f59e0b"),
+        (k1_b2, "B2", "#f59e0b"),
+        (k0_a, "A11", "#86efac"),
+        (k0_b, "A21", "#86efac"),
+        (k0_c, "B11", "#fdba74"),
+        (k0_d, "B21", "#fdba74"),
+    ]:
+        node(*coords, label, fill)
+
+    draw.text((110, 238), "Root search state", fill="#cde4f2", font=small_font)
+    draw.text((120, 372), "Good abstract alternatives still visible", fill="#86efac", font=small_font)
+    draw.text((720, 372), "Early level-drop branch", fill="#93c5fd", font=small_font)
+    draw.text((110, 538), "Cleaner closure-oriented nodes", fill="#86efac", font=small_font)
+    draw.text((690, 538), "Similar score, more Left-Wedge pressure", fill="#fdba74", font=small_font)
+    draw.text((90, 710), "Higher-quality descendants still exist", fill="#bbf7d0", font=small_font)
+    draw.text((630, 710), "Dirty concrete frontier leaders", fill="#fed7aa", font=small_font)
+
+    draw.rounded_rectangle((65, 730, 1110, 782), radius=16, fill="#0e2232", outline="#30516a", width=1)
+    draw.text(
+        (84, 747),
+        "Current restored reading: promising nodes remain higher in the refinement tree, while lower-kval reinsertions become more attractive as Left-Wedge pressure increases.",
+        fill="#9cc4df",
+        font=small_font,
+    )
+
+    canvas.save(path)
 
 
 def make_fig08_chart(path: Path) -> None:
@@ -224,7 +315,9 @@ def make_contact_sheet(paths: list[Path], out_path: Path) -> None:
         thumb.paste(image, ((600 - image.width) // 2, 14))
         ImageDraw.Draw(thumb).text((16, 316), path.stem, fill="#173042", font=font(22))
         thumbs.append(thumb)
-    sheet = Image.new("RGB", (1200, 700), "#0a1b29")
+    cols = 2
+    rows = (len(thumbs) + cols - 1) // cols
+    sheet = Image.new("RGB", (cols * 600, rows * 350), "#0a1b29")
     for i, thumb in enumerate(thumbs):
         sheet.paste(thumb, ((i % 2) * 600, (i // 2) * 350))
     sheet.save(out_path)
@@ -236,18 +329,28 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     MPL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     render_thesis_pages()
+    chart06 = OUT_DIR / "figure-06-current-chart.png"
     chart08 = OUT_DIR / "figure-08-current-chart.png"
     chart09 = OUT_DIR / "figure-09-current-chart.png"
     chart10 = OUT_DIR / "figure-10-current-chart.png"
     chart11 = OUT_DIR / "figure-11-current-chart.png"
+    make_fig06_chart(chart06)
     make_fig08_chart(chart08)
     make_fig09_chart(chart09)
     make_fig10_chart(chart10)
     make_fig11_chart(chart11)
+    final06 = OUT_DIR / "figure-06-side-by-side.png"
     final08 = OUT_DIR / "figure-08-side-by-side.png"
     final09 = OUT_DIR / "figure-09-side-by-side.png"
     final10 = OUT_DIR / "figure-10-side-by-side.png"
     final11 = OUT_DIR / "figure-11-side-by-side.png"
+    combine_side_by_side(
+        "Figure 6: Thesis abstract solution space vs current refinement ladder",
+        crop_thesis_figure("figure-06"),
+        chart06,
+        final06,
+        "The right panel reframes the restored abstraction story as a modern refinement-ladder view, emphasizing where cleaner nodes still exist higher in the tree.",
+    )
     combine_side_by_side(
         "Figure 8: Thesis scatter vs current BF + P-WMP evidence",
         crop_thesis_figure("figure-08"),
@@ -276,7 +379,7 @@ def main() -> None:
         final11,
         "The right panel shows the currently reproduced robot-domain claim: only the manual-style AbTweak path solves the representative cases.",
     )
-    make_contact_sheet([final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
+    make_contact_sheet([final06, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
 
 
 if __name__ == "__main__":

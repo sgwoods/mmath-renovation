@@ -14,6 +14,7 @@ For each item:
 
 Current gallery outputs:
 
+- [Figure 6 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-06-side-by-side.png)
 - [Figure 8 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-08-side-by-side.png)
 - [Figure 9 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-09-side-by-side.png)
 - [Figure 10 side by side](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-10-side-by-side.png)
@@ -29,10 +30,12 @@ Source basis:
 
 Interpretation:
 
+- Figure 6 uses a maintained modern refinement-ladder diagram that reflects the
+  current restored abstraction and lineage diagnosis.
 - Figures 8 and 9 currently use the nearest regenerated Hanoi publication-alignment surfaces.
 - Figure 10 uses the exact-or-qualitative publication-match matrix for the original three-disk Hanoi rows.
 - Figure 11 uses the current reproduced robot-domain claim surface.
-- Figures 1 to 7 are inventoried but not yet all mapped into maintained
+- Figures 1 to 5 and 7 are inventoried but not yet all mapped into maintained
   side-by-side panels.
 
 These are intended to be maintained artifacts, not one-off exports.
