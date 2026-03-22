@@ -10,6 +10,7 @@ CURRENT_STATUS_FILE="$REPO_ROOT/docs/current-status.md"
 RELEASES_DIR="$REPO_ROOT/releases"
 HARNESS_SCRIPT="$REPO_ROOT/scripts/abtweak-experiments.sh"
 SYNC_PUBLIC_PAGES_SCRIPT="$REPO_ROOT/scripts/sync-public-release-pages.sh"
+THESIS_GALLERY_SCRIPT="$REPO_ROOT/scripts/generate-thesis-side-by-side.py"
 
 if [ ! -f "$VERSION_FILE" ]; then
   echo "Missing VERSION file: $VERSION_FILE" >&2
@@ -21,6 +22,10 @@ version=$(tr -d ' \n\r' <"$VERSION_FILE")
 if [ -z "$version" ]; then
   echo "VERSION file is empty" >&2
   exit 1
+fi
+
+if [ -f "$THESIS_GALLERY_SCRIPT" ] && [ -f "$REPO_ROOT/publications/1991 mmath thesis final.pdf" ]; then
+  python3 "$THESIS_GALLERY_SCRIPT"
 fi
 
 release_dir="$RELEASES_DIR/$version"

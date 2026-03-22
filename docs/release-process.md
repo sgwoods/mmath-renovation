@@ -171,6 +171,8 @@ sh /Users/stevenwoods/mmath-renovation/scripts/create-release-snapshot.sh
 
 That step now also:
 
+- regenerates the thesis side-by-side gallery when the source PDF and gallery
+  script are present
 - syncs [site/mmath-renovation-release-dashboard.html](/Users/stevenwoods/mmath-renovation/site/mmath-renovation-release-dashboard.html)
   to the local Pages checkout
 - syncs [site/mmath-renovation-public-page.html](/Users/stevenwoods/mmath-renovation/site/mmath-renovation-public-page.html)

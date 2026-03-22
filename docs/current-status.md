@@ -9,6 +9,7 @@ Current named release checkpoint:
 For deeper technical detail, see:
 
 - [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
+- [Thesis side-by-side graphics](/Users/stevenwoods/mmath-renovation/docs/thesis-side-by-side-graphics.md)
 - [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
