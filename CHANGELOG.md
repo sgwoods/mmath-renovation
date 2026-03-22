@@ -9,6 +9,33 @@ The project is still pre-`1.0`. During this phase:
 - `rc` releases are publication-alignment candidates
 - `1.0.0` is reserved for the first historically grounded restored release
 
+## 1.0.0-rc.1 - 2026-03-22
+
+This checkpoint marks the first release-candidate freeze of the historically
+grounded restored AbTweak baseline.
+
+Highlights:
+
+- formal RC gate and repeatable validation sweep now checked into the repo
+- `hanoi-4` explicitly accepted as an explained-but-open extension benchmark
+  for RC purposes
+- release-facing docs, compendium, and roadmap updated around RC readiness
+- release snapshot and public status surfaces refreshed from the normal build
+  path
+- hosted remote experiment UI explicitly treated as a supporting `1.1` line,
+  not a blocker for the historical `1.0` baseline
+- post-RC go-forward plan added for UI work, research, domain expansion, and
+  better visualizations
+
+Known gaps at this checkpoint:
+
+- `hanoi-4` remains open as a binary benchmark and is still the main planner
+  research thread after RC
+- the alternate `reset-domain` / `defstep` framework remains a separate later
+  restoration phase
+- the hosted UI and richer public interaction surfaces continue as post-RC
+  supporting work, not part of the historical baseline claim
+
 ## 0.9.0-beta.1 - 2026-03-18
 
 This is the first formal late pre-release checkpoint for the restored

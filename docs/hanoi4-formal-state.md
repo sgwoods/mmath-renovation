@@ -70,6 +70,10 @@ The current readiness basis for that stance is recorded in:
 - [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
 - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 
+The intended follow-on work after RC is recorded in:
+
+- [Post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
+
 ## Best Current Runtime Path
 
 The strongest current `hanoi-4` path is:

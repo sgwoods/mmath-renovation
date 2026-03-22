@@ -35,13 +35,15 @@ It complements:
 
 ## Current Priorities
 
-1. Prepare `1.0.0-rc.1` from the now-accepted historical baseline:
-   the current gate and evidence are now recorded in
-   [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
-   and
-   [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md).
-   The next practical work is version/tag/checkpoint preparation rather than
-   more exploratory validation churn.
+1. Resume through the explicit post-RC plan:
+   the next organized work now lives in
+   [Post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md),
+   which separates:
+   - `1.1` UI and public-surface work
+   - post-`1.0` Hanoi research
+   - domain expansion
+   - better visualizations
+   - alternate-framework work
 2. Keep `hanoi-4` narrow, binary, and post-RC oriented:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.

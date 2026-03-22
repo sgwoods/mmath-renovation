@@ -26,21 +26,20 @@ It complements:
 
 The current project stage is best treated as:
 
-- late pre-release
-- research-grade beta
-- one restored baseline with strong evidence across many domains, but not yet a
-  final historically complete release
+- first release-candidate checkpoint
+- one restored baseline with strong evidence across many domains
+- not yet the final `1.0.0` historical release
 
-That is why the current checkpoint is versioned as:
+That is why the current checkpoint is now versioned as:
 
-- `0.10.0-beta.1`
+- `1.0.0-rc.1`
 
 This says:
 
-- the core restored system is substantial and worth naming
-- we are not yet at release-candidate confidence
-- `hanoi-4` and the alternate framework are still open enough that `1.0.0`
-  would be premature
+- the core restored system is stable enough to freeze as an RC
+- the lower-Hanoi and broad operator-style validation story is strong
+- `hanoi-4` is accepted as explained-but-open for RC
+- `1.0.0` itself is still reserved for the fully declared historical release
 
 ## Versioning Scheme
 
@@ -91,7 +90,7 @@ Current working interpretation:
 Every named release checkpoint should include:
 
 - a git commit
-- an annotated git tag such as `v0.10.0-beta.1`
+- an annotated git tag such as `v1.0.0-rc.1`
 - the checked-in [VERSION](/Users/stevenwoods/mmath-renovation/VERSION) file
 - a changelog entry
 - a release snapshot under `releases/<version>/`
@@ -214,8 +213,8 @@ That step now also:
 8. Create and push an annotated git tag from the release-prep commit:
 
 ```sh
-git -C /Users/stevenwoods/mmath-renovation tag -a v0.10.0-beta.1 -m "AbTweak restoration 0.10.0-beta.1"
-git -C /Users/stevenwoods/mmath-renovation push origin v0.10.0-beta.1
+git -C /Users/stevenwoods/mmath-renovation tag -a v1.0.0-rc.1 -m "AbTweak restoration 1.0.0-rc.1"
+git -C /Users/stevenwoods/mmath-renovation push origin v1.0.0-rc.1
 ```
 
 ## Revert and Recovery Rule
@@ -256,9 +255,9 @@ This follows the shared interface contract in:
 Recommended status values for the current release stage:
 
 - `status_label`: `Current release`
-- `status_value`: `0.10.0-beta.1`
+- `status_value`: `1.0.0-rc.1`
 - `focus_label`: `Current focus`
-- `focus_value`: `Hanoi-4 extension benchmark`
+- `focus_value`: `Post-RC supporting and research tracks`
 
 ## Current RC Lean
 

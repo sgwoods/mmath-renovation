@@ -4,15 +4,15 @@ This document is the concise project-status snapshot for the AbTweak renovation 
 
 Current named release checkpoint:
 
-- `0.10.0-beta.1`
+- `1.0.0-rc.1`
 
 Current phase summary:
 
 - the thesis-gallery milestone is complete and now treated as a maintained release-facing validation asset
-- the active technical focus has returned to the narrow `hanoi-4` solve-oriented path
-- cheaper unsolved `hanoi-4` runs are treated as diagnostic only unless they materially tighten the explanation
+- the historical restoration baseline is now frozen at its first release-candidate checkpoint
+- `hanoi-4` is now formally classified as an explained-but-open extension benchmark for RC purposes
 - the public and remote interaction layer is now a maintained supporting surface, including the hosted experiment UI
-- the pre-`1.0.0-rc.1` validation sweep is now complete, and `hanoi-4` is accepted as an explained-but-open extension benchmark for RC purposes
+- the post-RC resume plan now explicitly separates UI work, research, domain expansion, and visualization improvements
 
 For deeper technical detail, see:
 
@@ -22,6 +22,7 @@ For deeper technical detail, see:
 - [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
 - [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
 - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
+- [Post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Historical sample cases](/Users/stevenwoods/mmath-renovation/docs/historical-sample-cases.md)
@@ -86,11 +87,11 @@ For deeper technical detail, see:
 The clearest current top-level summary now lives in
 [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md).
 
-- Runtime restoration: first milestone substantially achieved
+- Runtime restoration: first milestone now frozen at release-candidate quality
 - Historical validation: strong enough for RC, with the current sweep recorded in
   [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 - Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage, though `stylistics` has now moved out of the missing-sample bucket
-- Top-level recommendation: keep the now-unified harness and completed thesis-gallery surfaces maintained, and move from late beta into release-candidate preparation
+- Top-level recommendation: maintain the RC baseline cleanly and use the new go-forward plan to organize post-RC work
 - First unification step now in place: the repo has a single experiment entry
   point at [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
 - Benchmark-family status is now surfaced directly through the harness via
@@ -133,9 +134,8 @@ The clearest current top-level summary now lives in
   - the release/build/public surfaces are stable
   - `hanoi-4` is accepted as "explained but open" for `1.0.0-rc.1`
 - Recommended next track: keep the release/build, remote UI, and validation
-  surfaces current, prepare the version/tag/checkpoint work for
-  `1.0.0-rc.1`, then decide how much post-RC effort should stay on `hanoi-4`
-  before the later alternate-framework and post-`1.0` research tracks reopen
+  surfaces current as the baseline moves through RC, then resume work through
+  the explicit post-RC plan rather than reopening broad exploratory churn
 
 ## Current Restoration Milestone
 

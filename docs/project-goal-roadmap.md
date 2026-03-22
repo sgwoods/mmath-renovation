@@ -167,7 +167,7 @@ while keeping the restored historical baseline clearly delineated.
 
 ## Where We Are Against The Goal
 
-The project is in a late beta, pre-release-candidate restoration state.
+The project is now in its first release-candidate restoration state.
 
 ### Already Strong
 
@@ -197,6 +197,8 @@ The project is in a late beta, pre-release-candidate restoration state.
   - hosted remote experiment UI backed by GitHub Actions
 - the current RC-prep sweep is now complete, and `hanoi-4` is accepted as an
   explained-but-open extension benchmark for `1.0.0-rc.1`
+- the next work is now organized explicitly through the
+  [post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
 
 ### Strong But Still Open
 
@@ -228,46 +230,52 @@ That gap is now better defined than it used to be:
 
 Recommended order from here:
 
-1. Prepare and cut `1.0.0-rc.1`.
-   The formal gate and the current sweep are now recorded in:
+1. Maintain `1.0.0-rc.1` cleanly.
+   The formal gate and the sweep that justified the RC are now recorded in:
    - [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
    - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
-   The remaining work is release prep, version/tag work, and public snapshot
-   refresh rather than another missing validation family.
+   The immediate task after the cut is to keep the RC baseline stable and
+   understandable rather than reopening broad exploratory churn.
 
 2. Keep the formal validation documents current as the repo moves through RC.
    This keeps the repo aligned with the actual restoration evidence rather than
    leaving important conclusions only in shell output or issue comments.
 
-3. Keep the completed thesis-gallery and release surfaces maintained through
+3. Resume from the post-RC go-forward plan.
+   The next organized work now lives in:
+   - [Post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
+   That is where UI work, research, domain expansion, and visual improvements
+   should restart from.
+
+4. Keep the completed thesis-gallery and release surfaces maintained through
    the normal build flow.
    The gallery is now feature-complete for the thesis figure set and should be
    preserved as a validation asset, not expanded further unless a new
    publication-mapping need appears.
 
-4. Keep the remote/public interaction surface maintained as a supporting track, not a replacement for the core benchmark work.
+5. Keep the remote/public interaction surface maintained as a supporting track, not a replacement for the core benchmark work.
    The browser-triggered remote UI is now a real project asset and should stay
    aligned with the curated harness vocabulary and project status surfaces, but
    it should support the restoration effort rather than become the main effort.
 
-5. Keep `hanoi-4` narrow and binary after RC.
+6. Keep `hanoi-4` narrow and binary after RC.
    The main runtime target remains `isbm` weak-`POS` plus Left-Wedge, with
    `legacy-1991-isbm` as the comparison line. Further work should now be
    justified only when it improves the solve case or materially tightens the
    explanation.
 
-6. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
+7. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
    This is now secondary because the repo already has a strong baseline across
    blocks, Nilsson blocks, registers, robot, multiple sample domains, and the
    lower Hanoi families.
 
-7. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
+8. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
    That work is real, but it is a framework-restoration branch rather than a
    direct continuation of the main operator-style AbTweak baseline.
 
-8. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
+9. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
 
-9. After `1.0`, open the explicit post-restoration research track.
+10. After `1.0`, open the explicit post-restoration research track.
    That is the right place to analyze later material such as Martins and
    Lynce's 2008 Hanoi encoding work and ask what it implies for future named
    extensions, hierarchy redesigns, or problem-encoding experiments.

@@ -99,14 +99,12 @@ That means the finished project should provide:
 
 Current named release checkpoint:
 
-- `0.10.0-beta.1`
+- `1.0.0-rc.1`
 
 Current release interpretation:
 
-- late beta
-- research-grade restoration checkpoint
+- first release candidate for the historical restoration baseline
 - strong on the core operator-style baseline
-- now close enough to prepare `1.0.0-rc.1`
 - `hanoi-4` is accepted for RC as an explained-but-open extension benchmark
 - the hosted remote experiment UI remains a supporting `1.1` line
 
@@ -114,9 +112,10 @@ Release-facing references:
 
 - [VERSION](/Users/stevenwoods/mmath-renovation/VERSION)
 - [CHANGELOG.md](/Users/stevenwoods/mmath-renovation/CHANGELOG.md)
-- [Release snapshot](/Users/stevenwoods/mmath-renovation/releases/0.10.0-beta.1/release-summary.md)
+- [Release snapshot](/Users/stevenwoods/mmath-renovation/releases/1.0.0-rc.1/release-summary.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
 - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
+- [Post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
 
 ## Primary Working System
 

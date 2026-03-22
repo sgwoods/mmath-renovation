@@ -66,7 +66,7 @@ Generated:
 - UTC: '$generated_at'
 - checkpoint under test: '$version'
 
-This sweep is the current repeatable pre-'1.0.0-rc.1' validation bundle for
+This sweep is the current repeatable RC-basis validation bundle for
 the historical-restoration baseline.
 
 ## Command Set
@@ -86,8 +86,8 @@ sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report wid
 - historical validation surface: ready
 - 'hanoi-4' status for RC: accepted as an explained-but-open extension
   benchmark
-- remaining blocker before cutting '1.0.0-rc.1': release preparation and
-  version/tag work, not another missing validation family
+- next step after this sweep: release preparation and version/tag work, not
+  another missing validation family
 
 ## Harness Family Snapshot
 

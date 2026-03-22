@@ -27,7 +27,7 @@ The algorithm-boundary rule is now documented in
 The explicit gate for moving from beta to `1.0.0-rc.1` is now documented in
 [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md).
 
-The current pre-RC validation basis is now recorded in
+The current RC validation basis is now recorded in
 [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md).
 
 ## Plan State
@@ -89,7 +89,7 @@ read inside the broader unified-goal framing:
 - one historical compatibility surface
 - one experiment harness
 
-### 1. Prepare `1.0.0-rc.1`
+### 1. Maintain `1.0.0-rc.1`
 
 Focus on:
 
@@ -101,11 +101,23 @@ Focus on:
 
 Reason:
 
-The release-candidate gate is now mostly satisfied, and the remaining work is
-release discipline rather than another missing proof that the restoration
-basically works.
+The release-candidate gate has now been crossed. The next task is to keep the
+RC line stable while follow-on work is organized cleanly around it.
 
-### 2. Keep `hanoi-4` Narrow After RC
+### 2. Resume Through The Post-RC Plan
+
+Focus on:
+
+- the explicit go-forward tracks in
+  [post-rc-go-forward-plan.md](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
+- keeping UI/public work, research work, and baseline maintenance separated
+
+Reason:
+
+This avoids mixing supporting-surface work, historical-baseline maintenance,
+and post-`1.0` research into one stream again.
+
+### 3. Keep `hanoi-4` Narrow After RC
 
 Focus on:
 
@@ -123,7 +135,7 @@ Relevant issue:
 
 - [#14 Investigate hanoi-4 performance after precedence-fix stabilization](https://github.com/sgwoods/mmath-renovation/issues/14)
 
-### 3. Maintain The Unified Experiment And Release Surfaces
+### 4. Maintain The Unified Experiment And Release Surfaces
 
 Focus on:
 
@@ -141,7 +153,7 @@ Reason:
 The infrastructure is already strong enough. What matters now is keeping it
 stable and coherent through the RC transition.
 
-### 4. Expand Historically Grounded Coverage
+### 5. Expand Historically Grounded Coverage
 
 Focus on:
 
@@ -160,7 +172,7 @@ Relevant issue:
 
 - [#13 Expand historical shipped sample-domain smoke coverage](https://github.com/sgwoods/mmath-renovation/issues/13)
 
-### 5. Decide The Alternate Framework Boundary
+### 6. Decide The Alternate Framework Boundary
 
 Focus on:
 
@@ -178,7 +190,7 @@ Relevant issue:
 
 - [#16 Evaluate reset-domain planner files as a separate restoration track](https://github.com/sgwoods/mmath-renovation/issues/16)
 
-### 6. Trim Residual SBCL Noise
+### 7. Trim Residual SBCL Noise
 
 Focus on:
 

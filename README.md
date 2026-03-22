@@ -29,16 +29,18 @@ Current milestone:
 - the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, restores the early `hanoi-2` family exactly against archived outputs, solves `hanoi-3` and `macro-hanoi` in both `tweak` and `abtweak`, shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`, runs `hanoi-4` to a bounded search outcome in both modes under the restored BFS path, and can execute the historical DFS path again under SBCL
 - the thesis figure gallery is now fully represented and maintained as a release-facing validation artifact rather than an active blocker for planner work
 
-Current pre-release version:
+Current release-candidate version:
 
-- `0.10.0-beta.1`
+- `1.0.0-rc.1`
 
-Current RC-prep position:
+Current release position:
 
-- the `1.0.0-rc.1` gate is now treated as realistic
+- the historical restoration baseline is now frozen at `1.0.0-rc.1`
 - `hanoi-4` is accepted as an explained-but-open extension benchmark for RC
 - the current pre-RC validation sweep is recorded in
   [docs/release-candidate-sweep.md](./docs/release-candidate-sweep.md)
+- the main planned follow-on work is recorded in
+  [docs/post-rc-go-forward-plan.md](./docs/post-rc-go-forward-plan.md)
 
 ## What AbTweak Is
 
@@ -62,6 +64,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Release process](./docs/release-process.md): versioning, release cadence, snapshot contents, tag policy, and Pages update rules
 - [1.0 release candidate checklist](./docs/release-candidate-checklist.md): explicit gate for when the historical restoration is ready for `1.0.0-rc.1`
 - [1.0 release candidate sweep](./docs/release-candidate-sweep.md): checked-in pre-RC validation bundle and current readiness verdict
+- [Post-RC go-forward plan](./docs/post-rc-go-forward-plan.md): concrete resume plan for UI work, research, domain expansion, and visual improvements after the RC checkpoint
 - [Changelog](./CHANGELOG.md): numbered restoration checkpoints
 - [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
 - [Project compendium](./docs/project-compendium.md): the most complete readable overview of the repo, benchmark state, publication alignment, structure, and release surfaces
