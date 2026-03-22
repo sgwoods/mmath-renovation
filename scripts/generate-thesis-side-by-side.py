@@ -23,6 +23,7 @@ THESIS_RENDER_DIR = OUT_DIR / "_thesis-pages"
 
 PAGE_MAP = {
     "figure-06": 24,
+    "figure-07": 27,
     "figure-08": 33,
     "figure-09": 34,
     "figure-10": 36,
@@ -31,6 +32,7 @@ PAGE_MAP = {
 
 CROP_BOXES = {
     "figure-06": (120, 220, 1115, 1410),
+    "figure-07": (110, 250, 1100, 1400),
     "figure-08": (150, 320, 1040, 1205),
     "figure-09": (150, 500, 1040, 1230),
     "figure-10": (140, 360, 1040, 1275),
@@ -208,6 +210,92 @@ def make_fig06_chart(path: Path) -> None:
     canvas.save(path)
 
 
+def make_fig07_chart(path: Path) -> None:
+    canvas = Image.new("RGB", (1180, 820), "#10293f")
+    draw = ImageDraw.Draw(canvas)
+    title_font = font(30)
+    body_font = font(18)
+    small_font = font(16)
+    tiny_font = font(14)
+
+    draw.rounded_rectangle((18, 18, 1162, 802), radius=26, fill="#163149", outline="#34546b", width=2)
+    draw.text((42, 40), "Current robot-domain map and validation status", fill="#eff7ff", font=title_font)
+    draw.text(
+        (42, 82),
+        "Modern counterpart to thesis Figure 7 using the restored simple-robot domain and current benchmark outcomes.",
+        fill="#9cc4df",
+        font=body_font,
+    )
+
+    panel = (54, 138, 726, 760)
+    draw.rounded_rectangle(panel, radius=20, fill="#0f2538", outline="#32526a", width=2)
+
+    def room(x1, y1, x2, y2, label):
+        draw.rounded_rectangle((x1, y1, x2, y2), radius=12, fill="#1e3a52", outline="#7fb3d5", width=3)
+        draw.text((x1 + 14, y1 + 10), label, fill="#eff7ff", font=body_font)
+
+    room(86, 180, 268, 324, "Room 1")
+    room(286, 180, 468, 324, "Room 2")
+    room(488, 214, 680, 400, "Room 3")
+    room(488, 418, 680, 620, "Room 4")
+    room(286, 438, 468, 620, "Room 5")
+    room(106, 438, 268, 620, "Room 6")
+
+    def door(x1, y1, x2, y2, label):
+        draw.rounded_rectangle((x1, y1, x2, y2), radius=7, fill="#0b1c2a", outline="#f6c85f", width=2)
+        bbox = draw.textbbox((0, 0), label, font=tiny_font)
+        draw.text((x1 + (x2 - x1 - (bbox[2] - bbox[0])) / 2, y1 - 18), label, fill="#f6c85f", font=tiny_font)
+
+    door(259, 230, 283, 278, "1-2")
+    door(465, 250, 489, 298, "2-3")
+    door(465, 480, 489, 528, "4-5")
+    door(259, 480, 283, 528, "5-6")
+    door(356, 396, 404, 420, "2-5")
+    door(516, 396, 564, 420, "3-5")
+
+    def item_box(x, y, label, fill="#f4efe4", outline="#173042", text="#173042"):
+        draw.rounded_rectangle((x, y, x + 72, y + 36), radius=8, fill=fill, outline=outline, width=2)
+        bbox = draw.textbbox((0, 0), label, font=small_font)
+        draw.text((x + (72 - (bbox[2] - bbox[0])) / 2, y + 8), label, fill=text, font=small_font)
+
+    item_box(158, 506, "Box 1")
+    item_box(334, 222, "Box 2")
+    item_box(158, 548, "Box 3")
+
+    draw.ellipse((574, 487, 664, 537), outline="#f4efe4", width=3, fill="#224562")
+    rbbox = draw.textbbox((0, 0), "Robot", font=body_font)
+    draw.text((619 - (rbbox[2] - rbbox[0]) / 2, 500), "Robot", fill="#eff7ff", font=body_font)
+
+    draw.text((86, 650), "Current restored domain keeps the same six-room / seven-door shape described in the thesis.", fill="#9cc4df", font=small_font)
+
+    draw.rounded_rectangle((758, 156, 1128, 760), radius=20, fill="#19354d", outline="#32526a", width=2)
+    draw.text((786, 182), "Current reproduced claim", fill="#eff7ff", font=title_font)
+    draw.text((786, 224), "The robot domain is now one of the strongest validated\npublication families in the restored baseline.", fill="#9cc4df", font=body_font)
+
+    badges = [
+        ("Robot-1", "AbTweak solves", "#22c55e"),
+        ("Robot-1", "Tweak bounded fail", "#64748b"),
+        ("Robot-1", "No-LW bounded fail", "#f59e0b"),
+        ("Robot-2", "AbTweak solves", "#22c55e"),
+        ("Robot-2", "Tweak bounded fail", "#64748b"),
+        ("Robot-2", "No-LW bounded fail", "#f59e0b"),
+    ]
+    y = 310
+    for left, right, color in badges:
+        draw.rounded_rectangle((786, y, 1100, y + 46), radius=12, fill="#11283c", outline="#3e617a", width=2)
+        draw.rounded_rectangle((804, y + 8, 904, y + 38), radius=10, fill="#24445b", outline="#406780", width=1)
+        draw.text((820, y + 14), left, fill="#d7e9f7", font=small_font)
+        draw.rounded_rectangle((922, y + 8, 1082, y + 38), radius=10, fill=color, outline=color, width=1)
+        bbox = draw.textbbox((0, 0), right, font=small_font)
+        draw.text((1002 - (bbox[2] - bbox[0]) / 2, y + 14), right, fill="#08141f", font=small_font)
+        y += 58
+
+    draw.rounded_rectangle((786, 686, 1100, 742), radius=12, fill="#0f2538", outline="#3e617a", width=2)
+    draw.text((804, 702), "Heuristic path: user-defined + primary effects + Left-Wedge", fill="#9cc4df", font=tiny_font)
+
+    canvas.save(path)
+
+
 def make_fig08_chart(path: Path) -> None:
     x = range(len(HIERARCHIES))
     fig, ax = plt.subplots(figsize=(8.6, 5.8))
@@ -330,16 +418,19 @@ def main() -> None:
     MPL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     render_thesis_pages()
     chart06 = OUT_DIR / "figure-06-current-chart.png"
+    chart07 = OUT_DIR / "figure-07-current-chart.png"
     chart08 = OUT_DIR / "figure-08-current-chart.png"
     chart09 = OUT_DIR / "figure-09-current-chart.png"
     chart10 = OUT_DIR / "figure-10-current-chart.png"
     chart11 = OUT_DIR / "figure-11-current-chart.png"
     make_fig06_chart(chart06)
+    make_fig07_chart(chart07)
     make_fig08_chart(chart08)
     make_fig09_chart(chart09)
     make_fig10_chart(chart10)
     make_fig11_chart(chart11)
     final06 = OUT_DIR / "figure-06-side-by-side.png"
+    final07 = OUT_DIR / "figure-07-side-by-side.png"
     final08 = OUT_DIR / "figure-08-side-by-side.png"
     final09 = OUT_DIR / "figure-09-side-by-side.png"
     final10 = OUT_DIR / "figure-10-side-by-side.png"
@@ -350,6 +441,13 @@ def main() -> None:
         chart06,
         final06,
         "The right panel reframes the restored abstraction story as a modern refinement-ladder view, emphasizing where cleaner nodes still exist higher in the tree.",
+    )
+    combine_side_by_side(
+        "Figure 7: Thesis robot task-planning domain vs current domain map",
+        crop_thesis_figure("figure-07"),
+        chart07,
+        final07,
+        "The right panel redraws the restored six-room robot domain and summarizes the current reproduced robot-domain outcome pattern.",
     )
     combine_side_by_side(
         "Figure 8: Thesis scatter vs current BF + P-WMP evidence",
@@ -379,7 +477,7 @@ def main() -> None:
         final11,
         "The right panel shows the currently reproduced robot-domain claim: only the manual-style AbTweak path solves the representative cases.",
     )
-    make_contact_sheet([final06, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
+    make_contact_sheet([final06, final07, final08, final09, final10, final11], OUT_DIR / "gallery-contact-sheet.png")
 
 
 if __name__ == "__main__":

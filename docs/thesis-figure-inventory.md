@@ -28,7 +28,7 @@ Current mapped gallery:
 | `4` | Separation Justification | `19` | `Open` | Same status as Figure 3: understood theoretically, not yet recreated as a maintained modern graphic. |
 | `5` | Promotion Justification | `19` | `Open` | Same status as Figures 3 and 4. |
 | `6` | Representing the abstract solution space | `24` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-06-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-06-side-by-side.png), using a modern refinement-ladder diagram grounded in the current abstraction and lineage diagnosis. |
-| `7` | Robot Task Planning Domain | `27` | `Partial` | Strong current robot-domain validation exists in [docs/tweak-vs-abtweak-comparison.md](/Users/stevenwoods/mmath-renovation/docs/tweak-vs-abtweak-comparison.md) and [docs/historical-validation-matrix.md](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md), but the domain map itself is not yet recreated. |
+| `7` | Robot Task Planning Domain | `27` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-07-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-07-side-by-side.png), combining the thesis domain map with a modern redraw and current robot-domain outcome summary. |
 | `8` | Violations versus CPU time, including regression fit curve; breadth-first with MP | `33` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-08-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-08-side-by-side.png). |
 | `9` | Violations versus CPU time, including regression fit curve; left-wedge with MP | `34` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-09-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-09-side-by-side.png). |
 | `10` | Comparing Tweak with AbTweak | `36` | `Mapped` | Maintained side-by-side panel at [analysis/thesis-side-by-side/figure-10-side-by-side.png](/Users/stevenwoods/mmath-renovation/analysis/thesis-side-by-side/figure-10-side-by-side.png). |
@@ -38,12 +38,13 @@ Current mapped gallery:
 
 The next strongest candidates for extension are:
 
-1. Figure `7`, because the robot-domain validation story is already strong and
-   only lacks the domain-structure panel.
-2. Figures `3` to `5`, if we decide to recreate the theoretical justification
+1. Figures `3` to `5`, if we decide to recreate the theoretical justification
    diagrams as maintained explanatory artifacts.
-3. Figure `1` and Figure `2`, if we want the introduction sequence to be
+2. Figure `1` and Figure `2`, if we want the introduction sequence to be
    complete for public readability.
+3. Figure `6` and Figure `7` are now the best template for adding other
+   non-numeric thesis figures: thesis source on the left, modern validated
+   explanatory counterpart on the right.
 
 ## Maintenance Rule
 

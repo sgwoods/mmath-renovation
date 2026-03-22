@@ -51,7 +51,31 @@
         }
 
         .hero {
+            position: relative;
             padding: 36px 34px 32px;
+        }
+
+        .siteHomeLink {
+            position: absolute;
+            top: 28px;
+            right: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(177, 222, 255, 0.18);
+            color: #d7ecff;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .siteHomeLink:hover {
+            background: rgba(121, 184, 255, 0.18);
+            border-color: rgba(121, 184, 255, 0.28);
         }
 
         .eyebrow {
@@ -187,12 +211,18 @@
             .panel {
                 padding: 24px 22px;
             }
+
+            .siteHomeLink {
+                position: static;
+                margin-bottom: 18px;
+            }
         }
     </style>
 </head>
 <body>
     <main class="shell">
         <section class="hero">
+            <a class="siteHomeLink" href="https://sgwoods.github.io/public">Steven Woods</a>
             <span class="eyebrow">Public Project Page</span>
             <h1>Masters of Mathematics Renovation</h1>
             <p>A living restoration of Steven Woods' Masters of Mathematics AbTweak research code, rebuilt around a modern SBCL baseline while preserving the thesis, paper, and historical benchmark story as faithfully as possible.</p>
