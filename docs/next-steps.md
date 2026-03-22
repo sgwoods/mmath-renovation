@@ -29,6 +29,7 @@ It complements:
 - [Hanoi-4 successful combination hypothesis](/Users/stevenwoods/mmath-renovation/docs/hanoi4-successful-combination-hypothesis.md)
 - [Hanoi-4 hierarchy experiment plan](/Users/stevenwoods/mmath-renovation/docs/hanoi4-hierarchy-experiment-plan.md)
 - [Hanoi-4 solve candidate comparison](/Users/stevenwoods/mmath-renovation/docs/hanoi4-solve-candidate-comparison.md)
+- [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
 - [Wide domain sweep](/Users/stevenwoods/mmath-renovation/docs/wide-domain-sweep.md)
 - [Reset-domain assessment](/Users/stevenwoods/mmath-renovation/docs/reset-domain-assessment.md)
 
@@ -90,6 +91,24 @@ It complements:
 4. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
 5. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
 6. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+
+## Post-1.0 Reminder
+
+Once the historical-restoration milestone reaches `1.0`, the next Hanoi phase
+should include explicit later-literature review rather than only more local
+runtime experimentation.
+
+The first named future input is now:
+
+- [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
+
+That future track is where later work such as Martins and Lynce's 2008 Hanoi
+encoding paper should be analyzed for:
+
+- new hierarchy setups
+- alternate problem encodings
+- structural constraint ideas
+- and future named non-historical extensions
 
 Within the current `hanoi-4` priority, the immediate sub-questions are now:
 

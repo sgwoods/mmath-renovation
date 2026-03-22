@@ -23,6 +23,7 @@ Core companion documents:
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
+- [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
 
 ## Index
 
@@ -65,6 +66,14 @@ active project bottleneck.
 
 The main remaining technical gap is not whether the restoration works at all.
 It is the still-open `hanoi-4` extension benchmark.
+
+The first explicitly named post-`1.0` research input is now also captured:
+
+- [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
+
+That future track is where later literature on hierarchy design, problem
+encoding, and structural constraints should be analyzed without blurring the
+historical restoration boundary.
 
 ## Primary Goal
 

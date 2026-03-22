@@ -16,6 +16,7 @@ It complements:
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Publication domain crosswalk](/Users/stevenwoods/mmath-renovation/docs/publication-domain-crosswalk.md)
+- [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
 
 ## Overall Goal
 
@@ -148,6 +149,20 @@ Main remaining gap:
   domain grouping, starting-state/goal explanation, and readable result
   previews and history
 
+## Post-1.0 Research Extension
+
+After the historical restoration reaches a true `1.0` checkpoint, the roadmap
+should open an explicit later-research phase rather than silently mixing newer
+ideas into the baseline.
+
+The first named input for that later phase is now captured in:
+
+- [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
+
+That track exists to revisit open questions such as `hanoi-4` using later
+literature on hierarchy design, problem encoding, and structural constraints,
+while keeping the restored historical baseline clearly delineated.
+
 ## Where We Are Against The Goal
 
 The project is in a late pre-release restoration state.
@@ -240,6 +255,11 @@ Recommended order from here:
    direct continuation of the main operator-style AbTweak baseline.
 
 7. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
+
+8. After `1.0`, open the explicit post-restoration research track.
+   That is the right place to analyze later material such as Martins and
+   Lynce's 2008 Hanoi encoding work and ask what it implies for future named
+   extensions, hierarchy redesigns, or problem-encoding experiments.
 
 ## Short Version
 
