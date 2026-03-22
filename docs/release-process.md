@@ -18,6 +18,7 @@ It complements:
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md)
+- [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 
 ## Recommendation
 

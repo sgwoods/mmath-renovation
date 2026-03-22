@@ -14,6 +14,7 @@ point and one stable vocabulary for:
 The current front door is:
 
 - [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
+- [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 
 ## Top-Level Commands
 
@@ -181,6 +182,18 @@ It does not by itself:
 - generalize the historical compatibility layer beyond the currently restored
   families
 - absorb the alternate `reset-domain` / `defstep` framework
+
+## Remote Browser-Triggered Use
+
+The same harness vocabulary now also backs a curated free remote execution
+surface through GitHub Actions.
+
+See:
+
+- [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
+
+That remote layer does not introduce a second planner interface. It simply
+reuses the harness vocabulary through curated Actions workflows.
 
 Those remain separate project tracks.
 

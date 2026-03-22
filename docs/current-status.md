@@ -25,6 +25,7 @@ For deeper technical detail, see:
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
+- [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 - [Domain inventory](/Users/stevenwoods/mmath-renovation/docs/domain-inventory.md)
 - [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
@@ -90,6 +91,8 @@ The clearest current top-level summary now lives in
   `status` / `report benchmark-status`
 - The harness now provides lightweight machine-readable summaries for
   `run`, `status`, `report`, and `trace`
+- The same curated harness surface is now exposed remotely through GitHub
+  Actions for browser-triggered runs and experiment-set presets
 - A retained side-experiment comparison framework now exists for plain
   state-space Hanoi BFS/DFS/A* baselines
 - A new frozen-frontier replay report now exists for `hanoi-4`, exposed

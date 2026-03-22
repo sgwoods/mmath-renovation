@@ -1,0 +1,46 @@
+name: Remote experiment set
+
+on:
+  workflow_dispatch:
+    inputs:
+      preset:
+        description: "Curated experiment-set preset"
+        required: true
+        type: choice
+        options:
+          - status-snapshot
+          - hanoi4-focused
+          - publication-surface
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install SBCL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sbcl
+
+      - name: Run curated experiment set
+        env:
+          SBCL_BIN: /usr/bin/sbcl
+        run: |
+          mkdir -p artifacts/remote-experiment-set
+          sh scripts/github-actions-run-experiment-set.sh \
+            "${{ github.event.inputs.preset }}" \
+            "artifacts/remote-experiment-set"
+
+      - name: Publish job summary
+        run: cat artifacts/remote-experiment-set/summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: remote-experiment-set-${{ github.run_number }}
+          path: artifacts/remote-experiment-set
+          if-no-files-found: error

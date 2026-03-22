@@ -22,6 +22,7 @@ Core companion documents:
 - [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
+- [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 
 ## Index
 
@@ -297,6 +298,11 @@ This is the normal entry point for:
 Details:
 
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
+- [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
+
+The repo now also has a free remote execution surface for curated runs through
+GitHub Actions, so “select, run, and see output” is available without a
+separate hosted backend.
 
 ## Public Status and Release Surfaces
 

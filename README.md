@@ -61,6 +61,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Refreshed plan](./docs/refreshed-plan.md): current plan state, recommended issue order, and the main sensible alternatives from here
 - [Unified restoration plan](./docs/unified-restoration-plan.md): top-level plan for converging the repo into one restored experimental environment that can stand in for the historical AbTweak code lines
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
+- [GitHub Actions remote experiments](./docs/github-actions-remote-experiments.md): free browser-triggered remote runner built on top of the same curated harness surface
 - [Restoration roadmap](./docs/restoration-roadmap.md): staged plan for turning the working copy into a historically grounded restored system
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
 - [Repository coverage matrix](./docs/repository-coverage-matrix.md): first-class table of what is integrated, tested, publication-validated, primary, separate, or still open across the repository

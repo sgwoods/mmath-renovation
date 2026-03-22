@@ -1,0 +1,53 @@
+name: Remote experiment
+
+on:
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "Experiment surface"
+        required: true
+        type: choice
+        options:
+          - status
+          - run
+          - report
+          - trace
+      name:
+        description: "Curated case/report/trace name. Use '-' for status."
+        required: true
+        default: "-"
+        type: string
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install SBCL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sbcl
+
+      - name: Run curated experiment
+        env:
+          SBCL_BIN: /usr/bin/sbcl
+        run: |
+          mkdir -p artifacts/remote-experiment
+          sh scripts/github-actions-run-experiment.sh \
+            "${{ github.event.inputs.kind }}" \
+            "${{ github.event.inputs.name }}" \
+            "artifacts/remote-experiment"
+
+      - name: Publish job summary
+        run: cat artifacts/remote-experiment/summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: remote-experiment-${{ github.run_number }}
+          path: artifacts/remote-experiment
+          if-no-files-found: error
