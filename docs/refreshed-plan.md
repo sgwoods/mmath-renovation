@@ -24,6 +24,9 @@ documented in [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/expe
 The algorithm-boundary rule is now documented in
 [Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md).
 
+The explicit gate for moving from beta to `1.0.0-rc.1` is now documented in
+[1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md).
+
 ## Plan State
 
 ### Track 1: Runtime Restoration

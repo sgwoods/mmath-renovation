@@ -53,6 +53,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Current status](./docs/current-status.md): concise live project snapshot and currently verified benchmark results
 - [Project goal and roadmap](./docs/project-goal-roadmap.md): central statement of the overall project goal, current roadmap, where we stand against it, and the recommended next steps
 - [Release process](./docs/release-process.md): versioning, release cadence, snapshot contents, tag policy, and Pages update rules
+- [1.0 release candidate checklist](./docs/release-candidate-checklist.md): explicit gate for when the historical restoration is ready for `1.0.0-rc.1`
 - [Changelog](./CHANGELOG.md): numbered restoration checkpoints
 - [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
 - [Project compendium](./docs/project-compendium.md): the most complete readable overview of the repo, benchmark state, publication alignment, structure, and release surfaces

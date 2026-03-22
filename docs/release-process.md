@@ -19,6 +19,7 @@ It complements:
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md)
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
+- [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
 
 ## Recommendation
 
@@ -66,6 +67,19 @@ Use semantic-style versioning with explicit pre-release labels.
 - `2.0.0`
   - use only if a broader unified environment absorbs the alternate
     `reset-domain` framework or introduces a clearly larger restoration scope
+
+## 1.0 RC Rule
+
+The decision to cut `1.0.0-rc.1` should now be governed explicitly by:
+
+- [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+
+Current working interpretation:
+
+- the hosted remote experiment UI is treated as a `1.1` supporting line, not a
+  blocker for `1.0-rc`
+- `hanoi-4` does not have to solve if it is formally and convincingly closed as
+  an explained extension-benchmark gap
 
 ## What Gets Versioned
 
