@@ -3,6 +3,10 @@
 This gallery pairs the thesis experimental figures with current regenerated
 comparison surfaces.
 
+Full figure inventory:
+
+- [Thesis figure inventory](/Users/stevenwoods/mmath-renovation/docs/thesis-figure-inventory.md)
+
 For each item:
 
 - left: the original thesis figure, rendered from the full checked-in thesis
@@ -28,6 +32,8 @@ Interpretation:
 - Figures 8 and 9 currently use the nearest regenerated Hanoi publication-alignment surfaces.
 - Figure 10 uses the exact-or-qualitative publication-match matrix for the original three-disk Hanoi rows.
 - Figure 11 uses the current reproduced robot-domain claim surface.
+- Figures 1 to 7 are inventoried but not yet all mapped into maintained
+  side-by-side panels.
 
 These are intended to be maintained artifacts, not one-off exports.
 

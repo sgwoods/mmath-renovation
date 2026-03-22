@@ -55,6 +55,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
 - [Project compendium](./docs/project-compendium.md): the most complete readable overview of the repo, benchmark state, publication alignment, structure, and release surfaces
 - [Thesis side-by-side graphics](./docs/thesis-side-by-side-graphics.md): maintained gallery pairing thesis experimental figures with current regenerated comparison surfaces
+- [Thesis figure inventory](./docs/thesis-figure-inventory.md): full figure-by-figure inventory of the thesis with mapped, partial, and open statuses
 - [Refreshed plan](./docs/refreshed-plan.md): current plan state, recommended issue order, and the main sensible alternatives from here
 - [Unified restoration plan](./docs/unified-restoration-plan.md): top-level plan for converging the repo into one restored experimental environment that can stand in for the historical AbTweak code lines
 - [Experiment harness](./docs/experiment-harness.md): standardized front door for named single-case runs, report runs, and trace workflows
