@@ -6,6 +6,12 @@ Current named release checkpoint:
 
 - `0.10.0-beta.1`
 
+Current phase summary:
+
+- the thesis-gallery milestone is complete and now treated as a maintained release-facing validation asset
+- the active technical focus has returned to the narrow `hanoi-4` solve-oriented path
+- cheaper unsolved `hanoi-4` runs are treated as diagnostic only unless they materially tighten the explanation
+
 For deeper technical detail, see:
 
 - [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
@@ -77,9 +83,7 @@ The clearest current top-level summary now lives in
 - Runtime restoration: first milestone substantially achieved
 - Historical validation: in progress, and the validation matrix is now explicitly labeled against the published expectations
 - Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage, though `stylistics` has now moved out of the missing-sample bucket
-- Top-level recommendation: converge the repo toward one unified restored
-  experimental environment, then keep `hanoi-4` as the highest-priority open
-  benchmark inside that structure
+- Top-level recommendation: keep the now-unified harness and completed thesis-gallery surfaces maintained, and spend the next main effort on the narrow `hanoi-4` solve-oriented investigation
 - First unification step now in place: the repo has a single experiment entry
   point at [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
 - Benchmark-family status is now surfaced directly through the harness via
@@ -102,10 +106,7 @@ The clearest current top-level summary now lives in
   `kval 2` branch and a concretized `kval 1` branch have nearly the same
   closure quality, but the concretized branch immediately wins on Left-Wedge
   score and stays favored as it drops to `kval 0`
-- Recommended next track: unify the experiment infrastructure, push the
-  strongest remaining `hanoi-4` path, then widen historically grounded
-  coverage, then decide how much of the alternate `reset-domain` framework to
-  revive
+- Recommended next track: keep the release/build and validation surfaces current, push the strongest remaining `hanoi-4` path, then widen historically grounded coverage, then decide how much of the alternate `reset-domain` framework to revive
 
 ## Current Restoration Milestone
 
@@ -118,6 +119,9 @@ subset.
 The original published Hanoi figure rows are now aligned directly against the
 restored `hanoi-3` family, with exact row-level reproduction across the main
 thesis hierarchy table and qualitative agreement on the thesis `>6000` rows.
+The maintained thesis figure gallery and inventory now treat the full thesis
+figure set as represented and build-generated, so they should be kept current
+as validation assets rather than treated as a separate active milestone.
 The later `hanoi-4` family now has an explicit mapping note that separates
 exact three-disk publication labels from the closest four-disk code analogues.
 The next hierarchy-design step for that open four-disk benchmark is now also

@@ -150,6 +150,8 @@ The project is in a late pre-release restoration state.
   [intake/README.md](/Users/stevenwoods/mmath-renovation/intake/README.md),
   so new finds can be reviewed before they are assigned to `working/`,
   `historical/`, `publications/`, or `analysis/`
+- the thesis-gallery milestone is effectively complete, and the gallery is now
+  a maintained publication-validation asset instead of an active project phase
 
 ### Strong But Still Open
 
@@ -182,26 +184,31 @@ That gap is now better defined than it used to be:
 Recommended order from here:
 
 1. Continue the `hanoi-4` historical-control investigation.
-   Focus on tightening publication-to-code mapping and on the specific
-   hierarchy-and-control surfaces that still look historically plausible,
-   especially the stronger `isbm` weak-`POS` plus Left-Wedge runtime path,
-   the now-positive grouped-top `legacy-1991-isbm` follow-up family, and the
-   smaller `critical-list-2` plus weak-`POS` tree niche.
+   Focus on the narrow solve-oriented candidate set rather than broad variant
+   churn: the main runtime target remains `isbm` weak-`POS` plus Left-Wedge,
+   with `legacy-1991-isbm` as the comparison line and the rest of the current
+   hierarchy families treated primarily as diagnostic context.
 
 2. Keep the formal validation documents current as the `hanoi-4` picture sharpens.
    This keeps the repo aligned with the actual restoration evidence rather than
    leaving important conclusions only in shell output or issue comments.
 
-3. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
+3. Keep the completed thesis-gallery and release surfaces maintained through
+   the normal build flow.
+   The gallery is now feature-complete for the thesis figure set and should be
+   preserved as a validation asset, not expanded further unless a new
+   publication-mapping need appears.
+
+4. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
    This is now secondary because the repo already has a strong baseline across
    blocks, Nilsson blocks, registers, robot, multiple sample domains, and the
    lower Hanoi families.
 
-4. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
+5. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
    That work is real, but it is a framework-restoration branch rather than a
    direct continuation of the main operator-style AbTweak baseline.
 
-5. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
+6. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
 
 ## Short Version
 

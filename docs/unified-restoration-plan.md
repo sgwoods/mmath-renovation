@@ -70,6 +70,8 @@ What is effectively working today:
 - the repo has a repeatable smoke suite, comparison scripts, and trace tooling
 - historically important 1991 Hanoi control families are now exposed through a
   compatibility layer in the working tree
+- the thesis-gallery and release surfaces are now build-maintained validation
+  assets rather than separate active milestones
 
 What is still fragmented:
 
@@ -229,15 +231,16 @@ Tradeoff:
 
 The best overall path is:
 
-1. unify the main experiment infrastructure
-2. within that unified structure, keep `hanoi-4` as the highest-priority open
-   runtime/validation target
+1. keep the now-unified experiment and release infrastructure maintained
+2. within that maintained structure, keep `hanoi-4` as the highest-priority
+   open runtime/validation target
 3. only after that, decide whether to absorb the `reset-domain` framework into
    the same restored environment or keep it as a deliberate phase-2 subsystem
 
 That recommendation balances the real state of the repo:
 
-- the core planner is now strong enough to deserve consolidation
+- the core planner and harness are now strong enough that the next phase can
+  focus on benchmark closure rather than basic consolidation
 - the historical-control surface is now real enough to standardize
 - `hanoi-4` is still important, but no longer the only thing that defines the
   project's success

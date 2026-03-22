@@ -57,6 +57,10 @@ The project is no longer in a fragile bootstrap phase. It now has:
 - one explicit intake path for newly discovered material
 - one public release/dashboard/status surface
 
+The thesis-gallery milestone is now effectively complete. The gallery and
+inventory remain first-class validation artifacts, but they are no longer the
+active project bottleneck.
+
 The main remaining technical gap is not whether the restoration works at all.
 It is the still-open `hanoi-4` extension benchmark.
 
@@ -259,6 +263,14 @@ These are used throughout the repo for:
 The maintained thesis figure gallery now lives in:
 
 - [Thesis side-by-side graphics](/Users/stevenwoods/mmath-renovation/docs/thesis-side-by-side-graphics.md)
+- [Thesis figure inventory](/Users/stevenwoods/mmath-renovation/docs/thesis-figure-inventory.md)
+
+Current interpretation:
+
+- the thesis figure set is fully represented for this project phase
+- the gallery should now be kept current through the release build
+- it should only expand further if a new publication or manual family needs
+  the same treatment
 
 ## Experiment Surface
 
@@ -362,8 +374,10 @@ Examples:
 The biggest remaining work items are:
 
 1. keep the `hanoi-4` investigation honest, narrow, and historically grounded
-2. continue to tighten publication-facing validation where the sources justify it
-3. decide when to open phase 2 for the alternate `reset-domain` / `defstep`
+2. keep the completed thesis-gallery and release surfaces maintained as
+   validation assets while the technical focus stays on `hanoi-4`
+3. continue to tighten publication-facing validation where the sources justify it
+4. decide when to open phase 2 for the alternate `reset-domain` / `defstep`
    framework
 
 The project is not missing a general baseline anymore.
@@ -374,9 +388,11 @@ It is now in the phase of tightening and finishing.
 Current best order:
 
 1. continue the focused `hanoi-4` path
-2. keep validation and crosswalk docs current as the picture sharpens
-3. only widen benchmark coverage where it materially improves the validation story
-4. leave `reset-domain` and adjacent-system restoration as separate later tracks
+2. keep the thesis-gallery, compendium, and release snapshot surfaces current
+   through the normal build flow
+3. keep validation and crosswalk docs current as the picture sharpens
+4. only widen benchmark coverage where it materially improves the validation story
+5. leave `reset-domain` and adjacent-system restoration as separate later tracks
 
 ## Quick Navigation
 

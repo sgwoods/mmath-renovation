@@ -5,6 +5,7 @@ This document is the current planning snapshot for the AbTweak renovation after:
 - restoring a working SBCL baseline for `Abtweak-1993`
 - checking the core historical publications into [publications/](/Users/stevenwoods/mmath-renovation/publications/README.md)
 - clarifying how the local `hanoi-4` hierarchies map to the published experiment language
+- completing the maintained thesis side-by-side figure gallery
 
 It is the best place to answer two questions:
 
@@ -74,45 +75,49 @@ What is still open:
 
 ## Recommended Next Sequence
 
-This sequence is still valid, but it should now be read inside the broader
-unified-goal framing:
+This sequence now assumes that the thesis-gallery milestone is done and should
+be maintained, not treated as a separate active workstream. It should also be
+read inside the broader unified-goal framing:
 
 - one implementation base
 - one historical compatibility surface
 - one experiment harness
 
-### 1. Unify The Main Experiment Infrastructure
+### 1. Push `hanoi-4` Further
 
 Focus on:
 
-- treating the current runners and compatibility helpers as one restored
-  experimental environment rather than separate local tools
-- standardizing how historical-control runs, smoke runs, and trace runs are
-  expressed
-- using the Hanoi compatibility layer as the first model for that structure
-- extending the new shared entry point in
+- the strongest current solve-oriented line:
+  `isbm` weak-`POS` plus Left-Wedge
+- `legacy-1991-isbm` as the main grouped-top comparison line
+- solve progress or materially tighter explanation, not cheaper unsolved runs
+- keeping the completed thesis-gallery and release build surfaces stable while
+  the technical focus returns to the planner
+
+Reason:
+
+This is now the highest-value remaining technical question in the repo. The
+gallery, harness, and publication surfaces are in place, so the next real
+benchmark question is whether the strongest surviving `hanoi-4` line can be
+solved or explained more tightly.
+
+### 2. Maintain The Unified Experiment And Release Surfaces
+
+Focus on:
+
+- keeping
   [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
-  so it becomes the normal way to invoke the environment
+  as the standard front door
+- keeping
+  [scripts/create-release-snapshot.sh](/Users/stevenwoods/mmath-renovation/scripts/create-release-snapshot.sh)
+  as the single normal refresh path for release-facing assets
+- preserving the thesis gallery as a maintained validation artifact rather than
+  letting it drift
 
 Reason:
 
-The project is now mature enough that consolidation is a higher-value next step
-than continuing to accumulate isolated probes. This is the cleanest route to a
-single working equivalent of the historical experimental infrastructure.
-
-### 2. Push `hanoi-4` Further
-
-Focus on:
-
-- `isbm` weak-`POS` plus Left-Wedge as the strongest current historical-control
-  runtime path
-- `legacy-1991-isbm` as the first positive grouped-top analogue family
-- `critical-list-2` weak-`POS` tree behavior as a smaller historically
-  interesting niche
-
-Reason:
-
-This is the highest-value remaining runtime question. We now have a cleaner historical Hanoi ladder, with exact `hanoi-2` and exact `hanoi-3` below it, so `hanoi-4` is now more clearly the main open larger extension benchmark. The next step is to see whether better bounds, tuned settings, or a still-missing fidelity detail can turn that into a real `hanoi-4` solve.
+The infrastructure is already strong enough. What matters now is keeping it
+stable and coherent while the benchmark focus returns to `hanoi-4`.
 
 Relevant issue:
 
@@ -230,14 +235,17 @@ It risks deferring the hardest and most informative restoration question.
 Recommended order:
 
 1. `#14`
-2. `#13`
-3. `#16`
-4. `#12`
+2. maintain harness/release coherence while working `#14`
+3. `#13`
+4. `#16`
+5. `#12`
 
 Why this order makes the most sense:
 
 - `hanoi-4` is still the clearest remaining benchmark boundary between “strong
   partial restoration” and “historically convincing restoration”
+- the thesis-gallery milestone is complete enough that it should now support,
+  not distract from, the main benchmark work
 - the repo now has a cleaner historical Hanoi ladder below it, with exact
   `hanoi-2` and exact `hanoi-3` compatibility surfaces already in place
 - the publications and hierarchy mapping work mean we now have enough context to investigate `hanoi-4` intelligently

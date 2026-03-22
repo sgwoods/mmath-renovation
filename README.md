@@ -15,17 +15,19 @@ This renovation effort is centered on four closely related historical artifacts:
 
 ## Current Status
 
-This repository is now past the initial documentation bootstrap. The current focus is:
+This repository is now past the initial documentation bootstrap. The current
+phase is:
 
-1. recover the historical problem statements, terminology, and algorithmic claims
-2. identify the structure and provenance of the old implementation
-3. reconstruct a runnable baseline with tests or example planning problems
-4. document any semantic differences between the recovered code, the thesis, and the published papers
-5. create a clean platform for future modernization work
+1. keep the completed thesis-gallery and release surfaces maintained through the normal build flow
+2. push the narrow `hanoi-4` solve-oriented investigation on the strongest current historical path
+3. keep the formal validation and publication crosswalk story current as that `hanoi-4` picture sharpens
+4. widen historically grounded coverage only where it materially improves validation
+5. keep a clean boundary between the restored baseline and later extensions
 
 Current milestone:
 
 - the SBCL working copy now solves `blocks` / `sussman` in both `tweak` and `abtweak`, solves `registers` in `tweak`, restores the early `hanoi-2` family exactly against archived outputs, solves `hanoi-3` and `macro-hanoi` in both `tweak` and `abtweak`, shows a meaningful left-wedge effect on `simple-robot-2` in `abtweak`, runs `hanoi-4` to a bounded search outcome in both modes under the restored BFS path, and can execute the historical DFS path again under SBCL
+- the thesis figure gallery is now fully represented and maintained as a release-facing validation artifact rather than an active blocker for planner work
 
 Current pre-release version:
 
@@ -123,10 +125,11 @@ Direct links and brief notes for each item are collected in [docs/references.md]
 ## Immediate Next Steps
 
 1. keep `hanoi-4` as the highest-value open benchmark now that `hanoi-2` and `hanoi-3` are both historically aligned in the restored surface
-2. keep the formal validation story current as the `hanoi-4` historical-control picture sharpens
-3. widen historically grounded operator-style coverage only where it materially improves the validation story
-4. keep the alternate `reset-domain` / `defstep` framework as a separate later phase unless priorities change
-5. keep trimming residual SBCL noise where it helps debugging without changing planner semantics
+2. keep the thesis gallery and release snapshot build maintained as supporting validation assets, not as a separate active milestone
+3. keep the formal validation story current as the `hanoi-4` historical-control picture sharpens
+4. widen historically grounded operator-style coverage only where it materially improves the validation story
+5. keep the alternate `reset-domain` / `defstep` framework as a separate later phase unless priorities change
+6. keep trimming residual SBCL noise where it helps debugging without changing planner semantics
 
 ## Historical Code
 
