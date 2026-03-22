@@ -11,6 +11,8 @@ It complements:
 
 - [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
+- [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 - [Refreshed plan](/Users/stevenwoods/mmath-renovation/docs/refreshed-plan.md)
 - [Unified restoration plan](/Users/stevenwoods/mmath-renovation/docs/unified-restoration-plan.md)
 - [Experiment harness](/Users/stevenwoods/mmath-renovation/docs/experiment-harness.md)
@@ -165,7 +167,7 @@ while keeping the restored historical baseline clearly delineated.
 
 ## Where We Are Against The Goal
 
-The project is in a late pre-release restoration state.
+The project is in a late beta, pre-release-candidate restoration state.
 
 ### Already Strong
 
@@ -193,6 +195,8 @@ The project is in a late pre-release restoration state.
   - release dashboard
   - remote experiments guide
   - hosted remote experiment UI backed by GitHub Actions
+- the current RC-prep sweep is now complete, and `hanoi-4` is accepted as an
+  explained-but-open extension benchmark for `1.0.0-rc.1`
 
 ### Strong But Still Open
 
@@ -224,13 +228,14 @@ That gap is now better defined than it used to be:
 
 Recommended order from here:
 
-1. Continue the `hanoi-4` historical-control investigation.
-   Focus on the narrow solve-oriented candidate set rather than broad variant
-   churn: the main runtime target remains `isbm` weak-`POS` plus Left-Wedge,
-   with `legacy-1991-isbm` as the comparison line and the rest of the current
-   hierarchy families treated primarily as diagnostic context.
+1. Prepare and cut `1.0.0-rc.1`.
+   The formal gate and the current sweep are now recorded in:
+   - [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+   - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
+   The remaining work is release prep, version/tag work, and public snapshot
+   refresh rather than another missing validation family.
 
-2. Keep the formal validation documents current as the `hanoi-4` picture sharpens.
+2. Keep the formal validation documents current as the repo moves through RC.
    This keeps the repo aligned with the actual restoration evidence rather than
    leaving important conclusions only in shell output or issue comments.
 
@@ -245,18 +250,24 @@ Recommended order from here:
    aligned with the curated harness vocabulary and project status surfaces, but
    it should support the restoration effort rather than become the main effort.
 
-5. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
+5. Keep `hanoi-4` narrow and binary after RC.
+   The main runtime target remains `isbm` weak-`POS` plus Left-Wedge, with
+   `legacy-1991-isbm` as the comparison line. Further work should now be
+   justified only when it improves the solve case or materially tightens the
+   explanation.
+
+6. Widen historically grounded operator-style coverage only where it clearly improves the validation story.
    This is now secondary because the repo already has a strong baseline across
    blocks, Nilsson blocks, registers, robot, multiple sample domains, and the
    lower Hanoi families.
 
-6. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
+7. Keep the alternate `reset-domain` / `defstep` framework as a separate phase unless priorities change.
    That work is real, but it is a framework-restoration branch rather than a
    direct continuation of the main operator-style AbTweak baseline.
 
-7. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
+8. Continue trimming non-fatal SBCL noise when it helps clarity, but not at the expense of the main benchmark work.
 
-8. After `1.0`, open the explicit post-restoration research track.
+9. After `1.0`, open the explicit post-restoration research track.
    That is the right place to analyze later material such as Martins and
    Lynce's 2008 Hanoi encoding work and ask what it implies for future named
    extensions, hierarchy redesigns, or problem-encoding experiments.

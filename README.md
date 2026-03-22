@@ -33,6 +33,13 @@ Current pre-release version:
 
 - `0.10.0-beta.1`
 
+Current RC-prep position:
+
+- the `1.0.0-rc.1` gate is now treated as realistic
+- `hanoi-4` is accepted as an explained-but-open extension benchmark for RC
+- the current pre-RC validation sweep is recorded in
+  [docs/release-candidate-sweep.md](./docs/release-candidate-sweep.md)
+
 ## What AbTweak Is
 
 AbTweak combines abstraction with nonlinear, least-commitment planning. In the cited work, abstraction is used to simplify planning problems by suppressing lower-criticality preconditions at higher levels of the hierarchy, while TWEAK-style nonlinear planning preserves partial ordering and deferred commitment in the evolving plan structure.
@@ -54,6 +61,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Project goal and roadmap](./docs/project-goal-roadmap.md): central statement of the overall project goal, current roadmap, where we stand against it, and the recommended next steps
 - [Release process](./docs/release-process.md): versioning, release cadence, snapshot contents, tag policy, and Pages update rules
 - [1.0 release candidate checklist](./docs/release-candidate-checklist.md): explicit gate for when the historical restoration is ready for `1.0.0-rc.1`
+- [1.0 release candidate sweep](./docs/release-candidate-sweep.md): checked-in pre-RC validation bundle and current readiness verdict
 - [Changelog](./CHANGELOG.md): numbered restoration checkpoints
 - [Releases index](./releases/README.md): checked-in release snapshots generated from the current harness and documentation state
 - [Project compendium](./docs/project-compendium.md): the most complete readable overview of the repo, benchmark state, publication alignment, structure, and release surfaces

@@ -27,6 +27,9 @@ The algorithm-boundary rule is now documented in
 The explicit gate for moving from beta to `1.0.0-rc.1` is now documented in
 [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md).
 
+The current pre-RC validation basis is now recorded in
+[1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md).
+
 ## Plan State
 
 ### Track 1: Runtime Restoration
@@ -86,7 +89,23 @@ read inside the broader unified-goal framing:
 - one historical compatibility surface
 - one experiment harness
 
-### 1. Push `hanoi-4` Further
+### 1. Prepare `1.0.0-rc.1`
+
+Focus on:
+
+- using the accepted RC interpretation that `hanoi-4` is an explained-but-open
+  extension benchmark
+- the checked-in sweep in
+  [docs/release-candidate-sweep.md](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
+- version/tag/checkpoint preparation rather than more exploratory benchmark churn
+
+Reason:
+
+The release-candidate gate is now mostly satisfied, and the remaining work is
+release discipline rather than another missing proof that the restoration
+basically works.
+
+### 2. Keep `hanoi-4` Narrow After RC
 
 Focus on:
 
@@ -94,17 +113,17 @@ Focus on:
   `isbm` weak-`POS` plus Left-Wedge
 - `legacy-1991-isbm` as the main grouped-top comparison line
 - solve progress or materially tighter explanation, not cheaper unsolved runs
-- keeping the completed thesis-gallery and release build surfaces stable while
-  the technical focus returns to the planner
 
 Reason:
 
-This is now the highest-value remaining technical question in the repo. The
-gallery, harness, and publication surfaces are in place, so the next real
-benchmark question is whether the strongest surviving `hanoi-4` line can be
-solved or explained more tightly.
+The `hanoi-4` question remains important, but it no longer has to block RC.
+That lets the repo move forward without pretending the benchmark is solved.
 
-### 2. Maintain The Unified Experiment And Release Surfaces
+Relevant issue:
+
+- [#14 Investigate hanoi-4 performance after precedence-fix stabilization](https://github.com/sgwoods/mmath-renovation/issues/14)
+
+### 3. Maintain The Unified Experiment And Release Surfaces
 
 Focus on:
 
@@ -120,13 +139,9 @@ Focus on:
 Reason:
 
 The infrastructure is already strong enough. What matters now is keeping it
-stable and coherent while the benchmark focus returns to `hanoi-4`.
+stable and coherent through the RC transition.
 
-Relevant issue:
-
-- [#14 Investigate hanoi-4 performance after precedence-fix stabilization](https://github.com/sgwoods/mmath-renovation/issues/14)
-
-### 3. Expand Historically Grounded Coverage
+### 4. Expand Historically Grounded Coverage
 
 Focus on:
 
@@ -145,7 +160,7 @@ Relevant issue:
 
 - [#13 Expand historical shipped sample-domain smoke coverage](https://github.com/sgwoods/mmath-renovation/issues/13)
 
-### 4. Decide The Alternate Framework Boundary
+### 5. Decide The Alternate Framework Boundary
 
 Focus on:
 
@@ -163,7 +178,7 @@ Relevant issue:
 
 - [#16 Evaluate reset-domain planner files as a separate restoration track](https://github.com/sgwoods/mmath-renovation/issues/16)
 
-### 5. Trim Residual SBCL Noise
+### 6. Trim Residual SBCL Noise
 
 Focus on:
 

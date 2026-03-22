@@ -17,6 +17,8 @@ Core companion documents:
 
 - [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
 - [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
+- [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Publication domain crosswalk](/Users/stevenwoods/mmath-renovation/docs/publication-domain-crosswalk.md)
 - [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
@@ -104,8 +106,9 @@ Current release interpretation:
 - late beta
 - research-grade restoration checkpoint
 - strong on the core operator-style baseline
-- not yet a release candidate because `hanoi-4` remains open and the alternate
-  `reset-domain` framework is still separate
+- now close enough to prepare `1.0.0-rc.1`
+- `hanoi-4` is accepted for RC as an explained-but-open extension benchmark
+- the hosted remote experiment UI remains a supporting `1.1` line
 
 Release-facing references:
 
@@ -113,6 +116,7 @@ Release-facing references:
 - [CHANGELOG.md](/Users/stevenwoods/mmath-renovation/CHANGELOG.md)
 - [Release snapshot](/Users/stevenwoods/mmath-renovation/releases/0.10.0-beta.1/release-summary.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 
 ## Primary Working System
 
@@ -207,6 +211,8 @@ The important current conclusions are:
   `isbm + weak-POS + stack + Left-Wedge`
 - the strongest grouped-top analogue is `legacy-1991-isbm`
 - none of the current lines solve classic 3-peg `hanoi-4` yet
+- for RC purposes, the benchmark is now accepted as a tightly diagnosed,
+  explained-but-open extension case rather than a release blocker
 
 Most important references:
 

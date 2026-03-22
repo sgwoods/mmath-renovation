@@ -55,6 +55,21 @@ One benchmark rule should now stay explicit in this handoff:
   now been tried and also failed at the standard 20k bound, so that concrete
   extension idea is recorded as explanatory rather than promising
 
+## 1.0 RC Disposition
+
+For release-candidate purposes, the current project stance is now:
+
+- `hanoi-4` is a historically grounded extension benchmark
+- the lower Hanoi publication story is already reproduced through `hanoi-3`
+- the current `hanoi-4` state is accepted as "explained but open"
+- that means `hanoi-4` no longer blocks `1.0.0-rc.1`, though it remains the
+  main open planner benchmark after RC
+
+The current readiness basis for that stance is recorded in:
+
+- [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
+
 ## Best Current Runtime Path
 
 The strongest current `hanoi-4` path is:

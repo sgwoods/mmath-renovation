@@ -20,6 +20,7 @@ It complements:
 - [Algorithm strategy policy](/Users/stevenwoods/mmath-renovation/docs/algorithm-strategy-policy.md)
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 - [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 
 ## Recommendation
 
@@ -80,6 +81,10 @@ Current working interpretation:
   blocker for `1.0-rc`
 - `hanoi-4` does not have to solve if it is formally and convincingly closed as
   an explained extension-benchmark gap
+- the current repeatable pre-RC sweep is:
+  [scripts/release-candidate-sweep.sh](/Users/stevenwoods/mmath-renovation/scripts/release-candidate-sweep.sh)
+  with the latest checked-in result at
+  [docs/release-candidate-sweep.md](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 
 ## What Gets Versioned
 
@@ -178,7 +183,13 @@ compendium for every small commit.
    - a blocker changed
    - the harness materially changed
    - the active release focus changed
-5. Generate a release snapshot:
+5. For `1.0.0-rc.1` and later RC refreshes, run the curated validation sweep:
+
+```sh
+sh /Users/stevenwoods/mmath-renovation/scripts/release-candidate-sweep.sh
+```
+
+6. Generate a release snapshot:
 
 ```sh
 sh /Users/stevenwoods/mmath-renovation/scripts/create-release-snapshot.sh
@@ -199,8 +210,8 @@ That step now also:
   for the shared homepage renderer
 - checks that the sync did not newly dirty any non-MMath Pages file
 
-6. Commit the release prep.
-7. Create and push an annotated git tag from the release-prep commit:
+7. Commit the release prep.
+8. Create and push an annotated git tag from the release-prep commit:
 
 ```sh
 git -C /Users/stevenwoods/mmath-renovation tag -a v0.10.0-beta.1 -m "AbTweak restoration 0.10.0-beta.1"
@@ -248,6 +259,17 @@ Recommended status values for the current release stage:
 - `status_value`: `0.10.0-beta.1`
 - `focus_label`: `Current focus`
 - `focus_value`: `Hanoi-4 extension benchmark`
+
+## Current RC Lean
+
+The main conceptual decision has now been taken:
+
+- the current `hanoi-4` position is accepted as historically grounded,
+  tightly diagnosed, and acceptable as an "explained but open" extension
+  benchmark at `1.0-rc`
+
+So the remaining work is operational release preparation, not another major
+scope decision.
 
 ## Naming Rule For New Generic Strategies
 

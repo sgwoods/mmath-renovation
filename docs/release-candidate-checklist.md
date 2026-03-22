@@ -14,6 +14,7 @@ It complements:
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
 - [Hanoi-4 formal state](/Users/stevenwoods/mmath-renovation/docs/hanoi4-formal-state.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 
 ## Scope Rule
 
@@ -71,6 +72,8 @@ So the acceptable `hanoi-4` outcomes for `1.0-rc` are:
 
 The current planning assumption is that option `2` is acceptable.
 
+That assumption is now accepted as the current RC stance.
+
 ### 4. Release And Build Flow Is Stable
 
 - [scripts/create-release-snapshot.sh](/Users/stevenwoods/mmath-renovation/scripts/create-release-snapshot.sh)
@@ -105,8 +108,8 @@ At minimum, these should be coherent and current:
 When the checklist is satisfied:
 
 1. refresh the key docs
-2. run the normal release snapshot build
-3. run the final curated validation sweep
+2. run the final curated validation sweep
+3. run the normal release snapshot build
 4. bump to `1.0.0-rc.1`
 5. tag and publish the checkpoint
 
@@ -114,10 +117,12 @@ When the checklist is satisfied:
 
 The repo is now close enough that `1.0-rc` is realistic.
 
-The remaining non-trivial decision is not whether the restoration broadly
-works. It is whether we are comfortable declaring the current `hanoi-4`
-position as:
+The main conceptual decision is now settled:
 
-- historically grounded
-- tightly diagnosed
-- and acceptable as an "explained but open" extension benchmark at `1.0-rc`
+- the current `hanoi-4` position is accepted as historically grounded,
+  tightly diagnosed, and acceptable as an "explained but open" extension
+  benchmark at `1.0-rc`
+
+The current readiness basis is captured in:
+
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)

@@ -12,6 +12,7 @@ Current phase summary:
 - the active technical focus has returned to the narrow `hanoi-4` solve-oriented path
 - cheaper unsolved `hanoi-4` runs are treated as diagnostic only unless they materially tighten the explanation
 - the public and remote interaction layer is now a maintained supporting surface, including the hosted experiment UI
+- the pre-`1.0.0-rc.1` validation sweep is now complete, and `hanoi-4` is accepted as an explained-but-open extension benchmark for RC purposes
 
 For deeper technical detail, see:
 
@@ -19,6 +20,8 @@ For deeper technical detail, see:
 - [Thesis side-by-side graphics](/Users/stevenwoods/mmath-renovation/docs/thesis-side-by-side-graphics.md)
 - [Thesis figure inventory](/Users/stevenwoods/mmath-renovation/docs/thesis-figure-inventory.md)
 - [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
+- [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+- [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 - [Abtweak-1993 baseline](/Users/stevenwoods/mmath-renovation/docs/abtweak-1993-baseline.md)
 - [Historical validation matrix](/Users/stevenwoods/mmath-renovation/docs/historical-validation-matrix.md)
 - [Historical sample cases](/Users/stevenwoods/mmath-renovation/docs/historical-sample-cases.md)
@@ -84,9 +87,10 @@ The clearest current top-level summary now lives in
 [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md).
 
 - Runtime restoration: first milestone substantially achieved
-- Historical validation: in progress, and the validation matrix is now explicitly labeled against the published expectations
+- Historical validation: strong enough for RC, with the current sweep recorded in
+  [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 - Benchmark coverage: solid baseline, but still missing a full `hanoi-4` solve and some additional shipped sample coverage, though `stylistics` has now moved out of the missing-sample bucket
-- Top-level recommendation: keep the now-unified harness and completed thesis-gallery surfaces maintained, and spend the next main effort on the narrow `hanoi-4` solve-oriented investigation
+- Top-level recommendation: keep the now-unified harness and completed thesis-gallery surfaces maintained, and move from late beta into release-candidate preparation
 - First unification step now in place: the repo has a single experiment entry
   point at [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
 - Benchmark-family status is now surfaced directly through the harness via
@@ -123,11 +127,15 @@ The clearest current top-level summary now lives in
     `ONB PEG3` slice, just at larger scale
   - so the current evidence supports explained bounded failure, not clear
     convergence toward a solve
+- The new RC-prep sweep now turns that diagnosis into an explicit release
+  stance:
+  - the lower Hanoi families and broad operator-style baseline are strong
+  - the release/build/public surfaces are stable
+  - `hanoi-4` is accepted as "explained but open" for `1.0.0-rc.1`
 - Recommended next track: keep the release/build, remote UI, and validation
-  surfaces current, push the strongest remaining `hanoi-4` path only when it
-  serves the binary solve question or materially tightens the explanation, then
-  widen historically grounded coverage, then decide how much of the alternate
-  `reset-domain` framework to revive
+  surfaces current, prepare the version/tag/checkpoint work for
+  `1.0.0-rc.1`, then decide how much post-RC effort should stay on `hanoi-4`
+  before the later alternate-framework and post-`1.0` research tracks reopen
 
 ## Current Restoration Milestone
 

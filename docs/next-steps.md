@@ -35,7 +35,14 @@ It complements:
 
 ## Current Priorities
 
-1. Push the promising `hanoi-4` path further, but keep the focus on the narrow solve-first candidate set rather than broad parameter churn:
+1. Prepare `1.0.0-rc.1` from the now-accepted historical baseline:
+   the current gate and evidence are now recorded in
+   [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
+   and
+   [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md).
+   The next practical work is version/tag/checkpoint preparation rather than
+   more exploratory validation churn.
+2. Keep `hanoi-4` narrow, binary, and post-RC oriented:
    compare the current `hanoi-4` hierarchy/control pairings with the thesis's historically good and bad Hanoi hierarchy families, now that the raw Left-Wedge refinement bias appears to be intended. The new permutation follow-up suggests `isbm` is the best alternate "Hanoi-4b" comparison case for ranking quality, while `ismb` remains the main target for raw bounded performance.
    The `hanoi-3` compatibility layer now re-exposes a broader 1991 experiment slice, including multiple weak-`POS` hierarchies that match the archived runs exactly, and the first `hanoi-4` historical-control wrapper is now in place with the archived `legacy-1991-default` hierarchy.
    The newest harness-native deeper weak-`POS` runs now sharpen that further:
@@ -79,18 +86,18 @@ It complements:
    `hanoi-4` immediately, which makes the remaining restored-planner gap look
    more like a planner-specific search/control problem than a generic puzzle
    difficulty issue.
-2. Keep the unified experiment, release, and thesis-gallery surfaces maintained while `hanoi-4` remains the active technical thread:
+3. Keep the unified experiment, release, and thesis-gallery surfaces maintained while `hanoi-4` remains the active technical thread:
    the common front door at
    [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
    is now good enough to treat as standard. The thesis gallery is feature-complete for the thesis figure set and should be regenerated through the normal release snapshot path rather than treated as a separate active milestone.
-3. Keep the public and remote interaction layer aligned with the same curated harness surface:
+4. Keep the public and remote interaction layer aligned with the same curated harness surface:
    the project page, release dashboard, remote experiments guide, and hosted
    UI now form a real supporting track. They should stay synchronized with the
    actual harness vocabulary and current benchmark story, but they remain
    supporting infrastructure rather than the main technical target.
-4. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
-5. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
-6. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
+5. Expand historically grounded sample coverage from the direct operator-style domains now that the validation matrix is labeled and the wider sweep looks healthy.
+6. Treat the `reset-domain` / `defstep` material as a separate phase-2 track unless we decide to deliberately switch effort away from the core AbTweak/Tweak restoration.
+7. Continue trimming the remaining non-fatal SBCL style/redefinition noise now that the major load-order and bogus type warnings are gone.
 
 ## Post-1.0 Reminder
 
