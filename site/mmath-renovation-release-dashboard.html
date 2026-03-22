@@ -32,7 +32,22 @@
     .shell{
       max-width:1100px;
       margin:0 auto;
-      padding:40px 20px 72px;
+      padding:0 20px 72px;
+    }
+    .topbarWrap{
+      border-top:1px solid rgba(177,222,255,0.18);
+      border-bottom:1px solid rgba(177,222,255,0.18);
+      background:rgba(7,19,31,0.16);
+      margin-bottom:26px;
+    }
+    .topbar{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 20px 30px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
     }
     .hero{
       position:relative;
@@ -55,6 +70,20 @@
       color:#d7ecff;
       font-size:12px;
       letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .siteHomeLink{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px 28px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(177,222,255,0.18);
+      color:#d7ecff;
+      text-decoration:none;
+      font-size:13px;
+      letter-spacing:.1em;
       text-transform:uppercase;
     }
     h1{
@@ -222,7 +251,12 @@
       letter-spacing:0.04em;
     }
     @media (max-width: 720px){
-      .shell{padding:20px 14px 54px}
+      .shell{padding:0 14px 54px}
+      .topbar{
+        padding:18px 14px 22px;
+        flex-direction:column;
+        align-items:flex-start;
+      }
       .hero{padding:26px 22px 24px}
       .step{margin-left:34px}
       .timeline::before{left:12px}
@@ -232,9 +266,14 @@
   </style>
 </head>
 <body>
+  <div class="topbarWrap">
+    <div class="topbar">
+      <span class="eyebrow">Release Dashboard</span>
+      <a class="siteHomeLink" href="mmath-renovation.html">MMath Project</a>
+    </div>
+  </div>
   <main class="shell">
     <section class="hero">
-      <span class="eyebrow">Release Dashboard</span>
       <h1>AbTweak Restoration</h1>
       <p>One restored experimental environment for the historical AbTweak code line, with exact lower-Hanoi reproduction, broad operator-style coverage, and a disciplined path toward closing or explaining the remaining four-disk benchmark gap.</p>
       <div class="meta">
