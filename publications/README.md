@@ -22,6 +22,8 @@ If the original page is archival or undated, the filename uses the source/archiv
   Source URL: <https://cdn.aaai.org/AAAI/1990/AAAI90-031.pdf>
 - [1991 mmath thesis final.pdf](/Users/stevenwoods/mmath-renovation/publications/1991%20mmath%20thesis%20final.pdf)
   Local full-thesis copy now used as the canonical thesis reference for the repository.
+- [1991 mmath thesis final.ps](/Users/stevenwoods/mmath-renovation/publications/1991%20mmath%20thesis%20final.ps)
+  PostScript companion generated from the local canonical thesis PDF so both historical document formats can be published from the normal build path.
 - [1991-uwaterloo-tr-65-abstraction-in-nonlinear-planning.pdf](/Users/stevenwoods/mmath-renovation/publications/1991-uwaterloo-tr-65-abstraction-in-nonlinear-planning.pdf)
   Source URL: <https://cs.uwaterloo.ca/research/tr/1991/65/final.pdf>
 - [cmu-ai-repository-abtweak.html](/Users/stevenwoods/mmath-renovation/publications/cmu-ai-repository-abtweak.html)

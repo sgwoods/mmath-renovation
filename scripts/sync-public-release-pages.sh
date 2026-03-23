@@ -9,9 +9,13 @@ VERSION_FILE="$REPO_ROOT/VERSION"
 DASHBOARD_SOURCE="$REPO_ROOT/site/mmath-renovation-release-dashboard.html"
 PROJECT_PAGE_SOURCE="$REPO_ROOT/site/mmath-renovation-public-page.html"
 REMOTE_GUIDE_SOURCE="$REPO_ROOT/site/mmath-renovation-remote-experiments.html"
+THESIS_PDF_SOURCE="$REPO_ROOT/publications/1991 mmath thesis final.pdf"
+THESIS_PS_SOURCE="$REPO_ROOT/publications/1991 mmath thesis final.ps"
 PUBLIC_DASHBOARD="$PUBLIC_PAGES_DIR/mmath-renovation-release-dashboard.html"
 PUBLIC_PROJECT_PAGE="$PUBLIC_PAGES_DIR/mmath-renovation.html"
 PUBLIC_REMOTE_GUIDE="$PUBLIC_PAGES_DIR/mmath-renovation-remote-experiments.html"
+PUBLIC_THESIS_PDF="$PUBLIC_PAGES_DIR/mmath-thesis.pdf"
+PUBLIC_THESIS_PS="$PUBLIC_PAGES_DIR/mmath-thesis.ps"
 PUBLIC_STATUS_DIR="$PUBLIC_PAGES_DIR/data/projects"
 PUBLIC_STATUS_FILE="$PUBLIC_STATUS_DIR/mmath-renovation.json"
 TMP_DIR=""
@@ -44,7 +48,7 @@ check_newly_dirty_paths() {
 
   while IFS= read -r path; do
     case "$path" in
-      mmath-renovation-release-dashboard.html|mmath-renovation.html|mmath-renovation-remote-experiments.html|data/projects/mmath-renovation.json)
+      mmath-renovation-release-dashboard.html|mmath-renovation.html|mmath-renovation-remote-experiments.html|mmath-thesis.pdf|mmath-thesis.ps|data/projects/mmath-renovation.json)
         ;;
       *)
         echo "Refusing to continue: sync introduced a newly dirty non-MMath path: $path" >&2
@@ -71,6 +75,20 @@ status_generated_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/mmath-public-sync.XXXXXX")
 trap cleanup EXIT INT TERM
 
+if [ ! -f "$THESIS_PDF_SOURCE" ]; then
+  echo "Missing thesis PDF source: $THESIS_PDF_SOURCE" >&2
+  exit 1
+fi
+
+if [ ! -f "$THESIS_PS_SOURCE" ]; then
+  if command -v pdf2ps >/dev/null 2>&1; then
+    pdf2ps "$THESIS_PDF_SOURCE" "$THESIS_PS_SOURCE"
+  else
+    echo "Missing thesis PS source and pdf2ps is unavailable: $THESIS_PS_SOURCE" >&2
+    exit 1
+  fi
+fi
+
 mkdir -p "$PUBLIC_STATUS_DIR"
 
 if git -C "$PUBLIC_PAGES_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -80,6 +98,8 @@ fi
 cp "$DASHBOARD_SOURCE" "$PUBLIC_DASHBOARD"
 cp "$PROJECT_PAGE_SOURCE" "$PUBLIC_PROJECT_PAGE"
 cp "$REMOTE_GUIDE_SOURCE" "$PUBLIC_REMOTE_GUIDE"
+cp "$THESIS_PDF_SOURCE" "$PUBLIC_THESIS_PDF"
+cp "$THESIS_PS_SOURCE" "$PUBLIC_THESIS_PS"
 
 perl -0pi -e 's/Public project note: active restoration work is underway\..*?Hanoi-4 remains the main open extension benchmark\./Public project note: active restoration work is underway. As of '"$today"', the repository is at `'"$version"'`, with exact lower-Hanoi reproduction, broad operator-style benchmark coverage, and a dedicated release dashboard tracking the road to `1.0.0`. Hanoi-4 remains the main open extension benchmark./s' "$PUBLIC_PROJECT_PAGE"
 

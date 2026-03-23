@@ -11,6 +11,8 @@ RELEASES_DIR="$REPO_ROOT/releases"
 HARNESS_SCRIPT="$REPO_ROOT/scripts/abtweak-experiments.sh"
 SYNC_PUBLIC_PAGES_SCRIPT="$REPO_ROOT/scripts/sync-public-release-pages.sh"
 THESIS_GALLERY_SCRIPT="$REPO_ROOT/scripts/generate-thesis-side-by-side.py"
+THESIS_PDF="$REPO_ROOT/publications/1991 mmath thesis final.pdf"
+THESIS_PS="$REPO_ROOT/publications/1991 mmath thesis final.ps"
 
 if [ ! -f "$VERSION_FILE" ]; then
   echo "Missing VERSION file: $VERSION_FILE" >&2
@@ -24,7 +26,11 @@ if [ -z "$version" ]; then
   exit 1
 fi
 
-if [ -f "$THESIS_GALLERY_SCRIPT" ] && [ -f "$REPO_ROOT/publications/1991 mmath thesis final.pdf" ]; then
+if [ -f "$THESIS_PDF" ] && [ ! -f "$THESIS_PS" ] && command -v pdf2ps >/dev/null 2>&1; then
+  pdf2ps "$THESIS_PDF" "$THESIS_PS"
+fi
+
+if [ -f "$THESIS_GALLERY_SCRIPT" ] && [ -f "$THESIS_PDF" ]; then
   python3 "$THESIS_GALLERY_SCRIPT"
 fi
 
