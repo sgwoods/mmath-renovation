@@ -4,7 +4,16 @@ set -eu
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 
-PUBLIC_PAGES_DIR=${PUBLIC_PAGES_DIR:-/Users/stevenwoods/GitPages/public}
+ICLOUD_PUBLIC_PAGES_DIR="/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public"
+LEGACY_PUBLIC_PAGES_DIR="/Users/stevenwoods/GitPages/public"
+
+if [ -z "${PUBLIC_PAGES_DIR:-}" ]; then
+  if [ -d "$ICLOUD_PUBLIC_PAGES_DIR" ]; then
+    PUBLIC_PAGES_DIR="$ICLOUD_PUBLIC_PAGES_DIR"
+  else
+    PUBLIC_PAGES_DIR="$LEGACY_PUBLIC_PAGES_DIR"
+  fi
+fi
 VERSION_FILE="$REPO_ROOT/VERSION"
 DASHBOARD_SOURCE="$REPO_ROOT/site/mmath-renovation-release-dashboard.html"
 PROJECT_PAGE_SOURCE="$REPO_ROOT/site/mmath-renovation-public-page.html"

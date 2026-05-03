@@ -69,6 +69,10 @@ Recommended structure:
 This workspace root has now been created and validated as a real continuation
 workspace on this machine.
 
+The main build/sync tooling should now treat this iCloud-backed workspace as
+the default working root when possible, rather than the older local-only
+`/Users/stevenwoods/GitPages/public` path.
+
 That means the following continuation set should all be backed up together:
 
 1. `mmath-renovation`
@@ -114,6 +118,12 @@ The immediate continuity goal is:
 - keep the repo clean except for deliberate in-progress work
 - continue validating recovery through real drills, not just documentation
 
-The first fresh-workspace reconstruction drill has now succeeded for the main
-repo and public-sync flow. The remaining continuity step is the hosted UI and
-its Vercel-backed configuration.
+The first fresh-workspace reconstruction drill has now succeeded for:
+
+- the main repo
+- the public-sync flow
+- the hosted UI repo's local install/build path
+- a live HTTP check of the hosted UI URL
+
+The remaining continuity sensitivity is now mostly the external Vercel
+configuration and secrets rather than the local repo content.

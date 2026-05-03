@@ -225,7 +225,13 @@ They are synced into:
 
 - [sgwoods/public](https://github.com/sgwoods/public)
 
-The main integration script assumes a local checkout at:
+The main integration script now prefers the iCloud-backed canonical checkout
+at:
+
+- `/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public`
+
+It falls back to the older legacy path only if the iCloud-backed workspace is
+not present:
 
 - `/Users/stevenwoods/GitPages/public`
 

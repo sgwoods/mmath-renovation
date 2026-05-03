@@ -51,7 +51,14 @@ Suggested local layout:
 ~/work/abtweak-experiments-ui
 ```
 
-The current scripts in the main repo default to a public checkout at:
+The current scripts in the main repo now prefer the iCloud-backed public
+checkout at:
+
+```text
+/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public
+```
+
+They fall back to the older legacy path:
 
 ```text
 /Users/stevenwoods/GitPages/public
@@ -138,6 +145,14 @@ Observed post-build state:
 This means the main restoration repo and the main public-sync workflow have now
 been successfully resumed from a fresh iCloud-backed workspace.
 
+Additional hosted-UI continuity checks also now pass from the fresh iCloud
+workspace:
+
+- the fresh `abtweak-experiments-ui` clone remained clean after clone
+- `npm install` succeeded there
+- `npm run build` succeeded there
+- the live hosted UI URL returned HTTP `200`
+
 ## Remote UI Recovery
 
 The hosted UI is a separate project:
@@ -156,6 +171,14 @@ To restore that continuation line:
    - `GITHUB_WORKFLOW_SET`
 4. verify the GitHub Actions runner still points at
    `sgwoods/mmath-renovation`
+5. verify the repo builds locally:
+
+```sh
+npm install
+npm run build
+```
+6. verify the live hosted UI still responds at:
+   [abtweak-experiments-ui.vercel.app](https://abtweak-experiments-ui.vercel.app)
 
 ## Evidence Recovery
 
@@ -187,8 +210,8 @@ of the following are true:
 
 1. treat the iCloud-backed workspace as the canonical continuation root on this
    machine
-2. revalidate the hosted UI repo from that workspace against the existing
-   Vercel deployment
+2. preserve the hosted UI's Vercel configuration and documented environment
+   variable names as part of the continuation set
 3. decide whether the generated release snapshot and public-manifest outputs in
    the fresh clones should be committed there or kept as expected local build
    products
