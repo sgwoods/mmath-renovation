@@ -19,6 +19,7 @@ For deeper technical detail, see:
 - [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 - [Thesis side-by-side graphics](/Users/stevenwoods/mmath-renovation/docs/thesis-side-by-side-graphics.md)
 - [Thesis figure inventory](/Users/stevenwoods/mmath-renovation/docs/thesis-figure-inventory.md)
 - [Project goal and roadmap](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)

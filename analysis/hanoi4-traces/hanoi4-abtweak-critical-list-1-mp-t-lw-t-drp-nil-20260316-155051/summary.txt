@@ -1,0 +1,29 @@
+Case: hanoi4-abtweak-critical-list-1-mp-t-lw-t-drp-nil-20260316-155051
+Plan result: NIL
+Requested planner mode: ABTWEAK
+Hierarchy: CRITICAL-LIST-1
+MP mode: T
+Left-wedge mode: T
+DRP mode: NIL
+Expand bound: 20000
+Generate bound: 80000
+Open bound: 80000
+CPU limit: 30
+
+Planner mode: ABTWEAK
+Control strategy: BFS
+Solution value: EXPAND-LIMIT-EXCEEDED
+Solution type: SYMBOL
+Expanded: 20001
+Generated: 35175
+MP pruned: 0
+Open length: 15174
+Closed length: 0
+Abs node count: 230
+DRP stack depth: 0
+Current level: 0
+Abs branching counts: #(0 217 11 1 1)
+Open priority buckets:
+  (4 1874)
+  (5 12496)
+  (6 804)

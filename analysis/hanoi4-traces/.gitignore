@@ -1,3 +1,3 @@
-*
-!.gitignore
-!README.md
+# Retained Hanoi-4 traces are now intentionally checked in.
+# Only ignore macOS finder noise here.
+.DS_Store

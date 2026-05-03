@@ -25,6 +25,7 @@ Core companion documents:
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 - [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)

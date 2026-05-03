@@ -20,6 +20,7 @@ It complements:
 - [Publication domain crosswalk](/Users/stevenwoods/mmath-renovation/docs/publication-domain-crosswalk.md)
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 - [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
 
 ## Overall Goal

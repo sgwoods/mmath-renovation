@@ -8,6 +8,7 @@ It complements:
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
 - [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
+- [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 
 ## Goal
 
@@ -24,13 +25,12 @@ project, including:
 
 The project is not yet fully cold-start reproducible from this repo alone.
 
-The main reasons are:
+The main remaining reasons are:
 
-- one tracked doc file is locally modified and not yet committed
-- some `hanoi-4` raw trace evidence is still only local and ignored by git
 - the remote UI is in a separate repo
 - the public publishing target is in a separate repo
 - Vercel secrets are operationally required but not stored in git
+- a fresh-machine reconstruction drill has not yet been recorded
 
 ## Required Repositories
 
@@ -121,16 +121,9 @@ To restore that continuation line:
 
 The main evidence gap is the local-only `hanoi-4` raw trace set.
 
-To make cold-start reconstruction truly reliable, do one of these:
-
-1. check in the specific retained raw trace directories that current docs
-   reference
-2. or replace those raw links with checked-in distilled reports that preserve
-   the same evidence without depending on ignored trace folders
-
-Until that is done, a cold-start setup will recover the main planner and
-documentation state, but not every linked evidentiary path used by the current
-docs.
+The retained trace corpus should now travel with the repo. Going forward, if a
+checked-in doc points at a raw trace directory, that directory must remain a
+checked-in retained artifact rather than a disposable local scratch directory.
 
 ## Acceptance Standard
 

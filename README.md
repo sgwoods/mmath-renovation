@@ -80,6 +80,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Repository structure review](./docs/repository-structure-review.md): review of how the repo is organized, what counts as primary system artifacts versus generated outputs and historical references, and where the naming is still a little ambiguous
 - [Project state and recovery audit](./docs/project-state-recovery-audit.md): precise audit of what is checked in, what is still local or external, and whether the project is fully recoverable from git alone
 - [Cold-start reconstruction](./docs/cold-start-reconstruction.md): explicit checklist for resuming the project on a new machine without reconstructing the setup from memory
+- [Continuity and archival policy](./docs/continuity-and-archival-policy.md): policy for preserving substantive local artifacts, coordinating the multi-repo working set, and keeping future working directories inside an iCloud-backed workspace
 - [Intake area](./intake/README.md): single landing zone for newly found relevant material before it is reviewed and moved into `working`, `historical`, `publications`, or `analysis`
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`

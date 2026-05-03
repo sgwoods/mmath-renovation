@@ -1,0 +1,28 @@
+Case: hanoi4-ismb-mp-t-lw-t-drp-nil-20260316-132943
+Plan result: NIL
+Hierarchy: ISMB
+MP mode: T
+Left-wedge mode: T
+DRP mode: NIL
+Expand bound: 20000
+Generate bound: 80000
+Open bound: 80000
+CPU limit: 30
+
+Planner mode: ABTWEAK
+Control strategy: BFS
+Solution value: EXPAND-LIMIT-EXCEEDED
+Solution type: SYMBOL
+Expanded: 20001
+Generated: 24228
+MP pruned: 22746
+Open length: 4227
+Closed length: 0
+Abs node count: 16
+DRP stack depth: 0
+Current level: 0
+Abs branching counts: #(0 9 6 1)
+Open priority buckets:
+  (8 1280)
+  (9 2924)
+  (10 23)

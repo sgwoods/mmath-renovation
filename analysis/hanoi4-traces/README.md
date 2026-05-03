@@ -2,6 +2,11 @@
 
 This directory holds timestamped diagnostic traces for larger `hanoi-4` runs.
 
+These trace directories are now treated as retained project evidence rather
+than disposable local scratch output. If a trace is referenced by checked-in
+docs or materially supports a planner conclusion, it should be kept under
+version control.
+
 The main runner is:
 
 - [scripts/trace-hanoi4-sbcl.sh](/Users/stevenwoods/mmath-renovation/scripts/trace-hanoi4-sbcl.sh)

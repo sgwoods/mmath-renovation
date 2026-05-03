@@ -18,6 +18,7 @@ It complements:
 - [Repository coverage matrix](/Users/stevenwoods/mmath-renovation/docs/repository-coverage-matrix.md)
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 
 ## Precise Goal
 
@@ -63,7 +64,7 @@ Best existing status references:
 - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
 - [Post-RC go-forward plan](/Users/stevenwoods/mmath-renovation/docs/post-rc-go-forward-plan.md)
 
-## Worktree Snapshot At Audit Time
+## Worktree Snapshot At Audit Start
 
 Audit-time local git state:
 
@@ -78,8 +79,8 @@ Audit-time local git state:
   - `42` ignored raw `hanoi-4` trace directories under
     [analysis/hanoi4-traces](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/README.md)
 
-This matters because the repository's current checked-in state and the local
-working state are not identical.
+This matters because the repository's checked-in state and the local working
+state were not identical at the beginning of the audit.
 
 ## Recommended Next Steps
 
@@ -138,19 +139,21 @@ git:
 
 The following are not fully captured by a fresh clone of this repo alone.
 
-### 1. Local tracked change not yet committed
+### 1. Local tracked change at audit start
 
 At audit time, the repo has one modified tracked file:
 
 - [docs/hanoi4-strategy-crosswalk.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 
-That means the working directory state and the checked-in `main` branch state
-are not identical right now.
+That change has now been preserved as a retained recovery artifact:
 
-Until that file is either committed or intentionally discarded, the exact local
-state is not fully reproducible from git.
+- [analysis/recovery-artifacts/hanoi4-strategy-crosswalk-local-2026-05-03.patch](/Users/stevenwoods/mmath-renovation/analysis/recovery-artifacts/hanoi4-strategy-crosswalk-local-2026-05-03.patch)
 
-### 2. Raw `hanoi-4` trace directories are still local-only
+The main checked-in document was then restored to the baseline version so the
+project can move back toward a clean reproducible state without losing that
+alternate draft.
+
+### 2. Raw `hanoi-4` trace directories were local-only at audit start
 
 The repo currently contains many timestamped raw trace directories under:
 
@@ -163,10 +166,10 @@ At audit time:
   and each trace directory is excluded by
   [analysis/hanoi4-traces/.gitignore](/Users/stevenwoods/mmath-renovation/analysis/hanoi4-traces/.gitignore)
 
-These raw trace directories are therefore not recoverable from a fresh clone
-unless they are regenerated or separately preserved.
+These raw trace directories were not recoverable from a fresh clone until they
+were explicitly promoted into version control.
 
-### 3. Several checked-in docs still point at local-only trace directories
+### 3. Several checked-in docs still point at retained raw trace directories
 
 At audit time, checked-in docs that still reference specific local raw trace
 directories include:
@@ -184,8 +187,10 @@ directories include:
 - [docs/next-steps.md](/Users/stevenwoods/mmath-renovation/docs/next-steps.md)
 - [docs/repository-structure-review.md](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
 
-That means the narrative is partly preserved, but some of the linked evidence
-is not.
+The right long-term rule is therefore:
+
+- if checked-in docs point at a raw trace directory, that directory must remain
+  a retained checked-in artifact
 
 ### 4. Hosted UI code lives in a separate repo
 
@@ -258,6 +263,8 @@ reconstruction work:
 - the harness and reporting scripts
 - the main documentation and RC rationale
 - the GitHub Actions remote-runner workflows
+- the retained raw `hanoi-4` trace corpus
+- the preserved recovery patch artifacts
 
 ### What We Would Still Need To Recreate Or Repair
 
@@ -267,7 +274,6 @@ recovery work for:
 - the uncommitted local changes in
   [docs/hanoi4-strategy-crosswalk.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
 - the ignored raw `hanoi-4` trace directories
-- the exact linked evidentiary paths for docs that still point at those traces
 - the local clone and environment of [sgwoods/public](https://github.com/sgwoods/public)
 - the local clone and deployment context of
   [sgwoods/abtweak-experiments-ui](https://github.com/sgwoods/abtweak-experiments-ui)
@@ -277,18 +283,15 @@ recovery work for:
 
 The minimum remaining steps are:
 
-1. resolve the current local modification in
-   [docs/hanoi4-strategy-crosswalk.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
-   by either committing it or intentionally discarding it
-2. preserve the raw `hanoi-4` trace evidence in one of two ways:
+1. preserve the raw `hanoi-4` trace evidence in one of two ways:
    - check in the retained trace directories that the docs actually depend on
-   - or replace local trace-directory links with checked-in distilled artifacts
-3. document the external continuation set explicitly:
+   - or replace raw trace-directory links with checked-in distilled artifacts
+2. document the external continuation set explicitly:
    - `sgwoods/mmath-renovation`
    - `sgwoods/public`
    - `sgwoods/abtweak-experiments-ui`
    - required Vercel environment-variable names
-4. perform one real cold-start drill on a fresh machine or fresh workspace and
+3. perform one real cold-start drill on a fresh machine or fresh workspace and
    record the result
 
 Until those steps are done, the project is strong and well documented, but not
@@ -298,10 +301,10 @@ yet fully self-contained.
 
 Recommended order from this audit:
 
-1. decide the fate of the local
-   [docs/hanoi4-strategy-crosswalk.md](/Users/stevenwoods/mmath-renovation/docs/hanoi4-strategy-crosswalk.md)
-   edit
-2. promote this audit and the reconstruction checklist into the normal
-   documentation map
-3. preserve or distill the trace artifacts that current docs still depend on
+1. promote this audit, the reconstruction checklist, and the continuity policy
+   into the normal documentation map
+2. preserve or distill the trace artifacts that current docs still depend on
+3. align the active working directories for `mmath-renovation`, `public`, and
+   `abtweak-experiments-ui` under the iCloud-backed workspace root defined in
+   [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 4. run one real reconstruction drill and update this note with the result

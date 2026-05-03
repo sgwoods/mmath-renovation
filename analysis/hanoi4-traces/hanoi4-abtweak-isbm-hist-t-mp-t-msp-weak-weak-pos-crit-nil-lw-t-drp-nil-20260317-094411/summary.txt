@@ -1,0 +1,33 @@
+Case: hanoi4-abtweak-isbm-hist-t-mp-t-msp-weak-weak-pos-crit-nil-lw-t-drp-nil-20260317-094411
+Plan result: NIL
+Requested planner mode: ABTWEAK
+Hierarchy: ISBM
+Historical mode: T
+MP mode: T
+MSP mode: WEAK
+MP weak mode: POS
+Crit-depth mode: NIL
+Left-wedge mode: T
+DRP mode: NIL
+Expand bound: 100000
+Generate bound: 400000
+Open bound: 400000
+CPU limit: 60
+
+Planner mode: ABTWEAK
+Control strategy: BFS
+Solution value: EXPAND-LIMIT-EXCEEDED
+Solution type: SYMBOL
+Expanded: 100001
+Generated: 116646
+MP pruned: 110674
+Open length: 16645
+Closed length: 0
+Abs node count: 20
+DRP stack depth: 0
+Current level: 0
+Abs branching counts: #(0 12 7 1)
+Open priority buckets:
+  (8 6598)
+  (9 9973)
+  (10 74)

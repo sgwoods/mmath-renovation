@@ -21,6 +21,7 @@ It complements:
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
 - [1.0 release candidate checklist](/Users/stevenwoods/mmath-renovation/docs/release-candidate-checklist.md)
 - [1.0 release candidate sweep](/Users/stevenwoods/mmath-renovation/docs/release-candidate-sweep.md)
+- [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 
 ## Recommendation
 
@@ -122,6 +123,12 @@ MMath project page, remote-experiments guide page, and the
 MMath public-status manifest is refreshed for the shared homepage renderer.
 That sync step now also includes a scope guard: it refuses to continue if it
 would newly dirty any non-MMath path in the shared Pages checkout.
+
+Substantive local-only artifacts that materially support checked-in claims
+should not be left as disposable scratch. Preserve them either in their
+natural long-term homes or under
+[analysis/recovery-artifacts](/Users/stevenwoods/mmath-renovation/analysis/recovery-artifacts/README.md)
+before cleanup.
 
 ## Suggested Release Cadence
 
