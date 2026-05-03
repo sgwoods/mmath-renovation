@@ -235,6 +235,9 @@ not present:
 
 - `/Users/stevenwoods/GitPages/public`
 
+The older local machine paths should now be considered legacy fallback
+locations, not preferred active workspaces.
+
 So full public-surface continuity requires that second repo too.
 
 ### 6. Hosted-service secrets and environment are not recreated from git alone

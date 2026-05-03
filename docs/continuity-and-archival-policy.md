@@ -73,6 +73,13 @@ The main build/sync tooling should now treat this iCloud-backed workspace as
 the default working root when possible, rather than the older local-only
 `/Users/stevenwoods/GitPages/public` path.
 
+The older local paths should now be treated as legacy fallback locations:
+
+- `/Users/stevenwoods/mmath-renovation`
+- `/Users/stevenwoods/GitPages/public`
+
+They are not the preferred places for ongoing work.
+
 That means the following continuation set should all be backed up together:
 
 1. `mmath-renovation`

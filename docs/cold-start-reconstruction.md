@@ -51,6 +51,12 @@ Suggested local layout:
 ~/work/abtweak-experiments-ui
 ```
 
+For this machine specifically, the preferred active workspace is now:
+
+```text
+/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/
+```
+
 The current scripts in the main repo now prefer the iCloud-backed public
 checkout at:
 
@@ -63,6 +69,9 @@ They fall back to the older legacy path:
 ```text
 /Users/stevenwoods/GitPages/public
 ```
+
+The older non-iCloud local paths should now be treated as legacy fallback
+locations rather than normal working roots.
 
 So on a new machine, either:
 
