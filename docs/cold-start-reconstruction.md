@@ -23,14 +23,17 @@ project, including:
 
 ## Current Truthful Status
 
-The project is not yet fully cold-start reproducible from this repo alone.
+The project is not yet fully cold-start reproducible from this repo alone, but
+the first real fresh-workspace reconstruction drill has now partially
+succeeded.
 
 The main remaining reasons are:
 
 - the remote UI is in a separate repo
 - the public publishing target is in a separate repo
 - Vercel secrets are operationally required but not stored in git
-- a fresh-machine reconstruction drill has not yet been recorded
+- the hosted UI deployment continuity has not yet been revalidated from the
+  fresh workspace itself
 
 ## Required Repositories
 
@@ -98,6 +101,43 @@ That should refresh:
 - the public remote-experiments guide
 - the MMath public status manifest
 
+## First Recorded Drill
+
+On `2026-05-03`, a fresh iCloud-backed workspace was created at:
+
+```text
+/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods
+```
+
+The following fresh clones were created there:
+
+1. `mmath-renovation`
+2. `public`
+3. `abtweak-experiments-ui`
+
+Validated successfully from the fresh `mmath-renovation` clone:
+
+- `git status` clean on all three fresh clones immediately after clone
+- harness status run succeeded:
+  `scripts/abtweak-experiments.sh status --json`
+- release snapshot and public sync succeeded from the fresh workspace using:
+
+```sh
+PUBLIC_PAGES_DIR="/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public" \
+sh "/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/mmath-renovation/scripts/create-release-snapshot.sh"
+```
+
+Observed post-build state:
+
+- the fresh `mmath-renovation` clone became dirty only in the expected release
+  snapshot files under `releases/1.0.0-rc.1/`
+- the fresh `public` clone became dirty only in the expected MMath status
+  manifest:
+  `data/projects/mmath-renovation.json`
+
+This means the main restoration repo and the main public-sync workflow have now
+been successfully resumed from a fresh iCloud-backed workspace.
+
 ## Remote UI Recovery
 
 The hosted UI is a separate project:
@@ -140,10 +180,16 @@ of the following are true:
    - documented Vercel environment-variable names
 5. one fresh-machine or fresh-workspace reconstruction drill has been run and
    written down
+6. the hosted UI continuity is revalidated from the fresh workspace with the
+   required Vercel configuration still in place
 
 ## Recommended Next Steps
 
-1. resolve the current uncommitted local file in the main repo
-2. preserve or distill the raw `hanoi-4` traces that current docs still cite
-3. rerun this checklist on a clean workspace
-4. record the first successful cold-start drill in this note
+1. treat the iCloud-backed workspace as the canonical continuation root on this
+   machine
+2. revalidate the hosted UI repo from that workspace against the existing
+   Vercel deployment
+3. decide whether the generated release snapshot and public-manifest outputs in
+   the fresh clones should be committed there or kept as expected local build
+   products
+4. repeat this drill once after any major continuity change

@@ -115,6 +115,18 @@ the checked-in project state alone?" is currently:
 
 - `No, not yet`
 
+However, the first real fresh-workspace reconstruction drill has now succeeded
+for:
+
+- the main `mmath-renovation` clone
+- the `public` clone
+- the main harness status path
+- the release snapshot path
+- the public sync path using an overridden `PUBLIC_PAGES_DIR`
+
+That moves the project much closer to a true cold-start-safe state than it was
+at the beginning of this audit.
+
 ## What Is Checked In And Recoverable
 
 The following are checked into `sgwoods/mmath-renovation` and recoverable from

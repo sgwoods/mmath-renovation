@@ -66,6 +66,9 @@ Recommended structure:
   abtweak-experiments-ui/
 ```
 
+This workspace root has now been created and validated as a real continuation
+workspace on this machine.
+
 That means the following continuation set should all be backed up together:
 
 1. `mmath-renovation`
@@ -106,9 +109,11 @@ After any major milestone, do the following:
 
 The immediate continuity goal is:
 
-- remove dependence on local-only ignored `hanoi-4` trace evidence
+- keep the new iCloud-backed workspace as the canonical working root
+- remove any remaining dependence on undeclared local configuration
 - keep the repo clean except for deliberate in-progress work
-- perform one real cold-start reconstruction drill
+- continue validating recovery through real drills, not just documentation
 
-Once that is complete, this note should be updated to record the first known
-successful full continuation drill.
+The first fresh-workspace reconstruction drill has now succeeded for the main
+repo and public-sync flow. The remaining continuity step is the hosted UI and
+its Vercel-backed configuration.

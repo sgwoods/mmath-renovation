@@ -13,6 +13,8 @@ Current phase summary:
 - `hanoi-4` is now formally classified as an explained-but-open extension benchmark for RC purposes
 - the public and remote interaction layer is now a maintained supporting surface, including the hosted experiment UI
 - the post-RC resume plan now explicitly separates UI work, research, domain expansion, and visualization improvements
+- the first fresh iCloud-backed reconstruction workspace is now established and
+  has passed the main harness plus release/public-sync continuity drill
 
 For deeper technical detail, see:
 

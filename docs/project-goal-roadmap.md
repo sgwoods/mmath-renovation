@@ -147,12 +147,16 @@ Current state:
 - the public project page, release dashboard, remote experiments guide, and
   browser-facing remote UI now exist and are tied into the normal build/update
   flow
+- the first iCloud-backed fresh-workspace reconstruction drill has now succeeded
+  for the main repo and public-sync flow
 
 Main remaining gap:
 
 - improve domain/task/result readability in the remote UI, especially around
   domain grouping, starting-state/goal explanation, and readable result
   previews and history
+- complete the continuity story by revalidating the hosted UI deployment from
+  the new iCloud-backed workspace
 
 ## Post-1.0 Research Extension
 
