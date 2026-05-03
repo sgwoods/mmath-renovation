@@ -78,6 +78,8 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Domain inventory](./docs/domain-inventory.md): cross-snapshot table of domain families, abstraction data, known example material, and inferred gaps
 - [Repository coverage matrix](./docs/repository-coverage-matrix.md): first-class table of what is integrated, tested, publication-validated, primary, separate, or still open across the repository
 - [Repository structure review](./docs/repository-structure-review.md): review of how the repo is organized, what counts as primary system artifacts versus generated outputs and historical references, and where the naming is still a little ambiguous
+- [Project state and recovery audit](./docs/project-state-recovery-audit.md): precise audit of what is checked in, what is still local or external, and whether the project is fully recoverable from git alone
+- [Cold-start reconstruction](./docs/cold-start-reconstruction.md): explicit checklist for resuming the project on a new machine without reconstructing the setup from memory
 - [Intake area](./intake/README.md): single landing zone for newly found relevant material before it is reviewed and moved into `working`, `historical`, `publications`, or `analysis`
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`
