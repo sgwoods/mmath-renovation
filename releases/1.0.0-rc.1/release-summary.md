@@ -1,8 +1,8 @@
 # Release Summary: 1.0.0-rc.1
 
-- Timestamp (UTC): `2026-05-03T16:31:09Z`
+- Timestamp (UTC): `2026-05-04T12:41:52Z`
 - Git branch: `main`
-- Source git commit captured by snapshot: `30c44fce88eaf01448a1ec3107fab15af11b02e8`
+- Source git commit captured by snapshot: `d101f48d3fbd654991f74c6ff5b0cc5a9a5f89f1`
 - Version: `1.0.0-rc.1`
 
 This release snapshot captures the checked-in documentation and benchmark
