@@ -36,8 +36,11 @@ Use normal non-iCloud working clones for day-to-day development:
 Use iCloud for intake and backup-oriented convenience paths:
 
 ```text
-~/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/mmath-renovation-intake
+~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing
 ```
+
+Use the repo-local `intake/` directory as the durable first repo stop after
+anything is copied in from the iCloud landing path.
 
 Do not treat an iCloud-backed live Git worktree as the preferred active clone.
 

@@ -171,8 +171,8 @@ continuity checklist:
 1. keep `main` pushed,
 2. keep any active newer working branch pushed too,
 3. keep the companion repos pushed when their surfaces change,
-4. keep new material flowing through `intake/` or the documented iCloud intake
-   path,
+4. keep new material flowing through repo-local `intake/`, optionally via the
+   documented iCloud intake path,
 5. keep the startup validation path passing,
 6. periodically prove the non-iCloud fresh-clone path again rather than only
    assuming it still works.

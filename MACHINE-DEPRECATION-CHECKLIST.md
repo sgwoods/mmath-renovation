@@ -31,7 +31,7 @@ At the current checkpoint:
   - `~/Projects/public`
   - `~/Projects/abtweak-experiments-ui`
 - the preferred iCloud helper path is now intake-only:
-  `~/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/mmath-renovation-intake`
+  `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing`
 
 That means the old machine should no longer be treated as the only place where
 the project "really works" once the gate below is satisfied.
@@ -48,7 +48,7 @@ true:
 4. `bash scripts/start-codex-new-mac.sh` has passed from that non-iCloud
    active clone.
 5. The preferred intake path exists there:
-   `~/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/mmath-renovation-intake`
+   `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing`
 6. If public publishing is needed, the companion `public` repo is present and
    the release/public drill has passed there too.
 7. If hosted remote-experiment continuity is needed, the companion UI repo

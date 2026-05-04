@@ -29,7 +29,7 @@ At the current portability checkpoint:
   - `~/Projects/public`
   - `~/Projects/abtweak-experiments-ui`
 - the preferred iCloud-backed intake path is:
-  - `~/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/mmath-renovation-intake`
+  - `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing`
 - the repo-local intake handoff area remains:
   - `intake/`
 
@@ -102,7 +102,8 @@ The startup script:
    - `GITHUB_REPO`
    - `GITHUB_WORKFLOW_SINGLE`
    - `GITHUB_WORKFLOW_SET`
-6. Put all new material through `intake/` or the iCloud intake landing path.
+6. Put all new material through repo-local `intake/`, optionally landing it in
+   the iCloud intake path first.
 
 ## Deprecating The Current MacBook
 

@@ -3,6 +3,11 @@
 This directory is the single landing zone for newly found relevant material
 before it is integrated into the rest of the repository.
 
+If material is first dropped into the optional iCloud convenience path
+`~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing`,
+copy it into repo-local `intake/` before review so the checked-in workflow
+stays consistent.
+
 Use it for:
 
 - newly found historical source trees

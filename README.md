@@ -87,7 +87,7 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Cold-start reconstruction](./docs/cold-start-reconstruction.md): earlier continuity drill notes, now complemented by the root migration/handoff docs
 - [New-machine bootstrap](./docs/new-machine-bootstrap.md): historical iCloud-centered drill note preserved for context; the preferred bootstrap path now lives at the repo root
 - [Continuity and archival policy](./docs/continuity-and-archival-policy.md): preservation policy plus the older continuity drill context
-- [Intake area](./intake/README.md): single landing zone for newly found relevant material before it is reviewed and moved into `working`, `historical`, `publications`, or `analysis`
+- [Intake area](./intake/README.md): repo-owned first stop for newly found relevant material before it is reviewed and moved into `working`, `historical`, `publications`, or `analysis`
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`
 - [Hanoi-4 solve candidate comparison](./docs/hanoi4-solve-candidate-comparison.md): narrow solve-first view of the two strongest current `hanoi-4` historical candidates
