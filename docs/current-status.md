@@ -17,6 +17,8 @@ Current phase summary:
   has passed the main harness plus release/public-sync continuity drill
 - the repo now also has a concrete new-machine startup script so the next Mac
   can recreate and validate the full continuation set without relying on memory
+- that bootstrap path has now been run successfully from the clean canonical
+  iCloud clone, leaving all three canonical repos clean afterward
 
 For deeper technical detail, see:
 

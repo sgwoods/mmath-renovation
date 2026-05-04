@@ -139,5 +139,9 @@ There is now also a standard startup script for the next Mac:
 That script should be treated as the normal way to stand up and validate the
 canonical continuation workspace on a replacement machine.
 
+That bootstrap path has now been exercised successfully from the clean
+canonical iCloud-backed `mmath-renovation` clone itself, and all three
+canonical clones ended clean afterward.
+
 The remaining continuity sensitivity is now mostly the external Vercel
 configuration and secrets rather than the local repo content.

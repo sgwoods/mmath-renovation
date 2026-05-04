@@ -172,6 +172,21 @@ workspace:
 - `npm run build` succeeded there
 - the live hosted UI URL returned HTTP `200`
 
+The new-machine bootstrap script has now also been run successfully from the
+clean canonical iCloud `mmath-renovation` clone itself. It completed:
+
+- supporting-repo refresh
+- harness validation
+- hosted UI local install/build
+- release snapshot + public sync drill
+- cleanup back to a clean git state
+
+After that run, all three canonical iCloud-backed clones ended clean again:
+
+1. `mmath-renovation`
+2. `public`
+3. `abtweak-experiments-ui`
+
 ## Remote UI Recovery
 
 The hosted UI is a separate project:

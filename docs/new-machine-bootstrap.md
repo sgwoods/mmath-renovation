@@ -17,7 +17,7 @@ state from the retiring machine.
 
 ## Current Local State
 
-As of `2026-05-03`, the main project repo at commit `cb29108` is clean and
+As of `2026-05-03`, the main project repo at commit `ae80e20` is clean and
 pushed on `main`.
 
 The canonical working root on this machine is now:
@@ -34,6 +34,14 @@ with these active clones:
 
 Those canonical iCloud-backed clones have been validated and cleaned back to a
 pristine git state after the reconstruction drill.
+
+The new bootstrap script has now also been run successfully from the clean
+canonical iCloud `mmath-renovation` clone itself, and all three canonical
+clones finished clean afterward:
+
+1. `mmath-renovation`
+2. `public`
+3. `abtweak-experiments-ui`
 
 The older local paths now count as legacy fallback only:
 
@@ -126,6 +134,9 @@ The new Mac should be considered ready when:
 2. the canonical iCloud-backed clones exist for all three repos
 3. all three canonical clones end clean after the drill cleanup
 4. the hosted UI repo still matches the Vercel deployment expectations
+
+That standard is now satisfied on this machine's canonical iCloud-backed
+workspace.
 
 ## Recommended Next Step After Bootstrap
 
