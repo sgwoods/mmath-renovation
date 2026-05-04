@@ -20,6 +20,7 @@ It complements:
 - [Publication domain crosswalk](/Users/stevenwoods/mmath-renovation/docs/publication-domain-crosswalk.md)
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [New-machine bootstrap](/Users/stevenwoods/mmath-renovation/docs/new-machine-bootstrap.md)
 - [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 - [Post-1.0 research track](/Users/stevenwoods/mmath-renovation/docs/post-v1-research-track.md)
 
@@ -149,14 +150,16 @@ Current state:
   flow
 - the first iCloud-backed fresh-workspace reconstruction drill has now succeeded
   for the main repo and public-sync flow
+- the repo now also has a concrete new-machine bootstrap script to recreate and
+  validate the canonical continuation workspace on a replacement Mac
 
 Main remaining gap:
 
 - improve domain/task/result readability in the remote UI, especially around
   domain grouping, starting-state/goal explanation, and readable result
   previews and history
-- complete the continuity story by revalidating the hosted UI deployment from
-  the new iCloud-backed workspace
+- keep the new-machine bootstrap path current as the continuity model evolves,
+  including the hosted UI and public-sync assumptions
 
 ## Post-1.0 Research Extension
 

@@ -132,5 +132,12 @@ The first fresh-workspace reconstruction drill has now succeeded for:
 - the hosted UI repo's local install/build path
 - a live HTTP check of the hosted UI URL
 
+There is now also a standard startup script for the next Mac:
+
+- [scripts/bootstrap-new-machine.sh](/Users/stevenwoods/mmath-renovation/scripts/bootstrap-new-machine.sh)
+
+That script should be treated as the normal way to stand up and validate the
+canonical continuation workspace on a replacement machine.
+
 The remaining continuity sensitivity is now mostly the external Vercel
 configuration and secrets rather than the local repo content.

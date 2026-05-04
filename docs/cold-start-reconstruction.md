@@ -24,16 +24,17 @@ project, including:
 ## Current Truthful Status
 
 The project is not yet fully cold-start reproducible from this repo alone, but
-the first real fresh-workspace reconstruction drill has now partially
-succeeded.
+the first real fresh-workspace reconstruction drill has now succeeded for the
+main local continuation set, and there is now a concrete bootstrap script for
+the next Mac.
 
 The main remaining reasons are:
 
 - the remote UI is in a separate repo
 - the public publishing target is in a separate repo
 - Vercel secrets are operationally required but not stored in git
-- the hosted UI deployment continuity has not yet been revalidated from the
-  fresh workspace itself
+- the hosted UI deployment continuity still depends on the external Vercel
+  project and its secrets staying intact
 
 ## Required Repositories
 
@@ -85,13 +86,22 @@ On a new machine:
 1. clone `sgwoods/mmath-renovation`
 2. check out the intended checkpoint or branch
 3. install the planner/runtime prerequisites used by the repo
-4. verify the release surface:
+4. run:
+
+```sh
+sh scripts/bootstrap-new-machine.sh
+```
+
+That script now stands up the sibling repos, validates the harness, validates
+the hosted UI build, runs the release/public drill, and returns the checked-out
+repos to a clean state.
+5. verify the release surface:
    - [VERSION](/Users/stevenwoods/mmath-renovation/VERSION)
    - [CHANGELOG.md](/Users/stevenwoods/mmath-renovation/CHANGELOG.md)
    - [releases](/Users/stevenwoods/mmath-renovation/releases/README.md)
-5. verify the harness:
+6. verify the harness:
    - [scripts/abtweak-experiments.sh](/Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh)
-6. verify the current status docs:
+7. verify the current status docs:
    - [docs/current-status.md](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
    - [docs/project-goal-roadmap.md](/Users/stevenwoods/mmath-renovation/docs/project-goal-roadmap.md)
    - [docs/project-compendium.md](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
@@ -189,6 +199,16 @@ npm run build
 6. verify the live hosted UI still responds at:
    [abtweak-experiments-ui.vercel.app](https://abtweak-experiments-ui.vercel.app)
 
+## Bootstrap Script
+
+The new-machine startup path is now encoded in:
+
+- [scripts/bootstrap-new-machine.sh](/Users/stevenwoods/mmath-renovation/scripts/bootstrap-new-machine.sh)
+- [New-machine bootstrap](/Users/stevenwoods/mmath-renovation/docs/new-machine-bootstrap.md)
+
+Use that script as the first operational proof step on the next Mac after the
+main repo has been cloned into the canonical iCloud-backed workspace root.
+
 ## Evidence Recovery
 
 The main evidence gap is the local-only `hanoi-4` raw trace set.
@@ -221,7 +241,6 @@ of the following are true:
    machine
 2. preserve the hosted UI's Vercel configuration and documented environment
    variable names as part of the continuation set
-3. decide whether the generated release snapshot and public-manifest outputs in
-   the fresh clones should be committed there or kept as expected local build
-   products
+3. use [scripts/bootstrap-new-machine.sh](/Users/stevenwoods/mmath-renovation/scripts/bootstrap-new-machine.sh)
+   as the standard startup/validation path on the next Mac
 4. repeat this drill once after any major continuity change

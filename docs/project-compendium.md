@@ -25,6 +25,7 @@ Core companion documents:
 - [Repository structure review](/Users/stevenwoods/mmath-renovation/docs/repository-structure-review.md)
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [New-machine bootstrap](/Users/stevenwoods/mmath-renovation/docs/new-machine-bootstrap.md)
 - [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 - [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
 - [GitHub Actions remote experiments](/Users/stevenwoods/mmath-renovation/docs/github-actions-remote-experiments.md)
@@ -64,6 +65,8 @@ The project is no longer in a fragile bootstrap phase. It now has:
 - one explicit intake path for newly discovered material
 - one public release/dashboard/status surface
 - one hosted remote experiment UI layered on top of the same curated harness vocabulary
+- one concrete startup path for recreating the full continuation set on a
+  replacement Mac
 
 The thesis-gallery milestone is now effectively complete. The gallery and
 inventory remain first-class validation artifacts, but they are no longer the

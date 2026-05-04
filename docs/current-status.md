@@ -15,12 +15,15 @@ Current phase summary:
 - the post-RC resume plan now explicitly separates UI work, research, domain expansion, and visualization improvements
 - the first fresh iCloud-backed reconstruction workspace is now established and
   has passed the main harness plus release/public-sync continuity drill
+- the repo now also has a concrete new-machine startup script so the next Mac
+  can recreate and validate the full continuation set without relying on memory
 
 For deeper technical detail, see:
 
 - [Project compendium](/Users/stevenwoods/mmath-renovation/docs/project-compendium.md)
 - [Project state and recovery audit](/Users/stevenwoods/mmath-renovation/docs/project-state-recovery-audit.md)
 - [Cold-start reconstruction](/Users/stevenwoods/mmath-renovation/docs/cold-start-reconstruction.md)
+- [New-machine bootstrap](/Users/stevenwoods/mmath-renovation/docs/new-machine-bootstrap.md)
 - [Continuity and archival policy](/Users/stevenwoods/mmath-renovation/docs/continuity-and-archival-policy.md)
 - [Thesis side-by-side graphics](/Users/stevenwoods/mmath-renovation/docs/thesis-side-by-side-graphics.md)
 - [Thesis figure inventory](/Users/stevenwoods/mmath-renovation/docs/thesis-figure-inventory.md)
