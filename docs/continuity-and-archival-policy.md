@@ -1,5 +1,10 @@
 # Continuity And Archival Policy
 
+> Historical note: the iCloud-backed working-root language below reflects the
+> earlier continuity drill. The preferred current active-clone model is now a
+> normal non-iCloud working repo, with iCloud reserved for intake and backup
+> convenience.
+
 This note defines how the project should preserve continuity going forward.
 
 It complements:

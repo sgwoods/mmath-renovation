@@ -4,14 +4,19 @@ set -eu
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 
-ICLOUD_PUBLIC_PAGES_DIR="/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public"
+PROJECTS_PUBLIC_PAGES_DIR="$HOME/Projects/public"
 LEGACY_PUBLIC_PAGES_DIR="/Users/stevenwoods/GitPages/public"
+ICLOUD_PUBLIC_PAGES_DIR="/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public"
 
 if [ -z "${PUBLIC_PAGES_DIR:-}" ]; then
-  if [ -d "$ICLOUD_PUBLIC_PAGES_DIR" ]; then
+  if [ -d "$PROJECTS_PUBLIC_PAGES_DIR" ]; then
+    PUBLIC_PAGES_DIR="$PROJECTS_PUBLIC_PAGES_DIR"
+  elif [ -d "$LEGACY_PUBLIC_PAGES_DIR" ]; then
+    PUBLIC_PAGES_DIR="$LEGACY_PUBLIC_PAGES_DIR"
+  elif [ -d "$ICLOUD_PUBLIC_PAGES_DIR" ]; then
     PUBLIC_PAGES_DIR="$ICLOUD_PUBLIC_PAGES_DIR"
   else
-    PUBLIC_PAGES_DIR="$LEGACY_PUBLIC_PAGES_DIR"
+    PUBLIC_PAGES_DIR="$PROJECTS_PUBLIC_PAGES_DIR"
   fi
 fi
 VERSION_FILE="$REPO_ROOT/VERSION"

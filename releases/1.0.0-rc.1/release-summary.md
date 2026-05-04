@@ -17,6 +17,6 @@ Included files:
 
 Primary references:
 
-- [CHANGELOG](/Users/stevenwoods/mmath-renovation/CHANGELOG.md)
-- [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
-- [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
+- [CHANGELOG](../../CHANGELOG.md)
+- [Release process](../../docs/release-process.md)
+- [Current status](../../docs/current-status.md)

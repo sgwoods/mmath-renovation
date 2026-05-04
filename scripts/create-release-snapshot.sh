@@ -69,9 +69,9 @@ Included files:
 
 Primary references:
 
-- [CHANGELOG](/Users/stevenwoods/mmath-renovation/CHANGELOG.md)
-- [Release process](/Users/stevenwoods/mmath-renovation/docs/release-process.md)
-- [Current status](/Users/stevenwoods/mmath-renovation/docs/current-status.md)
+- [CHANGELOG](../../CHANGELOG.md)
+- [Release process](../../docs/release-process.md)
+- [Current status](../../docs/current-status.md)
 EOF
 
 cat >"$manifest_file" <<EOF
@@ -80,15 +80,15 @@ cat >"$manifest_file" <<EOF
   "timestamp_utc": "$timestamp",
   "git_branch": "$branch",
   "git_commit": "$commit",
-  "version_file": "/Users/stevenwoods/mmath-renovation/VERSION",
-  "changelog_file": "/Users/stevenwoods/mmath-renovation/CHANGELOG.md",
-  "current_status_file": "/Users/stevenwoods/mmath-renovation/docs/current-status.md",
+  "version_file": "VERSION",
+  "changelog_file": "CHANGELOG.md",
+  "current_status_file": "docs/current-status.md",
   "generated_files": [
-    "/Users/stevenwoods/mmath-renovation/releases/$version/manifest.json",
-    "/Users/stevenwoods/mmath-renovation/releases/$version/status.json",
-    "/Users/stevenwoods/mmath-renovation/releases/$version/benchmark-status.md",
-    "/Users/stevenwoods/mmath-renovation/releases/$version/current-status.md",
-    "/Users/stevenwoods/mmath-renovation/releases/$version/release-summary.md"
+    "releases/$version/manifest.json",
+    "releases/$version/status.json",
+    "releases/$version/benchmark-status.md",
+    "releases/$version/current-status.md",
+    "releases/$version/release-summary.md"
   ]
 }
 EOF

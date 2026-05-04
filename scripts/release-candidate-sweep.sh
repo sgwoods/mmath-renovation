@@ -1,7 +1,8 @@
 #!/bin/sh
 set -eu
 
-ROOT_DIR="/Users/stevenwoods/mmath-renovation"
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 HARNESS_SCRIPT="$ROOT_DIR/scripts/abtweak-experiments.sh"
 VERSION_FILE="$ROOT_DIR/VERSION"
 
@@ -72,12 +73,12 @@ the historical-restoration baseline.
 ## Command Set
 
 ~~~sh
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status --json
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report hanoi2-historical
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report hanoi3-historical
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report hanoi4-solve-candidates
-sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report wide-domain-sweep
+sh scripts/abtweak-experiments.sh status --json
+sh scripts/abtweak-experiments.sh report benchmark-status
+sh scripts/abtweak-experiments.sh report hanoi2-historical
+sh scripts/abtweak-experiments.sh report hanoi3-historical
+sh scripts/abtweak-experiments.sh report hanoi4-solve-candidates
+sh scripts/abtweak-experiments.sh report wide-domain-sweep
 ~~~
 
 ## Verdict

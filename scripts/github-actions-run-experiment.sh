@@ -8,7 +8,7 @@ HARNESS_SCRIPT="$SCRIPT_DIR/abtweak-experiments.sh"
 usage() {
   cat <<EOF >&2
 Usage:
-  sh /Users/stevenwoods/mmath-renovation/scripts/github-actions-run-experiment.sh KIND NAME OUT_DIR
+  sh scripts/github-actions-run-experiment.sh KIND NAME OUT_DIR
 
 Kinds:
   status  NAME should be '-'

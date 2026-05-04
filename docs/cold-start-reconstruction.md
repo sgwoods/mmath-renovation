@@ -1,5 +1,11 @@
 # Cold-Start Reconstruction
 
+> Historical note: this document captures the earlier iCloud-centered
+> reconstruction drill. The preferred current migration model is now the
+> non-iCloud active-clone path documented at the repo root in
+> `BOOTSTRAP-CHECKLIST.md`, `NEW-MAC-HANDOFF.md`, and
+> `RECOVERY-AND-REPRODUCIBILITY.md`.
+
 This note describes how to continue the project from a new machine without
 relying on memory or undeclared local setup.
 

@@ -55,6 +55,11 @@ The papers and thesis emphasize several themes that should guide this renovation
 
 ## Documentation Map
 
+- [Project status](./PROJECT-STATUS.md): root-level snapshot of the durable baseline, current focus, and recommended working-clone model
+- [Bootstrap checklist](./BOOTSTRAP-CHECKLIST.md): shortest explicit setup path for a fresh non-iCloud clone on a new Mac
+- [New Mac handoff](./NEW-MAC-HANDOFF.md): practical machine-handoff guide for continuing the project from a different Mac
+- [Machine deprecation checklist](./MACHINE-DEPRECATION-CHECKLIST.md): explicit gate for when the current Mac can be treated as secondary safely
+- [Recovery and reproducibility](./RECOVERY-AND-REPRODUCIBILITY.md): continuity audit focused on GitHub as the durable source of truth plus the companion repos
 - [Reference documents](./docs/references.md): annotated list of the core papers, thesis, and archived code page
 - [Publications index](./publications/README.md): checked-in local copies of the core papers, reports, and archival package page
 - [Snapshot inventory](./docs/snapshot-inventory.md): comparison of the recovered AbTweak trees and recommended porting baseline
@@ -79,9 +84,9 @@ The papers and thesis emphasize several themes that should guide this renovation
 - [Repository coverage matrix](./docs/repository-coverage-matrix.md): first-class table of what is integrated, tested, publication-validated, primary, separate, or still open across the repository
 - [Repository structure review](./docs/repository-structure-review.md): review of how the repo is organized, what counts as primary system artifacts versus generated outputs and historical references, and where the naming is still a little ambiguous
 - [Project state and recovery audit](./docs/project-state-recovery-audit.md): precise audit of what is checked in, what is still local or external, and whether the project is fully recoverable from git alone
-- [Cold-start reconstruction](./docs/cold-start-reconstruction.md): explicit checklist for resuming the project on a new machine without reconstructing the setup from memory
-- [New-machine bootstrap](./docs/new-machine-bootstrap.md): concrete startup path for a different Mac, including the canonical iCloud-backed workspace layout and the one-command validation script
-- [Continuity and archival policy](./docs/continuity-and-archival-policy.md): policy for preserving substantive local artifacts, coordinating the multi-repo working set, and keeping future working directories inside an iCloud-backed workspace
+- [Cold-start reconstruction](./docs/cold-start-reconstruction.md): earlier continuity drill notes, now complemented by the root migration/handoff docs
+- [New-machine bootstrap](./docs/new-machine-bootstrap.md): historical iCloud-centered drill note preserved for context; the preferred bootstrap path now lives at the repo root
+- [Continuity and archival policy](./docs/continuity-and-archival-policy.md): preservation policy plus the older continuity drill context
 - [Intake area](./intake/README.md): single landing zone for newly found relevant material before it is reviewed and moved into `working`, `historical`, `publications`, or `analysis`
 - [PlanMerge inventory](./docs/planmerge-inventory.md): preserved note on the newly imported April 1990 `PlanMerge` workspaces and their current provenance status
 - [Historical adjacent systems](./docs/historical-adjacent-systems.md): catalog of newly imported non-AbTweak historical workspaces such as `A-star`, `Mini-Tweak`, `KautzPR`, and `Mvl`

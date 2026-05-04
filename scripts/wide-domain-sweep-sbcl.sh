@@ -131,6 +131,6 @@ cat <<'EOF'
 ## Usage
 
 ```sh
-sh /Users/stevenwoods/mmath-renovation/scripts/wide-domain-sweep-sbcl.sh
+sh scripts/wide-domain-sweep-sbcl.sh
 ```
 EOF

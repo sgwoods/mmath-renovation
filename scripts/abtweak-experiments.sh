@@ -8,19 +8,19 @@ SMOKE_SCRIPT="$SCRIPT_DIR/smoke-abtweak-1993-sbcl.sh"
 usage() {
   cat <<EOF
 Usage:
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh help
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list cases
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list reports
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh list traces
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status --json
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run CASE
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run CASE --json
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report NAME
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report NAME --json
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace NAME
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace NAME --json
+  sh scripts/abtweak-experiments.sh help
+  sh scripts/abtweak-experiments.sh list
+  sh scripts/abtweak-experiments.sh list cases
+  sh scripts/abtweak-experiments.sh list reports
+  sh scripts/abtweak-experiments.sh list traces
+  sh scripts/abtweak-experiments.sh status
+  sh scripts/abtweak-experiments.sh status --json
+  sh scripts/abtweak-experiments.sh run CASE
+  sh scripts/abtweak-experiments.sh run CASE --json
+  sh scripts/abtweak-experiments.sh report NAME
+  sh scripts/abtweak-experiments.sh report NAME --json
+  sh scripts/abtweak-experiments.sh trace NAME
+  sh scripts/abtweak-experiments.sh trace NAME --json
 
 Commands:
   help        Show this help.
@@ -31,12 +31,12 @@ Commands:
   trace       Execute one named trace workflow.
 
 Examples:
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh run blocks-sussman-abtweak --json
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh status
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report compare-core
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh report benchmark-status --json
-  sh /Users/stevenwoods/mmath-renovation/scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos
+  sh scripts/abtweak-experiments.sh run blocks-sussman-abtweak
+  sh scripts/abtweak-experiments.sh run blocks-sussman-abtweak --json
+  sh scripts/abtweak-experiments.sh status
+  sh scripts/abtweak-experiments.sh report compare-core
+  sh scripts/abtweak-experiments.sh report benchmark-status --json
+  sh scripts/abtweak-experiments.sh trace hanoi4-isbm-weak-pos
 EOF
 }
 

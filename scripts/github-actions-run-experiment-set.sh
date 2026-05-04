@@ -7,7 +7,7 @@ RUN_ONE="$SCRIPT_DIR/github-actions-run-experiment.sh"
 usage() {
   cat <<EOF >&2
 Usage:
-  sh /Users/stevenwoods/mmath-renovation/scripts/github-actions-run-experiment-set.sh PRESET OUT_DIR
+  sh scripts/github-actions-run-experiment-set.sh PRESET OUT_DIR
 
 Presets:
   status-snapshot

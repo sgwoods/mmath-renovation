@@ -1,5 +1,10 @@
 # New-Machine Bootstrap
 
+> Historical note: this document records the earlier iCloud-backed continuity
+> drill. The preferred current working model is now a normal non-iCloud active
+> clone, documented at the repo root in `BOOTSTRAP-CHECKLIST.md` and
+> `NEW-MAC-HANDOFF.md`.
+
 This note turns the continuity work into a concrete operating procedure for the
 next Mac.
 

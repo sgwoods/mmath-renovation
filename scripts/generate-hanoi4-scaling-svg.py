@@ -11,7 +11,7 @@ os.environ.setdefault("MPLBACKEND", "Agg")
 import matplotlib.pyplot as plt
 
 
-REPO = Path("/Users/stevenwoods/mmath-renovation")
+REPO = Path(__file__).resolve().parent.parent
 DATA = REPO / "analysis" / "hanoi4-strategy-performance.csv"
 OUT = REPO / "analysis" / "hanoi4-scaling-strategies.svg"
 PNG_OUT = REPO / "analysis" / "hanoi4-scaling-strategies.png"

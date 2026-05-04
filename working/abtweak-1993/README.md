@@ -4,7 +4,7 @@ This directory is the active working copy for porting the `Abtweak-1993` snapsho
 
 ## Relationship To The Historical Snapshot
 
-- Historical reference: [`/Users/stevenwoods/mmath-renovation/historical/Abtweak/Abtweak-1993`](/Users/stevenwoods/mmath-renovation/historical/Abtweak/Abtweak-1993)
+- Historical reference: [`../../historical/Abtweak/Abtweak-1993`](../../historical/Abtweak/Abtweak-1993)
 - Working copy: this directory
 
 The historical snapshot should remain unchanged as the recovered reference copy. Compatibility fixes, loader experiments, and cleanup belong here instead.

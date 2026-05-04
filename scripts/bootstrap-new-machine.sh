@@ -27,7 +27,14 @@ usage() {
   cat <<EOF
 Usage: $(basename "$0") [options]
 
-Bootstrap and validate the AbTweak continuation workspace on a new Mac.
+Legacy iCloud-centered bootstrap and validation drill for the AbTweak
+continuation workspace on a new Mac.
+
+Preferred current migration path:
+  bash scripts/bootstrap-project-macos.sh
+
+Use this legacy script only when you specifically want to recreate the older
+iCloud-backed continuity drill.
 
 Options:
   --workspace-root PATH   Canonical workspace root

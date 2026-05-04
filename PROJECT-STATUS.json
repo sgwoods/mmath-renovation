@@ -1,0 +1,30 @@
+{
+  "project": "Masters of Mathematics Thesis Renovation: AbTweak",
+  "durable_baseline": "1.0.0-rc.1",
+  "canonical_branch": "main",
+  "active_working_branch": "main",
+  "source_of_truth": "Git history in sgwoods/mmath-renovation, with sgwoods/public and sgwoods/abtweak-experiments-ui as companion repos for the mirrored public surface and hosted remote-experiment UI.",
+  "working_clone_model": "Use a normal non-iCloud active clone for day-to-day work. Use iCloud for intake, backup-oriented material, and convenience paths only.",
+  "metrics": {
+    "current_track": {
+      "label": "Current Track",
+      "value": "1.0 RC hardening",
+      "note": "The historical restoration baseline is frozen at 1.0.0-rc.1 while portability, handoff clarity, and post-RC continuation discipline are hardened."
+    },
+    "current_focus": {
+      "label": "Current Focus",
+      "value": "Portability hardening and disciplined post-RC continuation",
+      "note": "The repo should be safe to continue from a fresh non-iCloud clone without relying on hidden local setup, while the open Hanoi-4 lane remains clearly bounded."
+    },
+    "build_line": {
+      "label": "Build Line",
+      "value": "1.0.0-rc.1",
+      "note": "Current stable restoration baseline."
+    },
+    "updated": {
+      "label": "Updated",
+      "value": "May 4, 2026",
+      "note": "Root status markers, bootstrap docs, and migration scripts are intended to stay synchronized."
+    }
+  }
+}
