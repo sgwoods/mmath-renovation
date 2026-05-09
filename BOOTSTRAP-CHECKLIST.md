@@ -28,9 +28,9 @@ worktree.
 Use normal non-iCloud working clones for day-to-day development:
 
 ```text
-~/Projects/mmath-renovation-working
-~/Projects/public
-~/Projects/abtweak-experiments-ui
+~/Projects-All/mmath-renovation-working
+~/Projects-All/public
+~/Projects-All/abtweak-experiments-ui
 ```
 
 Use iCloud for intake and backup-oriented convenience paths:
@@ -92,7 +92,7 @@ That script now:
 Useful options:
 
 ```bash
-bash scripts/bootstrap-project-macos.sh --target-dir "$HOME/Projects/mmath-renovation-working"
+bash scripts/bootstrap-project-macos.sh --target-dir "$HOME/Projects-All/mmath-renovation-working"
 bash scripts/bootstrap-project-macos.sh --branch main
 bash scripts/bootstrap-project-macos.sh --skip-ui-build
 bash scripts/bootstrap-project-macos.sh --skip-public-drill
@@ -115,9 +115,9 @@ brew install sbcl ghostscript node
 3. Clone the repo outside iCloud:
 
 ```bash
-mkdir -p ~/Projects
-git clone https://github.com/sgwoods/mmath-renovation.git ~/Projects/mmath-renovation-working
-cd ~/Projects/mmath-renovation-working
+mkdir -p ~/Projects-All
+git clone https://github.com/sgwoods/mmath-renovation.git ~/Projects-All/mmath-renovation-working
+cd ~/Projects-All/mmath-renovation-working
 ```
 
 4. Run the normal startup/validation path:
@@ -129,8 +129,8 @@ bash scripts/start-codex-new-mac.sh
 5. If you also want the companion-public and hosted-UI checks:
 
 ```bash
-git clone https://github.com/sgwoods/public.git ~/Projects/public
-git clone https://github.com/sgwoods/abtweak-experiments-ui.git ~/Projects/abtweak-experiments-ui
+git clone https://github.com/sgwoods/public.git ~/Projects-All/public
+git clone https://github.com/sgwoods/abtweak-experiments-ui.git ~/Projects-All/abtweak-experiments-ui
 bash scripts/start-codex-new-mac.sh --validate-ui --run-public-drill
 ```
 
@@ -159,8 +159,8 @@ repeatable than relying on a partially prepared machine.
 If you need the full mirrored-public and hosted-UI continuity path, clone:
 
 ```bash
-git clone https://github.com/sgwoods/public.git ~/Projects/public
-git clone https://github.com/sgwoods/abtweak-experiments-ui.git ~/Projects/abtweak-experiments-ui
+git clone https://github.com/sgwoods/public.git ~/Projects-All/public
+git clone https://github.com/sgwoods/abtweak-experiments-ui.git ~/Projects-All/abtweak-experiments-ui
 ```
 
 The main repo's harness and smoke validation work without those repos. The

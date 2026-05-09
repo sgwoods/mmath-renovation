@@ -2,8 +2,8 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEFAULT_PUBLIC_DIR="${HOME}/Projects/public"
-DEFAULT_UI_DIR="${HOME}/Projects/abtweak-experiments-ui"
+DEFAULT_PUBLIC_DIR="${HOME}/Projects-All/public"
+DEFAULT_UI_DIR="${HOME}/Projects-All/abtweak-experiments-ui"
 ICLOUD_INTAKE="${HOME}/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing"
 
 SKIP_VALIDATION=0

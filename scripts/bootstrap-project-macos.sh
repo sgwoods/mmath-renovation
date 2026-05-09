@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DEFAULT_TARGET_DIR="${HOME}/Projects/mmath-renovation-working"
-DEFAULT_PUBLIC_DIR="${HOME}/Projects/public"
-DEFAULT_UI_DIR="${HOME}/Projects/abtweak-experiments-ui"
+DEFAULT_TARGET_DIR="${HOME}/Projects-All/mmath-renovation-working"
+DEFAULT_PUBLIC_DIR="${HOME}/Projects-All/public"
+DEFAULT_UI_DIR="${HOME}/Projects-All/abtweak-experiments-ui"
 DEFAULT_REPO_URL="https://github.com/sgwoods/mmath-renovation.git"
 DEFAULT_PUBLIC_REPO_URL="https://github.com/sgwoods/public.git"
 DEFAULT_UI_REPO_URL="https://github.com/sgwoods/abtweak-experiments-ui.git"

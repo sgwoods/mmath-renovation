@@ -26,10 +26,10 @@ At the current checkpoint:
 - `main` is the durable baseline branch.
 - `1.0.0-rc.1` is the stable restoration baseline.
 - the recommended active-clone model is now non-iCloud:
-  `~/Projects/mmath-renovation-working`
+  `~/Projects-All/mmath-renovation-working`
 - the companion repos should likewise live outside iCloud:
-  - `~/Projects/public`
-  - `~/Projects/abtweak-experiments-ui`
+  - `~/Projects-All/public`
+  - `~/Projects-All/abtweak-experiments-ui`
 - the preferred iCloud helper path is now intake-only:
   `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing`
 
