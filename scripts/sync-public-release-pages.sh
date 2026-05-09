@@ -4,7 +4,7 @@ set -eu
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 
-PROJECTS_PUBLIC_PAGES_DIR="$HOME/Projects/public"
+PROJECTS_PUBLIC_PAGES_DIR="$HOME/Projects-All/public"
 LEGACY_PUBLIC_PAGES_DIR="/Users/stevenwoods/GitPages/public"
 ICLOUD_PUBLIC_PAGES_DIR="/Users/stevenwoods/Library/Mobile Documents/com~apple~CloudDocs/StevenWoods/public"
 
@@ -132,7 +132,7 @@ cat >"$PUBLIC_STATUS_FILE" <<EOF
   "status_label": "Current release",
   "status_value": "$version",
   "focus_label": "Current focus",
-  "focus_value": "Hanoi-4 extension benchmark"
+  "focus_value": "Portability hardening and disciplined post-RC continuation"
 }
 EOF
 
