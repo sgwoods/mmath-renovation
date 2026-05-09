@@ -91,6 +91,7 @@ restore_public_drill_outputs() {
   version="$(tr -d ' \n\r' <"$ROOT_DIR/VERSION")"
 
   git -C "$ROOT_DIR" restore \
+    analysis/thesis-side-by-side \
     "releases/$version/manifest.json" \
     "releases/$version/status.json" \
     "releases/$version/benchmark-status.md" \
