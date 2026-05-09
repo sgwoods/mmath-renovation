@@ -32,6 +32,7 @@ PUBLIC_THESIS_PDF="$PUBLIC_PAGES_DIR/mmath-thesis.pdf"
 PUBLIC_THESIS_PS="$PUBLIC_PAGES_DIR/mmath-thesis.ps"
 PUBLIC_STATUS_DIR="$PUBLIC_PAGES_DIR/data/projects"
 PUBLIC_STATUS_FILE="$PUBLIC_STATUS_DIR/mmath-renovation.json"
+PUBLIC_EXPERIENCE_URL="https://abtweak-experiments-ui.vercel.app"
 TMP_DIR=""
 
 cleanup() {
@@ -126,7 +127,7 @@ cat >"$PUBLIC_STATUS_FILE" <<EOF
   "project_page_path": "mmath-renovation.html",
   "repo_url": "https://github.com/sgwoods/mmath-renovation",
   "dashboard_url": "https://sgwoods.github.io/public/mmath-renovation-release-dashboard.html",
-  "experience_url": "https://sgwoods.github.io/public/mmath-renovation-remote-experiments.html",
+  "experience_url": "$PUBLIC_EXPERIENCE_URL",
   "repo_pushed_at": "$repo_pushed_at",
   "status_generated_at": "$status_generated_at",
   "status_label": "Current release",

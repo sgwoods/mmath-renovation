@@ -121,6 +121,9 @@ The same release step now also calls
 when the local Pages checkout is present, so the public dashboard and linked
 MMath project page, remote-experiments guide page, and the
 MMath public-status manifest is refreshed for the shared homepage renderer.
+Those synced Pages surfaces remain the canonical project-facing documentation
+and status layer. The hosted `abtweak-experiments-ui.vercel.app` UI is a
+linked runner, and the manifest may use `experience_url` to point to it.
 That sync step now also includes a scope guard: it refuses to continue if it
 would newly dirty any non-MMath path in the shared Pages checkout.
 

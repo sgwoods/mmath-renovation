@@ -11,6 +11,20 @@ The current recommendation is:
 That gives the project a browser-based remote runner without requiring a
 separate hosted backend.
 
+## Public Surface Rule
+
+The canonical public project and documentation surface stays in the shared
+`public` repo under the `mmath-renovation` pages.
+
+The hosted UI at `https://abtweak-experiments-ui.vercel.app` is the linked
+browser-facing runner.
+
+The static `mmath-renovation-remote-experiments.html` page remains the
+project-owned guide for curated vocabulary and direct workflow links.
+
+When `experience_url` is present in the shared public layer, it should point
+to the hosted UI rather than to the guide page.
+
 ## Why This Is The Current Remote Interface
 
 The repo already has a stable local experiment front door in
@@ -124,8 +138,11 @@ So the same experiment vocabulary exists in both places:
   artifact-size limits.
 - Domain-definition UI is out of scope for this phase.
 
-## Next Remote Step
+## Current Public Entry Points
 
-If this Actions-based remote surface proves useful, the next improvement would
-be a small GitHub Pages front-end that links to the two workflow pages and
-explains the curated input values in a more guided way.
+- MMath public project and status pages in `sgwoods/public`
+- static public guide:
+  `https://sgwoods.github.io/public/mmath-renovation-remote-experiments.html`
+- hosted runner UI: `https://abtweak-experiments-ui.vercel.app`
+- direct Actions workflow links for power users who want to bypass the hosted
+  UI
