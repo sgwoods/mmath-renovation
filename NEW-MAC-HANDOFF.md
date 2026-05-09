@@ -25,9 +25,9 @@ At the current portability checkpoint:
 - the preferred active clone model is now a normal non-iCloud working copy,
   not an iCloud-backed live worktree
 - the recommended active paths are:
-  - `~/Projects/mmath-renovation-working`
-  - `~/Projects/public`
-  - `~/Projects/abtweak-experiments-ui`
+  - `~/Projects-All/mmath-renovation-working`
+  - `~/Projects-All/public`
+  - `~/Projects-All/abtweak-experiments-ui`
 - the preferred iCloud-backed intake path is:
   - `~/Library/Mobile Documents/com~apple~CloudDocs/Projects/mmath-renovation/incoming-landing`
 - the repo-local intake handoff area remains:
